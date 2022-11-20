@@ -1,0 +1,32 @@
+﻿[CRONO ETL PROJECT] (
+  Environments=(
+    ENVIROMENT (
+      Name='SELVA',
+      Replacements=(),
+      Datasource=[SQL SERVER CONNECTION] ([Server]='.', DatabaseName='CRONO_SQL'),
+      BackgroundColor=COLOR (Name='White')
+    )
+  ),
+  ExcludedFiles=(),
+  JobsFolderPath='Jobs',
+  MaxRows=100000,
+  AllowSaveWithErrors=NO,
+  TableFilter='*',
+  ProceduresViewMode='Workflow',
+  EtlOptions=
+    [ETL OPTIONS] (
+      InsertedDateColumnName='InsertDate',
+      UpdatedDateColumnName='UpdateDate',
+      DeletedDateColumnName='DeleteDate',
+      StartDateColumnName='StartDate',
+      EndDateColumnName='EndDate',
+      DefaultEndDate=d'2100-01-01',
+      CurrentDateExpression=EXPRESSION (getdate()),
+      CreateProcedureExtendedProperties=YES
+    ),
+  IsProceduresViewVisible=YES,
+  IsSourceViewVisible=YES,
+  IsOthersViewVisible=NO,
+  IsJobViewVisible=YES,
+  IsMetadataViewVisible=NO
+)

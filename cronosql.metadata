@@ -1,0 +1,66 @@
+﻿[DATABASE] (
+  Name='cronosql',
+  Guid='iNTWeWimpB',
+  DataSource=[SQL SERVER CONNECTION] ([Server]='.', DatabaseName='CRONO_SQL'),
+  [Tables]=(
+    [TABLE] (TableAlias='Functions', TableName='dbo.Functions', PkColumns=('idFunction'), TableColumns=(
+      [TABLE COLUMN] (Name='idFunction', DataType='int', IsNullable=NO, IsIdentity=YES),
+      [TABLE COLUMN] (Name='FunctionName', DataType='varchar(30)', IsNullable=NO),
+      [TABLE COLUMN] (Name='FunctionType', DataType='varchar(5)', IsNullable=NO),
+      [TABLE COLUMN] (Name='InsertDate', DataType='datetime', IsNullable=NO),
+      [TABLE COLUMN] (Name='UpdateDate', DataType='datetime', IsNullable=YES)
+    ), Indexes=(
+      [TABLE INDEX] (Name='BK_Functions', IsClustered=NO, IsUnique=YES, IsPrimary=NO, IsDisabled=NO, [Schema]='dbo', [Table]='Functions', [Column]='FunctionName', ColumnsCount=1, ConstraintName='BK_Functions'),
+      [TABLE INDEX] (Name='PK_Functions', IsClustered=YES, IsUnique=YES, IsPrimary=YES, IsDisabled=NO, [Schema]='dbo', [Table]='Functions', [Column]='idFunction', ColumnsCount=1, ConstraintName='PK_Functions')
+    ))
+  ),
+  Items=(
+    [BUSINESS ITEM] (Name='Functions', Guid='rCROqixe', AggregationFunction='Default', Items=(
+      [BUSINESS ITEM] (Name='Function name', Definition=EXPRESSION (Functions.FunctionName), Guid='YnkpqGQN', LovEnabled=YES, AggregationFunction='Default', DataType=OBJECT_TYPE 'System.String', Items=()),
+      [BUSINESS ITEM] (Name='Function type', Definition=EXPRESSION (Functions.FunctionType), Guid='JscMUOPh', LovEnabled=YES, AggregationFunction='Default', DataType=OBJECT_TYPE 'System.String', Items=())
+    ))
+  ),
+  TableFilter='*',
+  DefaultLanguage='es',
+  ApiEnabled=YES,
+  ApiResourceRoot=
+    [API RESOURCE] (
+      Path='',
+      Items=(
+        [API RESOURCE] (
+          Path='functions',
+          AllowGET=YES,
+          AllowPOST=NO,
+          AllowPUT=NO,
+          AllowDELETE=NO,
+          [Data]=
+            [API DATA] (
+              Items=(
+                [API DATA] (
+                  Name='FunctionName',
+                  DirectoryKind='None',
+                  [Expression]=EXPRESSION ([Function name|YnkpqGQN]),
+                  IsDescending=NO,
+                  OrderPosition=0
+                ),
+                [API DATA] (
+                  Name='FunctionType',
+                  DirectoryKind='None',
+                  [Expression]=EXPRESSION ([Function type|JscMUOPh])
+                )
+              ),
+              Name='functions',
+              DirectoryKind='ObjectArray',
+              EntityName='functions'
+            )
+        )
+      ),
+      AllowGET=NO,
+      AllowPOST=NO,
+      AllowPUT=NO,
+      AllowDELETE=NO
+    ),
+  TranslateAllOnSaving=NO,
+  TablesSortMode='TableAlias',
+  AvoidRepeatTablesOnDiagrams=NO
+)
