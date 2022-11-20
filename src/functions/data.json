@@ -1,0 +1,818 @@
+﻿[
+  {
+    "FunctionName": "abs",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "acos",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "addition",
+    "FunctionType": "Crono"
+  },
+  {
+    "FunctionName": "ascii",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "asin",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "atan",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "atn2",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "avg",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "binary_checksum",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "cast",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "ceiling",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "charindex",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "checksum",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "checksum_agg",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "coalesce",
+    "FunctionType": "Crono"
+  },
+  {
+    "FunctionName": "col_length",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "col_name",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "collationproperty",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "columnproperty",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "columns_updated",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "concat",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "convert",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "cos",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "cot",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "count",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "count_big",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "countdistinct",
+    "FunctionType": "Crono"
+  },
+  {
+    "FunctionName": "Crono$Directory",
+    "FunctionType": "Crono"
+  },
+  {
+    "FunctionName": "Crono$DirectoryName",
+    "FunctionType": "Crono"
+  },
+  {
+    "FunctionName": "Crono$Download",
+    "FunctionType": "Crono"
+  },
+  {
+    "FunctionName": "Crono$FileName",
+    "FunctionType": "Crono"
+  },
+  {
+    "FunctionName": "Crono$FileNameWithoutExtension",
+    "FunctionType": "Crono"
+  },
+  {
+    "FunctionName": "Crono$HeaderProperty",
+    "FunctionType": "Crono"
+  },
+  {
+    "FunctionName": "Crono$IsoDate",
+    "FunctionType": "Crono"
+  },
+  {
+    "FunctionName": "Crono$MarkdownTitle",
+    "FunctionType": "Crono"
+  },
+  {
+    "FunctionName": "Crono$NiceUrlName",
+    "FunctionType": "Crono"
+  },
+  {
+    "FunctionName": "Crono$ReadFile",
+    "FunctionType": "Crono"
+  },
+  {
+    "FunctionName": "Crono$RfcDate",
+    "FunctionType": "Crono"
+  },
+  {
+    "FunctionName": "Crono$Route",
+    "FunctionType": "Crono"
+  },
+  {
+    "FunctionName": "current_time",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "current_timestamp",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "current_user",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "currentusername",
+    "FunctionType": "Crono"
+  },
+  {
+    "FunctionName": "cursor_status",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "databaseproperty",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "databasepropertyex",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "datalength",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "dateadd",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "datediff",
+    "FunctionType": "Crono"
+  },
+  {
+    "FunctionName": "datefromparts",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "datename",
+    "FunctionType": "Crono"
+  },
+  {
+    "FunctionName": "datepart",
+    "FunctionType": "Crono"
+  },
+  {
+    "FunctionName": "datetime2fromparts",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "datetimefromparts",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "datetimeoffsetfromparts",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "day",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "db_id",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "db_name",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "degrees",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "difference",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "divide",
+    "FunctionType": "Crono"
+  },
+  {
+    "FunctionName": "elementat",
+    "FunctionType": "Crono"
+  },
+  {
+    "FunctionName": "emptyifnull",
+    "FunctionType": "Crono"
+  },
+  {
+    "FunctionName": "eomonth",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "exp",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "file_id",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "file_name",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "filegroup_id",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "filegroup_name",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "filegroupproperty",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "fileproperty",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "floor",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "format",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "formatmessage",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "fulltextcatalogproperty",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "fulltextserviceproperty",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "getansinull",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "getdate",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "getenddate",
+    "FunctionType": "Crono"
+  },
+  {
+    "FunctionName": "getenddatetime",
+    "FunctionType": "Crono"
+  },
+  {
+    "FunctionName": "getutcdate",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "grouping",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "grouping_id",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "has_dbaccess",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "host_id",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "host_name",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "hour",
+    "FunctionType": "Crono"
+  },
+  {
+    "FunctionName": "ident_current",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "ident_incr",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "ident_seed",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "index_col",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "indexkey_property",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "indexof",
+    "FunctionType": "Crono"
+  },
+  {
+    "FunctionName": "indexproperty",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "is_member",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "is_srvrolemember",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "isdate",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "ismemberof",
+    "FunctionType": "Crono"
+  },
+  {
+    "FunctionName": "isnull",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "isnumeric",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "isoweek",
+    "FunctionType": "Crono"
+  },
+  {
+    "FunctionName": "isoweekcode",
+    "FunctionType": "Crono"
+  },
+  {
+    "FunctionName": "isoweekshortcode",
+    "FunctionType": "Crono"
+  },
+  {
+    "FunctionName": "isoweekyear",
+    "FunctionType": "Crono"
+  },
+  {
+    "FunctionName": "lag",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "lead",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "left",
+    "FunctionType": "Crono"
+  },
+  {
+    "FunctionName": "len",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "localdate",
+    "FunctionType": "Crono"
+  },
+  {
+    "FunctionName": "log",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "log10",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "lower",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "ltrim",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "margin",
+    "FunctionType": "Crono"
+  },
+  {
+    "FunctionName": "max",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "maximum",
+    "FunctionType": "Crono"
+  },
+  {
+    "FunctionName": "md5",
+    "FunctionType": "Crono"
+  },
+  {
+    "FunctionName": "memberof",
+    "FunctionType": "Crono"
+  },
+  {
+    "FunctionName": "min",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "minimum",
+    "FunctionType": "Crono"
+  },
+  {
+    "FunctionName": "mod",
+    "FunctionType": "Crono"
+  },
+  {
+    "FunctionName": "month",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "nameof",
+    "FunctionType": "Crono"
+  },
+  {
+    "FunctionName": "newid",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "next_value",
+    "FunctionType": "Crono"
+  },
+  {
+    "FunctionName": "nullif",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "nullifempty",
+    "FunctionType": "Crono"
+  },
+  {
+    "FunctionName": "nullifzero",
+    "FunctionType": "Crono"
+  },
+  {
+    "FunctionName": "object_id",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "object_name",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "objectproperty",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "parse",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "parsename",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "patindex",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "pct",
+    "FunctionType": "Crono"
+  },
+  {
+    "FunctionName": "pctrank",
+    "FunctionType": "Crono"
+  },
+  {
+    "FunctionName": "pctvariance",
+    "FunctionType": "Crono"
+  },
+  {
+    "FunctionName": "permissions",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "pi",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "power",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "quotename",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "radians",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "rand",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "replace",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "replicate",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "reverse",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "right",
+    "FunctionType": "Crono"
+  },
+  {
+    "FunctionName": "round",
+    "FunctionType": "Crono"
+  },
+  {
+    "FunctionName": "rowcount_big",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "rtrim",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "runningpct",
+    "FunctionType": "Crono"
+  },
+  {
+    "FunctionName": "runningsum",
+    "FunctionType": "Crono"
+  },
+  {
+    "FunctionName": "scope_identity",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "serverproperty",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "session_user",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "sessionproperty",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "sha1",
+    "FunctionType": "Crono"
+  },
+  {
+    "FunctionName": "sha256",
+    "FunctionType": "Crono"
+  },
+  {
+    "FunctionName": "sign",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "sin",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "single",
+    "FunctionType": "Crono"
+  },
+  {
+    "FunctionName": "smalldatetimefromparts",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "soundex",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "space",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "sql_variant_property",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "sqrt",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "square",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "stats_date",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "stdev",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "stdevp",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "str",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "stuff",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "substraction",
+    "FunctionType": "Crono"
+  },
+  {
+    "FunctionName": "substring",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "sum",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "suser_sid",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "suser_sname",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "switch",
+    "FunctionType": "Crono"
+  },
+  {
+    "FunctionName": "switchoffset",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "sysdatetime",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "sysdatetimeoffset",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "system_user",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "sysutcdatetime",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "tan",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "timefromparts",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "todatetimeoffset",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "today",
+    "FunctionType": "Crono"
+  },
+  {
+    "FunctionName": "tomorrow",
+    "FunctionType": "Crono"
+  },
+  {
+    "FunctionName": "total",
+    "FunctionType": "Crono"
+  },
+  {
+    "FunctionName": "trim",
+    "FunctionType": "Crono"
+  },
+  {
+    "FunctionName": "try_cast",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "try_convert",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "try_parse",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "typeproperty",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "unicode",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "upper",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "user_id",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "user_name",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "valueof",
+    "FunctionType": "Crono"
+  },
+  {
+    "FunctionName": "var",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "varp",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "year",
+    "FunctionType": "SQL"
+  },
+  {
+    "FunctionName": "zeroifempty",
+    "FunctionType": "Crono"
+  },
+  {
+    "FunctionName": "zeroifnull",
+    "FunctionType": "Crono"
+  }
+]
