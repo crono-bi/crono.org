@@ -1,800 +1,1003 @@
 ﻿{
   "/functions/": [
     {
-      "title": null,
+      "title": "Funciones",
       "collapsable": false,
-      "path": "/functions/",
       "type": "group",
       "children": [
         {
-          "title": "Funci\u00F3n  abs",
-          "collapsable": false,
-          "path": "/functions/abs.html"
-        },
-        {
-          "title": "Funci\u00F3n  acos",
-          "collapsable": false,
-          "path": "/functions/acos.html"
-        },
-        {
-          "title": "Funci\u00F3n  addition",
-          "collapsable": false,
-          "path": "/functions/addition.html"
-        },
-        {
-          "title": "Funci\u00F3n  ascii",
-          "collapsable": false,
-          "path": "/functions/ascii.html"
-        },
-        {
-          "title": "Funci\u00F3n  asin",
-          "collapsable": false,
-          "path": "/functions/asin.html"
-        },
-        {
-          "title": "Funci\u00F3n  atan",
-          "collapsable": false,
-          "path": "/functions/atan.html"
-        },
-        {
-          "title": "Funci\u00F3n  atn2",
-          "collapsable": false,
-          "path": "/functions/atn2.html"
-        },
-        {
-          "title": "Funci\u00F3n  avg",
-          "collapsable": false,
-          "path": "/functions/avg.html"
-        },
-        {
-          "title": "Funci\u00F3n  cast",
-          "collapsable": false,
-          "path": "/functions/cast.html"
-        },
-        {
-          "title": "Funci\u00F3n  ceiling",
-          "collapsable": false,
-          "path": "/functions/ceiling.html"
-        },
-        {
-          "title": "Funci\u00F3n  charindex",
-          "collapsable": false,
-          "path": "/functions/charindex.html"
-        },
-        {
-          "title": "Funci\u00F3n  checksum",
-          "collapsable": false,
-          "path": "/functions/checksum.html"
-        },
-        {
-          "title": "Funci\u00F3n  coalesce",
-          "collapsable": false,
-          "path": "/functions/coalesce.html"
-        },
-        {
-          "title": "Funci\u00F3n  columnproperty",
-          "collapsable": false,
-          "path": "/functions/columnproperty.html"
-        },
-        {
-          "title": "Funci\u00F3n  concat",
-          "collapsable": false,
-          "path": "/functions/concat.html"
-        },
-        {
-          "title": "Funci\u00F3n  cos",
-          "collapsable": false,
-          "path": "/functions/cos.html"
-        },
-        {
-          "title": "Funci\u00F3n  cot",
-          "collapsable": false,
-          "path": "/functions/cot.html"
-        },
-        {
-          "title": "Funci\u00F3n  count",
-          "collapsable": false,
-          "path": "/functions/count.html"
-        },
-        {
-          "title": "Funci\u00F3n  countdistinct",
-          "collapsable": false,
-          "path": "/functions/countdistinct.html"
-        },
-        {
-          "title": "Funci\u00F3n  Crono$Directory",
-          "collapsable": false,
-          "path": "/functions/cronodirectory.html"
-        },
-        {
-          "title": "Funci\u00F3n  Crono$DirectoryName",
-          "collapsable": false,
-          "path": "/functions/cronodirectoryname.html"
-        },
-        {
-          "title": "Funci\u00F3n  Crono$Download",
-          "collapsable": false,
-          "path": "/functions/cronodownload.html"
-        },
-        {
-          "title": "Funci\u00F3n  Crono$FileName",
-          "collapsable": false,
-          "path": "/functions/cronofilename.html"
-        },
-        {
-          "title": "Funci\u00F3n  Crono$FileNameWithoutExtension",
-          "collapsable": false,
-          "path": "/functions/cronofilenamewithoutextension.html"
-        },
-        {
-          "title": "Funci\u00F3n  Crono$HeaderProperty",
-          "collapsable": false,
-          "path": "/functions/cronoheaderproperty.html"
-        },
-        {
-          "title": "Funci\u00F3n  Crono$IsoDate",
-          "collapsable": false,
-          "path": "/functions/cronoisodate.html"
-        },
-        {
-          "title": "Funci\u00F3n  Crono$MarkdownTitle",
-          "collapsable": false,
-          "path": "/functions/cronomarkdowntitle.html"
-        },
-        {
-          "title": "Funci\u00F3n  Crono$NiceUrlName",
-          "collapsable": false,
-          "path": "/functions/crononiceurlname.html"
-        },
-        {
-          "title": "Funci\u00F3n  Crono$ReadFile",
-          "collapsable": false,
-          "path": "/functions/cronoreadfile.html"
-        },
-        {
-          "title": "Funci\u00F3n  Crono$RfcDate",
-          "collapsable": false,
-          "path": "/functions/cronorfcdate.html"
-        },
-        {
-          "title": "Funci\u00F3n  Crono$Route",
-          "collapsable": false,
-          "path": "/functions/cronoroute.html"
-        },
-        {
-          "title": "Funci\u00F3n  currentusername",
-          "collapsable": false,
-          "path": "/functions/currentusername.html"
-        },
-        {
-          "title": "Funci\u00F3n  databasepropertyex",
-          "collapsable": false,
-          "path": "/functions/databasepropertyex.html"
-        },
-        {
-          "title": "Funci\u00F3n  datalength",
-          "collapsable": false,
-          "path": "/functions/datalength.html"
-        },
-        {
-          "title": "Funci\u00F3n  dateadd",
-          "collapsable": false,
-          "path": "/functions/dateadd.html"
-        },
-        {
-          "title": "Funci\u00F3n  datediff",
-          "collapsable": false,
-          "path": "/functions/datediff.html"
-        },
-        {
-          "title": "Funci\u00F3n  datefromparts",
-          "collapsable": false,
-          "path": "/functions/datefromparts.html"
-        },
-        {
-          "title": "Funci\u00F3n  datename",
-          "collapsable": false,
-          "path": "/functions/datename.html"
-        },
-        {
-          "title": "Funci\u00F3n  datepart",
-          "collapsable": false,
-          "path": "/functions/datepart.html"
-        },
-        {
-          "title": "Funci\u00F3n  datetime2fromparts",
-          "collapsable": false,
-          "path": "/functions/datetime2fromparts.html"
-        },
-        {
-          "title": "Funci\u00F3n  datetimefromparts",
-          "collapsable": false,
-          "path": "/functions/datetimefromparts.html"
-        },
-        {
-          "title": "Funci\u00F3n  datetimeoffsetfromparts",
-          "collapsable": false,
-          "path": "/functions/datetimeoffsetfromparts.html"
-        },
-        {
-          "title": "Funci\u00F3n  day",
-          "collapsable": false,
-          "path": "/functions/day.html"
-        },
-        {
-          "title": "Funci\u00F3n  degrees",
-          "collapsable": false,
-          "path": "/functions/degrees.html"
-        },
-        {
-          "title": "Funci\u00F3n  difference",
-          "collapsable": false,
-          "path": "/functions/difference.html"
-        },
-        {
-          "title": "Funci\u00F3n  divide",
-          "collapsable": false,
-          "path": "/functions/divide.html"
-        },
-        {
-          "title": "Funci\u00F3n  elementat",
-          "collapsable": false,
-          "path": "/functions/elementat.html"
-        },
-        {
-          "title": "Funci\u00F3n  emptyifnull",
-          "collapsable": false,
-          "path": "/functions/emptyifnull.html"
-        },
-        {
-          "title": "Funci\u00F3n  eomonth",
-          "collapsable": false,
-          "path": "/functions/eomonth.html"
-        },
-        {
-          "title": "Funci\u00F3n  exp",
-          "collapsable": false,
-          "path": "/functions/exp.html"
-        },
-        {
-          "title": "Funci\u00F3n  filegroupproperty",
-          "collapsable": false,
-          "path": "/functions/filegroupproperty.html"
-        },
-        {
-          "title": "Funci\u00F3n  fileproperty",
-          "collapsable": false,
-          "path": "/functions/fileproperty.html"
-        },
-        {
-          "title": "Funci\u00F3n  floor",
-          "collapsable": false,
-          "path": "/functions/floor.html"
-        },
-        {
-          "title": "Funci\u00F3n  format",
-          "collapsable": false,
-          "path": "/functions/format.html"
-        },
-        {
-          "title": "Funci\u00F3n  formatmessage",
-          "collapsable": false,
-          "path": "/functions/formatmessage.html"
-        },
-        {
-          "title": "Funci\u00F3n  fulltextcatalogproperty",
-          "collapsable": false,
-          "path": "/functions/fulltextcatalogproperty.html"
-        },
-        {
-          "title": "Funci\u00F3n  fulltextserviceproperty",
-          "collapsable": false,
-          "path": "/functions/fulltextserviceproperty.html"
-        },
-        {
-          "title": "Funci\u00F3n  getansinull",
-          "collapsable": false,
-          "path": "/functions/getansinull.html"
-        },
-        {
-          "title": "Funci\u00F3n  getdate",
-          "collapsable": false,
-          "path": "/functions/getdate.html"
-        },
-        {
-          "title": "Funci\u00F3n  getenddate",
-          "collapsable": false,
-          "path": "/functions/getenddate.html"
-        },
-        {
-          "title": "Funci\u00F3n  getenddatetime",
-          "collapsable": false,
-          "path": "/functions/getenddatetime.html"
-        },
-        {
-          "title": "Funci\u00F3n  getutcdate",
-          "collapsable": false,
-          "path": "/functions/getutcdate.html"
-        },
-        {
-          "title": "Funci\u00F3n  grouping",
-          "collapsable": false,
-          "path": "/functions/grouping.html"
-        },
-        {
-          "title": "Funci\u00F3n  hour",
-          "collapsable": false,
-          "path": "/functions/hour.html"
-        },
-        {
-          "title": "Funci\u00F3n  indexof",
-          "collapsable": false,
-          "path": "/functions/indexof.html"
-        },
-        {
-          "title": "Funci\u00F3n  indexproperty",
-          "collapsable": false,
-          "path": "/functions/indexproperty.html"
-        },
-        {
-          "title": "Funci\u00F3n  isdate",
-          "collapsable": false,
-          "path": "/functions/isdate.html"
-        },
-        {
-          "title": "Funci\u00F3n  ismemberof",
-          "collapsable": false,
-          "path": "/functions/ismemberof.html"
-        },
-        {
-          "title": "Funci\u00F3n  isnull",
-          "collapsable": false,
-          "path": "/functions/isnull.html"
-        },
-        {
-          "title": "Funci\u00F3n  isnumeric",
-          "collapsable": false,
-          "path": "/functions/isnumeric.html"
-        },
-        {
-          "title": "Funci\u00F3n  isoweek",
-          "collapsable": false,
-          "path": "/functions/isoweek.html"
-        },
-        {
-          "title": "Funci\u00F3n  isoweekcode",
-          "collapsable": false,
-          "path": "/functions/isoweekcode.html"
-        },
-        {
-          "title": "Funci\u00F3n  isoweekshortcode",
-          "collapsable": false,
-          "path": "/functions/isoweekshortcode.html"
-        },
-        {
-          "title": "Funci\u00F3n  isoweekyear",
-          "collapsable": false,
-          "path": "/functions/isoweekyear.html"
-        },
-        {
-          "title": "Funci\u00F3n  lag",
-          "collapsable": false,
-          "path": "/functions/lag.html"
-        },
-        {
-          "title": "Funci\u00F3n  lead",
-          "collapsable": false,
-          "path": "/functions/lead.html"
-        },
-        {
-          "title": "Funci\u00F3n  left",
-          "collapsable": false,
-          "path": "/functions/left.html"
-        },
-        {
-          "title": "Funci\u00F3n  len",
-          "collapsable": false,
-          "path": "/functions/len.html"
-        },
-        {
-          "title": "Funci\u00F3n  localdate",
-          "collapsable": false,
-          "path": "/functions/localdate.html"
-        },
-        {
-          "title": "Funci\u00F3n  log",
-          "collapsable": false,
-          "path": "/functions/log.html"
-        },
-        {
-          "title": "Funci\u00F3n  log10",
-          "collapsable": false,
-          "path": "/functions/log10.html"
-        },
-        {
-          "title": "Funci\u00F3n  lower",
-          "collapsable": false,
-          "path": "/functions/lower.html"
-        },
-        {
-          "title": "Funci\u00F3n  ltrim",
-          "collapsable": false,
-          "path": "/functions/ltrim.html"
-        },
-        {
-          "title": "Funci\u00F3n  margin",
-          "collapsable": false,
-          "path": "/functions/margin.html"
-        },
-        {
-          "title": "Funci\u00F3n  max",
-          "collapsable": false,
-          "path": "/functions/max.html"
-        },
-        {
-          "title": "Funci\u00F3n  maximum",
-          "collapsable": false,
-          "path": "/functions/maximum.html"
-        },
-        {
-          "title": "Funci\u00F3n  md5",
-          "collapsable": false,
-          "path": "/functions/md5.html"
-        },
-        {
-          "title": "Funci\u00F3n  memberof",
-          "collapsable": false,
-          "path": "/functions/memberof.html"
-        },
-        {
-          "title": "Funci\u00F3n  min",
-          "collapsable": false,
-          "path": "/functions/min.html"
-        },
-        {
-          "title": "Funci\u00F3n  minimum",
-          "collapsable": false,
-          "path": "/functions/minimum.html"
-        },
-        {
-          "title": "Funci\u00F3n  mod",
-          "collapsable": false,
-          "path": "/functions/mod.html"
-        },
-        {
-          "title": "Funci\u00F3n  month",
-          "collapsable": false,
-          "path": "/functions/month.html"
-        },
-        {
-          "title": "Funci\u00F3n  nameof",
-          "collapsable": false,
-          "path": "/functions/nameof.html"
-        },
-        {
-          "title": "Funci\u00F3n  newid",
-          "collapsable": false,
-          "path": "/functions/newid.html"
-        },
-        {
-          "title": "Funci\u00F3n  next_value",
-          "collapsable": false,
-          "path": "/functions/next_value.html"
-        },
-        {
-          "title": "Funci\u00F3n  nullifempty",
-          "collapsable": false,
-          "path": "/functions/nullifempty.html"
-        },
-        {
-          "title": "Funci\u00F3n  nullifzero",
-          "collapsable": false,
-          "path": "/functions/nullifzero.html"
-        },
-        {
-          "title": "Funci\u00F3n  objectproperty",
-          "collapsable": false,
-          "path": "/functions/objectproperty.html"
-        },
-        {
-          "title": "Funci\u00F3n  parse",
-          "collapsable": false,
-          "path": "/functions/parse.html"
-        },
-        {
-          "title": "Funci\u00F3n  parsename",
-          "collapsable": false,
-          "path": "/functions/parsename.html"
-        },
-        {
-          "title": "Funci\u00F3n  patindex",
-          "collapsable": false,
-          "path": "/functions/patindex.html"
-        },
-        {
-          "title": "Funci\u00F3n  pct",
-          "collapsable": false,
-          "path": "/functions/pct.html"
-        },
-        {
-          "title": "Funci\u00F3n  pctrank",
-          "collapsable": false,
-          "path": "/functions/pctrank.html"
-        },
-        {
-          "title": "Funci\u00F3n  pctvariance",
-          "collapsable": false,
-          "path": "/functions/pctvariance.html"
-        },
-        {
-          "title": "Funci\u00F3n  permissions",
-          "collapsable": false,
-          "path": "/functions/permissions.html"
-        },
-        {
-          "title": "Funci\u00F3n  pi",
-          "collapsable": false,
-          "path": "/functions/pi.html"
-        },
-        {
-          "title": "Funci\u00F3n  power",
-          "collapsable": false,
-          "path": "/functions/power.html"
-        },
-        {
-          "title": "Funci\u00F3n  quotename",
-          "collapsable": false,
-          "path": "/functions/quotename.html"
-        },
-        {
-          "title": "Funci\u00F3n  radians",
-          "collapsable": false,
-          "path": "/functions/radians.html"
-        },
-        {
-          "title": "Funci\u00F3n  rand",
-          "collapsable": false,
-          "path": "/functions/rand.html"
-        },
-        {
-          "title": "Funci\u00F3n  replace",
-          "collapsable": false,
-          "path": "/functions/replace.html"
-        },
-        {
-          "title": "Funci\u00F3n  replicate",
-          "collapsable": false,
-          "path": "/functions/replicate.html"
-        },
-        {
-          "title": "Funci\u00F3n  reverse",
-          "collapsable": false,
-          "path": "/functions/reverse.html"
-        },
-        {
-          "title": "Funci\u00F3n  right",
-          "collapsable": false,
-          "path": "/functions/right.html"
-        },
-        {
-          "title": "Funci\u00F3n  round",
-          "collapsable": false,
-          "path": "/functions/round.html"
-        },
-        {
-          "title": "Funci\u00F3n  rtrim",
-          "collapsable": false,
-          "path": "/functions/rtrim.html"
-        },
-        {
-          "title": "Funci\u00F3n  runningpct",
-          "collapsable": false,
-          "path": "/functions/runningpct.html"
-        },
-        {
-          "title": "Funci\u00F3n  runningsum",
-          "collapsable": false,
-          "path": "/functions/runningsum.html"
-        },
-        {
-          "title": "Funci\u00F3n  serverproperty",
-          "collapsable": false,
-          "path": "/functions/serverproperty.html"
-        },
-        {
-          "title": "Funci\u00F3n  sessionproperty",
-          "collapsable": false,
-          "path": "/functions/sessionproperty.html"
-        },
-        {
-          "title": "Funci\u00F3n  sha1",
-          "collapsable": false,
-          "path": "/functions/sha1.html"
-        },
-        {
-          "title": "Funci\u00F3n  sha256",
-          "collapsable": false,
-          "path": "/functions/sha256.html"
-        },
-        {
-          "title": "Funci\u00F3n  sign",
-          "collapsable": false,
-          "path": "/functions/sign.html"
-        },
-        {
-          "title": "Funci\u00F3n  sin",
-          "collapsable": false,
-          "path": "/functions/sin.html"
-        },
-        {
-          "title": "Funci\u00F3n  single",
-          "collapsable": false,
-          "path": "/functions/single.html"
-        },
-        {
-          "title": "Funci\u00F3n  smalldatetimefromparts",
-          "collapsable": false,
-          "path": "/functions/smalldatetimefromparts.html"
-        },
-        {
-          "title": "Funci\u00F3n  soundex",
-          "collapsable": false,
-          "path": "/functions/soundex.html"
-        },
-        {
-          "title": "Funci\u00F3n  space",
-          "collapsable": false,
-          "path": "/functions/space.html"
-        },
-        {
-          "title": "Funci\u00F3n  sqrt",
-          "collapsable": false,
-          "path": "/functions/sqrt.html"
-        },
-        {
-          "title": "Funci\u00F3n  square",
-          "collapsable": false,
-          "path": "/functions/square.html"
-        },
-        {
-          "title": "Funci\u00F3n  stdev",
-          "collapsable": false,
-          "path": "/functions/stdev.html"
-        },
-        {
-          "title": "Funci\u00F3n  stdevp",
-          "collapsable": false,
-          "path": "/functions/stdevp.html"
-        },
-        {
-          "title": "Funci\u00F3n  str",
-          "collapsable": false,
-          "path": "/functions/str.html"
-        },
-        {
-          "title": "Funci\u00F3n  stuff",
-          "collapsable": false,
-          "path": "/functions/stuff.html"
-        },
-        {
-          "title": "Funci\u00F3n  substraction",
-          "collapsable": false,
-          "path": "/functions/substraction.html"
-        },
-        {
-          "title": "Funci\u00F3n  substring",
-          "collapsable": false,
-          "path": "/functions/substring.html"
-        },
-        {
-          "title": "Funci\u00F3n  sum",
-          "collapsable": false,
-          "path": "/functions/sum.html"
-        },
-        {
-          "title": "Funci\u00F3n  switch",
-          "collapsable": false,
-          "path": "/functions/switch.html"
-        },
-        {
-          "title": "Funci\u00F3n  switchoffset",
-          "collapsable": false,
-          "path": "/functions/switchoffset.html"
-        },
-        {
-          "title": "Funci\u00F3n  sysdatetime",
-          "collapsable": false,
-          "path": "/functions/sysdatetime.html"
-        },
-        {
-          "title": "Funci\u00F3n  sysdatetimeoffset",
-          "collapsable": false,
-          "path": "/functions/sysdatetimeoffset.html"
-        },
-        {
-          "title": "Funci\u00F3n  sysutcdatetime",
-          "collapsable": false,
-          "path": "/functions/sysutcdatetime.html"
-        },
-        {
-          "title": "Funci\u00F3n  tan",
-          "collapsable": false,
-          "path": "/functions/tan.html"
-        },
-        {
-          "title": "Funci\u00F3n  timefromparts",
-          "collapsable": false,
-          "path": "/functions/timefromparts.html"
-        },
-        {
-          "title": "Funci\u00F3n  todatetimeoffset",
-          "collapsable": false,
-          "path": "/functions/todatetimeoffset.html"
-        },
-        {
-          "title": "Funci\u00F3n  today",
-          "collapsable": false,
-          "path": "/functions/today.html"
-        },
-        {
-          "title": "Funci\u00F3n  tomorrow",
-          "collapsable": false,
-          "path": "/functions/tomorrow.html"
-        },
-        {
-          "title": "Funci\u00F3n  total",
-          "collapsable": false,
-          "path": "/functions/total.html"
-        },
-        {
-          "title": "Funci\u00F3n  trim",
-          "collapsable": false,
-          "path": "/functions/trim.html"
-        },
-        {
-          "title": "Funci\u00F3n  typeproperty",
-          "collapsable": false,
-          "path": "/functions/typeproperty.html"
-        },
-        {
-          "title": "Funci\u00F3n  unicode",
-          "collapsable": false,
-          "path": "/functions/unicode.html"
-        },
-        {
-          "title": "Funci\u00F3n  upper",
-          "collapsable": false,
-          "path": "/functions/upper.html"
-        },
-        {
-          "title": "Funci\u00F3n  valueof",
-          "collapsable": false,
-          "path": "/functions/valueof.html"
-        },
-        {
-          "title": "Funci\u00F3n  var",
-          "collapsable": false,
-          "path": "/functions/var.html"
-        },
-        {
-          "title": "Funci\u00F3n  varp",
-          "collapsable": false,
-          "path": "/functions/varp.html"
-        },
-        {
-          "title": "Funci\u00F3n  year",
-          "collapsable": false,
-          "path": "/functions/year.html"
-        },
-        {
-          "title": "Funci\u00F3n  zeroifempty",
-          "collapsable": false,
-          "path": "/functions/zeroifempty.html"
-        },
-        {
-          "title": "Funci\u00F3n  zeroifnull",
-          "collapsable": false,
-          "path": "/functions/zeroifnull.html"
+          "title": "a",
+          "collapsable": false,
+          "type": "auto",
+          "children": [
+            {
+              "title": "Funci\u00F3n  abs",
+              "collapsable": false,
+              "path": "/functions/abs.html"
+            },
+            {
+              "title": "Funci\u00F3n  acos",
+              "collapsable": false,
+              "path": "/functions/acos.html"
+            },
+            {
+              "title": "Funci\u00F3n  addition",
+              "collapsable": false,
+              "path": "/functions/addition.html"
+            },
+            {
+              "title": "Funci\u00F3n  ascii",
+              "collapsable": false,
+              "path": "/functions/ascii.html"
+            },
+            {
+              "title": "Funci\u00F3n  asin",
+              "collapsable": false,
+              "path": "/functions/asin.html"
+            },
+            {
+              "title": "Funci\u00F3n  atan",
+              "collapsable": false,
+              "path": "/functions/atan.html"
+            },
+            {
+              "title": "Funci\u00F3n  atn2",
+              "collapsable": false,
+              "path": "/functions/atn2.html"
+            },
+            {
+              "title": "Funci\u00F3n  avg",
+              "collapsable": false,
+              "path": "/functions/avg.html"
+            }
+          ]
+        },
+        {
+          "title": "c",
+          "collapsable": false,
+          "type": "auto",
+          "children": [
+            {
+              "title": "Funci\u00F3n  cast",
+              "collapsable": false,
+              "path": "/functions/cast.html"
+            },
+            {
+              "title": "Funci\u00F3n  ceiling",
+              "collapsable": false,
+              "path": "/functions/ceiling.html"
+            },
+            {
+              "title": "Funci\u00F3n  charindex",
+              "collapsable": false,
+              "path": "/functions/charindex.html"
+            },
+            {
+              "title": "Funci\u00F3n  checksum",
+              "collapsable": false,
+              "path": "/functions/checksum.html"
+            },
+            {
+              "title": "Funci\u00F3n  coalesce",
+              "collapsable": false,
+              "path": "/functions/coalesce.html"
+            },
+            {
+              "title": "Funci\u00F3n  columnproperty",
+              "collapsable": false,
+              "path": "/functions/columnproperty.html"
+            },
+            {
+              "title": "Funci\u00F3n  concat",
+              "collapsable": false,
+              "path": "/functions/concat.html"
+            },
+            {
+              "title": "Funci\u00F3n  cos",
+              "collapsable": false,
+              "path": "/functions/cos.html"
+            },
+            {
+              "title": "Funci\u00F3n  cot",
+              "collapsable": false,
+              "path": "/functions/cot.html"
+            },
+            {
+              "title": "Funci\u00F3n  count",
+              "collapsable": false,
+              "path": "/functions/count.html"
+            },
+            {
+              "title": "Funci\u00F3n  countdistinct",
+              "collapsable": false,
+              "path": "/functions/countdistinct.html"
+            },
+            {
+              "title": "Funci\u00F3n  currentusername",
+              "collapsable": false,
+              "path": "/functions/currentusername.html"
+            }
+          ]
+        },
+        {
+          "title": "C",
+          "collapsable": false,
+          "type": "auto",
+          "children": [
+            {
+              "title": "Funci\u00F3n  Crono$Directory",
+              "collapsable": false,
+              "path": "/functions/cronodirectory.html"
+            },
+            {
+              "title": "Funci\u00F3n  Crono$DirectoryName",
+              "collapsable": false,
+              "path": "/functions/cronodirectoryname.html"
+            },
+            {
+              "title": "Funci\u00F3n  Crono$Download",
+              "collapsable": false,
+              "path": "/functions/cronodownload.html"
+            },
+            {
+              "title": "Funci\u00F3n  Crono$FileName",
+              "collapsable": false,
+              "path": "/functions/cronofilename.html"
+            },
+            {
+              "title": "Funci\u00F3n  Crono$FileNameWithoutExtension",
+              "collapsable": false,
+              "path": "/functions/cronofilenamewithoutextension.html"
+            },
+            {
+              "title": "Funci\u00F3n  Crono$HeaderProperty",
+              "collapsable": false,
+              "path": "/functions/cronoheaderproperty.html"
+            },
+            {
+              "title": "Funci\u00F3n  Crono$IsoDate",
+              "collapsable": false,
+              "path": "/functions/cronoisodate.html"
+            },
+            {
+              "title": "Funci\u00F3n  Crono$MarkdownTitle",
+              "collapsable": false,
+              "path": "/functions/cronomarkdowntitle.html"
+            },
+            {
+              "title": "Funci\u00F3n  Crono$NiceUrlName",
+              "collapsable": false,
+              "path": "/functions/crononiceurlname.html"
+            },
+            {
+              "title": "Funci\u00F3n  Crono$ReadFile",
+              "collapsable": false,
+              "path": "/functions/cronoreadfile.html"
+            },
+            {
+              "title": "Funci\u00F3n  Crono$RfcDate",
+              "collapsable": false,
+              "path": "/functions/cronorfcdate.html"
+            },
+            {
+              "title": "Funci\u00F3n  Crono$Route",
+              "collapsable": false,
+              "path": "/functions/cronoroute.html"
+            }
+          ]
+        },
+        {
+          "title": "d",
+          "collapsable": false,
+          "type": "auto",
+          "children": [
+            {
+              "title": "Funci\u00F3n  databasepropertyex",
+              "collapsable": false,
+              "path": "/functions/databasepropertyex.html"
+            },
+            {
+              "title": "Funci\u00F3n  datalength",
+              "collapsable": false,
+              "path": "/functions/datalength.html"
+            },
+            {
+              "title": "Funci\u00F3n  dateadd",
+              "collapsable": false,
+              "path": "/functions/dateadd.html"
+            },
+            {
+              "title": "Funci\u00F3n  datediff",
+              "collapsable": false,
+              "path": "/functions/datediff.html"
+            },
+            {
+              "title": "Funci\u00F3n  datefromparts",
+              "collapsable": false,
+              "path": "/functions/datefromparts.html"
+            },
+            {
+              "title": "Funci\u00F3n  datename",
+              "collapsable": false,
+              "path": "/functions/datename.html"
+            },
+            {
+              "title": "Funci\u00F3n  datepart",
+              "collapsable": false,
+              "path": "/functions/datepart.html"
+            },
+            {
+              "title": "Funci\u00F3n  datetime2fromparts",
+              "collapsable": false,
+              "path": "/functions/datetime2fromparts.html"
+            },
+            {
+              "title": "Funci\u00F3n  datetimefromparts",
+              "collapsable": false,
+              "path": "/functions/datetimefromparts.html"
+            },
+            {
+              "title": "Funci\u00F3n  datetimeoffsetfromparts",
+              "collapsable": false,
+              "path": "/functions/datetimeoffsetfromparts.html"
+            },
+            {
+              "title": "Funci\u00F3n  day",
+              "collapsable": false,
+              "path": "/functions/day.html"
+            },
+            {
+              "title": "Funci\u00F3n  degrees",
+              "collapsable": false,
+              "path": "/functions/degrees.html"
+            },
+            {
+              "title": "Funci\u00F3n  difference",
+              "collapsable": false,
+              "path": "/functions/difference.html"
+            },
+            {
+              "title": "Funci\u00F3n  divide",
+              "collapsable": false,
+              "path": "/functions/divide.html"
+            }
+          ]
+        },
+        {
+          "title": "e",
+          "collapsable": false,
+          "type": "auto",
+          "children": [
+            {
+              "title": "Funci\u00F3n  elementat",
+              "collapsable": false,
+              "path": "/functions/elementat.html"
+            },
+            {
+              "title": "Funci\u00F3n  emptyifnull",
+              "collapsable": false,
+              "path": "/functions/emptyifnull.html"
+            },
+            {
+              "title": "Funci\u00F3n  eomonth",
+              "collapsable": false,
+              "path": "/functions/eomonth.html"
+            },
+            {
+              "title": "Funci\u00F3n  exp",
+              "collapsable": false,
+              "path": "/functions/exp.html"
+            }
+          ]
+        },
+        {
+          "title": "f",
+          "collapsable": false,
+          "type": "auto",
+          "children": [
+            {
+              "title": "Funci\u00F3n  filegroupproperty",
+              "collapsable": false,
+              "path": "/functions/filegroupproperty.html"
+            },
+            {
+              "title": "Funci\u00F3n  fileproperty",
+              "collapsable": false,
+              "path": "/functions/fileproperty.html"
+            },
+            {
+              "title": "Funci\u00F3n  floor",
+              "collapsable": false,
+              "path": "/functions/floor.html"
+            },
+            {
+              "title": "Funci\u00F3n  format",
+              "collapsable": false,
+              "path": "/functions/format.html"
+            },
+            {
+              "title": "Funci\u00F3n  formatmessage",
+              "collapsable": false,
+              "path": "/functions/formatmessage.html"
+            },
+            {
+              "title": "Funci\u00F3n  fulltextcatalogproperty",
+              "collapsable": false,
+              "path": "/functions/fulltextcatalogproperty.html"
+            },
+            {
+              "title": "Funci\u00F3n  fulltextserviceproperty",
+              "collapsable": false,
+              "path": "/functions/fulltextserviceproperty.html"
+            }
+          ]
+        },
+        {
+          "title": "g",
+          "collapsable": false,
+          "type": "auto",
+          "children": [
+            {
+              "title": "Funci\u00F3n  getansinull",
+              "collapsable": false,
+              "path": "/functions/getansinull.html"
+            },
+            {
+              "title": "Funci\u00F3n  getdate",
+              "collapsable": false,
+              "path": "/functions/getdate.html"
+            },
+            {
+              "title": "Funci\u00F3n  getenddate",
+              "collapsable": false,
+              "path": "/functions/getenddate.html"
+            },
+            {
+              "title": "Funci\u00F3n  getenddatetime",
+              "collapsable": false,
+              "path": "/functions/getenddatetime.html"
+            },
+            {
+              "title": "Funci\u00F3n  getutcdate",
+              "collapsable": false,
+              "path": "/functions/getutcdate.html"
+            },
+            {
+              "title": "Funci\u00F3n  grouping",
+              "collapsable": false,
+              "path": "/functions/grouping.html"
+            }
+          ]
+        },
+        {
+          "title": "h",
+          "collapsable": false,
+          "type": "auto",
+          "children": [
+            {
+              "title": "Funci\u00F3n  hour",
+              "collapsable": false,
+              "path": "/functions/hour.html"
+            }
+          ]
+        },
+        {
+          "title": "i",
+          "collapsable": false,
+          "type": "auto",
+          "children": [
+            {
+              "title": "Funci\u00F3n  indexof",
+              "collapsable": false,
+              "path": "/functions/indexof.html"
+            },
+            {
+              "title": "Funci\u00F3n  indexproperty",
+              "collapsable": false,
+              "path": "/functions/indexproperty.html"
+            },
+            {
+              "title": "Funci\u00F3n  isdate",
+              "collapsable": false,
+              "path": "/functions/isdate.html"
+            },
+            {
+              "title": "Funci\u00F3n  ismemberof",
+              "collapsable": false,
+              "path": "/functions/ismemberof.html"
+            },
+            {
+              "title": "Funci\u00F3n  isnull",
+              "collapsable": false,
+              "path": "/functions/isnull.html"
+            },
+            {
+              "title": "Funci\u00F3n  isnumeric",
+              "collapsable": false,
+              "path": "/functions/isnumeric.html"
+            },
+            {
+              "title": "Funci\u00F3n  isoweek",
+              "collapsable": false,
+              "path": "/functions/isoweek.html"
+            },
+            {
+              "title": "Funci\u00F3n  isoweekcode",
+              "collapsable": false,
+              "path": "/functions/isoweekcode.html"
+            },
+            {
+              "title": "Funci\u00F3n  isoweekshortcode",
+              "collapsable": false,
+              "path": "/functions/isoweekshortcode.html"
+            },
+            {
+              "title": "Funci\u00F3n  isoweekyear",
+              "collapsable": false,
+              "path": "/functions/isoweekyear.html"
+            }
+          ]
+        },
+        {
+          "title": "l",
+          "collapsable": false,
+          "type": "auto",
+          "children": [
+            {
+              "title": "Funci\u00F3n  lag",
+              "collapsable": false,
+              "path": "/functions/lag.html"
+            },
+            {
+              "title": "Funci\u00F3n  lead",
+              "collapsable": false,
+              "path": "/functions/lead.html"
+            },
+            {
+              "title": "Funci\u00F3n  left",
+              "collapsable": false,
+              "path": "/functions/left.html"
+            },
+            {
+              "title": "Funci\u00F3n  len",
+              "collapsable": false,
+              "path": "/functions/len.html"
+            },
+            {
+              "title": "Funci\u00F3n  localdate",
+              "collapsable": false,
+              "path": "/functions/localdate.html"
+            },
+            {
+              "title": "Funci\u00F3n  log",
+              "collapsable": false,
+              "path": "/functions/log.html"
+            },
+            {
+              "title": "Funci\u00F3n  log10",
+              "collapsable": false,
+              "path": "/functions/log10.html"
+            },
+            {
+              "title": "Funci\u00F3n  lower",
+              "collapsable": false,
+              "path": "/functions/lower.html"
+            },
+            {
+              "title": "Funci\u00F3n  ltrim",
+              "collapsable": false,
+              "path": "/functions/ltrim.html"
+            }
+          ]
+        },
+        {
+          "title": "m",
+          "collapsable": false,
+          "type": "auto",
+          "children": [
+            {
+              "title": "Funci\u00F3n  margin",
+              "collapsable": false,
+              "path": "/functions/margin.html"
+            },
+            {
+              "title": "Funci\u00F3n  max",
+              "collapsable": false,
+              "path": "/functions/max.html"
+            },
+            {
+              "title": "Funci\u00F3n  maximum",
+              "collapsable": false,
+              "path": "/functions/maximum.html"
+            },
+            {
+              "title": "Funci\u00F3n  md5",
+              "collapsable": false,
+              "path": "/functions/md5.html"
+            },
+            {
+              "title": "Funci\u00F3n  memberof",
+              "collapsable": false,
+              "path": "/functions/memberof.html"
+            },
+            {
+              "title": "Funci\u00F3n  min",
+              "collapsable": false,
+              "path": "/functions/min.html"
+            },
+            {
+              "title": "Funci\u00F3n  minimum",
+              "collapsable": false,
+              "path": "/functions/minimum.html"
+            },
+            {
+              "title": "Funci\u00F3n  mod",
+              "collapsable": false,
+              "path": "/functions/mod.html"
+            },
+            {
+              "title": "Funci\u00F3n  month",
+              "collapsable": false,
+              "path": "/functions/month.html"
+            }
+          ]
+        },
+        {
+          "title": "n",
+          "collapsable": false,
+          "type": "auto",
+          "children": [
+            {
+              "title": "Funci\u00F3n  nameof",
+              "collapsable": false,
+              "path": "/functions/nameof.html"
+            },
+            {
+              "title": "Funci\u00F3n  newid",
+              "collapsable": false,
+              "path": "/functions/newid.html"
+            },
+            {
+              "title": "Funci\u00F3n  next_value",
+              "collapsable": false,
+              "path": "/functions/next_value.html"
+            },
+            {
+              "title": "Funci\u00F3n  nullifempty",
+              "collapsable": false,
+              "path": "/functions/nullifempty.html"
+            },
+            {
+              "title": "Funci\u00F3n  nullifzero",
+              "collapsable": false,
+              "path": "/functions/nullifzero.html"
+            }
+          ]
+        },
+        {
+          "title": "o",
+          "collapsable": false,
+          "type": "auto",
+          "children": [
+            {
+              "title": "Funci\u00F3n  objectproperty",
+              "collapsable": false,
+              "path": "/functions/objectproperty.html"
+            }
+          ]
+        },
+        {
+          "title": "p",
+          "collapsable": false,
+          "type": "auto",
+          "children": [
+            {
+              "title": "Funci\u00F3n  parse",
+              "collapsable": false,
+              "path": "/functions/parse.html"
+            },
+            {
+              "title": "Funci\u00F3n  parsename",
+              "collapsable": false,
+              "path": "/functions/parsename.html"
+            },
+            {
+              "title": "Funci\u00F3n  patindex",
+              "collapsable": false,
+              "path": "/functions/patindex.html"
+            },
+            {
+              "title": "Funci\u00F3n  pct",
+              "collapsable": false,
+              "path": "/functions/pct.html"
+            },
+            {
+              "title": "Funci\u00F3n  pctrank",
+              "collapsable": false,
+              "path": "/functions/pctrank.html"
+            },
+            {
+              "title": "Funci\u00F3n  pctvariance",
+              "collapsable": false,
+              "path": "/functions/pctvariance.html"
+            },
+            {
+              "title": "Funci\u00F3n  permissions",
+              "collapsable": false,
+              "path": "/functions/permissions.html"
+            },
+            {
+              "title": "Funci\u00F3n  pi",
+              "collapsable": false,
+              "path": "/functions/pi.html"
+            },
+            {
+              "title": "Funci\u00F3n  power",
+              "collapsable": false,
+              "path": "/functions/power.html"
+            }
+          ]
+        },
+        {
+          "title": "q",
+          "collapsable": false,
+          "type": "auto",
+          "children": [
+            {
+              "title": "Funci\u00F3n  quotename",
+              "collapsable": false,
+              "path": "/functions/quotename.html"
+            }
+          ]
+        },
+        {
+          "title": "r",
+          "collapsable": false,
+          "type": "auto",
+          "children": [
+            {
+              "title": "Funci\u00F3n  radians",
+              "collapsable": false,
+              "path": "/functions/radians.html"
+            },
+            {
+              "title": "Funci\u00F3n  rand",
+              "collapsable": false,
+              "path": "/functions/rand.html"
+            },
+            {
+              "title": "Funci\u00F3n  replace",
+              "collapsable": false,
+              "path": "/functions/replace.html"
+            },
+            {
+              "title": "Funci\u00F3n  replicate",
+              "collapsable": false,
+              "path": "/functions/replicate.html"
+            },
+            {
+              "title": "Funci\u00F3n  reverse",
+              "collapsable": false,
+              "path": "/functions/reverse.html"
+            },
+            {
+              "title": "Funci\u00F3n  right",
+              "collapsable": false,
+              "path": "/functions/right.html"
+            },
+            {
+              "title": "Funci\u00F3n  round",
+              "collapsable": false,
+              "path": "/functions/round.html"
+            },
+            {
+              "title": "Funci\u00F3n  rtrim",
+              "collapsable": false,
+              "path": "/functions/rtrim.html"
+            },
+            {
+              "title": "Funci\u00F3n  runningpct",
+              "collapsable": false,
+              "path": "/functions/runningpct.html"
+            },
+            {
+              "title": "Funci\u00F3n  runningsum",
+              "collapsable": false,
+              "path": "/functions/runningsum.html"
+            }
+          ]
+        },
+        {
+          "title": "s",
+          "collapsable": false,
+          "type": "auto",
+          "children": [
+            {
+              "title": "Funci\u00F3n  serverproperty",
+              "collapsable": false,
+              "path": "/functions/serverproperty.html"
+            },
+            {
+              "title": "Funci\u00F3n  sessionproperty",
+              "collapsable": false,
+              "path": "/functions/sessionproperty.html"
+            },
+            {
+              "title": "Funci\u00F3n  sha1",
+              "collapsable": false,
+              "path": "/functions/sha1.html"
+            },
+            {
+              "title": "Funci\u00F3n  sha256",
+              "collapsable": false,
+              "path": "/functions/sha256.html"
+            },
+            {
+              "title": "Funci\u00F3n  sign",
+              "collapsable": false,
+              "path": "/functions/sign.html"
+            },
+            {
+              "title": "Funci\u00F3n  sin",
+              "collapsable": false,
+              "path": "/functions/sin.html"
+            },
+            {
+              "title": "Funci\u00F3n  single",
+              "collapsable": false,
+              "path": "/functions/single.html"
+            },
+            {
+              "title": "Funci\u00F3n  smalldatetimefromparts",
+              "collapsable": false,
+              "path": "/functions/smalldatetimefromparts.html"
+            },
+            {
+              "title": "Funci\u00F3n  soundex",
+              "collapsable": false,
+              "path": "/functions/soundex.html"
+            },
+            {
+              "title": "Funci\u00F3n  space",
+              "collapsable": false,
+              "path": "/functions/space.html"
+            },
+            {
+              "title": "Funci\u00F3n  sqrt",
+              "collapsable": false,
+              "path": "/functions/sqrt.html"
+            },
+            {
+              "title": "Funci\u00F3n  square",
+              "collapsable": false,
+              "path": "/functions/square.html"
+            },
+            {
+              "title": "Funci\u00F3n  stdev",
+              "collapsable": false,
+              "path": "/functions/stdev.html"
+            },
+            {
+              "title": "Funci\u00F3n  stdevp",
+              "collapsable": false,
+              "path": "/functions/stdevp.html"
+            },
+            {
+              "title": "Funci\u00F3n  str",
+              "collapsable": false,
+              "path": "/functions/str.html"
+            },
+            {
+              "title": "Funci\u00F3n  stuff",
+              "collapsable": false,
+              "path": "/functions/stuff.html"
+            },
+            {
+              "title": "Funci\u00F3n  substraction",
+              "collapsable": false,
+              "path": "/functions/substraction.html"
+            },
+            {
+              "title": "Funci\u00F3n  substring",
+              "collapsable": false,
+              "path": "/functions/substring.html"
+            },
+            {
+              "title": "Funci\u00F3n  sum",
+              "collapsable": false,
+              "path": "/functions/sum.html"
+            },
+            {
+              "title": "Funci\u00F3n  switch",
+              "collapsable": false,
+              "path": "/functions/switch.html"
+            },
+            {
+              "title": "Funci\u00F3n  switchoffset",
+              "collapsable": false,
+              "path": "/functions/switchoffset.html"
+            },
+            {
+              "title": "Funci\u00F3n  sysdatetime",
+              "collapsable": false,
+              "path": "/functions/sysdatetime.html"
+            },
+            {
+              "title": "Funci\u00F3n  sysdatetimeoffset",
+              "collapsable": false,
+              "path": "/functions/sysdatetimeoffset.html"
+            },
+            {
+              "title": "Funci\u00F3n  sysutcdatetime",
+              "collapsable": false,
+              "path": "/functions/sysutcdatetime.html"
+            }
+          ]
+        },
+        {
+          "title": "t",
+          "collapsable": false,
+          "type": "auto",
+          "children": [
+            {
+              "title": "Funci\u00F3n  tan",
+              "collapsable": false,
+              "path": "/functions/tan.html"
+            },
+            {
+              "title": "Funci\u00F3n  timefromparts",
+              "collapsable": false,
+              "path": "/functions/timefromparts.html"
+            },
+            {
+              "title": "Funci\u00F3n  todatetimeoffset",
+              "collapsable": false,
+              "path": "/functions/todatetimeoffset.html"
+            },
+            {
+              "title": "Funci\u00F3n  today",
+              "collapsable": false,
+              "path": "/functions/today.html"
+            },
+            {
+              "title": "Funci\u00F3n  tomorrow",
+              "collapsable": false,
+              "path": "/functions/tomorrow.html"
+            },
+            {
+              "title": "Funci\u00F3n  total",
+              "collapsable": false,
+              "path": "/functions/total.html"
+            },
+            {
+              "title": "Funci\u00F3n  trim",
+              "collapsable": false,
+              "path": "/functions/trim.html"
+            },
+            {
+              "title": "Funci\u00F3n  typeproperty",
+              "collapsable": false,
+              "path": "/functions/typeproperty.html"
+            }
+          ]
+        },
+        {
+          "title": "u",
+          "collapsable": false,
+          "type": "auto",
+          "children": [
+            {
+              "title": "Funci\u00F3n  unicode",
+              "collapsable": false,
+              "path": "/functions/unicode.html"
+            },
+            {
+              "title": "Funci\u00F3n  upper",
+              "collapsable": false,
+              "path": "/functions/upper.html"
+            }
+          ]
+        },
+        {
+          "title": "v",
+          "collapsable": false,
+          "type": "auto",
+          "children": [
+            {
+              "title": "Funci\u00F3n  valueof",
+              "collapsable": false,
+              "path": "/functions/valueof.html"
+            },
+            {
+              "title": "Funci\u00F3n  var",
+              "collapsable": false,
+              "path": "/functions/var.html"
+            },
+            {
+              "title": "Funci\u00F3n  varp",
+              "collapsable": false,
+              "path": "/functions/varp.html"
+            }
+          ]
+        },
+        {
+          "title": "y",
+          "collapsable": false,
+          "type": "auto",
+          "children": [
+            {
+              "title": "Funci\u00F3n  year",
+              "collapsable": false,
+              "path": "/functions/year.html"
+            }
+          ]
+        },
+        {
+          "title": "z",
+          "collapsable": false,
+          "type": "auto",
+          "children": [
+            {
+              "title": "Funci\u00F3n  zeroifempty",
+              "collapsable": false,
+              "path": "/functions/zeroifempty.html"
+            },
+            {
+              "title": "Funci\u00F3n  zeroifnull",
+              "collapsable": false,
+              "path": "/functions/zeroifnull.html"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "/language/": [
+    {
+      "title": "Lenguaje Crono SQL",
+      "collapsable": false,
+      "path": "/language/",
+      "type": "group",
+      "children": [
+        {
+          "title": "Sentencia SELECT",
+          "collapsable": false,
+          "path": "/language/select.html"
+        },
+        {
+          "title": "Sentencia INSERT",
+          "collapsable": false,
+          "path": "/language/insert.html"
+        },
+        {
+          "title": "Sentencia UPDATE",
+          "collapsable": false,
+          "path": "/language/update.html"
+        },
+        {
+          "title": "Sentencia MERGE",
+          "collapsable": false,
+          "path": "/language/merge.html"
+        },
+        {
+          "title": "Sentencia DELETE",
+          "collapsable": false,
+          "path": "/language/delete..html"
+        },
+        {
+          "title": "Sentencia TRUNCATE",
+          "collapsable": false,
+          "path": "/language/truncate.html"
+        },
+        {
+          "title": "Sentencia LOAD",
+          "collapsable": false,
+          "path": "/language/load.html"
+        },
+        {
+          "title": "Sentencias DDL",
+          "collapsable": false,
+          "path": "/language/ddl.html"
         }
       ]
     }

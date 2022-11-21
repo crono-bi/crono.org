@@ -3,6 +3,7 @@ CREATE OR REPLACE PROCEDURE
 MERGE CLONE dbo.Functions(idFunction)
 select  top 1 over (partition by FunctionName order by FunctionType)
 	f.Name #FunctionName,
+	left(f.Name,1) FunctionGroup,
 	f.expr2 FunctionType, 
 	coalesce(issues.BodyMarkdown,trim(msdn.spanish)) Body
 from Crono$Functions f

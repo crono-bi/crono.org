@@ -160,4 +160,13 @@ https://cronosql.io/functions/zeroifempty.html
 https://cronosql.io/functions/zeroifnull.html
 https://cronosql.io/guide/
 https://cronosql.io/index.html
+https://cronosql.io/language/
+https://cronosql.io/language/ddl.html
+https://cronosql.io/language/delete..html
+https://cronosql.io/language/insert.html
+https://cronosql.io/language/load.html
+https://cronosql.io/language/merge.html
+https://cronosql.io/language/select.html
+https://cronosql.io/language/truncate.html
+https://cronosql.io/language/update.html
 https://cronosql.io/sitemap.txt

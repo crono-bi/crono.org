@@ -22,6 +22,10 @@ module.exports = {
         link: '/guide/',
       },
       {
+        text: 'Lenguaje',
+        link: '/language/',
+      },
+      {
         text: 'Funciones',
         link: '/functions/',
       }

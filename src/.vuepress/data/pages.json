@@ -4,6 +4,7 @@
   "Title": null,
   "Id": null,
   "Date": null,
+  "SideBarGroup": null,
   "Position": 21474836,
   "Visible": true,
   "Children": [
@@ -13,6 +14,7 @@
       "Title": null,
       "Id": null,
       "Date": null,
+      "SideBarGroup": null,
       "Position": 0,
       "Visible": true,
       "Children": []
@@ -20,9 +22,10 @@
     {
       "Path": "/functions/",
       "Url": "https://cronosql.io/functions/",
-      "Title": null,
+      "Title": "Funciones",
       "Id": null,
       "Date": null,
+      "SideBarGroup": null,
       "Position": 1,
       "Visible": true,
       "Children": [
@@ -32,6 +35,7 @@
           "Title": "Funci\u00F3n  abs",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "a",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -42,6 +46,7 @@
           "Title": "Funci\u00F3n  acos",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "a",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -52,6 +57,7 @@
           "Title": "Funci\u00F3n  addition",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "a",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -62,6 +68,7 @@
           "Title": "Funci\u00F3n  ascii",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "a",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -72,6 +79,7 @@
           "Title": "Funci\u00F3n  asin",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "a",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -82,6 +90,7 @@
           "Title": "Funci\u00F3n  atan",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "a",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -92,6 +101,7 @@
           "Title": "Funci\u00F3n  atn2",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "a",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -102,6 +112,7 @@
           "Title": "Funci\u00F3n  avg",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "a",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -112,6 +123,7 @@
           "Title": "Funci\u00F3n  cast",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "c",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -122,6 +134,7 @@
           "Title": "Funci\u00F3n  ceiling",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "c",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -132,6 +145,7 @@
           "Title": "Funci\u00F3n  charindex",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "c",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -142,6 +156,7 @@
           "Title": "Funci\u00F3n  checksum",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "c",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -152,6 +167,7 @@
           "Title": "Funci\u00F3n  coalesce",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "c",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -162,6 +178,7 @@
           "Title": "Funci\u00F3n  columnproperty",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "c",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -172,6 +189,7 @@
           "Title": "Funci\u00F3n  concat",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "c",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -182,6 +200,7 @@
           "Title": "Funci\u00F3n  cos",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "c",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -192,6 +211,7 @@
           "Title": "Funci\u00F3n  cot",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "c",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -202,6 +222,7 @@
           "Title": "Funci\u00F3n  count",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "c",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -212,6 +233,7 @@
           "Title": "Funci\u00F3n  countdistinct",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "c",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -222,6 +244,7 @@
           "Title": "Funci\u00F3n  Crono$Directory",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "C",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -232,6 +255,7 @@
           "Title": "Funci\u00F3n  Crono$DirectoryName",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "C",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -242,6 +266,7 @@
           "Title": "Funci\u00F3n  Crono$Download",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "C",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -252,6 +277,7 @@
           "Title": "Funci\u00F3n  Crono$FileName",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "C",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -262,6 +288,7 @@
           "Title": "Funci\u00F3n  Crono$FileNameWithoutExtension",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "C",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -272,6 +299,7 @@
           "Title": "Funci\u00F3n  Crono$HeaderProperty",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "C",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -282,6 +310,7 @@
           "Title": "Funci\u00F3n  Crono$IsoDate",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "C",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -292,6 +321,7 @@
           "Title": "Funci\u00F3n  Crono$MarkdownTitle",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "C",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -302,6 +332,7 @@
           "Title": "Funci\u00F3n  Crono$NiceUrlName",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "C",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -312,6 +343,7 @@
           "Title": "Funci\u00F3n  Crono$ReadFile",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "C",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -322,6 +354,7 @@
           "Title": "Funci\u00F3n  Crono$RfcDate",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "C",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -332,6 +365,7 @@
           "Title": "Funci\u00F3n  Crono$Route",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "C",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -342,6 +376,7 @@
           "Title": "Funci\u00F3n  currentusername",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "c",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -352,6 +387,7 @@
           "Title": "Funci\u00F3n  databasepropertyex",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "d",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -362,6 +398,7 @@
           "Title": "Funci\u00F3n  datalength",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "d",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -372,6 +409,7 @@
           "Title": "Funci\u00F3n  dateadd",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "d",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -382,6 +420,7 @@
           "Title": "Funci\u00F3n  datediff",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "d",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -392,6 +431,7 @@
           "Title": "Funci\u00F3n  datefromparts",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "d",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -402,6 +442,7 @@
           "Title": "Funci\u00F3n  datename",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "d",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -412,6 +453,7 @@
           "Title": "Funci\u00F3n  datepart",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "d",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -422,6 +464,7 @@
           "Title": "Funci\u00F3n  datetime2fromparts",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "d",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -432,6 +475,7 @@
           "Title": "Funci\u00F3n  datetimefromparts",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "d",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -442,6 +486,7 @@
           "Title": "Funci\u00F3n  datetimeoffsetfromparts",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "d",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -452,6 +497,7 @@
           "Title": "Funci\u00F3n  day",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "d",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -462,6 +508,7 @@
           "Title": "Funci\u00F3n  degrees",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "d",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -472,6 +519,7 @@
           "Title": "Funci\u00F3n  difference",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "d",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -482,6 +530,7 @@
           "Title": "Funci\u00F3n  divide",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "d",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -492,6 +541,7 @@
           "Title": "Funci\u00F3n  elementat",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "e",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -502,6 +552,7 @@
           "Title": "Funci\u00F3n  emptyifnull",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "e",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -512,6 +563,7 @@
           "Title": "Funci\u00F3n  eomonth",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "e",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -522,6 +574,7 @@
           "Title": "Funci\u00F3n  exp",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "e",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -532,6 +585,7 @@
           "Title": "Funci\u00F3n  filegroupproperty",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "f",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -542,6 +596,7 @@
           "Title": "Funci\u00F3n  fileproperty",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "f",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -552,6 +607,7 @@
           "Title": "Funci\u00F3n  floor",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "f",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -562,6 +618,7 @@
           "Title": "Funci\u00F3n  format",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "f",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -572,6 +629,7 @@
           "Title": "Funci\u00F3n  formatmessage",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "f",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -582,6 +640,7 @@
           "Title": "Funci\u00F3n  fulltextcatalogproperty",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "f",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -592,6 +651,7 @@
           "Title": "Funci\u00F3n  fulltextserviceproperty",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "f",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -602,6 +662,7 @@
           "Title": "Funci\u00F3n  getansinull",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "g",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -612,6 +673,7 @@
           "Title": "Funci\u00F3n  getdate",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "g",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -622,6 +684,7 @@
           "Title": "Funci\u00F3n  getenddate",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "g",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -632,6 +695,7 @@
           "Title": "Funci\u00F3n  getenddatetime",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "g",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -642,6 +706,7 @@
           "Title": "Funci\u00F3n  getutcdate",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "g",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -652,6 +717,7 @@
           "Title": "Funci\u00F3n  grouping",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "g",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -662,6 +728,7 @@
           "Title": "Funci\u00F3n  hour",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "h",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -672,6 +739,7 @@
           "Title": "Funci\u00F3n  indexof",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "i",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -682,6 +750,7 @@
           "Title": "Funci\u00F3n  indexproperty",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "i",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -692,6 +761,7 @@
           "Title": "Funci\u00F3n  isdate",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "i",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -702,6 +772,7 @@
           "Title": "Funci\u00F3n  ismemberof",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "i",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -712,6 +783,7 @@
           "Title": "Funci\u00F3n  isnull",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "i",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -722,6 +794,7 @@
           "Title": "Funci\u00F3n  isnumeric",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "i",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -732,6 +805,7 @@
           "Title": "Funci\u00F3n  isoweek",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "i",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -742,6 +816,7 @@
           "Title": "Funci\u00F3n  isoweekcode",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "i",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -752,6 +827,7 @@
           "Title": "Funci\u00F3n  isoweekshortcode",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "i",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -762,6 +838,7 @@
           "Title": "Funci\u00F3n  isoweekyear",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "i",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -772,6 +849,7 @@
           "Title": "Funci\u00F3n  lag",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "l",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -782,6 +860,7 @@
           "Title": "Funci\u00F3n  lead",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "l",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -792,6 +871,7 @@
           "Title": "Funci\u00F3n  left",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "l",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -802,6 +882,7 @@
           "Title": "Funci\u00F3n  len",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "l",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -812,6 +893,7 @@
           "Title": "Funci\u00F3n  localdate",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "l",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -822,6 +904,7 @@
           "Title": "Funci\u00F3n  log",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "l",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -832,6 +915,7 @@
           "Title": "Funci\u00F3n  log10",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "l",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -842,6 +926,7 @@
           "Title": "Funci\u00F3n  lower",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "l",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -852,6 +937,7 @@
           "Title": "Funci\u00F3n  ltrim",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "l",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -862,6 +948,7 @@
           "Title": "Funci\u00F3n  margin",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "m",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -872,6 +959,7 @@
           "Title": "Funci\u00F3n  max",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "m",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -882,6 +970,7 @@
           "Title": "Funci\u00F3n  maximum",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "m",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -892,6 +981,7 @@
           "Title": "Funci\u00F3n  md5",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "m",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -902,6 +992,7 @@
           "Title": "Funci\u00F3n  memberof",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "m",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -912,6 +1003,7 @@
           "Title": "Funci\u00F3n  min",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "m",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -922,6 +1014,7 @@
           "Title": "Funci\u00F3n  minimum",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "m",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -932,6 +1025,7 @@
           "Title": "Funci\u00F3n  mod",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "m",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -942,6 +1036,7 @@
           "Title": "Funci\u00F3n  month",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "m",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -952,6 +1047,7 @@
           "Title": "Funci\u00F3n  nameof",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "n",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -962,6 +1058,7 @@
           "Title": "Funci\u00F3n  newid",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "n",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -972,6 +1069,7 @@
           "Title": "Funci\u00F3n  next_value",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "n",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -982,6 +1080,7 @@
           "Title": "Funci\u00F3n  nullifempty",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "n",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -992,6 +1091,7 @@
           "Title": "Funci\u00F3n  nullifzero",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "n",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -1002,6 +1102,7 @@
           "Title": "Funci\u00F3n  objectproperty",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "o",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -1012,6 +1113,7 @@
           "Title": "Funci\u00F3n  parse",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "p",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -1022,6 +1124,7 @@
           "Title": "Funci\u00F3n  parsename",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "p",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -1032,6 +1135,7 @@
           "Title": "Funci\u00F3n  patindex",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "p",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -1042,6 +1146,7 @@
           "Title": "Funci\u00F3n  pct",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "p",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -1052,6 +1157,7 @@
           "Title": "Funci\u00F3n  pctrank",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "p",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -1062,6 +1168,7 @@
           "Title": "Funci\u00F3n  pctvariance",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "p",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -1072,6 +1179,7 @@
           "Title": "Funci\u00F3n  permissions",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "p",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -1082,6 +1190,7 @@
           "Title": "Funci\u00F3n  pi",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "p",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -1092,6 +1201,7 @@
           "Title": "Funci\u00F3n  power",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "p",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -1102,6 +1212,7 @@
           "Title": "Funci\u00F3n  quotename",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "q",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -1112,6 +1223,7 @@
           "Title": "Funci\u00F3n  radians",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "r",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -1122,6 +1234,7 @@
           "Title": "Funci\u00F3n  rand",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "r",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -1132,6 +1245,7 @@
           "Title": "Funci\u00F3n  replace",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "r",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -1142,6 +1256,7 @@
           "Title": "Funci\u00F3n  replicate",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "r",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -1152,6 +1267,7 @@
           "Title": "Funci\u00F3n  reverse",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "r",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -1162,6 +1278,7 @@
           "Title": "Funci\u00F3n  right",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "r",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -1172,6 +1289,7 @@
           "Title": "Funci\u00F3n  round",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "r",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -1182,6 +1300,7 @@
           "Title": "Funci\u00F3n  rtrim",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "r",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -1192,6 +1311,7 @@
           "Title": "Funci\u00F3n  runningpct",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "r",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -1202,6 +1322,7 @@
           "Title": "Funci\u00F3n  runningsum",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "r",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -1212,6 +1333,7 @@
           "Title": "Funci\u00F3n  serverproperty",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "s",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -1222,6 +1344,7 @@
           "Title": "Funci\u00F3n  sessionproperty",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "s",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -1232,6 +1355,7 @@
           "Title": "Funci\u00F3n  sha1",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "s",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -1242,6 +1366,7 @@
           "Title": "Funci\u00F3n  sha256",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "s",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -1252,6 +1377,7 @@
           "Title": "Funci\u00F3n  sign",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "s",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -1262,6 +1388,7 @@
           "Title": "Funci\u00F3n  sin",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "s",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -1272,6 +1399,7 @@
           "Title": "Funci\u00F3n  single",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "s",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -1282,6 +1410,7 @@
           "Title": "Funci\u00F3n  smalldatetimefromparts",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "s",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -1292,6 +1421,7 @@
           "Title": "Funci\u00F3n  soundex",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "s",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -1302,6 +1432,7 @@
           "Title": "Funci\u00F3n  space",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "s",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -1312,6 +1443,7 @@
           "Title": "Funci\u00F3n  sqrt",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "s",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -1322,6 +1454,7 @@
           "Title": "Funci\u00F3n  square",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "s",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -1332,6 +1465,7 @@
           "Title": "Funci\u00F3n  stdev",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "s",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -1342,6 +1476,7 @@
           "Title": "Funci\u00F3n  stdevp",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "s",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -1352,6 +1487,7 @@
           "Title": "Funci\u00F3n  str",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "s",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -1362,6 +1498,7 @@
           "Title": "Funci\u00F3n  stuff",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "s",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -1372,6 +1509,7 @@
           "Title": "Funci\u00F3n  substraction",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "s",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -1382,6 +1520,7 @@
           "Title": "Funci\u00F3n  substring",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "s",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -1392,6 +1531,7 @@
           "Title": "Funci\u00F3n  sum",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "s",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -1402,6 +1542,7 @@
           "Title": "Funci\u00F3n  switch",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "s",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -1412,6 +1553,7 @@
           "Title": "Funci\u00F3n  switchoffset",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "s",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -1422,6 +1564,7 @@
           "Title": "Funci\u00F3n  sysdatetime",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "s",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -1432,6 +1575,7 @@
           "Title": "Funci\u00F3n  sysdatetimeoffset",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "s",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -1442,6 +1586,7 @@
           "Title": "Funci\u00F3n  sysutcdatetime",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "s",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -1452,6 +1597,7 @@
           "Title": "Funci\u00F3n  tan",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "t",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -1462,6 +1608,7 @@
           "Title": "Funci\u00F3n  timefromparts",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "t",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -1472,6 +1619,7 @@
           "Title": "Funci\u00F3n  todatetimeoffset",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "t",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -1482,6 +1630,7 @@
           "Title": "Funci\u00F3n  today",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "t",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -1492,6 +1641,7 @@
           "Title": "Funci\u00F3n  tomorrow",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "t",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -1502,6 +1652,7 @@
           "Title": "Funci\u00F3n  total",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "t",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -1512,6 +1663,7 @@
           "Title": "Funci\u00F3n  trim",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "t",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -1522,6 +1674,7 @@
           "Title": "Funci\u00F3n  typeproperty",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "t",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -1532,6 +1685,7 @@
           "Title": "Funci\u00F3n  unicode",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "u",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -1542,6 +1696,7 @@
           "Title": "Funci\u00F3n  upper",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "u",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -1552,6 +1707,7 @@
           "Title": "Funci\u00F3n  valueof",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "v",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -1562,6 +1718,7 @@
           "Title": "Funci\u00F3n  var",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "v",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -1572,6 +1729,7 @@
           "Title": "Funci\u00F3n  varp",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "v",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -1582,6 +1740,7 @@
           "Title": "Funci\u00F3n  year",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "y",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -1592,6 +1751,7 @@
           "Title": "Funci\u00F3n  zeroifempty",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "z",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -1602,6 +1762,7 @@
           "Title": "Funci\u00F3n  zeroifnull",
           "Id": null,
           "Date": null,
+          "SideBarGroup": "z",
           "Position": 21474836,
           "Visible": true,
           "Children": []
@@ -1611,12 +1772,113 @@
     {
       "Path": "/guide/",
       "Url": "https://cronosql.io/guide/",
-      "Title": "Introduction",
+      "Title": "Introducci\u00F3n",
       "Id": null,
       "Date": null,
+      "SideBarGroup": null,
       "Position": 2,
       "Visible": true,
       "Children": []
+    },
+    {
+      "Path": "/language/",
+      "Url": "https://cronosql.io/language/",
+      "Title": "Lenguaje Crono SQL",
+      "Id": null,
+      "Date": null,
+      "SideBarGroup": null,
+      "Position": 3,
+      "Visible": true,
+      "Children": [
+        {
+          "Path": "/language/select.html",
+          "Url": "https://cronosql.io/language/select.html",
+          "Title": "Sentencia SELECT",
+          "Id": null,
+          "Date": null,
+          "SideBarGroup": null,
+          "Position": 1,
+          "Visible": true,
+          "Children": []
+        },
+        {
+          "Path": "/language/insert.html",
+          "Url": "https://cronosql.io/language/insert.html",
+          "Title": "Sentencia INSERT",
+          "Id": null,
+          "Date": null,
+          "SideBarGroup": null,
+          "Position": 2,
+          "Visible": true,
+          "Children": []
+        },
+        {
+          "Path": "/language/update.html",
+          "Url": "https://cronosql.io/language/update.html",
+          "Title": "Sentencia UPDATE",
+          "Id": null,
+          "Date": null,
+          "SideBarGroup": null,
+          "Position": 3,
+          "Visible": true,
+          "Children": []
+        },
+        {
+          "Path": "/language/merge.html",
+          "Url": "https://cronosql.io/language/merge.html",
+          "Title": "Sentencia MERGE",
+          "Id": null,
+          "Date": null,
+          "SideBarGroup": null,
+          "Position": 4,
+          "Visible": true,
+          "Children": []
+        },
+        {
+          "Path": "/language/delete..html",
+          "Url": "https://cronosql.io/language/delete..html",
+          "Title": "Sentencia DELETE",
+          "Id": null,
+          "Date": null,
+          "SideBarGroup": null,
+          "Position": 5,
+          "Visible": true,
+          "Children": []
+        },
+        {
+          "Path": "/language/truncate.html",
+          "Url": "https://cronosql.io/language/truncate.html",
+          "Title": "Sentencia TRUNCATE",
+          "Id": null,
+          "Date": null,
+          "SideBarGroup": null,
+          "Position": 6,
+          "Visible": true,
+          "Children": []
+        },
+        {
+          "Path": "/language/load.html",
+          "Url": "https://cronosql.io/language/load.html",
+          "Title": "Sentencia LOAD",
+          "Id": null,
+          "Date": null,
+          "SideBarGroup": null,
+          "Position": 7,
+          "Visible": true,
+          "Children": []
+        },
+        {
+          "Path": "/language/ddl.html",
+          "Url": "https://cronosql.io/language/ddl.html",
+          "Title": "Sentencias DDL",
+          "Id": null,
+          "Date": null,
+          "SideBarGroup": null,
+          "Position": 8,
+          "Visible": true,
+          "Children": []
+        }
+      ]
     }
   ]
 }
