@@ -1,9 +1,0 @@
-﻿
-CREATE OR REPLACE PROCEDURE
-MERGE CLONE dbo.Functions(idFunction)
-select  top 1 over (partition by FunctionName order by FunctionType)
-	Name #FunctionName,
-	expr2 FunctionType, 
-	coalesce(issues.BodyMarkdown,'Consulte la documentación en el manual de T-SQL') Body
-from Crono$Functions
-left join @@github.Issues filter (repositoryname='cronosql.io') using (name title)

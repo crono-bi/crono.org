@@ -22,4 +22,4 @@ SELECT CASE WHEN 1 IS NOT NULL OR 2 IS NOT NULL OR NULL IS NOT NULL OR 4 IS NOT 
 
 ## Comentario
 
-Esta función es útil porque el operador estándar `+`  devuleve `NULL` cuando cualiquiera de los sumandos es nulo.  La función `addition` en cambio se comporta igual que la suma del  Excel.
+Esta función es útil porque el operador estándar `+`  devuleve `NULL` cuando cualiquiera de los sumandos es nulo.  La función `addition`, en cambio, se comporta igual que la suma del  Excel.

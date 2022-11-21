@@ -47,11 +47,6 @@
           "path": "/functions/avg.html"
         },
         {
-          "title": "Funci\u00F3n  binary_checksum",
-          "collapsable": false,
-          "path": "/functions/binary_checksum.html"
-        },
-        {
           "title": "Funci\u00F3n  cast",
           "collapsable": false,
           "path": "/functions/cast.html"
@@ -72,29 +67,9 @@
           "path": "/functions/checksum.html"
         },
         {
-          "title": "Funci\u00F3n  checksum_agg",
-          "collapsable": false,
-          "path": "/functions/checksum_agg.html"
-        },
-        {
           "title": "Funci\u00F3n  coalesce",
           "collapsable": false,
           "path": "/functions/coalesce.html"
-        },
-        {
-          "title": "Funci\u00F3n  col_length",
-          "collapsable": false,
-          "path": "/functions/col_length.html"
-        },
-        {
-          "title": "Funci\u00F3n  col_name",
-          "collapsable": false,
-          "path": "/functions/col_name.html"
-        },
-        {
-          "title": "Funci\u00F3n  collationproperty",
-          "collapsable": false,
-          "path": "/functions/collationproperty.html"
         },
         {
           "title": "Funci\u00F3n  columnproperty",
@@ -102,19 +77,9 @@
           "path": "/functions/columnproperty.html"
         },
         {
-          "title": "Funci\u00F3n  columns_updated",
-          "collapsable": false,
-          "path": "/functions/columns_updated.html"
-        },
-        {
           "title": "Funci\u00F3n  concat",
           "collapsable": false,
           "path": "/functions/concat.html"
-        },
-        {
-          "title": "Funci\u00F3n  convert",
-          "collapsable": false,
-          "path": "/functions/convert.html"
         },
         {
           "title": "Funci\u00F3n  cos",
@@ -130,11 +95,6 @@
           "title": "Funci\u00F3n  count",
           "collapsable": false,
           "path": "/functions/count.html"
-        },
-        {
-          "title": "Funci\u00F3n  count_big",
-          "collapsable": false,
-          "path": "/functions/count_big.html"
         },
         {
           "title": "Funci\u00F3n  countdistinct",
@@ -202,34 +162,9 @@
           "path": "/functions/cronoroute.html"
         },
         {
-          "title": "Funci\u00F3n  current_time",
-          "collapsable": false,
-          "path": "/functions/current_time.html"
-        },
-        {
-          "title": "Funci\u00F3n  current_timestamp",
-          "collapsable": false,
-          "path": "/functions/current_timestamp.html"
-        },
-        {
-          "title": "Funci\u00F3n  current_user",
-          "collapsable": false,
-          "path": "/functions/current_user.html"
-        },
-        {
           "title": "Funci\u00F3n  currentusername",
           "collapsable": false,
           "path": "/functions/currentusername.html"
-        },
-        {
-          "title": "Funci\u00F3n  cursor_status",
-          "collapsable": false,
-          "path": "/functions/cursor_status.html"
-        },
-        {
-          "title": "Funci\u00F3n  databaseproperty",
-          "collapsable": false,
-          "path": "/functions/databaseproperty.html"
         },
         {
           "title": "Funci\u00F3n  databasepropertyex",
@@ -287,16 +222,6 @@
           "path": "/functions/day.html"
         },
         {
-          "title": "Funci\u00F3n  db_id",
-          "collapsable": false,
-          "path": "/functions/db_id.html"
-        },
-        {
-          "title": "Funci\u00F3n  db_name",
-          "collapsable": false,
-          "path": "/functions/db_name.html"
-        },
-        {
           "title": "Funci\u00F3n  degrees",
           "collapsable": false,
           "path": "/functions/degrees.html"
@@ -330,26 +255,6 @@
           "title": "Funci\u00F3n  exp",
           "collapsable": false,
           "path": "/functions/exp.html"
-        },
-        {
-          "title": "Funci\u00F3n  file_id",
-          "collapsable": false,
-          "path": "/functions/file_id.html"
-        },
-        {
-          "title": "Funci\u00F3n  file_name",
-          "collapsable": false,
-          "path": "/functions/file_name.html"
-        },
-        {
-          "title": "Funci\u00F3n  filegroup_id",
-          "collapsable": false,
-          "path": "/functions/filegroup_id.html"
-        },
-        {
-          "title": "Funci\u00F3n  filegroup_name",
-          "collapsable": false,
-          "path": "/functions/filegroup_name.html"
         },
         {
           "title": "Funci\u00F3n  filegroupproperty",
@@ -417,54 +322,9 @@
           "path": "/functions/grouping.html"
         },
         {
-          "title": "Funci\u00F3n  grouping_id",
-          "collapsable": false,
-          "path": "/functions/grouping_id.html"
-        },
-        {
-          "title": "Funci\u00F3n  has_dbaccess",
-          "collapsable": false,
-          "path": "/functions/has_dbaccess.html"
-        },
-        {
-          "title": "Funci\u00F3n  host_id",
-          "collapsable": false,
-          "path": "/functions/host_id.html"
-        },
-        {
-          "title": "Funci\u00F3n  host_name",
-          "collapsable": false,
-          "path": "/functions/host_name.html"
-        },
-        {
           "title": "Funci\u00F3n  hour",
           "collapsable": false,
           "path": "/functions/hour.html"
-        },
-        {
-          "title": "Funci\u00F3n  ident_current",
-          "collapsable": false,
-          "path": "/functions/ident_current.html"
-        },
-        {
-          "title": "Funci\u00F3n  ident_incr",
-          "collapsable": false,
-          "path": "/functions/ident_incr.html"
-        },
-        {
-          "title": "Funci\u00F3n  ident_seed",
-          "collapsable": false,
-          "path": "/functions/ident_seed.html"
-        },
-        {
-          "title": "Funci\u00F3n  index_col",
-          "collapsable": false,
-          "path": "/functions/index_col.html"
-        },
-        {
-          "title": "Funci\u00F3n  indexkey_property",
-          "collapsable": false,
-          "path": "/functions/indexkey_property.html"
         },
         {
           "title": "Funci\u00F3n  indexof",
@@ -475,16 +335,6 @@
           "title": "Funci\u00F3n  indexproperty",
           "collapsable": false,
           "path": "/functions/indexproperty.html"
-        },
-        {
-          "title": "Funci\u00F3n  is_member",
-          "collapsable": false,
-          "path": "/functions/is_member.html"
-        },
-        {
-          "title": "Funci\u00F3n  is_srvrolemember",
-          "collapsable": false,
-          "path": "/functions/is_srvrolemember.html"
         },
         {
           "title": "Funci\u00F3n  isdate",
@@ -632,11 +482,6 @@
           "path": "/functions/next_value.html"
         },
         {
-          "title": "Funci\u00F3n  nullif",
-          "collapsable": false,
-          "path": "/functions/nullif.html"
-        },
-        {
           "title": "Funci\u00F3n  nullifempty",
           "collapsable": false,
           "path": "/functions/nullifempty.html"
@@ -645,16 +490,6 @@
           "title": "Funci\u00F3n  nullifzero",
           "collapsable": false,
           "path": "/functions/nullifzero.html"
-        },
-        {
-          "title": "Funci\u00F3n  object_id",
-          "collapsable": false,
-          "path": "/functions/object_id.html"
-        },
-        {
-          "title": "Funci\u00F3n  object_name",
-          "collapsable": false,
-          "path": "/functions/object_name.html"
         },
         {
           "title": "Funci\u00F3n  objectproperty",
@@ -747,11 +582,6 @@
           "path": "/functions/round.html"
         },
         {
-          "title": "Funci\u00F3n  rowcount_big",
-          "collapsable": false,
-          "path": "/functions/rowcount_big.html"
-        },
-        {
           "title": "Funci\u00F3n  rtrim",
           "collapsable": false,
           "path": "/functions/rtrim.html"
@@ -767,19 +597,9 @@
           "path": "/functions/runningsum.html"
         },
         {
-          "title": "Funci\u00F3n  scope_identity",
-          "collapsable": false,
-          "path": "/functions/scope_identity.html"
-        },
-        {
           "title": "Funci\u00F3n  serverproperty",
           "collapsable": false,
           "path": "/functions/serverproperty.html"
-        },
-        {
-          "title": "Funci\u00F3n  session_user",
-          "collapsable": false,
-          "path": "/functions/session_user.html"
         },
         {
           "title": "Funci\u00F3n  sessionproperty",
@@ -827,11 +647,6 @@
           "path": "/functions/space.html"
         },
         {
-          "title": "Funci\u00F3n  sql_variant_property",
-          "collapsable": false,
-          "path": "/functions/sql_variant_property.html"
-        },
-        {
           "title": "Funci\u00F3n  sqrt",
           "collapsable": false,
           "path": "/functions/sqrt.html"
@@ -840,11 +655,6 @@
           "title": "Funci\u00F3n  square",
           "collapsable": false,
           "path": "/functions/square.html"
-        },
-        {
-          "title": "Funci\u00F3n  stats_date",
-          "collapsable": false,
-          "path": "/functions/stats_date.html"
         },
         {
           "title": "Funci\u00F3n  stdev",
@@ -882,16 +692,6 @@
           "path": "/functions/sum.html"
         },
         {
-          "title": "Funci\u00F3n  suser_sid",
-          "collapsable": false,
-          "path": "/functions/suser_sid.html"
-        },
-        {
-          "title": "Funci\u00F3n  suser_sname",
-          "collapsable": false,
-          "path": "/functions/suser_sname.html"
-        },
-        {
           "title": "Funci\u00F3n  switch",
           "collapsable": false,
           "path": "/functions/switch.html"
@@ -910,11 +710,6 @@
           "title": "Funci\u00F3n  sysdatetimeoffset",
           "collapsable": false,
           "path": "/functions/sysdatetimeoffset.html"
-        },
-        {
-          "title": "Funci\u00F3n  system_user",
-          "collapsable": false,
-          "path": "/functions/system_user.html"
         },
         {
           "title": "Funci\u00F3n  sysutcdatetime",
@@ -957,21 +752,6 @@
           "path": "/functions/trim.html"
         },
         {
-          "title": "Funci\u00F3n  try_cast",
-          "collapsable": false,
-          "path": "/functions/try_cast.html"
-        },
-        {
-          "title": "Funci\u00F3n  try_convert",
-          "collapsable": false,
-          "path": "/functions/try_convert.html"
-        },
-        {
-          "title": "Funci\u00F3n  try_parse",
-          "collapsable": false,
-          "path": "/functions/try_parse.html"
-        },
-        {
           "title": "Funci\u00F3n  typeproperty",
           "collapsable": false,
           "path": "/functions/typeproperty.html"
@@ -985,16 +765,6 @@
           "title": "Funci\u00F3n  upper",
           "collapsable": false,
           "path": "/functions/upper.html"
-        },
-        {
-          "title": "Funci\u00F3n  user_id",
-          "collapsable": false,
-          "path": "/functions/user_id.html"
-        },
-        {
-          "title": "Funci\u00F3n  user_name",
-          "collapsable": false,
-          "path": "/functions/user_name.html"
         },
         {
           "title": "Funci\u00F3n  valueof",
