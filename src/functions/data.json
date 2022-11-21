@@ -1,818 +1,1022 @@
 ﻿[
   {
     "FunctionName": "abs",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "acos",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "addition",
-    "FunctionType": "Crono"
+    "FunctionType": "Crono",
+    "Body": "La funci\u00F3n \u0060addition\u0060 devuelve la suma de un conjunto de n\u00FAmeros, ignorando los valores nulos que pueda haber.\n\nSi todos los par\u00E1metros de entrada son nulos devuelve \u0060NULL\u0060\n\n## Ejemplo\n\n\u0060\u0060\u0060\nSELECT addition(1,2,null,4) suma;\n\u0060\u0060\u0060\u0060 \n\nEl c\u00F3digo SQL generado es el siguiente.\n\n\u0060\u0060\u0060\nSELECT CASE WHEN 1 IS NOT NULL OR 2 IS NOT NULL OR NULL IS NOT NULL OR 4 IS NOT NULL THEN coalesce(1,0)\u002Bcoalesce(2,0)\u002Bcoalesce(NULL,0)\u002Bcoalesce(4,0) END AS suma\n\u0060\u0060\u0060\n\n## Comentario\n\nEsta funci\u00F3n es \u00FAtil porque el operador est\u00E1ndar \u0060\u002B\u0060  devuleve \u0060NULL\u0060 cuando cualiquiera de los sumandos es nulo.  La funci\u00F3n \u0060addition\u0060 en cambio se comporta igual que la suma del  Excel."
   },
   {
     "FunctionName": "ascii",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "asin",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "atan",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "atn2",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "avg",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "binary_checksum",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "cast",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "ceiling",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "charindex",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "checksum",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "checksum_agg",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "coalesce",
-    "FunctionType": "Crono"
+    "FunctionType": "Crono",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "col_length",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "col_name",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "collationproperty",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "columnproperty",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "columns_updated",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "concat",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "convert",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "cos",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "cot",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "count",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "count_big",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "countdistinct",
-    "FunctionType": "Crono"
+    "FunctionType": "Crono",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "Crono$Directory",
-    "FunctionType": "Crono"
+    "FunctionType": "Crono",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "Crono$DirectoryName",
-    "FunctionType": "Crono"
+    "FunctionType": "Crono",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "Crono$Download",
-    "FunctionType": "Crono"
+    "FunctionType": "Crono",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "Crono$FileName",
-    "FunctionType": "Crono"
+    "FunctionType": "Crono",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "Crono$FileNameWithoutExtension",
-    "FunctionType": "Crono"
+    "FunctionType": "Crono",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "Crono$HeaderProperty",
-    "FunctionType": "Crono"
+    "FunctionType": "Crono",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "Crono$IsoDate",
-    "FunctionType": "Crono"
+    "FunctionType": "Crono",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "Crono$MarkdownTitle",
-    "FunctionType": "Crono"
+    "FunctionType": "Crono",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "Crono$NiceUrlName",
-    "FunctionType": "Crono"
+    "FunctionType": "Crono",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "Crono$ReadFile",
-    "FunctionType": "Crono"
+    "FunctionType": "Crono",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "Crono$RfcDate",
-    "FunctionType": "Crono"
+    "FunctionType": "Crono",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "Crono$Route",
-    "FunctionType": "Crono"
+    "FunctionType": "Crono",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "current_time",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "current_timestamp",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "current_user",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "currentusername",
-    "FunctionType": "Crono"
+    "FunctionType": "Crono",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "cursor_status",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "databaseproperty",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "databasepropertyex",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "datalength",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "dateadd",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "datediff",
-    "FunctionType": "Crono"
+    "FunctionType": "Crono",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "datefromparts",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "datename",
-    "FunctionType": "Crono"
+    "FunctionType": "Crono",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "datepart",
-    "FunctionType": "Crono"
+    "FunctionType": "Crono",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "datetime2fromparts",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "datetimefromparts",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "datetimeoffsetfromparts",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "day",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "db_id",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "db_name",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "degrees",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "difference",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "divide",
-    "FunctionType": "Crono"
+    "FunctionType": "Crono",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "elementat",
-    "FunctionType": "Crono"
+    "FunctionType": "Crono",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "emptyifnull",
-    "FunctionType": "Crono"
+    "FunctionType": "Crono",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "eomonth",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "exp",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "file_id",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "file_name",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "filegroup_id",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "filegroup_name",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "filegroupproperty",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "fileproperty",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "floor",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "format",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "formatmessage",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "fulltextcatalogproperty",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "fulltextserviceproperty",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "getansinull",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "getdate",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "getenddate",
-    "FunctionType": "Crono"
+    "FunctionType": "Crono",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "getenddatetime",
-    "FunctionType": "Crono"
+    "FunctionType": "Crono",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "getutcdate",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "grouping",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "grouping_id",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "has_dbaccess",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "host_id",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "host_name",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "hour",
-    "FunctionType": "Crono"
+    "FunctionType": "Crono",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "ident_current",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "ident_incr",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "ident_seed",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "index_col",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "indexkey_property",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "indexof",
-    "FunctionType": "Crono"
+    "FunctionType": "Crono",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "indexproperty",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "is_member",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "is_srvrolemember",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "isdate",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "ismemberof",
-    "FunctionType": "Crono"
+    "FunctionType": "Crono",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "isnull",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "isnumeric",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "isoweek",
-    "FunctionType": "Crono"
+    "FunctionType": "Crono",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "isoweekcode",
-    "FunctionType": "Crono"
+    "FunctionType": "Crono",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "isoweekshortcode",
-    "FunctionType": "Crono"
+    "FunctionType": "Crono",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "isoweekyear",
-    "FunctionType": "Crono"
+    "FunctionType": "Crono",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "lag",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "lead",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "left",
-    "FunctionType": "Crono"
+    "FunctionType": "Crono",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "len",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "localdate",
-    "FunctionType": "Crono"
+    "FunctionType": "Crono",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "log",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "log10",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "lower",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "ltrim",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "margin",
-    "FunctionType": "Crono"
+    "FunctionType": "Crono",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "max",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "maximum",
-    "FunctionType": "Crono"
+    "FunctionType": "Crono",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "md5",
-    "FunctionType": "Crono"
+    "FunctionType": "Crono",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "memberof",
-    "FunctionType": "Crono"
+    "FunctionType": "Crono",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "min",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "minimum",
-    "FunctionType": "Crono"
+    "FunctionType": "Crono",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "mod",
-    "FunctionType": "Crono"
+    "FunctionType": "Crono",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "month",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "nameof",
-    "FunctionType": "Crono"
+    "FunctionType": "Crono",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "newid",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "next_value",
-    "FunctionType": "Crono"
+    "FunctionType": "Crono",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "nullif",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "nullifempty",
-    "FunctionType": "Crono"
+    "FunctionType": "Crono",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "nullifzero",
-    "FunctionType": "Crono"
+    "FunctionType": "Crono",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "object_id",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "object_name",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "objectproperty",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "parse",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "parsename",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "patindex",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "pct",
-    "FunctionType": "Crono"
+    "FunctionType": "Crono",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "pctrank",
-    "FunctionType": "Crono"
+    "FunctionType": "Crono",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "pctvariance",
-    "FunctionType": "Crono"
+    "FunctionType": "Crono",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "permissions",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "pi",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "power",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "quotename",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "radians",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "rand",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "replace",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "replicate",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "reverse",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "right",
-    "FunctionType": "Crono"
+    "FunctionType": "Crono",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "round",
-    "FunctionType": "Crono"
+    "FunctionType": "Crono",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "rowcount_big",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "rtrim",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "runningpct",
-    "FunctionType": "Crono"
+    "FunctionType": "Crono",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "runningsum",
-    "FunctionType": "Crono"
+    "FunctionType": "Crono",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "scope_identity",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "serverproperty",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "session_user",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "sessionproperty",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "sha1",
-    "FunctionType": "Crono"
+    "FunctionType": "Crono",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "sha256",
-    "FunctionType": "Crono"
+    "FunctionType": "Crono",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "sign",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "sin",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "single",
-    "FunctionType": "Crono"
+    "FunctionType": "Crono",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "smalldatetimefromparts",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "soundex",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "space",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "sql_variant_property",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "sqrt",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "square",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "stats_date",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "stdev",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "stdevp",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "str",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "stuff",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "substraction",
-    "FunctionType": "Crono"
+    "FunctionType": "Crono",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "substring",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "sum",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "suser_sid",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "suser_sname",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "switch",
-    "FunctionType": "Crono"
+    "FunctionType": "Crono",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "switchoffset",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "sysdatetime",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "sysdatetimeoffset",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "system_user",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "sysutcdatetime",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "tan",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "timefromparts",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "todatetimeoffset",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "today",
-    "FunctionType": "Crono"
+    "FunctionType": "Crono",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "tomorrow",
-    "FunctionType": "Crono"
+    "FunctionType": "Crono",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "total",
-    "FunctionType": "Crono"
+    "FunctionType": "Crono",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "trim",
-    "FunctionType": "Crono"
+    "FunctionType": "Crono",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "try_cast",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "try_convert",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "try_parse",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "typeproperty",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "unicode",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "upper",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "user_id",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "user_name",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "valueof",
-    "FunctionType": "Crono"
+    "FunctionType": "Crono",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "var",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "varp",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "year",
-    "FunctionType": "SQL"
+    "FunctionType": "SQL",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "zeroifempty",
-    "FunctionType": "Crono"
+    "FunctionType": "Crono",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   },
   {
     "FunctionName": "zeroifnull",
-    "FunctionType": "Crono"
+    "FunctionType": "Crono",
+    "Body": "Consulte la documentaci\u00F3n en el manual de T-SQL"
   }
 ]

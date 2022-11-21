@@ -10,5 +10,5 @@ DirectoryStructure: "Files"
 
 # Función  $FunctionName$
 
-Consulte la documentación en el manual de T-SQL
+$Body$
 
