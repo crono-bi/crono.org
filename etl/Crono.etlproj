@@ -2,7 +2,9 @@
   Environments=(
     ENVIROMENT (
       Name='SELVA',
-      Replacements=(),
+      Replacements=(
+        REPLACEMENT ([Key]='@@github.', [Value]='GITHUB_ISSUES.github.')
+      ),
       Datasource=[SQL SERVER CONNECTION] ([Server]='.', DatabaseName='CRONO_SQL'),
       BackgroundColor=COLOR (Name='White')
     )
