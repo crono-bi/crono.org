@@ -62,7 +62,6 @@ https://cronosql.io/functions/getdate.html
 https://cronosql.io/functions/getenddate.html
 https://cronosql.io/functions/getenddatetime.html
 https://cronosql.io/functions/getutcdate.html
-https://cronosql.io/functions/grouping.html
 https://cronosql.io/functions/hour.html
 https://cronosql.io/functions/indexof.html
 https://cronosql.io/functions/indexproperty.html

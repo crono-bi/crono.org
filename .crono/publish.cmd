@@ -9,6 +9,7 @@
 
 
 cronobot github loaddb bifacil cronosql.io
+cronobot db executeprocedure "cronosql.metadata" "dbo.[LOAD dbo.Functions]"
 cronobot sites updatevuepress
 vuepress build src
 firebase deploy

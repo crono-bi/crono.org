@@ -3,948 +3,942 @@
     "FunctionName": "abs",
     "FunctionType": "SQL",
     "Body": "Funci\u00F3n matem\u00E1tica que devuelve el valor absoluto positivo de una expresi\u00F3n num\u00E9rica espec\u00EDfica. \u0060ABS\u0060 cambia los valores negativos a valores positivos. \u0060ABS\u0060 no tiene ning\u00FAn efecto en los valores cero o positivos.\n\n## Comentarios\n\n\u0060ABS\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060ABS\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/abs-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "a"
+    "FunctionGroup": "Funciones matem\u00E1ticas"
   },
   {
     "FunctionName": "acos",
     "FunctionType": "SQL",
     "Body": "\nUna funci\u00F3n que devuelve el \u00E1ngulo, expresado en radianes, cuyo coseno es la expresi\u00F3n float especificada. Tambi\u00E9n se denomina arcoseno.\n\n## Comentarios\n\n\u0060ACOS\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060ACOS\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/acos-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "a"
+    "FunctionGroup": "Funciones matem\u00E1ticas"
   },
   {
     "FunctionName": "addition",
     "FunctionType": "Crono",
     "Body": "La funci\u00F3n \u0060addition\u0060 devuelve la suma de un conjunto de n\u00FAmeros, ignorando los valores nulos que pueda haber.\n\nSi todos los par\u00E1metros de entrada son nulos devuelve \u0060NULL\u0060\n\n## Ejemplo\n\n\u0060\u0060\u0060\nSELECT addition(1,2,null,4) suma;\n\u0060\u0060\u0060\u0060 \n\nEl c\u00F3digo SQL generado es el siguiente.\n\n\u0060\u0060\u0060\nSELECT CASE WHEN 1 IS NOT NULL OR 2 IS NOT NULL OR NULL IS NOT NULL OR 4 IS NOT NULL THEN coalesce(1,0)\u002Bcoalesce(2,0)\u002Bcoalesce(NULL,0)\u002Bcoalesce(4,0) END AS suma\n\u0060\u0060\u0060\n\n## Comentario\n\nEsta funci\u00F3n es \u00FAtil porque el operador est\u00E1ndar \u0060\u002B\u0060  devuleve \u0060NULL\u0060 cuando cualiquiera de los sumandos es nulo.  La funci\u00F3n \u0060addition\u0060, en cambio, se comporta igual que la suma del  Excel.",
-    "FunctionGroup": "a"
+    "FunctionGroup": "Funciones matem\u00E1ticas"
   },
   {
     "FunctionName": "ascii",
     "FunctionType": "SQL",
     "Body": "Devuelve el valor del c\u00F3digo ASCII del car\u00E1cter m\u00E1s a la izquierda de una expresi\u00F3n de car\u00E1cter.\n\n## Comentarios \n\n\u0060ascii\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060ascii\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/ascii-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "a"
+    "FunctionGroup": "Funciones de texto"
   },
   {
     "FunctionName": "asin",
     "FunctionType": "SQL",
     "Body": "Una funci\u00F3n que devuelve el \u00E1ngulo, en radianes, cuyo seno es la expresi\u00F3n **flotante** especificada. Esto tambi\u00E9n se llama **arcoseno**.\n\n## Comentarios \n\n\u0060asin\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060asin\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/asin-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "a"
+    "FunctionGroup": "Funciones matem\u00E1ticas"
   },
   {
     "FunctionName": "atan",
     "FunctionType": "SQL",
     "Body": "Una funci\u00F3n que devuelve el \u00E1ngulo, en radianes, cuya tangente es una expresi\u00F3n **flotante** especificada. Esto tambi\u00E9n se llama arcotangente.\n\n## Comentarios \n\n\u0060atan\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060atan\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/atan-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "a"
+    "FunctionGroup": "Funciones matem\u00E1ticas"
   },
   {
     "FunctionName": "atn2",
     "FunctionType": "SQL",
     "Body": "Devuelve el \u00E1ngulo, en radianes, entre el eje x positivo y el rayo desde el origen hasta el punto (y, x), donde x e y son los valores de las dos expresiones flotantes especificadas.\n\n## Comentarios \n\n\u0060atn2\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060atn2\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/atn2-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "a"
+    "FunctionGroup": "Funciones matem\u00E1ticas"
   },
   {
     "FunctionName": "avg",
     "FunctionType": "SQL",
     "Body": "Esta funci\u00F3n devuelve el promedio de los valores en un grupo. Ignora los valores nulos.\n\n## Comentarios \n\n\u0060avg\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060avg\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/avg-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "a"
+    "FunctionGroup": "Funciones de agregaci\u00F3n"
   },
   {
     "FunctionName": "cast",
     "FunctionType": "SQL",
     "Body": "Estas funciones convierten una expresi\u00F3n de un tipo de datos a otro.\n\n## Comentarios \n\n\u0060cast\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060cast\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/cast-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "c"
+    "FunctionGroup": "Funciones de conversi\u00F3n y selecci\u00F3n"
   },
   {
     "FunctionName": "ceiling",
     "FunctionType": "SQL",
     "Body": "Esta funci\u00F3n devuelve el entero m\u00E1s peque\u00F1o mayor o igual que la expresi\u00F3n num\u00E9rica especificada.\n\n## Comentarios \n\n\u0060ceiling\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060ceiling\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/ceiling-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "c"
+    "FunctionGroup": "Funciones matem\u00E1ticas"
   },
   {
     "FunctionName": "charindex",
     "FunctionType": "SQL",
     "Body": "Esta funci\u00F3n busca una expresi\u00F3n de car\u00E1cter dentro de una segunda expresi\u00F3n de car\u00E1cter y, si la encuentra, devuelve la posici\u00F3n inicial de la primera expresi\u00F3n.\n\n## Comentarios \n\n\u0060charindex\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060charindex\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/charindex-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "c"
+    "FunctionGroup": "Funciones de texto"
   },
   {
     "FunctionName": "checksum",
     "FunctionType": "SQL",
     "Body": "Esta funci\u00F3n devuelve la suma de comprobaci\u00F3n de los valores de un grupo. \u0060CHECKSUM_AGG\u0060 ignora los valores nulos. La [cl\u00E1usula OVER](../../t-sql/queries/select-over-clause-transact-sql.md) puede seguir a \u0060CHECKSUM_AGG\u0060.\n\n## Comentarios \n\n\u0060checksum\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060checksum\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/checksum-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "c"
+    "FunctionGroup": "Funciones de sistema"
   },
   {
     "FunctionName": "coalesce",
     "FunctionType": "Crono",
     "Body": null,
-    "FunctionGroup": "c"
+    "FunctionGroup": "Funciones de conversi\u00F3n y selecci\u00F3n"
   },
   {
     "FunctionName": "columnproperty",
     "FunctionType": "SQL",
     "Body": "Esta funci\u00F3n devuelve informaci\u00F3n de columna o par\u00E1metro.\n\n## Comentarios \n\n\u0060columnproperty\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060columnproperty\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/columnproperty-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "c"
+    "FunctionGroup": "Funciones de sistema"
   },
   {
     "FunctionName": "concat",
     "FunctionType": "SQL",
     "Body": "Esta funci\u00F3n devuelve una cadena que resulta de la concatenaci\u00F3n o uni\u00F3n de dos o m\u00E1s valores de cadena de un extremo a otro. (Para agregar un valor de separaci\u00F3n durante la concatenaci\u00F3n, consulte [CONCAT_WS](../../t-sql/functions/concat-ws-transact-sql.md).)\n\n## Comentarios \n\n\u0060concat\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060concat\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/concat-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "c"
+    "FunctionGroup": "Funciones de texto"
   },
   {
     "FunctionName": "cos",
     "FunctionType": "SQL",
     "Body": "Una funci\u00F3n matem\u00E1tica que devuelve el coseno trigonom\u00E9trico del \u00E1ngulo especificado, medido en radianes, en la expresi\u00F3n especificada.\n\n## Comentarios \n\n\u0060cos\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060cos\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/cos-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "c"
+    "FunctionGroup": "Funciones matem\u00E1ticas"
   },
   {
     "FunctionName": "cot",
     "FunctionType": "SQL",
     "Body": "Una funci\u00F3n matem\u00E1tica que devuelve la cotangente trigonom\u00E9trica del \u00E1ngulo especificado, en radianes, en la expresi\u00F3n **float** especificada.\n\n## Comentarios \n\n\u0060cot\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060cot\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/cot-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "c"
+    "FunctionGroup": "Funciones matem\u00E1ticas"
   },
   {
     "FunctionName": "count",
     "FunctionType": "SQL",
     "Body": "Esta funci\u00F3n devuelve el n\u00FAmero de elementos encontrados en un grupo. \u0060COUNT_BIG\u0060 funciona como la funci\u00F3n [COUNT](../../t-sql/functions/count-transact-sql.md). Estas funciones difieren solo en los tipos de datos de sus valores de retorno. \u0060COUNT_BIG\u0060 siempre devuelve un valor de tipo de datos **bigint**. \u0060COUNT\u0060 siempre devuelve un valor de tipo de datos **int**.\n\n## Comentarios \n\n\u0060count\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060count\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/count-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "c"
+    "FunctionGroup": "Funciones de agregaci\u00F3n"
   },
   {
     "FunctionName": "countdistinct",
     "FunctionType": "Crono",
     "Body": null,
-    "FunctionGroup": "c"
+    "FunctionGroup": "Funciones de agregaci\u00F3n"
   },
   {
     "FunctionName": "Crono$Directory",
     "FunctionType": "Crono",
     "Body": null,
-    "FunctionGroup": "C"
+    "FunctionGroup": "Vistas Crono"
   },
   {
     "FunctionName": "Crono$DirectoryName",
     "FunctionType": "Crono",
     "Body": null,
-    "FunctionGroup": "C"
+    "FunctionGroup": "Vistas Crono"
   },
   {
     "FunctionName": "Crono$Download",
     "FunctionType": "Crono",
     "Body": null,
-    "FunctionGroup": "C"
+    "FunctionGroup": "Vistas Crono"
   },
   {
     "FunctionName": "Crono$FileName",
     "FunctionType": "Crono",
     "Body": null,
-    "FunctionGroup": "C"
+    "FunctionGroup": "Vistas Crono"
   },
   {
     "FunctionName": "Crono$FileNameWithoutExtension",
     "FunctionType": "Crono",
     "Body": null,
-    "FunctionGroup": "C"
+    "FunctionGroup": "Vistas Crono"
   },
   {
     "FunctionName": "Crono$HeaderProperty",
     "FunctionType": "Crono",
     "Body": null,
-    "FunctionGroup": "C"
+    "FunctionGroup": "Vistas Crono"
   },
   {
     "FunctionName": "Crono$IsoDate",
     "FunctionType": "Crono",
     "Body": null,
-    "FunctionGroup": "C"
+    "FunctionGroup": "Vistas Crono"
   },
   {
     "FunctionName": "Crono$MarkdownTitle",
     "FunctionType": "Crono",
     "Body": null,
-    "FunctionGroup": "C"
+    "FunctionGroup": "Vistas Crono"
   },
   {
     "FunctionName": "Crono$NiceUrlName",
     "FunctionType": "Crono",
     "Body": null,
-    "FunctionGroup": "C"
+    "FunctionGroup": "Vistas Crono"
   },
   {
     "FunctionName": "Crono$ReadFile",
     "FunctionType": "Crono",
     "Body": null,
-    "FunctionGroup": "C"
+    "FunctionGroup": "Vistas Crono"
   },
   {
     "FunctionName": "Crono$RfcDate",
     "FunctionType": "Crono",
     "Body": null,
-    "FunctionGroup": "C"
+    "FunctionGroup": "Vistas Crono"
   },
   {
     "FunctionName": "Crono$Route",
     "FunctionType": "Crono",
     "Body": null,
-    "FunctionGroup": "C"
+    "FunctionGroup": "Vistas Crono"
   },
   {
     "FunctionName": "currentusername",
     "FunctionType": "Crono",
     "Body": null,
-    "FunctionGroup": "c"
+    "FunctionGroup": "Funciones de sistema"
   },
   {
     "FunctionName": "databasepropertyex",
     "FunctionType": "SQL",
     "Body": "Para una base de datos especificada en [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)], esta funci\u00F3n devuelve la configuraci\u00F3n actual de la propiedad o opci\u00F3n de base de datos especificada.\n\n## Comentarios \n\n\u0060databasepropertyex\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060databasepropertyex\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/databasepropertyex-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "d"
+    "FunctionGroup": "Funciones de sistema"
   },
   {
     "FunctionName": "datalength",
     "FunctionType": "SQL",
     "Body": "Esta funci\u00F3n devuelve el n\u00FAmero de bytes utilizados para representar cualquier expresi\u00F3n.\n\n## Comentarios \n\n\u0060datalength\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060datalength\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/datalength-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "d"
+    "FunctionGroup": "Funciones de sistema"
   },
   {
     "FunctionName": "dateadd",
     "FunctionType": "SQL",
     "Body": "Esta funci\u00F3n agrega un *n\u00FAmero* (un entero con signo) a una *parte de fecha* de una *fecha* de entrada y devuelve un valor de fecha/hora modificado. Por ejemplo, puede usar esta funci\u00F3n para encontrar la fecha que es 7000 minutos a partir de hoy: *n\u00FAmero* = 7000, *datepart* = minuto, *fecha* = hoy.\n\n## Comentarios \n\n\u0060dateadd\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060dateadd\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/dateadd-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "d"
+    "FunctionGroup": "Funciones de fecha"
   },
   {
     "FunctionName": "datediff",
     "FunctionType": "Crono",
     "Body": "Esta funci\u00F3n devuelve el recuento (como un valor entero grande con signo) de los l\u00EDmites *datepart* especificados cruzados entre la *fecha de inicio* y la *fecha de finalizaci\u00F3n* especificadas.\n\n## Comentarios \n\n\u0060datediff\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060datediff\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/datediff-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "d"
+    "FunctionGroup": "Funciones de fecha"
   },
   {
     "FunctionName": "datefromparts",
     "FunctionType": "SQL",
     "Body": "Esta funci\u00F3n devuelve un valor de **fecha** que se asigna a los valores de a\u00F1o, mes y d\u00EDa especificados.\n\n## Comentarios \n\n\u0060datefromparts\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060datefromparts\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/datefromparts-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "d"
+    "FunctionGroup": "Funciones de fecha"
   },
   {
     "FunctionName": "datename",
     "FunctionType": "Crono",
     "Body": "Esta funci\u00F3n devuelve una cadena de caracteres que representa el *datepart* especificado de la *fecha* especificada.\n\n## Comentarios \n\n\u0060datename\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060datename\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/datename-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "d"
+    "FunctionGroup": "Funciones de fecha"
   },
   {
     "FunctionName": "datepart",
     "FunctionType": "Crono",
     "Body": "Esta funci\u00F3n devuelve un n\u00FAmero entero que representa el *datepart* especificado de la *fecha* especificada.\n\n## Comentarios \n\n\u0060datepart\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060datepart\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/datepart-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "d"
+    "FunctionGroup": "Funciones de fecha"
   },
   {
     "FunctionName": "datetime2fromparts",
     "FunctionType": "SQL",
     "Body": "Esta funci\u00F3n devuelve un valor **datetime2** para los argumentos de fecha y hora especificados. El valor devuelto tiene una precisi\u00F3n especificada por el argumento de precisi\u00F3n.\n\n## Comentarios \n\n\u0060datetime2fromparts\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060datetime2fromparts\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/datetime2fromparts-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "d"
+    "FunctionGroup": "Funciones de fecha"
   },
   {
     "FunctionName": "datetimefromparts",
     "FunctionType": "SQL",
     "Body": "Esta funci\u00F3n devuelve un valor **datetime** para los argumentos de fecha y hora especificados.\n\n## Comentarios \n\n\u0060datetimefromparts\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060datetimefromparts\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/datetimefromparts-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "d"
+    "FunctionGroup": "Funciones de fecha"
   },
   {
     "FunctionName": "datetimeoffsetfromparts",
     "FunctionType": "SQL",
     "Body": "Devuelve un valor **datetimeoffset** para los argumentos de fecha y hora especificados. El valor devuelto tiene una precisi\u00F3n especificada por el argumento de precisi\u00F3n y un desplazamiento seg\u00FAn lo especificado por los argumentos de desplazamiento.\n\n## Comentarios \n\n\u0060datetimeoffsetfromparts\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060datetimeoffsetfromparts\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/datetimeoffsetfromparts-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "d"
+    "FunctionGroup": "Funciones de fecha"
   },
   {
     "FunctionName": "day",
     "FunctionType": "SQL",
     "Body": "Esta funci\u00F3n devuelve un n\u00FAmero entero que representa el d\u00EDa (d\u00EDa del mes) de la *fecha* especificada.\n\n## Comentarios \n\n\u0060day\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060day\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/day-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "d"
+    "FunctionGroup": "Funciones de fecha"
   },
   {
     "FunctionName": "degrees",
     "FunctionType": "SQL",
     "Body": "Esta funci\u00F3n devuelve el \u00E1ngulo correspondiente, en grados, para un \u00E1ngulo especificado en radianes.\n\n## Comentarios \n\n\u0060degrees\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060degrees\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/degrees-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "d"
+    "FunctionGroup": "Funciones matem\u00E1ticas"
   },
   {
     "FunctionName": "difference",
     "FunctionType": "SQL",
     "Body": "Esta funci\u00F3n devuelve un valor entero que mide la diferencia entre los valores [SOUNDEX()](./soundex-transact-sql.md) de dos expresiones de caracteres diferentes.\n\n## Comentarios \n\n\u0060difference\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060difference\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/difference-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "d"
+    "FunctionGroup": "Funciones de texto"
   },
   {
     "FunctionName": "divide",
     "FunctionType": "Crono",
     "Body": null,
-    "FunctionGroup": "d"
+    "FunctionGroup": "Funciones matem\u00E1ticas"
   },
   {
     "FunctionName": "elementat",
     "FunctionType": "Crono",
     "Body": null,
-    "FunctionGroup": "e"
+    "FunctionGroup": "Funciones de conversi\u00F3n y selecci\u00F3n"
   },
   {
     "FunctionName": "emptyifnull",
     "FunctionType": "Crono",
     "Body": null,
-    "FunctionGroup": "e"
+    "FunctionGroup": "Funciones de conversi\u00F3n y selecci\u00F3n"
   },
   {
     "FunctionName": "eomonth",
     "FunctionType": "SQL",
     "Body": "Esta funci\u00F3n devuelve el \u00FAltimo d\u00EDa del mes que contiene una fecha espec\u00EDfica, con un desplazamiento opcional.\n\n## Comentarios \n\n\u0060eomonth\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060eomonth\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/eomonth-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "e"
+    "FunctionGroup": "Funciones de fecha"
   },
   {
     "FunctionName": "exp",
     "FunctionType": "SQL",
     "Body": "Devuelve el valor exponencial de la expresi\u00F3n **float** especificada.\n\n## Comentarios \n\n\u0060exp\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060exp\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/exp-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "e"
+    "FunctionGroup": "Funciones matem\u00E1ticas"
   },
   {
     "FunctionName": "filegroupproperty",
     "FunctionType": "SQL",
     "Body": "Esta funci\u00F3n devuelve el valor de la propiedad del grupo de archivos para un nombre y un valor de grupo de archivos especificados.\n\n## Comentarios \n\n\u0060filegroupproperty\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060filegroupproperty\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/filegroupproperty-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "f"
+    "FunctionGroup": "Funciones de sistema"
   },
   {
     "FunctionName": "fileproperty",
     "FunctionType": "SQL",
     "Body": "Devuelve el valor de propiedad del nombre de archivo especificado cuando se especifica un nombre de archivo en la base de datos actual y un nombre de propiedad. Devuelve NULL para archivos que no est\u00E1n en la base de datos actual.\n\n## Comentarios \n\n\u0060fileproperty\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060fileproperty\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/fileproperty-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "f"
+    "FunctionGroup": "Funciones de sistema"
   },
   {
     "FunctionName": "floor",
     "FunctionType": "SQL",
     "Body": "Devuelve el entero m\u00E1s grande menor o igual que la expresi\u00F3n num\u00E9rica especificada.\n\n## Comentarios \n\n\u0060floor\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060floor\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/floor-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "f"
+    "FunctionGroup": "Funciones matem\u00E1ticas"
   },
   {
     "FunctionName": "format",
     "FunctionType": "SQL",
     "Body": "Devuelve un valor formateado con el formato especificado y la referencia cultural opcional. Utilice la funci\u00F3n FORMAT para dar formato a la configuraci\u00F3n regional de los valores num\u00E9ricos y de fecha/hora como cadenas. Para conversiones generales de tipos de datos, utilice CAST o CONVERT.\n\n## Comentarios \n\n\u0060format\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060format\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/format-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "f"
+    "FunctionGroup": "Funciones de texto"
   },
   {
     "FunctionName": "formatmessage",
     "FunctionType": "SQL",
     "Body": "Construye un mensaje a partir de un mensaje existente en sys.messages o de una cadena proporcionada. La funcionalidad de FORMATMESSAGE se asemeja a la de la sentencia RAISERROR. Sin embargo, RAISERROR imprime el mensaje inmediatamente, mientras que FORMATMESSAGE devuelve el mensaje formateado para su posterior procesamiento.\n\n## Comentarios \n\n\u0060formatmessage\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060formatmessage\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/formatmessage-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "f"
+    "FunctionGroup": "Funciones de sistema"
   },
   {
     "FunctionName": "fulltextcatalogproperty",
     "FunctionType": "SQL",
     "Body": "Devuelve informaci\u00F3n sobre las propiedades del cat\u00E1logo de texto completo en [!INCLUDE[ssnoversion](../../includes/ssnoversion-md.md)].\n\n## Comentarios \n\n\u0060fulltextcatalogproperty\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060fulltextcatalogproperty\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/fulltextcatalogproperty-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "f"
+    "FunctionGroup": "Funciones de sistema"
   },
   {
     "FunctionName": "fulltextserviceproperty",
     "FunctionType": "SQL",
     "Body": "Devuelve informaci\u00F3n relacionada con las propiedades del motor de texto completo. Estas propiedades se pueden establecer y recuperar mediante **sp_fulltext_service**.\n\n## Comentarios \n\n\u0060fulltextserviceproperty\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060fulltextserviceproperty\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/fulltextserviceproperty-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "f"
+    "FunctionGroup": "Funciones de sistema"
   },
   {
     "FunctionName": "getansinull",
     "FunctionType": "SQL",
     "Body": "Devuelve la nulabilidad predeterminada para la base de datos para esta sesi\u00F3n.\n\n## Comentarios \n\n\u0060getansinull\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060getansinull\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/getansinull-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "g"
+    "FunctionGroup": "Funciones de sistema"
   },
   {
     "FunctionName": "getdate",
     "FunctionType": "SQL",
     "Body": "Devuelve la marca de tiempo actual del sistema de la base de datos como un valor de **fecha y hora** sin el desplazamiento de la zona horaria de la base de datos. Este valor se deriva del sistema operativo de la computadora en la que se ejecuta la instancia de [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)].\n\n## Comentarios \n\n\u0060getdate\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060getdate\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/getdate-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "g"
+    "FunctionGroup": "Funciones de fecha"
   },
   {
     "FunctionName": "getenddate",
     "FunctionType": "Crono",
     "Body": null,
-    "FunctionGroup": "g"
+    "FunctionGroup": "Funciones de fecha"
   },
   {
     "FunctionName": "getenddatetime",
     "FunctionType": "Crono",
     "Body": null,
-    "FunctionGroup": "g"
+    "FunctionGroup": "Funciones de fecha"
   },
   {
     "FunctionName": "getutcdate",
     "FunctionType": "SQL",
     "Body": "Devuelve la marca de tiempo del sistema de la base de datos actual como un valor de **fechahora**. El desplazamiento de la zona horaria de la base de datos no est\u00E1 incluido. Este valor representa la hora UTC actual (Tiempo Universal Coordinado). Este valor se deriva del sistema operativo de la computadora en la que se ejecuta la instancia de [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)].\n\n## Comentarios \n\n\u0060getutcdate\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060getutcdate\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/getutcdate-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "g"
-  },
-  {
-    "FunctionName": "grouping",
-    "FunctionType": "SQL",
-    "Body": "Es una funci\u00F3n que calcula el nivel de agrupaci\u00F3n. GROUPING_ID solo se puede usar en las cl\u00E1usulas SELECT \\\u003Cselect\u003E list, HAVING u ORDER BY cuando se especifica GROUP BY.\n\n## Comentarios \n\n\u0060grouping\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060grouping\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/grouping-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "g"
+    "FunctionGroup": "Funciones de fecha"
   },
   {
     "FunctionName": "hour",
     "FunctionType": "Crono",
     "Body": null,
-    "FunctionGroup": "h"
+    "FunctionGroup": "Funciones de fecha"
   },
   {
     "FunctionName": "indexof",
     "FunctionType": "Crono",
     "Body": null,
-    "FunctionGroup": "i"
+    "FunctionGroup": "Funciones de conversi\u00F3n y selecci\u00F3n"
   },
   {
     "FunctionName": "indexproperty",
     "FunctionType": "SQL",
     "Body": "Devuelve el \u00EDndice con nombre o el valor de la propiedad de estad\u00EDsticas de un n\u00FAmero de identificaci\u00F3n de tabla especificado, el nombre del \u00EDndice o de las estad\u00EDsticas y el nombre de la propiedad. Devuelve NULL para \u00EDndices XML.\n\n## Comentarios \n\n\u0060indexproperty\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060indexproperty\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/indexproperty-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "i"
+    "FunctionGroup": "Funciones de sistema"
   },
   {
     "FunctionName": "isdate",
     "FunctionType": "SQL",
     "Body": "Devuelve 1 si la *expresi\u00F3n* es un valor de **fechahora** v\u00E1lido; de lo contrario, 0.\n\n## Comentarios \n\n\u0060isdate\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060isdate\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/isdate-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "i"
+    "FunctionGroup": "Funciones de fecha"
   },
   {
     "FunctionName": "ismemberof",
     "FunctionType": "Crono",
     "Body": null,
-    "FunctionGroup": "i"
+    "FunctionGroup": "Miscel\u00E1nea"
   },
   {
     "FunctionName": "isnull",
     "FunctionType": "SQL",
     "Body": "Reemplaza NULL con el valor de reemplazo especificado.\n\n## Comentarios \n\n\u0060isnull\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060isnull\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/isnull-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "i"
+    "FunctionGroup": "Funciones de conversi\u00F3n y selecci\u00F3n"
   },
   {
     "FunctionName": "isnumeric",
     "FunctionType": "SQL",
     "Body": "Determina si una expresi\u00F3n es un tipo num\u00E9rico v\u00E1lido.\n\n## Comentarios \n\n\u0060isnumeric\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060isnumeric\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/isnumeric-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "i"
+    "FunctionGroup": "Funciones de conversi\u00F3n y selecci\u00F3n"
   },
   {
     "FunctionName": "isoweek",
     "FunctionType": "Crono",
     "Body": null,
-    "FunctionGroup": "i"
+    "FunctionGroup": "Funciones de fecha"
   },
   {
     "FunctionName": "isoweekcode",
     "FunctionType": "Crono",
     "Body": null,
-    "FunctionGroup": "i"
+    "FunctionGroup": "Funciones de fecha"
   },
   {
     "FunctionName": "isoweekshortcode",
     "FunctionType": "Crono",
     "Body": null,
-    "FunctionGroup": "i"
+    "FunctionGroup": "Funciones de fecha"
   },
   {
     "FunctionName": "isoweekyear",
     "FunctionType": "Crono",
     "Body": null,
-    "FunctionGroup": "i"
+    "FunctionGroup": "Funciones de fecha"
   },
   {
     "FunctionName": "lag",
     "FunctionType": "SQL",
     "Body": "Accede a los datos de una fila anterior en el mismo conjunto de resultados sin el uso de una combinaci\u00F3n autom\u00E1tica que comience con [!INCLUDE[ssSQL11](../../includes/sssql11-md.md)]. LAG proporciona acceso a una fila en un desplazamiento f\u00EDsico dado que viene antes de la fila actual. Utilice esta funci\u00F3n anal\u00EDtica en una declaraci\u00F3n SELECT para comparar valores en la fila actual con valores en una fila anterior.\n\n## Comentarios \n\n\u0060lag\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060lag\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/lag-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "l"
+    "FunctionGroup": "Funciones de agregaci\u00F3n"
   },
   {
     "FunctionName": "lead",
     "FunctionType": "SQL",
     "Body": "Accede a los datos de una fila posterior en el mismo conjunto de resultados sin el uso de una autocombinaci\u00F3n que comience con [!INCLUDE[ssSQL11](../../includes/sssql11-md.md)]. LEAD proporciona acceso a una fila en un desplazamiento f\u00EDsico dado que sigue a la fila actual. Utilice esta funci\u00F3n anal\u00EDtica en una declaraci\u00F3n SELECT para comparar valores en la fila actual con valores en una fila siguiente.\n\n## Comentarios \n\n\u0060lead\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060lead\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/lead-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "l"
+    "FunctionGroup": "Funciones de agregaci\u00F3n"
   },
   {
     "FunctionName": "left",
     "FunctionType": "Crono",
     "Body": "LEFT_SHIFT toma dos par\u00E1metros y devuelve el primer par\u00E1metro desplazado en bits a la izquierda por el n\u00FAmero de bits especificado en el segundo par\u00E1metro.\n\n## Comentarios \n\n\u0060left\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060left\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/left-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "l"
+    "FunctionGroup": "Funciones de texto"
   },
   {
     "FunctionName": "len",
     "FunctionType": "SQL",
     "Body": "Devuelve el n\u00FAmero de caracteres de la expresi\u00F3n de cadena especificada, sin incluir los espacios finales.\n\n## Comentarios \n\n\u0060len\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060len\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/len-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "l"
+    "FunctionGroup": "Funciones de texto"
   },
   {
     "FunctionName": "localdate",
     "FunctionType": "Crono",
     "Body": null,
-    "FunctionGroup": "l"
+    "FunctionGroup": "Funciones de fecha"
   },
   {
     "FunctionName": "log",
     "FunctionType": "SQL",
     "Body": "Devuelve el logaritmo natural de la expresi\u00F3n **float** especificada en [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)].\n\n## Comentarios \n\n\u0060log\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060log\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/log-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "l"
+    "FunctionGroup": "Funciones matem\u00E1ticas"
   },
   {
     "FunctionName": "log10",
     "FunctionType": "SQL",
     "Body": "Devuelve el logaritmo en base 10 de la expresi\u00F3n **flotante** especificada.\n\n## Comentarios \n\n\u0060log10\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060log10\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/log10-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "l"
+    "FunctionGroup": "Funciones matem\u00E1ticas"
   },
   {
     "FunctionName": "lower",
     "FunctionType": "SQL",
     "Body": "Devuelve una expresi\u00F3n de car\u00E1cter despu\u00E9s de convertir los datos de caracteres en may\u00FAsculas a min\u00FAsculas.\n\n## Comentarios \n\n\u0060lower\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060lower\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/lower-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "l"
+    "FunctionGroup": "Funciones de texto"
   },
   {
     "FunctionName": "ltrim",
     "FunctionType": "SQL",
     "Body": "::: moniker range=\u0022\u003C=sql-server-ver15 || \u003C=sql-server-linux-ver15 || = azure-sqldw-latest || = azuresqldb-actual || = azuresqldb-mi-actual\u0022\n\n## Comentarios \n\n\u0060ltrim\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060ltrim\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/ltrim-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "l"
+    "FunctionGroup": "Funciones de texto"
   },
   {
     "FunctionName": "margin",
     "FunctionType": "Crono",
     "Body": null,
-    "FunctionGroup": "m"
+    "FunctionGroup": "Funciones matem\u00E1ticas"
   },
   {
     "FunctionName": "max",
     "FunctionType": "SQL",
     "Body": "Devuelve el n\u00FAmero m\u00E1ximo de conexiones de usuario simult\u00E1neas permitidas en una instancia de [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]. El n\u00FAmero devuelto no es necesariamente el n\u00FAmero configurado actualmente.\n\n## Comentarios \n\n\u0060max\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060max\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/max-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "m"
+    "FunctionGroup": "Funciones de agregaci\u00F3n"
   },
   {
     "FunctionName": "maximum",
     "FunctionType": "Crono",
     "Body": null,
-    "FunctionGroup": "m"
+    "FunctionGroup": "Funciones matem\u00E1ticas"
   },
   {
     "FunctionName": "md5",
     "FunctionType": "Crono",
     "Body": null,
-    "FunctionGroup": "m"
+    "FunctionGroup": "Miscel\u00E1nea"
   },
   {
     "FunctionName": "memberof",
     "FunctionType": "Crono",
     "Body": null,
-    "FunctionGroup": "m"
+    "FunctionGroup": "Miscel\u00E1nea"
   },
   {
     "FunctionName": "min",
     "FunctionType": "SQL",
     "Body": "Devuelve el valor **rowversion** activo m\u00E1s bajo en la base de datos actual. Un valor de **rowversion** est\u00E1 activo si se usa en una transacci\u00F3n que a\u00FAn no se ha confirmado. Para obtener m\u00E1s informaci\u00F3n, consulte [rowversion \u0026#40;Transact-SQL\u0026#41;](../../t-sql/data-types/rowversion-transact-sql.md).\n\n## Comentarios \n\n\u0060min\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060min\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/min-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "m"
+    "FunctionGroup": "Funciones de agregaci\u00F3n"
   },
   {
     "FunctionName": "minimum",
     "FunctionType": "Crono",
     "Body": null,
-    "FunctionGroup": "m"
+    "FunctionGroup": "Funciones matem\u00E1ticas"
   },
   {
     "FunctionName": "mod",
     "FunctionType": "Crono",
     "Body": null,
-    "FunctionGroup": "m"
+    "FunctionGroup": "Funciones matem\u00E1ticas"
   },
   {
     "FunctionName": "month",
     "FunctionType": "SQL",
     "Body": "Devuelve un n\u00FAmero entero que representa el mes de la *fecha* especificada.\n\n## Comentarios \n\n\u0060month\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060month\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/month-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "m"
+    "FunctionGroup": "Funciones de fecha"
   },
   {
     "FunctionName": "nameof",
     "FunctionType": "Crono",
     "Body": null,
-    "FunctionGroup": "n"
+    "FunctionGroup": "Miscel\u00E1nea"
   },
   {
     "FunctionName": "newid",
     "FunctionType": "SQL",
     "Body": "Crea un valor \u00FAnico de tipo **identificador \u00FAnico**.\n\n## Comentarios \n\n\u0060newid\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060newid\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/newid-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "n"
+    "FunctionGroup": "Funciones de sistema"
   },
   {
     "FunctionName": "next_value",
     "FunctionType": "Crono",
     "Body": null,
-    "FunctionGroup": "n"
+    "FunctionGroup": "Funciones de agregaci\u00F3n"
   },
   {
     "FunctionName": "nullifempty",
     "FunctionType": "Crono",
     "Body": null,
-    "FunctionGroup": "n"
+    "FunctionGroup": "Funciones de conversi\u00F3n y selecci\u00F3n"
   },
   {
     "FunctionName": "nullifzero",
     "FunctionType": "Crono",
     "Body": null,
-    "FunctionGroup": "n"
+    "FunctionGroup": "Funciones de conversi\u00F3n y selecci\u00F3n"
   },
   {
     "FunctionName": "objectproperty",
     "FunctionType": "SQL",
     "Body": "Devuelve informaci\u00F3n sobre los objetos del \u00E1mbito del esquema en la base de datos actual. Para obtener una lista de objetos con \u00E1mbito de esquema, consulte [sys.objects \u0026#40;Transact-SQL\u0026#41;](../../relational-databases/system-catalog-views/sys-objects-transact-sql. Maryland). Esta funci\u00F3n no se puede usar para objetos que no tienen un \u00E1mbito de esquema, como desencadenadores de lenguaje de definici\u00F3n de datos (DDL) y notificaciones de eventos.\n\n## Comentarios \n\n\u0060objectproperty\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060objectproperty\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/objectproperty-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "o"
+    "FunctionGroup": "Funciones de sistema"
   },
   {
     "FunctionName": "parse",
     "FunctionType": "SQL",
     "Body": "Devuelve el resultado de una expresi\u00F3n, traducido al tipo de datos solicitado en [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)].\n\n## Comentarios \n\n\u0060parse\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060parse\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/parse-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "p"
+    "FunctionGroup": "Funciones de conversi\u00F3n y selecci\u00F3n"
   },
   {
     "FunctionName": "parsename",
     "FunctionType": "SQL",
     "Body": "Devuelve la parte especificada de un nombre de objeto. Las partes de un objeto que se pueden recuperar son el nombre del objeto, el nombre del esquema, el nombre de la base de datos y el nombre del servidor.\n\n## Comentarios \n\n\u0060parsename\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060parsename\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/parsename-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "p"
+    "FunctionGroup": "Funciones de sistema"
   },
   {
     "FunctionName": "patindex",
     "FunctionType": "SQL",
     "Body": "Devuelve la posici\u00F3n inicial de la primera aparici\u00F3n de un patr\u00F3n en una expresi\u00F3n especificada, o cero si no se encuentra el patr\u00F3n, en todos los tipos de datos de texto y caracteres v\u00E1lidos.\n\n## Comentarios \n\n\u0060patindex\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060patindex\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/patindex-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "p"
+    "FunctionGroup": "Funciones de texto"
   },
   {
     "FunctionName": "pct",
     "FunctionType": "Crono",
     "Body": null,
-    "FunctionGroup": "p"
+    "FunctionGroup": "Funciones de agregaci\u00F3n"
   },
   {
     "FunctionName": "pctrank",
     "FunctionType": "Crono",
     "Body": null,
-    "FunctionGroup": "p"
+    "FunctionGroup": "Funciones de agregaci\u00F3n"
   },
   {
     "FunctionName": "pctvariance",
     "FunctionType": "Crono",
     "Body": null,
-    "FunctionGroup": "p"
+    "FunctionGroup": "Funciones de agregaci\u00F3n"
   },
   {
     "FunctionName": "permissions",
     "FunctionType": "SQL",
     "Body": "Devuelve un valor que contiene un mapa de bits que indica los permisos de declaraci\u00F3n, objeto o columna del usuario actual.\n\n## Comentarios \n\n\u0060permissions\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060permissions\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/permissions-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "p"
+    "FunctionGroup": "Funciones de sistema"
   },
   {
     "FunctionName": "pi",
     "FunctionType": "SQL",
     "Body": "Devuelve el valor constante de PI.\n\n## Comentarios \n\n\u0060pi\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060pi\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/pi-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "p"
+    "FunctionGroup": "Funciones matem\u00E1ticas"
   },
   {
     "FunctionName": "power",
     "FunctionType": "SQL",
     "Body": "Devuelve el valor de la expresi\u00F3n especificada a la potencia especificada.\n\n## Comentarios \n\n\u0060power\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060power\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/power-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "p"
+    "FunctionGroup": "Funciones matem\u00E1ticas"
   },
   {
     "FunctionName": "quotename",
     "FunctionType": "SQL",
     "Body": "Devuelve una cadena Unicode con los delimitadores agregados para convertir la cadena de entrada en un identificador delimitado [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] v\u00E1lido.\n\n## Comentarios \n\n\u0060quotename\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060quotename\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/quotename-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "q"
+    "FunctionGroup": "Funciones de texto"
   },
   {
     "FunctionName": "radians",
     "FunctionType": "SQL",
     "Body": "Devuelve radianes cuando se ingresa una expresi\u00F3n num\u00E9rica, en grados.\n\n## Comentarios \n\n\u0060radians\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060radians\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/radians-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "r"
+    "FunctionGroup": "Funciones matem\u00E1ticas"
   },
   {
     "FunctionName": "rand",
     "FunctionType": "SQL",
     "Body": "Devuelve un valor **flotante** pseudoaleatorio de 0 a 1, exclusivo.\n\n## Comentarios \n\n\u0060rand\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060rand\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/rand-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "r"
+    "FunctionGroup": "Funciones matem\u00E1ticas"
   },
   {
     "FunctionName": "replace",
     "FunctionType": "SQL",
     "Body": "Reemplaza todas las apariciones de un valor de cadena especificado con otro valor de cadena.\n\n## Comentarios \n\n\u0060replace\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060replace\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/replace-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "r"
+    "FunctionGroup": "Funciones de texto"
   },
   {
     "FunctionName": "replicate",
     "FunctionType": "SQL",
     "Body": "Repite un valor de cadena un n\u00FAmero espec\u00EDfico de veces.\n\n## Comentarios \n\n\u0060replicate\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060replicate\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/replicate-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "r"
+    "FunctionGroup": "Funciones de texto"
   },
   {
     "FunctionName": "reverse",
     "FunctionType": "SQL",
     "Body": "Devuelve el orden inverso de un valor de cadena.\n\n## Comentarios \n\n\u0060reverse\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060reverse\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/reverse-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "r"
+    "FunctionGroup": "Funciones de texto"
   },
   {
     "FunctionName": "right",
     "FunctionType": "Crono",
     "Body": "RIGHT_SHIFT toma dos par\u00E1metros y devuelve el primer par\u00E1metro desplazado en bits a la derecha por el n\u00FAmero de bits especificado en el segundo par\u00E1metro.\n\n## Comentarios \n\n\u0060right\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060right\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/right-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "r"
+    "FunctionGroup": "Funciones de texto"
   },
   {
     "FunctionName": "round",
     "FunctionType": "Crono",
     "Body": "Devuelve un valor num\u00E9rico, redondeado a la longitud o precisi\u00F3n especificada.\n\n## Comentarios \n\n\u0060round\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060round\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/round-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "r"
+    "FunctionGroup": "Funciones matem\u00E1ticas"
   },
   {
     "FunctionName": "rtrim",
     "FunctionType": "SQL",
     "Body": "::: moniker range=\u0022\u003C=sql-server-ver15 || \u003C=sql-server-linux-ver15 || = azure-sqldw-latest || = azuresqldb-actual || = azuresqldb-mi-actual\u0022\n\n## Comentarios \n\n\u0060rtrim\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060rtrim\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/rtrim-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "r"
+    "FunctionGroup": "Funciones de texto"
   },
   {
     "FunctionName": "runningpct",
     "FunctionType": "Crono",
     "Body": null,
-    "FunctionGroup": "r"
+    "FunctionGroup": "Funciones de agregaci\u00F3n"
   },
   {
     "FunctionName": "runningsum",
     "FunctionType": "Crono",
     "Body": null,
-    "FunctionGroup": "r"
+    "FunctionGroup": "Funciones de agregaci\u00F3n"
   },
   {
     "FunctionName": "serverproperty",
     "FunctionType": "SQL",
     "Body": "Devuelve informaci\u00F3n de propiedad sobre la instancia del servidor.\n\n## Comentarios \n\n\u0060serverproperty\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060serverproperty\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/serverproperty-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "s"
+    "FunctionGroup": "Funciones de sistema"
   },
   {
     "FunctionName": "sessionproperty",
     "FunctionType": "SQL",
     "Body": "Devuelve la configuraci\u00F3n de opciones SET de una sesi\u00F3n.\n\n## Comentarios \n\n\u0060sessionproperty\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060sessionproperty\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/sessionproperty-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "s"
+    "FunctionGroup": "Funciones de sistema"
   },
   {
     "FunctionName": "sha1",
     "FunctionType": "Crono",
     "Body": null,
-    "FunctionGroup": "s"
+    "FunctionGroup": "Miscel\u00E1nea"
   },
   {
     "FunctionName": "sha256",
     "FunctionType": "Crono",
     "Body": null,
-    "FunctionGroup": "s"
+    "FunctionGroup": "Miscel\u00E1nea"
   },
   {
     "FunctionName": "sign",
     "FunctionType": "SQL",
     "Body": "Devuelve el signo positivo (\u002B1), cero (0) o negativo (-1) de la expresi\u00F3n especificada.\n\n## Comentarios \n\n\u0060sign\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060sign\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/sign-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "s"
+    "FunctionGroup": "Funciones matem\u00E1ticas"
   },
   {
     "FunctionName": "sin",
     "FunctionType": "SQL",
     "Body": "Devuelve el seno trigonom\u00E9trico del \u00E1ngulo especificado, en radianes y en una expresi\u00F3n num\u00E9rica aproximada, **flotante**.\n\n## Comentarios \n\n\u0060sin\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060sin\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/sin-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "s"
+    "FunctionGroup": "Funciones matem\u00E1ticas"
   },
   {
     "FunctionName": "single",
     "FunctionType": "Crono",
     "Body": null,
-    "FunctionGroup": "s"
+    "FunctionGroup": "Miscel\u00E1nea"
   },
   {
     "FunctionName": "smalldatetimefromparts",
     "FunctionType": "SQL",
     "Body": "Devuelve un valor **smalldatetime** para la fecha y hora especificadas.\n\n## Comentarios \n\n\u0060smalldatetimefromparts\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060smalldatetimefromparts\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/smalldatetimefromparts-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "s"
+    "FunctionGroup": "Funciones de fecha"
   },
   {
     "FunctionName": "soundex",
     "FunctionType": "SQL",
     "Body": "Devuelve un c\u00F3digo de cuatro caracteres (SOUNDEX) para evaluar la similitud de dos cadenas.\n\n## Comentarios \n\n\u0060soundex\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060soundex\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/soundex-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "s"
+    "FunctionGroup": "Funciones de texto"
   },
   {
     "FunctionName": "space",
     "FunctionType": "SQL",
     "Body": "Devuelve una cadena de espacios repetidos.\n\n## Comentarios \n\n\u0060space\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060space\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/space-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "s"
+    "FunctionGroup": "Funciones matem\u00E1ticas"
   },
   {
     "FunctionName": "sqrt",
     "FunctionType": "SQL",
     "Body": "Devuelve la ra\u00EDz cuadrada del valor flotante especificado.\n\n## Comentarios \n\n\u0060sqrt\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060sqrt\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/sqrt-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "s"
+    "FunctionGroup": "Funciones matem\u00E1ticas"
   },
   {
     "FunctionName": "square",
     "FunctionType": "SQL",
     "Body": "Devuelve el cuadrado del valor flotante especificado.\n\n## Comentarios \n\n\u0060square\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060square\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/square-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "s"
+    "FunctionGroup": "Funciones matem\u00E1ticas"
   },
   {
     "FunctionName": "stdev",
     "FunctionType": "SQL",
     "Body": "Devuelve la desviaci\u00F3n est\u00E1ndar estad\u00EDstica de todos los valores de la expresi\u00F3n especificada.\n\n## Comentarios \n\n\u0060stdev\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060stdev\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/stdev-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "s"
+    "FunctionGroup": "Funciones de agregaci\u00F3n"
   },
   {
     "FunctionName": "stdevp",
     "FunctionType": "SQL",
     "Body": "Devuelve la desviaci\u00F3n est\u00E1ndar estad\u00EDstica de la poblaci\u00F3n para todos los valores de la expresi\u00F3n especificada.\n\n## Comentarios \n\n\u0060stdevp\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060stdevp\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/stdevp-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "s"
+    "FunctionGroup": "Funciones de agregaci\u00F3n"
   },
   {
     "FunctionName": "str",
     "FunctionType": "SQL",
     "Body": "Devuelve datos de caracteres convertidos a partir de datos num\u00E9ricos. Los datos de caracteres est\u00E1n justificados a la derecha, con una longitud especificada y una precisi\u00F3n decimal.\n\n## Comentarios \n\n\u0060str\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060str\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/str-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "s"
+    "FunctionGroup": "Funciones de texto"
   },
   {
     "FunctionName": "stuff",
     "FunctionType": "SQL",
     "Body": "La funci\u00F3n STUFF inserta una cadena dentro de otra cadena. Elimina una longitud espec\u00EDfica de caracteres en la primera cadena en la posici\u00F3n de inicio y luego inserta la segunda cadena en la primera cadena en la posici\u00F3n de inicio.\n\n## Comentarios \n\n\u0060stuff\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060stuff\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/stuff-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "s"
+    "FunctionGroup": "Funciones de texto"
   },
   {
     "FunctionName": "substraction",
     "FunctionType": "Crono",
     "Body": null,
-    "FunctionGroup": "s"
+    "FunctionGroup": "Funciones matem\u00E1ticas"
   },
   {
     "FunctionName": "substring",
     "FunctionType": "SQL",
     "Body": "Devuelve parte de una expresi\u00F3n de car\u00E1cter, binario, texto o imagen en [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)].\n\n## Comentarios \n\n\u0060substring\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060substring\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/substring-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "s"
+    "FunctionGroup": "Funciones de texto"
   },
   {
     "FunctionName": "sum",
     "FunctionType": "SQL",
     "Body": "Devuelve la suma de todos los valores, o solo los valores DISTINCT, en la expresi\u00F3n. SUM solo se puede usar con columnas num\u00E9ricas. Los valores nulos se ignoran.\n\n## Comentarios \n\n\u0060sum\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060sum\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/sum-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "s"
+    "FunctionGroup": "Funciones de agregaci\u00F3n"
   },
   {
     "FunctionName": "switch",
     "FunctionType": "Crono",
     "Body": null,
-    "FunctionGroup": "s"
+    "FunctionGroup": "Funciones de conversi\u00F3n y selecci\u00F3n"
   },
   {
     "FunctionName": "switchoffset",
     "FunctionType": "SQL",
     "Body": "Devuelve un valor de **datetimeoffset** que se cambia del desplazamiento de zona horaria almacenado a un nuevo desplazamiento de zona horaria especificado.\n\n## Comentarios \n\n\u0060switchoffset\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060switchoffset\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/switchoffset-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "s"
+    "FunctionGroup": "Funciones de fecha"
   },
   {
     "FunctionName": "sysdatetime",
     "FunctionType": "SQL",
     "Body": "Devuelve un valor **datetime2(7)** que contiene la fecha y la hora del equipo en el que se ejecuta la instancia de [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)].\n\n## Comentarios \n\n\u0060sysdatetime\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060sysdatetime\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/sysdatetime-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "s"
+    "FunctionGroup": "Funciones de fecha"
   },
   {
     "FunctionName": "sysdatetimeoffset",
     "FunctionType": "SQL",
     "Body": "Devuelve un valor **datetimeoffset(7)** que contiene la fecha y la hora del equipo en el que se ejecuta la instancia de [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]. Se incluye el desplazamiento de la zona horaria.\n\n## Comentarios \n\n\u0060sysdatetimeoffset\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060sysdatetimeoffset\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/sysdatetimeoffset-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "s"
+    "FunctionGroup": "Funciones de fecha"
   },
   {
     "FunctionName": "sysutcdatetime",
     "FunctionType": "SQL",
     "Body": "Devuelve un valor **datetime2** que contiene la fecha y la hora del equipo en el que se ejecuta la instancia de [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]. La fecha y la hora se devuelven como hora UTC (hora universal coordinada). La especificaci\u00F3n de precisi\u00F3n de fracciones de segundo tiene un rango de 1 a 7 d\u00EDgitos. La precisi\u00F3n predeterminada es de 7 d\u00EDgitos.\n\n## Comentarios \n\n\u0060sysutcdatetime\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060sysutcdatetime\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/sysutcdatetime-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "s"
+    "FunctionGroup": "Funciones de fecha"
   },
   {
     "FunctionName": "tan",
     "FunctionType": "SQL",
     "Body": "Devuelve la tangente de la expresi\u00F3n de entrada.\n\n## Comentarios \n\n\u0060tan\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060tan\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/tan-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "t"
+    "FunctionGroup": "Funciones matem\u00E1ticas"
   },
   {
     "FunctionName": "timefromparts",
     "FunctionType": "SQL",
     "Body": "Devuelve un valor de **hora** para la hora especificada y con la precisi\u00F3n especificada.\n\n## Comentarios \n\n\u0060timefromparts\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060timefromparts\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/timefromparts-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "t"
+    "FunctionGroup": "Funciones de fecha"
   },
   {
     "FunctionName": "todatetimeoffset",
     "FunctionType": "SQL",
     "Body": "Devuelve un valor de **datetimeoffset** que se traduce de una expresi\u00F3n **datetime2**.\n\n## Comentarios \n\n\u0060todatetimeoffset\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060todatetimeoffset\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/todatetimeoffset-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "t"
+    "FunctionGroup": "Funciones de fecha"
   },
   {
     "FunctionName": "today",
     "FunctionType": "Crono",
     "Body": null,
-    "FunctionGroup": "t"
+    "FunctionGroup": "Funciones de fecha"
   },
   {
     "FunctionName": "tomorrow",
     "FunctionType": "Crono",
     "Body": null,
-    "FunctionGroup": "t"
+    "FunctionGroup": "Funciones de fecha"
   },
   {
     "FunctionName": "total",
     "FunctionType": "Crono",
     "Body": "Devuelve el n\u00FAmero de errores de escritura en disco encontrados por [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] desde [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md .md)] iniciado por \u00FAltima vez.\n\n## Comentarios \n\n\u0060total\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060total\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/total-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "t"
+    "FunctionGroup": "Funciones de agregaci\u00F3n"
   },
   {
     "FunctionName": "trim",
     "FunctionType": "Crono",
     "Body": "Elimina el car\u00E1cter de espacio \u0060char(32)\u0060 u otros caracteres especificados al principio y al final de una cadena.\n\n## Comentarios \n\n\u0060trim\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060trim\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/trim-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "t"
+    "FunctionGroup": "Funciones de texto"
   },
   {
     "FunctionName": "typeproperty",
     "FunctionType": "SQL",
     "Body": "Devuelve informaci\u00F3n sobre un tipo de datos.\n\n## Comentarios \n\n\u0060typeproperty\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060typeproperty\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/typeproperty-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "t"
+    "FunctionGroup": "Funciones de sistema"
   },
   {
     "FunctionName": "unicode",
     "FunctionType": "SQL",
     "Body": "Devuelve el valor entero, tal como lo define el est\u00E1ndar Unicode, para el primer car\u00E1cter de la expresi\u00F3n de entrada.\n\n## Comentarios \n\n\u0060unicode\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060unicode\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/unicode-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "u"
+    "FunctionGroup": "Funciones de texto"
   },
   {
     "FunctionName": "upper",
     "FunctionType": "SQL",
     "Body": "Devuelve una expresi\u00F3n de caracteres con datos de caracteres en min\u00FAsculas convertidos a may\u00FAsculas.\n\n## Comentarios \n\n\u0060upper\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060upper\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/upper-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "u"
+    "FunctionGroup": "Funciones de texto"
   },
   {
     "FunctionName": "valueof",
     "FunctionType": "Crono",
     "Body": null,
-    "FunctionGroup": "v"
+    "FunctionGroup": "Miscel\u00E1nea"
   },
   {
     "FunctionName": "var",
     "FunctionType": "SQL",
     "Body": "Devuelve la varianza estad\u00EDstica de todos los valores de la expresi\u00F3n especificada. Puede ir seguido de la [cl\u00E1usula OVER](../../t-sql/queries/select-over-clause-transact-sql.md).\n\n## Comentarios \n\n\u0060var\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060var\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/var-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "v"
+    "FunctionGroup": "Funciones de agregaci\u00F3n"
   },
   {
     "FunctionName": "varp",
     "FunctionType": "SQL",
     "Body": "Devuelve la varianza estad\u00EDstica de la poblaci\u00F3n para todos los valores de la expresi\u00F3n especificada.\n\n## Comentarios \n\n\u0060varp\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060varp\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/varp-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "v"
+    "FunctionGroup": "Funciones de agregaci\u00F3n"
   },
   {
     "FunctionName": "year",
     "FunctionType": "SQL",
     "Body": "Devuelve un entero que representa el a\u00F1o de la *fecha* especificada.\n\n## Comentarios \n\n\u0060year\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060year\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/year-transact-sql) para mayor informaci\u00F3n.",
-    "FunctionGroup": "y"
+    "FunctionGroup": "Funciones de fecha"
   },
   {
     "FunctionName": "zeroifempty",
     "FunctionType": "Crono",
     "Body": null,
-    "FunctionGroup": "z"
+    "FunctionGroup": "Funciones de conversi\u00F3n y selecci\u00F3n"
   },
   {
     "FunctionName": "zeroifnull",
     "FunctionType": "Crono",
     "Body": null,
-    "FunctionGroup": "z"
+    "FunctionGroup": "Funciones de conversi\u00F3n y selecci\u00F3n"
   }
 ]

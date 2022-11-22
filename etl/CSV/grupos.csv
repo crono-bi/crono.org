@@ -1,0 +1,157 @@
+Funciones de agregación|avg
+Funciones de agregación|count
+Funciones de agregación|countdistinct
+Funciones de agregación|lag
+Funciones de agregación|lead
+Funciones de agregación|max
+Funciones de agregación|next_value
+Funciones de agregación|pct
+Funciones de agregación|pctrank
+Funciones de agregación|pctvariance
+Funciones de agregación|runningpct
+Funciones de agregación|runningsum
+Funciones de agregación|sum
+Funciones de agregación|total
+Funciones de agregación|var
+Funciones de agregación|varp
+Funciones de agregación|min
+Funciones de agregación|stdev
+Funciones de agregación|stdevp
+Funciones de conversión y selección|cast
+Funciones de conversión y selección|parse
+Funciones de conversión y selección|zeroifempty
+Funciones de conversión y selección|zeroifnull
+Funciones de conversión y selección|coalesce
+Funciones de conversión y selección|elementat
+Funciones de conversión y selección|emptyifnull
+Funciones de conversión y selección|indexof
+Funciones de conversión y selección|isnull
+Funciones de conversión y selección|isnumeric
+Funciones de conversión y selección|nullifempty
+Funciones de conversión y selección|nullifzero
+Funciones de conversión y selección|switch
+Funciones de fecha|dateadd
+Funciones de fecha|datediff
+Funciones de fecha|datefromparts
+Funciones de fecha|datename
+Funciones de fecha|datepart
+Funciones de fecha|datetime2fromparts
+Funciones de fecha|datetimefromparts
+Funciones de fecha|datetimeoffsetfromparts
+Funciones de fecha|day
+Funciones de fecha|getdate
+Funciones de fecha|getenddate
+Funciones de fecha|getenddatetime
+Funciones de fecha|getutcdate
+Funciones de fecha|isdate
+Funciones de fecha|isoweek
+Funciones de fecha|isoweekcode
+Funciones de fecha|isoweekshortcode
+Funciones de fecha|isoweekyear
+Funciones de fecha|localdate
+Funciones de fecha|month
+Funciones de fecha|smalldatetimefromparts
+Funciones de fecha|switchoffset
+Funciones de fecha|sysdatetime
+Funciones de fecha|sysdatetimeoffset
+Funciones de fecha|sysutcdatetime
+Funciones de fecha|timefromparts
+Funciones de fecha|todatetimeoffset
+Funciones de fecha|today
+Funciones de fecha|tomorrow
+Funciones de fecha|year
+Funciones de fecha|eomonth
+Funciones de fecha|hour
+Funciones de sistema|checksum
+Funciones de sistema|currentusername
+Funciones de sistema|filegroupproperty
+Funciones de sistema|fileproperty
+Funciones de sistema|formatmessage
+Funciones de sistema|serverproperty
+Funciones de sistema|sessionproperty
+Funciones de sistema|columnproperty
+Funciones de sistema|databasepropertyex
+Funciones de sistema|datalength
+Funciones de sistema|fulltextcatalogproperty
+Funciones de sistema|fulltextserviceproperty
+Funciones de sistema|getansinull
+Funciones de sistema|indexproperty
+Funciones de sistema|newid
+Funciones de sistema|objectproperty
+Funciones de sistema|parsename
+Funciones de sistema|permissions
+Funciones de sistema|typeproperty
+Funciones de texto|ascii
+Funciones de texto|charindex
+Funciones de texto|concat
+Funciones de texto|difference
+Funciones de texto|format
+Funciones de texto|left
+Funciones de texto|len
+Funciones de texto|lower
+Funciones de texto|ltrim
+Funciones de texto|patindex
+Funciones de texto|quotename
+Funciones de texto|replace
+Funciones de texto|replicate
+Funciones de texto|reverse
+Funciones de texto|right
+Funciones de texto|rtrim
+Funciones de texto|soundex
+Funciones de texto|str
+Funciones de texto|stuff
+Funciones de texto|substring
+Funciones de texto|trim
+Funciones de texto|unicode
+Funciones de texto|upper
+Funciones matemáticas|abs
+Funciones matemáticas|acos
+Funciones matemáticas|addition
+Funciones matemáticas|asin
+Funciones matemáticas|atan
+Funciones matemáticas|atn2
+Funciones matemáticas|ceiling
+Funciones matemáticas|cos
+Funciones matemáticas|cot
+Funciones matemáticas|degrees
+Funciones matemáticas|divide
+Funciones matemáticas|exp
+Funciones matemáticas|floor
+Funciones matemáticas|log
+Funciones matemáticas|log10
+Funciones matemáticas|margin
+Funciones matemáticas|maximum
+Funciones matemáticas|minimum
+Funciones matemáticas|mod
+Funciones matemáticas|pi
+Funciones matemáticas|power
+Funciones matemáticas|radians
+Funciones matemáticas|rand
+Funciones matemáticas|round
+Funciones matemáticas|sign
+Funciones matemáticas|sin
+Funciones matemáticas|space
+Funciones matemáticas|sqrt
+Funciones matemáticas|substraction
+Funciones matemáticas|tan
+Funciones matemáticas|square
+Vistas Crono|Crono$Directory
+Vistas Crono|Crono$DirectoryName
+Vistas Crono|Crono$Download
+Vistas Crono|Crono$FileName
+Vistas Crono|Crono$FileNameWithoutExtension
+Vistas Crono|Crono$HeaderProperty
+Vistas Crono|Crono$IsoDate
+Vistas Crono|Crono$MarkdownTitle
+Vistas Crono|Crono$NiceUrlName
+Vistas Crono|Crono$ReadFile
+Vistas Crono|Crono$RfcDate
+Vistas Crono|Crono$Route
+Miscelánea|ismemberof
+Miscelánea|md5
+Miscelánea|memberof
+Miscelánea|nameof
+Miscelánea|sha1
+Miscelánea|sha256
+Miscelánea|single
+Miscelánea|valueof

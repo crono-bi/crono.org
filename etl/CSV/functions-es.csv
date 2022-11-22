@@ -131,8 +131,6 @@ getutcdate|  Devuelve la marca de tiempo del sistema de la base de datos actual 
 graph|Utilice las funciones descritas en las páginas de esta sección para extraer valores y transformar valores en pseudocolumnas utilizadas en SQL Graph.
 graph|Devuelve el ID de gráfico interno para un ID de borde determinado.
 graph|Devuelve el ID de gráfico interno para un ID de nodo determinado.
-grouping|  Es una función que calcula el nivel de agrupación. GROUPING_ID solo se puede usar en las cláusulas SELECT \<select> list, HAVING u ORDER BY cuando se especifica GROUP BY.
-grouping|  Indica si una expresión de columna especificada en una lista GROUP BY está agregada o no. GROUPING devuelve 1 para agregados o 0 para no agregados en el conjunto de resultados. GROUPING solo se puede usar en las cláusulas SELECT \<select> list, HAVING y ORDER BY cuando se especifica GROUP BY.
 has|  Devuelve información sobre si el usuario tiene acceso a la base de datos especificada.
 has|  Evalúa el permiso efectivo del usuario actual en un asegurable. Una función relacionada es [fn_my_permissions](../../relational-databases/system-functions/sys-fn-my-permissions-transact-sql.md).
 hashbytes|  Devuelve el hash MD2, MD4, MD5, SHA, SHA1 o SHA2 de su entrada en [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)].
