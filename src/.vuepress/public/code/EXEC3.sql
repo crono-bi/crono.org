@@ -1,0 +1,1 @@
+﻿EXECUTE dwh.cargar;

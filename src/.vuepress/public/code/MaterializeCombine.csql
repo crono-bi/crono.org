@@ -1,0 +1,17 @@
+﻿COMBINE bY Product,productNumber
+  MATERIALIZE sales (
+	select 
+	  Product.Name Product,
+	  Product.ProductNumber ProductNumber,
+	  sum(PurchaseOrderDetail.LineTotal) Purchases
+	from staging.PurchaseOrderDetail
+	inner join staging.Product  using ProductId
+  ),
+  MATERIALIZE purchases (
+	select 
+	  Product.Name Product,
+	  Product.ProductNumber ProductNumber,
+	  sum(SalesOrderDetail.LineTotal) Sales
+	from staging.SalesOrderDetail
+	inner join staging.Product  using ProductId
+  )

@@ -1,0 +1,18 @@
+﻿SELECT
+  Date,
+  IsoDate,
+  cast(Year as  varchar(4)),
+  concat('Trimestre ',Quarter) Trimestre,
+  YearQuarter,
+  MonthNumber,
+  Month,
+  YearMonth,
+  Day,
+  WeekDay, 
+  DayOfYear,
+  IsoWeekNumber,
+  IsoWeekYear,
+  IsoWeek
+FROM TIME_TABLE
+WHERE
+  year BETWEEN 2010 AND year(getdate())

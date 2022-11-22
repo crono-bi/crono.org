@@ -1,0 +1,8 @@
+﻿SELECT 
+  Person.BusinessEntityID, 
+  Person.PersonType,
+  PersonType.PersonTypeDescription,
+  Person.FirstName,
+  Person.MiddleName,
+FROM staging.Person
+LEFT JOIN FILE WITH COLUMN NAMES 'http://bit.ly/2pcuiEe' PersonType USING PersonType

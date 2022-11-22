@@ -1,0 +1,10 @@
+﻿--Ejemplo 4
+SELECT
+   DimProduct.EnglishProductName AS EnglishProductName,
+   sum(sales.OrderQuantity) WHERE (DimDate.CalendarYear=2008) [Ventas 2008],
+   sum(sales.OrderQuantity) WHERE (DimDate.CalendarYear=2007) [Ventas 2007],
+   [Ventas 2008]-[Ventas 2007] Diferencia
+FROM DATABASE 'http://bit.ly/2oP72d6'
+WHERE
+  DimProductCategory.SpanishProductCategoryName='Bicicleta' 
+  AND DimDate.SpanishMonthName='Enero'

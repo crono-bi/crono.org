@@ -1,0 +1,20 @@
+﻿LOAD dwh.FactSalesOrderHeader(#SalesOrderSid autoincrement) WITH INCREMENTAL
+DECLARE @last timestamp=(select max(InsertTimestamp) from FactSalesOrderHeader)
+SELECT 
+  SalesOrderHeader.SalesOrderId,
+  Customer.CustomerId,
+  cast(SalesOrderHeader.OrderDate as date) OrderDate,
+  SalesOrderHeader.SalesOrderNumber,
+  cast(SalesOrderHeader.DueDate as date) DueDate,
+  cast(SalesOrderHeader.ShipDate as date) ShipDate,
+  SalesOrderHeader.OnlineOrderFlag,
+  SalesOrderHeader.PurchaseOrderNumber,
+  SalesOrderHeader.AccountNumber,
+  SalesOrderHeader.Freight,
+  SalesOrderHeader.CreditCardApprovalCode,
+  SalesOrderHeader.SubTotal Amount,
+  SalesOrderHeader.TaxAmt,
+  SalesOrderHeader.InsertTimestamp
+FROM staging.SalesOrderHeader
+INNER JOIN staging.customer using SalesOrderHeader(customerId)
+where SalesOrderHeader.InsertTimestamp&gt;@last

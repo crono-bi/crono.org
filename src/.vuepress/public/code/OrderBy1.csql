@@ -1,0 +1,6 @@
+﻿SELECT
+  year(sales.OrderDate) AS OrderYear,
+  month(sales.OrderDate) as OrderMonth,
+  sum(sales.subtotal) AS Amount
+FROM staging.SalesOrderHeader sales
+ORDER BY OrderYear, OrderMonth

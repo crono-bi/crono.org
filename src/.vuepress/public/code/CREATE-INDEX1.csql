@@ -1,0 +1,1 @@
+﻿CREATE INDEX IDX_Customer1 ON dwh.DimCustomers(LastName)

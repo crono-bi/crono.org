@@ -1,0 +1,5 @@
+﻿UPDATE table1 PARTITION (table1.UPDATETYPE='blah')
+SELECT 
+  #code,
+  description CodeDescription
+from table2

@@ -1,0 +1,22 @@
+﻿--Ejemplo 5 
+COMBINE BY CalendarYear
+  isales1 AS (
+    SELECT
+      DimDate.CalendarYear AS CalendarYear,
+      sum(isales.SalesAmount) AS ventasInternet
+    FROM FactInternetSales isales
+    INNER JOIN DimDate ON (isales.OrderDateKey=DimDate.DateKey)
+    INNER JOIN DimCustomer ON (isales.CustomerKey=DimCustomer.CustomerKey)
+    INNER JOIN DimGeography ON (DimCustomer.GeographyKey=DimGeography.GeographyKey)
+    WHERE DimGeography.SpanishCountryRegionName='Francia'
+    GROUP BY DimDate.CalendarYear),
+  sales1 AS (
+    SELECT
+      DimDate.CalendarYear AS CalendarYear,
+      sum(sales.SalesAmount) AS ventasReseller
+    FROM FactResellerSales sales
+    INNER JOIN DimReseller ON (sales.ResellerKey=DimReseller.ResellerKey)
+    INNER JOIN DimGeography ON (DimReseller.GeographyKey=DimGeography.GeographyKey)
+    INNER JOIN DimDate ON (sales.OrderDateKey=DimDate.DateKey)
+    WHERE DimGeography.SpanishCountryRegionName='Francia'
+    GROUP BY DimDate.CalendarYear)

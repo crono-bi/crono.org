@@ -1,0 +1,17 @@
+﻿LOAD dwh.FactSalesOrderHeader(#SalesOrderSid autoincrement) WITH [DELETE AND INSERT]
+SELECT 
+  SalesOrderHeader.SalesOrderId,
+  Customer.CustomerId,
+  cast(SalesOrderHeader.OrderDate as date) OrderDate,
+  SalesOrderHeader.SalesOrderNumber,
+  cast(SalesOrderHeader.DueDate as date) DueDate,
+  cast(SalesOrderHeader.ShipDate as date) ShipDate,
+  SalesOrderHeader.OnlineOrderFlag,
+  SalesOrderHeader.PurchaseOrderNumber,
+  SalesOrderHeader.AccountNumber,
+  SalesOrderHeader.Freight,
+  SalesOrderHeader.CreditCardApprovalCode,
+  SalesOrderHeader.SubTotal Amount,
+  SalesOrderHeader.TaxAmt
+FROM staging.SalesOrderHeader
+INNER JOIN staging.customer using SalesOrderHeader(customerId)

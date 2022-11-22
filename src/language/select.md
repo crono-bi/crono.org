@@ -19,7 +19,7 @@ A continuación se describen sistemáticamente todas las características soport
 
 **Proposición:** Cualquier sentencia **SELECT** válida en SQL es válida también en **Crono SQL**
 
-
+<view-sql-code fileName="SelectHelloWorld"/>
 
 Si ninguna tabla participa en la consulta, se debe terminar la sentencia con el carácter punto y coma ";". En cualquier otro caso, el punto y coma es opcional.
 

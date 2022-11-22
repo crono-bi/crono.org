@@ -1,0 +1,50 @@
+﻿LOAD dwh.FactSalesOrderHeader(#SalesOrderSid autoincrement) WITH SNAPSHOT
+SELECT 
+  SalesOrderHeader.SalesOrderId #SalesOrderId,
+  DimCustomers.CustomerSid CustomerSid,
+  cast(SalesOrderHeader.OrderDate as date) OrderDate,
+  SalesOrderHeader.SalesOrderNumber,
+  cast(SalesOrderHeader.DueDate as date) DueDate,
+  cast(SalesOrderHeader.ShipDate as date) ShipDate,
+  SalesOrderHeader.OnlineOrderFlag,
+  SalesOrderHeader.PurchaseOrderNumber,
+  SalesOrderHeader.AccountNumber,
+  SalesOrderHeader.Freight,
+  SalesOrderHeader.CreditCardApprovalCode,
+  ShipMethod.Name ShippingMethod,
+  concat(SalesPersonPerson.FirstName,' ',SalesPersonPerson.LastName) SalesPerson,
+  Currency.Name OriginalCurrency,
+  BillToCountry.Name BillCountry,
+  BillToProvince.Name BillProvince,
+  BillToAddress.City BillCity,
+  BillToAddress.AddressLine1 BillAdressLine1,
+  BillToAddress.AddressLine2 BillAddressLine2,
+  BillToAddress.PostalCode BillPostalCode,
+  ShipToCountry.Name ShipCountry,
+  ShipToProvince.Name ShipProvince,
+  ShipToAddress.City ShipCity,
+  ShipToAddress.AddressLine1 ShipAdressLine1,
+  ShipToAddress.AddressLine2 ShipAddressLine2,
+  ShipToAddress.PostalCode ShipPostalCode,
+  concat(CreditCardPerson.FirstName,' ',CreditCardPerson.LastName) CreditCardPerson,
+  CreditCard.CardType,
+  CreditCard.CardNumber,
+  SalesOrderHeader.TaxAmt
+FROM staging.SalesOrderHeader
+LEFT JOIN staging.Employee using SalesOrderHeader(SalesPersonId BusinessEntityId)
+INNER JOIN staging.Address BillToAddress using SalesOrderHeader(BilltoAddressID AddressId)
+INNER JOIN staging.StateProvince BillToProvince using BillToAddress(StateProvinceId)
+INNER JOIN staging.CountryRegion BillToCountry using BillToProvince(CountryRegionCode) 
+INNER JOIN staging.Address ShipToAddress using SalesOrderHeader(ShiptoAddressID AddressId)
+INNER JOIN staging.StateProvince ShipToProvince using ShipToAddress(StateProvinceId)
+INNER JOIN staging.CountryRegion ShipToCountry using ShipToProvince(CountryRegionCode)
+INNER JOIN staging.ShipMethod using SalesOrderHeader(ShipMethodId)
+LEFT JOIN staging.person SalesPersonPerson using SalesOrderHeader(SalesPersonID BusinessEntityID)
+LEFT JOIN staging.CurrencyRate using SalesOrderHeader(currencyRateID)
+LEFT JOIN staging.Currency using CurrencyRate(ToCurrencycode CurrencyCode )
+LEFT JOIN staging.CreditCard using SalesOrderHeader(CreditCardId)
+LEFT JOIN staging.PersonCreditCard using CreditCard(CreditCardId)
+LEFT JOIN staging.person CreditCardPerson using PersonCreditCard(BusinessEntityID BusinessEntityID)
+INNER JOIN staging.customer using SalesOrderHeader(customerId)
+INNER JOIN dwh.DimCustomers using Customer(CustomerId)
+CHECK SNOWFLAKE

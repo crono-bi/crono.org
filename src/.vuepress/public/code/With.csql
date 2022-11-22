@@ -1,0 +1,19 @@
+﻿WITH addresses AS (
+  SELECT bia.BusinessEntityID,bia.AddressTypeId,CountryRegion.Name Region,Address.AddressLine1,Address.City
+  FROM staging.BusinessEntityAddress bia
+  INNER JOIN staging.Address using AddressId
+  INNER JOIN staging.StateProvince USING Address(StateProvinceId)
+  INNER JOIN staging.CountryRegion USING StateProvince(CountryRegionCode)
+) 
+SELECT 
+  Person.FirstName,
+  Person.LastName,
+  HomeAddress.AddressLine1 HomeAddressLine1,
+  HomeAddress.City HomeCity,
+  HomeAddress.Region HomeRegion,
+  ShippingAddress.AddressLine1 ShippingAddressLine1,
+  ShippingAddress.City ShippingCity ,
+  ShippingAddress.Region ShippingRegion ,
+FROM staging.Person 
+LEFT JOIN addresses FILTER (AddressTypeId=2) HomeAddress USING BusinessEntityID
+LEFT JOIN addresses FILTER (AddressTypeId=5) ShippingAddress USING BusinessEntityID

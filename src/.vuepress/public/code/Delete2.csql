@@ -1,0 +1,7 @@
+﻿DELETE 
+FROM dwh.FactSalesOrderDetails
+WHERE SalesOrderSid in (
+  SELECT SalesOrderSid
+  FROM dwh.FactSalesOrderHeader
+  INNER JOIN dwh.DimCustomers using FactSalesOrderHeader(CustomerSid)
+  WHERE DimCustomers.Customer='Oscar Simmons')

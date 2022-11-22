@@ -1,0 +1,9 @@
+﻿--Ejemplo 2
+SELECT
+  DimProduct.EnglishProductName AS EnglishProductName,
+  sum(sales.OrderQuantity) AS Unidades
+FROM DATABASE 'http://bit.ly/2oP72d6'
+WHERE
+  DimGeography.SpanishCountryRegionName='Alemania'
+  AND DimProductCategory.SpanishProductCategoryName='Bicicleta'
+  AND DimDate.CalendarYear=2008

@@ -1,0 +1,8 @@
+﻿-- Ejemplo 5
+SELECT
+  DimDate.CalendarYear AS CalendarYear,
+  sum(isales.SalesAmount) AS ventasInternet,
+  sum(sales.SalesAmount) AS ventasReseller,
+  ventasInternet+ventasReseller VentasTotales
+FROM DATABASE 'http://bit.ly/2oP72d6'
+WHERE DimGeography.SpanishCountryRegionName='Francia'

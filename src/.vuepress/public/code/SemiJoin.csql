@@ -1,0 +1,3 @@
+﻿select *
+FROM staging.customer 
+SEMI JOIN staging.SalesOrderHeader sales using customerId

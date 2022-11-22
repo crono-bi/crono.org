@@ -1,0 +1,4 @@
+﻿select *
+from time_table
+where 
+   year between 2000 and year(getdate())

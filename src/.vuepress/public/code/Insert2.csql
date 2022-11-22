@@ -1,0 +1,19 @@
+﻿INSERT INTO dwh.DimProducts
+select 
+  ProductID,
+  Product.Name Product,
+  ProductCategory.name ProductCategory,
+  ProductSubCategory.name ProductSubCategory,
+  ProductNumber,
+  ProductModel.name ProductModel,
+  Product.Color,
+  Product.StandardCost ProductCost,
+  Product.ListPrice,
+  Product.Size,
+  Product.SizeUnitMeasureCode,
+  Product.Weight,
+  Product.WeightUnitMeasureCode
+FROM staging.Product
+LEFT JOIN staging.ProductSubCategory using Product(ProductSubcategoryID)
+LEFT JOIN staging.ProductCategory using ProductSubCategory(ProductCategoryId)
+LEFT JOIN staging.ProductModel using Product(ProductModelID)

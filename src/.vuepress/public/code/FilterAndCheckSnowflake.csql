@@ -1,0 +1,16 @@
+﻿SELECT 
+  Person.BusinessEntityId,
+  Person.PersonType,
+  Person.LastName,
+  HomeAddress.AddressLine1	HomeAddressLine1,
+  HomeAddress.AddressLine2	HomeAddressLine2,
+  HomeAddress.City		HomeCity,
+  ShippingAddress.AddressLine1	ShippingAddressLine1,
+  ShippingAddress.AddressLine2	ShippingAddressLine2,
+  ShippingAddress.City		ShippingCity
+FROM staging.Person
+LEFT JOIN staging.BusinessEntityAddress FILTER (AddressTypeId=2) BEHomeAddress using BusinessEntityId
+LEFT JOIN staging.BusinessEntityAddress FILTER (AddressTypeId=5) BEShippingAddress using BusinessEntityId
+LEFT JOIN staging.Address HomeAddress using BEHomeAddress(AddressId)
+LEFT JOIN staging.Address ShippingAddress using BEShippingAddress(AddressId)
+CHECK SNOWFLAKE

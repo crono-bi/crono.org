@@ -1,0 +1,12 @@
+﻿select
+  Product,
+  ProductNumber,
+  avg(Sales) AvgYearSales
+select 
+  Product.Name Product,
+  Product.ProductNumber,
+  year(OrderDate) OrderYear,
+  sum(SalesOrderDetail.LineTotal) Sales
+from staging.SalesOrderDetail
+inner join staging.SalesOrderHeader using SalesOrderId
+inner join staging.Product  using ProductId
