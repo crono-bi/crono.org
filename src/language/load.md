@@ -18,7 +18,7 @@ La sentencia **LOAD** carga los datos en una **tabla destino**, siguiendo  una *
 
 La sintaxis es muy sencilla. Por ejemplo, la siguiente sentencia carga tabla dimensión de *DimProducts*, creando su clave subrogada, a partir de una consulta de los datos fuente:
 
-
+<view-sql-code fileName="SCD1-3"/>
 
 La lógica de carga está definida en la "estrategia de carga" (en el ejemplo, **SCD1**). En concreto, la estrategia de carga determina:
 
@@ -50,7 +50,7 @@ La estrategia **SCD1** es una carga de **dimensión lentamente cambiante tipo 1*
 
 Se utiliza habitualmente para cargar tablas de dimensión, ya que se requiere mantener los registros antiguos para respetar la integridad (no queremos borrar un producto o un cliente que tal vez tienen ventas u otras transacciones asociadas).
 
-
+<view-sql-code fileName="SCD1-1"/>
 
 Es importante observar que el campo *ProductId* está precedido por el **carácter numeral #**. Esta marca es importante ya que sirve para identificar la **clave de actualización**. Habitualmente coincide con la clave de negocio (código único que identifica a cada registro)
 
@@ -62,6 +62,7 @@ Si en el futuro se modifica la consulta, añadiendo más campos a la dimensión,
 
 En lugar de *int IDENTITY(1,1)* se puede utilizar el sinónimo *increment*, produciendo exactamente el mismo resultado:
 
+<view-sql-code fileName="SCD1-2"/>
 
 Observad que en estos dos ejemplos, después de los **JOIN**, se ha incluido la clausula **CHECK SNOWFLAKE**. Por lo tanto, antes de realizar la carga, **Crono SQL** verificará que la consulta de origen no pierda ni duplique registros de *staging.Products*.
 
@@ -75,6 +76,7 @@ Se utiliza para cargar tablas de dimensión en las que es necesario guardar la h
 
 El código es exactamente igual que el de las cargas **SCD1**, únicamente es necesario cambiar el nombre de la estrategia a utilizar: **SCD2** 
 
+<view-sql-code fileName="SCD2-1"/>
 
 El código generado realiza un **MERGE** para actualizar las fechas de fin vigencia, y un **INSERT** para añadir los registros que han cambiado y los nuevos registros.
 
@@ -95,11 +97,13 @@ Se utiliza en tablas de hechos pequeñas o en aquellas tablas de dimensión en q
 
 La sintaxis es idéntica a los casos anteriores. Únicamente es necesario cambiar el nombre de la estrategia de carga:
 
+<view-sql-code fileName="SNAPSHOT-1"/>
 
 El ejemplo anterior, además de crear la tabla, e informar los campos de auditoria, actualizará el contenido de la tabla de *DimProducts* con los valores vigentes en el origen, eliminando los registros que se hayan eliminado en el origen.
 
 El código generado es óptimo y presenta un gran rendimiento, por lo que esta estrategia es adecuada también en tablas de hechos no excesivamente grandes:
 
+<view-sql-code fileName="SNAPSHOT-2"/>
 
 Incluso si la tabla de origen tuviese unos pocos millones de registros, la carga anterior se ejecutaría rápidamente (con el Hardware adecuado).
 
@@ -112,15 +116,17 @@ La estrategia **INCREMENTAL** realiza una carga incremental de la la tabla. En g
 
 Las cargas incrementales son adecuadas para tablas de hechos con muchos millones de registros.
 
+<view-sql-code fileName="INCREMENTAL-1"/>
 
 La anterior sentencia cargará las ventas del día anterior (y solo las del día anterior). Evidentemente, esta estrategia es débil y propensa a errores. Dejará de cargar registros si algún día no se ejecuta la carga, o podría duplicarlos si se ejecutase dos veces un mismo día. También fallaría si algún proceso del ERP se retrasase varios días en insertar los datos de alguna tienda... La siguiente estrategia resuelve parcialmente el problema: 
 
- 
+ <view-sql-code fileName="INCREMENTAL-2"/>
 
 En el caso anterior, se cargarían las ventas de los últimos 30 días que no se hayan cargado previamente. La marca **#** especifica la **clave de inserción**, es decir, que no se insertarán *SalesOrderId* que ya existan en la tabla de destino. Esta estrategia es recomendable si tenemos la seguridad de que ninguna venta tarda más de 30 días en cargarse en el sistema.
 
 Otra opción sería añadir incrementalmente aquellos registros añadidos en el ERP desde la última carga (requiere un campo "*timestamp*" en el origen).
 
+<view-sql-code fileName="INCREMENTAL-3"/>
 
 Observad como en este caso se ha declarado la variable *@last* con la fecha del último registro insertado. 
 
@@ -139,9 +145,11 @@ El código **Crono SQL** se convierte en un **DELETE** seguido de un **INSERT**.
 
 En este ejemplo, se elimina todo el contenido de la tabla y se recarga:
 
+<view-sql-code fileName="DELETE-AND-INSERT-1"/>
 
 Evidentemente, esta estrategia seria muy ineficiente, sin embargo, en función del volumen de la tabla, podría ser aceptable eliminar y recargar el último mes o el último año. Por ejemplo, el siguiente ejemplo  recarga las ventas del año en curso.
 
+<view-sql-code fileName="DELETE-AND-INSERT-2"/>
 
 Se observa la clausula **PARTITION** que determina la porción de la tabla que se recargará.
 

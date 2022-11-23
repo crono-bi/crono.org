@@ -4,7 +4,6 @@
  * https://v1.vuepress.vuejs.org/guide/basic-config.html#app-level-enhancements
  */
 
-import Prism from "prismjs";
 
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
@@ -18,10 +17,4 @@ export default ({
 }) => {
   Vue.use(BootstrapVue)
   Vue.use(IconsPlugin)
-  router.afterEach(() => {
-    setTimeout(() => {
-      Prism.highlightAll();
-    }, 1000);
-  });
-  // ...apply enhancements for the site.
 }
