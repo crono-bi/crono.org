@@ -105,11 +105,11 @@ error|Esta función devuelve el valor de gravedad del error cuando se produce un
 error|  Devuelve el número de estado del error que provocó la ejecución del bloque CATCH de una construcción TRY...CATCH.
 error|  Devuelve el número de error de la última instrucción [!INCLUDE[tsql](../../includes/tsql-md.md)] ejecutada.
 eventdata|Esta función devuelve información sobre eventos del servidor o de la base de datos. Cuando se activa una notificación de evento y el intermediario de servicios especificado recibe los resultados, se llama a `EVENTDATA`. Un activador de inicio de sesión o DDL también admite el uso interno de `EVENTDATA`.
-exp|  Devuelve el valor exponencial de la expresión **float** especificada.
+exp|  Devuelve el valor exponencial de la expresión **flotante** especificada.
 fetch|Esta función devuelve el estado de la última instrucción FETCH de cursor emitida contra cualquier cursor actualmente abierto por la conexión.
 file|Para el nombre lógico proporcionado para un archivo componente de la base de datos actual, esta función devuelve el número de identificación (ID) del archivo.
 file|Esta función devuelve el número de identificación (ID) del archivo para el nombre lógico especificado de un archivo de datos, registro o texto completo de la base de datos actual.
-file|Esta función devuelve el nombre de archivo lógico para un número de identificación (ID) de archivo dado.
+file|Esta función devuelve el nombre de archivo lógico para un número de identificación (ID) de archivo determinado.
 filegroup|Esta función devuelve el número de identificación (ID) del grupo de archivos para un nombre de grupo de archivos especificado.
 filegroup|Esta función devuelve el nombre del grupo de archivos para el número de identificación (ID) del grupo de archivos especificado.
 filegroupproperty|Esta función devuelve el valor de la propiedad del grupo de archivos para un nombre y un valor de grupo de archivos especificados.
@@ -131,6 +131,8 @@ getutcdate|  Devuelve la marca de tiempo del sistema de la base de datos actual 
 graph|Utilice las funciones descritas en las páginas de esta sección para extraer valores y transformar valores en pseudocolumnas utilizadas en SQL Graph.
 graph|Devuelve el ID de gráfico interno para un ID de borde determinado.
 graph|Devuelve el ID de gráfico interno para un ID de nodo determinado.
+grouping|  Es una función que calcula el nivel de agrupación. GROUPING_ID solo se puede usar en las cláusulas SELECT \<select> list, HAVING u ORDER BY cuando se especifica GROUP BY.
+grouping|  Indica si una expresión de columna especificada en una lista GROUP BY está agregada o no. GROUPING devuelve 1 para agregados o 0 para no agregados en el conjunto de resultados. GROUPING solo se puede usar en las cláusulas SELECT \<select> list, HAVING y ORDER BY cuando se especifica GROUP BY.
 has|  Devuelve información sobre si el usuario tiene acceso a la base de datos especificada.
 has|  Evalúa el permiso efectivo del usuario actual en un asegurable. Una función relacionada es [fn_my_permissions](../../relational-databases/system-functions/sys-fn-my-permissions-transact-sql.md).
 hashbytes|  Devuelve el hash MD2, MD4, MD5, SHA, SHA1 o SHA2 de su entrada en [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)].
@@ -168,7 +170,7 @@ lag|  Accede a los datos de una fila anterior en el mismo conjunto de resultados
 langid|  Devuelve el identificador de idioma local (ID) del idioma que se está utilizando actualmente.
 language|  Devuelve el nombre del idioma que se está utilizando actualmente.
 last|Devuelve el último valor de un conjunto ordenado de valores.
-lead|  Accede a los datos de una fila posterior en el mismo conjunto de resultados sin el uso de una autocombinación que comience con [!INCLUDE[ssSQL11](../../includes/sssql11-md.md)]. LEAD proporciona acceso a una fila en un desplazamiento físico dado que sigue a la fila actual. Utilice esta función analítica en una declaración SELECT para comparar valores en la fila actual con valores en una fila siguiente.
+lead|  Accede a los datos de una fila posterior en el mismo conjunto de resultados sin el uso de una autocombinación que comience con [!INCLUDE[ssSQL11](../../includes/sssql11-md.md)]. LEAD proporciona acceso a una fila en un desplazamiento físico determinado que sigue a la fila actual. Utilice esta función analítica en una declaración SELECT para comparar valores en la fila actual con valores en una fila siguiente.
 left|LEFT_SHIFT toma dos parámetros y devuelve el primer parámetro desplazado en bits a la izquierda por el número de bits especificado en el segundo parámetro.
 left|  Devuelve la parte izquierda de una cadena de caracteres con el número de caracteres especificado.
 len|Devuelve el número de caracteres de la expresión de cadena especificada, sin incluir los espacios finales.
@@ -244,8 +246,8 @@ right|RIGHT_SHIFT toma dos parámetros y devuelve el primer parámetro desplazad
 right|  Devuelve la parte derecha de una cadena de caracteres con el número de caracteres especificado.
 round|Devuelve un valor numérico, redondeado a la longitud o precisión especificada.
 row|Numera la salida de un conjunto de resultados. Más específicamente, devuelve el número secuencial de una fila dentro de una partición de un conjunto de resultados, comenzando en 1 para la primera fila de cada partición.
-rowcount|  Devuelve el número de filas afectadas por la última instrucción ejecutada. Esta función funciona como [@@ROWCOUNT](../../t-sql/functions/rowcount-transact-sql.md), excepto que el tipo de devolución de ROWCOUNT_BIG es **bigint**.
-rowcount|  Devuelve el número de filas afectadas por la última sentencia. Si el número de filas es superior a 2 mil millones, use [ROWCOUNT_BIG](../../t-sql/functions/rowcount-big-transact-sql.md).
+rowcount|  Devuelve el número de filas afectadas por la última instrucción ejecutada. Esta función funciona como [@@ROWCOUNT](../../t-sql/functions/rowcount-transact-sql.md), excepto que el tipo de retorno de ROWCOUNT_BIG es **bigint**.
+rowcount|  Devuelve el número de filas afectadas por la última declaración. Si el número de filas es superior a 2 mil millones, use [ROWCOUNT_BIG](../../t-sql/functions/rowcount-big-transact-sql.md).
 rtrim|::: moniker range="<=sql-server-ver15 || <=sql-server-linux-ver15 || = azure-sqldw-latest || = azuresqldb-actual || = azuresqldb-mi-actual"
 schema|  Devuelve el ID de esquema asociado con un nombre de esquema.
 schema|  Devuelve el nombre de esquema asociado con un ID de esquema.

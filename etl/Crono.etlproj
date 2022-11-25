@@ -7,6 +7,12 @@
       ),
       Datasource=[SQL SERVER CONNECTION] ([Server]='.', DatabaseName='CRONO_SQL'),
       BackgroundColor=COLOR (Name='White')
+    ),
+    ENVIROMENT (
+      Name='BIBLIO',
+      Replacements=(),
+      Datasource=[SQL SERVER CONNECTION] ([Server]='(localdb)\v11.0', DatabaseName='BI_BIBLIO'),
+      BackgroundColor=COLOR (Name='White')
     )
   ),
   ExcludedFiles=(),

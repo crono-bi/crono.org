@@ -27,9 +27,19 @@
       "Visible": true,
       "Children": [
         {
+          "Path": "/functions/abc.html",
+          "Url": "https://cronosql.io/functions/abc.html",
+          "Title": "abc \u2747\uFE0F \u26D4",
+          "Id": null,
+          "Date": null,
+          "Position": 21474836,
+          "Visible": true,
+          "Children": []
+        },
+        {
           "Path": "/functions/abs.html",
           "Url": "https://cronosql.io/functions/abs.html",
-          "Title": "Funci\u00F3n  abs",
+          "Title": "abs \u2764\uFE0F",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -39,7 +49,7 @@
         {
           "Path": "/functions/acos.html",
           "Url": "https://cronosql.io/functions/acos.html",
-          "Title": "Funci\u00F3n  acos",
+          "Title": "acos",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -49,7 +59,7 @@
         {
           "Path": "/functions/addition.html",
           "Url": "https://cronosql.io/functions/addition.html",
-          "Title": "Funci\u00F3n  addition",
+          "Title": "addition \u2747\uFE0F \u2764\uFE0F",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -59,7 +69,7 @@
         {
           "Path": "/functions/ascii.html",
           "Url": "https://cronosql.io/functions/ascii.html",
-          "Title": "Funci\u00F3n  ascii",
+          "Title": "ascii",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -69,7 +79,7 @@
         {
           "Path": "/functions/asin.html",
           "Url": "https://cronosql.io/functions/asin.html",
-          "Title": "Funci\u00F3n  asin",
+          "Title": "asin",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -79,7 +89,7 @@
         {
           "Path": "/functions/atan.html",
           "Url": "https://cronosql.io/functions/atan.html",
-          "Title": "Funci\u00F3n  atan",
+          "Title": "atan",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -89,7 +99,7 @@
         {
           "Path": "/functions/atn2.html",
           "Url": "https://cronosql.io/functions/atn2.html",
-          "Title": "Funci\u00F3n  atn2",
+          "Title": "atn2",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -99,7 +109,7 @@
         {
           "Path": "/functions/avg.html",
           "Url": "https://cronosql.io/functions/avg.html",
-          "Title": "Funci\u00F3n  avg",
+          "Title": "avg",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -109,7 +119,7 @@
         {
           "Path": "/functions/cast.html",
           "Url": "https://cronosql.io/functions/cast.html",
-          "Title": "Funci\u00F3n  cast",
+          "Title": "cast",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -119,7 +129,7 @@
         {
           "Path": "/functions/ceiling.html",
           "Url": "https://cronosql.io/functions/ceiling.html",
-          "Title": "Funci\u00F3n  ceiling",
+          "Title": "ceiling",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -129,7 +139,7 @@
         {
           "Path": "/functions/charindex.html",
           "Url": "https://cronosql.io/functions/charindex.html",
-          "Title": "Funci\u00F3n  charindex",
+          "Title": "charindex",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -139,7 +149,7 @@
         {
           "Path": "/functions/checksum.html",
           "Url": "https://cronosql.io/functions/checksum.html",
-          "Title": "Funci\u00F3n  checksum",
+          "Title": "checksum",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -149,7 +159,7 @@
         {
           "Path": "/functions/coalesce.html",
           "Url": "https://cronosql.io/functions/coalesce.html",
-          "Title": "Funci\u00F3n  coalesce",
+          "Title": "coalesce \u2747\uFE0F \u26D4",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -159,7 +169,7 @@
         {
           "Path": "/functions/columnproperty.html",
           "Url": "https://cronosql.io/functions/columnproperty.html",
-          "Title": "Funci\u00F3n  columnproperty",
+          "Title": "columnproperty",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -169,7 +179,7 @@
         {
           "Path": "/functions/concat.html",
           "Url": "https://cronosql.io/functions/concat.html",
-          "Title": "Funci\u00F3n  concat",
+          "Title": "concat",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -179,7 +189,7 @@
         {
           "Path": "/functions/cos.html",
           "Url": "https://cronosql.io/functions/cos.html",
-          "Title": "Funci\u00F3n  cos",
+          "Title": "cos",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -189,7 +199,7 @@
         {
           "Path": "/functions/cot.html",
           "Url": "https://cronosql.io/functions/cot.html",
-          "Title": "Funci\u00F3n  cot",
+          "Title": "cot",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -199,7 +209,7 @@
         {
           "Path": "/functions/count.html",
           "Url": "https://cronosql.io/functions/count.html",
-          "Title": "Funci\u00F3n  count",
+          "Title": "count",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -209,7 +219,7 @@
         {
           "Path": "/functions/countdistinct.html",
           "Url": "https://cronosql.io/functions/countdistinct.html",
-          "Title": "Funci\u00F3n  countdistinct",
+          "Title": "countdistinct \u2747\uFE0F \u26D4",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -219,7 +229,7 @@
         {
           "Path": "/functions/cronodirectory.html",
           "Url": "https://cronosql.io/functions/cronodirectory.html",
-          "Title": "Funci\u00F3n  Crono$Directory",
+          "Title": "Crono$Directory \u2747\uFE0F \u26D4",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -229,7 +239,7 @@
         {
           "Path": "/functions/cronodirectoryname.html",
           "Url": "https://cronosql.io/functions/cronodirectoryname.html",
-          "Title": "Funci\u00F3n  Crono$DirectoryName",
+          "Title": "Crono$DirectoryName \u2747\uFE0F \u26D4",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -239,7 +249,7 @@
         {
           "Path": "/functions/cronodownload.html",
           "Url": "https://cronosql.io/functions/cronodownload.html",
-          "Title": "Funci\u00F3n  Crono$Download",
+          "Title": "Crono$Download \u2747\uFE0F \u26D4",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -249,7 +259,7 @@
         {
           "Path": "/functions/cronofilename.html",
           "Url": "https://cronosql.io/functions/cronofilename.html",
-          "Title": "Funci\u00F3n  Crono$FileName",
+          "Title": "Crono$FileName \u2747\uFE0F \u26D4",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -259,7 +269,7 @@
         {
           "Path": "/functions/cronofilenamewithoutextension.html",
           "Url": "https://cronosql.io/functions/cronofilenamewithoutextension.html",
-          "Title": "Funci\u00F3n  Crono$FileNameWithoutExtension",
+          "Title": "Crono$FileNameWithoutExtension \u2747\uFE0F \u26D4",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -269,7 +279,7 @@
         {
           "Path": "/functions/cronoheaderproperty.html",
           "Url": "https://cronosql.io/functions/cronoheaderproperty.html",
-          "Title": "Funci\u00F3n  Crono$HeaderProperty",
+          "Title": "Crono$HeaderProperty \u2747\uFE0F \u26D4",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -279,7 +289,7 @@
         {
           "Path": "/functions/cronoisodate.html",
           "Url": "https://cronosql.io/functions/cronoisodate.html",
-          "Title": "Funci\u00F3n  Crono$IsoDate",
+          "Title": "Crono$IsoDate \u2747\uFE0F \u26D4",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -289,7 +299,7 @@
         {
           "Path": "/functions/cronomarkdowntitle.html",
           "Url": "https://cronosql.io/functions/cronomarkdowntitle.html",
-          "Title": "Funci\u00F3n  Crono$MarkdownTitle",
+          "Title": "Crono$MarkdownTitle \u2747\uFE0F \u26D4",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -299,7 +309,7 @@
         {
           "Path": "/functions/crononiceurlname.html",
           "Url": "https://cronosql.io/functions/crononiceurlname.html",
-          "Title": "Funci\u00F3n  Crono$NiceUrlName",
+          "Title": "Crono$NiceUrlName \u2747\uFE0F \u26D4",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -309,7 +319,7 @@
         {
           "Path": "/functions/cronoreadfile.html",
           "Url": "https://cronosql.io/functions/cronoreadfile.html",
-          "Title": "Funci\u00F3n  Crono$ReadFile",
+          "Title": "Crono$ReadFile \u2747\uFE0F \u26D4",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -319,7 +329,7 @@
         {
           "Path": "/functions/cronorfcdate.html",
           "Url": "https://cronosql.io/functions/cronorfcdate.html",
-          "Title": "Funci\u00F3n  Crono$RfcDate",
+          "Title": "Crono$RfcDate \u2747\uFE0F \u26D4",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -329,7 +339,7 @@
         {
           "Path": "/functions/cronoroute.html",
           "Url": "https://cronosql.io/functions/cronoroute.html",
-          "Title": "Funci\u00F3n  Crono$Route",
+          "Title": "Crono$Route \u2747\uFE0F \u26D4",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -339,7 +349,7 @@
         {
           "Path": "/functions/currentusername.html",
           "Url": "https://cronosql.io/functions/currentusername.html",
-          "Title": "Funci\u00F3n  currentusername",
+          "Title": "currentusername \u2747\uFE0F \u26D4",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -349,7 +359,7 @@
         {
           "Path": "/functions/databasepropertyex.html",
           "Url": "https://cronosql.io/functions/databasepropertyex.html",
-          "Title": "Funci\u00F3n  databasepropertyex",
+          "Title": "databasepropertyex",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -359,7 +369,7 @@
         {
           "Path": "/functions/datalength.html",
           "Url": "https://cronosql.io/functions/datalength.html",
-          "Title": "Funci\u00F3n  datalength",
+          "Title": "datalength",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -369,7 +379,7 @@
         {
           "Path": "/functions/dateadd.html",
           "Url": "https://cronosql.io/functions/dateadd.html",
-          "Title": "Funci\u00F3n  dateadd",
+          "Title": "dateadd",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -379,7 +389,7 @@
         {
           "Path": "/functions/datediff.html",
           "Url": "https://cronosql.io/functions/datediff.html",
-          "Title": "Funci\u00F3n  datediff",
+          "Title": "datediff \u2747\uFE0F",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -389,7 +399,7 @@
         {
           "Path": "/functions/datefromparts.html",
           "Url": "https://cronosql.io/functions/datefromparts.html",
-          "Title": "Funci\u00F3n  datefromparts",
+          "Title": "datefromparts",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -399,7 +409,7 @@
         {
           "Path": "/functions/datename.html",
           "Url": "https://cronosql.io/functions/datename.html",
-          "Title": "Funci\u00F3n  datename",
+          "Title": "datename \u2747\uFE0F",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -409,7 +419,7 @@
         {
           "Path": "/functions/datepart.html",
           "Url": "https://cronosql.io/functions/datepart.html",
-          "Title": "Funci\u00F3n  datepart",
+          "Title": "datepart \u2747\uFE0F",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -419,7 +429,7 @@
         {
           "Path": "/functions/datetime2fromparts.html",
           "Url": "https://cronosql.io/functions/datetime2fromparts.html",
-          "Title": "Funci\u00F3n  datetime2fromparts",
+          "Title": "datetime2fromparts",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -429,7 +439,7 @@
         {
           "Path": "/functions/datetimefromparts.html",
           "Url": "https://cronosql.io/functions/datetimefromparts.html",
-          "Title": "Funci\u00F3n  datetimefromparts",
+          "Title": "datetimefromparts",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -439,7 +449,7 @@
         {
           "Path": "/functions/datetimeoffsetfromparts.html",
           "Url": "https://cronosql.io/functions/datetimeoffsetfromparts.html",
-          "Title": "Funci\u00F3n  datetimeoffsetfromparts",
+          "Title": "datetimeoffsetfromparts",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -449,7 +459,17 @@
         {
           "Path": "/functions/day.html",
           "Url": "https://cronosql.io/functions/day.html",
-          "Title": "Funci\u00F3n  day",
+          "Title": "day",
+          "Id": null,
+          "Date": null,
+          "Position": 21474836,
+          "Visible": true,
+          "Children": []
+        },
+        {
+          "Path": "/functions/decile.html",
+          "Url": "https://cronosql.io/functions/decile.html",
+          "Title": "decile \u2747\uFE0F \u26D4",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -459,7 +479,7 @@
         {
           "Path": "/functions/degrees.html",
           "Url": "https://cronosql.io/functions/degrees.html",
-          "Title": "Funci\u00F3n  degrees",
+          "Title": "degrees",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -469,7 +489,7 @@
         {
           "Path": "/functions/difference.html",
           "Url": "https://cronosql.io/functions/difference.html",
-          "Title": "Funci\u00F3n  difference",
+          "Title": "difference",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -479,7 +499,7 @@
         {
           "Path": "/functions/divide.html",
           "Url": "https://cronosql.io/functions/divide.html",
-          "Title": "Funci\u00F3n  divide",
+          "Title": "divide \u2747\uFE0F",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -489,7 +509,7 @@
         {
           "Path": "/functions/elementat.html",
           "Url": "https://cronosql.io/functions/elementat.html",
-          "Title": "Funci\u00F3n  elementat",
+          "Title": "elementat \u2747\uFE0F \u26D4",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -499,7 +519,7 @@
         {
           "Path": "/functions/emptyifnull.html",
           "Url": "https://cronosql.io/functions/emptyifnull.html",
-          "Title": "Funci\u00F3n  emptyifnull",
+          "Title": "emptyifnull \u2747\uFE0F \u26D4",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -509,7 +529,7 @@
         {
           "Path": "/functions/eomonth.html",
           "Url": "https://cronosql.io/functions/eomonth.html",
-          "Title": "Funci\u00F3n  eomonth",
+          "Title": "eomonth",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -519,7 +539,7 @@
         {
           "Path": "/functions/exp.html",
           "Url": "https://cronosql.io/functions/exp.html",
-          "Title": "Funci\u00F3n  exp",
+          "Title": "exp",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -529,7 +549,7 @@
         {
           "Path": "/functions/filegroupproperty.html",
           "Url": "https://cronosql.io/functions/filegroupproperty.html",
-          "Title": "Funci\u00F3n  filegroupproperty",
+          "Title": "filegroupproperty",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -539,7 +559,7 @@
         {
           "Path": "/functions/fileproperty.html",
           "Url": "https://cronosql.io/functions/fileproperty.html",
-          "Title": "Funci\u00F3n  fileproperty",
+          "Title": "fileproperty",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -549,7 +569,7 @@
         {
           "Path": "/functions/floor.html",
           "Url": "https://cronosql.io/functions/floor.html",
-          "Title": "Funci\u00F3n  floor",
+          "Title": "floor",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -559,7 +579,7 @@
         {
           "Path": "/functions/format.html",
           "Url": "https://cronosql.io/functions/format.html",
-          "Title": "Funci\u00F3n  format",
+          "Title": "format",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -569,7 +589,7 @@
         {
           "Path": "/functions/formatmessage.html",
           "Url": "https://cronosql.io/functions/formatmessage.html",
-          "Title": "Funci\u00F3n  formatmessage",
+          "Title": "formatmessage",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -579,7 +599,7 @@
         {
           "Path": "/functions/fulltextcatalogproperty.html",
           "Url": "https://cronosql.io/functions/fulltextcatalogproperty.html",
-          "Title": "Funci\u00F3n  fulltextcatalogproperty",
+          "Title": "fulltextcatalogproperty",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -589,7 +609,7 @@
         {
           "Path": "/functions/fulltextserviceproperty.html",
           "Url": "https://cronosql.io/functions/fulltextserviceproperty.html",
-          "Title": "Funci\u00F3n  fulltextserviceproperty",
+          "Title": "fulltextserviceproperty",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -599,7 +619,7 @@
         {
           "Path": "/functions/getansinull.html",
           "Url": "https://cronosql.io/functions/getansinull.html",
-          "Title": "Funci\u00F3n  getansinull",
+          "Title": "getansinull",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -609,7 +629,7 @@
         {
           "Path": "/functions/getdate.html",
           "Url": "https://cronosql.io/functions/getdate.html",
-          "Title": "Funci\u00F3n  getdate",
+          "Title": "getdate",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -619,7 +639,7 @@
         {
           "Path": "/functions/getenddate.html",
           "Url": "https://cronosql.io/functions/getenddate.html",
-          "Title": "Funci\u00F3n  getenddate",
+          "Title": "getenddate \u2747\uFE0F \u26D4",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -629,7 +649,7 @@
         {
           "Path": "/functions/getenddatetime.html",
           "Url": "https://cronosql.io/functions/getenddatetime.html",
-          "Title": "Funci\u00F3n  getenddatetime",
+          "Title": "getenddatetime \u2747\uFE0F \u26D4",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -639,7 +659,17 @@
         {
           "Path": "/functions/getutcdate.html",
           "Url": "https://cronosql.io/functions/getutcdate.html",
-          "Title": "Funci\u00F3n  getutcdate",
+          "Title": "getutcdate",
+          "Id": null,
+          "Date": null,
+          "Position": 21474836,
+          "Visible": true,
+          "Children": []
+        },
+        {
+          "Path": "/functions/grouping.html",
+          "Url": "https://cronosql.io/functions/grouping.html",
+          "Title": "grouping",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -649,7 +679,7 @@
         {
           "Path": "/functions/hour.html",
           "Url": "https://cronosql.io/functions/hour.html",
-          "Title": "Funci\u00F3n  hour",
+          "Title": "hour \u2747\uFE0F \u26D4",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -659,7 +689,7 @@
         {
           "Path": "/functions/indexof.html",
           "Url": "https://cronosql.io/functions/indexof.html",
-          "Title": "Funci\u00F3n  indexof",
+          "Title": "indexof \u2747\uFE0F \u26D4",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -669,7 +699,7 @@
         {
           "Path": "/functions/indexproperty.html",
           "Url": "https://cronosql.io/functions/indexproperty.html",
-          "Title": "Funci\u00F3n  indexproperty",
+          "Title": "indexproperty",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -679,7 +709,7 @@
         {
           "Path": "/functions/isdate.html",
           "Url": "https://cronosql.io/functions/isdate.html",
-          "Title": "Funci\u00F3n  isdate",
+          "Title": "isdate",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -689,7 +719,7 @@
         {
           "Path": "/functions/ismemberof.html",
           "Url": "https://cronosql.io/functions/ismemberof.html",
-          "Title": "Funci\u00F3n  ismemberof",
+          "Title": "ismemberof \u2747\uFE0F \u26D4",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -699,7 +729,7 @@
         {
           "Path": "/functions/isnull.html",
           "Url": "https://cronosql.io/functions/isnull.html",
-          "Title": "Funci\u00F3n  isnull",
+          "Title": "isnull",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -709,7 +739,7 @@
         {
           "Path": "/functions/isnumeric.html",
           "Url": "https://cronosql.io/functions/isnumeric.html",
-          "Title": "Funci\u00F3n  isnumeric",
+          "Title": "isnumeric",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -719,7 +749,7 @@
         {
           "Path": "/functions/isoweek.html",
           "Url": "https://cronosql.io/functions/isoweek.html",
-          "Title": "Funci\u00F3n  isoweek",
+          "Title": "isoweek \u2747\uFE0F \u26D4",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -729,7 +759,7 @@
         {
           "Path": "/functions/isoweekcode.html",
           "Url": "https://cronosql.io/functions/isoweekcode.html",
-          "Title": "Funci\u00F3n  isoweekcode",
+          "Title": "isoweekcode \u2747\uFE0F \u26D4",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -739,7 +769,7 @@
         {
           "Path": "/functions/isoweekshortcode.html",
           "Url": "https://cronosql.io/functions/isoweekshortcode.html",
-          "Title": "Funci\u00F3n  isoweekshortcode",
+          "Title": "isoweekshortcode \u2747\uFE0F \u26D4",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -749,7 +779,7 @@
         {
           "Path": "/functions/isoweekyear.html",
           "Url": "https://cronosql.io/functions/isoweekyear.html",
-          "Title": "Funci\u00F3n  isoweekyear",
+          "Title": "isoweekyear \u2747\uFE0F \u26D4",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -759,7 +789,7 @@
         {
           "Path": "/functions/lag.html",
           "Url": "https://cronosql.io/functions/lag.html",
-          "Title": "Funci\u00F3n  lag",
+          "Title": "lag",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -769,7 +799,7 @@
         {
           "Path": "/functions/lead.html",
           "Url": "https://cronosql.io/functions/lead.html",
-          "Title": "Funci\u00F3n  lead",
+          "Title": "lead",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -779,7 +809,7 @@
         {
           "Path": "/functions/left.html",
           "Url": "https://cronosql.io/functions/left.html",
-          "Title": "Funci\u00F3n  left",
+          "Title": "left \u2747\uFE0F",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -789,7 +819,7 @@
         {
           "Path": "/functions/len.html",
           "Url": "https://cronosql.io/functions/len.html",
-          "Title": "Funci\u00F3n  len",
+          "Title": "len",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -799,7 +829,17 @@
         {
           "Path": "/functions/localdate.html",
           "Url": "https://cronosql.io/functions/localdate.html",
-          "Title": "Funci\u00F3n  localdate",
+          "Title": "localdate \u2747\uFE0F \u26D4",
+          "Id": null,
+          "Date": null,
+          "Position": 21474836,
+          "Visible": true,
+          "Children": []
+        },
+        {
+          "Path": "/functions/localdatetimeoffset.html",
+          "Url": "https://cronosql.io/functions/localdatetimeoffset.html",
+          "Title": "localdatetimeoffset \u2747\uFE0F \u26D4",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -809,7 +849,7 @@
         {
           "Path": "/functions/log.html",
           "Url": "https://cronosql.io/functions/log.html",
-          "Title": "Funci\u00F3n  log",
+          "Title": "log",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -819,7 +859,7 @@
         {
           "Path": "/functions/log10.html",
           "Url": "https://cronosql.io/functions/log10.html",
-          "Title": "Funci\u00F3n  log10",
+          "Title": "log10",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -829,7 +869,7 @@
         {
           "Path": "/functions/lower.html",
           "Url": "https://cronosql.io/functions/lower.html",
-          "Title": "Funci\u00F3n  lower",
+          "Title": "lower",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -839,7 +879,7 @@
         {
           "Path": "/functions/ltrim.html",
           "Url": "https://cronosql.io/functions/ltrim.html",
-          "Title": "Funci\u00F3n  ltrim",
+          "Title": "ltrim",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -849,7 +889,7 @@
         {
           "Path": "/functions/margin.html",
           "Url": "https://cronosql.io/functions/margin.html",
-          "Title": "Funci\u00F3n  margin",
+          "Title": "margin \u2747\uFE0F \u26D4",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -859,7 +899,7 @@
         {
           "Path": "/functions/max.html",
           "Url": "https://cronosql.io/functions/max.html",
-          "Title": "Funci\u00F3n  max",
+          "Title": "max",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -869,7 +909,7 @@
         {
           "Path": "/functions/maximum.html",
           "Url": "https://cronosql.io/functions/maximum.html",
-          "Title": "Funci\u00F3n  maximum",
+          "Title": "maximum \u2747\uFE0F \u26D4",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -879,7 +919,7 @@
         {
           "Path": "/functions/md5.html",
           "Url": "https://cronosql.io/functions/md5.html",
-          "Title": "Funci\u00F3n  md5",
+          "Title": "md5 \u2747\uFE0F \u26D4",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -889,7 +929,7 @@
         {
           "Path": "/functions/memberof.html",
           "Url": "https://cronosql.io/functions/memberof.html",
-          "Title": "Funci\u00F3n  memberof",
+          "Title": "memberof \u2747\uFE0F \u26D4",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -899,7 +939,7 @@
         {
           "Path": "/functions/min.html",
           "Url": "https://cronosql.io/functions/min.html",
-          "Title": "Funci\u00F3n  min",
+          "Title": "min",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -909,7 +949,7 @@
         {
           "Path": "/functions/minimum.html",
           "Url": "https://cronosql.io/functions/minimum.html",
-          "Title": "Funci\u00F3n  minimum",
+          "Title": "minimum \u2747\uFE0F \u26D4",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -919,7 +959,7 @@
         {
           "Path": "/functions/mod.html",
           "Url": "https://cronosql.io/functions/mod.html",
-          "Title": "Funci\u00F3n  mod",
+          "Title": "mod \u2747\uFE0F \u26D4",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -929,7 +969,7 @@
         {
           "Path": "/functions/month.html",
           "Url": "https://cronosql.io/functions/month.html",
-          "Title": "Funci\u00F3n  month",
+          "Title": "month",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -939,7 +979,7 @@
         {
           "Path": "/functions/nameof.html",
           "Url": "https://cronosql.io/functions/nameof.html",
-          "Title": "Funci\u00F3n  nameof",
+          "Title": "nameof \u2747\uFE0F \u26D4",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -949,7 +989,7 @@
         {
           "Path": "/functions/newid.html",
           "Url": "https://cronosql.io/functions/newid.html",
-          "Title": "Funci\u00F3n  newid",
+          "Title": "newid",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -959,7 +999,7 @@
         {
           "Path": "/functions/next_value.html",
           "Url": "https://cronosql.io/functions/next_value.html",
-          "Title": "Funci\u00F3n  next_value",
+          "Title": "next_value \u2747\uFE0F \u26D4",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -969,7 +1009,7 @@
         {
           "Path": "/functions/nullifempty.html",
           "Url": "https://cronosql.io/functions/nullifempty.html",
-          "Title": "Funci\u00F3n  nullifempty",
+          "Title": "nullifempty \u2747\uFE0F \u26D4",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -979,7 +1019,7 @@
         {
           "Path": "/functions/nullifzero.html",
           "Url": "https://cronosql.io/functions/nullifzero.html",
-          "Title": "Funci\u00F3n  nullifzero",
+          "Title": "nullifzero \u2747\uFE0F \u26D4",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -989,7 +1029,7 @@
         {
           "Path": "/functions/objectproperty.html",
           "Url": "https://cronosql.io/functions/objectproperty.html",
-          "Title": "Funci\u00F3n  objectproperty",
+          "Title": "objectproperty",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -999,7 +1039,7 @@
         {
           "Path": "/functions/parse.html",
           "Url": "https://cronosql.io/functions/parse.html",
-          "Title": "Funci\u00F3n  parse",
+          "Title": "parse",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -1009,7 +1049,7 @@
         {
           "Path": "/functions/parsename.html",
           "Url": "https://cronosql.io/functions/parsename.html",
-          "Title": "Funci\u00F3n  parsename",
+          "Title": "parsename",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -1019,7 +1059,7 @@
         {
           "Path": "/functions/patindex.html",
           "Url": "https://cronosql.io/functions/patindex.html",
-          "Title": "Funci\u00F3n  patindex",
+          "Title": "patindex",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -1029,7 +1069,7 @@
         {
           "Path": "/functions/pct.html",
           "Url": "https://cronosql.io/functions/pct.html",
-          "Title": "Funci\u00F3n  pct",
+          "Title": "pct \u2747\uFE0F \u26D4",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -1039,7 +1079,7 @@
         {
           "Path": "/functions/pctrank.html",
           "Url": "https://cronosql.io/functions/pctrank.html",
-          "Title": "Funci\u00F3n  pctrank",
+          "Title": "pctrank \u2747\uFE0F \u26D4",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -1049,7 +1089,17 @@
         {
           "Path": "/functions/pctvariance.html",
           "Url": "https://cronosql.io/functions/pctvariance.html",
-          "Title": "Funci\u00F3n  pctvariance",
+          "Title": "pctvariance \u2747\uFE0F \u26D4",
+          "Id": null,
+          "Date": null,
+          "Position": 21474836,
+          "Visible": true,
+          "Children": []
+        },
+        {
+          "Path": "/functions/percentile.html",
+          "Url": "https://cronosql.io/functions/percentile.html",
+          "Title": "percentile \u2747\uFE0F",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -1059,7 +1109,7 @@
         {
           "Path": "/functions/permissions.html",
           "Url": "https://cronosql.io/functions/permissions.html",
-          "Title": "Funci\u00F3n  permissions",
+          "Title": "permissions",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -1069,7 +1119,7 @@
         {
           "Path": "/functions/pi.html",
           "Url": "https://cronosql.io/functions/pi.html",
-          "Title": "Funci\u00F3n  pi",
+          "Title": "pi",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -1079,7 +1129,27 @@
         {
           "Path": "/functions/power.html",
           "Url": "https://cronosql.io/functions/power.html",
-          "Title": "Funci\u00F3n  power",
+          "Title": "power",
+          "Id": null,
+          "Date": null,
+          "Position": 21474836,
+          "Visible": true,
+          "Children": []
+        },
+        {
+          "Path": "/functions/quantile.html",
+          "Url": "https://cronosql.io/functions/quantile.html",
+          "Title": "quantile \u2747\uFE0F \u26D4",
+          "Id": null,
+          "Date": null,
+          "Position": 21474836,
+          "Visible": true,
+          "Children": []
+        },
+        {
+          "Path": "/functions/quartile.html",
+          "Url": "https://cronosql.io/functions/quartile.html",
+          "Title": "quartile \u2747\uFE0F \u26D4",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -1089,7 +1159,7 @@
         {
           "Path": "/functions/quotename.html",
           "Url": "https://cronosql.io/functions/quotename.html",
-          "Title": "Funci\u00F3n  quotename",
+          "Title": "quotename",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -1099,7 +1169,7 @@
         {
           "Path": "/functions/radians.html",
           "Url": "https://cronosql.io/functions/radians.html",
-          "Title": "Funci\u00F3n  radians",
+          "Title": "radians",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -1109,7 +1179,7 @@
         {
           "Path": "/functions/rand.html",
           "Url": "https://cronosql.io/functions/rand.html",
-          "Title": "Funci\u00F3n  rand",
+          "Title": "rand",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -1119,7 +1189,7 @@
         {
           "Path": "/functions/replace.html",
           "Url": "https://cronosql.io/functions/replace.html",
-          "Title": "Funci\u00F3n  replace",
+          "Title": "replace",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -1129,7 +1199,7 @@
         {
           "Path": "/functions/replicate.html",
           "Url": "https://cronosql.io/functions/replicate.html",
-          "Title": "Funci\u00F3n  replicate",
+          "Title": "replicate",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -1139,7 +1209,7 @@
         {
           "Path": "/functions/reverse.html",
           "Url": "https://cronosql.io/functions/reverse.html",
-          "Title": "Funci\u00F3n  reverse",
+          "Title": "reverse",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -1149,7 +1219,7 @@
         {
           "Path": "/functions/right.html",
           "Url": "https://cronosql.io/functions/right.html",
-          "Title": "Funci\u00F3n  right",
+          "Title": "right \u2747\uFE0F",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -1159,7 +1229,7 @@
         {
           "Path": "/functions/round.html",
           "Url": "https://cronosql.io/functions/round.html",
-          "Title": "Funci\u00F3n  round",
+          "Title": "round \u2747\uFE0F",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -1169,7 +1239,7 @@
         {
           "Path": "/functions/rtrim.html",
           "Url": "https://cronosql.io/functions/rtrim.html",
-          "Title": "Funci\u00F3n  rtrim",
+          "Title": "rtrim",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -1179,7 +1249,7 @@
         {
           "Path": "/functions/runningpct.html",
           "Url": "https://cronosql.io/functions/runningpct.html",
-          "Title": "Funci\u00F3n  runningpct",
+          "Title": "runningpct \u2747\uFE0F \u26D4",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -1189,7 +1259,7 @@
         {
           "Path": "/functions/runningsum.html",
           "Url": "https://cronosql.io/functions/runningsum.html",
-          "Title": "Funci\u00F3n  runningsum",
+          "Title": "runningsum \u2747\uFE0F \u26D4",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -1199,7 +1269,7 @@
         {
           "Path": "/functions/serverproperty.html",
           "Url": "https://cronosql.io/functions/serverproperty.html",
-          "Title": "Funci\u00F3n  serverproperty",
+          "Title": "serverproperty",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -1209,7 +1279,7 @@
         {
           "Path": "/functions/sessionproperty.html",
           "Url": "https://cronosql.io/functions/sessionproperty.html",
-          "Title": "Funci\u00F3n  sessionproperty",
+          "Title": "sessionproperty",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -1219,7 +1289,7 @@
         {
           "Path": "/functions/sha1.html",
           "Url": "https://cronosql.io/functions/sha1.html",
-          "Title": "Funci\u00F3n  sha1",
+          "Title": "sha1 \u2747\uFE0F \u26D4",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -1229,7 +1299,7 @@
         {
           "Path": "/functions/sha256.html",
           "Url": "https://cronosql.io/functions/sha256.html",
-          "Title": "Funci\u00F3n  sha256",
+          "Title": "sha256 \u2747\uFE0F \u26D4",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -1239,7 +1309,7 @@
         {
           "Path": "/functions/sign.html",
           "Url": "https://cronosql.io/functions/sign.html",
-          "Title": "Funci\u00F3n  sign",
+          "Title": "sign",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -1249,7 +1319,7 @@
         {
           "Path": "/functions/sin.html",
           "Url": "https://cronosql.io/functions/sin.html",
-          "Title": "Funci\u00F3n  sin",
+          "Title": "sin",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -1259,7 +1329,7 @@
         {
           "Path": "/functions/single.html",
           "Url": "https://cronosql.io/functions/single.html",
-          "Title": "Funci\u00F3n  single",
+          "Title": "single \u2747\uFE0F \u26D4",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -1269,7 +1339,7 @@
         {
           "Path": "/functions/smalldatetimefromparts.html",
           "Url": "https://cronosql.io/functions/smalldatetimefromparts.html",
-          "Title": "Funci\u00F3n  smalldatetimefromparts",
+          "Title": "smalldatetimefromparts",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -1279,7 +1349,7 @@
         {
           "Path": "/functions/soundex.html",
           "Url": "https://cronosql.io/functions/soundex.html",
-          "Title": "Funci\u00F3n  soundex",
+          "Title": "soundex",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -1289,7 +1359,7 @@
         {
           "Path": "/functions/space.html",
           "Url": "https://cronosql.io/functions/space.html",
-          "Title": "Funci\u00F3n  space",
+          "Title": "space",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -1299,7 +1369,7 @@
         {
           "Path": "/functions/sqrt.html",
           "Url": "https://cronosql.io/functions/sqrt.html",
-          "Title": "Funci\u00F3n  sqrt",
+          "Title": "sqrt",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -1309,7 +1379,7 @@
         {
           "Path": "/functions/square.html",
           "Url": "https://cronosql.io/functions/square.html",
-          "Title": "Funci\u00F3n  square",
+          "Title": "square",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -1319,7 +1389,7 @@
         {
           "Path": "/functions/stdev.html",
           "Url": "https://cronosql.io/functions/stdev.html",
-          "Title": "Funci\u00F3n  stdev",
+          "Title": "stdev",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -1329,7 +1399,7 @@
         {
           "Path": "/functions/stdevp.html",
           "Url": "https://cronosql.io/functions/stdevp.html",
-          "Title": "Funci\u00F3n  stdevp",
+          "Title": "stdevp",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -1339,7 +1409,7 @@
         {
           "Path": "/functions/str.html",
           "Url": "https://cronosql.io/functions/str.html",
-          "Title": "Funci\u00F3n  str",
+          "Title": "str",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -1349,7 +1419,7 @@
         {
           "Path": "/functions/stuff.html",
           "Url": "https://cronosql.io/functions/stuff.html",
-          "Title": "Funci\u00F3n  stuff",
+          "Title": "stuff",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -1359,7 +1429,7 @@
         {
           "Path": "/functions/substraction.html",
           "Url": "https://cronosql.io/functions/substraction.html",
-          "Title": "Funci\u00F3n  substraction",
+          "Title": "substraction \u2747\uFE0F",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -1369,7 +1439,7 @@
         {
           "Path": "/functions/substring.html",
           "Url": "https://cronosql.io/functions/substring.html",
-          "Title": "Funci\u00F3n  substring",
+          "Title": "substring",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -1379,7 +1449,7 @@
         {
           "Path": "/functions/sum.html",
           "Url": "https://cronosql.io/functions/sum.html",
-          "Title": "Funci\u00F3n  sum",
+          "Title": "sum",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -1389,7 +1459,7 @@
         {
           "Path": "/functions/switch.html",
           "Url": "https://cronosql.io/functions/switch.html",
-          "Title": "Funci\u00F3n  switch",
+          "Title": "switch \u2747\uFE0F \u26D4",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -1399,7 +1469,7 @@
         {
           "Path": "/functions/switchoffset.html",
           "Url": "https://cronosql.io/functions/switchoffset.html",
-          "Title": "Funci\u00F3n  switchoffset",
+          "Title": "switchoffset",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -1409,7 +1479,7 @@
         {
           "Path": "/functions/sysdatetime.html",
           "Url": "https://cronosql.io/functions/sysdatetime.html",
-          "Title": "Funci\u00F3n  sysdatetime",
+          "Title": "sysdatetime",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -1419,7 +1489,7 @@
         {
           "Path": "/functions/sysdatetimeoffset.html",
           "Url": "https://cronosql.io/functions/sysdatetimeoffset.html",
-          "Title": "Funci\u00F3n  sysdatetimeoffset",
+          "Title": "sysdatetimeoffset",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -1429,7 +1499,7 @@
         {
           "Path": "/functions/sysutcdatetime.html",
           "Url": "https://cronosql.io/functions/sysutcdatetime.html",
-          "Title": "Funci\u00F3n  sysutcdatetime",
+          "Title": "sysutcdatetime",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -1439,7 +1509,7 @@
         {
           "Path": "/functions/tan.html",
           "Url": "https://cronosql.io/functions/tan.html",
-          "Title": "Funci\u00F3n  tan",
+          "Title": "tan",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -1449,7 +1519,7 @@
         {
           "Path": "/functions/timefromparts.html",
           "Url": "https://cronosql.io/functions/timefromparts.html",
-          "Title": "Funci\u00F3n  timefromparts",
+          "Title": "timefromparts",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -1459,7 +1529,7 @@
         {
           "Path": "/functions/todatetimeoffset.html",
           "Url": "https://cronosql.io/functions/todatetimeoffset.html",
-          "Title": "Funci\u00F3n  todatetimeoffset",
+          "Title": "todatetimeoffset",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -1469,7 +1539,7 @@
         {
           "Path": "/functions/today.html",
           "Url": "https://cronosql.io/functions/today.html",
-          "Title": "Funci\u00F3n  today",
+          "Title": "today \u2747\uFE0F \u26D4",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -1479,7 +1549,7 @@
         {
           "Path": "/functions/tomorrow.html",
           "Url": "https://cronosql.io/functions/tomorrow.html",
-          "Title": "Funci\u00F3n  tomorrow",
+          "Title": "tomorrow \u2747\uFE0F \u26D4",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -1489,7 +1559,7 @@
         {
           "Path": "/functions/total.html",
           "Url": "https://cronosql.io/functions/total.html",
-          "Title": "Funci\u00F3n  total",
+          "Title": "total \u2747\uFE0F",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -1499,7 +1569,7 @@
         {
           "Path": "/functions/trim.html",
           "Url": "https://cronosql.io/functions/trim.html",
-          "Title": "Funci\u00F3n  trim",
+          "Title": "trim \u2747\uFE0F",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -1509,7 +1579,7 @@
         {
           "Path": "/functions/typeproperty.html",
           "Url": "https://cronosql.io/functions/typeproperty.html",
-          "Title": "Funci\u00F3n  typeproperty",
+          "Title": "typeproperty",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -1519,7 +1589,7 @@
         {
           "Path": "/functions/unicode.html",
           "Url": "https://cronosql.io/functions/unicode.html",
-          "Title": "Funci\u00F3n  unicode",
+          "Title": "unicode",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -1529,7 +1599,7 @@
         {
           "Path": "/functions/upper.html",
           "Url": "https://cronosql.io/functions/upper.html",
-          "Title": "Funci\u00F3n  upper",
+          "Title": "upper",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -1539,7 +1609,7 @@
         {
           "Path": "/functions/valueof.html",
           "Url": "https://cronosql.io/functions/valueof.html",
-          "Title": "Funci\u00F3n  valueof",
+          "Title": "valueof \u2747\uFE0F \u26D4",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -1549,7 +1619,7 @@
         {
           "Path": "/functions/var.html",
           "Url": "https://cronosql.io/functions/var.html",
-          "Title": "Funci\u00F3n  var",
+          "Title": "var",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -1559,7 +1629,7 @@
         {
           "Path": "/functions/varp.html",
           "Url": "https://cronosql.io/functions/varp.html",
-          "Title": "Funci\u00F3n  varp",
+          "Title": "varp",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -1569,7 +1639,7 @@
         {
           "Path": "/functions/year.html",
           "Url": "https://cronosql.io/functions/year.html",
-          "Title": "Funci\u00F3n  year",
+          "Title": "year",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -1579,7 +1649,7 @@
         {
           "Path": "/functions/zeroifempty.html",
           "Url": "https://cronosql.io/functions/zeroifempty.html",
-          "Title": "Funci\u00F3n  zeroifempty",
+          "Title": "zeroifempty \u2747\uFE0F \u26D4",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -1589,7 +1659,7 @@
         {
           "Path": "/functions/zeroifnull.html",
           "Url": "https://cronosql.io/functions/zeroifnull.html",
-          "Title": "Funci\u00F3n  zeroifnull",
+          "Title": "zeroifnull \u2747\uFE0F \u26D4",
           "Id": null,
           "Date": null,
           "Position": 21474836,

@@ -10,7 +10,9 @@
       [TABLE COLUMN] (Name='InsertDate', DataType='datetime', IsNullable=NO),
       [TABLE COLUMN] (Name='UpdateDate', DataType='datetime', IsNullable=YES),
       [TABLE COLUMN] (Name='Body', DataType='nvarchar(MAX)', IsNullable=YES),
-      [TABLE COLUMN] (Name='FunctionGroup', DataType='varchar(1)', IsNullable=YES)
+      [TABLE COLUMN] (Name='FunctionGroup', DataType='varchar(35)', IsNullable=YES),
+      [TABLE COLUMN] (Name='NameEmoji', DataType='nvarchar(39)', IsNullable=NO),
+      [TABLE COLUMN] (Name='IsFavorite', DataType='bit', IsNullable=YES)
     ), Indexes=(
       [TABLE INDEX] (Name='BK_Functions', IsClustered=NO, IsUnique=YES, IsPrimary=NO, IsDisabled=NO, [Schema]='dbo', [Table]='Functions', [Column]='FunctionName', ColumnsCount=1, ConstraintName='BK_Functions'),
       [TABLE INDEX] (Name='PK_Functions', IsClustered=YES, IsUnique=YES, IsPrimary=YES, IsDisabled=NO, [Schema]='dbo', [Table]='Functions', [Column]='idFunction', ColumnsCount=1, ConstraintName='PK_Functions')
@@ -19,6 +21,7 @@
   Items=(
     [BUSINESS ITEM] (Name='Functions', Guid='rCROqixe', AggregationFunction='Default', Items=(
       [BUSINESS ITEM] (Name='Function name', Definition=EXPRESSION (Functions.FunctionName), Guid='YnkpqGQN', LovEnabled=YES, AggregationFunction='Default', DataType=OBJECT_TYPE 'System.String', Items=()),
+      [BUSINESS ITEM] (Name='Name emoji', Definition=EXPRESSION (Functions.NameEmoji), Guid='jUsuElho', LovEnabled=YES, AggregationFunction='Default', DataType=OBJECT_TYPE 'System.String', Items=()),
       [BUSINESS ITEM] (Name='Function type', Definition=EXPRESSION (Functions.FunctionType), Guid='JscMUOPh', LovEnabled=YES, AggregationFunction='Default', DataType=OBJECT_TYPE 'System.String', Items=()),
       [BUSINESS ITEM] (Name='Body', Definition=EXPRESSION (Functions.Body), Guid='bTuKyOKs', LovEnabled=YES, AggregationFunction='Default', DataType=OBJECT_TYPE 'System.String', Items=()),
       [BUSINESS ITEM] (Name='Function group', Definition=EXPRESSION (Functions.FunctionGroup), Guid='VtiwvGBB', LovEnabled=YES, AggregationFunction='Default', DataType=OBJECT_TYPE 'System.String', Items=())
@@ -43,9 +46,12 @@
                 [API DATA] (
                   Name='FunctionName',
                   DirectoryKind='None',
-                  [Expression]=EXPRESSION ([Function name|YnkpqGQN]),
-                  IsDescending=NO,
-                  OrderPosition=0
+                  [Expression]=EXPRESSION ([Function name|YnkpqGQN])
+                ),
+                [API DATA] (
+                  Name='NameEmoji',
+                  DirectoryKind='None',
+                  [Expression]=EXPRESSION ([Name emoji|jUsuElho])
                 ),
                 [API DATA] (
                   Name='FunctionType',
@@ -60,7 +66,9 @@
                 [API DATA] (
                   Name='FunctionGroup',
                   DirectoryKind='None',
-                  [Expression]=EXPRESSION ([Function group|VtiwvGBB])
+                  [Expression]=EXPRESSION ([Function group|VtiwvGBB]),
+                  IsDescending=NO,
+                  OrderPosition=0
                 )
               ),
               Name='functions',

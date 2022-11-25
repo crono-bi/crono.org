@@ -131,6 +131,8 @@ getutcdate|  Returns the current database system timestamp as a **datetime** val
 graph|Use the functions described on the pages in this section to extract values from, and transform values to, the pseudo-columns used in SQL Graph.
 graph|Returns the internal graph ID for a given edge ID.
 graph|Returns the internal graph ID for a given node ID.
+grouping|  Is a function that computes the level of grouping. GROUPING_ID can be used only in the SELECT \<select> list, HAVING, or ORDER BY clauses when GROUP BY is specified.  
+grouping|  Indicates whether a specified column expression in a GROUP BY list is aggregated or not. GROUPING returns 1 for aggregated or 0 for not aggregated in the result set. GROUPING can be used only in the SELECT \<select> list, HAVING, and ORDER BY clauses when GROUP BY is specified.  
 has|  Returns information about whether the user has access to the specified database.  
 has|  Evaluates the effective permission of the current user on a securable. A related function is [fn_my_permissions](../../relational-databases/system-functions/sys-fn-my-permissions-transact-sql.md).  
 hashbytes|  Returns the MD2, MD4, MD5, SHA, SHA1, or SHA2 hash of its input in [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)].  

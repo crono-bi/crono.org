@@ -1,5 +1,6 @@
 ﻿https://cronosql.io/
 https://cronosql.io/functions/
+https://cronosql.io/functions/abc.html
 https://cronosql.io/functions/abs.html
 https://cronosql.io/functions/acos.html
 https://cronosql.io/functions/addition.html
@@ -43,6 +44,7 @@ https://cronosql.io/functions/datetime2fromparts.html
 https://cronosql.io/functions/datetimefromparts.html
 https://cronosql.io/functions/datetimeoffsetfromparts.html
 https://cronosql.io/functions/day.html
+https://cronosql.io/functions/decile.html
 https://cronosql.io/functions/degrees.html
 https://cronosql.io/functions/difference.html
 https://cronosql.io/functions/divide.html
@@ -62,6 +64,7 @@ https://cronosql.io/functions/getdate.html
 https://cronosql.io/functions/getenddate.html
 https://cronosql.io/functions/getenddatetime.html
 https://cronosql.io/functions/getutcdate.html
+https://cronosql.io/functions/grouping.html
 https://cronosql.io/functions/hour.html
 https://cronosql.io/functions/indexof.html
 https://cronosql.io/functions/indexproperty.html
@@ -78,6 +81,7 @@ https://cronosql.io/functions/lead.html
 https://cronosql.io/functions/left.html
 https://cronosql.io/functions/len.html
 https://cronosql.io/functions/localdate.html
+https://cronosql.io/functions/localdatetimeoffset.html
 https://cronosql.io/functions/log.html
 https://cronosql.io/functions/log10.html
 https://cronosql.io/functions/lower.html
@@ -103,9 +107,12 @@ https://cronosql.io/functions/patindex.html
 https://cronosql.io/functions/pct.html
 https://cronosql.io/functions/pctrank.html
 https://cronosql.io/functions/pctvariance.html
+https://cronosql.io/functions/percentile.html
 https://cronosql.io/functions/permissions.html
 https://cronosql.io/functions/pi.html
 https://cronosql.io/functions/power.html
+https://cronosql.io/functions/quantile.html
+https://cronosql.io/functions/quartile.html
 https://cronosql.io/functions/quotename.html
 https://cronosql.io/functions/radians.html
 https://cronosql.io/functions/rand.html

@@ -9,7 +9,7 @@ Target: "/functions/"
 DirectoryStructure: "Files"
 ---
 
-# Función  $FunctionName$
+# $NameEmoji$
 
 $Body$
 

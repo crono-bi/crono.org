@@ -1,0 +1,173 @@
+﻿[DATABASE] (
+  Name='LA BIBLIO',
+  Guid='sempDuKlCu',
+  DataSource=[SQL SERVER CONNECTION] ([Server]='(LocalDb)\v11.0', DatabaseName='BI_BIBLIO'),
+  [Tables]=(
+    [TABLE] (TableAlias='LB_CATEGORIAS', TableName='dbo.LB_CATEGORIAS', PkColumns=('ID_CATEGORIA'), TableColumns=(
+      [TABLE COLUMN] (Name='ID_CATEGORIA', DataType='numeric', IsNullable=NO),
+      [TABLE COLUMN] (Name='CATEGORIA', DataType='nvarchar(100)', IsNullable=YES)
+    )),
+    [TABLE] (TableAlias='LB_IDIOMAS', TableName='dbo.LB_IDIOMAS', PkColumns=('ID_IDIOMA'), TableColumns=(
+      [TABLE COLUMN] (Name='ID_IDIOMA', DataType='numeric', IsNullable=NO),
+      [TABLE COLUMN] (Name='IDIOMA', DataType='nvarchar(100)', IsNullable=YES)
+    )),
+    [TABLE] (TableAlias='LB_LIBROS', TableName='dbo.LB_LIBROS', PkColumns=('ID_LIBRO'), TableColumns=(
+      [TABLE COLUMN] (Name='ID_LIBRO', DataType='smallint', IsNullable=NO),
+      [TABLE COLUMN] (Name='CODIGO', DataType='varchar(500)', IsNullable=YES),
+      [TABLE COLUMN] (Name='ID_IDIOMA', DataType='numeric', IsNullable=YES),
+      [TABLE COLUMN] (Name='ID_CATEGORIA', DataType='numeric', IsNullable=YES),
+      [TABLE COLUMN] (Name='ID_PAGINA', DataType='numeric', IsNullable=YES),
+      [TABLE COLUMN] (Name='POSICION', DataType='numeric', IsNullable=YES),
+      [TABLE COLUMN] (Name='TITULO', DataType='varchar(500)', IsNullable=YES),
+      [TABLE COLUMN] (Name='AUTORES', DataType='varchar(500)', IsNullable=YES),
+      [TABLE COLUMN] (Name='EDITORIAL', DataType='varchar(500)', IsNullable=YES),
+      [TABLE COLUMN] (Name='ANYO', DataType='numeric', IsNullable=YES),
+      [TABLE COLUMN] (Name='TAPA', DataType='varchar(500)', IsNullable=YES),
+      [TABLE COLUMN] (Name='COSTE', DataType='numeric', IsNullable=YES),
+      [TABLE COLUMN] (Name='PVP', DataType='numeric', IsNullable=YES)
+    ), ForeignKeys=(
+      [FOREIGN KEY] (Name='FK_LB_LIBROS_LB_CATEGORIAS', IsNullable=YES, ColumnNames=('ID_CATEGORIA'), ReferencedTableName='dbo.LB_CATEGORIAS', ReferencedColumnNames=('ID_CATEGORIA'), UpdateRule='NO ACTION', DeleteRule='NO ACTION'),
+      [FOREIGN KEY] (Name='FK_LB_LIBROS_LB_IDIOMAS', IsNullable=YES, ColumnNames=('ID_IDIOMA'), ReferencedTableName='dbo.LB_IDIOMAS', ReferencedColumnNames=('ID_IDIOMA'), UpdateRule='NO ACTION', DeleteRule='NO ACTION')
+    )),
+    [TABLE] (TableAlias='LB_MESES', TableName='dbo.LB_MESES', PkColumns=('ANYO', 'MES'), TableColumns=(
+      [TABLE COLUMN] (Name='ANYO', DataType='int', IsNullable=NO),
+      [TABLE COLUMN] (Name='MES', DataType='int', IsNullable=NO),
+      [TABLE COLUMN] (Name='NOMBRE_MES', DataType='varchar(10)', IsNullable=YES),
+      [TABLE COLUMN] (Name='TRIMESTRE', DataType='varchar(2)', IsNullable=YES)
+    )),
+    [TABLE] (TableAlias='LB_OBJETIVOS', TableName='dbo.LB_OBJETIVOS', PkColumns=('ID_TIENDA', 'ANYO', 'MES'), TableColumns=(
+      [TABLE COLUMN] (Name='ID_TIENDA', DataType='numeric', IsNullable=NO),
+      [TABLE COLUMN] (Name='ANYO', DataType='int', IsNullable=NO),
+      [TABLE COLUMN] (Name='MES', DataType='int', IsNullable=NO),
+      [TABLE COLUMN] (Name='OBJETIVO', DataType='numeric', IsNullable=YES),
+      [TABLE COLUMN] (Name='VENTAS', DataType='numeric', IsNullable=YES)
+    )),
+    [TABLE] (TableAlias='LB_TIEMPO', TableName='dbo.LB_TIEMPO', PkColumns=('FECHA'), IsTimeTable=YES, YearColumn='ANYO', QuarterColumn='TRIMESTRE', MonthColumn='MES', OrderColumns=('ANYO', 'TRIMESTRE', 'MES', 'FECHA', 'DIA'), TableColumns=(
+      [TABLE COLUMN] (Name='FECHA', DataType='date', IsNullable=NO),
+      [TABLE COLUMN] (Name='ANYO', DataType='int', IsNullable=YES),
+      [TABLE COLUMN] (Name='TRIMESTRE', DataType='varchar(2)', IsNullable=YES),
+      [TABLE COLUMN] (Name='MES', DataType='int', IsNullable=YES),
+      [TABLE COLUMN] (Name='NOMBRE_MES', DataType='varchar(20)', IsNullable=YES),
+      [TABLE COLUMN] (Name='DIA', DataType='int', IsNullable=YES),
+      [TABLE COLUMN] (Name='SEMANA', DataType='int', IsNullable=YES),
+      [TABLE COLUMN] (Name='NUM_DIA_SEMANA', DataType='int', IsNullable=YES),
+      [TABLE COLUMN] (Name='DIA_SEMANA', DataType='varchar(9)', IsNullable=YES)
+    ), ForeignKeys=(
+      [FOREIGN KEY] (Name='FK_LB_TIEMPO_LB_MESES', IsNullable=YES, ColumnNames=('ANYO', 'MES'), ReferencedTableName='dbo.LB_MESES', ReferencedColumnNames=('ANYO', 'MES'), UpdateRule='NO ACTION', DeleteRule='NO ACTION')
+    )),
+    [TABLE] (TableAlias='LB_TIENDAS', TableName='dbo.LB_TIENDAS', PkColumns=('ID_TIENDA'), TableColumns=(
+      [TABLE COLUMN] (Name='ID_TIENDA', DataType='tinyint', IsNullable=NO),
+      [TABLE COLUMN] (Name='PAIS', DataType='nvarchar(50)', IsNullable=YES),
+      [TABLE COLUMN] (Name='ZONA', DataType='nvarchar(50)', IsNullable=YES),
+      [TABLE COLUMN] (Name='POBLACION', DataType='nvarchar(50)', IsNullable=YES),
+      [TABLE COLUMN] (Name='NOMBRE', DataType='nvarchar(50)', IsNullable=YES),
+      [TABLE COLUMN] (Name='RESPONSABLE', DataType='nvarchar(50)', IsNullable=YES),
+      [TABLE COLUMN] (Name='FEC_APERTURA', DataType='datetime', IsNullable=YES),
+      [TABLE COLUMN] (Name='ID_MAPA_PAIS', DataType='int', IsNullable=YES),
+      [TABLE COLUMN] (Name='LONGITUD_PAIS', DataType='float', IsNullable=YES),
+      [TABLE COLUMN] (Name='LATITUD_PAIS', DataType='float', IsNullable=YES),
+      [TABLE COLUMN] (Name='LONGITUD_POBLACION', DataType='float', IsNullable=YES),
+      [TABLE COLUMN] (Name='LATITUD_POBLACION', DataType='float', IsNullable=YES),
+      [TABLE COLUMN] (Name='LONGITUD_TIENDA', DataType='float', IsNullable=YES),
+      [TABLE COLUMN] (Name='LATITUD_TIENDA', DataType='float', IsNullable=YES),
+      [TABLE COLUMN] (Name='ISO_PAIS', DataType='varchar(2)', IsNullable=YES),
+      [TABLE COLUMN] (Name='URL', DataType='nvarchar(500)', IsNullable=YES)
+    ), Indexes=(
+      [TABLE INDEX] (Name='PK_LB_TIENDAS', IsClustered=YES, IsUnique=YES, IsPrimary=YES, IsDisabled=NO, [Schema]='dbo', [Table]='LB_TIENDAS', [Column]='ID_TIENDA', ColumnsCount=1, ConstraintName='PK_LB_TIENDAS')
+    )),
+    [TABLE] (TableAlias='LB_VENTAS', TableName='dbo.LB_VENTAS', PkColumns=('FECHA', 'ID_TIENDA', 'ID_LIBRO'), TableColumns=(
+      [TABLE COLUMN] (Name='FECHA', DataType='date', IsNullable=NO),
+      [TABLE COLUMN] (Name='ID_TIENDA', DataType='tinyint', IsNullable=NO),
+      [TABLE COLUMN] (Name='ID_LIBRO', DataType='smallint', IsNullable=NO),
+      [TABLE COLUMN] (Name='UNIDADES', DataType='int', IsNullable=YES),
+      [TABLE COLUMN] (Name='PVP', DataType='numeric', IsNullable=YES),
+      [TABLE COLUMN] (Name='COSTE', DataType='numeric', IsNullable=YES),
+      [TABLE COLUMN] (Name='FECHA2', DataType='datetime', IsNullable=YES)
+    ), ForeignKeys=(
+      [FOREIGN KEY] (Name='FK_LB_VENTAS_LB_LIBROS', IsNullable=NO, ColumnNames=('ID_LIBRO'), ReferencedTableName='dbo.LB_LIBROS', ReferencedColumnNames=('ID_LIBRO'), UpdateRule='NO ACTION', DeleteRule='NO ACTION'),
+      [FOREIGN KEY] (Name='FK_LB_VENTAS_LB_TIEMPO', IsNullable=NO, ColumnNames=('FECHA'), ReferencedTableName='dbo.LB_TIEMPO', ReferencedColumnNames=('FECHA'), UpdateRule='NO ACTION', DeleteRule='NO ACTION'),
+      [FOREIGN KEY] (Name='FK_LB_VENTAS_LB_TIENDAS', IsNullable=NO, ColumnNames=('ID_TIENDA'), ReferencedTableName='dbo.LB_TIENDAS', ReferencedColumnNames=('ID_TIENDA'), UpdateRule='NO ACTION', DeleteRule='NO ACTION')
+    )),
+    [TABLE] (TableAlias='LB_VENTAS_DIARIAS', TableName='dbo.LB_VENTAS_DIARIAS', PkColumns=('FECHA', 'ID_TIENDA'), DetailTableAlias='LB_VENTAS', TableColumns=(
+      [TABLE COLUMN] (Name='FECHA', DataType='date', IsNullable=NO),
+      [TABLE COLUMN] (Name='ID_TIENDA', DataType='tinyint', IsNullable=NO),
+      [TABLE COLUMN] (Name='UNIDADES', DataType='int', IsNullable=YES),
+      [TABLE COLUMN] (Name='PVP', DataType='numeric', IsNullable=YES),
+      [TABLE COLUMN] (Name='COSTE', DataType='numeric', IsNullable=YES)
+    ), ForeignKeys=(
+      [FOREIGN KEY] (Name='FK_LB_VENTAS_DIARIAS_LB_TIEMPO', IsNullable=NO, ColumnNames=('FECHA'), ReferencedTableName='dbo.LB_TIEMPO', ReferencedColumnNames=('FECHA'), UpdateRule='NO ACTION', DeleteRule='NO ACTION'),
+      [FOREIGN KEY] (Name='FK_LB_VENTAS_DIARIAS_LB_TIENDAS', IsNullable=NO, ColumnNames=('ID_TIENDA'), ReferencedTableName='dbo.LB_TIENDAS', ReferencedColumnNames=('ID_TIENDA'), UpdateRule='NO ACTION', DeleteRule='NO ACTION')
+    ))
+  ),
+  Joins=(
+    [JOIN] (TableAlias1='LB_VENTAS', TableAlias2='LB_TIENDAS', JoinType='InnerJoin', UsingColumnsTable1=('ID_TIENDA'), UsingColumnsTable2=('ID_TIENDA')),
+    [JOIN] (TableAlias1='LB_VENTAS', TableAlias2='LB_TIEMPO', JoinType='InnerJoin', UsingColumnsTable1=('FECHA'), UsingColumnsTable2=('FECHA')),
+    [JOIN] (TableAlias1='LB_TIEMPO', TableAlias2='LB_MESES', JoinType='InnerJoin', UsingColumnsTable1=('ANYO', 'MES'), UsingColumnsTable2=('ANYO', 'MES')),
+    [JOIN] (TableAlias1='LB_VENTAS', TableAlias2='LB_LIBROS', JoinType='InnerJoin', UsingColumnsTable1=('ID_LIBRO'), UsingColumnsTable2=('ID_LIBRO')),
+    [JOIN] (TableAlias1='LB_LIBROS', TableAlias2='LB_IDIOMAS', JoinType='InnerJoin', UsingColumnsTable1=('ID_IDIOMA'), UsingColumnsTable2=('ID_IDIOMA')),
+    [JOIN] (TableAlias1='LB_LIBROS', TableAlias2='LB_CATEGORIAS', JoinType='InnerJoin', UsingColumnsTable1=('ID_CATEGORIA'), UsingColumnsTable2=('ID_CATEGORIA')),
+    [JOIN] (TableAlias1='LB_VENTAS_DIARIAS', TableAlias2='LB_TIENDAS', JoinType='InnerJoin', UsingColumnsTable1=('ID_TIENDA'), UsingColumnsTable2=('ID_TIENDA')),
+    [JOIN] (TableAlias1='LB_VENTAS_DIARIAS', TableAlias2='LB_TIEMPO', JoinType='InnerJoin', UsingColumnsTable1=('FECHA'), UsingColumnsTable2=('FECHA')),
+    [JOIN] (TableAlias1='LB_OBJETIVOS', TableAlias2='LB_TIENDAS', JoinType='InnerJoin', UsingColumnsTable1=('ID_TIENDA'), UsingColumnsTable2=('ID_TIENDA')),
+    [JOIN] (TableAlias1='LB_OBJETIVOS', TableAlias2='LB_MESES', JoinType='InnerJoin', UsingColumnsTable1=('ANYO', 'MES'), UsingColumnsTable2=('ANYO', 'MES'))
+  ),
+  Items=(
+    [BUSINESS ITEM] (Name='Tiendas', Guid='MFvPmdDZ', AggregationFunction='Default', Translations=(TRANSLATION (Language='ca', Translate='Botigues', Automatic=YES, Hash='C095', [Date]=d'2020-04-28T19:21:22.7782187+02:00'), TRANSLATION (Language='en', Translate='Shops', Automatic=YES, Hash='C095', [Date]=d'2020-04-28T19:21:33.7527994+02:00')), Items=(
+      [BUSINESS ITEM] (Name='Zona', Definition=EXPRESSION (LB_TIENDAS.ZONA), Guid='bryTBuuQ', LovEnabled=YES, AggregationFunction='Default', DataType=OBJECT_TYPE 'System.String', Translations=(TRANSLATION (Language='ca', Translate='Zona', Automatic=YES, Hash='918A', [Date]=d'2020-04-28T19:21:22.8846108+02:00'), TRANSLATION (Language='en', Translate='Zone', Automatic=YES, Hash='918A', [Date]=d'2020-04-28T19:21:33.8522672+02:00')), Items=()),
+      [BUSINESS ITEM] (Name='Tienda', Definition=EXPRESSION (LB_TIENDAS.NOMBRE), IsGeographyDimension=YES, Guid='yhxAmCEr', LovEnabled=YES, GeographyLatitudeField=EXPRESSION (LB_TIENDAS.LATITUD_TIENDA), GeographyLongitudeField=EXPRESSION (LB_TIENDAS.LONGITUD_TIENDA), AggregationFunction='Default', DataType=OBJECT_TYPE 'System.String', Translations=(TRANSLATION (Language='ca', Translate='Botiga', Automatic=YES, Hash='2E81', [Date]=d'2020-04-28T19:21:22.9843484+02:00'), TRANSLATION (Language='en', Translate='Store', Automatic=YES, Hash='2E81', [Date]=d'2020-04-28T19:21:33.7567888+02:00')), Items=()),
+      [BUSINESS ITEM] (Name='País', Definition=EXPRESSION (LB_TIENDAS.PAIS), IsGeographyDimension=YES, MapPath='D:\GitHub\CronoRepository\Resources\Maps\Europe.shp', MapAttribute='ISO_A2', Guid='tlkjfKSm', LovEnabled=YES, GeographyLatitudeField=EXPRESSION (LB_TIENDAS.LATITUD_PAIS), GeographyLongitudeField=EXPRESSION (LB_TIENDAS.LONGITUD_PAIS), GeographyIdFieldLinkToMapAttribute=EXPRESSION (LB_TIENDAS.ISO_PAIS), AggregationFunction='Default', DataType=OBJECT_TYPE 'System.String', Translations=(TRANSLATION (Language='ca', Translate='País', Automatic=YES, Hash='F0AA', [Date]=d'2020-04-28T19:21:22.8012436+02:00'), TRANSLATION (Language='en', Translate='Country', Automatic=YES, Hash='F0AA', [Date]=d'2020-04-28T19:21:33.8542629+02:00')), Items=()),
+      [BUSINESS ITEM] (Name='Responsable comercial', Definition=EXPRESSION (LB_TIENDAS.RESPONSABLE), Guid='ZsyakJbQ', LovEnabled=YES, AggregationFunction='Default', DataType=OBJECT_TYPE 'System.String', Translations=(TRANSLATION (Language='ca', Translate='Responsable comercial', Automatic=YES, Hash='9A5D', [Date]=d'2020-04-28T19:21:22.9996178+02:00'), TRANSLATION (Language='en', Translate='Sales Manager', Automatic=YES, Hash='9A5D', [Date]=d'2020-04-28T19:21:33.9443614+02:00')), Items=()),
+      [BUSINESS ITEM] (Name='Población', Definition=EXPRESSION (LB_TIENDAS.POBLACION), IsGeographyDimension=YES, Guid='rSdoDzDR', LovEnabled=YES, GeographyLatitudeField=EXPRESSION (LB_TIENDAS.LATITUD_POBLACION), GeographyLongitudeField=EXPRESSION (LB_TIENDAS.LONGITUD_POBLACION), AggregationFunction='Default', DataType=OBJECT_TYPE 'System.String', Translations=(TRANSLATION (Language='ca', Translate='Població', Automatic=YES, Hash='2A3A', [Date]=d'2020-04-28T19:21:23.0869272+02:00'), TRANSLATION (Language='en', Translate='Population', Automatic=YES, Hash='2A3A', [Date]=d'2020-04-28T19:21:33.9533519+02:00')), Items=()),
+      [BUSINESS ITEM] (Name='Código tienda', Definition=EXPRESSION (LB_TIENDAS.ID_TIENDA), Guid='VNWCNchk', LovEnabled=YES, AggregationFunction='Default', DataType=OBJECT_TYPE 'System.Byte', Translations=(TRANSLATION (Language='ca', Translate='Codi botiga', Automatic=YES, Hash='6471', [Date]=d'2020-04-28T19:21:22.7172150+02:00'), TRANSLATION (Language='en', Translate='Store code', Automatic=YES, Hash='6471', [Date]=d'2020-04-28T19:21:34.1700357+02:00')), Items=())
+    )),
+    [BUSINESS ITEM] (Name='Libros', Guid='bevaStUr', AggregationFunction='Default', Translations=(TRANSLATION (Language='ca', Translate='Llibres', Automatic=YES, Hash='C2B2', [Date]=d'2020-04-28T19:21:23.0939094+02:00'), TRANSLATION (Language='en', Translate='Books', Automatic=YES, Hash='C2B2', [Date]=d'2020-04-28T19:21:34.0512075+02:00')), Items=(
+      [BUSINESS ITEM] (Name='Editorial', Definition=EXPRESSION (LB_LIBROS.EDITORIAL), Guid='ylUiWuFP', LovEnabled=YES, AggregationFunction='Default', DataType=OBJECT_TYPE 'System.String', Translations=(TRANSLATION (Language='ca', Translate='Editorial', Automatic=YES, Hash='33BE', [Date]=d'2020-04-28T19:21:22.8955817+02:00'), TRANSLATION (Language='en', Translate='Editorial', Automatic=YES, Hash='33BE', [Date]=d'2020-04-28T19:21:34.2580678+02:00')), Items=()),
+      [BUSINESS ITEM] (Name='Categoría', Definition=EXPRESSION ('Categoria: '+LB_CATEGORIAS.CATEGORIA), Guid='fHjtzqNU', LovEnabled=YES, AggregationFunction='Default', DataType=OBJECT_TYPE 'System.String', Translations=(TRANSLATION (Language='ca', Translate='Categoria', Automatic=YES, Hash='624C', [Date]=d'2020-04-28T19:21:22.7202081+02:00'), TRANSLATION (Language='en', Translate='Category', Automatic=YES, Hash='624C', [Date]=d'2020-04-28T19:21:34.1410643+02:00')), Items=()),
+      [BUSINESS ITEM] (Name='Título', Definition=EXPRESSION (LB_LIBROS.TITULO), Guid='IsosOpyW', LovEnabled=YES, AggregationFunction='Default', DataType=OBJECT_TYPE 'System.String', Translations=(TRANSLATION (Language='ca', Translate='Títol', Automatic=YES, Hash='09B7', [Date]=d'2020-04-28T19:21:23.1956408+02:00'), TRANSLATION (Language='en', Translate='Title', Automatic=YES, Hash='09B7', [Date]=d'2020-04-28T19:21:34.3708526+02:00')), Items=()),
+      [BUSINESS ITEM] (Name='Referencia', Definition=EXPRESSION (LB_LIBROS.CODIGO), Guid='loZgnbXX', LovEnabled=YES, AggregationFunction='Default', DataType=OBJECT_TYPE 'System.String', Translations=(TRANSLATION (Language='ca', Translate='Referència', Automatic=YES, Hash='983E', [Date]=d'2020-04-28T19:21:23.1996267+02:00'), TRANSLATION (Language='en', Translate='Reference', Automatic=YES, Hash='983E', [Date]=d'2020-04-28T19:21:34.3598819+02:00')), Items=()),
+      [BUSINESS ITEM] (Name='Autor', Definition=EXPRESSION (LB_LIBROS.AUTORES), Guid='YMPrFuVB', LovEnabled=YES, AggregationFunction='Default', DataType=OBJECT_TYPE 'System.String', Translations=(TRANSLATION (Language='ca', Translate='Autor', Automatic=YES, Hash='C481', [Date]=d'2020-04-28T19:21:23.3004251+02:00'), TRANSLATION (Language='en', Translate='Author', Automatic=YES, Hash='C481', [Date]=d'2020-04-28T19:21:34.4705909+02:00')), Items=()),
+      [BUSINESS ITEM] (Name='Año publicación', Definition=EXPRESSION (LB_LIBROS.ANYO), Guid='hgwgTOKK', LovEnabled=YES, AggregationFunction='Default', DataType=OBJECT_TYPE 'System.Decimal', Translations=(TRANSLATION (Language='ca', Translate='Any publicació', Automatic=YES, Hash='6F1F', [Date]=d'2020-04-28T19:21:23.2932729+02:00'), TRANSLATION (Language='en', Translate='Publication year', Automatic=YES, Hash='6F1F', [Date]=d'2020-04-28T19:21:34.4586223+02:00')), Items=()),
+      [BUSINESS ITEM] (Name='PVP', Definition=EXPRESSION (LB_LIBROS.COSTE), Guid='qBsAeCCj', LovEnabled=YES, AggregationFunction='Default', DataType=OBJECT_TYPE 'System.Decimal', Translations=(TRANSLATION (Language='ca', Translate='PVP', Automatic=YES, Hash='AC34', [Date]=d'2020-04-28T19:21:23.3937417+02:00'), TRANSLATION (Language='en', Translate='PVP', Automatic=YES, Hash='AC34', [Date]=d'2020-04-28T19:21:34.5657126+02:00')), Items=()),
+      [BUSINESS ITEM] (Name='Encuadernación', Definition=EXPRESSION (LB_LIBROS.TAPA), Guid='NXXHuzCe', LovEnabled=YES, AggregationFunction='Default', DataType=OBJECT_TYPE 'System.String', Translations=(TRANSLATION (Language='ca', Translate='Enquadernació', Automatic=YES, Hash='1F37', [Date]=d'2020-04-28T19:21:23.3897517+02:00'), TRANSLATION (Language='en', Translate='Binding', Automatic=YES, Hash='1F37', [Date]=d'2020-04-28T19:21:34.5547293+02:00')), Items=()),
+      [BUSINESS ITEM] (Name='Idioma', Definition=EXPRESSION (LB_IDIOMAS.IDIOMA), Guid='JlvNAwpo', LovEnabled=YES, AggregationFunction='Default', DataType=OBJECT_TYPE 'System.String', Translations=(TRANSLATION (Language='ca', Translate='Idioma', Automatic=YES, Hash='D62A', [Date]=d'2020-04-28T19:21:23.4968754+02:00'), TRANSLATION (Language='en', Translate='Language', Automatic=YES, Hash='D62A', [Date]=d'2020-04-28T19:21:34.6613562+02:00')), Items=())
+    )),
+    [BUSINESS ITEM] (Name='Tiempo', Guid='wNkHSscx', AggregationFunction='Default', Translations=(TRANSLATION (Language='ca', Translate='Temps', Automatic=YES, Hash='9D3E', [Date]=d'2020-04-28T19:21:23.6040591+02:00'), TRANSLATION (Language='en', Translate='Weather', Automatic=YES, Hash='9D3E', [Date]=d'2020-04-28T19:21:34.6523749+02:00')), Items=(
+      [BUSINESS ITEM] (Name='Año', Definition=EXPRESSION (LB_MESES.ANYO), Guid='DoPLIxSw', LovEnabled=YES, AggregationFunction='Default', DataType=OBJECT_TYPE 'System.Int32', Translations=(TRANSLATION (Language='ca', Translate='Any', Automatic=YES, Hash='C55B', [Date]=d'2020-04-28T19:21:23.6761739+02:00'), TRANSLATION (Language='en', Translate='Year', Automatic=YES, Hash='C55B', [Date]=d'2020-04-28T19:21:34.7574404+02:00')), Items=()),
+      [BUSINESS ITEM] (Name='Trimestre', Definition=EXPRESSION (LB_MESES.TRIMESTRE), Guid='jGEHwngI', LovEnabled=YES, AggregationFunction='Default', DataType=OBJECT_TYPE 'System.String', Translations=(TRANSLATION (Language='ca', Translate='Trimestre', Automatic=YES, Hash='B2EF', [Date]=d'2020-04-28T19:21:23.6901758+02:00'), TRANSLATION (Language='en', Translate='Trimester', Automatic=YES, Hash='B2EF', [Date]=d'2020-04-28T19:21:34.7534268+02:00')), Items=()),
+      [BUSINESS ITEM] (Name='Mes', Definition=EXPRESSION (LB_MESES.NOMBRE_MES), Guid='EswIsWjU', LovEnabled=YES, LovOrderBy=EXPRESSION (LB_MESES.MES), AggregationFunction='Default', DataType=OBJECT_TYPE 'System.String', Translations=(TRANSLATION (Language='ca', Translate='Mes', Automatic=YES, Hash='7A06', [Date]=d'2020-04-28T19:21:23.7832134+02:00'), TRANSLATION (Language='en', Translate='Month', Automatic=YES, Hash='7A06', [Date]=d'2020-04-28T19:21:34.8583897+02:00')), Items=(
+        [BUSINESS ITEM] (Name='Num Mes', Definition=EXPRESSION (LB_MESES.MES), Guid='medrrVqu', LovEnabled=YES, AggregationFunction='Default', DataType=OBJECT_TYPE 'System.Int32', Translations=(TRANSLATION (Language='ca', Translate='Num Mes', Automatic=YES, Hash='63FD', [Date]=d'2020-04-28T19:21:23.8742601+02:00'), TRANSLATION (Language='en', Translate='Num Month', Automatic=YES, Hash='63FD', [Date]=d'2020-04-28T19:21:34.8553974+02:00')), Items=())
+      )),
+      [BUSINESS ITEM] (Name='Semana', Definition=EXPRESSION (LB_TIEMPO.SEMANA), Guid='UAegJQwm', LovEnabled=YES, AggregationFunction='Default', DataType=OBJECT_TYPE 'System.Int32', Translations=(TRANSLATION (Language='ca', Translate='Setmana', Automatic=YES, Hash='B3F6', [Date]=d'2020-04-28T19:21:23.7891971+02:00'), TRANSLATION (Language='en', Translate='Week', Automatic=YES, Hash='B3F6', [Date]=d'2020-04-28T19:21:34.9535487+02:00')), Items=()),
+      [BUSINESS ITEM] (Name='Día de la semana', Definition=EXPRESSION (LB_TIEMPO.DIA_SEMANA), Guid='tZEURHRi', LovEnabled=YES, AggregationFunction='Default', DataType=OBJECT_TYPE 'System.String', Translations=(TRANSLATION (Language='ca', Translate='Dia de la setmana', Automatic=YES, Hash='15B7', [Date]=d'2020-04-28T19:21:23.8952046+02:00'), TRANSLATION (Language='en', Translate='Weekday', Automatic=YES, Hash='15B7', [Date]=d'2020-04-28T19:21:34.9505328+02:00')), Items=()),
+      [BUSINESS ITEM] (Name='Fecha', Definition=EXPRESSION (LB_TIEMPO.FECHA), Guid='HBdAVueG', LovEnabled=YES, AggregationFunction='Default', DataType=OBJECT_TYPE 'System.DateTime', Translations=(TRANSLATION (Language='ca', Translate='Data', Automatic=YES, Hash='7FD9', [Date]=d'2020-04-28T19:21:23.9672406+02:00'), TRANSLATION (Language='en', Translate='Date', Automatic=YES, Hash='7FD9', [Date]=d'2020-04-28T19:21:35.0526591+02:00')), Items=()),
+      [BUSINESS ITEM] (Name='Día', Definition=EXPRESSION (LB_TIEMPO.DIA), Guid='eUzEtBeo', LovEnabled=YES, AggregationFunction='Default', DataType=OBJECT_TYPE 'System.Int32', Translations=(TRANSLATION (Language='ca', Translate='Dia', Automatic=YES, Hash='7343', [Date]=d'2020-04-28T19:21:23.9901793+02:00'), TRANSLATION (Language='en', Translate='Day', Automatic=YES, Hash='7343', [Date]=d'2020-04-28T19:21:35.0486693+02:00')), Items=()),
+      [BUSINESS ITEM] (Name='Parámetro 1', Definition=@Param1, Guid='eUfsdfzEtBeo', LovEnabled=NO, AggregationFunction='Default', DataType=OBJECT_TYPE 'System.Object', Translations=(TRANSLATION (Language='ca', Translate='Paràmetre 1', Automatic=YES, Hash='B6BA', [Date]=d'2020-04-28T19:21:24.0608588+02:00'), TRANSLATION (Language='en', Translate='Parameter 1', Automatic=YES, Hash='B6BA', [Date]=d'2020-04-28T19:21:35.1454325+02:00')), Items=()),
+      [BUSINESS ITEM] (Name='Año 2012', Definition=EXPRESSION ([Año|DoPLIxSw]=2012), Guid='qjMWjZZN', AggregationFunction='Default', DataType=OBJECT_TYPE 'System.Int32', Translations=(TRANSLATION (Language='ca', Translate='Any 2012', Automatic=YES, Hash='3830', [Date]=d'2020-04-28T19:21:24.0848273+02:00'), TRANSLATION (Language='en', Translate='Year 2012', Automatic=YES, Hash='3830', [Date]=d'2020-04-28T19:21:35.1404271+02:00')), Items=()),
+      [BUSINESS ITEM] (Name='Año Variable', Definition=EXPRESSION ([Año|DoPLIxSw]=@AnyoSeleccionado), Guid='qfsdfWjZZN', AggregationFunction='Default', DataType=OBJECT_TYPE 'System.Int32', Translations=(TRANSLATION (Language='ca', Translate='Any Variable', Automatic=YES, Hash='AF6D', [Date]=d'2020-04-28T19:21:24.1592794+02:00'), TRANSLATION (Language='en', Translate='Variable Year', Automatic=YES, Hash='AF6D', [Date]=d'2020-04-28T19:21:35.2316913+02:00')), Items=())
+    )),
+    [BUSINESS ITEM] (Name='Indicadores', Guid='VkptspcE', AggregationFunction='Default', Translations=(TRANSLATION (Language='ca', Translate='Indicadors', Automatic=YES, Hash='CFD9', [Date]=d'2020-04-28T19:21:24.1802989+02:00'), TRANSLATION (Language='en', Translate='Indicators', Automatic=YES, Hash='CFD9', [Date]=d'2020-04-28T19:21:35.2366744+02:00')), Items=(
+      [BUSINESS ITEM] (Name='Unidades', Definition=EXPRESSION (sum(LB_VENTAS.UNIDADES)), Guid='mVKPRPzA', AggregationFunction='Default', DataType=OBJECT_TYPE 'System.Int32', Translations=(TRANSLATION (Language='ca', Translate='Unitats', Automatic=YES, Hash='6F94', [Date]=d'2020-04-28T19:21:24.2709659+02:00'), TRANSLATION (Language='en', Translate='Units', Automatic=YES, Hash='6F94', [Date]=d'2020-04-28T19:21:35.3395792+02:00')), Items=()),
+      [BUSINESS ITEM] (Name='Importe', Definition=EXPRESSION (sum(LB_VENTAS.PVP)), Guid='vxbOrRSR', AggregationFunction='Default', DataType=OBJECT_TYPE 'System.Decimal', Translations=(TRANSLATION (Language='ca', Translate='Import', Automatic=YES, Hash='6AA5', [Date]=d'2020-04-28T19:21:24.2719633+02:00'), TRANSLATION (Language='en', Translate='Amount', Automatic=YES, Hash='6AA5', [Date]=d'2020-04-28T19:21:35.3296060+02:00')), Format=[CURRENCY FORMAT] (NumberOfDecimals=2, CurrencySymbol='€'), Items=()),
+      [BUSINESS ITEM] (Name='Coste', Definition=EXPRESSION (sum(LB_VENTAS.COSTE)), Guid='UqEIVUZH', AggregationFunction='Default', DataType=OBJECT_TYPE 'System.Decimal', Translations=(TRANSLATION (Language='ca', Translate='Cost', Automatic=YES, Hash='BA3C', [Date]=d'2020-04-28T19:21:24.3708407+02:00'), TRANSLATION (Language='en', Translate='Cost', Automatic=YES, Hash='BA3C', [Date]=d'2020-04-28T19:21:35.4356277+02:00')), Items=()),
+      [BUSINESS ITEM] (Name='Margen', Definition=EXPRESSION (sum(LB_VENTAS.PVP-LB_VENTAS.COSTE)), Guid='CpEKfKoP', AggregationFunction='Default', DataType=OBJECT_TYPE 'System.Decimal', Translations=(TRANSLATION (Language='ca', Translate='Marge', Automatic=YES, Hash='0E98', [Date]=d'2020-04-28T19:21:24.3728344+02:00'), TRANSLATION (Language='en', Translate='Margin', Automatic=YES, Hash='0E98', [Date]=d'2020-04-28T19:21:35.4266177+02:00')), Items=()),
+      [BUSINESS ITEM] (Name='Objetivo', Definition=EXPRESSION (sum(LB_OBJETIVOS.OBJETIVO)), Guid='RUsyRowA', AggregationFunction='Default', DataType=OBJECT_TYPE 'System.Decimal', Translations=(TRANSLATION (Language='ca', Translate='Objectiu', Automatic=YES, Hash='D31A', [Date]=d'2020-04-28T19:21:24.4719591+02:00'), TRANSLATION (Language='en', Translate='Objective', Automatic=YES, Hash='D31A', [Date]=d'2020-04-28T19:21:35.5293698+02:00')), Items=()),
+      [BUSINESS ITEM] (Name='Objetivo (%)', Definition=EXPRESSION ([Importe|vxbOrRSR]/[Objetivo|RUsyRowA]-1), Guid='JmAMYkwe', AggregationFunction='Default', DataType=OBJECT_TYPE 'System.Decimal', Translations=(TRANSLATION (Language='ca', Translate='Objectiu (%)', Automatic=YES, Hash='8CFF', [Date]=d'2020-04-28T19:21:24.4619856+02:00'), TRANSLATION (Language='en', Translate='Objective (%)', Automatic=YES, Hash='8CFF', [Date]=d'2020-04-28T19:21:35.6023923+02:00')), Items=()),
+      [BUSINESS ITEM] (Name='Indicadores YTD', Guid='sxycKuIs', AggregationFunction='Default', Translations=(TRANSLATION (Language='ca', Translate='Indicadors YTD', Automatic=YES, Hash='7112', [Date]=d'2020-04-28T19:21:24.5647156+02:00'), TRANSLATION (Language='en', Translate='YTD indicators', Automatic=YES, Hash='7112', [Date]=d'2020-04-28T19:21:35.6173183+02:00')), Items=(
+        [BUSINESS ITEM] (Name='Unidades YTD', Definition=EXPRESSION (YTD([Unidades|mVKPRPzA])), Guid='VcnBlPuL', AggregationFunction='Default', DataType=OBJECT_TYPE 'System.Int32', Translations=(TRANSLATION (Language='ca', Translate='Unitats YTD', Automatic=YES, Hash='4749', [Date]=d'2020-04-28T19:21:24.5585345+02:00'), TRANSLATION (Language='en', Translate='YTD units', Automatic=YES, Hash='4749', [Date]=d'2020-04-28T19:21:35.6909083+02:00')), Items=()),
+        [BUSINESS ITEM] (Name='Importe YTD', Definition=EXPRESSION (YTD([Importe|vxbOrRSR])), Guid='jmWwzuaG', AggregationFunction='Default', DataType=OBJECT_TYPE 'System.Decimal', Translations=(TRANSLATION (Language='ca', Translate='Import YTD', Automatic=YES, Hash='0E3E', [Date]=d'2020-04-28T19:21:24.6443555+02:00'), TRANSLATION (Language='en', Translate='YTD amount', Automatic=YES, Hash='0E3E', [Date]=d'2020-04-28T19:21:35.7059302+02:00')), Items=()),
+        [BUSINESS ITEM] (Name='Objetivo YTD', Definition=EXPRESSION (YTD([Objetivo|RUsyRowA])), Guid='TeYJtnJs', AggregationFunction='Default', DataType=OBJECT_TYPE 'System.Decimal', Translations=(TRANSLATION (Language='ca', Translate='Objectiu YTD', Automatic=YES, Hash='FE00', [Date]=d'2020-04-28T19:21:24.6654587+02:00'), TRANSLATION (Language='en', Translate='YTD lens', Automatic=YES, Hash='FE00', [Date]=d'2020-04-28T19:21:35.7813297+02:00')), Items=()),
+        [BUSINESS ITEM] (Name='Objetivo YTD (%)', Definition=EXPRESSION ([Importe YTD|jmWwzuaG]/[Objetivo YTD|TeYJtnJs]-1), Guid='TzsIlmex', AggregationFunction='Default', DataType=OBJECT_TYPE 'System.Decimal', Translations=(TRANSLATION (Language='ca', Translate='Objectiu YTD (%)', Automatic=YES, Hash='27C2', [Date]=d'2020-04-28T19:21:24.7644829+02:00'), TRANSLATION (Language='en', Translate='YTD target (%)', Automatic=YES, Hash='27C2', [Date]=d'2020-04-28T19:21:35.8775285+02:00')), Items=())
+      ))
+    ))
+  ),
+  TableFilter='*',
+  DefaultLanguage='es',
+  SecondaryLanguages=('ca', 'en'),
+  Parameters=(
+    PARAMETER (DataType='Numeric', [Key]='@AnyoSeleccionado', LOVObjectGUID='DoPLIxSw', Description='Anyo seleccionado', IsConstant=NO, ParamKey='AnyoSeleccionado'),
+    PARAMETER (DataType='BusinessItem', [Key]='@Param1', Description='Param 1', IsConstant=NO, ParamKey='Param1')
+  ),
+  TranslateAllOnSaving=YES,
+  TablesSortMode='TableAlias',
+  AvoidRepeatTablesOnDiagrams=NO
+)
