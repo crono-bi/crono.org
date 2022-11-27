@@ -154,7 +154,7 @@ Se puede utilizar la instrucción **CREATE INDEX IF NOT EXISTS** para crear un �
 
 <view-sql-code fileName="CREATE-INDEX2"/>
 
-También se puede utilizar **CREATE OR REPLACE INDEX** para crear un ínidice o recrearlo si ya existe. El siguiente ejemplo muestra, además, la posibilidad de utilizar la cláusla **INCLUDE** para añadir columnas adicionales al indice:
+También se puede utilizar **CREATE OR REPLACE INDEX** para crear un ínidice o recrearlo si ya existe. El siguiente ejemplo muestra, además, la posibilidad de utilizar la cláusula **INCLUDE** para añadir columnas adicionales al indice:
 
 <view-sql-code fileName="CREATE-INDEX3"/>
 

@@ -64,7 +64,6 @@ https://cronosql.io/functions/getdate.html
 https://cronosql.io/functions/getenddate.html
 https://cronosql.io/functions/getenddatetime.html
 https://cronosql.io/functions/getutcdate.html
-https://cronosql.io/functions/grouping.html
 https://cronosql.io/functions/hour.html
 https://cronosql.io/functions/indexof.html
 https://cronosql.io/functions/indexproperty.html
@@ -162,7 +161,6 @@ https://cronosql.io/functions/valueof.html
 https://cronosql.io/functions/var.html
 https://cronosql.io/functions/varp.html
 https://cronosql.io/functions/year.html
-https://cronosql.io/functions/zeroifempty.html
 https://cronosql.io/functions/zeroifnull.html
 https://cronosql.io/guide/
 https://cronosql.io/index.html

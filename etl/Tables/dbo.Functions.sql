@@ -1,11 +1,12 @@
 ﻿
 CREATE OR REPLACE PROCEDURE
-MERGE CLONE dbo.Functions(idFunction)
+DELETE AND INSERT dbo.Functions(idFunction)
 select  top 1 over (partition by FunctionName order by FunctionType)
-	f.Name #FunctionName,
-	concat(FunctionName  , if(FunctionType='Crono',N' ❇️') , if(IsFavorite=YES,N' ❤️ ') , if(Body IS NULL,N' ⛔')) NameEmoji,
+	f.Name FunctionName,
+	concat(FunctionName  , if(FunctionType='Crono',N' ❇️') , if(IsFavorite=YES,N' ❤️ ') , if(Body IS NuLL,' ' + NCHAR(0xD83D) + NCHAR(0xDEA7))) NameEmoji,
+--	concat(FunctionName  , if(FunctionType='Crono',N' ❇️') , if(IsFavorite=YES,N' ❤️ ') , if(Body IS NuLL,N' ⛔' )) NameEmoji,
 	coalesce(groups.FunctionGroup,'Miscelánea') FunctionGroup,
-	if(FunctionName in ('abs','addition')) IsFavorite,
+	if(FunctionName in ('abs','addition', 'coalesce')) IsFavorite,
 	f.FunctionType, 
 	coalesce(issues.BodyMarkdown,trim(msdn.spanish)) Body
 from Crono$Functions f
@@ -18,6 +19,7 @@ left join (
 	select c2 Name, c1 FunctionGroup
 	from FILE 'D:\GitHub\cronosql.io\etl\CSV\grupos.csv'
 ) groups using Name
-where not (FunctionType='SQL' and body is null)
-
+where 
+ not (FunctionType='SQL' and body is null)
+ and f.name not in ('grouping', 'zeroifempty')
 

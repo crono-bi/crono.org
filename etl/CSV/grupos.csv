@@ -7,7 +7,6 @@ Funciones de agregación|max
 Funciones de agregación|next_value
 Funciones de agregación|pct
 Funciones de agregación|pctrank
-Funciones de agregación|pctvariance
 Funciones de agregación|runningpct
 Funciones de agregación|runningsum
 Funciones de agregación|sum
@@ -17,6 +16,7 @@ Funciones de agregación|varp
 Funciones de agregación|min
 Funciones de agregación|stdev
 Funciones de agregación|stdevp
+Funciones de agregación|single
 Funciones de conversión y selección|cast
 Funciones de conversión y selección|parse
 Funciones de conversión y selección|zeroifempty
@@ -49,6 +49,7 @@ Funciones de fecha|isoweekcode
 Funciones de fecha|isoweekshortcode
 Funciones de fecha|isoweekyear
 Funciones de fecha|localdate
+Funciones de fecha|localdatetimeoffset
 Funciones de fecha|month
 Funciones de fecha|smalldatetimefromparts
 Funciones de fecha|switchoffset
@@ -81,7 +82,10 @@ Funciones de sistema|objectproperty
 Funciones de sistema|parsename
 Funciones de sistema|permissions
 Funciones de sistema|typeproperty
+Funciones de sistema|IsMemberOf
+Funciones de sistema|MemberOf
 Funciones de texto|ascii
+Funciones de texto|abc
 Funciones de texto|charindex
 Funciones de texto|concat
 Funciones de texto|difference
@@ -119,7 +123,6 @@ Funciones matemáticas|exp
 Funciones matemáticas|floor
 Funciones matemáticas|log
 Funciones matemáticas|log10
-Funciones matemáticas|margin
 Funciones matemáticas|maximum
 Funciones matemáticas|minimum
 Funciones matemáticas|mod
@@ -135,6 +138,13 @@ Funciones matemáticas|sqrt
 Funciones matemáticas|substraction
 Funciones matemáticas|tan
 Funciones matemáticas|square
+Funciones de negocio y estadísticas|quantile
+Funciones de negocio y estadísticas|quartile
+Funciones de negocio y estadísticas|percentile
+Funciones de negocio y estadísticas|decile
+Funciones de negocio y estadísticas|margin
+Funciones de negocio y estadísticas|markup
+Funciones de negocio y estadísticas|pctvariance
 Vistas Crono|Crono$Directory
 Vistas Crono|Crono$DirectoryName
 Vistas Crono|Crono$Download

@@ -21,7 +21,7 @@
               "path": "/functions/count.html"
             },
             {
-              "title": "countdistinct \u2747\uFE0F \u26D4",
+              "title": "countdistinct \u2747\uFE0F",
               "collapsable": false,
               "path": "/functions/countdistinct.html"
             },
@@ -46,34 +46,34 @@
               "path": "/functions/min.html"
             },
             {
-              "title": "next_value \u2747\uFE0F \u26D4",
+              "title": "next_value \u2747\uFE0F",
               "collapsable": false,
               "path": "/functions/next_value.html"
             },
             {
-              "title": "pct \u2747\uFE0F \u26D4",
+              "title": "pct \u2747\uFE0F",
               "collapsable": false,
               "path": "/functions/pct.html"
             },
             {
-              "title": "pctrank \u2747\uFE0F \u26D4",
+              "title": "pctrank \u2747\uFE0F",
               "collapsable": false,
               "path": "/functions/pctrank.html"
             },
             {
-              "title": "pctvariance \u2747\uFE0F \u26D4",
-              "collapsable": false,
-              "path": "/functions/pctvariance.html"
-            },
-            {
-              "title": "runningpct \u2747\uFE0F \u26D4",
+              "title": "runningpct \u2747\uFE0F",
               "collapsable": false,
               "path": "/functions/runningpct.html"
             },
             {
-              "title": "runningsum \u2747\uFE0F \u26D4",
+              "title": "runningsum \u2747\uFE0F",
               "collapsable": false,
               "path": "/functions/runningsum.html"
+            },
+            {
+              "title": "single \u2747\uFE0F \uD83D\uDEA7",
+              "collapsable": false,
+              "path": "/functions/single.html"
             },
             {
               "title": "stdev",
@@ -118,22 +118,22 @@
               "path": "/functions/cast.html"
             },
             {
-              "title": "coalesce \u2747\uFE0F \u26D4",
+              "title": "coalesce \u2747\uFE0F \u2764\uFE0F",
               "collapsable": false,
               "path": "/functions/coalesce.html"
             },
             {
-              "title": "elementat \u2747\uFE0F \u26D4",
+              "title": "elementat \u2747\uFE0F",
               "collapsable": false,
               "path": "/functions/elementat.html"
             },
             {
-              "title": "emptyifnull \u2747\uFE0F \u26D4",
+              "title": "emptyifnull \u2747\uFE0F",
               "collapsable": false,
               "path": "/functions/emptyifnull.html"
             },
             {
-              "title": "indexof \u2747\uFE0F \u26D4",
+              "title": "indexof \u2747\uFE0F",
               "collapsable": false,
               "path": "/functions/indexof.html"
             },
@@ -148,12 +148,12 @@
               "path": "/functions/isnumeric.html"
             },
             {
-              "title": "nullifempty \u2747\uFE0F \u26D4",
+              "title": "nullifempty \u2747\uFE0F",
               "collapsable": false,
               "path": "/functions/nullifempty.html"
             },
             {
-              "title": "nullifzero \u2747\uFE0F \u26D4",
+              "title": "nullifzero \u2747\uFE0F",
               "collapsable": false,
               "path": "/functions/nullifzero.html"
             },
@@ -163,17 +163,12 @@
               "path": "/functions/parse.html"
             },
             {
-              "title": "switch \u2747\uFE0F \u26D4",
+              "title": "switch \u2747\uFE0F",
               "collapsable": false,
               "path": "/functions/switch.html"
             },
             {
-              "title": "zeroifempty \u2747\uFE0F \u26D4",
-              "collapsable": false,
-              "path": "/functions/zeroifempty.html"
-            },
-            {
-              "title": "zeroifnull \u2747\uFE0F \u26D4",
+              "title": "zeroifnull \u2747\uFE0F",
               "collapsable": false,
               "path": "/functions/zeroifnull.html"
             }
@@ -240,12 +235,12 @@
               "path": "/functions/getdate.html"
             },
             {
-              "title": "getenddate \u2747\uFE0F \u26D4",
+              "title": "getenddate \u2747\uFE0F \uD83D\uDEA7",
               "collapsable": false,
               "path": "/functions/getenddate.html"
             },
             {
-              "title": "getenddatetime \u2747\uFE0F \u26D4",
+              "title": "getenddatetime \u2747\uFE0F \uD83D\uDEA7",
               "collapsable": false,
               "path": "/functions/getenddatetime.html"
             },
@@ -255,7 +250,7 @@
               "path": "/functions/getutcdate.html"
             },
             {
-              "title": "hour \u2747\uFE0F \u26D4",
+              "title": "hour \u2747\uFE0F",
               "collapsable": false,
               "path": "/functions/hour.html"
             },
@@ -265,29 +260,34 @@
               "path": "/functions/isdate.html"
             },
             {
-              "title": "isoweek \u2747\uFE0F \u26D4",
+              "title": "isoweek \u2747\uFE0F",
               "collapsable": false,
               "path": "/functions/isoweek.html"
             },
             {
-              "title": "isoweekcode \u2747\uFE0F \u26D4",
+              "title": "isoweekcode \u2747\uFE0F",
               "collapsable": false,
               "path": "/functions/isoweekcode.html"
             },
             {
-              "title": "isoweekshortcode \u2747\uFE0F \u26D4",
+              "title": "isoweekshortcode \u2747\uFE0F",
               "collapsable": false,
               "path": "/functions/isoweekshortcode.html"
             },
             {
-              "title": "isoweekyear \u2747\uFE0F \u26D4",
+              "title": "isoweekyear \u2747\uFE0F",
               "collapsable": false,
               "path": "/functions/isoweekyear.html"
             },
             {
-              "title": "localdate \u2747\uFE0F \u26D4",
+              "title": "localdate \u2747\uFE0F",
               "collapsable": false,
               "path": "/functions/localdate.html"
+            },
+            {
+              "title": "localdatetimeoffset \u2747\uFE0F",
+              "collapsable": false,
+              "path": "/functions/localdatetimeoffset.html"
             },
             {
               "title": "month",
@@ -330,12 +330,12 @@
               "path": "/functions/todatetimeoffset.html"
             },
             {
-              "title": "today \u2747\uFE0F \u26D4",
+              "title": "today \u2747\uFE0F",
               "collapsable": false,
               "path": "/functions/today.html"
             },
             {
-              "title": "tomorrow \u2747\uFE0F \u26D4",
+              "title": "tomorrow \u2747\uFE0F",
               "collapsable": false,
               "path": "/functions/tomorrow.html"
             },
@@ -343,6 +343,43 @@
               "title": "year",
               "collapsable": false,
               "path": "/functions/year.html"
+            }
+          ]
+        },
+        {
+          "title": "Funciones de negocio y estad\u00EDsticas",
+          "collapsable": false,
+          "type": "auto",
+          "children": [
+            {
+              "title": "decile \u2747\uFE0F",
+              "collapsable": false,
+              "path": "/functions/decile.html"
+            },
+            {
+              "title": "margin \u2747\uFE0F \uD83D\uDEA7",
+              "collapsable": false,
+              "path": "/functions/margin.html"
+            },
+            {
+              "title": "pctvariance \u2747\uFE0F \uD83D\uDEA7",
+              "collapsable": false,
+              "path": "/functions/pctvariance.html"
+            },
+            {
+              "title": "percentile \u2747\uFE0F",
+              "collapsable": false,
+              "path": "/functions/percentile.html"
+            },
+            {
+              "title": "quantile \u2747\uFE0F",
+              "collapsable": false,
+              "path": "/functions/quantile.html"
+            },
+            {
+              "title": "quartile \u2747\uFE0F",
+              "collapsable": false,
+              "path": "/functions/quartile.html"
             }
           ]
         },
@@ -362,7 +399,7 @@
               "path": "/functions/columnproperty.html"
             },
             {
-              "title": "currentusername \u2747\uFE0F \u26D4",
+              "title": "currentusername \u2747\uFE0F",
               "collapsable": false,
               "path": "/functions/currentusername.html"
             },
@@ -412,6 +449,16 @@
               "path": "/functions/indexproperty.html"
             },
             {
+              "title": "ismemberof \u2747\uFE0F \uD83D\uDEA7",
+              "collapsable": false,
+              "path": "/functions/ismemberof.html"
+            },
+            {
+              "title": "memberof \u2747\uFE0F \uD83D\uDEA7",
+              "collapsable": false,
+              "path": "/functions/memberof.html"
+            },
+            {
               "title": "newid",
               "collapsable": false,
               "path": "/functions/newid.html"
@@ -453,6 +500,11 @@
           "collapsable": false,
           "type": "auto",
           "children": [
+            {
+              "title": "abc \u2747\uFE0F",
+              "collapsable": false,
+              "path": "/functions/abc.html"
+            },
             {
               "title": "ascii",
               "collapsable": false,
@@ -651,22 +703,17 @@
               "path": "/functions/log10.html"
             },
             {
-              "title": "margin \u2747\uFE0F \u26D4",
-              "collapsable": false,
-              "path": "/functions/margin.html"
-            },
-            {
-              "title": "maximum \u2747\uFE0F \u26D4",
+              "title": "maximum \u2747\uFE0F",
               "collapsable": false,
               "path": "/functions/maximum.html"
             },
             {
-              "title": "minimum \u2747\uFE0F \u26D4",
+              "title": "minimum \u2747\uFE0F",
               "collapsable": false,
               "path": "/functions/minimum.html"
             },
             {
-              "title": "mod \u2747\uFE0F \u26D4",
+              "title": "mod \u2747\uFE0F",
               "collapsable": false,
               "path": "/functions/mod.html"
             },
@@ -738,77 +785,27 @@
           "type": "auto",
           "children": [
             {
-              "title": "abc \u2747\uFE0F \u26D4",
-              "collapsable": false,
-              "path": "/functions/abc.html"
-            },
-            {
-              "title": "decile \u2747\uFE0F \u26D4",
-              "collapsable": false,
-              "path": "/functions/decile.html"
-            },
-            {
-              "title": "grouping",
-              "collapsable": false,
-              "path": "/functions/grouping.html"
-            },
-            {
-              "title": "ismemberof \u2747\uFE0F \u26D4",
-              "collapsable": false,
-              "path": "/functions/ismemberof.html"
-            },
-            {
-              "title": "localdatetimeoffset \u2747\uFE0F \u26D4",
-              "collapsable": false,
-              "path": "/functions/localdatetimeoffset.html"
-            },
-            {
-              "title": "md5 \u2747\uFE0F \u26D4",
+              "title": "md5 \u2747\uFE0F \uD83D\uDEA7",
               "collapsable": false,
               "path": "/functions/md5.html"
             },
             {
-              "title": "memberof \u2747\uFE0F \u26D4",
-              "collapsable": false,
-              "path": "/functions/memberof.html"
-            },
-            {
-              "title": "nameof \u2747\uFE0F \u26D4",
+              "title": "nameof \u2747\uFE0F \uD83D\uDEA7",
               "collapsable": false,
               "path": "/functions/nameof.html"
             },
             {
-              "title": "percentile \u2747\uFE0F",
-              "collapsable": false,
-              "path": "/functions/percentile.html"
-            },
-            {
-              "title": "quantile \u2747\uFE0F \u26D4",
-              "collapsable": false,
-              "path": "/functions/quantile.html"
-            },
-            {
-              "title": "quartile \u2747\uFE0F \u26D4",
-              "collapsable": false,
-              "path": "/functions/quartile.html"
-            },
-            {
-              "title": "sha1 \u2747\uFE0F \u26D4",
+              "title": "sha1 \u2747\uFE0F \uD83D\uDEA7",
               "collapsable": false,
               "path": "/functions/sha1.html"
             },
             {
-              "title": "sha256 \u2747\uFE0F \u26D4",
+              "title": "sha256 \u2747\uFE0F \uD83D\uDEA7",
               "collapsable": false,
               "path": "/functions/sha256.html"
             },
             {
-              "title": "single \u2747\uFE0F \u26D4",
-              "collapsable": false,
-              "path": "/functions/single.html"
-            },
-            {
-              "title": "valueof \u2747\uFE0F \u26D4",
+              "title": "valueof \u2747\uFE0F \uD83D\uDEA7",
               "collapsable": false,
               "path": "/functions/valueof.html"
             }
@@ -820,62 +817,62 @@
           "type": "auto",
           "children": [
             {
-              "title": "Crono$Directory \u2747\uFE0F \u26D4",
+              "title": "Crono$Directory \u2747\uFE0F \uD83D\uDEA7",
               "collapsable": false,
               "path": "/functions/cronodirectory.html"
             },
             {
-              "title": "Crono$DirectoryName \u2747\uFE0F \u26D4",
+              "title": "Crono$DirectoryName \u2747\uFE0F \uD83D\uDEA7",
               "collapsable": false,
               "path": "/functions/cronodirectoryname.html"
             },
             {
-              "title": "Crono$Download \u2747\uFE0F \u26D4",
+              "title": "Crono$Download \u2747\uFE0F \uD83D\uDEA7",
               "collapsable": false,
               "path": "/functions/cronodownload.html"
             },
             {
-              "title": "Crono$FileName \u2747\uFE0F \u26D4",
+              "title": "Crono$FileName \u2747\uFE0F \uD83D\uDEA7",
               "collapsable": false,
               "path": "/functions/cronofilename.html"
             },
             {
-              "title": "Crono$FileNameWithoutExtension \u2747\uFE0F \u26D4",
+              "title": "Crono$FileNameWithoutExtension \u2747\uFE0F \uD83D\uDEA7",
               "collapsable": false,
               "path": "/functions/cronofilenamewithoutextension.html"
             },
             {
-              "title": "Crono$HeaderProperty \u2747\uFE0F \u26D4",
+              "title": "Crono$HeaderProperty \u2747\uFE0F \uD83D\uDEA7",
               "collapsable": false,
               "path": "/functions/cronoheaderproperty.html"
             },
             {
-              "title": "Crono$IsoDate \u2747\uFE0F \u26D4",
+              "title": "Crono$IsoDate \u2747\uFE0F \uD83D\uDEA7",
               "collapsable": false,
               "path": "/functions/cronoisodate.html"
             },
             {
-              "title": "Crono$MarkdownTitle \u2747\uFE0F \u26D4",
+              "title": "Crono$MarkdownTitle \u2747\uFE0F \uD83D\uDEA7",
               "collapsable": false,
               "path": "/functions/cronomarkdowntitle.html"
             },
             {
-              "title": "Crono$NiceUrlName \u2747\uFE0F \u26D4",
+              "title": "Crono$NiceUrlName \u2747\uFE0F \uD83D\uDEA7",
               "collapsable": false,
               "path": "/functions/crononiceurlname.html"
             },
             {
-              "title": "Crono$ReadFile \u2747\uFE0F \u26D4",
+              "title": "Crono$ReadFile \u2747\uFE0F \uD83D\uDEA7",
               "collapsable": false,
               "path": "/functions/cronoreadfile.html"
             },
             {
-              "title": "Crono$RfcDate \u2747\uFE0F \u26D4",
+              "title": "Crono$RfcDate \u2747\uFE0F \uD83D\uDEA7",
               "collapsable": false,
               "path": "/functions/cronorfcdate.html"
             },
             {
-              "title": "Crono$Route \u2747\uFE0F \u26D4",
+              "title": "Crono$Route \u2747\uFE0F \uD83D\uDEA7",
               "collapsable": false,
               "path": "/functions/cronoroute.html"
             }
