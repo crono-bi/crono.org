@@ -575,16 +575,16 @@
   },
   {
     "FunctionName": "ismemberof",
-    "NameEmoji": "ismemberof \u2747\uFE0F \uD83D\uDEA7",
+    "NameEmoji": "ismemberof \u2747\uFE0F",
     "FunctionType": "Crono",
-    "Body": null,
+    "Body": "La funci\u00F3n \u0060IsMemberOf\u0060 devuelve \u00601\u0060 o \u00600\u0060 en funci\u00F3n de si el usuario actual pertenece a alguno de los grupos especificados del Directorio Activo.\n\n## Ejemplo\n\nLa siguiente funci\u00F3n comprobar\u00E1 si el usuario actual es miembro del grupo *\u0022Administradores*\u0022.\n\n\u0060\u0060\u0060\nselect IsMemberOf(\u0027Administradores\u0027) admin;\n\u0060\u0060\u0060\n\nEl c\u00F3digo generado ser\u00E1 similar a:\n\n\u0060\u0060\u0060\nSELECT 1 AS admin\n\u0060\u0060\u0060\n\nEl resultado depender\u00E1 de si el usuarios actual es miembro o no de dicho grupo.\n\n\u003E 1\n\n\nTambi\u00E9n se pueden comprobar varios grupos al mismo tiempo. La funci\u00F3n devolver\u00E1 \u00601\u0060 si el usuario actual pertenece a alguno de esos grupos.\n\n\n\u0060\u0060\u0060\nselect IsMemberOf(\u0027Marketing\u0027, \u0027Analistas BI\u0027) cronoUser;\n\u0060\u0060\u0060\n\n## Comentario\n\nEsta funci\u00F3n se eval\u00FAa mientras se genera el c\u00F3digo SQL y no mientras se ejecuta la sentencia. No lo eval\u00FAa la base de datos.\n\n\n",
     "FunctionGroup": "Funciones de sistema"
   },
   {
     "FunctionName": "memberof",
-    "NameEmoji": "memberof \u2747\uFE0F \uD83D\uDEA7",
+    "NameEmoji": "memberof \u2747\uFE0F",
     "FunctionType": "Crono",
-    "Body": null,
+    "Body": "La funci\u00F3n \u0060MemberOf\u0060 comprueba si el usuario actual pertenece a alguno de los grupos indicados del Directorio Activo y devuelve el primero al que pertenece.\n\nSi no pertenece a ning\u00FAn grupo indicado la funci\u00F3n devuelve \u0060NULL\u0060.\n\n## Ejemplo\n\nLa siguiente funci\u00F3n comprobar\u00E1 si el usuario actual es miembro del grupo *\u0022Administradores*\u0022.\n\n\u0060\u0060\u0060\nselect MemberOf(\u0027Administradores\u0027) admin;\n\u0060\u0060\u0060\n\nEl c\u00F3digo generado ser\u00E1 similar a:\n\n\u0060\u0060\u0060\nSELECT \u0027Administradores\u0027 AS admin\n\u0060\u0060\u0060\n\n\nSi se especifican varios grupos, se devuelve el primero al que pertenezca.\n\n\u0060\u0060\u0060\nselect MemberOf(\u0027Marketing\u0027, \u0027Analistas BI\u0027) cronoUser;\n\u0060\u0060\u0060\n\n## Comentario\n\nEsta funci\u00F3n se eval\u00FAa mientras se genera el c\u00F3digo SQL y no mientras se ejecuta la sentencia. No lo eval\u00FAa la base de datos.\n\n\n",
     "FunctionGroup": "Funciones de sistema"
   },
   {
