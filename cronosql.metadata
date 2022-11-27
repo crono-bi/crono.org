@@ -73,7 +73,22 @@
               ),
               Name='functions',
               DirectoryKind='ObjectArray',
+              Predicate=EXPRESSION ([Function group|VtiwvGBB]<>'Vistas Crono'),
               EntityName='functions'
+            )
+        ),
+        [API RESOURCE] (
+          Path='views',
+          AllowGET=YES,
+          AllowPOST=NO,
+          AllowPUT=NO,
+          AllowDELETE=NO,
+          [Data]=
+            [API DATA] (
+              Name='views',
+              DirectoryKind='ObjectArray',
+              Predicate=EXPRESSION ([Function group|VtiwvGBB]='Vistas Crono'),
+              ReferencedEntityName='functions'
             )
         )
       ),

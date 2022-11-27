@@ -26,6 +26,10 @@ module.exports = {
         link: '/language/',
       },
       {
+        text: 'Vistas',
+        link: '/views/',
+      },
+      {
         text: 'Funciones',
         link: '/functions/',
       }

@@ -1,0 +1,86 @@
+﻿[
+  {
+    "FunctionName": "Crono$Directory",
+    "NameEmoji": "Crono$Directory \u2747\uFE0F \uD83D\uDEA7",
+    "FunctionType": "Crono",
+    "Body": null,
+    "FunctionGroup": "Vistas Crono"
+  },
+  {
+    "FunctionName": "Crono$DirectoryName",
+    "NameEmoji": "Crono$DirectoryName \u2747\uFE0F \uD83D\uDEA7",
+    "FunctionType": "Crono",
+    "Body": null,
+    "FunctionGroup": "Vistas Crono"
+  },
+  {
+    "FunctionName": "Crono$Download",
+    "NameEmoji": "Crono$Download \u2747\uFE0F \uD83D\uDEA7",
+    "FunctionType": "Crono",
+    "Body": null,
+    "FunctionGroup": "Vistas Crono"
+  },
+  {
+    "FunctionName": "Crono$FileName",
+    "NameEmoji": "Crono$FileName \u2747\uFE0F \uD83D\uDEA7",
+    "FunctionType": "Crono",
+    "Body": null,
+    "FunctionGroup": "Vistas Crono"
+  },
+  {
+    "FunctionName": "Crono$FileNameWithoutExtension",
+    "NameEmoji": "Crono$FileNameWithoutExtension \u2747\uFE0F \uD83D\uDEA7",
+    "FunctionType": "Crono",
+    "Body": null,
+    "FunctionGroup": "Vistas Crono"
+  },
+  {
+    "FunctionName": "Crono$HeaderProperty",
+    "NameEmoji": "Crono$HeaderProperty \u2747\uFE0F \uD83D\uDEA7",
+    "FunctionType": "Crono",
+    "Body": null,
+    "FunctionGroup": "Vistas Crono"
+  },
+  {
+    "FunctionName": "Crono$IsoDate",
+    "NameEmoji": "Crono$IsoDate \u2747\uFE0F \uD83D\uDEA7",
+    "FunctionType": "Crono",
+    "Body": null,
+    "FunctionGroup": "Vistas Crono"
+  },
+  {
+    "FunctionName": "Crono$MarkdownTitle",
+    "NameEmoji": "Crono$MarkdownTitle \u2747\uFE0F \uD83D\uDEA7",
+    "FunctionType": "Crono",
+    "Body": null,
+    "FunctionGroup": "Vistas Crono"
+  },
+  {
+    "FunctionName": "Crono$NiceUrlName",
+    "NameEmoji": "Crono$NiceUrlName \u2747\uFE0F \uD83D\uDEA7",
+    "FunctionType": "Crono",
+    "Body": null,
+    "FunctionGroup": "Vistas Crono"
+  },
+  {
+    "FunctionName": "Crono$ReadFile",
+    "NameEmoji": "Crono$ReadFile \u2747\uFE0F \uD83D\uDEA7",
+    "FunctionType": "Crono",
+    "Body": null,
+    "FunctionGroup": "Vistas Crono"
+  },
+  {
+    "FunctionName": "Crono$RfcDate",
+    "NameEmoji": "Crono$RfcDate \u2747\uFE0F \uD83D\uDEA7",
+    "FunctionType": "Crono",
+    "Body": null,
+    "FunctionGroup": "Vistas Crono"
+  },
+  {
+    "FunctionName": "Crono$Route",
+    "NameEmoji": "Crono$Route \u2747\uFE0F \uD83D\uDEA7",
+    "FunctionType": "Crono",
+    "Body": null,
+    "FunctionGroup": "Vistas Crono"
+  }
+]
