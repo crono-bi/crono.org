@@ -2,7 +2,7 @@
 SidebarGroup: "Metadatos base de datos"
 ---
 
-# Crono$Procedures
+# Crono$Procedures ❤️
 
 
 Devuelve información sobre los procedimientos y funciones de la base de datos. 

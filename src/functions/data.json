@@ -106,7 +106,7 @@
   },
   {
     "FunctionName": "sum",
-    "NameEmoji": "sum",
+    "NameEmoji": "sum \u2764\uFE0F ",
     "FunctionType": "SQL",
     "Body": "Devuelve la suma de todos los valores, o solo los valores DISTINCT, en la expresi\u00F3n. SUM solo se puede usar con columnas num\u00E9ricas. Los valores nulos se ignoran.\n\n## Comentarios \n\n\u0060sum\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060sum\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/sum-transact-sql) para mayor informaci\u00F3n.",
     "FunctionGroup": "Funciones de agregaci\u00F3n"
@@ -288,7 +288,7 @@
   },
   {
     "FunctionName": "getdate",
-    "NameEmoji": "getdate",
+    "NameEmoji": "getdate \u2764\uFE0F ",
     "FunctionType": "SQL",
     "Body": "Devuelve la marca de tiempo actual del sistema de la base de datos como un valor de **fecha y hora** sin el desplazamiento de la zona horaria de la base de datos. Este valor se deriva del sistema operativo de la computadora en la que se ejecuta la instancia de [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)].\n\n## Comentarios \n\n\u0060getdate\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060getdate\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/getdate-transact-sql) para mayor informaci\u00F3n.",
     "FunctionGroup": "Funciones de fecha"
@@ -505,7 +505,7 @@
   },
   {
     "FunctionName": "currentusername",
-    "NameEmoji": "currentusername \u2747\uFE0F",
+    "NameEmoji": "currentusername \u2747\uFE0F \u2764\uFE0F ",
     "FunctionType": "Crono",
     "Body": "La funci\u00F3n \u0060currentusername\u0060 devuelve el nombre del usuario de Windows en el momento de la generaci\u00F3n del c\u00F3digo SQL.\n\n## Ejemplo\n\n\u0060\u0060\u0060\nSELECT currentusername() usuario; \n\u0060\u0060\u0060\n\nEl c\u00F3digo SQL generado ser\u00E1 similar a:\n\n\u0060\u0060\u0060\nSELECT \u0027MOTOMAMI\\Rosalia\u0027 AS usuario\n\u0060\u0060\u0060\n\nEl c\u00F3digo efectivamente generado depender\u00E1 del usuario que ejecute la compilaci\u00F3n.\n\n## Comentarios\n\nEsta funci\u00F3n se eval\u00FAa en el momento de la **generaci\u00F3n del c\u00F3digo SQL**. Es decir, se transforma en un c\u00F3digo est\u00E1tico que devolver\u00E1 siempre el mismo resultado, independientemente de el usuario de la sesi\u00F3n SQL o el usuario de Windows.\n\nPara conocer el nombre de usuario de la sesi\u00F3n de base de datos que ejecuta el c\u00F3digo se debe utilizar \u0060CURRENT_USER\u0060. \n\nEn cambio, la funci\u00F3n \u0060CURRENT_USER\u0060 se eval\u00FAa en base de datos y devuelve el nombre de usuario de la sesi\u00F3n que ejecuta el c\u00F3digo.\n\n\n",
     "FunctionGroup": "Funciones de sistema"
@@ -659,7 +659,7 @@
   },
   {
     "FunctionName": "concat",
-    "NameEmoji": "concat",
+    "NameEmoji": "concat \u2764\uFE0F ",
     "FunctionType": "SQL",
     "Body": "Esta funci\u00F3n devuelve una cadena que resulta de la concatenaci\u00F3n o uni\u00F3n de dos o m\u00E1s valores de cadena de un extremo a otro. (Para agregar un valor de separaci\u00F3n durante la concatenaci\u00F3n, consulte [CONCAT_WS](../../t-sql/functions/concat-ws-transact-sql.md).)\n\n## Comentarios \n\n\u0060concat\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060concat\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/concat-transact-sql) para mayor informaci\u00F3n.",
     "FunctionGroup": "Funciones de texto"
@@ -680,7 +680,7 @@
   },
   {
     "FunctionName": "left",
-    "NameEmoji": "left \u2747\uFE0F",
+    "NameEmoji": "left \u2747\uFE0F \u2764\uFE0F ",
     "FunctionType": "Crono",
     "Body": "La funci\u00F3n \u0060left\u0060 devuelve el n\u00FAmero especificado de caracteres iniciales de una cadena de texto.\n\n## Ejemplo\n\n\u0060\u0060\u0060\nselect left(\u0027Hello World!\u0027,5)  as result;\n\u0060\u0060\u0060\n\nEl c\u00F3digo generado es:\n\n\u0060\u0060\u0060\nSELECT substring(\u0027Hello World!\u0027,1,5) AS result\n\u0060\u0060\u0060\n\nEl resultado es:\n\n\u003E 5",
     "FunctionGroup": "Funciones de texto"
@@ -722,7 +722,7 @@
   },
   {
     "FunctionName": "replace",
-    "NameEmoji": "replace",
+    "NameEmoji": "replace \u2764\uFE0F ",
     "FunctionType": "SQL",
     "Body": "Reemplaza todas las apariciones de un valor de cadena especificado con otro valor de cadena.\n\n## Comentarios \n\n\u0060replace\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060replace\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/replace-transact-sql) para mayor informaci\u00F3n.",
     "FunctionGroup": "Funciones de texto"
@@ -960,7 +960,7 @@
   },
   {
     "FunctionName": "round",
-    "NameEmoji": "round \u2747\uFE0F",
+    "NameEmoji": "round \u2747\uFE0F \u2764\uFE0F ",
     "FunctionType": "Crono",
     "Body": "Devuelve un valor num\u00E9rico, redondeado a la longitud o precisi\u00F3n especificada.\n\n## Comentarios \n\n\u0060round\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060round\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/round-transact-sql) para mayor informaci\u00F3n.",
     "FunctionGroup": "Funciones matem\u00E1ticas"
@@ -1013,40 +1013,5 @@
     "FunctionType": "SQL",
     "Body": "Devuelve la tangente de la expresi\u00F3n de entrada.\n\n## Comentarios \n\n\u0060tan\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060tan\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/tan-transact-sql) para mayor informaci\u00F3n.",
     "FunctionGroup": "Funciones matem\u00E1ticas"
-  },
-  {
-    "FunctionName": "md5",
-    "NameEmoji": "md5 \u2747\uFE0F \uD83D\uDEA7",
-    "FunctionType": "Crono",
-    "Body": null,
-    "FunctionGroup": "Miscel\u00E1nea"
-  },
-  {
-    "FunctionName": "nameof",
-    "NameEmoji": "nameof \u2747\uFE0F \uD83D\uDEA7",
-    "FunctionType": "Crono",
-    "Body": null,
-    "FunctionGroup": "Miscel\u00E1nea"
-  },
-  {
-    "FunctionName": "sha1",
-    "NameEmoji": "sha1 \u2747\uFE0F \uD83D\uDEA7",
-    "FunctionType": "Crono",
-    "Body": null,
-    "FunctionGroup": "Miscel\u00E1nea"
-  },
-  {
-    "FunctionName": "sha256",
-    "NameEmoji": "sha256 \u2747\uFE0F \uD83D\uDEA7",
-    "FunctionType": "Crono",
-    "Body": null,
-    "FunctionGroup": "Miscel\u00E1nea"
-  },
-  {
-    "FunctionName": "valueof",
-    "NameEmoji": "valueof \u2747\uFE0F \uD83D\uDEA7",
-    "FunctionType": "Crono",
-    "Body": null,
-    "FunctionGroup": "Miscel\u00E1nea"
   }
 ]

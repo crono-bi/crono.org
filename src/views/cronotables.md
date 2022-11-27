@@ -2,7 +2,7 @@
 SidebarGroup: "Metadatos base de datos"
 ---
 
-# Crono$Tables
+# Crono$Tables ❤️
 
 
 Devuelve información sobre todas las tablas y vistas de la base de datos. 

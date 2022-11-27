@@ -179,7 +179,7 @@
         {
           "Path": "/functions/concat.html",
           "Url": "https://cronosql.io/functions/concat.html",
-          "Title": "concat",
+          "Title": "concat \u2764\uFE0F",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -229,7 +229,7 @@
         {
           "Path": "/functions/currentusername.html",
           "Url": "https://cronosql.io/functions/currentusername.html",
-          "Title": "currentusername \u2747\uFE0F",
+          "Title": "currentusername \u2747\uFE0F \u2764\uFE0F",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -509,7 +509,7 @@
         {
           "Path": "/functions/getdate.html",
           "Url": "https://cronosql.io/functions/getdate.html",
-          "Title": "getdate",
+          "Title": "getdate \u2764\uFE0F",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -679,7 +679,7 @@
         {
           "Path": "/functions/left.html",
           "Url": "https://cronosql.io/functions/left.html",
-          "Title": "left \u2747\uFE0F",
+          "Title": "left \u2747\uFE0F \u2764\uFE0F",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -787,16 +787,6 @@
           "Children": []
         },
         {
-          "Path": "/functions/md5.html",
-          "Url": "https://cronosql.io/functions/md5.html",
-          "Title": "md5 \u2747\uFE0F \uD83D\uDEA7",
-          "Id": null,
-          "Date": null,
-          "Position": 21474836,
-          "Visible": true,
-          "Children": []
-        },
-        {
           "Path": "/functions/memberof.html",
           "Url": "https://cronosql.io/functions/memberof.html",
           "Title": "memberof \u2747\uFE0F \uD83D\uDEA7",
@@ -840,16 +830,6 @@
           "Path": "/functions/month.html",
           "Url": "https://cronosql.io/functions/month.html",
           "Title": "month",
-          "Id": null,
-          "Date": null,
-          "Position": 21474836,
-          "Visible": true,
-          "Children": []
-        },
-        {
-          "Path": "/functions/nameof.html",
-          "Url": "https://cronosql.io/functions/nameof.html",
-          "Title": "nameof \u2747\uFE0F \uD83D\uDEA7",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -1059,7 +1039,7 @@
         {
           "Path": "/functions/replace.html",
           "Url": "https://cronosql.io/functions/replace.html",
-          "Title": "replace",
+          "Title": "replace \u2764\uFE0F",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -1099,7 +1079,7 @@
         {
           "Path": "/functions/round.html",
           "Url": "https://cronosql.io/functions/round.html",
-          "Title": "round \u2747\uFE0F",
+          "Title": "round \u2747\uFE0F \u2764\uFE0F",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -1150,26 +1130,6 @@
           "Path": "/functions/sessionproperty.html",
           "Url": "https://cronosql.io/functions/sessionproperty.html",
           "Title": "sessionproperty",
-          "Id": null,
-          "Date": null,
-          "Position": 21474836,
-          "Visible": true,
-          "Children": []
-        },
-        {
-          "Path": "/functions/sha1.html",
-          "Url": "https://cronosql.io/functions/sha1.html",
-          "Title": "sha1 \u2747\uFE0F \uD83D\uDEA7",
-          "Id": null,
-          "Date": null,
-          "Position": 21474836,
-          "Visible": true,
-          "Children": []
-        },
-        {
-          "Path": "/functions/sha256.html",
-          "Url": "https://cronosql.io/functions/sha256.html",
-          "Title": "sha256 \u2747\uFE0F \uD83D\uDEA7",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -1319,7 +1279,7 @@
         {
           "Path": "/functions/sum.html",
           "Url": "https://cronosql.io/functions/sum.html",
-          "Title": "sum",
+          "Title": "sum \u2764\uFE0F",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -1470,16 +1430,6 @@
           "Path": "/functions/upper.html",
           "Url": "https://cronosql.io/functions/upper.html",
           "Title": "upper",
-          "Id": null,
-          "Date": null,
-          "Position": 21474836,
-          "Visible": true,
-          "Children": []
-        },
-        {
-          "Path": "/functions/valueof.html",
-          "Url": "https://cronosql.io/functions/valueof.html",
-          "Title": "valueof \u2747\uFE0F \uD83D\uDEA7",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -1711,7 +1661,7 @@
         {
           "Path": "/views/cronocolumns.html",
           "Url": "https://cronosql.io/views/cronocolumns.html",
-          "Title": "Crono$Columns",
+          "Title": "Crono$Columns \u2764\uFE0F",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -1791,7 +1741,7 @@
         {
           "Path": "/views/cronodates.html",
           "Url": "https://cronosql.io/views/cronodates.html",
-          "Title": "Crono$Dates",
+          "Title": "Crono$Dates \u2764\uFE0F",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -1881,7 +1831,7 @@
         {
           "Path": "/views/cronoprocedures.html",
           "Url": "https://cronosql.io/views/cronoprocedures.html",
-          "Title": "Crono$Procedures",
+          "Title": "Crono$Procedures \u2764\uFE0F",
           "Id": null,
           "Date": null,
           "Position": 21474836,
@@ -1961,7 +1911,7 @@
         {
           "Path": "/views/cronotables.html",
           "Url": "https://cronosql.io/views/cronotables.html",
-          "Title": "Crono$Tables",
+          "Title": "Crono$Tables \u2764\uFE0F",
           "Id": null,
           "Date": null,
           "Position": 21474836,

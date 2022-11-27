@@ -76,13 +76,11 @@ https://cronosql.io/functions/ltrim.html
 https://cronosql.io/functions/margin.html
 https://cronosql.io/functions/max.html
 https://cronosql.io/functions/maximum.html
-https://cronosql.io/functions/md5.html
 https://cronosql.io/functions/memberof.html
 https://cronosql.io/functions/min.html
 https://cronosql.io/functions/minimum.html
 https://cronosql.io/functions/mod.html
 https://cronosql.io/functions/month.html
-https://cronosql.io/functions/nameof.html
 https://cronosql.io/functions/newid.html
 https://cronosql.io/functions/next_value.html
 https://cronosql.io/functions/nullifempty.html
@@ -113,8 +111,6 @@ https://cronosql.io/functions/runningpct.html
 https://cronosql.io/functions/runningsum.html
 https://cronosql.io/functions/serverproperty.html
 https://cronosql.io/functions/sessionproperty.html
-https://cronosql.io/functions/sha1.html
-https://cronosql.io/functions/sha256.html
 https://cronosql.io/functions/sign.html
 https://cronosql.io/functions/sin.html
 https://cronosql.io/functions/single.html
@@ -145,7 +141,6 @@ https://cronosql.io/functions/trim.html
 https://cronosql.io/functions/typeproperty.html
 https://cronosql.io/functions/unicode.html
 https://cronosql.io/functions/upper.html
-https://cronosql.io/functions/valueof.html
 https://cronosql.io/functions/var.html
 https://cronosql.io/functions/varp.html
 https://cronosql.io/functions/year.html

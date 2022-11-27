@@ -6,7 +6,7 @@ select  top 1 over (partition by FunctionName order by FunctionType)
 	concat(FunctionName  , if(FunctionType='Crono',N' ❇️') , if(IsFavorite=YES,N' ❤️ ') , if(Body IS NuLL,' ' + NCHAR(0xD83D) + NCHAR(0xDEA7))) NameEmoji,
 --	concat(FunctionName  , if(FunctionType='Crono',N' ❇️') , if(IsFavorite=YES,N' ❤️ ') , if(Body IS NuLL,N' ⛔' )) NameEmoji,
 	coalesce(groups.FunctionGroup,'Miscelánea') FunctionGroup,
-	if(FunctionName in ('abs','addition', 'coalesce')) IsFavorite,
+	if(FunctionName in ('abs','addition', 'coalesce', 'sum', 'getdate','currentusername', 'concat', 'left','replace','round' )) IsFavorite,
 	f.FunctionType, 
 	coalesce(issues.BodyMarkdown,trim(msdn.spanish)) Body
 from Crono$Functions f
@@ -22,4 +22,5 @@ left join (
 where 
  not (FunctionType='SQL' and body is null)
  and f.name not in ('grouping', 'zeroifempty')
+ and FunctionGroup not in ('Miscelánea')
 
