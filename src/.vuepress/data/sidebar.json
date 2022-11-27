@@ -871,64 +871,214 @@
       "type": "group",
       "children": [
         {
-          "title": "Crono$Directory \u2747\uFE0F \uD83D\uDEA7",
+          "title": "Directorio Activo",
           "collapsable": false,
-          "path": "/views/cronodirectory.html"
+          "type": "auto",
+          "children": [
+            {
+              "title": "Crono$ActiveDirectoryGroups",
+              "collapsable": false,
+              "path": "/views/cronoactivedirectorygroups.html"
+            },
+            {
+              "title": "Crono$ActiveDirectoryGroupsOf",
+              "collapsable": false,
+              "path": "/views/cronoactivedirectorygroupsof.html"
+            },
+            {
+              "title": "Crono$ActiveDirectoryMyGroups",
+              "collapsable": false,
+              "path": "/views/cronoactivedirectorymygroups.html"
+            },
+            {
+              "title": "Crono$ActiveDirectoryUsers",
+              "collapsable": false,
+              "path": "/views/cronoactivedirectoryusers.html"
+            }
+          ]
         },
         {
-          "title": "Crono$DirectoryName \u2747\uFE0F \uD83D\uDEA7",
+          "title": "Metadatos base de datos",
           "collapsable": false,
-          "path": "/views/cronodirectoryname.html"
+          "type": "auto",
+          "children": [
+            {
+              "title": "Crono$AnsiColumns",
+              "collapsable": false,
+              "path": "/views/cronoansicolumns.html"
+            },
+            {
+              "title": "Crono$AnsiForeignKeys",
+              "collapsable": false,
+              "path": "/views/cronoansiforeignkeys.html"
+            },
+            {
+              "title": "Crono$ColumnExtendedProperties",
+              "collapsable": false,
+              "path": "/views/cronocolumnextendedproperties.html"
+            },
+            {
+              "title": "Crono$Columns",
+              "collapsable": false,
+              "path": "/views/cronocolumns.html"
+            },
+            {
+              "title": "Crono$Constraints",
+              "collapsable": false,
+              "path": "/views/cronoconstraints.html"
+            },
+            {
+              "title": "Crono$ConstraintsColumns",
+              "collapsable": false,
+              "path": "/views/cronoconstraintscolumns.html"
+            },
+            {
+              "title": "Crono$DatabaseExtendedProperties",
+              "collapsable": false,
+              "path": "/views/cronodatabaseextendedproperties.html"
+            },
+            {
+              "title": "Crono$Databases",
+              "collapsable": false,
+              "path": "/views/cronodatabases.html"
+            },
+            {
+              "title": "Crono$ForeignKeys",
+              "collapsable": false,
+              "path": "/views/cronoforeignkeys.html"
+            },
+            {
+              "title": "Crono$IndexColumns",
+              "collapsable": false,
+              "path": "/views/cronoindexcolumns.html"
+            },
+            {
+              "title": "Crono$Indexes",
+              "collapsable": false,
+              "path": "/views/cronoindexes.html"
+            },
+            {
+              "title": "Crono$Parameters",
+              "collapsable": false,
+              "path": "/views/cronoparameters.html"
+            },
+            {
+              "title": "Crono$ProcedureExtendedProperties",
+              "collapsable": false,
+              "path": "/views/cronoprocedureextendedproperties.html"
+            },
+            {
+              "title": "Crono$Procedures",
+              "collapsable": false,
+              "path": "/views/cronoprocedures.html"
+            },
+            {
+              "title": "Crono$Routines",
+              "collapsable": false,
+              "path": "/views/cronoroutines.html"
+            },
+            {
+              "title": "Crono$Schemas",
+              "collapsable": false,
+              "path": "/views/cronoschemas.html"
+            },
+            {
+              "title": "Crono$TableExtendedProperties",
+              "collapsable": false,
+              "path": "/views/cronotableextendedproperties.html"
+            },
+            {
+              "title": "Crono$Tables",
+              "collapsable": false,
+              "path": "/views/cronotables.html"
+            }
+          ]
         },
         {
-          "title": "Crono$Download \u2747\uFE0F \uD83D\uDEA7",
+          "title": "Metadatos Crono",
           "collapsable": false,
-          "path": "/views/cronodownload.html"
+          "type": "auto",
+          "children": [
+            {
+              "title": "Crono$CronoFunctions",
+              "collapsable": false,
+              "path": "/views/cronocronofunctions.html"
+            },
+            {
+              "title": "Crono$CronoViews",
+              "collapsable": false,
+              "path": "/views/cronocronoviews.html"
+            },
+            {
+              "title": "Crono$Functions",
+              "collapsable": false,
+              "path": "/views/cronofunctions.html"
+            },
+            {
+              "title": "Crono$Keywords",
+              "collapsable": false,
+              "path": "/views/cronokeywords.html"
+            },
+            {
+              "title": "Crono$SqlFunctions",
+              "collapsable": false,
+              "path": "/views/cronosqlfunctions.html"
+            }
+          ]
         },
         {
-          "title": "Crono$FileName \u2747\uFE0F \uD83D\uDEA7",
+          "title": "Miscel\u00E1nea",
           "collapsable": false,
-          "path": "/views/cronofilename.html"
+          "type": "auto",
+          "children": [
+            {
+              "title": "Crono$Countries",
+              "collapsable": false,
+              "path": "/views/cronocountries.html"
+            },
+            {
+              "title": "Crono$SpanishCities",
+              "collapsable": false,
+              "path": "/views/cronospanishcities.html"
+            },
+            {
+              "title": "Crono$SpanishProvinces",
+              "collapsable": false,
+              "path": "/views/cronospanishprovinces.html"
+            },
+            {
+              "title": "Crono$SpanishRegions",
+              "collapsable": false,
+              "path": "/views/cronospanishregions.html"
+            },
+            {
+              "title": "Crono$TimeZones",
+              "collapsable": false,
+              "path": "/views/cronotimezones.html"
+            }
+          ]
         },
         {
-          "title": "Crono$FileNameWithoutExtension \u2747\uFE0F \uD83D\uDEA7",
+          "title": "Tiempo",
           "collapsable": false,
-          "path": "/views/cronofilenamewithoutextension.html"
-        },
-        {
-          "title": "Crono$HeaderProperty \u2747\uFE0F \uD83D\uDEA7",
-          "collapsable": false,
-          "path": "/views/cronoheaderproperty.html"
-        },
-        {
-          "title": "Crono$IsoDate \u2747\uFE0F \uD83D\uDEA7",
-          "collapsable": false,
-          "path": "/views/cronoisodate.html"
-        },
-        {
-          "title": "Crono$MarkdownTitle \u2747\uFE0F \uD83D\uDEA7",
-          "collapsable": false,
-          "path": "/views/cronomarkdowntitle.html"
-        },
-        {
-          "title": "Crono$NiceUrlName \u2747\uFE0F \uD83D\uDEA7",
-          "collapsable": false,
-          "path": "/views/crononiceurlname.html"
-        },
-        {
-          "title": "Crono$ReadFile \u2747\uFE0F \uD83D\uDEA7",
-          "collapsable": false,
-          "path": "/views/cronoreadfile.html"
-        },
-        {
-          "title": "Crono$RfcDate \u2747\uFE0F \uD83D\uDEA7",
-          "collapsable": false,
-          "path": "/views/cronorfcdate.html"
-        },
-        {
-          "title": "Crono$Route \u2747\uFE0F \uD83D\uDEA7",
-          "collapsable": false,
-          "path": "/views/cronoroute.html"
+          "type": "auto",
+          "children": [
+            {
+              "title": "Crono$Dates",
+              "collapsable": false,
+              "path": "/views/cronodates.html"
+            },
+            {
+              "title": "Crono$Months",
+              "collapsable": false,
+              "path": "/views/cronomonths.html"
+            },
+            {
+              "title": "Crono$Weeks",
+              "collapsable": false,
+              "path": "/views/cronoweeks.html"
+            }
+          ]
         }
       ]
     }

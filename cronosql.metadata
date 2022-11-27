@@ -16,6 +16,16 @@
     ), Indexes=(
       [TABLE INDEX] (Name='BK_Functions', IsClustered=NO, IsUnique=YES, IsPrimary=NO, IsDisabled=NO, [Schema]='dbo', [Table]='Functions', [Column]='FunctionName', ColumnsCount=1, ConstraintName='BK_Functions'),
       [TABLE INDEX] (Name='PK_Functions', IsClustered=YES, IsUnique=YES, IsPrimary=YES, IsDisabled=NO, [Schema]='dbo', [Table]='Functions', [Column]='idFunction', ColumnsCount=1, ConstraintName='PK_Functions')
+    )),
+    [TABLE] (TableAlias='Pseudoviews', TableName='dbo.Pseudoviews', PkColumns=('IdPseudoViews'), TableColumns=(
+      [TABLE COLUMN] (Name='IdPseudoViews', DataType='int', IsNullable=NO, IsIdentity=YES),
+      [TABLE COLUMN] (Name='CronoViewName', DataType='varchar(33)', IsNullable=NO),
+      [TABLE COLUMN] (Name='InsertDate', DataType='datetime', IsNullable=NO),
+      [TABLE COLUMN] (Name='UpdateDate', DataType='datetime', IsNullable=YES),
+      [TABLE COLUMN] (Name='ViewGroup', DataType='varchar(33)', IsNullable=YES)
+    ), Indexes=(
+      [TABLE INDEX] (Name='BK_Pseudoviews', IsClustered=NO, IsUnique=YES, IsPrimary=NO, IsDisabled=NO, [Schema]='dbo', [Table]='Pseudoviews', [Column]='CronoViewName', ColumnsCount=1, ConstraintName='BK_Pseudoviews'),
+      [TABLE INDEX] (Name='PK_Pseudoviews', IsClustered=YES, IsUnique=YES, IsPrimary=YES, IsDisabled=NO, [Schema]='dbo', [Table]='Pseudoviews', [Column]='IdPseudoViews', ColumnsCount=1, ConstraintName='PK_Pseudoviews')
     ))
   ),
   Items=(
@@ -25,6 +35,10 @@
       [BUSINESS ITEM] (Name='Function type', Definition=EXPRESSION (Functions.FunctionType), Guid='JscMUOPh', LovEnabled=YES, AggregationFunction='Default', DataType=OBJECT_TYPE 'System.String', Items=()),
       [BUSINESS ITEM] (Name='Body', Definition=EXPRESSION (Functions.Body), Guid='bTuKyOKs', LovEnabled=YES, AggregationFunction='Default', DataType=OBJECT_TYPE 'System.String', Items=()),
       [BUSINESS ITEM] (Name='Function group', Definition=EXPRESSION (Functions.FunctionGroup), Guid='VtiwvGBB', LovEnabled=YES, AggregationFunction='Default', DataType=OBJECT_TYPE 'System.String', Items=())
+    )),
+    [BUSINESS ITEM] (Name='Pseudoviews', Guid='xoemXarH', AggregationFunction='Default', Items=(
+      [BUSINESS ITEM] (Name='Pseudoview', Definition=EXPRESSION (Pseudoviews.CronoViewName), Guid='FHVsHEVx', LovEnabled=YES, AggregationFunction='Default', DataType=OBJECT_TYPE 'System.String', Items=()),
+      [BUSINESS ITEM] (Name='View group', Definition=EXPRESSION (Pseudoviews.ViewGroup), Guid='MDqgDlIF', LovEnabled=YES, AggregationFunction='Default', DataType=OBJECT_TYPE 'System.String', Items=())
     ))
   ),
   TableFilter='*',
@@ -85,10 +99,22 @@
           AllowDELETE=NO,
           [Data]=
             [API DATA] (
+              Items=(
+                [API DATA] (
+                  Name='Pseudoview',
+                  DirectoryKind='None',
+                  [Expression]=EXPRESSION ([Pseudoview|FHVsHEVx]),
+                  IsDescending=NO,
+                  OrderPosition=0
+                ),
+                [API DATA] (
+                  Name='ViewGroup',
+                  DirectoryKind='None',
+                  [Expression]=EXPRESSION ([View group|MDqgDlIF])
+                )
+              ),
               Name='views',
-              DirectoryKind='ObjectArray',
-              Predicate=EXPRESSION ([Function group|VtiwvGBB]='Vistas Crono'),
-              ReferencedEntityName='functions'
+              DirectoryKind='ObjectArray'
             )
         )
       ),

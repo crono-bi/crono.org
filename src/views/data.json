@@ -1,86 +1,142 @@
 ﻿[
   {
-    "FunctionName": "Crono$Directory",
-    "NameEmoji": "Crono$Directory \u2747\uFE0F \uD83D\uDEA7",
-    "FunctionType": "Crono",
-    "Body": null,
-    "FunctionGroup": "Vistas Crono"
+    "Pseudoview": "Crono$ActiveDirectoryGroups",
+    "ViewGroup": "Directorio Activo"
   },
   {
-    "FunctionName": "Crono$DirectoryName",
-    "NameEmoji": "Crono$DirectoryName \u2747\uFE0F \uD83D\uDEA7",
-    "FunctionType": "Crono",
-    "Body": null,
-    "FunctionGroup": "Vistas Crono"
+    "Pseudoview": "Crono$ActiveDirectoryGroupsOf",
+    "ViewGroup": "Directorio Activo"
   },
   {
-    "FunctionName": "Crono$Download",
-    "NameEmoji": "Crono$Download \u2747\uFE0F \uD83D\uDEA7",
-    "FunctionType": "Crono",
-    "Body": null,
-    "FunctionGroup": "Vistas Crono"
+    "Pseudoview": "Crono$ActiveDirectoryMyGroups",
+    "ViewGroup": "Directorio Activo"
   },
   {
-    "FunctionName": "Crono$FileName",
-    "NameEmoji": "Crono$FileName \u2747\uFE0F \uD83D\uDEA7",
-    "FunctionType": "Crono",
-    "Body": null,
-    "FunctionGroup": "Vistas Crono"
+    "Pseudoview": "Crono$ActiveDirectoryUsers",
+    "ViewGroup": "Directorio Activo"
   },
   {
-    "FunctionName": "Crono$FileNameWithoutExtension",
-    "NameEmoji": "Crono$FileNameWithoutExtension \u2747\uFE0F \uD83D\uDEA7",
-    "FunctionType": "Crono",
-    "Body": null,
-    "FunctionGroup": "Vistas Crono"
+    "Pseudoview": "Crono$AnsiColumns",
+    "ViewGroup": "Metadatos base de datos"
   },
   {
-    "FunctionName": "Crono$HeaderProperty",
-    "NameEmoji": "Crono$HeaderProperty \u2747\uFE0F \uD83D\uDEA7",
-    "FunctionType": "Crono",
-    "Body": null,
-    "FunctionGroup": "Vistas Crono"
+    "Pseudoview": "Crono$AnsiForeignKeys",
+    "ViewGroup": "Metadatos base de datos"
   },
   {
-    "FunctionName": "Crono$IsoDate",
-    "NameEmoji": "Crono$IsoDate \u2747\uFE0F \uD83D\uDEA7",
-    "FunctionType": "Crono",
-    "Body": null,
-    "FunctionGroup": "Vistas Crono"
+    "Pseudoview": "Crono$ColumnExtendedProperties",
+    "ViewGroup": "Metadatos base de datos"
   },
   {
-    "FunctionName": "Crono$MarkdownTitle",
-    "NameEmoji": "Crono$MarkdownTitle \u2747\uFE0F \uD83D\uDEA7",
-    "FunctionType": "Crono",
-    "Body": null,
-    "FunctionGroup": "Vistas Crono"
+    "Pseudoview": "Crono$Columns",
+    "ViewGroup": "Metadatos base de datos"
   },
   {
-    "FunctionName": "Crono$NiceUrlName",
-    "NameEmoji": "Crono$NiceUrlName \u2747\uFE0F \uD83D\uDEA7",
-    "FunctionType": "Crono",
-    "Body": null,
-    "FunctionGroup": "Vistas Crono"
+    "Pseudoview": "Crono$Constraints",
+    "ViewGroup": "Metadatos base de datos"
   },
   {
-    "FunctionName": "Crono$ReadFile",
-    "NameEmoji": "Crono$ReadFile \u2747\uFE0F \uD83D\uDEA7",
-    "FunctionType": "Crono",
-    "Body": null,
-    "FunctionGroup": "Vistas Crono"
+    "Pseudoview": "Crono$ConstraintsColumns",
+    "ViewGroup": "Metadatos base de datos"
   },
   {
-    "FunctionName": "Crono$RfcDate",
-    "NameEmoji": "Crono$RfcDate \u2747\uFE0F \uD83D\uDEA7",
-    "FunctionType": "Crono",
-    "Body": null,
-    "FunctionGroup": "Vistas Crono"
+    "Pseudoview": "Crono$Countries",
+    "ViewGroup": "Miscel\u00E1nea"
   },
   {
-    "FunctionName": "Crono$Route",
-    "NameEmoji": "Crono$Route \u2747\uFE0F \uD83D\uDEA7",
-    "FunctionType": "Crono",
-    "Body": null,
-    "FunctionGroup": "Vistas Crono"
+    "Pseudoview": "Crono$CronoFunctions",
+    "ViewGroup": "Metadatos Crono"
+  },
+  {
+    "Pseudoview": "Crono$CronoViews",
+    "ViewGroup": "Metadatos Crono"
+  },
+  {
+    "Pseudoview": "Crono$DatabaseExtendedProperties",
+    "ViewGroup": "Metadatos base de datos"
+  },
+  {
+    "Pseudoview": "Crono$Databases",
+    "ViewGroup": "Metadatos base de datos"
+  },
+  {
+    "Pseudoview": "Crono$Dates",
+    "ViewGroup": "Tiempo"
+  },
+  {
+    "Pseudoview": "Crono$ForeignKeys",
+    "ViewGroup": "Metadatos base de datos"
+  },
+  {
+    "Pseudoview": "Crono$Functions",
+    "ViewGroup": "Metadatos Crono"
+  },
+  {
+    "Pseudoview": "Crono$IndexColumns",
+    "ViewGroup": "Metadatos base de datos"
+  },
+  {
+    "Pseudoview": "Crono$Indexes",
+    "ViewGroup": "Metadatos base de datos"
+  },
+  {
+    "Pseudoview": "Crono$Keywords",
+    "ViewGroup": "Metadatos Crono"
+  },
+  {
+    "Pseudoview": "Crono$Months",
+    "ViewGroup": "Tiempo"
+  },
+  {
+    "Pseudoview": "Crono$Parameters",
+    "ViewGroup": "Metadatos base de datos"
+  },
+  {
+    "Pseudoview": "Crono$ProcedureExtendedProperties",
+    "ViewGroup": "Metadatos base de datos"
+  },
+  {
+    "Pseudoview": "Crono$Procedures",
+    "ViewGroup": "Metadatos base de datos"
+  },
+  {
+    "Pseudoview": "Crono$Routines",
+    "ViewGroup": "Metadatos base de datos"
+  },
+  {
+    "Pseudoview": "Crono$Schemas",
+    "ViewGroup": "Metadatos base de datos"
+  },
+  {
+    "Pseudoview": "Crono$SpanishCities",
+    "ViewGroup": "Miscel\u00E1nea"
+  },
+  {
+    "Pseudoview": "Crono$SpanishProvinces",
+    "ViewGroup": "Miscel\u00E1nea"
+  },
+  {
+    "Pseudoview": "Crono$SpanishRegions",
+    "ViewGroup": "Miscel\u00E1nea"
+  },
+  {
+    "Pseudoview": "Crono$SqlFunctions",
+    "ViewGroup": "Metadatos Crono"
+  },
+  {
+    "Pseudoview": "Crono$TableExtendedProperties",
+    "ViewGroup": "Metadatos base de datos"
+  },
+  {
+    "Pseudoview": "Crono$Tables",
+    "ViewGroup": "Metadatos base de datos"
+  },
+  {
+    "Pseudoview": "Crono$TimeZones",
+    "ViewGroup": "Miscel\u00E1nea"
+  },
+  {
+    "Pseudoview": "Crono$Weeks",
+    "ViewGroup": "Tiempo"
   }
 ]
