@@ -6,7 +6,7 @@ module.exports = {
   title: 'Crono SQL',
   description: description,
   head: [
-    ['meta', { name: 'theme-color', content: '#0000FF' }],
+    ['meta', { name: 'theme-color', content: '#007bcc' }],
     ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
     ['meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black' }]
   ],

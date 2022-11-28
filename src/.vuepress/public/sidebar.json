@@ -791,7 +791,7 @@
       "type": "group",
       "children": [
         {
-          "title": "Sentencia SELECT",
+          "title": "Sentencia SELECT \u2764\uFE0F",
           "collapsable": false,
           "path": "/language/select.html"
         },
@@ -806,7 +806,7 @@
           "path": "/language/update.html"
         },
         {
-          "title": "Sentencia MERGE",
+          "title": "Sentencia MERGE \u2764\uFE0F",
           "collapsable": false,
           "path": "/language/merge.html"
         },

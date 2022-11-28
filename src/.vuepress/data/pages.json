@@ -1758,7 +1758,7 @@
         {
           "Path": "/language/select.html",
           "Url": "https://cronosql.io/language/select.html",
-          "Title": "Sentencia SELECT",
+          "Title": "Sentencia SELECT \u2764\uFE0F",
           "Id": null,
           "Date": null,
           "Position": 1,
@@ -1788,7 +1788,7 @@
         {
           "Path": "/language/merge.html",
           "Url": "https://cronosql.io/language/merge.html",
-          "Title": "Sentencia MERGE",
+          "Title": "Sentencia MERGE \u2764\uFE0F",
           "Id": null,
           "Date": null,
           "Position": 4,
