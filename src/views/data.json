@@ -1,142 +1,142 @@
 ﻿[
   {
     "Pseudoview": "Crono$ActiveDirectoryGroups",
-    "ViewGroup": "Directorio Activo"
+    "ViewGroup": "index-ad-views"
   },
   {
     "Pseudoview": "Crono$ActiveDirectoryGroupsOf",
-    "ViewGroup": "Directorio Activo"
+    "ViewGroup": "index-ad-views"
   },
   {
     "Pseudoview": "Crono$ActiveDirectoryMyGroups",
-    "ViewGroup": "Directorio Activo"
+    "ViewGroup": "index-ad-views"
   },
   {
     "Pseudoview": "Crono$ActiveDirectoryUsers",
-    "ViewGroup": "Directorio Activo"
+    "ViewGroup": "index-ad-views"
   },
   {
     "Pseudoview": "Crono$AnsiColumns",
-    "ViewGroup": "Metadatos base de datos"
+    "ViewGroup": "index-db-views"
   },
   {
     "Pseudoview": "Crono$AnsiForeignKeys",
-    "ViewGroup": "Metadatos base de datos"
+    "ViewGroup": "index-db-views"
   },
   {
     "Pseudoview": "Crono$ColumnExtendedProperties",
-    "ViewGroup": "Metadatos base de datos"
+    "ViewGroup": "index-db-views"
   },
   {
     "Pseudoview": "Crono$Columns",
-    "ViewGroup": "Metadatos base de datos"
+    "ViewGroup": "index-db-views"
   },
   {
     "Pseudoview": "Crono$Constraints",
-    "ViewGroup": "Metadatos base de datos"
+    "ViewGroup": "index-db-views"
   },
   {
     "Pseudoview": "Crono$ConstraintsColumns",
-    "ViewGroup": "Metadatos base de datos"
+    "ViewGroup": "index-db-views"
   },
   {
     "Pseudoview": "Crono$Countries",
-    "ViewGroup": "Miscel\u00E1nea"
+    "ViewGroup": "index-misc-views"
   },
   {
     "Pseudoview": "Crono$CronoFunctions",
-    "ViewGroup": "Metadatos Crono"
+    "ViewGroup": "index-metadata-views"
   },
   {
     "Pseudoview": "Crono$CronoViews",
-    "ViewGroup": "Metadatos Crono"
+    "ViewGroup": "index-metadata-views"
   },
   {
     "Pseudoview": "Crono$DatabaseExtendedProperties",
-    "ViewGroup": "Metadatos base de datos"
+    "ViewGroup": "index-db-views"
   },
   {
     "Pseudoview": "Crono$Databases",
-    "ViewGroup": "Metadatos base de datos"
+    "ViewGroup": "index-db-views"
   },
   {
     "Pseudoview": "Crono$Dates",
-    "ViewGroup": "Tiempo"
+    "ViewGroup": "index-time-views"
   },
   {
     "Pseudoview": "Crono$ForeignKeys",
-    "ViewGroup": "Metadatos base de datos"
+    "ViewGroup": "index-db-views"
   },
   {
     "Pseudoview": "Crono$Functions",
-    "ViewGroup": "Metadatos Crono"
+    "ViewGroup": "index-metadata-views"
   },
   {
     "Pseudoview": "Crono$IndexColumns",
-    "ViewGroup": "Metadatos base de datos"
+    "ViewGroup": "index-db-views"
   },
   {
     "Pseudoview": "Crono$Indexes",
-    "ViewGroup": "Metadatos base de datos"
+    "ViewGroup": "index-db-views"
   },
   {
     "Pseudoview": "Crono$Keywords",
-    "ViewGroup": "Metadatos Crono"
+    "ViewGroup": "index-metadata-views"
   },
   {
     "Pseudoview": "Crono$Months",
-    "ViewGroup": "Tiempo"
+    "ViewGroup": "index-time-views"
   },
   {
     "Pseudoview": "Crono$Parameters",
-    "ViewGroup": "Metadatos base de datos"
+    "ViewGroup": "index-db-views"
   },
   {
     "Pseudoview": "Crono$ProcedureExtendedProperties",
-    "ViewGroup": "Metadatos base de datos"
+    "ViewGroup": "index-db-views"
   },
   {
     "Pseudoview": "Crono$Procedures",
-    "ViewGroup": "Metadatos base de datos"
+    "ViewGroup": "index-db-views"
   },
   {
     "Pseudoview": "Crono$Routines",
-    "ViewGroup": "Metadatos base de datos"
+    "ViewGroup": "index-db-views"
   },
   {
     "Pseudoview": "Crono$Schemas",
-    "ViewGroup": "Metadatos base de datos"
+    "ViewGroup": "index-db-views"
   },
   {
     "Pseudoview": "Crono$SpanishCities",
-    "ViewGroup": "Miscel\u00E1nea"
+    "ViewGroup": "index-misc-views"
   },
   {
     "Pseudoview": "Crono$SpanishProvinces",
-    "ViewGroup": "Miscel\u00E1nea"
+    "ViewGroup": "index-misc-views"
   },
   {
     "Pseudoview": "Crono$SpanishRegions",
-    "ViewGroup": "Miscel\u00E1nea"
+    "ViewGroup": "index-misc-views"
   },
   {
     "Pseudoview": "Crono$SqlFunctions",
-    "ViewGroup": "Metadatos Crono"
+    "ViewGroup": "index-metadata-views"
   },
   {
     "Pseudoview": "Crono$TableExtendedProperties",
-    "ViewGroup": "Metadatos base de datos"
+    "ViewGroup": "index-db-views"
   },
   {
     "Pseudoview": "Crono$Tables",
-    "ViewGroup": "Metadatos base de datos"
+    "ViewGroup": "index-db-views"
   },
   {
     "Pseudoview": "Crono$TimeZones",
-    "ViewGroup": "Miscel\u00E1nea"
+    "ViewGroup": "index-misc-views"
   },
   {
     "Pseudoview": "Crono$Weeks",
-    "ViewGroup": "Tiempo"
+    "ViewGroup": "index-time-views"
   }
 ]

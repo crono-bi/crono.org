@@ -1,5 +1,5 @@
 ﻿---
-SidebarGroup: "Metadatos Crono"
+SidebarGroup: "index-metadata-views"
 ---
 
 # Crono$CronoFunctions

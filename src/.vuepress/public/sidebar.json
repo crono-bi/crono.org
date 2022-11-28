@@ -3,12 +3,13 @@
     {
       "title": "Funciones",
       "collapsable": false,
+      "path": "/functions/",
       "type": "group",
       "children": [
         {
           "title": "Funciones de agregaci\u00F3n",
           "collapsable": false,
-          "type": "auto",
+          "path": "/functions/index-aggregation-functions.html",
           "children": [
             {
               "title": "avg",
@@ -110,7 +111,7 @@
         {
           "title": "Funciones de conversi\u00F3n y selecci\u00F3n",
           "collapsable": false,
-          "type": "auto",
+          "path": "/functions/index-conversion-selection-functions.html",
           "children": [
             {
               "title": "cast",
@@ -177,7 +178,7 @@
         {
           "title": "Funciones de fecha",
           "collapsable": false,
-          "type": "auto",
+          "path": "/functions/index-date-functions.html",
           "children": [
             {
               "title": "dateadd",
@@ -347,158 +348,9 @@
           ]
         },
         {
-          "title": "Funciones de negocio y estad\u00EDsticas",
-          "collapsable": false,
-          "type": "auto",
-          "children": [
-            {
-              "title": "decile \u2747\uFE0F",
-              "collapsable": false,
-              "path": "/functions/decile.html"
-            },
-            {
-              "title": "margin \u2747\uFE0F \uD83D\uDEA7",
-              "collapsable": false,
-              "path": "/functions/margin.html"
-            },
-            {
-              "title": "pctvariance \u2747\uFE0F \uD83D\uDEA7",
-              "collapsable": false,
-              "path": "/functions/pctvariance.html"
-            },
-            {
-              "title": "percentile \u2747\uFE0F",
-              "collapsable": false,
-              "path": "/functions/percentile.html"
-            },
-            {
-              "title": "quantile \u2747\uFE0F",
-              "collapsable": false,
-              "path": "/functions/quantile.html"
-            },
-            {
-              "title": "quartile \u2747\uFE0F",
-              "collapsable": false,
-              "path": "/functions/quartile.html"
-            }
-          ]
-        },
-        {
-          "title": "Funciones de sistema",
-          "collapsable": false,
-          "type": "auto",
-          "children": [
-            {
-              "title": "checksum",
-              "collapsable": false,
-              "path": "/functions/checksum.html"
-            },
-            {
-              "title": "columnproperty",
-              "collapsable": false,
-              "path": "/functions/columnproperty.html"
-            },
-            {
-              "title": "currentusername \u2747\uFE0F \u2764\uFE0F",
-              "collapsable": false,
-              "path": "/functions/currentusername.html"
-            },
-            {
-              "title": "databasepropertyex",
-              "collapsable": false,
-              "path": "/functions/databasepropertyex.html"
-            },
-            {
-              "title": "datalength",
-              "collapsable": false,
-              "path": "/functions/datalength.html"
-            },
-            {
-              "title": "filegroupproperty",
-              "collapsable": false,
-              "path": "/functions/filegroupproperty.html"
-            },
-            {
-              "title": "fileproperty",
-              "collapsable": false,
-              "path": "/functions/fileproperty.html"
-            },
-            {
-              "title": "formatmessage",
-              "collapsable": false,
-              "path": "/functions/formatmessage.html"
-            },
-            {
-              "title": "fulltextcatalogproperty",
-              "collapsable": false,
-              "path": "/functions/fulltextcatalogproperty.html"
-            },
-            {
-              "title": "fulltextserviceproperty",
-              "collapsable": false,
-              "path": "/functions/fulltextserviceproperty.html"
-            },
-            {
-              "title": "getansinull",
-              "collapsable": false,
-              "path": "/functions/getansinull.html"
-            },
-            {
-              "title": "indexproperty",
-              "collapsable": false,
-              "path": "/functions/indexproperty.html"
-            },
-            {
-              "title": "ismemberof \u2747\uFE0F",
-              "collapsable": false,
-              "path": "/functions/ismemberof.html"
-            },
-            {
-              "title": "memberof \u2747\uFE0F",
-              "collapsable": false,
-              "path": "/functions/memberof.html"
-            },
-            {
-              "title": "newid",
-              "collapsable": false,
-              "path": "/functions/newid.html"
-            },
-            {
-              "title": "objectproperty",
-              "collapsable": false,
-              "path": "/functions/objectproperty.html"
-            },
-            {
-              "title": "parsename",
-              "collapsable": false,
-              "path": "/functions/parsename.html"
-            },
-            {
-              "title": "permissions",
-              "collapsable": false,
-              "path": "/functions/permissions.html"
-            },
-            {
-              "title": "serverproperty",
-              "collapsable": false,
-              "path": "/functions/serverproperty.html"
-            },
-            {
-              "title": "sessionproperty",
-              "collapsable": false,
-              "path": "/functions/sessionproperty.html"
-            },
-            {
-              "title": "typeproperty",
-              "collapsable": false,
-              "path": "/functions/typeproperty.html"
-            }
-          ]
-        },
-        {
           "title": "Funciones de texto",
           "collapsable": false,
-          "type": "auto",
+          "path": "/functions/index-text-functions.html",
           "children": [
             {
               "title": "abc \u2747\uFE0F",
@@ -623,9 +475,46 @@
           ]
         },
         {
+          "title": "Funciones de negocio y estad\u00EDsticas",
+          "collapsable": false,
+          "path": "/functions/index-business-functions.html",
+          "children": [
+            {
+              "title": "decile \u2747\uFE0F",
+              "collapsable": false,
+              "path": "/functions/decile.html"
+            },
+            {
+              "title": "margin \u2747\uFE0F \uD83D\uDEA7",
+              "collapsable": false,
+              "path": "/functions/margin.html"
+            },
+            {
+              "title": "pctvariance \u2747\uFE0F \uD83D\uDEA7",
+              "collapsable": false,
+              "path": "/functions/pctvariance.html"
+            },
+            {
+              "title": "percentile \u2747\uFE0F",
+              "collapsable": false,
+              "path": "/functions/percentile.html"
+            },
+            {
+              "title": "quantile \u2747\uFE0F",
+              "collapsable": false,
+              "path": "/functions/quantile.html"
+            },
+            {
+              "title": "quartile \u2747\uFE0F",
+              "collapsable": false,
+              "path": "/functions/quartile.html"
+            }
+          ]
+        },
+        {
           "title": "Funciones matem\u00E1ticas",
           "collapsable": false,
-          "type": "auto",
+          "path": "/functions/index-math-functions.html",
           "children": [
             {
               "title": "abs \u2764\uFE0F",
@@ -778,6 +667,118 @@
               "path": "/functions/tan.html"
             }
           ]
+        },
+        {
+          "title": "Funciones de sistema",
+          "collapsable": false,
+          "path": "/functions/index-system-functions.html",
+          "children": [
+            {
+              "title": "checksum",
+              "collapsable": false,
+              "path": "/functions/checksum.html"
+            },
+            {
+              "title": "columnproperty",
+              "collapsable": false,
+              "path": "/functions/columnproperty.html"
+            },
+            {
+              "title": "currentusername \u2747\uFE0F \u2764\uFE0F",
+              "collapsable": false,
+              "path": "/functions/currentusername.html"
+            },
+            {
+              "title": "databasepropertyex",
+              "collapsable": false,
+              "path": "/functions/databasepropertyex.html"
+            },
+            {
+              "title": "datalength",
+              "collapsable": false,
+              "path": "/functions/datalength.html"
+            },
+            {
+              "title": "filegroupproperty",
+              "collapsable": false,
+              "path": "/functions/filegroupproperty.html"
+            },
+            {
+              "title": "fileproperty",
+              "collapsable": false,
+              "path": "/functions/fileproperty.html"
+            },
+            {
+              "title": "formatmessage",
+              "collapsable": false,
+              "path": "/functions/formatmessage.html"
+            },
+            {
+              "title": "fulltextcatalogproperty",
+              "collapsable": false,
+              "path": "/functions/fulltextcatalogproperty.html"
+            },
+            {
+              "title": "fulltextserviceproperty",
+              "collapsable": false,
+              "path": "/functions/fulltextserviceproperty.html"
+            },
+            {
+              "title": "getansinull",
+              "collapsable": false,
+              "path": "/functions/getansinull.html"
+            },
+            {
+              "title": "indexproperty",
+              "collapsable": false,
+              "path": "/functions/indexproperty.html"
+            },
+            {
+              "title": "ismemberof \u2747\uFE0F",
+              "collapsable": false,
+              "path": "/functions/ismemberof.html"
+            },
+            {
+              "title": "memberof \u2747\uFE0F",
+              "collapsable": false,
+              "path": "/functions/memberof.html"
+            },
+            {
+              "title": "newid",
+              "collapsable": false,
+              "path": "/functions/newid.html"
+            },
+            {
+              "title": "objectproperty",
+              "collapsable": false,
+              "path": "/functions/objectproperty.html"
+            },
+            {
+              "title": "parsename",
+              "collapsable": false,
+              "path": "/functions/parsename.html"
+            },
+            {
+              "title": "permissions",
+              "collapsable": false,
+              "path": "/functions/permissions.html"
+            },
+            {
+              "title": "serverproperty",
+              "collapsable": false,
+              "path": "/functions/serverproperty.html"
+            },
+            {
+              "title": "sessionproperty",
+              "collapsable": false,
+              "path": "/functions/sessionproperty.html"
+            },
+            {
+              "title": "typeproperty",
+              "collapsable": false,
+              "path": "/functions/typeproperty.html"
+            }
+          ]
         }
       ]
     }
@@ -836,39 +837,13 @@
     {
       "title": "Vistas",
       "collapsable": false,
+      "path": "/views/",
       "type": "group",
       "children": [
         {
-          "title": "Directorio Activo",
+          "title": "Vistas de base de datos",
           "collapsable": false,
-          "type": "auto",
-          "children": [
-            {
-              "title": "Crono$ActiveDirectoryGroups",
-              "collapsable": false,
-              "path": "/views/cronoactivedirectorygroups.html"
-            },
-            {
-              "title": "Crono$ActiveDirectoryGroupsOf",
-              "collapsable": false,
-              "path": "/views/cronoactivedirectorygroupsof.html"
-            },
-            {
-              "title": "Crono$ActiveDirectoryMyGroups",
-              "collapsable": false,
-              "path": "/views/cronoactivedirectorymygroups.html"
-            },
-            {
-              "title": "Crono$ActiveDirectoryUsers",
-              "collapsable": false,
-              "path": "/views/cronoactivedirectoryusers.html"
-            }
-          ]
-        },
-        {
-          "title": "Metadatos base de datos",
-          "collapsable": false,
-          "type": "auto",
+          "path": "/views/index-db-views.html",
           "children": [
             {
               "title": "Crono$AnsiColumns",
@@ -963,9 +938,9 @@
           ]
         },
         {
-          "title": "Metadatos Crono",
+          "title": "Vistas de metadata de Crono",
           "collapsable": false,
-          "type": "auto",
+          "path": "/views/index-metadata-views.html",
           "children": [
             {
               "title": "Crono$CronoFunctions",
@@ -995,9 +970,58 @@
           ]
         },
         {
-          "title": "Miscel\u00E1nea",
+          "title": "Vistas de tiempo",
           "collapsable": false,
-          "type": "auto",
+          "path": "/views/index-time-views.html",
+          "children": [
+            {
+              "title": "Crono$Dates \u2764\uFE0F",
+              "collapsable": false,
+              "path": "/views/cronodates.html"
+            },
+            {
+              "title": "Crono$Months",
+              "collapsable": false,
+              "path": "/views/cronomonths.html"
+            },
+            {
+              "title": "Crono$Weeks",
+              "collapsable": false,
+              "path": "/views/cronoweeks.html"
+            }
+          ]
+        },
+        {
+          "title": "Vistas del Directorio Activo",
+          "collapsable": false,
+          "path": "/views/index-ad-views.html",
+          "children": [
+            {
+              "title": "Crono$ActiveDirectoryGroups",
+              "collapsable": false,
+              "path": "/views/cronoactivedirectorygroups.html"
+            },
+            {
+              "title": "Crono$ActiveDirectoryGroupsOf",
+              "collapsable": false,
+              "path": "/views/cronoactivedirectorygroupsof.html"
+            },
+            {
+              "title": "Crono$ActiveDirectoryMyGroups",
+              "collapsable": false,
+              "path": "/views/cronoactivedirectorymygroups.html"
+            },
+            {
+              "title": "Crono$ActiveDirectoryUsers",
+              "collapsable": false,
+              "path": "/views/cronoactivedirectoryusers.html"
+            }
+          ]
+        },
+        {
+          "title": "Vistas miscel\u00E1neas",
+          "collapsable": false,
+          "path": "/views/index-misc-views.html",
           "children": [
             {
               "title": "Crono$Countries",
@@ -1023,28 +1047,6 @@
               "title": "Crono$TimeZones",
               "collapsable": false,
               "path": "/views/cronotimezones.html"
-            }
-          ]
-        },
-        {
-          "title": "Tiempo",
-          "collapsable": false,
-          "type": "auto",
-          "children": [
-            {
-              "title": "Crono$Dates \u2764\uFE0F",
-              "collapsable": false,
-              "path": "/views/cronodates.html"
-            },
-            {
-              "title": "Crono$Months",
-              "collapsable": false,
-              "path": "/views/cronomonths.html"
-            },
-            {
-              "title": "Crono$Weeks",
-              "collapsable": false,
-              "path": "/views/cronoweeks.html"
             }
           ]
         }

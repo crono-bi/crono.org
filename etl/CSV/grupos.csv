@@ -1,167 +1,167 @@
-Funciones de agregación|avg
-Funciones de agregación|count
-Funciones de agregación|countdistinct
-Funciones de agregación|lag
-Funciones de agregación|lead
-Funciones de agregación|max
-Funciones de agregación|next_value
-Funciones de agregación|pct
-Funciones de agregación|pctrank
-Funciones de agregación|runningpct
-Funciones de agregación|runningsum
-Funciones de agregación|sum
-Funciones de agregación|total
-Funciones de agregación|var
-Funciones de agregación|varp
-Funciones de agregación|min
-Funciones de agregación|stdev
-Funciones de agregación|stdevp
-Funciones de agregación|single
-Funciones de conversión y selección|cast
-Funciones de conversión y selección|parse
-Funciones de conversión y selección|zeroifempty
-Funciones de conversión y selección|zeroifnull
-Funciones de conversión y selección|coalesce
-Funciones de conversión y selección|elementat
-Funciones de conversión y selección|emptyifnull
-Funciones de conversión y selección|indexof
-Funciones de conversión y selección|isnull
-Funciones de conversión y selección|isnumeric
-Funciones de conversión y selección|nullifempty
-Funciones de conversión y selección|nullifzero
-Funciones de conversión y selección|switch
-Funciones de fecha|dateadd
-Funciones de fecha|datediff
-Funciones de fecha|datefromparts
-Funciones de fecha|datename
-Funciones de fecha|datepart
-Funciones de fecha|datetime2fromparts
-Funciones de fecha|datetimefromparts
-Funciones de fecha|datetimeoffsetfromparts
-Funciones de fecha|day
-Funciones de fecha|getdate
-Funciones de fecha|getenddate
-Funciones de fecha|getenddatetime
-Funciones de fecha|getutcdate
-Funciones de fecha|isdate
-Funciones de fecha|isoweek
-Funciones de fecha|isoweekcode
-Funciones de fecha|isoweekshortcode
-Funciones de fecha|isoweekyear
-Funciones de fecha|localdate
-Funciones de fecha|localdatetimeoffset
-Funciones de fecha|month
-Funciones de fecha|smalldatetimefromparts
-Funciones de fecha|switchoffset
-Funciones de fecha|sysdatetime
-Funciones de fecha|sysdatetimeoffset
-Funciones de fecha|sysutcdatetime
-Funciones de fecha|timefromparts
-Funciones de fecha|todatetimeoffset
-Funciones de fecha|today
-Funciones de fecha|tomorrow
-Funciones de fecha|year
-Funciones de fecha|eomonth
-Funciones de fecha|hour
-Funciones de sistema|checksum
-Funciones de sistema|currentusername
-Funciones de sistema|filegroupproperty
-Funciones de sistema|fileproperty
-Funciones de sistema|formatmessage
-Funciones de sistema|serverproperty
-Funciones de sistema|sessionproperty
-Funciones de sistema|columnproperty
-Funciones de sistema|databasepropertyex
-Funciones de sistema|datalength
-Funciones de sistema|fulltextcatalogproperty
-Funciones de sistema|fulltextserviceproperty
-Funciones de sistema|getansinull
-Funciones de sistema|indexproperty
-Funciones de sistema|newid
-Funciones de sistema|objectproperty
-Funciones de sistema|parsename
-Funciones de sistema|permissions
-Funciones de sistema|typeproperty
-Funciones de sistema|IsMemberOf
-Funciones de sistema|MemberOf
-Funciones de texto|ascii
-Funciones de texto|abc
-Funciones de texto|charindex
-Funciones de texto|concat
-Funciones de texto|difference
-Funciones de texto|format
-Funciones de texto|left
-Funciones de texto|len
-Funciones de texto|lower
-Funciones de texto|ltrim
-Funciones de texto|patindex
-Funciones de texto|quotename
-Funciones de texto|replace
-Funciones de texto|replicate
-Funciones de texto|reverse
-Funciones de texto|right
-Funciones de texto|rtrim
-Funciones de texto|soundex
-Funciones de texto|str
-Funciones de texto|stuff
-Funciones de texto|substring
-Funciones de texto|trim
-Funciones de texto|unicode
-Funciones de texto|upper
-Funciones matemáticas|abs
-Funciones matemáticas|acos
-Funciones matemáticas|addition
-Funciones matemáticas|asin
-Funciones matemáticas|atan
-Funciones matemáticas|atn2
-Funciones matemáticas|ceiling
-Funciones matemáticas|cos
-Funciones matemáticas|cot
-Funciones matemáticas|degrees
-Funciones matemáticas|divide
-Funciones matemáticas|exp
-Funciones matemáticas|floor
-Funciones matemáticas|log
-Funciones matemáticas|log10
-Funciones matemáticas|maximum
-Funciones matemáticas|minimum
-Funciones matemáticas|mod
-Funciones matemáticas|pi
-Funciones matemáticas|power
-Funciones matemáticas|radians
-Funciones matemáticas|rand
-Funciones matemáticas|round
-Funciones matemáticas|sign
-Funciones matemáticas|sin
-Funciones matemáticas|space
-Funciones matemáticas|sqrt
-Funciones matemáticas|substraction
-Funciones matemáticas|tan
-Funciones matemáticas|square
-Funciones de negocio y estadísticas|quantile
-Funciones de negocio y estadísticas|quartile
-Funciones de negocio y estadísticas|percentile
-Funciones de negocio y estadísticas|decile
-Funciones de negocio y estadísticas|margin
-Funciones de negocio y estadísticas|markup
-Funciones de negocio y estadísticas|pctvariance
-Vistas Crono|Crono$Directory
-Vistas Crono|Crono$DirectoryName
-Vistas Crono|Crono$Download
-Vistas Crono|Crono$FileName
-Vistas Crono|Crono$FileNameWithoutExtension
-Vistas Crono|Crono$HeaderProperty
-Vistas Crono|Crono$IsoDate
-Vistas Crono|Crono$MarkdownTitle
-Vistas Crono|Crono$NiceUrlName
-Vistas Crono|Crono$ReadFile
-Vistas Crono|Crono$RfcDate
-Vistas Crono|Crono$Route
-Miscelánea|ismemberof
-Miscelánea|md5
-Miscelánea|memberof
-Miscelánea|nameof
-Miscelánea|sha1
-Miscelánea|sha256
-Miscelánea|single
-Miscelánea|valueof
+index-aggregation-functions|avg
+index-aggregation-functions|count
+index-aggregation-functions|countdistinct
+index-aggregation-functions|lag
+index-aggregation-functions|lead
+index-aggregation-functions|max
+index-aggregation-functions|next_value
+index-aggregation-functions|pct
+index-aggregation-functions|pctrank
+index-aggregation-functions|runningpct
+index-aggregation-functions|runningsum
+index-aggregation-functions|sum
+index-aggregation-functions|total
+index-aggregation-functions|var
+index-aggregation-functions|varp
+index-aggregation-functions|min
+index-aggregation-functions|stdev
+index-aggregation-functions|stdevp
+index-aggregation-functions|single
+index-conversion-selection-functions|cast
+index-conversion-selection-functions|parse
+index-conversion-selection-functions|zeroifempty
+index-conversion-selection-functions|zeroifnull
+index-conversion-selection-functions|coalesce
+index-conversion-selection-functions|elementat
+index-conversion-selection-functions|emptyifnull
+index-conversion-selection-functions|indexof
+index-conversion-selection-functions|isnull
+index-conversion-selection-functions|isnumeric
+index-conversion-selection-functions|nullifempty
+index-conversion-selection-functions|nullifzero
+index-conversion-selection-functions|switch
+index-date-functions|dateadd
+index-date-functions|datediff
+index-date-functions|datefromparts
+index-date-functions|datename
+index-date-functions|datepart
+index-date-functions|datetime2fromparts
+index-date-functions|datetimefromparts
+index-date-functions|datetimeoffsetfromparts
+index-date-functions|day
+index-date-functions|getdate
+index-date-functions|getenddate
+index-date-functions|getenddatetime
+index-date-functions|getutcdate
+index-date-functions|isdate
+index-date-functions|isoweek
+index-date-functions|isoweekcode
+index-date-functions|isoweekshortcode
+index-date-functions|isoweekyear
+index-date-functions|localdate
+index-date-functions|localdatetimeoffset
+index-date-functions|month
+index-date-functions|smalldatetimefromparts
+index-date-functions|switchoffset
+index-date-functions|sysdatetime
+index-date-functions|sysdatetimeoffset
+index-date-functions|sysutcdatetime
+index-date-functions|timefromparts
+index-date-functions|todatetimeoffset
+index-date-functions|today
+index-date-functions|tomorrow
+index-date-functions|year
+index-date-functions|eomonth
+index-date-functions|hour
+index-system-functions|checksum
+index-system-functions|currentusername
+index-system-functions|filegroupproperty
+index-system-functions|fileproperty
+index-system-functions|formatmessage
+index-system-functions|serverproperty
+index-system-functions|sessionproperty
+index-system-functions|columnproperty
+index-system-functions|databasepropertyex
+index-system-functions|datalength
+index-system-functions|fulltextcatalogproperty
+index-system-functions|fulltextserviceproperty
+index-system-functions|getansinull
+index-system-functions|indexproperty
+index-system-functions|newid
+index-system-functions|objectproperty
+index-system-functions|parsename
+index-system-functions|permissions
+index-system-functions|typeproperty
+index-system-functions|IsMemberOf
+index-system-functions|MemberOf
+index-text-functions|ascii
+index-text-functions|abc
+index-text-functions|charindex
+index-text-functions|concat
+index-text-functions|difference
+index-text-functions|format
+index-text-functions|left
+index-text-functions|len
+index-text-functions|lower
+index-text-functions|ltrim
+index-text-functions|patindex
+index-text-functions|quotename
+index-text-functions|replace
+index-text-functions|replicate
+index-text-functions|reverse
+index-text-functions|right
+index-text-functions|rtrim
+index-text-functions|soundex
+index-text-functions|str
+index-text-functions|stuff
+index-text-functions|substring
+index-text-functions|trim
+index-text-functions|unicode
+index-text-functions|upper
+index-math-functions|abs
+index-math-functions|acos
+index-math-functions|addition
+index-math-functions|asin
+index-math-functions|atan
+index-math-functions|atn2
+index-math-functions|ceiling
+index-math-functions|cos
+index-math-functions|cot
+index-math-functions|degrees
+index-math-functions|divide
+index-math-functions|exp
+index-math-functions|floor
+index-math-functions|log
+index-math-functions|log10
+index-math-functions|maximum
+index-math-functions|minimum
+index-math-functions|mod
+index-math-functions|pi
+index-math-functions|power
+index-math-functions|radians
+index-math-functions|rand
+index-math-functions|round
+index-math-functions|sign
+index-math-functions|sin
+index-math-functions|space
+index-math-functions|sqrt
+index-math-functions|substraction
+index-math-functions|tan
+index-math-functions|square
+index-business-functions|quantile
+index-business-functions|quartile
+index-business-functions|percentile
+index-business-functions|decile
+index-business-functions|margin
+index-business-functions|markup
+index-business-functions|pctvariance
+index-misc-functions|Crono$Directory
+index-misc-functions|Crono$DirectoryName
+index-misc-functions|Crono$Download
+index-misc-functions|Crono$FileName
+index-misc-functions|Crono$FileNameWithoutExtension
+index-misc-functions|Crono$HeaderProperty
+index-misc-functions|Crono$IsoDate
+index-misc-functions|Crono$MarkdownTitle
+index-misc-functions|Crono$NiceUrlName
+index-misc-functions|Crono$ReadFile
+index-misc-functions|Crono$RfcDate
+index-misc-functions|Crono$Route
+index-misc-functions|ismemberof
+index-misc-functions|md5
+index-misc-functions|memberof
+index-misc-functions|nameof
+index-misc-functions|sha1
+index-misc-functions|sha256
+index-misc-functions|single
+index-misc-functions|valueof

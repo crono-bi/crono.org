@@ -1,5 +1,5 @@
 ﻿---
-SidebarGroup: Tiempo
+SidebarGroup: "index-time-views"
 ---
 
 # Crono$Dates ❤️

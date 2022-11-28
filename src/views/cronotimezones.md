@@ -1,5 +1,5 @@
 ﻿---
-SidebarGroup: Miscelánea
+SidebarGroup: "index-misc-views"
 ---
 
 # Crono$TimeZones

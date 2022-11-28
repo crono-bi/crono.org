@@ -1,5 +1,5 @@
 ﻿---
-SidebarGroup: "Metadatos base de datos"
+SidebarGroup: "index-db-views"
 ---
 
 # Crono$Columns ❤️

@@ -1,5 +1,5 @@
 ﻿---
-SidebarGroup: "Directorio Activo"
+SidebarGroup: "index-ad-views"
 ---
 
 # Crono$ActiveDirectoryGroups

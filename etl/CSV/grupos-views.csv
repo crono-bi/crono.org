@@ -1,35 +1,35 @@
-﻿Crono$ActiveDirectoryGroups|Directorio Activo
-Crono$ActiveDirectoryGroupsOf|Directorio Activo
-Crono$ActiveDirectoryMyGroups|Directorio Activo
-Crono$ActiveDirectoryUsers|Directorio Activo
-Crono$AnsiColumns|Metadatos base de datos
-Crono$AnsiForeignKeys|Metadatos base de datos
-Crono$ColumnExtendedProperties|Metadatos base de datos
-Crono$Columns|Metadatos base de datos
-Crono$Constraints|Metadatos base de datos
-Crono$ConstraintsColumns|Metadatos base de datos
-Crono$DatabaseExtendedProperties|Metadatos base de datos
-Crono$Databases|Metadatos base de datos
-Crono$ForeignKeys|Metadatos base de datos
-Crono$Functions|Metadatos Crono
-Crono$IndexColumns|Metadatos base de datos
-Crono$Indexes|Metadatos base de datos
-Crono$ProcedureExtendedProperties|Metadatos base de datos
-Crono$Procedures|Metadatos base de datos
-Crono$Routines|Metadatos base de datos
-Crono$Schemas|Metadatos base de datos
-Crono$TableExtendedProperties|Metadatos base de datos
-Crono$Tables|Metadatos base de datos
-Crono$Parameters|Metadatos base de datos
-Crono$CronoFunctions|Metadatos Crono
-Crono$CronoViews|Metadatos Crono
-Crono$Keywords|Metadatos Crono
-Crono$SqlFunctions|Metadatos Crono
-Crono$Countries|Miscelánea
-Crono$TimeZones|Miscelánea
-Crono$SpanishCities|Miscelánea
-Crono$SpanishProvinces|Miscelánea
-Crono$SpanishRegions|Miscelánea
-Crono$Dates|Tiempo
-Crono$Months|Tiempo
-Crono$Weeks|Tiempo
+﻿index-ad-views|Crono$ActiveDirectoryGroups
+index-ad-views|Crono$ActiveDirectoryGroupsOf
+index-ad-views|Crono$ActiveDirectoryMyGroups
+index-ad-views|Crono$ActiveDirectoryUsers
+index-db-views|Crono$AnsiColumns
+index-db-views|Crono$AnsiForeignKeys
+index-db-views|Crono$ColumnExtendedProperties
+index-db-views|Crono$Columns
+index-db-views|Crono$Constraints
+index-db-views|Crono$ConstraintsColumns
+index-db-views|Crono$DatabaseExtendedProperties
+index-db-views|Crono$Databases
+index-db-views|Crono$ForeignKeys
+index-db-views|Crono$IndexColumns
+index-db-views|Crono$Indexes
+index-db-views|Crono$ProcedureExtendedProperties
+index-db-views|Crono$Procedures
+index-db-views|Crono$Routines
+index-db-views|Crono$Schemas
+index-db-views|Crono$TableExtendedProperties
+index-db-views|Crono$Tables
+index-db-views|Crono$Parameters
+index-metadata-views|Crono$Functions
+index-metadata-views|Crono$CronoFunctions
+index-metadata-views|Crono$CronoViews
+index-metadata-views|Crono$Keywords
+index-metadata-views|Crono$SqlFunctions
+index-misc-views|Crono$Countries
+index-misc-views|Crono$TimeZones
+index-misc-views|Crono$SpanishCities
+index-misc-views|Crono$SpanishProvinces
+index-misc-views|Crono$SpanishRegions
+index-time-views|Crono$Dates
+index-time-views|Crono$Months
+index-time-views|Crono$Weeks

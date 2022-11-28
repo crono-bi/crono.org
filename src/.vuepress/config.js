@@ -1,6 +1,6 @@
 const { description } = require('../../package')
 
-const sidebar =require ('./data/sidebar.json')
+const sidebar =require ('./public/sidebar.json')
 
 module.exports = {
   title: 'Crono SQL',
