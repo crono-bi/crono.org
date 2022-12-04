@@ -20,7 +20,5 @@ left join (
 	from FILE 'D:\GitHub\cronosql.io\etl\CSV\grupos.csv'
 ) groups using Name
 where 
- not (FunctionType='SQL' and body is null)
- and f.name not in ('grouping', 'zeroifempty')
- and FunctionGroup not in ('Miscelánea')
+ f.name not starts with 'Crono$'
 

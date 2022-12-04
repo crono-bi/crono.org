@@ -7,10 +7,24 @@
     "FunctionGroup": "index-aggregation-functions"
   },
   {
+    "FunctionName": "checksum_agg",
+    "NameEmoji": "checksum_agg \uD83D\uDEA7",
+    "FunctionType": "SQL",
+    "Body": null,
+    "FunctionGroup": "index-aggregation-functions"
+  },
+  {
     "FunctionName": "count",
     "NameEmoji": "count",
     "FunctionType": "SQL",
     "Body": "Esta funci\u00F3n devuelve el n\u00FAmero de elementos encontrados en un grupo. \u0060COUNT_BIG\u0060 funciona como la funci\u00F3n [COUNT](../../t-sql/functions/count-transact-sql.md). Estas funciones difieren solo en los tipos de datos de sus valores de retorno. \u0060COUNT_BIG\u0060 siempre devuelve un valor de tipo de datos **bigint**. \u0060COUNT\u0060 siempre devuelve un valor de tipo de datos **int**.\n\n## Comentarios \n\n\u0060count\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060count\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/count-transact-sql) para mayor informaci\u00F3n.",
+    "FunctionGroup": "index-aggregation-functions"
+  },
+  {
+    "FunctionName": "count_big",
+    "NameEmoji": "count_big \uD83D\uDEA7",
+    "FunctionType": "SQL",
+    "Body": null,
     "FunctionGroup": "index-aggregation-functions"
   },
   {
@@ -67,6 +81,20 @@
     "NameEmoji": "pctrank \u2747\uFE0F",
     "FunctionType": "Crono",
     "Body": "La funci\u00F3n \u0060pctrank\u0060 es una funci\u00F3n de ventana que devuelve el ranking de cada fila normalizado entre 0 y 1.\n\nRequiere la cl\u00E1usula ORDER BY en la partici\u00F3n OVER.\n\nSe puede usar tanto la sintaxis \u0060OVER\u0060 del SQL est\u00E1ndar como la sintaxis compacta propia de Crono.\n\n## Ejemplo\n\nLa siguiente consulta devuelve el 40% de las tiendas con mayor venta.\n\n\u0060\u0060\u0060\nselect \n  lb_tiendas.nombre tienda,\n  sum(unidades) ventas,\n  pctrank(order by ventas desc) rank\nfrom dbo.lb_ventas\ninner join lb_tiendas using id_tienda\ngroup by all\nqualify rank\u003C0.4\n\u0060\u0060\u0060\n\nLa consulta SQL generada es:\n\n\u0060\u0060\u0060\nSELECT *\nFROM (\n    SELECT\n      lb_tiendas.nombre AS tienda,\n      sum(unidades) AS ventas,\n      1.0*rank() OVER (ORDER BY sum(unidades) DESC)/count(*) OVER () AS rank\n    FROM dbo.lb_ventas\n    INNER JOIN lb_tiendas ON (lb_ventas.id_tienda=lb_tiendas.id_tienda)\n    GROUP BY lb_tiendas.nombre\n  ) a\nWHERE rank\u003C0.4\n\u0060\u0060\u0060\n\n## Comentarios\n\nEsta funci\u00F3n es similar a \u0060rank\u0060 y \u0060percentile\u0060. La funci\u00F3n \u0060rank\u0060 devuelve la posici\u00F3n ordinal de cada registro, \u0060percentile\u0060 la normaliza entre 0 y 100, y \u0060pctrank\u0060la normaliza entre 0 y 1.",
+    "FunctionGroup": "index-aggregation-functions"
+  },
+  {
+    "FunctionName": "rank",
+    "NameEmoji": "rank",
+    "FunctionType": "SQL",
+    "Body": "Devuelve el rango de cada fila dentro de la partici\u00F3n de un conjunto de resultados. El rango de una fila es uno m\u00E1s el n\u00FAmero de rangos que preceden a la fila en cuesti\u00F3n.\n\n## Comentarios \n\n\u0060rank\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060rank\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/rank-transact-sql) para mayor informaci\u00F3n.",
+    "FunctionGroup": "index-aggregation-functions"
+  },
+  {
+    "FunctionName": "row_number",
+    "NameEmoji": "row_number \uD83D\uDEA7",
+    "FunctionType": "SQL",
+    "Body": null,
     "FunctionGroup": "index-aggregation-functions"
   },
   {
@@ -147,6 +175,13 @@
     "FunctionGroup": "index-business-functions"
   },
   {
+    "FunctionName": "markup",
+    "NameEmoji": "markup \u2747\uFE0F \uD83D\uDEA7",
+    "FunctionType": "Crono",
+    "Body": null,
+    "FunctionGroup": "index-business-functions"
+  },
+  {
     "FunctionName": "pctvariance",
     "NameEmoji": "pctvariance \u2747\uFE0F \uD83D\uDEA7",
     "FunctionType": "Crono",
@@ -175,6 +210,34 @@
     "FunctionGroup": "index-business-functions"
   },
   {
+    "FunctionName": "bighex",
+    "NameEmoji": "bighex \u2747\uFE0F \uD83D\uDEA7",
+    "FunctionType": "Crono",
+    "Body": null,
+    "FunctionGroup": "index-conversion-selection-functions"
+  },
+  {
+    "FunctionName": "bigint",
+    "NameEmoji": "bigint \u2747\uFE0F \uD83D\uDEA7",
+    "FunctionType": "Crono",
+    "Body": null,
+    "FunctionGroup": "index-conversion-selection-functions"
+  },
+  {
+    "FunctionName": "binary_checksum",
+    "NameEmoji": "binary_checksum \uD83D\uDEA7",
+    "FunctionType": "SQL",
+    "Body": null,
+    "FunctionGroup": "index-conversion-selection-functions"
+  },
+  {
+    "FunctionName": "bit",
+    "NameEmoji": "bit \u2747\uFE0F",
+    "FunctionType": "Crono",
+    "Body": "BIT_COUNT toma un par\u00E1metro y devuelve el n\u00FAmero de bits establecidos en 1 en ese par\u00E1metro como un tipo **bigint**.\n\n## Comentarios \n\n\u0060bit\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060bit\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/bit-transact-sql) para mayor informaci\u00F3n.",
+    "FunctionGroup": "index-conversion-selection-functions"
+  },
+  {
     "FunctionName": "cast",
     "NameEmoji": "cast",
     "FunctionType": "SQL",
@@ -186,6 +249,34 @@
     "NameEmoji": "coalesce \u2747\uFE0F \u2764\uFE0F ",
     "FunctionType": "Crono",
     "Body": "La funci\u00F3n \u0060coalesce\u0060 eval\u00FAa los argumentos en orden y devuelve el valor de la primera expresi\u00F3n que no se eval\u00FAa como NULL. Por ejemplo, \u0060SELECT COALESCE(NULL, NULL, \u0027third_value\u0027, \u0027fourth_value\u0027)\u0060 devuelve el tercer valor porque el tercer valor es el primer valor que no es \u0060NULL\u0060.\n\n\n## Ejemplo\n\n\u0060\u0060\u0060\nSELECT COALESCE(NULL, NULL, \u0027third_value\u0027, \u0027fourth_value\u0027)\n\u0060\u0060\u0060\n\n\n## Comentarios\n\n\u0027coalesce\u0027 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [coalesce](https://learn.microsoft.com/es-es/sql/t-sql/language-elements/coalesce-transact-sql) para mayor informaci\u00F3n.",
+    "FunctionGroup": "index-conversion-selection-functions"
+  },
+  {
+    "FunctionName": "convert",
+    "NameEmoji": "convert \uD83D\uDEA7",
+    "FunctionType": "SQL",
+    "Body": null,
+    "FunctionGroup": "index-conversion-selection-functions"
+  },
+  {
+    "FunctionName": "date",
+    "NameEmoji": "date \u2747\uFE0F",
+    "FunctionType": "Crono",
+    "Body": "Las secciones de este art\u00EDculo cubren todos los tipos y funciones de datos de fecha y hora [!INCLUDE[tsql](../../includes/tsql-md.md)].\n\n## Comentarios \n\n\u0060date\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060date\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/date-transact-sql) para mayor informaci\u00F3n.",
+    "FunctionGroup": "index-conversion-selection-functions"
+  },
+  {
+    "FunctionName": "datetime",
+    "NameEmoji": "datetime \u2747\uFE0F \uD83D\uDEA7",
+    "FunctionType": "Crono",
+    "Body": null,
+    "FunctionGroup": "index-conversion-selection-functions"
+  },
+  {
+    "FunctionName": "datetime2",
+    "NameEmoji": "datetime2 \u2747\uFE0F \uD83D\uDEA7",
+    "FunctionType": "Crono",
+    "Body": null,
     "FunctionGroup": "index-conversion-selection-functions"
   },
   {
@@ -203,10 +294,31 @@
     "FunctionGroup": "index-conversion-selection-functions"
   },
   {
+    "FunctionName": "float",
+    "NameEmoji": "float \u2747\uFE0F \uD83D\uDEA7",
+    "FunctionType": "Crono",
+    "Body": null,
+    "FunctionGroup": "index-conversion-selection-functions"
+  },
+  {
+    "FunctionName": "hex",
+    "NameEmoji": "hex \u2747\uFE0F \uD83D\uDEA7",
+    "FunctionType": "Crono",
+    "Body": null,
+    "FunctionGroup": "index-conversion-selection-functions"
+  },
+  {
     "FunctionName": "indexof",
     "NameEmoji": "indexof \u2747\uFE0F",
     "FunctionType": "Crono",
     "Body": "La funci\u00F3n \u0060IndexOf\u0060 devuelve la posici\u00F3n de una expresi\u00F3n dentro de la lista.\n\nSe trata de un modo compacto de utilizar la sintaxis simple de \u0060CASE\u0060.\n\n\n# Ejemplo\n\n\u0060\u0060\u0060\nselect Id,IndexOf(Description, \u0027High\u0027, \u0027Medium\u0027, \u0027Low\u0027) Code\nfrom MyTable\n\u0060\u0060\u0060\n\nLa sentencia SQL generada utiliza la expresi\u00F3n \u0060CASE\u0060:\n\n\u0060\u0060\u0060\nSELECT\n  Id,\n  CASE Description WHEN \u0027High\u0027 THEN 1 WHEN \u0027Medium\u0027 THEN 2 WHEN \u0027Low\u0027 THEN 3 END AS Code\nFROM MyTable\n\u0060\u0060\u0060\n",
+    "FunctionGroup": "index-conversion-selection-functions"
+  },
+  {
+    "FunctionName": "int",
+    "NameEmoji": "int \u2747\uFE0F \uD83D\uDEA7",
+    "FunctionType": "Crono",
+    "Body": null,
     "FunctionGroup": "index-conversion-selection-functions"
   },
   {
@@ -221,6 +333,13 @@
     "NameEmoji": "isnumeric",
     "FunctionType": "SQL",
     "Body": "Determina si una expresi\u00F3n es un tipo num\u00E9rico v\u00E1lido.\n\n## Comentarios \n\n\u0060isnumeric\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060isnumeric\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/isnumeric-transact-sql) para mayor informaci\u00F3n.",
+    "FunctionGroup": "index-conversion-selection-functions"
+  },
+  {
+    "FunctionName": "nullif",
+    "NameEmoji": "nullif \uD83D\uDEA7",
+    "FunctionType": "SQL",
+    "Body": null,
     "FunctionGroup": "index-conversion-selection-functions"
   },
   {
@@ -245,10 +364,73 @@
     "FunctionGroup": "index-conversion-selection-functions"
   },
   {
+    "FunctionName": "smallhex",
+    "NameEmoji": "smallhex \u2747\uFE0F \uD83D\uDEA7",
+    "FunctionType": "Crono",
+    "Body": null,
+    "FunctionGroup": "index-conversion-selection-functions"
+  },
+  {
+    "FunctionName": "smallint",
+    "NameEmoji": "smallint \u2747\uFE0F \uD83D\uDEA7",
+    "FunctionType": "Crono",
+    "Body": null,
+    "FunctionGroup": "index-conversion-selection-functions"
+  },
+  {
     "FunctionName": "switch",
     "NameEmoji": "switch \u2747\uFE0F",
     "FunctionType": "Crono",
     "Body": "La funci\u00F3n \u0060switch\u0060 es una manera compacta de utilizar el la sintaxis simple de \u0060CASE\u0060. Esta funci\u00F3n eval\u00FAa una expresi\u00F3n y devuelve una de las posibles salidas en funci\u00F3n de su valor.\n\nRequiere por lo menos 3 argumentos. \n\n## Ejemplo\n\n\u0060\u0060\u0060\nselect Code, switch(Code, 1,\u0027High\u0027, 2, \u0027Medium\u0027, 3, \u0027Low\u0027, \u0027N.A.\u0027)\nfrom MyDimensionTable\n\u0060\u0060\u0060\n\nEl c\u00F3digo SQL generado utiliza el operador \u0060CASE\u0060:\n\n\u0060\u0060\u0060\nSELECT\n  Code,\n  CASE Code WHEN 1 THEN \u0027High\u0027 WHEN 2 THEN \u0027Medium\u0027 WHEN 3 THEN \u0027Low\u0027 ELSE \u0027N.A.\u0027 END AS expr2\nFROM MyDimensionTable\n\u0060\u0060\u0060\n\n\n## Comentarios\n\nSe recomienda utilizar la expresi\u00F3n \u0060CASE\u0060 en lugar de esta funci\u00F3n \u0060SWITCH\u0060.\n",
+    "FunctionGroup": "index-conversion-selection-functions"
+  },
+  {
+    "FunctionName": "time",
+    "NameEmoji": "time \u2747\uFE0F \uD83D\uDEA7",
+    "FunctionType": "Crono",
+    "Body": null,
+    "FunctionGroup": "index-conversion-selection-functions"
+  },
+  {
+    "FunctionName": "tinyhex",
+    "NameEmoji": "tinyhex \u2747\uFE0F \uD83D\uDEA7",
+    "FunctionType": "Crono",
+    "Body": null,
+    "FunctionGroup": "index-conversion-selection-functions"
+  },
+  {
+    "FunctionName": "tinyint",
+    "NameEmoji": "tinyint \u2747\uFE0F \uD83D\uDEA7",
+    "FunctionType": "Crono",
+    "Body": null,
+    "FunctionGroup": "index-conversion-selection-functions"
+  },
+  {
+    "FunctionName": "try_cast",
+    "NameEmoji": "try_cast \uD83D\uDEA7",
+    "FunctionType": "SQL",
+    "Body": null,
+    "FunctionGroup": "index-conversion-selection-functions"
+  },
+  {
+    "FunctionName": "try_convert",
+    "NameEmoji": "try_convert \uD83D\uDEA7",
+    "FunctionType": "SQL",
+    "Body": null,
+    "FunctionGroup": "index-conversion-selection-functions"
+  },
+  {
+    "FunctionName": "try_parse",
+    "NameEmoji": "try_parse \uD83D\uDEA7",
+    "FunctionType": "SQL",
+    "Body": null,
+    "FunctionGroup": "index-conversion-selection-functions"
+  },
+  {
+    "FunctionName": "unicodechar",
+    "NameEmoji": "unicodechar \u2747\uFE0F \uD83D\uDEA7",
+    "FunctionType": "Crono",
+    "Body": null,
     "FunctionGroup": "index-conversion-selection-functions"
   },
   {
@@ -257,6 +439,27 @@
     "FunctionType": "Crono",
     "Body": "La funci\u00F3n \u0060zeroifnull\u0060 devuelve \u00600\u0060 si la expresi\u00F3n de entrada es un \u0060NULL\u0060. En cualquier otro caso devuelve la propia expresi\u00F3n de entrada.\n\n## Ejemplo\n\n\u0060\u0060\u0060\nSELECT min(zeroifnull(myTable.Value)) MinValue\nFROM dbo.myTable\n\u0060\u0060\u0060\n\nEl c\u00F3digo SQL generado utiliza la funci\u00F3n \u0060coalesce\u0060:\n\n\u0060\u0060\u0060\nSELECT min(coalesce(myTable.[Value],0)) AS MinValue\nFROM dbo.myTable\n\u0060\u0060\u0060",
     "FunctionGroup": "index-conversion-selection-functions"
+  },
+  {
+    "FunctionName": "current_date",
+    "NameEmoji": "current_date \u2747\uFE0F \uD83D\uDEA7",
+    "FunctionType": "Crono",
+    "Body": null,
+    "FunctionGroup": "index-date-functions"
+  },
+  {
+    "FunctionName": "current_time",
+    "NameEmoji": "current_time \u2747\uFE0F \uD83D\uDEA7",
+    "FunctionType": "Crono",
+    "Body": null,
+    "FunctionGroup": "index-date-functions"
+  },
+  {
+    "FunctionName": "current_timestamp",
+    "NameEmoji": "current_timestamp \u2747\uFE0F \uD83D\uDEA7",
+    "FunctionType": "Crono",
+    "Body": null,
+    "FunctionGroup": "index-date-functions"
   },
   {
     "FunctionName": "dateadd",
@@ -490,6 +693,13 @@
     "FunctionGroup": "index-date-functions"
   },
   {
+    "FunctionName": "yyyymmdd",
+    "NameEmoji": "yyyymmdd \u2747\uFE0F \uD83D\uDEA7",
+    "FunctionType": "Crono",
+    "Body": null,
+    "FunctionGroup": "index-date-functions"
+  },
+  {
     "FunctionName": "abs",
     "NameEmoji": "abs \u2764\uFE0F ",
     "FunctionType": "SQL",
@@ -700,129 +910,31 @@
     "FunctionGroup": "index-math-functions"
   },
   {
-    "FunctionName": "Crono$Directory",
-    "NameEmoji": "Crono$Directory \u2747\uFE0F \uD83D\uDEA7",
-    "FunctionType": "Crono",
-    "Body": null,
-    "FunctionGroup": "index-misc-functions"
-  },
-  {
-    "FunctionName": "Crono$DirectoryName",
-    "NameEmoji": "Crono$DirectoryName \u2747\uFE0F \uD83D\uDEA7",
-    "FunctionType": "Crono",
-    "Body": null,
-    "FunctionGroup": "index-misc-functions"
-  },
-  {
-    "FunctionName": "Crono$Download",
-    "NameEmoji": "Crono$Download \u2747\uFE0F \uD83D\uDEA7",
-    "FunctionType": "Crono",
-    "Body": null,
-    "FunctionGroup": "index-misc-functions"
-  },
-  {
-    "FunctionName": "Crono$FileName",
-    "NameEmoji": "Crono$FileName \u2747\uFE0F \uD83D\uDEA7",
-    "FunctionType": "Crono",
-    "Body": null,
-    "FunctionGroup": "index-misc-functions"
-  },
-  {
-    "FunctionName": "Crono$FileNameWithoutExtension",
-    "NameEmoji": "Crono$FileNameWithoutExtension \u2747\uFE0F \uD83D\uDEA7",
-    "FunctionType": "Crono",
-    "Body": null,
-    "FunctionGroup": "index-misc-functions"
-  },
-  {
-    "FunctionName": "Crono$HeaderProperty",
-    "NameEmoji": "Crono$HeaderProperty \u2747\uFE0F \uD83D\uDEA7",
-    "FunctionType": "Crono",
-    "Body": null,
-    "FunctionGroup": "index-misc-functions"
-  },
-  {
-    "FunctionName": "Crono$IsoDate",
-    "NameEmoji": "Crono$IsoDate \u2747\uFE0F \uD83D\uDEA7",
-    "FunctionType": "Crono",
-    "Body": null,
-    "FunctionGroup": "index-misc-functions"
-  },
-  {
-    "FunctionName": "Crono$MarkdownTitle",
-    "NameEmoji": "Crono$MarkdownTitle \u2747\uFE0F \uD83D\uDEA7",
-    "FunctionType": "Crono",
-    "Body": null,
-    "FunctionGroup": "index-misc-functions"
-  },
-  {
-    "FunctionName": "Crono$NiceUrlName",
-    "NameEmoji": "Crono$NiceUrlName \u2747\uFE0F \uD83D\uDEA7",
-    "FunctionType": "Crono",
-    "Body": null,
-    "FunctionGroup": "index-misc-functions"
-  },
-  {
-    "FunctionName": "Crono$ReadFile",
-    "NameEmoji": "Crono$ReadFile \u2747\uFE0F \uD83D\uDEA7",
-    "FunctionType": "Crono",
-    "Body": null,
-    "FunctionGroup": "index-misc-functions"
-  },
-  {
-    "FunctionName": "Crono$RfcDate",
-    "NameEmoji": "Crono$RfcDate \u2747\uFE0F \uD83D\uDEA7",
-    "FunctionType": "Crono",
-    "Body": null,
-    "FunctionGroup": "index-misc-functions"
-  },
-  {
-    "FunctionName": "Crono$Route",
-    "NameEmoji": "Crono$Route \u2747\uFE0F \uD83D\uDEA7",
-    "FunctionType": "Crono",
-    "Body": null,
-    "FunctionGroup": "index-misc-functions"
-  },
-  {
-    "FunctionName": "md5",
-    "NameEmoji": "md5 \u2747\uFE0F \uD83D\uDEA7",
-    "FunctionType": "Crono",
-    "Body": null,
-    "FunctionGroup": "index-misc-functions"
-  },
-  {
-    "FunctionName": "nameof",
-    "NameEmoji": "nameof \u2747\uFE0F \uD83D\uDEA7",
-    "FunctionType": "Crono",
-    "Body": null,
-    "FunctionGroup": "index-misc-functions"
-  },
-  {
-    "FunctionName": "sha1",
-    "NameEmoji": "sha1 \u2747\uFE0F \uD83D\uDEA7",
-    "FunctionType": "Crono",
-    "Body": null,
-    "FunctionGroup": "index-misc-functions"
-  },
-  {
-    "FunctionName": "sha256",
-    "NameEmoji": "sha256 \u2747\uFE0F \uD83D\uDEA7",
-    "FunctionType": "Crono",
-    "Body": null,
-    "FunctionGroup": "index-misc-functions"
-  },
-  {
-    "FunctionName": "valueof",
-    "NameEmoji": "valueof \u2747\uFE0F \uD83D\uDEA7",
-    "FunctionType": "Crono",
-    "Body": null,
-    "FunctionGroup": "index-misc-functions"
-  },
-  {
     "FunctionName": "checksum",
     "NameEmoji": "checksum",
     "FunctionType": "SQL",
     "Body": "Esta funci\u00F3n devuelve la suma de comprobaci\u00F3n de los valores de un grupo. \u0060CHECKSUM_AGG\u0060 ignora los valores nulos. La [cl\u00E1usula OVER](../../t-sql/queries/select-over-clause-transact-sql.md) puede seguir a \u0060CHECKSUM_AGG\u0060.\n\n## Comentarios \n\n\u0060checksum\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060checksum\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/checksum-transact-sql) para mayor informaci\u00F3n.",
+    "FunctionGroup": "index-system-functions"
+  },
+  {
+    "FunctionName": "col_length",
+    "NameEmoji": "col_length \uD83D\uDEA7",
+    "FunctionType": "SQL",
+    "Body": null,
+    "FunctionGroup": "index-system-functions"
+  },
+  {
+    "FunctionName": "col_name",
+    "NameEmoji": "col_name \uD83D\uDEA7",
+    "FunctionType": "SQL",
+    "Body": null,
+    "FunctionGroup": "index-system-functions"
+  },
+  {
+    "FunctionName": "collationproperty",
+    "NameEmoji": "collationproperty \uD83D\uDEA7",
+    "FunctionType": "SQL",
+    "Body": null,
     "FunctionGroup": "index-system-functions"
   },
   {
@@ -833,10 +945,38 @@
     "FunctionGroup": "index-system-functions"
   },
   {
+    "FunctionName": "columns_updated",
+    "NameEmoji": "columns_updated \uD83D\uDEA7",
+    "FunctionType": "SQL",
+    "Body": null,
+    "FunctionGroup": "index-system-functions"
+  },
+  {
+    "FunctionName": "current_user",
+    "NameEmoji": "current_user \u2747\uFE0F \uD83D\uDEA7",
+    "FunctionType": "Crono",
+    "Body": null,
+    "FunctionGroup": "index-system-functions"
+  },
+  {
     "FunctionName": "currentusername",
     "NameEmoji": "currentusername \u2747\uFE0F \u2764\uFE0F ",
     "FunctionType": "Crono",
     "Body": "La funci\u00F3n \u0060currentusername\u0060 devuelve el nombre del usuario de Windows en el momento de la generaci\u00F3n del c\u00F3digo SQL.\n\n## Ejemplo\n\n\u0060\u0060\u0060\nSELECT currentusername() usuario; \n\u0060\u0060\u0060\n\nEl c\u00F3digo SQL generado ser\u00E1 similar a:\n\n\u0060\u0060\u0060\nSELECT \u0027MOTOMAMI\\Rosalia\u0027 AS usuario\n\u0060\u0060\u0060\n\nEl c\u00F3digo efectivamente generado depender\u00E1 del usuario que ejecute la compilaci\u00F3n.\n\n## Comentarios\n\nEsta funci\u00F3n se eval\u00FAa en el momento de la **generaci\u00F3n del c\u00F3digo SQL**. Es decir, se transforma en un c\u00F3digo est\u00E1tico que devolver\u00E1 siempre el mismo resultado, independientemente de el usuario de la sesi\u00F3n SQL o el usuario de Windows.\n\nPara conocer el nombre de usuario de la sesi\u00F3n de base de datos que ejecuta el c\u00F3digo se debe utilizar \u0060CURRENT_USER\u0060. \n\nEn cambio, la funci\u00F3n \u0060CURRENT_USER\u0060 se eval\u00FAa en base de datos y devuelve el nombre de usuario de la sesi\u00F3n que ejecuta el c\u00F3digo.\n\n\n",
+    "FunctionGroup": "index-system-functions"
+  },
+  {
+    "FunctionName": "cursor_status",
+    "NameEmoji": "cursor_status \uD83D\uDEA7",
+    "FunctionType": "SQL",
+    "Body": null,
+    "FunctionGroup": "index-system-functions"
+  },
+  {
+    "FunctionName": "databaseproperty",
+    "NameEmoji": "databaseproperty \uD83D\uDEA7",
+    "FunctionType": "SQL",
+    "Body": null,
     "FunctionGroup": "index-system-functions"
   },
   {
@@ -851,6 +991,41 @@
     "NameEmoji": "datalength",
     "FunctionType": "SQL",
     "Body": "Esta funci\u00F3n devuelve el n\u00FAmero de bytes utilizados para representar cualquier expresi\u00F3n.\n\n## Comentarios \n\n\u0060datalength\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060datalength\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/datalength-transact-sql) para mayor informaci\u00F3n.",
+    "FunctionGroup": "index-system-functions"
+  },
+  {
+    "FunctionName": "db_id",
+    "NameEmoji": "db_id \uD83D\uDEA7",
+    "FunctionType": "SQL",
+    "Body": null,
+    "FunctionGroup": "index-system-functions"
+  },
+  {
+    "FunctionName": "db_name",
+    "NameEmoji": "db_name \uD83D\uDEA7",
+    "FunctionType": "SQL",
+    "Body": null,
+    "FunctionGroup": "index-system-functions"
+  },
+  {
+    "FunctionName": "file_name",
+    "NameEmoji": "file_name \uD83D\uDEA7",
+    "FunctionType": "SQL",
+    "Body": null,
+    "FunctionGroup": "index-system-functions"
+  },
+  {
+    "FunctionName": "filegroup_id",
+    "NameEmoji": "filegroup_id \uD83D\uDEA7",
+    "FunctionType": "SQL",
+    "Body": null,
+    "FunctionGroup": "index-system-functions"
+  },
+  {
+    "FunctionName": "filegroup_name",
+    "NameEmoji": "filegroup_name \uD83D\uDEA7",
+    "FunctionType": "SQL",
+    "Body": null,
     "FunctionGroup": "index-system-functions"
   },
   {
@@ -896,10 +1071,73 @@
     "FunctionGroup": "index-system-functions"
   },
   {
+    "FunctionName": "has_dbaccess",
+    "NameEmoji": "has_dbaccess \uD83D\uDEA7",
+    "FunctionType": "SQL",
+    "Body": null,
+    "FunctionGroup": "index-system-functions"
+  },
+  {
+    "FunctionName": "host_id",
+    "NameEmoji": "host_id \uD83D\uDEA7",
+    "FunctionType": "SQL",
+    "Body": null,
+    "FunctionGroup": "index-system-functions"
+  },
+  {
+    "FunctionName": "host_name",
+    "NameEmoji": "host_name \uD83D\uDEA7",
+    "FunctionType": "SQL",
+    "Body": null,
+    "FunctionGroup": "index-system-functions"
+  },
+  {
+    "FunctionName": "ident_current",
+    "NameEmoji": "ident_current \uD83D\uDEA7",
+    "FunctionType": "SQL",
+    "Body": null,
+    "FunctionGroup": "index-system-functions"
+  },
+  {
+    "FunctionName": "ident_incr",
+    "NameEmoji": "ident_incr \uD83D\uDEA7",
+    "FunctionType": "SQL",
+    "Body": null,
+    "FunctionGroup": "index-system-functions"
+  },
+  {
+    "FunctionName": "ident_seed",
+    "NameEmoji": "ident_seed \uD83D\uDEA7",
+    "FunctionType": "SQL",
+    "Body": null,
+    "FunctionGroup": "index-system-functions"
+  },
+  {
+    "FunctionName": "index_col",
+    "NameEmoji": "index_col \uD83D\uDEA7",
+    "FunctionType": "SQL",
+    "Body": null,
+    "FunctionGroup": "index-system-functions"
+  },
+  {
     "FunctionName": "indexproperty",
     "NameEmoji": "indexproperty",
     "FunctionType": "SQL",
     "Body": "Devuelve el \u00EDndice con nombre o el valor de la propiedad de estad\u00EDsticas de un n\u00FAmero de identificaci\u00F3n de tabla especificado, el nombre del \u00EDndice o de las estad\u00EDsticas y el nombre de la propiedad. Devuelve NULL para \u00EDndices XML.\n\n## Comentarios \n\n\u0060indexproperty\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060indexproperty\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/indexproperty-transact-sql) para mayor informaci\u00F3n.",
+    "FunctionGroup": "index-system-functions"
+  },
+  {
+    "FunctionName": "is_member",
+    "NameEmoji": "is_member \uD83D\uDEA7",
+    "FunctionType": "SQL",
+    "Body": null,
+    "FunctionGroup": "index-system-functions"
+  },
+  {
+    "FunctionName": "is_srvrolemember",
+    "NameEmoji": "is_srvrolemember \uD83D\uDEA7",
+    "FunctionType": "SQL",
+    "Body": null,
     "FunctionGroup": "index-system-functions"
   },
   {
@@ -924,10 +1162,45 @@
     "FunctionGroup": "index-system-functions"
   },
   {
+    "FunctionName": "object_id",
+    "NameEmoji": "object_id \uD83D\uDEA7",
+    "FunctionType": "SQL",
+    "Body": null,
+    "FunctionGroup": "index-system-functions"
+  },
+  {
+    "FunctionName": "object_name",
+    "NameEmoji": "object_name \uD83D\uDEA7",
+    "FunctionType": "SQL",
+    "Body": null,
+    "FunctionGroup": "index-system-functions"
+  },
+  {
     "FunctionName": "objectproperty",
     "NameEmoji": "objectproperty",
     "FunctionType": "SQL",
     "Body": "Devuelve informaci\u00F3n sobre los objetos del \u00E1mbito del esquema en la base de datos actual. Para obtener una lista de objetos con \u00E1mbito de esquema, consulte [sys.objects \u0026#40;Transact-SQL\u0026#41;](../../relational-databases/system-catalog-views/sys-objects-transact-sql. Maryland). Esta funci\u00F3n no se puede usar para objetos que no tienen un \u00E1mbito de esquema, como desencadenadores de lenguaje de definici\u00F3n de datos (DDL) y notificaciones de eventos.\n\n## Comentarios \n\n\u0060objectproperty\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060objectproperty\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/objectproperty-transact-sql) para mayor informaci\u00F3n.",
+    "FunctionGroup": "index-system-functions"
+  },
+  {
+    "FunctionName": "opendatasource",
+    "NameEmoji": "opendatasource",
+    "FunctionType": "SQL",
+    "Body": "Proporciona informaci\u00F3n de conexi\u00F3n ad hoc como parte de un nombre de objeto de cuatro partes sin usar un nombre de servidor vinculado.\n\n## Comentarios \n\n\u0060opendatasource\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060opendatasource\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/opendatasource-transact-sql) para mayor informaci\u00F3n.",
+    "FunctionGroup": "index-system-functions"
+  },
+  {
+    "FunctionName": "openquery",
+    "NameEmoji": "openquery",
+    "FunctionType": "SQL",
+    "Body": "Ejecuta la consulta de paso a trav\u00E9s especificada en el servidor vinculado especificado. Este servidor es una fuente de datos OLE DB. Se puede hacer referencia a OPENQUERY en la cl\u00E1usula FROM de una consulta como si fuera un nombre de tabla. Tambi\u00E9n se puede hacer referencia a OPENQUERY como la tabla de destino de una instrucci\u00F3n INSERT, UPDATE o DELETE. Esto est\u00E1 sujeto a las capacidades del proveedor OLE DB. Aunque la consulta puede devolver varios conjuntos de resultados, OPENQUERY solo devuelve el primero.\n\n## Comentarios \n\n\u0060openquery\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060openquery\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/openquery-transact-sql) para mayor informaci\u00F3n.",
+    "FunctionGroup": "index-system-functions"
+  },
+  {
+    "FunctionName": "openrowset",
+    "NameEmoji": "openrowset",
+    "FunctionType": "SQL",
+    "Body": "Incluye toda la informaci\u00F3n de conexi\u00F3n necesaria para acceder a datos remotos desde un origen de datos OLE DB. Este m\u00E9todo es una alternativa al acceso a tablas en un servidor vinculado y es un m\u00E9todo ad hoc \u00FAnico para conectarse y acceder a datos remotos mediante OLE DB. Para referencias m\u00E1s frecuentes a or\u00EDgenes de datos OLE DB, utilice servidores vinculados en su lugar. Para obtener m\u00E1s informaci\u00F3n, consulte [Servidores vinculados \u0026#40;Motor de base de datos\u0026#41;](../../relational-databases/linked-servers/linked-servers-database-engine.md). Se puede hacer referencia a la funci\u00F3n \u0060OPENROWSET\u0060 en la cl\u00E1usula FROM de una consulta como si fuera el nombre de una tabla. Tambi\u00E9n se puede hacer referencia a la funci\u00F3n \u0060OPENROWSET\u0060 como la tabla de destino de una instrucci\u00F3n \u0060INSERT\u0060, \u0060UPDATE\u0060 o \u0060DELETE\u0060, sujeto a las capacidades del proveedor OLE DB. Aunque la consulta puede devolver varios conjuntos de resultados, \u0060OPENROWSET\u0060 solo devuelve el primero.\n\n## Comentarios \n\n\u0060openrowset\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060openrowset\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/openrowset-transact-sql) para mayor informaci\u00F3n.",
     "FunctionGroup": "index-system-functions"
   },
   {
@@ -945,10 +1218,31 @@
     "FunctionGroup": "index-system-functions"
   },
   {
+    "FunctionName": "rowcount_big",
+    "NameEmoji": "rowcount_big \uD83D\uDEA7",
+    "FunctionType": "SQL",
+    "Body": null,
+    "FunctionGroup": "index-system-functions"
+  },
+  {
+    "FunctionName": "scope_identity",
+    "NameEmoji": "scope_identity \uD83D\uDEA7",
+    "FunctionType": "SQL",
+    "Body": null,
+    "FunctionGroup": "index-system-functions"
+  },
+  {
     "FunctionName": "serverproperty",
     "NameEmoji": "serverproperty",
     "FunctionType": "SQL",
     "Body": "Devuelve informaci\u00F3n de propiedad sobre la instancia del servidor.\n\n## Comentarios \n\n\u0060serverproperty\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060serverproperty\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/serverproperty-transact-sql) para mayor informaci\u00F3n.",
+    "FunctionGroup": "index-system-functions"
+  },
+  {
+    "FunctionName": "session_user",
+    "NameEmoji": "session_user \u2747\uFE0F \uD83D\uDEA7",
+    "FunctionType": "Crono",
+    "Body": null,
     "FunctionGroup": "index-system-functions"
   },
   {
@@ -959,10 +1253,52 @@
     "FunctionGroup": "index-system-functions"
   },
   {
+    "FunctionName": "sql_variant_property",
+    "NameEmoji": "sql_variant_property \uD83D\uDEA7",
+    "FunctionType": "SQL",
+    "Body": null,
+    "FunctionGroup": "index-system-functions"
+  },
+  {
+    "FunctionName": "stats_date",
+    "NameEmoji": "stats_date \uD83D\uDEA7",
+    "FunctionType": "SQL",
+    "Body": null,
+    "FunctionGroup": "index-system-functions"
+  },
+  {
+    "FunctionName": "suser_sid",
+    "NameEmoji": "suser_sid \uD83D\uDEA7",
+    "FunctionType": "SQL",
+    "Body": null,
+    "FunctionGroup": "index-system-functions"
+  },
+  {
+    "FunctionName": "suser_sname",
+    "NameEmoji": "suser_sname \uD83D\uDEA7",
+    "FunctionType": "SQL",
+    "Body": null,
+    "FunctionGroup": "index-system-functions"
+  },
+  {
+    "FunctionName": "system_user",
+    "NameEmoji": "system_user \u2747\uFE0F \uD83D\uDEA7",
+    "FunctionType": "Crono",
+    "Body": null,
+    "FunctionGroup": "index-system-functions"
+  },
+  {
     "FunctionName": "typeproperty",
     "NameEmoji": "typeproperty",
     "FunctionType": "SQL",
     "Body": "Devuelve informaci\u00F3n sobre un tipo de datos.\n\n## Comentarios \n\n\u0060typeproperty\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060typeproperty\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/typeproperty-transact-sql) para mayor informaci\u00F3n.",
+    "FunctionGroup": "index-system-functions"
+  },
+  {
+    "FunctionName": "user_name",
+    "NameEmoji": "user_name \uD83D\uDEA7",
+    "FunctionType": "SQL",
+    "Body": null,
     "FunctionGroup": "index-system-functions"
   },
   {
@@ -1132,5 +1468,40 @@
     "FunctionType": "SQL",
     "Body": "Devuelve una expresi\u00F3n de caracteres con datos de caracteres en min\u00FAsculas convertidos a may\u00FAsculas.\n\n## Comentarios \n\n\u0060upper\u0060 es una funci\u00F3n de SQL est\u00E1ndar. Consulte la documentaci\u00F3n completa de la funci\u00F3n [\u0060upper\u0060](https://learn.microsoft.com/es-es/sql/t-sql/functions/upper-transact-sql) para mayor informaci\u00F3n.",
     "FunctionGroup": "index-text-functions"
+  },
+  {
+    "FunctionName": "md5",
+    "NameEmoji": "md5 \u2747\uFE0F \uD83D\uDEA7",
+    "FunctionType": "Crono",
+    "Body": null,
+    "FunctionGroup": "Miscel\u00E1nea"
+  },
+  {
+    "FunctionName": "nameof",
+    "NameEmoji": "nameof \u2747\uFE0F \uD83D\uDEA7",
+    "FunctionType": "Crono",
+    "Body": null,
+    "FunctionGroup": "Miscel\u00E1nea"
+  },
+  {
+    "FunctionName": "sha1",
+    "NameEmoji": "sha1 \u2747\uFE0F \uD83D\uDEA7",
+    "FunctionType": "Crono",
+    "Body": null,
+    "FunctionGroup": "Miscel\u00E1nea"
+  },
+  {
+    "FunctionName": "sha256",
+    "NameEmoji": "sha256 \u2747\uFE0F \uD83D\uDEA7",
+    "FunctionType": "Crono",
+    "Body": null,
+    "FunctionGroup": "Miscel\u00E1nea"
+  },
+  {
+    "FunctionName": "valueof",
+    "NameEmoji": "valueof \u2747\uFE0F \uD83D\uDEA7",
+    "FunctionType": "Crono",
+    "Body": null,
+    "FunctionGroup": "Miscel\u00E1nea"
   }
 ]
