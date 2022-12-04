@@ -1,332 +1,327 @@
-﻿abs|A mathematical function that returns the absolute (positive) value of the specified numeric expression. (`ABS` changes negative values to positive values. `ABS` has no effect on zero or positive values.)
-acos|A function that returns the angle, in radians, whose cosine is the specified float expression. This is also called arccosine.
-aggregate|An aggregate function performs a calculation on a set of values, and returns a single value. Except for `COUNT(*)`, aggregate functions ignore null values. Aggregate functions are often used with the GROUP BY clause of the SELECT statement.
-analytic|SQL Server supports these analytic functions:
-app|This function returns the application name for the current session, if the application sets that name value.
-applock|This function returns the lock mode held by the lock owner on a particular application resource. As an application lock function, APPLOCK_MODE operates on the current database. The database is the scope of the application locks.
-applock|This function returns information as to whether or not a lock can be granted on a particular application resource, for a specified lock owner, without acquisition of the lock. As an application lock function, APPLOCK_TEST operates on the current database. The database is the scope of the application locks.
-approx|This function returns the approximate number of unique non-null values in a group.
-approx|This function returns an approximate interpolated value from the set of values in a group based on percentile value and sort specification. Since this is an approximate function, the output would be within rank based error bound with certain confidence. The percentile value returned by this function is based on a continuous distribution of the column values and the result would be interpolated. Due to this, the output might not be one of values in the data set. One of the common use cases for this function is to avoid the data outliers. This function can be used as an alternative to PERCENTILE_CONT for large datasets where negligible error with faster response is acceptable as compared to accurate percentile value with slow response time.
-approx|This function returns the value from the set of values in a group based on the provided percentile and sort specification. Since this is an approximate function, the output would be within rank based error bound with certain confidence. As this approximate percentile is based on a discrete distribution of the column values, the output value would be equal to one of the specific values in the column. This function can be used as an alternative to PERCENTILE_DISC for large datasets where negligible error with faster response is acceptable as compared to accurate percentile value with slow response time.
-ascii|Returns the ASCII code value of the leftmost character of a character expression.
-asin|A function that returns the angle, in radians, whose sine is the specified **float** expression. This is also called **arcsine**.
-assemblyproperty|This function returns information about a property of an assembly.
-asymkey|Returns the ID of an asymmetric key.
-asymkeyproperty|This function returns the properties of an asymmetric key.
-atan|A function that returns the angle, in radians, whose tangent is a specified **float** expression. This is also called arctangent.
-atn2|Returns the angle, in radians, between the positive x-axis and the ray from the origin to the point (y, x), where x and y are the values of the two specified float expressions.
-avg|This function returns the average of the values in a group. It ignores null values.
-binary|Returns the binary checksum value computed over a row of a table or over a list of expressions.
-bit|BIT_COUNT takes one parameter and returns the number of bits set to 1 in that parameter as a **bigint** type.
-bit|Bit manipulation functions such as moving, retrieving (getting), setting, or counting single bits within an integer or binary value, allow you to process and store data more efficiently than with individual bits.
-cast|These functions convert an expression of one data type to another.
-ceiling|This function returns the smallest integer greater than, or equal to, the specified numeric expression.
-cert|This function returns the ID value of a certificate.
-certencoded|This function returns the public portion of a certificate in binary format. This function takes a certificate ID as an argument, and returns the encoded certificate. To create a new certificate, pass the binary result to **CREATE CERTIFICATE ... WITH BINARY**.
-certprivatekey|This function returns the private key of a certificate in binary format. This function takes three arguments.
-certproperty|Returns the value of a specified certificate property.
-char|Returns the single-byte character with the specified integer code, as defined by the character set and encoding of the default collation of the current database.
-charindex|This function searches for one character expression inside a second character expression, returning the starting position of the first expression if found.
-checksum|This function returns the checksum of the values in a group. `CHECKSUM_AGG` ignores null values. The [OVER clause](../../t-sql/queries/select-over-clause-transact-sql.md) can follow `CHECKSUM_AGG`.
-checksum|The `CHECKSUM` function returns the checksum value computed over a table row, or over an expression list. Use `CHECKSUM` to build hash indexes.
-col|This function returns the defined length of a column, in bytes.
-col|This function returns the name of a table column, based on the table identification number and column identification number values of that table column.
-collation|This function returns the requested property of a specified collation.
-collation|For each character in a non-Unicode string expression - defined with a SQL tertiary collation - this function returns a binary string of weights.
-columnproperty|This function returns column or parameter information.
-columns|This function returns a **varbinary** bit pattern indicating the inserted or updated columns of a table or view. Use `COLUMNS_UPDATED` anywhere inside the body of a [!INCLUDE[tsql](../../includes/tsql-md.md)] INSERT or UPDATE trigger to test whether the trigger should execute certain actions.
-compress|This function compresses the input expression, using the GZIP algorithm. The function returns a byte array of type **varbinary(max)**.
-concat|This function returns a string resulting from the concatenation, or joining, of two or more string values in an end-to-end manner. (To add a separating value during concatenation, see [CONCAT_WS](../../t-sql/functions/concat-ws-transact-sql.md).)
-concat|This function returns a string resulting from the concatenation, or joining, of two or more string values in an end-to-end manner. It separates those concatenated string values with the delimiter specified in the first function argument. (`CONCAT_WS` indicates *concatenate with separator*.)
-configuration|These scalar functions return information about current configuration option settings:
-connectionproperty|For a request that comes in to the server, this function returns information about the connection properties of the unique connection which supports that request.
-connections|This function returns the number of attempted connections - both successful and unsuccessful - since [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] was last started.
-context|This function returns the **context_info** value either set for the current session or batch, or derived through use of the [SET CONTEXT_INFO](../../t-sql/statements/set-context-info-transact-sql.md) statement.
-conversion|These functions support data type casting and conversion:
-cos|A mathematical function that returns the trigonometric cosine of the specified angle - measured in radians - in the specified expression.
-cot|A mathematical function that returns the trigonometric cotangent of the specified angle - in radians - in the specified **float** expression.
-count|This function returns the number of items found in a group. `COUNT_BIG` operates like the [COUNT](../../t-sql/functions/count-transact-sql.md) function. These functions differ only in the data types of their return values. `COUNT_BIG` always returns a **bigint** data type value. `COUNT` always returns an **int** data type value.
-count|This function returns the number of items found in a group. `COUNT` operates like the [COUNT_BIG](../../t-sql/functions/count-big-transact-sql.md) function. These functions differ only in the data types of their return values. `COUNT` always returns an **int** data type value. `COUNT_BIG` always returns a **bigint** data type value.
-cpu|This function returns the amount of time that [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] has spent in active operation since its latest start. `@@CPU_BUSY` returns a result measured in CPU time increments, or "ticks." This value is cumulative for all CPUs, so it may exceed the actual elapsed time. To convert to microseconds, multiply by [@@TIMETICKS](./timeticks-transact-sql.md).
-crypt|This function returns a cryptographic, randomly-generated number, generated by the Crypto API (CAPI). `CRYPT_GEN_RANDOM` returns a hexadecimal number with a length of a specified number of bytes.
-cryptographic|These functions support digital signing, digital signature validation, encryption, and decryption.
-cume|For [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)], this function calculates the cumulative distribution of a value within a group of values. In other words, `CUME_DIST` calculates the relative position of a specified value in a group of values. Assuming ascending ordering, the `CUME_DIST` of a value in row _r_ is defined as the number of rows with values less than or equal to that value in row _r_, divided by the number of rows evaluated in the partition or query result set. `CUME_DIST` is similar to the `PERCENT_RANK` function.
-current|This function returns the ID of the current request within the current session.
-current|This function returns the current database system timestamp as a **datetime** value, without the database time zone offset. `CURRENT_TIMESTAMP` derives this value from the operating system of the computer on which the instance of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] runs.
-current|This function returns the ID of the time zone observed by a server or an instance. For Azure SQL Managed Instance, return value is based on the time zone of the instance itself assigned during instance creation, not the time zone of the underlying operating system.
-current|This function returns the name of the time zone observed by a server or an instance. For SQL Managed Instance, return value is based on the time zone of the instance itself assigned during instance creation, not the time zone of the underlying operating system.
-current|This function returns the transaction ID of the current transaction in the current session.
-current|This function returns the name of the current user. This function is equivalent to `USER_NAME()`.
-cursor|These scalar functions return information about cursors:
-cursor|This returns the number of qualifying rows currently in the last cursor opened on the connection. To improve performance, [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] can populate large keyset and static cursors asynchronously. `@@CURSOR_ROWS` can be called to determine that the number of the rows that qualify for a cursor are retrieved at the time of the @@CURSOR_ROWS call.
-cursor|For a given parameter, `CURSOR_STATUS` shows whether or not a cursor declaration has returned a cursor and result set.
-data|These scalar functions return information about various data type values.
-database|This function returns the ID number of a principal in the current database. See [Principals &#40;Database Engine&#41;](../../relational-databases/security/authentication-access/principals-database-engine.md) for more information about principals.
-databasepropertyex|For a specified database in [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)], this function returns the current setting of the specified database option or property.
-datalength|This function returns the number of bytes used to represent any expression.
-date|The sections in this article cover all [!INCLUDE[tsql](../../includes/tsql-md.md)] date and time data types and functions.
-date|This function returns the date-time value corresponding to the start of each date-time bucket from the timestamp defined by the `origin` parameter, or the default origin value of `1900-01-01 00:00:00.000` if the origin parameter isn't specified.
-dateadd|This function adds a *number* (a signed integer) to a *datepart* of an input *date*, and returns a modified date/time value. For example, you can use this function to find the date that is 7000 minutes from today: *number* = 7000, *datepart* = minute, *date* = today.
-datediff|This function returns the count (as a signed big integer value) of the specified *datepart* boundaries crossed between the specified *startdate* and *enddate*.
-datediff|This function returns the count (as a signed integer value) of the specified datepart boundaries crossed between the specified *startdate* and *enddate*.
-datefirst|This function returns the current value of [SET DATEFIRST](../../t-sql/statements/set-datefirst-transact-sql.md), for a specific session.
-datefromparts|This function returns a **date** value that maps to the specified year, month, and day values.
-datename|This function returns a character string representing the specified *datepart* of the specified *date*.
-datepart|This function returns an integer representing the specified *datepart* of the specified *date*.
-datetime2fromparts|This function returns a **datetime2** value for the specified date and time arguments. The returned value has a precision specified by the precision argument.
-datetimefromparts|This function returns a **datetime** value for the specified date and time arguments.
-datetimeoffsetfromparts|Returns a **datetimeoffset** value for the specified date and time arguments. The returned value has a precision specified by the precision argument, and an offset as specified by the offset arguments.
-datetrunc|Starting with [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)], this function returns an input *date* truncated to a specified *datepart*.
-day|This function returns an integer that represents the day (day of the month) of the specified *date*.
-db|This function returns the database identification (ID) number of a specified database.
-db|This function returns the name of a specified database.
-dbts|This function returns the value of the current **timestamp** data type for the current database. The current database will have a guaranteed unique timestamp value.
-decompress|This function will decompress an input expression value, using the GZIP algorithm. `DECOMPRESS` will return a byte array (VARBINARY(MAX) type).
-decryptbyasymkey|This function uses an asymmetric key to decrypt encrypted data.
-decryptbycert|This function uses the private key of a certificate to decrypt encrypted data.
-decryptbykey|This function uses a symmetric key to decrypt data.
-decryptbykeyautoasymkey|This function decrypts encrypted data. To do this, it first decrypts a symmetric key with a separate asymmetric key, and then decrypts the encrypted data with the symmetric key extracted in the first "step".
-decryptbykeyautocert|This function decrypts data with a symmetric key. That symmetric key automatically decrypts with a certificate.
-decryptbypassphrase|This function decrypts data originally encrypted with a passphrase.
-degrees|This function returns the corresponding angle, in degrees, for an angle specified in radians.
-dense|This function returns the rank of each row within a result set partition, with no gaps in the ranking values. The rank of a specific row is one plus the number of distinct rank values that come before that specific row.
-difference|This function returns an integer value measuring the difference between the [SOUNDEX()](./soundex-transact-sql.md) values of two different character expressions.
-edge|Returns the character representation (JSON) of the edge ID for a given object ID and graph ID.
-encryptbyasymkey|This function encrypts data with an asymmetric key.
-encryptbycert|Encrypts data with the public key of a certificate.
-encryptbykey|Encrypts data by using a symmetric key.
-encryptbypassphrase|Encrypt data with a passphrase using the TRIPLE DES algorithm with a 128 key bit length.
-eomonth|This function returns the last day of the month containing a specified date, with an optional offset.
-error|This function returns the line number of occurrence of an error that caused the CATCH block of a TRY...CATCH construct to execute.
-error|This function returns the message text of the error that caused the CATCH block of a TRY...CATCH construct to execute.
-error|This function returns the error number of the error that caused the CATCH block of a TRY...CATCH construct to execute.
-error|This function returns the name of the stored procedure or trigger where an error occurs, if that error caused the CATCH block of a TRY...CATCH construct to execute.
-error|This function returns the severity value of the error where an error occurs, if that error caused the CATCH block of a TRY...CATCH construct to execute.
-error|Returns the state number of the error that caused the CATCH block of a TRY...CATCH construct to be run.
-error|Returns the error number for the last [!INCLUDE[tsql](../../includes/tsql-md.md)] statement executed.
-eventdata|This function returns information about server or database events. When an event notification fires, and the specified service broker receives the results, `EVENTDATA` is called. A DDL or logon trigger also support internal use of `EVENTDATA`.
-exp|Returns the exponential value of the specified **float** expression.
-fetch|This function returns the status of the last cursor FETCH statement issued against any cursor currently opened by the connection.
-file|For the given logical name for a component file of the current database, this function returns the file identification (ID) number.
-file|This function returns the file identification (ID) number for the specified logical name of a data, log, or full-text file of the current database.
-file|This function returns the logical file name for a given file identification (ID) number.
-filegroup|This function returns the filegroup identification (ID) number for a specified filegroup name.
-filegroup|This function returns the filegroup name for the specified filegroup identification (ID) number.
-filegroupproperty|This function returns the filegroup property value for a specified name  and filegroup value.
-fileproperty|Returns the specified file name property value when a file name in the current database and a property name are specified. Returns NULL for files that are not in the current database.
-filepropertyex|Returns the specified extended file property value when a file name in the current database and a property name are specified. Returns NULL for files that are not in the current database or for extended file properties that do not exist. Currently, extended file properties only apply to databases that are in Azure Blob storage.
-first|Returns the first value in an ordered set of values.
-floor|Returns the largest integer less than or equal to the specified numeric expression.
-format|Returns a value formatted with the specified format and optional culture. Use the FORMAT function for locale-aware formatting of date/time and number values as strings. For general data type conversions, use CAST or CONVERT.
-formatmessage|Constructs a message from an existing message in sys.messages or from a provided string. The functionality of FORMATMESSAGE resembles that of the RAISERROR statement. However, RAISERROR prints the message immediately, while FORMATMESSAGE returns the formatted message for further processing.
-fulltextcatalogproperty|Returns information about full-text catalog properties in [!INCLUDE[ssnoversion](../../includes/ssnoversion-md.md)].
-fulltextserviceproperty|Returns information related to the properties of the Full-Text Engine. These properties can be set and retrieved by using **sp_fulltext_service**.
-functions.md|Learn about the categories of built-in functions you can use with SQL databases. You can use the built-in functions or create your own user-defined functions.
-generate|Generates a series of numbers within a given interval. The interval and the step between series values are defined by the user.
-get|GET_BIT takes two parameters and returns the bit in *expression_value* that is in the offset defined by *bit_offset*.
-get|Returns a token that represents the current transaction context of a session. The token is used by an application to bind FILESTREAM file-system streaming operations to the transaction. For a list of FILESTREAM topics, see [Binary Large Object &#40;Blob&#41; Data &#40;SQL Server&#41;](../../relational-databases/blob/binary-large-object-blob-data-sql-server.md).
-getansinull|Returns the default nullability for the database for this session.
-getdate|Returns the current database system timestamp as a **datetime** value without the database time zone offset. This value is derived from the operating system of the computer on which the instance of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] is running.
-getutcdate|Returns the current database system timestamp as a **datetime** value. The database time zone offset is not included. This value represents the current UTC time (Coordinated Universal Time). This value is derived from the operating system of the computer on which the instance of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] is running.
-graph|Use the functions described on the pages in this section to extract values from, and transform values to, the pseudo-columns used in SQL Graph.
-graph|Returns the internal graph ID for a given edge ID.
-graph|Returns the internal graph ID for a given node ID.
-grouping|Is a function that computes the level of grouping. GROUPING_ID can be used only in the SELECT \<select> list, HAVING, or ORDER BY clauses when GROUP BY is specified.
-grouping|Indicates whether a specified column expression in a GROUP BY list is aggregated or not. GROUPING returns 1 for aggregated or 0 for not aggregated in the result set. GROUPING can be used only in the SELECT \<select> list, HAVING, and ORDER BY clauses when GROUP BY is specified.
-has|Returns information about whether the user has access to the specified database.
-has|Evaluates the effective permission of the current user on a securable. A related function is [fn_my_permissions](../../relational-databases/system-functions/sys-fn-my-permissions-transact-sql.md).
-hashbytes|Returns the MD2, MD4, MD5, SHA, SHA1, or SHA2 hash of its input in [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)].
-host|Returns the workstation identification number. The workstation identification number is the process ID (PID) of the application on the client computer that is connecting to [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)].
-host|Returns the workstation name.
-ident|Returns the last identity value generated for a specified table or view. The last identity value generated can be for any session and any scope.
-ident|Returns the increment value specified when creating a table or view's identity column.
-ident|Returns the original seed value specified when creating an identity column in a table or a view. Changing the current value of an identity column by using DBCC CHECKIDENT doesn't change the value returned by this function.
-identity|Is used only in a SELECT statement with an INTO *table* clause to insert an identity column into a new table. Although similar, the IDENTITY function is not the IDENTITY property that is used with CREATE TABLE and ALTER TABLE.
-identity|Is a system function that returns the last-inserted identity value.
-idle|Returns the time that [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] has been idle since it was last started. The result is in CPU time increments, or "ticks," and is cumulative for all CPUs, so it may exceed the actual elapsed time. Multiply by @@TIMETICKS to convert to microseconds.
-index|Returns the indexed column name. Returns NULL for XML indexes.
-indexkey|Returns information about the index key. Returns NULL for XML indexes.
-indexproperty|Returns the named index or statistics property value of a specified table identification number, index or statistics name, and property name. Returns NULL for XML indexes.
-io|Returns the time that [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] has spent performing input and output operations since [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] was last started. The result is in CPU time increments ("ticks"), and is cumulative for all CPUs, so it may exceed the actual elapsed time. Multiply by @@TIMETICKS to convert to microseconds.
-is|Indicates whether the current user is a member of the specified [!INCLUDE[msCoName](../../includes/msconame-md.md)] Windows group or [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] database role. The IS_MEMBER function is not supported for Azure Active Directory Groups.
-is|Indicates whether an object is signed by a specified certificate or asymmetric key.
-is|Indicates whether a specified database principal is a member of the specified database role.
-is|Indicates whether a [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] login is a member of the specified server role.
-isdate|Returns 1 if the *expression* is a valid **datetime** value; otherwise, 0.
-isjson|Tests whether a string contains valid JSON.
-isnull|Replaces NULL with the specified replacement value.
-isnumeric|Determines whether an expression is a valid numeric type.
-json|Constructs JSON array text from zero or more expressions.
-json|Use the functions described on the pages in this section to validate or change JSON text or to extract simple or complex values.
-json|Updates the value of a property in a JSON string and returns the updated JSON string.
-json|Constructs JSON object text from zero or more expressions.
-json|Tests whether a specified SQL/JSON path exists in the input JSON string.
-json|Extracts an object or an array from a JSON string.
-json|Extracts a scalar value from a JSON string.
-key|Returns the GUID of a symmetric key in the database.
-key|Returns the ID of a symmetric key in the current database.
-key|Returns the name of the symmetric key from either a symmetric key GUID or cipher text.
-lag|Accesses data from a previous row in the same result set without the use of a self-join starting with [!INCLUDE[ssSQL11](../../includes/sssql11-md.md)]. LAG provides access to a row at a given physical offset that comes before the current row. Use this analytic function in a SELECT statement to compare values in the current row with values in a previous row.
-langid|Returns the local language identifier (ID) of the language that is currently being used.
-language|Returns the name of the language currently being used.
-last|Returns the last value in an ordered set of values.
-lead|Accesses data from a subsequent row in the same result set without the use of a self-join starting with [!INCLUDE[ssSQL11](../../includes/sssql11-md.md)]. LEAD provides access to a row at a given physical offset that follows the current row. Use this analytic function in a SELECT statement to compare values in the current row with values in a following row.
-left|LEFT_SHIFT takes two parameters, and returns the first parameter bit-shifted left by the number of bits specified in the second parameter.
-left|Returns the left part of a character string with the specified number of characters.
-len|Returns the number of characters of the specified string expression, excluding trailing spaces.
-lock|Returns the current lock time-out setting in milliseconds for the current session.
-log|Returns the natural logarithm of the specified **float** expression in [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)].
-log10|Returns the base-10 logarithm of the specified **float** expression.
-logical|Returns the item at the specified index from a list of values in [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)].
-logical|This function returns the maximum value from a list of one or more expressions.
-logical|Returns one of two values, depending on whether the Boolean expression evaluates to true or false in [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)].
-logical|This function returns the minimum value from a list of one or more expressions.
-loginproperty|Returns information about login policy settings.
-lower|Returns a character expression after converting uppercase character data to lowercase.
-ltrim|::: moniker range="<=sql-server-ver15 || <=sql-server-linux-ver15 || = azure-sqldw-latest || = azuresqldb-current || = azuresqldb-mi-current"
-mathematical|The following scalar functions perform a calculation, usually based on input values that are provided as arguments, and return a numeric value:
-max|Returns the maximum number of simultaneous user connections allowed on an instance of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]. The number returned is not necessarily the number currently configured.
-max|Returns the precision level used by **decimal** and **numeric** data types as currently set in the server.
-max|Returns the maximum value in the expression.
-metadata|The following scalar functions return information about the database and database objects:
-min|Returns the lowest active **rowversion** value in the current database. A **rowversion** value is active if it is used in a transaction that has not yet been committed. For more information, see [rowversion &#40;Transact-SQL&#41;](../../t-sql/data-types/rowversion-transact-sql.md).
-min|Returns the minimum value in the expression. May be followed by the [OVER clause](../../t-sql/queries/select-over-clause-transact-sql.md).
-month|Returns an integer that represents the month of the specified *date*.
-nchar|Returns the Unicode character with the specified integer code, as defined by the Unicode standard.
-nestlevel|Returns the nesting level of the current stored procedure execution (initially 0) on the local server.
-newid|Creates a unique value of type **uniqueidentifier**.
-newsequentialid|Creates a GUID that is greater than any GUID previously generated by this function on a specified computer since Windows was started. After restarting Windows, the GUID can start again from a lower range, but is still globally unique. When a GUID column is used as a row identifier, using NEWSEQUENTIALID can be faster than using the NEWID function. This is because the NEWID function causes random activity and uses fewer cached data pages. Using NEWSEQUENTIALID also helps to completely fill the data and index pages.
-next|Generates a sequence number from the specified sequence object.
-node|Returns the character representation (JSON) of the node ID for a given object ID and graph ID.
-ntile|Distributes the rows in an ordered partition into a specified number of groups. The groups are numbered, starting at one. For each row, NTILE returns the number of the group to which the row belongs.
-object|Returns the [!INCLUDE[tsql](../../includes/tsql-md.md)] source text of the definition of a specified object.
-object|Returns the object ID for a given graph edge ID.
-object|Returns the object ID for a given graph node ID.
-object|Returns the database object identification number of a schema-scoped object.
-object|Returns the database object name for schema-scoped objects. For a list of schema-scoped objects, see [sys.objects &#40;Transact-SQL&#41;](../../relational-databases/system-catalog-views/sys-objects-transact-sql.md).
-object|Returns the database schema name for schema-scoped objects. For a list of schema-scoped objects, see [sys.objects &#40;Transact-SQL&#41;](../../relational-databases/system-catalog-views/sys-objects-transact-sql.md).
-objectproperty|Returns information about schema-scoped objects in the current database. For a list of schema-scoped objects, see [sys.objects &#40;Transact-SQL&#41;](../../relational-databases/system-catalog-views/sys-objects-transact-sql.md). This function cannot be used for objects that are not schema-scoped, such as data definition language (DDL) triggers and event notifications.
-objectpropertyex|Returns information about schema-scoped objects in the current database. For a list of these objects, see [sys.objects &#40;Transact-SQL&#41;](../../relational-databases/system-catalog-views/sys-objects-transact-sql.md). OBJECTPROPERTYEX cannot be used for objects that are not schema-scoped, such as data definition language (DDL) triggers and event notifications.
-odbc|You can use [ODBC Scalar Functions](../../odbc/reference/appendixes/appendix-e-scalar-functions.md) in [!INCLUDE[tsql](../../includes/tsql-md.md)] statements. These statements are interpreted by [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]. They can be used in stored procedures and user-defined functions. These include string, numeric, time, date, interval, and system functions.
-opendatasource|Provides ad hoc connection information as part of a four-part object name without using a linked server name.
-openjson|**OPENJSON** is a table-valued function that parses JSON text and returns objects and properties from the JSON input as rows and columns. In other words, **OPENJSON** provides a rowset view over a JSON document. You can explicitly specify the columns in the rowset and the JSON property paths used to populate the columns. Since **OPENJSON** returns a set of rows, you can use **OPENJSON** in the `FROM` clause of a [!INCLUDE[tsql](../../includes/tsql-md.md)] statement just as you can use any other table, view, or table-valued function.
-openquery|Executes the specified pass-through query on the specified linked server. This server is an OLE DB data source. OPENQUERY can be referenced in the FROM clause of a query as if it were a table name. OPENQUERY can also be referenced as the target table of an INSERT, UPDATE, or DELETE statement. This is subject to the capabilities of the OLE DB provider. Although the query may return multiple result sets, OPENQUERY returns only the first one.
-openrowset|Includes all connection information that is required to access remote data from an OLE DB data source. This method is an alternative to accessing tables in a linked server and is a one-time, ad hoc method of connecting and accessing remote data by using OLE DB. For more frequent references to OLE DB data sources, use linked servers instead. For more information, see [Linked Servers &#40;Database Engine&#41;](../../relational-databases/linked-servers/linked-servers-database-engine.md). The `OPENROWSET` function can be referenced in the FROM clause of a query as if it were a table name. The `OPENROWSET` function can also be referenced as the target table of an `INSERT`, `UPDATE`, or `DELETE` statement, subject to the capabilities of the OLE DB provider. Although the query might return multiple result sets, `OPENROWSET` returns only the first one.
-openxml|OPENXML provides a rowset view over an XML document. Because OPENXML is a rowset provider, OPENXML can be used in [!INCLUDE[tsql](../../includes/tsql-md.md)] statements in which rowset providers such as a table, view, or the OPENROWSET function can appear.
-options|Returns information about the current SET options.
-original|Returns the database name specified by the user in the database connection string. This database is specified by using the **sqlcmd-d** option (USE *database*). It can also be specified with the Open Database Connectivity (ODBC) data source expression (initial catalog =*databasename*).
-original|Returns the name of the login that connected to the instance of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]. You can use this function to return the identity of the original login in sessions in which there are many explicit or implicit context switches.
-pack|Returns the number of input packets read from the network by [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] since it was last started.
-pack|Returns the number of output packets written to the network by [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] since it was last started.
-packet|Returns the number of network packet errors that have occurred on [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] connections since [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] was last started.
-parse|Returns the result of an expression, translated to the requested data type in [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)].
-parsename|Returns the specified part of an object name. The parts of an object that can be retrieved are the object name, schema name, database name, and server name.
-partition|Returns the partition number into which a set of partitioning column values would be mapped for any specified partition function.
-patindex|Returns the starting position of the first occurrence of a pattern in a specified expression, or zero if the pattern is not found, on all valid text and character data types.
-percent|Calculates the relative rank of a row within a group of rows in [!INCLUDE[ssnoversion](../../includes/ssnoversion-md.md)]. Use PERCENT_RANK to evaluate the relative standing of a value within a query result set or partition. PERCENT_RANK is similar to the CUME_DIST function.
-percentile|Calculates a percentile based on a continuous distribution of the column value in [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]. The result is interpolated and might not be equal to any of the specific values in the column.
-percentile|Computes a specific percentile for sorted values in an entire rowset or within a rowset's distinct partitions in [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]. For a given percentile value *P*, PERCENTILE_DISC sorts the expression values in the ORDER BY clause. It then returns the value with the smallest CUME_DIST value given (with respect to the same sort specification) that is greater than or equal to *P*. For example, PERCENTILE_DISC (0.5) will compute the 50th percentile (that is, the median) of an expression. PERCENTILE_DISC calculates the percentile based on a discrete distribution of the column values. The result is equal to a specific column value.
-permissions|Returns a value containing a bitmap that indicates the statement, object, or column permissions of the current user.
-pi|Returns the constant value of PI.
-power|Returns the value of the specified expression to the specified power.
-procid|Returns the object identifier (ID) of the current [!INCLUDE[tsql](../../includes/tsql-md.md)] module. A [!INCLUDE[tsql](../../includes/tsql-md.md)] module can be a stored procedure, user-defined function, or trigger. @@PROCID cannot be specified in CLR modules or the in-process data access provider.
-pwdcompare|Hashes a password and compares the hash to the hash of an existing password. PWDCOMPARE can be used to search for blank [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] login passwords or common weak passwords.
-pwdencrypt|Returns the [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] password hash of the input value that uses the current version of the password hashing algorithm.
-quotename|Returns a Unicode string with the delimiters added to make the input string a valid [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] delimited identifier.
-radians|Returns radians when a numeric expression, in degrees, is entered.
-rand|Returns a pseudo-random **float** value from 0 through 1, exclusive.
-rank|Returns the rank of each row within the partition of a result set. The rank of a row is one plus the number of ranks that come before the row in question.
-ranking|Ranking functions return a ranking value for each row in a partition. Depending on the function that is used, some rows might receive the same value as other rows. Ranking functions are nondeterministic.
-remserver|
-replace|Replaces all occurrences of a specified string value with another string value.
-replicate|Repeats a string value a specified number of times.
-replication|Returns the name of the originating Publisher for a published database participating in a database mirroring session. This function is executed at a Publisher instance of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] on the publication database. Use it to determine the original Publisher of the published database.
-reverse|Returns the reverse order of a string value.
-right|RIGHT_SHIFT takes two parameters, and returns the first parameter bit-shifted right by the number of bits specified in the second parameter.
-right|Returns the right part of a character string with the specified number of characters.
-round|Returns a numeric value, rounded to the specified length or precision.
-row|Numbers the output of a result set. More specifically, returns the sequential number of a row within a partition of a result set, starting at 1 for the first row in each partition.
-rowcount|Returns the number of rows affected by the last statement executed. This function operates like [@@ROWCOUNT](../../t-sql/functions/rowcount-transact-sql.md), except the return type of ROWCOUNT_BIG is **bigint**.
-rowcount|Returns the number of rows affected by the last statement. If the number of rows is more than 2 billion, use [ROWCOUNT_BIG](../../t-sql/functions/rowcount-big-transact-sql.md).
-rtrim|::: moniker range="<=sql-server-ver15 || <=sql-server-linux-ver15 || = azure-sqldw-latest || = azuresqldb-current || = azuresqldb-mi-current"
-schema|Returns the schema ID associated with a schema name.
-schema|Returns the schema name associated with a schema ID.
-scope|Returns the last identity value inserted into an identity column in the same scope. A scope is a module: a stored procedure, trigger, function, or batch. Therefore, if two statements are in the same stored procedure, function, or batch, they are in the same scope.
-security|The following functions return information that is useful in managing security. Additional functions are listed under [Cryptographic Functions &#40;Transact-SQL&#41;](../../t-sql/functions/cryptographic-functions-transact-sql.md).
-servername|Returns the name of the local server that is running [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)].
-serverproperty|Returns property information about the server instance.
-servicename|Returns the name of the registry key under which [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] is running. @@SERVICENAME returns 'MSSQLSERVER' if the current instance is the default instance; this function returns the instance name if the current instance is a named instance.
-session|Returns the value of the specified key in the current session context. The value is set by using the [sp_set_session_context &#40;Transact-SQL&#41;](../../relational-databases/system-stored-procedures/sp-set-session-context-transact-sql.md) procedure.
-session|Returns the ID of the current [!INCLUDE[ssSDW](../../includes/sssdw-md.md)] or [!INCLUDE[ssPDW_md](../../includes/sspdw-md.md)] session.
-session|SESSION_USER returns the user name of the current context in the current database.
-sessionproperty|Returns the SET options settings of a session.
-set|SET_BIT returns *expression_value* offset by the bit defined by *bit_offset*. The bit value defaults to 1, or is set by *bit_value*.
-sign|Returns the positive (+1), zero (0), or negative (-1) sign of the specified expression.
-signbyasymkey|Signs plaintext with an asymmetric key
-signbycert|Signs text with a certificate and returns the signature.
-sin|Returns the trigonometric sine of the specified angle, in radians, and in an approximate numeric, **float**, expression.
-smalldatetimefromparts|Returns a **smalldatetime** value for the specified date and time.
-soundex|Returns a four-character (SOUNDEX) code to evaluate the similarity of two strings.
-space|Returns a string of repeated spaces.
-spid|Returns the session ID of the current user process.
-sql|Returns the base data type and other information about a **sql_variant** value.
-sqrt|Returns the square root of the specified float value.
-square|Returns the square of the specified float value.
-stats|Returns the date of the most recent update for statistics on a table or indexed view.
-stdev|Returns the statistical standard deviation of all values in the specified expression.
-stdevp|Returns the statistical standard deviation for the population for all values in the specified expression.
-str|Returns character data converted from numeric data. The character data is right-justified, with a specified length and decimal precision.
-string|<!--[!INCLUDE [sqlserver2017-asdb-asdbmi-asa](../../includes/applies-to-version/sqlserver2017-asdb-asdbmi-asa.md)]-->
-string|Escapes special characters in texts and returns text with escaped characters. **STRING_ESCAPE** is a deterministic function, introduced in SQL Server 2016.
-string|The following scalar functions perform an operation on a string input value and return a string or numeric value:
-string|A table-valued function that splits a string into rows of substrings, based on a specified separator character.
-stuff|The STUFF function inserts a string into another string. It deletes a specified length of characters in the first string at the start position and then inserts the second string into the first string at the start position.
-substring|Returns part of a character, binary, text, or image expression in [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)].
-sum|Returns the sum of all the values, or only the DISTINCT values, in the expression. SUM can be used with numeric columns only. Null values are ignored.
-suser|Returns the login identification number of the user.
-suser|Returns the login identification name of the user.
-suser|Returns the security identification number (SID) for the specified login name.
-suser|Returns the login name associated with a security identification number (SID).
-switchoffset|Returns a **datetimeoffset** value that is changed from the stored time zone offset to a specified new time zone offset.
-symkeyproperty|Returns the algorithm of a symmetric key created from an EKM module.
-sysdatetime|Returns a **datetime2(7)** value that contains the date and time of the computer on which the instance of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] is running.
-sysdatetimeoffset|Returns a **datetimeoffset(7)** value that contains the date and time of the computer on which the instance of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] is running. The time zone offset is included.
-system|The following system functions perform operations on and return information about values, objects, and settings in [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)].
-system|The following scalar functions return statistical information about the system:
-system|Allows a system-supplied value for the current login to be inserted into a table when no default value is specified.
-sysutcdatetime|Returns a **datetime2** value that contains the date and time of the computer on which the instance of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] is running. The date and time is returned as UTC time (Coordinated Universal Time). The fractional second precision specification has a range from 1 to 7 digits. The default precision is 7 digits.
-tan|Returns the tangent of the input expression.
-text|Returns the text-pointer value that corresponds to a **text**, **ntext**, or **image** column in **varbinary** format. The retrieved text pointer value can be used in READTEXT, WRITETEXT, and UPDATETEXT statements.
-text|A **text**, **ntext**, or **image** function that checks whether a specific text pointer is valid.
-textsize|Returns the current value of the [TEXTSIZE](../../t-sql/statements/set-textsize-transact-sql.md) option.
-timefromparts|Returns a **time** value for the specified time and with the specified precision.
-timeticks|Returns the number of microseconds per tick.
-todatetimeoffset|Returns a **datetimeoffset** value that is translated from a **datetime2** expression.
-total|Returns the number of disk write errors encountered by [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] since [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] last started.
-total|Returns the number of disk reads, not cache reads, by [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] since [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] was last started.
-total|Returns the number of disk writes by [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] since [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] was last started.
-trancount|Returns the number of BEGIN TRANSACTION statements that have occurred on the current connection.
-translate|Returns the string provided as a first argument, after some characters specified in the second argument are translated into a destination set of characters, specified in the third argument.
-trigger|The following scalar functions can be used in the definition of a trigger to test for changes in data values or to return other data.
-trigger|Returns the number of triggers executed for the statement that fired the trigger. TRIGGER_NESTLEVEL is used in DML and DDL triggers to determine the current level of nesting.
-trim|Removes the space character `char(32)` or other specified characters from the start and end of a string.
-try|Returns a value cast to the specified data type if the cast succeeds; otherwise, returns null.
-try|Returns a value cast to the specified data type if the cast succeeds; otherwise, returns null.
-try|Returns the result of an expression, translated to the requested data type, or null if the cast fails in [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]. Use TRY_PARSE only for converting from string to date/time and number types.
-type|Returns the ID for a specified data type name.
-type|Returns the unqualified type name of a specified type ID.
-typeproperty|Returns information about a data type.
-unicode|Returns the integer value, as defined by the Unicode standard, for the first character of the input expression.
-update|Returns a Boolean value that indicates whether an INSERT or UPDATE attempt was made on a specified column of a table or view. UPDATE() is used anywhere inside the body of a [!INCLUDE[tsql](../../includes/tsql-md.md)] INSERT or UPDATE trigger to test whether the trigger should execute certain actions.
-upper|Returns a character expression with lowercase character data converted to uppercase.
-user|Returns the identification number for a database user.
-user|Returns a database user name from a specified identification number.
-user|Allows a system-supplied value for the database user name of the current user to be inserted into a table when no default value is specified.
-var|Returns the statistical variance of all values in the specified expression. May be followed by the [OVER clause](../../t-sql/queries/select-over-clause-transact-sql.md).
-varp|Returns the statistical variance for the population for all values in the specified expression.
-verifysignedbyasymkey|Tests whether digitally signed data has been changed since it was signed.
-verifysignedbycert|Tests whether digitally signed data has been changed since it was signed.
-version|Returns system and build information for the current installation of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)].
-version|Returns the version of [!INCLUDE[ssSDW](../../includes/sssdw-md.md)] or [!INCLUDE[ssPDW_md](../../includes/sspdw-md.md)] running on the appliance.
-xact|Is a scalar function that reports the user transaction state of a current running request. XACT_STATE indicates whether the request has an active user transaction, and whether the transaction is capable of being committed.
-year|Returns an integer that represents the year of the specified *date*.
+﻿ABS|A mathematical function that returns the absolute (positive) value of the specified numeric expression. (`ABS` changes negative values to positive values. `ABS` has no effect on zero or positive values.)
+ACOS|A function that returns the angle, in radians, whose cosine is the specified float expression. This is also called arccosine.
+Aggregate|An aggregate function performs a calculation on a set of values, and returns a single value. Except for `COUNT(*)`, aggregate functions ignore null values. Aggregate functions are often used with the GROUP BY clause of the SELECT statement.
+Analytic|SQL Server supports these analytic functions:
+APP_NAME|This function returns the application name for the current session, if the application sets that name value.
+APPLOCK_MODE|This function returns the lock mode held by the lock owner on a particular application resource. As an application lock function, APPLOCK_MODE operates on the current database. The database is the scope of the application locks.
+APPLOCK_TEST|This function returns information as to whether or not a lock can be granted on a particular application resource, for a specified lock owner, without acquisition of the lock. As an application lock function, APPLOCK_TEST operates on the current database. The database is the scope of the application locks.
+APPROX_COUNT_DISTINCT|This function returns the approximate number of unique non-null values in a group.
+APPROX_PERCENTILE_CONT|This function returns an approximate interpolated value from the set of values in a group based on percentile value and sort specification. Since this is an approximate function, the output would be within rank based error bound with certain confidence. The percentile value returned by this function is based on a continuous distribution of the column values and the result would be interpolated. Due to this, the output might not be one of values in the data set. One of the common use cases for this function is to avoid the data outliers. This function can be used as an alternative to PERCENTILE_CONT for large datasets where negligible error with faster response is acceptable as compared to accurate percentile value with slow response time.
+APPROX_PERCENTILE_DISC|This function returns the value from the set of values in a group based on the provided percentile and sort specification. Since this is an approximate function, the output would be within rank based error bound with certain confidence. As this approximate percentile is based on a discrete distribution of the column values, the output value would be equal to one of the specific values in the column. This function can be used as an alternative to PERCENTILE_DISC for large datasets where negligible error with faster response is acceptable as compared to accurate percentile value with slow response time.
+ASCII|Returns the ASCII code value of the leftmost character of a character expression.
+ASIN|A function that returns the angle, in radians, whose sine is the specified **float** expression. This is also called **arcsine**.
+ASSEMBLYPROPERTY|This function returns information about a property of an assembly.
+ASYMKEY_ID|Returns the ID of an asymmetric key.
+ASYMKEYPROPERTY|This function returns the properties of an asymmetric key.
+ATAN|A function that returns the angle, in radians, whose tangent is a specified **float** expression. This is also called arctangent.
+ATN2|Returns the angle, in radians, between the positive x-axis and the ray from the origin to the point (y, x), where x and y are the values of the two specified float expressions.
+AVG|This function returns the average of the values in a group. It ignores null values.
+BINARY_CHECKSUM|Returns the binary checksum value computed over a row of a table or over a list of expressions.
+BIT_COUNT|BIT_COUNT takes one parameter and returns the number of bits set to 1 in that parameter as a **bigint** type.
+CAST|These functions convert an expression of one data type to another.
+CEILING|This function returns the smallest integer greater than, or equal to, the specified numeric expression.
+CERT_ID|This function returns the ID value of a certificate.
+CERTENCODED|This function returns the public portion of a certificate in binary format. This function takes a certificate ID as an argument, and returns the encoded certificate. To create a new certificate, pass the binary result to **CREATE CERTIFICATE ... WITH BINARY**.
+CERTPRIVATEKEY|This function returns the private key of a certificate in binary format. This function takes three arguments.
+CERTPROPERTY|Returns the value of a specified certificate property.
+CHAR|Returns the single-byte character with the specified integer code, as defined by the character set and encoding of the default collation of the current database.
+CHARINDEX|This function searches for one character expression inside a second character expression, returning the starting position of the first expression if found.
+CHECKSUM_AGG|This function returns the checksum of the values in a group. `CHECKSUM_AGG` ignores null values. The [OVER clause](../../t-sql/queries/select-over-clause-transact-sql.md) can follow `CHECKSUM_AGG`.
+CHECKSUM|The `CHECKSUM` function returns the checksum value computed over a table row, or over an expression list. Use `CHECKSUM` to build hash indexes.
+COL_LENGTH|This function returns the defined length of a column, in bytes.
+COL_NAME|This function returns the name of a table column, based on the table identification number and column identification number values of that table column.
+COLLATIONPROPERTY|This function returns the requested property of a specified collation.
+TERTIARY_WEIGHTS|For each character in a non-Unicode string expression - defined with a SQL tertiary collation - this function returns a binary string of weights.
+COLUMNPROPERTY|This function returns column or parameter information.
+COLUMNS_UPDATED|This function returns a **varbinary** bit pattern indicating the inserted or updated columns of a table or view. Use `COLUMNS_UPDATED` anywhere inside the body of a [!INCLUDE[tsql](../../includes/tsql-md.md)] INSERT or UPDATE trigger to test whether the trigger should execute certain actions.
+COMPRESS|This function compresses the input expression, using the GZIP algorithm. The function returns a byte array of type **varbinary(max)**.
+CONCAT|This function returns a string resulting from the concatenation, or joining, of two or more string values in an end-to-end manner. (To add a separating value during concatenation, see [CONCAT_WS](../../t-sql/functions/concat-ws-transact-sql.md).)
+CONCAT_WS|This function returns a string resulting from the concatenation, or joining, of two or more string values in an end-to-end manner. It separates those concatenated string values with the delimiter specified in the first function argument. (`CONCAT_WS` indicates *concatenate with separator*.)
+Configuration|These scalar functions return information about current configuration option settings:
+CONNECTIONPROPERTY|For a request that comes in to the server, this function returns information about the connection properties of the unique connection which supports that request.
+@@CONNECTIONS|This function returns the number of attempted connections - both successful and unsuccessful - since [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] was last started.
+CONTEXT_INFO|This function returns the **context_info** value either set for the current session or batch, or derived through use of the [SET CONTEXT_INFO](../../t-sql/statements/set-context-info-transact-sql.md) statement.
+Conversion|These functions support data type casting and conversion:
+COS|A mathematical function that returns the trigonometric cosine of the specified angle - measured in radians - in the specified expression.
+COT|A mathematical function that returns the trigonometric cotangent of the specified angle - in radians - in the specified **float** expression.
+COUNT_BIG|This function returns the number of items found in a group. `COUNT_BIG` operates like the [COUNT](../../t-sql/functions/count-transact-sql.md) function. These functions differ only in the data types of their return values. `COUNT_BIG` always returns a **bigint** data type value. `COUNT` always returns an **int** data type value.
+COUNT|This function returns the number of items found in a group. `COUNT` operates like the [COUNT_BIG](../../t-sql/functions/count-big-transact-sql.md) function. These functions differ only in the data types of their return values. `COUNT` always returns an **int** data type value. `COUNT_BIG` always returns a **bigint** data type value.
+CPU_BUSY|This function returns the amount of time that [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] has spent in active operation since its latest start. `@@CPU_BUSY` returns a result measured in CPU time increments, or "ticks." This value is cumulative for all CPUs, so it may exceed the actual elapsed time. To convert to microseconds, multiply by [@@TIMETICKS](./timeticks-transact-sql.md).
+CRYPT_GEN_RANDOM|This function returns a cryptographic, randomly-generated number, generated by the Crypto API (CAPI). `CRYPT_GEN_RANDOM` returns a hexadecimal number with a length of a specified number of bytes.
+Cryptographic|These functions support digital signing, digital signature validation, encryption, and decryption.
+CUME_DIST|For [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)], this function calculates the cumulative distribution of a value within a group of values. In other words, `CUME_DIST` calculates the relative position of a specified value in a group of values. Assuming ascending ordering, the `CUME_DIST` of a value in row _r_ is defined as the number of rows with values less than or equal to that value in row _r_, divided by the number of rows evaluated in the partition or query result set. `CUME_DIST` is similar to the `PERCENT_RANK` function.
+CURRENT_REQUEST_ID|This function returns the ID of the current request within the current session.
+CURRENT_TIMESTAMP|This function returns the current database system timestamp as a **datetime** value, without the database time zone offset. `CURRENT_TIMESTAMP` derives this value from the operating system of the computer on which the instance of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] runs.
+CURRENT_TIMEZONE_ID|This function returns the ID of the time zone observed by a server or an instance. For Azure SQL Managed Instance, return value is based on the time zone of the instance itself assigned during instance creation, not the time zone of the underlying operating system.
+CURRENT_TIMEZONE|This function returns the name of the time zone observed by a server or an instance. For SQL Managed Instance, return value is based on the time zone of the instance itself assigned during instance creation, not the time zone of the underlying operating system.
+CURRENT_TRANSACTION_ID|This function returns the transaction ID of the current transaction in the current session.
+CURRENT_USER|This function returns the name of the current user. This function is equivalent to `USER_NAME()`.
+Cursor|These scalar functions return information about cursors:
+@@CURSOR_ROWS|This returns the number of qualifying rows currently in the last cursor opened on the connection. To improve performance, [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] can populate large keyset and static cursors asynchronously. `@@CURSOR_ROWS` can be called to determine that the number of the rows that qualify for a cursor are retrieved at the time of the @@CURSOR_ROWS call.
+CURSOR_STATUS|For a given parameter, `CURSOR_STATUS` shows whether or not a cursor declaration has returned a cursor and result set.
+Data|These scalar functions return information about various data type values.
+DATABASE_PRINCIPAL_ID|This function returns the ID number of a principal in the current database. See [Principals &#40;Database Engine&#41;](../../relational-databases/security/authentication-access/principals-database-engine.md) for more information about principals.
+DATABASEPROPERTYEX|For a specified database in [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)], this function returns the current setting of the specified database option or property.
+DATALENGTH|This function returns the number of bytes used to represent any expression.
+Date|The sections in this article cover all [!INCLUDE[tsql](../../includes/tsql-md.md)] date and time data types and functions.
+DATE_BUCKET|This function returns the date-time value corresponding to the start of each date-time bucket from the timestamp defined by the `origin` parameter, or the default origin value of `1900-01-01 00:00:00.000` if the origin parameter isn't specified.
+DATEADD|This function adds a *number* (a signed integer) to a *datepart* of an input *date*, and returns a modified date/time value. For example, you can use this function to find the date that is 7000 minutes from today: *number* = 7000, *datepart* = minute, *date* = today.
+DATEDIFF_BIG|This function returns the count (as a signed big integer value) of the specified *datepart* boundaries crossed between the specified *startdate* and *enddate*.
+DATEDIFF|This function returns the count (as a signed integer value) of the specified datepart boundaries crossed between the specified *startdate* and *enddate*.
+@@DATEFIRST|This function returns the current value of [SET DATEFIRST](../../t-sql/statements/set-datefirst-transact-sql.md), for a specific session.
+DATEFROMPARTS|This function returns a **date** value that maps to the specified year, month, and day values.
+DATENAME|This function returns a character string representing the specified *datepart* of the specified *date*.
+DATEPART|This function returns an integer representing the specified *datepart* of the specified *date*.
+DATETIME2FROMPARTS|This function returns a **datetime2** value for the specified date and time arguments. The returned value has a precision specified by the precision argument.
+DATETIMEFROMPARTS|This function returns a **datetime** value for the specified date and time arguments.
+DATETIMEOFFSETFROMPARTS|Returns a **datetimeoffset** value for the specified date and time arguments. The returned value has a precision specified by the precision argument, and an offset as specified by the offset arguments.
+DATETRUNC|Starting with [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)], this function returns an input *date* truncated to a specified *datepart*.
+DAY|This function returns an integer that represents the day (day of the month) of the specified *date*.
+DB_ID|This function returns the database identification (ID) number of a specified database.
+DB_NAME|This function returns the name of a specified database.
+DBTS|This function returns the value of the current **timestamp** data type for the current database. The current database will have a guaranteed unique timestamp value.
+DECOMPRESS|This function will decompress an input expression value, using the GZIP algorithm. `DECOMPRESS` will return a byte array (VARBINARY(MAX) type).
+DECRYPTBYASYMKEY|This function uses an asymmetric key to decrypt encrypted data.
+DECRYPTBYCERT|This function uses the private key of a certificate to decrypt encrypted data.
+DECRYPTBYKEY|This function uses a symmetric key to decrypt data.
+DECRYPTBYKEYAUTOASYMKEY|This function decrypts encrypted data. To do this, it first decrypts a symmetric key with a separate asymmetric key, and then decrypts the encrypted data with the symmetric key extracted in the first "step".
+DECRYPTBYKEYAUTOCERT|This function decrypts data with a symmetric key. That symmetric key automatically decrypts with a certificate.
+DECRYPTBYPASSPHRASE|This function decrypts data originally encrypted with a passphrase.
+DEGREES|This function returns the corresponding angle, in degrees, for an angle specified in radians.
+DENSE_RANK|This function returns the rank of each row within a result set partition, with no gaps in the ranking values. The rank of a specific row is one plus the number of distinct rank values that come before that specific row.
+DIFFERENCE|This function returns an integer value measuring the difference between the [SOUNDEX()](./soundex-transact-sql.md) values of two different character expressions.
+EDGE_ID_FROM_PARTS|Returns the character representation (JSON) of the edge ID for a given object ID and graph ID.
+ENCRYPTBYASYMKEY|This function encrypts data with an asymmetric key.
+ENCRYPTBYCERT|Encrypts data with the public key of a certificate.
+ENCRYPTBYKEY|Encrypts data by using a symmetric key.
+ENCRYPTBYPASSPHRASE|Encrypt data with a passphrase using the TRIPLE DES algorithm with a 128 key bit length.
+EOMONTH|This function returns the last day of the month containing a specified date, with an optional offset.
+ERROR_LINE|This function returns the line number of occurrence of an error that caused the CATCH block of a TRY...CATCH construct to execute.
+ERROR_MESSAGE|This function returns the message text of the error that caused the CATCH block of a TRY...CATCH construct to execute.
+ERROR_NUMBER|This function returns the error number of the error that caused the CATCH block of a TRY...CATCH construct to execute.
+ERROR_PROCEDURE|This function returns the name of the stored procedure or trigger where an error occurs, if that error caused the CATCH block of a TRY...CATCH construct to execute.
+ERROR_SEVERITY|This function returns the severity value of the error where an error occurs, if that error caused the CATCH block of a TRY...CATCH construct to execute.
+ERROR_STATE|Returns the state number of the error that caused the CATCH block of a TRY...CATCH construct to be run.
+@@ERROR|Returns the error number for the last [!INCLUDE[tsql](../../includes/tsql-md.md)] statement executed.
+EVENTDATA|This function returns information about server or database events. When an event notification fires, and the specified service broker receives the results, `EVENTDATA` is called. A DDL or logon trigger also support internal use of `EVENTDATA`.
+EXP|Returns the exponential value of the specified **float** expression.
+FETCH_STATUS|This function returns the status of the last cursor FETCH statement issued against any cursor currently opened by the connection.
+FILE_ID|For the given logical name for a component file of the current database, this function returns the file identification (ID) number.
+FILE_IDEX|This function returns the file identification (ID) number for the specified logical name of a data, log, or full-text file of the current database.
+FILE_NAME|This function returns the logical file name for a given file identification (ID) number.
+FILEGROUP_ID|This function returns the filegroup identification (ID) number for a specified filegroup name.
+FILEGROUP_NAME|This function returns the filegroup name for the specified filegroup identification (ID) number.
+FILEGROUPPROPERTY|This function returns the filegroup property value for a specified name  and filegroup value.
+FILEPROPERTY|Returns the specified file name property value when a file name in the current database and a property name are specified. Returns NULL for files that are not in the current database.
+FILEPROPERTYEX|Returns the specified extended file property value when a file name in the current database and a property name are specified. Returns NULL for files that are not in the current database or for extended file properties that do not exist. Currently, extended file properties only apply to databases that are in Azure Blob storage.
+FIRST_VALUE|Returns the first value in an ordered set of values.
+FLOOR|Returns the largest integer less than or equal to the specified numeric expression.
+FORMAT|Returns a value formatted with the specified format and optional culture. Use the FORMAT function for locale-aware formatting of date/time and number values as strings. For general data type conversions, use CAST or CONVERT.
+FORMATMESSAGE|Constructs a message from an existing message in sys.messages or from a provided string. The functionality of FORMATMESSAGE resembles that of the RAISERROR statement. However, RAISERROR prints the message immediately, while FORMATMESSAGE returns the formatted message for further processing.
+FULLTEXTCATALOGPROPERTY|Returns information about full-text catalog properties in [!INCLUDE[ssnoversion](../../includes/ssnoversion-md.md)].
+FULLTEXTSERVICEPROPERTY|Returns information related to the properties of the Full-Text Engine. These properties can be set and retrieved by using **sp_fulltext_service**.
+GENERATE_SERIES|Generates a series of numbers within a given interval. The interval and the step between series values are defined by the user.
+GET_BIT|GET_BIT takes two parameters and returns the bit in *expression_value* that is in the offset defined by *bit_offset*.
+GET_FILESTREAM_TRANSACTION_CONTEXT|Returns a token that represents the current transaction context of a session. The token is used by an application to bind FILESTREAM file-system streaming operations to the transaction. For a list of FILESTREAM topics, see [Binary Large Object &#40;Blob&#41; Data &#40;SQL Server&#41;](../../relational-databases/blob/binary-large-object-blob-data-sql-server.md).
+GETANSINULL|Returns the default nullability for the database for this session.
+GETDATE|Returns the current database system timestamp as a **datetime** value without the database time zone offset. This value is derived from the operating system of the computer on which the instance of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] is running.
+GETUTCDATE|Returns the current database system timestamp as a **datetime** value. The database time zone offset is not included. This value represents the current UTC time (Coordinated Universal Time). This value is derived from the operating system of the computer on which the instance of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] is running.
+Graph|Use the functions described on the pages in this section to extract values from, and transform values to, the pseudo-columns used in SQL Graph.
+GRAPH_ID_FROM_EDGE_ID|Returns the internal graph ID for a given edge ID.
+GRAPH_ID_FROM_NODE_ID|Returns the internal graph ID for a given node ID.
+GROUPING_ID|Is a function that computes the level of grouping. GROUPING_ID can be used only in the SELECT \<select> list, HAVING, or ORDER BY clauses when GROUP BY is specified.
+GROUPING|Indicates whether a specified column expression in a GROUP BY list is aggregated or not. GROUPING returns 1 for aggregated or 0 for not aggregated in the result set. GROUPING can be used only in the SELECT \<select> list, HAVING, and ORDER BY clauses when GROUP BY is specified.
+HAS_DBACCESS|Returns information about whether the user has access to the specified database.
+HAS_PERMS_BY_NAME|Evaluates the effective permission of the current user on a securable. A related function is [fn_my_permissions](../../relational-databases/system-functions/sys-fn-my-permissions-transact-sql.md).
+HASHBYTES|Returns the MD2, MD4, MD5, SHA, SHA1, or SHA2 hash of its input in [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)].
+HOST_ID|Returns the workstation identification number. The workstation identification number is the process ID (PID) of the application on the client computer that is connecting to [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)].
+HOST_NAME|Returns the workstation name.
+IDENT_CURRENT|Returns the last identity value generated for a specified table or view. The last identity value generated can be for any session and any scope.
+IDENT_INCR|Returns the increment value specified when creating a table or view's identity column.
+IDENT_SEED|Returns the original seed value specified when creating an identity column in a table or a view. Changing the current value of an identity column by using DBCC CHECKIDENT doesn't change the value returned by this function.
+IDENTITY|Is used only in a SELECT statement with an INTO *table* clause to insert an identity column into a new table. Although similar, the IDENTITY function is not the IDENTITY property that is used with CREATE TABLE and ALTER TABLE.
+@@IDENTITY|Is a system function that returns the last-inserted identity value.
+@@IDLE|Returns the time that [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] has been idle since it was last started. The result is in CPU time increments, or "ticks," and is cumulative for all CPUs, so it may exceed the actual elapsed time. Multiply by @@TIMETICKS to convert to microseconds.
+INDEX_COL|Returns the indexed column name. Returns NULL for XML indexes.
+INDEXKEY_PROPERTY|Returns information about the index key. Returns NULL for XML indexes.
+INDEXPROPERTY|Returns the named index or statistics property value of a specified table identification number, index or statistics name, and property name. Returns NULL for XML indexes.
+@@IO_BUSY|Returns the time that [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] has spent performing input and output operations since [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] was last started. The result is in CPU time increments ("ticks"), and is cumulative for all CPUs, so it may exceed the actual elapsed time. Multiply by @@TIMETICKS to convert to microseconds.
+IS_MEMBER|Indicates whether the current user is a member of the specified [!INCLUDE[msCoName](../../includes/msconame-md.md)] Windows group or [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] database role. The IS_MEMBER function is not supported for Azure Active Directory Groups.
+IS_OBJECTSIGNED|Indicates whether an object is signed by a specified certificate or asymmetric key.
+IS_ROLEMEMBER|Indicates whether a specified database principal is a member of the specified database role.
+IS_SRVROLEMEMBER|Indicates whether a [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] login is a member of the specified server role.
+ISDATE|Returns 1 if the *expression* is a valid **datetime** value; otherwise, 0.
+ISJSON|Tests whether a string contains valid JSON.
+ISNULL|Replaces NULL with the specified replacement value.
+ISNUMERIC|Determines whether an expression is a valid numeric type.
+JSON_ARRAY|Constructs JSON array text from zero or more expressions.
+JSON|Use the functions described on the pages in this section to validate or change JSON text or to extract simple or complex values.
+JSON_MODIFY|Updates the value of a property in a JSON string and returns the updated JSON string.
+JSON_OBJECT|Constructs JSON object text from zero or more expressions.
+JSON_PATH_EXISTS|Tests whether a specified SQL/JSON path exists in the input JSON string.
+JSON_QUERY|Extracts an object or an array from a JSON string.
+JSON_VALUE|Extracts a scalar value from a JSON string.
+KEY_GUID|Returns the GUID of a symmetric key in the database.
+KEY_ID|Returns the ID of a symmetric key in the current database.
+KEY_NAME|Returns the name of the symmetric key from either a symmetric key GUID or cipher text.
+LAG|Accesses data from a previous row in the same result set without the use of a self-join starting with [!INCLUDE[ssSQL11](../../includes/sssql11-md.md)]. LAG provides access to a row at a given physical offset that comes before the current row. Use this analytic function in a SELECT statement to compare values in the current row with values in a previous row.
+@@LANGID|Returns the local language identifier (ID) of the language that is currently being used.
+@@LANGUAGE|Returns the name of the language currently being used.
+LAST_VALUE|Returns the last value in an ordered set of values.
+LEAD|Accesses data from a subsequent row in the same result set without the use of a self-join starting with [!INCLUDE[ssSQL11](../../includes/sssql11-md.md)]. LEAD provides access to a row at a given physical offset that follows the current row. Use this analytic function in a SELECT statement to compare values in the current row with values in a following row.
+LEFT_SHIFT|LEFT_SHIFT takes two parameters, and returns the first parameter bit-shifted left by the number of bits specified in the second parameter.
+LEFT|Returns the left part of a character string with the specified number of characters.
+LEN|Returns the number of characters of the specified string expression, excluding trailing spaces.
+@@LOCK_TIMEOUT|Returns the current lock time-out setting in milliseconds for the current session.
+LOG|Returns the natural logarithm of the specified **float** expression in [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)].
+LOG10|Returns the base-10 logarithm of the specified **float** expression.
+CHOOSE|Returns the item at the specified index from a list of values in [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)].
+GREATEST|This function returns the maximum value from a list of one or more expressions.
+IIF|Returns one of two values, depending on whether the Boolean expression evaluates to true or false in [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)].
+LEAST|This function returns the minimum value from a list of one or more expressions.
+LOGINPROPERTY|Returns information about login policy settings.
+LOWER|Returns a character expression after converting uppercase character data to lowercase.
+LTRIM|::: moniker range="<=sql-server-ver15 || <=sql-server-linux-ver15 || = azure-sqldw-latest || = azuresqldb-current || = azuresqldb-mi-current"
+Mathematical|The following scalar functions perform a calculation, usually based on input values that are provided as arguments, and return a numeric value:
+@@MAX_CONNECTIONS|Returns the maximum number of simultaneous user connections allowed on an instance of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]. The number returned is not necessarily the number currently configured.
+@@MAX_PRECISION|Returns the precision level used by **decimal** and **numeric** data types as currently set in the server.
+MAX|Returns the maximum value in the expression.
+Metadata|The following scalar functions return information about the database and database objects:
+MIN_ACTIVE_ROWVERSION|Returns the lowest active **rowversion** value in the current database. A **rowversion** value is active if it is used in a transaction that has not yet been committed. For more information, see [rowversion &#40;Transact-SQL&#41;](../../t-sql/data-types/rowversion-transact-sql.md).
+MIN|Returns the minimum value in the expression. May be followed by the [OVER clause](../../t-sql/queries/select-over-clause-transact-sql.md).
+MONTH|Returns an integer that represents the month of the specified *date*.
+NCHAR|Returns the Unicode character with the specified integer code, as defined by the Unicode standard.
+@@NESTLEVEL|Returns the nesting level of the current stored procedure execution (initially 0) on the local server.
+NEWID|Creates a unique value of type **uniqueidentifier**.
+NEWSEQUENTIALID|Creates a GUID that is greater than any GUID previously generated by this function on a specified computer since Windows was started. After restarting Windows, the GUID can start again from a lower range, but is still globally unique. When a GUID column is used as a row identifier, using NEWSEQUENTIALID can be faster than using the NEWID function. This is because the NEWID function causes random activity and uses fewer cached data pages. Using NEWSEQUENTIALID also helps to completely fill the data and index pages.
+NEXT|Generates a sequence number from the specified sequence object.
+NODE_ID_FROM_PARTS|Returns the character representation (JSON) of the node ID for a given object ID and graph ID.
+NTILE|Distributes the rows in an ordered partition into a specified number of groups. The groups are numbered, starting at one. For each row, NTILE returns the number of the group to which the row belongs.
+OBJECT_DEFINITION|Returns the [!INCLUDE[tsql](../../includes/tsql-md.md)] source text of the definition of a specified object.
+OBJECT_ID_FROM_EDGE_ID|Returns the object ID for a given graph edge ID.
+OBJECT_ID_FROM_NODE_ID|Returns the object ID for a given graph node ID.
+OBJECT_ID|Returns the database object identification number of a schema-scoped object.
+OBJECT_NAME|Returns the database object name for schema-scoped objects. For a list of schema-scoped objects, see [sys.objects &#40;Transact-SQL&#41;](../../relational-databases/system-catalog-views/sys-objects-transact-sql.md).
+OBJECT_SCHEMA_NAME|Returns the database schema name for schema-scoped objects. For a list of schema-scoped objects, see [sys.objects &#40;Transact-SQL&#41;](../../relational-databases/system-catalog-views/sys-objects-transact-sql.md).
+OBJECTPROPERTY|Returns information about schema-scoped objects in the current database. For a list of schema-scoped objects, see [sys.objects &#40;Transact-SQL&#41;](../../relational-databases/system-catalog-views/sys-objects-transact-sql.md). This function cannot be used for objects that are not schema-scoped, such as data definition language (DDL) triggers and event notifications.
+OBJECTPROPERTYEX|Returns information about schema-scoped objects in the current database. For a list of these objects, see [sys.objects &#40;Transact-SQL&#41;](../../relational-databases/system-catalog-views/sys-objects-transact-sql.md). OBJECTPROPERTYEX cannot be used for objects that are not schema-scoped, such as data definition language (DDL) triggers and event notifications.
+ODBC|You can use [ODBC Scalar Functions](../../odbc/reference/appendixes/appendix-e-scalar-functions.md) in [!INCLUDE[tsql](../../includes/tsql-md.md)] statements. These statements are interpreted by [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]. They can be used in stored procedures and user-defined functions. These include string, numeric, time, date, interval, and system functions.
+OPENDATASOURCE|Provides ad hoc connection information as part of a four-part object name without using a linked server name.
+OPENJSON|**OPENJSON** is a table-valued function that parses JSON text and returns objects and properties from the JSON input as rows and columns. In other words, **OPENJSON** provides a rowset view over a JSON document. You can explicitly specify the columns in the rowset and the JSON property paths used to populate the columns. Since **OPENJSON** returns a set of rows, you can use **OPENJSON** in the `FROM` clause of a [!INCLUDE[tsql](../../includes/tsql-md.md)] statement just as you can use any other table, view, or table-valued function.
+OPENQUERY|Executes the specified pass-through query on the specified linked server. This server is an OLE DB data source. OPENQUERY can be referenced in the FROM clause of a query as if it were a table name. OPENQUERY can also be referenced as the target table of an INSERT, UPDATE, or DELETE statement. This is subject to the capabilities of the OLE DB provider. Although the query may return multiple result sets, OPENQUERY returns only the first one.
+OPENROWSET|Includes all connection information that is required to access remote data from an OLE DB data source. This method is an alternative to accessing tables in a linked server and is a one-time, ad hoc method of connecting and accessing remote data by using OLE DB. For more frequent references to OLE DB data sources, use linked servers instead. For more information, see [Linked Servers &#40;Database Engine&#41;](../../relational-databases/linked-servers/linked-servers-database-engine.md). The `OPENROWSET` function can be referenced in the FROM clause of a query as if it were a table name. The `OPENROWSET` function can also be referenced as the target table of an `INSERT`, `UPDATE`, or `DELETE` statement, subject to the capabilities of the OLE DB provider. Although the query might return multiple result sets, `OPENROWSET` returns only the first one.
+OPENXML|OPENXML provides a rowset view over an XML document. Because OPENXML is a rowset provider, OPENXML can be used in [!INCLUDE[tsql](../../includes/tsql-md.md)] statements in which rowset providers such as a table, view, or the OPENROWSET function can appear.
+@@OPTIONS|Returns information about the current SET options.
+ORIGINAL_DB_NAME|Returns the database name specified by the user in the database connection string. This database is specified by using the **sqlcmd-d** option (USE *database*). It can also be specified with the Open Database Connectivity (ODBC) data source expression (initial catalog =*databasename*).
+ORIGINAL_LOGIN|Returns the name of the login that connected to the instance of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]. You can use this function to return the identity of the original login in sessions in which there are many explicit or implicit context switches.
+@@PACK_RECEIVED|Returns the number of input packets read from the network by [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] since it was last started.
+@@PACK_SENT|Returns the number of output packets written to the network by [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] since it was last started.
+@@PACKET_ERRORS|Returns the number of network packet errors that have occurred on [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] connections since [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] was last started.
+PARSE|Returns the result of an expression, translated to the requested data type in [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)].
+PARSENAME|Returns the specified part of an object name. The parts of an object that can be retrieved are the object name, schema name, database name, and server name.
+$PARTITION|Returns the partition number into which a set of partitioning column values would be mapped for any specified partition function.
+PATINDEX|Returns the starting position of the first occurrence of a pattern in a specified expression, or zero if the pattern is not found, on all valid text and character data types.
+PERCENT_RANK|Calculates the relative rank of a row within a group of rows in [!INCLUDE[ssnoversion](../../includes/ssnoversion-md.md)]. Use PERCENT_RANK to evaluate the relative standing of a value within a query result set or partition. PERCENT_RANK is similar to the CUME_DIST function.
+PERCENTILE_CONT|Calculates a percentile based on a continuous distribution of the column value in [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]. The result is interpolated and might not be equal to any of the specific values in the column.
+PERCENTILE_DISC|Computes a specific percentile for sorted values in an entire rowset or within a rowset's distinct partitions in [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]. For a given percentile value *P*, PERCENTILE_DISC sorts the expression values in the ORDER BY clause. It then returns the value with the smallest CUME_DIST value given (with respect to the same sort specification) that is greater than or equal to *P*. For example, PERCENTILE_DISC (0.5) will compute the 50th percentile (that is, the median) of an expression. PERCENTILE_DISC calculates the percentile based on a discrete distribution of the column values. The result is equal to a specific column value.
+PERMISSIONS|Returns a value containing a bitmap that indicates the statement, object, or column permissions of the current user.
+PI|Returns the constant value of PI.
+POWER|Returns the value of the specified expression to the specified power.
+@@PROCID|Returns the object identifier (ID) of the current [!INCLUDE[tsql](../../includes/tsql-md.md)] module. A [!INCLUDE[tsql](../../includes/tsql-md.md)] module can be a stored procedure, user-defined function, or trigger. @@PROCID cannot be specified in CLR modules or the in-process data access provider.
+PWDCOMPARE|Hashes a password and compares the hash to the hash of an existing password. PWDCOMPARE can be used to search for blank [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] login passwords or common weak passwords.
+PWDENCRYPT|Returns the [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] password hash of the input value that uses the current version of the password hashing algorithm.
+QUOTENAME|Returns a Unicode string with the delimiters added to make the input string a valid [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] delimited identifier.
+RADIANS|Returns radians when a numeric expression, in degrees, is entered.
+RAND|Returns a pseudo-random **float** value from 0 through 1, exclusive.
+RANK|Returns the rank of each row within the partition of a result set. The rank of a row is one plus the number of ranks that come before the row in question.
+Ranking|Ranking functions return a ranking value for each row in a partition. Depending on the function that is used, some rows might receive the same value as other rows. Ranking functions are nondeterministic.
+@@REMSERVER|
+REPLACE|Replaces all occurrences of a specified string value with another string value.
+REPLICATE|Repeats a string value a specified number of times.
+REVERSE|Returns the reverse order of a string value.
+RIGHT_SHIFT|RIGHT_SHIFT takes two parameters, and returns the first parameter bit-shifted right by the number of bits specified in the second parameter.
+RIGHT|Returns the right part of a character string with the specified number of characters.
+ROUND|Returns a numeric value, rounded to the specified length or precision.
+ROW_NUMBER|Numbers the output of a result set. More specifically, returns the sequential number of a row within a partition of a result set, starting at 1 for the first row in each partition.
+ROWCOUNT_BIG|Returns the number of rows affected by the last statement executed. This function operates like [@@ROWCOUNT](../../t-sql/functions/rowcount-transact-sql.md), except the return type of ROWCOUNT_BIG is **bigint**.
+@@ROWCOUNT|Returns the number of rows affected by the last statement. If the number of rows is more than 2 billion, use [ROWCOUNT_BIG](../../t-sql/functions/rowcount-big-transact-sql.md).
+RTRIM|::: moniker range="<=sql-server-ver15 || <=sql-server-linux-ver15 || = azure-sqldw-latest || = azuresqldb-current || = azuresqldb-mi-current"
+SCHEMA_ID|Returns the schema ID associated with a schema name.
+SCHEMA_NAME|Returns the schema name associated with a schema ID.
+SCOPE_IDENTITY|Returns the last identity value inserted into an identity column in the same scope. A scope is a module: a stored procedure, trigger, function, or batch. Therefore, if two statements are in the same stored procedure, function, or batch, they are in the same scope.
+Security|The following functions return information that is useful in managing security. Additional functions are listed under [Cryptographic Functions &#40;Transact-SQL&#41;](../../t-sql/functions/cryptographic-functions-transact-sql.md).
+@@SERVERNAME|Returns the name of the local server that is running [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)].
+SERVERPROPERTY|Returns property information about the server instance.
+@@SERVICENAME|Returns the name of the registry key under which [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] is running. @@SERVICENAME returns 'MSSQLSERVER' if the current instance is the default instance; this function returns the instance name if the current instance is a named instance.
+SESSION_CONTEXT|Returns the value of the specified key in the current session context. The value is set by using the [sp_set_session_context &#40;Transact-SQL&#41;](../../relational-databases/system-stored-procedures/sp-set-session-context-transact-sql.md) procedure.
+SESSION_ID|Returns the ID of the current [!INCLUDE[ssSDW](../../includes/sssdw-md.md)] or [!INCLUDE[ssPDW_md](../../includes/sspdw-md.md)] session.
+SESSION_USER|SESSION_USER returns the user name of the current context in the current database.
+SESSIONPROPERTY|Returns the SET options settings of a session.
+SET_BIT|SET_BIT returns *expression_value* offset by the bit defined by *bit_offset*. The bit value defaults to 1, or is set by *bit_value*.
+SIGN|Returns the positive (+1), zero (0), or negative (-1) sign of the specified expression.
+SIGNBYASYMKEY|Signs plaintext with an asymmetric key
+SIGNBYCERT|Signs text with a certificate and returns the signature.
+SIN|Returns the trigonometric sine of the specified angle, in radians, and in an approximate numeric, **float**, expression.
+SMALLDATETIMEFROMPARTS|Returns a **smalldatetime** value for the specified date and time.
+SOUNDEX|Returns a four-character (SOUNDEX) code to evaluate the similarity of two strings.
+SPACE|Returns a string of repeated spaces.
+@@SPID|Returns the session ID of the current user process.
+SQL_VARIANT_PROPERTY|Returns the base data type and other information about a **sql_variant** value.
+SQRT|Returns the square root of the specified float value.
+SQUARE|Returns the square of the specified float value.
+STATS_DATE|Returns the date of the most recent update for statistics on a table or indexed view.
+STDEV|Returns the statistical standard deviation of all values in the specified expression.
+STDEVP|Returns the statistical standard deviation for the population for all values in the specified expression.
+STR|Returns character data converted from numeric data. The character data is right-justified, with a specified length and decimal precision.
+STRING_AGG|<!--[!INCLUDE [sqlserver2017-asdb-asdbmi-asa](../../includes/applies-to-version/sqlserver2017-asdb-asdbmi-asa.md)]-->
+STRING_ESCAPE|Escapes special characters in texts and returns text with escaped characters. **STRING_ESCAPE** is a deterministic function, introduced in SQL Server 2016.
+String|The following scalar functions perform an operation on a string input value and return a string or numeric value:
+STRING_SPLIT|A table-valued function that splits a string into rows of substrings, based on a specified separator character.
+STUFF|The STUFF function inserts a string into another string. It deletes a specified length of characters in the first string at the start position and then inserts the second string into the first string at the start position.
+SUBSTRING|Returns part of a character, binary, text, or image expression in [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)].
+SUM|Returns the sum of all the values, or only the DISTINCT values, in the expression. SUM can be used with numeric columns only. Null values are ignored.
+SUSER_ID|Returns the login identification number of the user.
+SUSER_NAME|Returns the login identification name of the user.
+SUSER_SID|Returns the security identification number (SID) for the specified login name.
+SUSER_SNAME|Returns the login name associated with a security identification number (SID).
+SWITCHOFFSET|Returns a **datetimeoffset** value that is changed from the stored time zone offset to a specified new time zone offset.
+SYMKEYPROPERTY|Returns the algorithm of a symmetric key created from an EKM module.
+SYSDATETIME|Returns a **datetime2(7)** value that contains the date and time of the computer on which the instance of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] is running.
+SYSDATETIMEOFFSET|Returns a **datetimeoffset(7)** value that contains the date and time of the computer on which the instance of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] is running. The time zone offset is included.
+System|The following system functions perform operations on and return information about values, objects, and settings in [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)].
+System|The following scalar functions return statistical information about the system:
+SYSTEM_USER|Allows a system-supplied value for the current login to be inserted into a table when no default value is specified.
+SYSUTCDATETIME|Returns a **datetime2** value that contains the date and time of the computer on which the instance of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] is running. The date and time is returned as UTC time (Coordinated Universal Time). The fractional second precision specification has a range from 1 to 7 digits. The default precision is 7 digits.
+TAN|Returns the tangent of the input expression.
+TEXTPTR|Returns the text-pointer value that corresponds to a **text**, **ntext**, or **image** column in **varbinary** format. The retrieved text pointer value can be used in READTEXT, WRITETEXT, and UPDATETEXT statements.
+TEXTVALID|A **text**, **ntext**, or **image** function that checks whether a specific text pointer is valid.
+@@TEXTSIZE|Returns the current value of the [TEXTSIZE](../../t-sql/statements/set-textsize-transact-sql.md) option.
+TIMEFROMPARTS|Returns a **time** value for the specified time and with the specified precision.
+@@TIMETICKS|Returns the number of microseconds per tick.
+TODATETIMEOFFSET|Returns a **datetimeoffset** value that is translated from a **datetime2** expression.
+@@TOTAL_ERRORS|Returns the number of disk write errors encountered by [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] since [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] last started.
+@@TOTAL_READ|Returns the number of disk reads, not cache reads, by [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] since [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] was last started.
+@@TOTAL_WRITE|Returns the number of disk writes by [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] since [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] was last started.
+@@TRANCOUNT|Returns the number of BEGIN TRANSACTION statements that have occurred on the current connection.
+TRANSLATE|Returns the string provided as a first argument, after some characters specified in the second argument are translated into a destination set of characters, specified in the third argument.
+Trigger|The following scalar functions can be used in the definition of a trigger to test for changes in data values or to return other data.
+TRIGGER_NESTLEVEL|Returns the number of triggers executed for the statement that fired the trigger. TRIGGER_NESTLEVEL is used in DML and DDL triggers to determine the current level of nesting.
+TRIM|Removes the space character `char(32)` or other specified characters from the start and end of a string.
+TRY_CAST|Returns a value cast to the specified data type if the cast succeeds; otherwise, returns null.
+TRY_CONVERT|Returns a value cast to the specified data type if the cast succeeds; otherwise, returns null.
+TRY_PARSE|Returns the result of an expression, translated to the requested data type, or null if the cast fails in [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]. Use TRY_PARSE only for converting from string to date/time and number types.
+TYPE_ID|Returns the ID for a specified data type name.
+TYPE_NAME|Returns the unqualified type name of a specified type ID.
+TYPEPROPERTY|Returns information about a data type.
+UNICODE|Returns the integer value, as defined by the Unicode standard, for the first character of the input expression.
+UPDATE()|Returns a Boolean value that indicates whether an INSERT or UPDATE attempt was made on a specified column of a table or view. UPDATE() is used anywhere inside the body of a [!INCLUDE[tsql](../../includes/tsql-md.md)] INSERT or UPDATE trigger to test whether the trigger should execute certain actions.
+UPPER|Returns a character expression with lowercase character data converted to uppercase.
+USER_ID|Returns the identification number for a database user.
+USER_NAME|Returns a database user name from a specified identification number.
+USER|Allows a system-supplied value for the database user name of the current user to be inserted into a table when no default value is specified.
+VAR|Returns the statistical variance of all values in the specified expression. May be followed by the [OVER clause](../../t-sql/queries/select-over-clause-transact-sql.md).
+VARP|Returns the statistical variance for the population for all values in the specified expression.
+VERIFYSIGNEDBYASYMKEY|Tests whether digitally signed data has been changed since it was signed.
+VERIFYSIGNEDBYCERT|Tests whether digitally signed data has been changed since it was signed.
+XACT_STATE|Is a scalar function that reports the user transaction state of a current running request. XACT_STATE indicates whether the request has an active user transaction, and whether the transaction is capable of being committed.
+YEAR|Returns an integer that represents the year of the specified *date*.

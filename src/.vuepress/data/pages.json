@@ -48,7 +48,17 @@
             {
               "Path": "/functions/checksum_agg.html",
               "Url": "https://cronosql.io/functions/checksum_agg.html",
-              "Title": "checksum_agg \uD83D\uDEA7",
+              "Title": "checksum_agg",
+              "Id": null,
+              "Date": null,
+              "Position": 21474836,
+              "Visible": true,
+              "Children": []
+            },
+            {
+              "Path": "/functions/concat_ws.html",
+              "Url": "https://cronosql.io/functions/concat_ws.html",
+              "Title": "concat_ws",
               "Id": null,
               "Date": null,
               "Position": 21474836,
@@ -68,7 +78,7 @@
             {
               "Path": "/functions/count_big.html",
               "Url": "https://cronosql.io/functions/count_big.html",
-              "Title": "count_big \uD83D\uDEA7",
+              "Title": "count_big",
               "Id": null,
               "Date": null,
               "Position": 21474836,
@@ -86,6 +96,46 @@
               "Children": []
             },
             {
+              "Path": "/functions/cume_dist.html",
+              "Url": "https://cronosql.io/functions/cume_dist.html",
+              "Title": "cume_dist",
+              "Id": null,
+              "Date": null,
+              "Position": 21474836,
+              "Visible": true,
+              "Children": []
+            },
+            {
+              "Path": "/functions/decile.html",
+              "Url": "https://cronosql.io/functions/decile.html",
+              "Title": "decile \u2747\uFE0F",
+              "Id": null,
+              "Date": null,
+              "Position": 21474836,
+              "Visible": true,
+              "Children": []
+            },
+            {
+              "Path": "/functions/dense_rank.html",
+              "Url": "https://cronosql.io/functions/dense_rank.html",
+              "Title": "dense_rank",
+              "Id": null,
+              "Date": null,
+              "Position": 21474836,
+              "Visible": true,
+              "Children": []
+            },
+            {
+              "Path": "/functions/first_value.html",
+              "Url": "https://cronosql.io/functions/first_value.html",
+              "Title": "first_value",
+              "Id": null,
+              "Date": null,
+              "Position": 21474836,
+              "Visible": true,
+              "Children": []
+            },
+            {
               "Path": "/functions/lag.html",
               "Url": "https://cronosql.io/functions/lag.html",
               "Title": "lag",
@@ -96,9 +146,29 @@
               "Children": []
             },
             {
+              "Path": "/functions/last_value.html",
+              "Url": "https://cronosql.io/functions/last_value.html",
+              "Title": "last_value",
+              "Id": null,
+              "Date": null,
+              "Position": 21474836,
+              "Visible": true,
+              "Children": []
+            },
+            {
               "Path": "/functions/lead.html",
               "Url": "https://cronosql.io/functions/lead.html",
               "Title": "lead",
+              "Id": null,
+              "Date": null,
+              "Position": 21474836,
+              "Visible": true,
+              "Children": []
+            },
+            {
+              "Path": "/functions/least.html",
+              "Url": "https://cronosql.io/functions/least.html",
+              "Title": "least",
               "Id": null,
               "Date": null,
               "Position": 21474836,
@@ -136,6 +206,16 @@
               "Children": []
             },
             {
+              "Path": "/functions/ntile.html",
+              "Url": "https://cronosql.io/functions/ntile.html",
+              "Title": "ntile",
+              "Id": null,
+              "Date": null,
+              "Position": 21474836,
+              "Visible": true,
+              "Children": []
+            },
+            {
               "Path": "/functions/pct.html",
               "Url": "https://cronosql.io/functions/pct.html",
               "Title": "pct \u2747\uFE0F",
@@ -156,6 +236,76 @@
               "Children": []
             },
             {
+              "Path": "/functions/pctvariance.html",
+              "Url": "https://cronosql.io/functions/pctvariance.html",
+              "Title": "pctvariance \u2747\uFE0F \uD83D\uDEA7",
+              "Id": null,
+              "Date": null,
+              "Position": 21474836,
+              "Visible": true,
+              "Children": []
+            },
+            {
+              "Path": "/functions/percent_rank.html",
+              "Url": "https://cronosql.io/functions/percent_rank.html",
+              "Title": "percent_rank",
+              "Id": null,
+              "Date": null,
+              "Position": 21474836,
+              "Visible": true,
+              "Children": []
+            },
+            {
+              "Path": "/functions/percentile.html",
+              "Url": "https://cronosql.io/functions/percentile.html",
+              "Title": "percentile \u2747\uFE0F",
+              "Id": null,
+              "Date": null,
+              "Position": 21474836,
+              "Visible": true,
+              "Children": []
+            },
+            {
+              "Path": "/functions/percentile_cont.html",
+              "Url": "https://cronosql.io/functions/percentile_cont.html",
+              "Title": "percentile_cont",
+              "Id": null,
+              "Date": null,
+              "Position": 21474836,
+              "Visible": true,
+              "Children": []
+            },
+            {
+              "Path": "/functions/percentile_disc.html",
+              "Url": "https://cronosql.io/functions/percentile_disc.html",
+              "Title": "percentile_disc",
+              "Id": null,
+              "Date": null,
+              "Position": 21474836,
+              "Visible": true,
+              "Children": []
+            },
+            {
+              "Path": "/functions/quantile.html",
+              "Url": "https://cronosql.io/functions/quantile.html",
+              "Title": "quantile \u2747\uFE0F",
+              "Id": null,
+              "Date": null,
+              "Position": 21474836,
+              "Visible": true,
+              "Children": []
+            },
+            {
+              "Path": "/functions/quartile.html",
+              "Url": "https://cronosql.io/functions/quartile.html",
+              "Title": "quartile \u2747\uFE0F",
+              "Id": null,
+              "Date": null,
+              "Position": 21474836,
+              "Visible": true,
+              "Children": []
+            },
+            {
               "Path": "/functions/rank.html",
               "Url": "https://cronosql.io/functions/rank.html",
               "Title": "rank",
@@ -168,7 +318,7 @@
             {
               "Path": "/functions/row_number.html",
               "Url": "https://cronosql.io/functions/row_number.html",
-              "Title": "row_number \uD83D\uDEA7",
+              "Title": "row_number",
               "Id": null,
               "Date": null,
               "Position": 21474836,
@@ -226,6 +376,16 @@
               "Children": []
             },
             {
+              "Path": "/functions/string_agg.html",
+              "Url": "https://cronosql.io/functions/string_agg.html",
+              "Title": "string_agg",
+              "Id": null,
+              "Date": null,
+              "Position": 21474836,
+              "Visible": true,
+              "Children": []
+            },
+            {
               "Path": "/functions/sum.html",
               "Url": "https://cronosql.io/functions/sum.html",
               "Title": "sum \u2764\uFE0F",
@@ -268,9 +428,9 @@
           ]
         },
         {
-          "Path": "/functions/index-conversion-selection-functions.html",
-          "Url": "https://cronosql.io/functions/index-conversion-selection-functions.html",
-          "Title": "Funciones de conversi\u00F3n y selecci\u00F3n",
+          "Path": "/functions/index-conversion-functions.html",
+          "Url": "https://cronosql.io/functions/index-conversion-functions.html",
+          "Title": "Funciones de conversi\u00F3n y l\u00F3gicas",
           "Id": null,
           "Date": null,
           "Position": 2,
@@ -299,7 +459,7 @@
             {
               "Path": "/functions/binary_checksum.html",
               "Url": "https://cronosql.io/functions/binary_checksum.html",
-              "Title": "binary_checksum \uD83D\uDEA7",
+              "Title": "binary_checksum",
               "Id": null,
               "Date": null,
               "Position": 21474836,
@@ -309,7 +469,7 @@
             {
               "Path": "/functions/bit.html",
               "Url": "https://cronosql.io/functions/bit.html",
-              "Title": "bit \u2747\uFE0F",
+              "Title": "bit \u2747\uFE0F \uD83D\uDEA7",
               "Id": null,
               "Date": null,
               "Position": 21474836,
@@ -320,6 +480,26 @@
               "Path": "/functions/cast.html",
               "Url": "https://cronosql.io/functions/cast.html",
               "Title": "cast",
+              "Id": null,
+              "Date": null,
+              "Position": 21474836,
+              "Visible": true,
+              "Children": []
+            },
+            {
+              "Path": "/functions/char.html",
+              "Url": "https://cronosql.io/functions/char.html",
+              "Title": "char",
+              "Id": null,
+              "Date": null,
+              "Position": 21474836,
+              "Visible": true,
+              "Children": []
+            },
+            {
+              "Path": "/functions/choose.html",
+              "Url": "https://cronosql.io/functions/choose.html",
+              "Title": "choose",
               "Id": null,
               "Date": null,
               "Position": 21474836,
@@ -410,6 +590,16 @@
               "Path": "/functions/hex.html",
               "Url": "https://cronosql.io/functions/hex.html",
               "Title": "hex \u2747\uFE0F \uD83D\uDEA7",
+              "Id": null,
+              "Date": null,
+              "Position": 21474836,
+              "Visible": true,
+              "Children": []
+            },
+            {
+              "Path": "/functions/iif.html",
+              "Url": "https://cronosql.io/functions/iif.html",
+              "Title": "iif",
               "Id": null,
               "Date": null,
               "Position": 21474836,
@@ -559,7 +749,7 @@
             {
               "Path": "/functions/try_cast.html",
               "Url": "https://cronosql.io/functions/try_cast.html",
-              "Title": "try_cast \uD83D\uDEA7",
+              "Title": "try_cast",
               "Id": null,
               "Date": null,
               "Position": 21474836,
@@ -569,7 +759,7 @@
             {
               "Path": "/functions/try_convert.html",
               "Url": "https://cronosql.io/functions/try_convert.html",
-              "Title": "try_convert \uD83D\uDEA7",
+              "Title": "try_convert",
               "Id": null,
               "Date": null,
               "Position": 21474836,
@@ -579,7 +769,7 @@
             {
               "Path": "/functions/try_parse.html",
               "Url": "https://cronosql.io/functions/try_parse.html",
-              "Title": "try_parse \uD83D\uDEA7",
+              "Title": "try_parse",
               "Id": null,
               "Date": null,
               "Position": 21474836,
@@ -640,7 +830,27 @@
             {
               "Path": "/functions/current_timestamp.html",
               "Url": "https://cronosql.io/functions/current_timestamp.html",
-              "Title": "current_timestamp \u2747\uFE0F \uD83D\uDEA7",
+              "Title": "current_timestamp \u2747\uFE0F",
+              "Id": null,
+              "Date": null,
+              "Position": 21474836,
+              "Visible": true,
+              "Children": []
+            },
+            {
+              "Path": "/functions/current_timezone.html",
+              "Url": "https://cronosql.io/functions/current_timezone.html",
+              "Title": "current_timezone",
+              "Id": null,
+              "Date": null,
+              "Position": 21474836,
+              "Visible": true,
+              "Children": []
+            },
+            {
+              "Path": "/functions/current_timezone_id.html",
+              "Url": "https://cronosql.io/functions/current_timezone_id.html",
+              "Title": "current_timezone_id",
               "Id": null,
               "Date": null,
               "Position": 21474836,
@@ -661,6 +871,16 @@
               "Path": "/functions/datediff.html",
               "Url": "https://cronosql.io/functions/datediff.html",
               "Title": "datediff \u2747\uFE0F",
+              "Id": null,
+              "Date": null,
+              "Position": 21474836,
+              "Visible": true,
+              "Children": []
+            },
+            {
+              "Path": "/functions/datediff_big.html",
+              "Url": "https://cronosql.io/functions/datediff_big.html",
+              "Title": "datediff_big",
               "Id": null,
               "Date": null,
               "Position": 21474836,
@@ -721,6 +941,16 @@
               "Path": "/functions/datetimeoffsetfromparts.html",
               "Url": "https://cronosql.io/functions/datetimeoffsetfromparts.html",
               "Title": "datetimeoffsetfromparts",
+              "Id": null,
+              "Date": null,
+              "Position": 21474836,
+              "Visible": true,
+              "Children": []
+            },
+            {
+              "Path": "/functions/datetrunc.html",
+              "Url": "https://cronosql.io/functions/datetrunc.html",
+              "Title": "datetrunc",
               "Id": null,
               "Date": null,
               "Position": 21474836,
@@ -1029,9 +1259,29 @@
               "Children": []
             },
             {
+              "Path": "/functions/compress.html",
+              "Url": "https://cronosql.io/functions/compress.html",
+              "Title": "compress",
+              "Id": null,
+              "Date": null,
+              "Position": 21474836,
+              "Visible": true,
+              "Children": []
+            },
+            {
               "Path": "/functions/concat.html",
               "Url": "https://cronosql.io/functions/concat.html",
               "Title": "concat \u2764\uFE0F",
+              "Id": null,
+              "Date": null,
+              "Position": 21474836,
+              "Visible": true,
+              "Children": []
+            },
+            {
+              "Path": "/functions/decompress.html",
+              "Url": "https://cronosql.io/functions/decompress.html",
+              "Title": "decompress",
               "Id": null,
               "Date": null,
               "Position": 21474836,
@@ -1052,6 +1302,16 @@
               "Path": "/functions/format.html",
               "Url": "https://cronosql.io/functions/format.html",
               "Title": "format",
+              "Id": null,
+              "Date": null,
+              "Position": 21474836,
+              "Visible": true,
+              "Children": []
+            },
+            {
+              "Path": "/functions/hashbytes.html",
+              "Url": "https://cronosql.io/functions/hashbytes.html",
+              "Title": "hashbytes",
               "Id": null,
               "Date": null,
               "Position": 21474836,
@@ -1092,6 +1352,16 @@
               "Path": "/functions/ltrim.html",
               "Url": "https://cronosql.io/functions/ltrim.html",
               "Title": "ltrim",
+              "Id": null,
+              "Date": null,
+              "Position": 21474836,
+              "Visible": true,
+              "Children": []
+            },
+            {
+              "Path": "/functions/nchar.html",
+              "Url": "https://cronosql.io/functions/nchar.html",
+              "Title": "nchar",
               "Id": null,
               "Date": null,
               "Position": 21474836,
@@ -1189,6 +1459,16 @@
               "Children": []
             },
             {
+              "Path": "/functions/string_split.html",
+              "Url": "https://cronosql.io/functions/string_split.html",
+              "Title": "string_split",
+              "Id": null,
+              "Date": null,
+              "Position": 21474836,
+              "Visible": true,
+              "Children": []
+            },
+            {
               "Path": "/functions/stuff.html",
               "Url": "https://cronosql.io/functions/stuff.html",
               "Title": "stuff",
@@ -1232,87 +1512,6 @@
               "Path": "/functions/upper.html",
               "Url": "https://cronosql.io/functions/upper.html",
               "Title": "upper",
-              "Id": null,
-              "Date": null,
-              "Position": 21474836,
-              "Visible": true,
-              "Children": []
-            }
-          ]
-        },
-        {
-          "Path": "/functions/index-business-functions.html",
-          "Url": "https://cronosql.io/functions/index-business-functions.html",
-          "Title": "Funciones de negocio y estad\u00EDsticas",
-          "Id": null,
-          "Date": null,
-          "Position": 5,
-          "Visible": true,
-          "Children": [
-            {
-              "Path": "/functions/decile.html",
-              "Url": "https://cronosql.io/functions/decile.html",
-              "Title": "decile \u2747\uFE0F",
-              "Id": null,
-              "Date": null,
-              "Position": 21474836,
-              "Visible": true,
-              "Children": []
-            },
-            {
-              "Path": "/functions/margin.html",
-              "Url": "https://cronosql.io/functions/margin.html",
-              "Title": "margin \u2747\uFE0F \uD83D\uDEA7",
-              "Id": null,
-              "Date": null,
-              "Position": 21474836,
-              "Visible": true,
-              "Children": []
-            },
-            {
-              "Path": "/functions/markup.html",
-              "Url": "https://cronosql.io/functions/markup.html",
-              "Title": "markup \u2747\uFE0F \uD83D\uDEA7",
-              "Id": null,
-              "Date": null,
-              "Position": 21474836,
-              "Visible": true,
-              "Children": []
-            },
-            {
-              "Path": "/functions/pctvariance.html",
-              "Url": "https://cronosql.io/functions/pctvariance.html",
-              "Title": "pctvariance \u2747\uFE0F \uD83D\uDEA7",
-              "Id": null,
-              "Date": null,
-              "Position": 21474836,
-              "Visible": true,
-              "Children": []
-            },
-            {
-              "Path": "/functions/percentile.html",
-              "Url": "https://cronosql.io/functions/percentile.html",
-              "Title": "percentile \u2747\uFE0F",
-              "Id": null,
-              "Date": null,
-              "Position": 21474836,
-              "Visible": true,
-              "Children": []
-            },
-            {
-              "Path": "/functions/quantile.html",
-              "Url": "https://cronosql.io/functions/quantile.html",
-              "Title": "quantile \u2747\uFE0F",
-              "Id": null,
-              "Date": null,
-              "Position": 21474836,
-              "Visible": true,
-              "Children": []
-            },
-            {
-              "Path": "/functions/quartile.html",
-              "Url": "https://cronosql.io/functions/quartile.html",
-              "Title": "quartile \u2747\uFE0F",
               "Id": null,
               "Date": null,
               "Position": 21474836,
@@ -1461,6 +1660,26 @@
               "Children": []
             },
             {
+              "Path": "/functions/generate_series.html",
+              "Url": "https://cronosql.io/functions/generate_series.html",
+              "Title": "generate_series",
+              "Id": null,
+              "Date": null,
+              "Position": 21474836,
+              "Visible": true,
+              "Children": []
+            },
+            {
+              "Path": "/functions/greatest.html",
+              "Url": "https://cronosql.io/functions/greatest.html",
+              "Title": "greatest",
+              "Id": null,
+              "Date": null,
+              "Position": 21474836,
+              "Visible": true,
+              "Children": []
+            },
+            {
               "Path": "/functions/log.html",
               "Url": "https://cronosql.io/functions/log.html",
               "Title": "log",
@@ -1474,6 +1693,26 @@
               "Path": "/functions/log10.html",
               "Url": "https://cronosql.io/functions/log10.html",
               "Title": "log10",
+              "Id": null,
+              "Date": null,
+              "Position": 21474836,
+              "Visible": true,
+              "Children": []
+            },
+            {
+              "Path": "/functions/margin.html",
+              "Url": "https://cronosql.io/functions/margin.html",
+              "Title": "margin \u2747\uFE0F \uD83D\uDEA7",
+              "Id": null,
+              "Date": null,
+              "Position": 21474836,
+              "Visible": true,
+              "Children": []
+            },
+            {
+              "Path": "/functions/markup.html",
+              "Url": "https://cronosql.io/functions/markup.html",
+              "Title": "markup \u2747\uFE0F \uD83D\uDEA7",
               "Id": null,
               "Date": null,
               "Position": 21474836,
@@ -1654,7 +1893,7 @@
             {
               "Path": "/functions/col_length.html",
               "Url": "https://cronosql.io/functions/col_length.html",
-              "Title": "col_length \uD83D\uDEA7",
+              "Title": "col_length",
               "Id": null,
               "Date": null,
               "Position": 21474836,
@@ -1664,7 +1903,7 @@
             {
               "Path": "/functions/col_name.html",
               "Url": "https://cronosql.io/functions/col_name.html",
-              "Title": "col_name \uD83D\uDEA7",
+              "Title": "col_name",
               "Id": null,
               "Date": null,
               "Position": 21474836,
@@ -1674,7 +1913,7 @@
             {
               "Path": "/functions/collationproperty.html",
               "Url": "https://cronosql.io/functions/collationproperty.html",
-              "Title": "collationproperty \uD83D\uDEA7",
+              "Title": "collationproperty",
               "Id": null,
               "Date": null,
               "Position": 21474836,
@@ -1694,7 +1933,17 @@
             {
               "Path": "/functions/columns_updated.html",
               "Url": "https://cronosql.io/functions/columns_updated.html",
-              "Title": "columns_updated \uD83D\uDEA7",
+              "Title": "columns_updated",
+              "Id": null,
+              "Date": null,
+              "Position": 21474836,
+              "Visible": true,
+              "Children": []
+            },
+            {
+              "Path": "/functions/current_transaction_id.html",
+              "Url": "https://cronosql.io/functions/current_transaction_id.html",
+              "Title": "current_transaction_id",
               "Id": null,
               "Date": null,
               "Position": 21474836,
@@ -1704,7 +1953,7 @@
             {
               "Path": "/functions/current_user.html",
               "Url": "https://cronosql.io/functions/current_user.html",
-              "Title": "current_user \u2747\uFE0F \uD83D\uDEA7",
+              "Title": "current_user \u2747\uFE0F",
               "Id": null,
               "Date": null,
               "Position": 21474836,
@@ -1724,7 +1973,17 @@
             {
               "Path": "/functions/cursor_status.html",
               "Url": "https://cronosql.io/functions/cursor_status.html",
-              "Title": "cursor_status \uD83D\uDEA7",
+              "Title": "cursor_status",
+              "Id": null,
+              "Date": null,
+              "Position": 21474836,
+              "Visible": true,
+              "Children": []
+            },
+            {
+              "Path": "/functions/database_principal_id.html",
+              "Url": "https://cronosql.io/functions/database_principal_id.html",
+              "Title": "database_principal_id",
               "Id": null,
               "Date": null,
               "Position": 21474836,
@@ -1762,9 +2021,19 @@
               "Children": []
             },
             {
+              "Path": "/functions/date_bucket.html",
+              "Url": "https://cronosql.io/functions/date_bucket.html",
+              "Title": "date_bucket",
+              "Id": null,
+              "Date": null,
+              "Position": 21474836,
+              "Visible": true,
+              "Children": []
+            },
+            {
               "Path": "/functions/db_id.html",
               "Url": "https://cronosql.io/functions/db_id.html",
-              "Title": "db_id \uD83D\uDEA7",
+              "Title": "db_id",
               "Id": null,
               "Date": null,
               "Position": 21474836,
@@ -1774,7 +2043,67 @@
             {
               "Path": "/functions/db_name.html",
               "Url": "https://cronosql.io/functions/db_name.html",
-              "Title": "db_name \uD83D\uDEA7",
+              "Title": "db_name",
+              "Id": null,
+              "Date": null,
+              "Position": 21474836,
+              "Visible": true,
+              "Children": []
+            },
+            {
+              "Path": "/functions/error_line.html",
+              "Url": "https://cronosql.io/functions/error_line.html",
+              "Title": "error_line",
+              "Id": null,
+              "Date": null,
+              "Position": 21474836,
+              "Visible": true,
+              "Children": []
+            },
+            {
+              "Path": "/functions/error_message.html",
+              "Url": "https://cronosql.io/functions/error_message.html",
+              "Title": "error_message",
+              "Id": null,
+              "Date": null,
+              "Position": 21474836,
+              "Visible": true,
+              "Children": []
+            },
+            {
+              "Path": "/functions/error_number.html",
+              "Url": "https://cronosql.io/functions/error_number.html",
+              "Title": "error_number",
+              "Id": null,
+              "Date": null,
+              "Position": 21474836,
+              "Visible": true,
+              "Children": []
+            },
+            {
+              "Path": "/functions/error_procedure.html",
+              "Url": "https://cronosql.io/functions/error_procedure.html",
+              "Title": "error_procedure",
+              "Id": null,
+              "Date": null,
+              "Position": 21474836,
+              "Visible": true,
+              "Children": []
+            },
+            {
+              "Path": "/functions/error_severity.html",
+              "Url": "https://cronosql.io/functions/error_severity.html",
+              "Title": "error_severity",
+              "Id": null,
+              "Date": null,
+              "Position": 21474836,
+              "Visible": true,
+              "Children": []
+            },
+            {
+              "Path": "/functions/error_state.html",
+              "Url": "https://cronosql.io/functions/error_state.html",
+              "Title": "error_state",
               "Id": null,
               "Date": null,
               "Position": 21474836,
@@ -1784,7 +2113,7 @@
             {
               "Path": "/functions/file_name.html",
               "Url": "https://cronosql.io/functions/file_name.html",
-              "Title": "file_name \uD83D\uDEA7",
+              "Title": "file_name",
               "Id": null,
               "Date": null,
               "Position": 21474836,
@@ -1794,7 +2123,7 @@
             {
               "Path": "/functions/filegroup_id.html",
               "Url": "https://cronosql.io/functions/filegroup_id.html",
-              "Title": "filegroup_id \uD83D\uDEA7",
+              "Title": "filegroup_id",
               "Id": null,
               "Date": null,
               "Position": 21474836,
@@ -1804,7 +2133,7 @@
             {
               "Path": "/functions/filegroup_name.html",
               "Url": "https://cronosql.io/functions/filegroup_name.html",
-              "Title": "filegroup_name \uD83D\uDEA7",
+              "Title": "filegroup_name",
               "Id": null,
               "Date": null,
               "Position": 21474836,
@@ -1874,7 +2203,7 @@
             {
               "Path": "/functions/has_dbaccess.html",
               "Url": "https://cronosql.io/functions/has_dbaccess.html",
-              "Title": "has_dbaccess \uD83D\uDEA7",
+              "Title": "has_dbaccess",
               "Id": null,
               "Date": null,
               "Position": 21474836,
@@ -1884,7 +2213,7 @@
             {
               "Path": "/functions/host_id.html",
               "Url": "https://cronosql.io/functions/host_id.html",
-              "Title": "host_id \uD83D\uDEA7",
+              "Title": "host_id",
               "Id": null,
               "Date": null,
               "Position": 21474836,
@@ -1894,7 +2223,7 @@
             {
               "Path": "/functions/host_name.html",
               "Url": "https://cronosql.io/functions/host_name.html",
-              "Title": "host_name \uD83D\uDEA7",
+              "Title": "host_name",
               "Id": null,
               "Date": null,
               "Position": 21474836,
@@ -1904,7 +2233,7 @@
             {
               "Path": "/functions/ident_current.html",
               "Url": "https://cronosql.io/functions/ident_current.html",
-              "Title": "ident_current \uD83D\uDEA7",
+              "Title": "ident_current",
               "Id": null,
               "Date": null,
               "Position": 21474836,
@@ -1914,7 +2243,7 @@
             {
               "Path": "/functions/ident_incr.html",
               "Url": "https://cronosql.io/functions/ident_incr.html",
-              "Title": "ident_incr \uD83D\uDEA7",
+              "Title": "ident_incr",
               "Id": null,
               "Date": null,
               "Position": 21474836,
@@ -1924,7 +2253,17 @@
             {
               "Path": "/functions/ident_seed.html",
               "Url": "https://cronosql.io/functions/ident_seed.html",
-              "Title": "ident_seed \uD83D\uDEA7",
+              "Title": "ident_seed",
+              "Id": null,
+              "Date": null,
+              "Position": 21474836,
+              "Visible": true,
+              "Children": []
+            },
+            {
+              "Path": "/functions/identity.html",
+              "Url": "https://cronosql.io/functions/identity.html",
+              "Title": "identity",
               "Id": null,
               "Date": null,
               "Position": 21474836,
@@ -1934,7 +2273,7 @@
             {
               "Path": "/functions/index_col.html",
               "Url": "https://cronosql.io/functions/index_col.html",
-              "Title": "index_col \uD83D\uDEA7",
+              "Title": "index_col",
               "Id": null,
               "Date": null,
               "Position": 21474836,
@@ -1954,7 +2293,7 @@
             {
               "Path": "/functions/is_member.html",
               "Url": "https://cronosql.io/functions/is_member.html",
-              "Title": "is_member \uD83D\uDEA7",
+              "Title": "is_member",
               "Id": null,
               "Date": null,
               "Position": 21474836,
@@ -1964,7 +2303,7 @@
             {
               "Path": "/functions/is_srvrolemember.html",
               "Url": "https://cronosql.io/functions/is_srvrolemember.html",
-              "Title": "is_srvrolemember \uD83D\uDEA7",
+              "Title": "is_srvrolemember",
               "Id": null,
               "Date": null,
               "Position": 21474836,
@@ -2002,9 +2341,19 @@
               "Children": []
             },
             {
+              "Path": "/functions/newsequentialid.html",
+              "Url": "https://cronosql.io/functions/newsequentialid.html",
+              "Title": "newsequentialid",
+              "Id": null,
+              "Date": null,
+              "Position": 21474836,
+              "Visible": true,
+              "Children": []
+            },
+            {
               "Path": "/functions/object_id.html",
               "Url": "https://cronosql.io/functions/object_id.html",
-              "Title": "object_id \uD83D\uDEA7",
+              "Title": "object_id",
               "Id": null,
               "Date": null,
               "Position": 21474836,
@@ -2014,7 +2363,7 @@
             {
               "Path": "/functions/object_name.html",
               "Url": "https://cronosql.io/functions/object_name.html",
-              "Title": "object_name \uD83D\uDEA7",
+              "Title": "object_name",
               "Id": null,
               "Date": null,
               "Position": 21474836,
@@ -2084,7 +2433,27 @@
             {
               "Path": "/functions/rowcount_big.html",
               "Url": "https://cronosql.io/functions/rowcount_big.html",
-              "Title": "rowcount_big \uD83D\uDEA7",
+              "Title": "rowcount_big",
+              "Id": null,
+              "Date": null,
+              "Position": 21474836,
+              "Visible": true,
+              "Children": []
+            },
+            {
+              "Path": "/functions/schema_id.html",
+              "Url": "https://cronosql.io/functions/schema_id.html",
+              "Title": "schema_id",
+              "Id": null,
+              "Date": null,
+              "Position": 21474836,
+              "Visible": true,
+              "Children": []
+            },
+            {
+              "Path": "/functions/schema_name.html",
+              "Url": "https://cronosql.io/functions/schema_name.html",
+              "Title": "schema_name",
               "Id": null,
               "Date": null,
               "Position": 21474836,
@@ -2094,7 +2463,17 @@
             {
               "Path": "/functions/scope_identity.html",
               "Url": "https://cronosql.io/functions/scope_identity.html",
-              "Title": "scope_identity \uD83D\uDEA7",
+              "Title": "scope_identity",
+              "Id": null,
+              "Date": null,
+              "Position": 21474836,
+              "Visible": true,
+              "Children": []
+            },
+            {
+              "Path": "/functions/security.html",
+              "Url": "https://cronosql.io/functions/security.html",
+              "Title": "security",
               "Id": null,
               "Date": null,
               "Position": 21474836,
@@ -2114,7 +2493,7 @@
             {
               "Path": "/functions/session_user.html",
               "Url": "https://cronosql.io/functions/session_user.html",
-              "Title": "session_user \u2747\uFE0F \uD83D\uDEA7",
+              "Title": "session_user \u2747\uFE0F",
               "Id": null,
               "Date": null,
               "Position": 21474836,
@@ -2134,7 +2513,7 @@
             {
               "Path": "/functions/sql_variant_property.html",
               "Url": "https://cronosql.io/functions/sql_variant_property.html",
-              "Title": "sql_variant_property \uD83D\uDEA7",
+              "Title": "sql_variant_property",
               "Id": null,
               "Date": null,
               "Position": 21474836,
@@ -2144,7 +2523,27 @@
             {
               "Path": "/functions/stats_date.html",
               "Url": "https://cronosql.io/functions/stats_date.html",
-              "Title": "stats_date \uD83D\uDEA7",
+              "Title": "stats_date",
+              "Id": null,
+              "Date": null,
+              "Position": 21474836,
+              "Visible": true,
+              "Children": []
+            },
+            {
+              "Path": "/functions/suser_id.html",
+              "Url": "https://cronosql.io/functions/suser_id.html",
+              "Title": "suser_id",
+              "Id": null,
+              "Date": null,
+              "Position": 21474836,
+              "Visible": true,
+              "Children": []
+            },
+            {
+              "Path": "/functions/suser_name.html",
+              "Url": "https://cronosql.io/functions/suser_name.html",
+              "Title": "suser_name",
               "Id": null,
               "Date": null,
               "Position": 21474836,
@@ -2154,7 +2553,7 @@
             {
               "Path": "/functions/suser_sid.html",
               "Url": "https://cronosql.io/functions/suser_sid.html",
-              "Title": "suser_sid \uD83D\uDEA7",
+              "Title": "suser_sid",
               "Id": null,
               "Date": null,
               "Position": 21474836,
@@ -2164,7 +2563,7 @@
             {
               "Path": "/functions/suser_sname.html",
               "Url": "https://cronosql.io/functions/suser_sname.html",
-              "Title": "suser_sname \uD83D\uDEA7",
+              "Title": "suser_sname",
               "Id": null,
               "Date": null,
               "Position": 21474836,
@@ -2174,7 +2573,17 @@
             {
               "Path": "/functions/system_user.html",
               "Url": "https://cronosql.io/functions/system_user.html",
-              "Title": "system_user \u2747\uFE0F \uD83D\uDEA7",
+              "Title": "system_user \u2747\uFE0F",
+              "Id": null,
+              "Date": null,
+              "Position": 21474836,
+              "Visible": true,
+              "Children": []
+            },
+            {
+              "Path": "/functions/type_name.html",
+              "Url": "https://cronosql.io/functions/type_name.html",
+              "Title": "type_name",
               "Id": null,
               "Date": null,
               "Position": 21474836,
@@ -2194,7 +2603,7 @@
             {
               "Path": "/functions/user_name.html",
               "Url": "https://cronosql.io/functions/user_name.html",
-              "Title": "user_name \uD83D\uDEA7",
+              "Title": "user_name",
               "Id": null,
               "Date": null,
               "Position": 21474836,
@@ -2211,16 +2620,6 @@
           "Date": null,
           "Position": 21474836,
           "Visible": false,
-          "Children": []
-        },
-        {
-          "Path": "/functions/Miscel\u00E1nea.html",
-          "Url": "https://cronosql.io/functions/Miscel\u00E1nea.html",
-          "Title": "Miscel\u00E1nea",
-          "Id": null,
-          "Date": null,
-          "Position": 21474836,
-          "Visible": true,
           "Children": [
             {
               "Path": "/functions/md5.html",

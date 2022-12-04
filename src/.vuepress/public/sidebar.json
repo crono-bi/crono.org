@@ -17,9 +17,14 @@
               "path": "/functions/avg.html"
             },
             {
-              "title": "checksum_agg \uD83D\uDEA7",
+              "title": "checksum_agg",
               "collapsable": false,
               "path": "/functions/checksum_agg.html"
+            },
+            {
+              "title": "concat_ws",
+              "collapsable": false,
+              "path": "/functions/concat_ws.html"
             },
             {
               "title": "count",
@@ -27,7 +32,7 @@
               "path": "/functions/count.html"
             },
             {
-              "title": "count_big \uD83D\uDEA7",
+              "title": "count_big",
               "collapsable": false,
               "path": "/functions/count_big.html"
             },
@@ -37,14 +42,44 @@
               "path": "/functions/countdistinct.html"
             },
             {
+              "title": "cume_dist",
+              "collapsable": false,
+              "path": "/functions/cume_dist.html"
+            },
+            {
+              "title": "decile \u2747\uFE0F",
+              "collapsable": false,
+              "path": "/functions/decile.html"
+            },
+            {
+              "title": "dense_rank",
+              "collapsable": false,
+              "path": "/functions/dense_rank.html"
+            },
+            {
+              "title": "first_value",
+              "collapsable": false,
+              "path": "/functions/first_value.html"
+            },
+            {
               "title": "lag",
               "collapsable": false,
               "path": "/functions/lag.html"
             },
             {
+              "title": "last_value",
+              "collapsable": false,
+              "path": "/functions/last_value.html"
+            },
+            {
               "title": "lead",
               "collapsable": false,
               "path": "/functions/lead.html"
+            },
+            {
+              "title": "least",
+              "collapsable": false,
+              "path": "/functions/least.html"
             },
             {
               "title": "max",
@@ -62,6 +97,11 @@
               "path": "/functions/next_value.html"
             },
             {
+              "title": "ntile",
+              "collapsable": false,
+              "path": "/functions/ntile.html"
+            },
+            {
               "title": "pct \u2747\uFE0F",
               "collapsable": false,
               "path": "/functions/pct.html"
@@ -72,12 +112,47 @@
               "path": "/functions/pctrank.html"
             },
             {
+              "title": "pctvariance \u2747\uFE0F \uD83D\uDEA7",
+              "collapsable": false,
+              "path": "/functions/pctvariance.html"
+            },
+            {
+              "title": "percent_rank",
+              "collapsable": false,
+              "path": "/functions/percent_rank.html"
+            },
+            {
+              "title": "percentile \u2747\uFE0F",
+              "collapsable": false,
+              "path": "/functions/percentile.html"
+            },
+            {
+              "title": "percentile_cont",
+              "collapsable": false,
+              "path": "/functions/percentile_cont.html"
+            },
+            {
+              "title": "percentile_disc",
+              "collapsable": false,
+              "path": "/functions/percentile_disc.html"
+            },
+            {
+              "title": "quantile \u2747\uFE0F",
+              "collapsable": false,
+              "path": "/functions/quantile.html"
+            },
+            {
+              "title": "quartile \u2747\uFE0F",
+              "collapsable": false,
+              "path": "/functions/quartile.html"
+            },
+            {
               "title": "rank",
               "collapsable": false,
               "path": "/functions/rank.html"
             },
             {
-              "title": "row_number \uD83D\uDEA7",
+              "title": "row_number",
               "collapsable": false,
               "path": "/functions/row_number.html"
             },
@@ -107,6 +182,11 @@
               "path": "/functions/stdevp.html"
             },
             {
+              "title": "string_agg",
+              "collapsable": false,
+              "path": "/functions/string_agg.html"
+            },
+            {
               "title": "sum \u2764\uFE0F",
               "collapsable": false,
               "path": "/functions/sum.html"
@@ -129,9 +209,9 @@
           ]
         },
         {
-          "title": "Funciones de conversi\u00F3n y selecci\u00F3n",
+          "title": "Funciones de conversi\u00F3n y l\u00F3gicas",
           "collapsable": false,
-          "path": "/functions/index-conversion-selection-functions.html",
+          "path": "/functions/index-conversion-functions.html",
           "children": [
             {
               "title": "bighex \u2747\uFE0F \uD83D\uDEA7",
@@ -144,12 +224,12 @@
               "path": "/functions/bigint.html"
             },
             {
-              "title": "binary_checksum \uD83D\uDEA7",
+              "title": "binary_checksum",
               "collapsable": false,
               "path": "/functions/binary_checksum.html"
             },
             {
-              "title": "bit \u2747\uFE0F",
+              "title": "bit \u2747\uFE0F \uD83D\uDEA7",
               "collapsable": false,
               "path": "/functions/bit.html"
             },
@@ -157,6 +237,16 @@
               "title": "cast",
               "collapsable": false,
               "path": "/functions/cast.html"
+            },
+            {
+              "title": "char",
+              "collapsable": false,
+              "path": "/functions/char.html"
+            },
+            {
+              "title": "choose",
+              "collapsable": false,
+              "path": "/functions/choose.html"
             },
             {
               "title": "coalesce \u2747\uFE0F \u2764\uFE0F",
@@ -202,6 +292,11 @@
               "title": "hex \u2747\uFE0F \uD83D\uDEA7",
               "collapsable": false,
               "path": "/functions/hex.html"
+            },
+            {
+              "title": "iif",
+              "collapsable": false,
+              "path": "/functions/iif.html"
             },
             {
               "title": "indexof \u2747\uFE0F",
@@ -274,17 +369,17 @@
               "path": "/functions/tinyint.html"
             },
             {
-              "title": "try_cast \uD83D\uDEA7",
+              "title": "try_cast",
               "collapsable": false,
               "path": "/functions/try_cast.html"
             },
             {
-              "title": "try_convert \uD83D\uDEA7",
+              "title": "try_convert",
               "collapsable": false,
               "path": "/functions/try_convert.html"
             },
             {
-              "title": "try_parse \uD83D\uDEA7",
+              "title": "try_parse",
               "collapsable": false,
               "path": "/functions/try_parse.html"
             },
@@ -316,9 +411,19 @@
               "path": "/functions/current_time.html"
             },
             {
-              "title": "current_timestamp \u2747\uFE0F \uD83D\uDEA7",
+              "title": "current_timestamp \u2747\uFE0F",
               "collapsable": false,
               "path": "/functions/current_timestamp.html"
+            },
+            {
+              "title": "current_timezone",
+              "collapsable": false,
+              "path": "/functions/current_timezone.html"
+            },
+            {
+              "title": "current_timezone_id",
+              "collapsable": false,
+              "path": "/functions/current_timezone_id.html"
             },
             {
               "title": "dateadd",
@@ -329,6 +434,11 @@
               "title": "datediff \u2747\uFE0F",
               "collapsable": false,
               "path": "/functions/datediff.html"
+            },
+            {
+              "title": "datediff_big",
+              "collapsable": false,
+              "path": "/functions/datediff_big.html"
             },
             {
               "title": "datefromparts",
@@ -359,6 +469,11 @@
               "title": "datetimeoffsetfromparts",
               "collapsable": false,
               "path": "/functions/datetimeoffsetfromparts.html"
+            },
+            {
+              "title": "datetrunc",
+              "collapsable": false,
+              "path": "/functions/datetrunc.html"
             },
             {
               "title": "day",
@@ -513,9 +628,19 @@
               "path": "/functions/charindex.html"
             },
             {
+              "title": "compress",
+              "collapsable": false,
+              "path": "/functions/compress.html"
+            },
+            {
               "title": "concat \u2764\uFE0F",
               "collapsable": false,
               "path": "/functions/concat.html"
+            },
+            {
+              "title": "decompress",
+              "collapsable": false,
+              "path": "/functions/decompress.html"
             },
             {
               "title": "difference",
@@ -526,6 +651,11 @@
               "title": "format",
               "collapsable": false,
               "path": "/functions/format.html"
+            },
+            {
+              "title": "hashbytes",
+              "collapsable": false,
+              "path": "/functions/hashbytes.html"
             },
             {
               "title": "left \u2747\uFE0F \u2764\uFE0F",
@@ -546,6 +676,11 @@
               "title": "ltrim",
               "collapsable": false,
               "path": "/functions/ltrim.html"
+            },
+            {
+              "title": "nchar",
+              "collapsable": false,
+              "path": "/functions/nchar.html"
             },
             {
               "title": "patindex",
@@ -593,6 +728,11 @@
               "path": "/functions/str.html"
             },
             {
+              "title": "string_split",
+              "collapsable": false,
+              "path": "/functions/string_split.html"
+            },
+            {
               "title": "stuff",
               "collapsable": false,
               "path": "/functions/stuff.html"
@@ -616,48 +756,6 @@
               "title": "upper",
               "collapsable": false,
               "path": "/functions/upper.html"
-            }
-          ]
-        },
-        {
-          "title": "Funciones de negocio y estad\u00EDsticas",
-          "collapsable": false,
-          "path": "/functions/index-business-functions.html",
-          "children": [
-            {
-              "title": "decile \u2747\uFE0F",
-              "collapsable": false,
-              "path": "/functions/decile.html"
-            },
-            {
-              "title": "margin \u2747\uFE0F \uD83D\uDEA7",
-              "collapsable": false,
-              "path": "/functions/margin.html"
-            },
-            {
-              "title": "markup \u2747\uFE0F \uD83D\uDEA7",
-              "collapsable": false,
-              "path": "/functions/markup.html"
-            },
-            {
-              "title": "pctvariance \u2747\uFE0F \uD83D\uDEA7",
-              "collapsable": false,
-              "path": "/functions/pctvariance.html"
-            },
-            {
-              "title": "percentile \u2747\uFE0F",
-              "collapsable": false,
-              "path": "/functions/percentile.html"
-            },
-            {
-              "title": "quantile \u2747\uFE0F",
-              "collapsable": false,
-              "path": "/functions/quantile.html"
-            },
-            {
-              "title": "quartile \u2747\uFE0F",
-              "collapsable": false,
-              "path": "/functions/quartile.html"
             }
           ]
         },
@@ -732,6 +830,16 @@
               "path": "/functions/floor.html"
             },
             {
+              "title": "generate_series",
+              "collapsable": false,
+              "path": "/functions/generate_series.html"
+            },
+            {
+              "title": "greatest",
+              "collapsable": false,
+              "path": "/functions/greatest.html"
+            },
+            {
               "title": "log",
               "collapsable": false,
               "path": "/functions/log.html"
@@ -740,6 +848,16 @@
               "title": "log10",
               "collapsable": false,
               "path": "/functions/log10.html"
+            },
+            {
+              "title": "margin \u2747\uFE0F \uD83D\uDEA7",
+              "collapsable": false,
+              "path": "/functions/margin.html"
+            },
+            {
+              "title": "markup \u2747\uFE0F \uD83D\uDEA7",
+              "collapsable": false,
+              "path": "/functions/markup.html"
             },
             {
               "title": "maximum \u2747\uFE0F",
@@ -829,17 +947,17 @@
               "path": "/functions/checksum.html"
             },
             {
-              "title": "col_length \uD83D\uDEA7",
+              "title": "col_length",
               "collapsable": false,
               "path": "/functions/col_length.html"
             },
             {
-              "title": "col_name \uD83D\uDEA7",
+              "title": "col_name",
               "collapsable": false,
               "path": "/functions/col_name.html"
             },
             {
-              "title": "collationproperty \uD83D\uDEA7",
+              "title": "collationproperty",
               "collapsable": false,
               "path": "/functions/collationproperty.html"
             },
@@ -849,12 +967,17 @@
               "path": "/functions/columnproperty.html"
             },
             {
-              "title": "columns_updated \uD83D\uDEA7",
+              "title": "columns_updated",
               "collapsable": false,
               "path": "/functions/columns_updated.html"
             },
             {
-              "title": "current_user \u2747\uFE0F \uD83D\uDEA7",
+              "title": "current_transaction_id",
+              "collapsable": false,
+              "path": "/functions/current_transaction_id.html"
+            },
+            {
+              "title": "current_user \u2747\uFE0F",
               "collapsable": false,
               "path": "/functions/current_user.html"
             },
@@ -864,9 +987,14 @@
               "path": "/functions/currentusername.html"
             },
             {
-              "title": "cursor_status \uD83D\uDEA7",
+              "title": "cursor_status",
               "collapsable": false,
               "path": "/functions/cursor_status.html"
+            },
+            {
+              "title": "database_principal_id",
+              "collapsable": false,
+              "path": "/functions/database_principal_id.html"
             },
             {
               "title": "databaseproperty \uD83D\uDEA7",
@@ -884,27 +1012,62 @@
               "path": "/functions/datalength.html"
             },
             {
-              "title": "db_id \uD83D\uDEA7",
+              "title": "date_bucket",
+              "collapsable": false,
+              "path": "/functions/date_bucket.html"
+            },
+            {
+              "title": "db_id",
               "collapsable": false,
               "path": "/functions/db_id.html"
             },
             {
-              "title": "db_name \uD83D\uDEA7",
+              "title": "db_name",
               "collapsable": false,
               "path": "/functions/db_name.html"
             },
             {
-              "title": "file_name \uD83D\uDEA7",
+              "title": "error_line",
+              "collapsable": false,
+              "path": "/functions/error_line.html"
+            },
+            {
+              "title": "error_message",
+              "collapsable": false,
+              "path": "/functions/error_message.html"
+            },
+            {
+              "title": "error_number",
+              "collapsable": false,
+              "path": "/functions/error_number.html"
+            },
+            {
+              "title": "error_procedure",
+              "collapsable": false,
+              "path": "/functions/error_procedure.html"
+            },
+            {
+              "title": "error_severity",
+              "collapsable": false,
+              "path": "/functions/error_severity.html"
+            },
+            {
+              "title": "error_state",
+              "collapsable": false,
+              "path": "/functions/error_state.html"
+            },
+            {
+              "title": "file_name",
               "collapsable": false,
               "path": "/functions/file_name.html"
             },
             {
-              "title": "filegroup_id \uD83D\uDEA7",
+              "title": "filegroup_id",
               "collapsable": false,
               "path": "/functions/filegroup_id.html"
             },
             {
-              "title": "filegroup_name \uD83D\uDEA7",
+              "title": "filegroup_name",
               "collapsable": false,
               "path": "/functions/filegroup_name.html"
             },
@@ -939,37 +1102,42 @@
               "path": "/functions/getansinull.html"
             },
             {
-              "title": "has_dbaccess \uD83D\uDEA7",
+              "title": "has_dbaccess",
               "collapsable": false,
               "path": "/functions/has_dbaccess.html"
             },
             {
-              "title": "host_id \uD83D\uDEA7",
+              "title": "host_id",
               "collapsable": false,
               "path": "/functions/host_id.html"
             },
             {
-              "title": "host_name \uD83D\uDEA7",
+              "title": "host_name",
               "collapsable": false,
               "path": "/functions/host_name.html"
             },
             {
-              "title": "ident_current \uD83D\uDEA7",
+              "title": "ident_current",
               "collapsable": false,
               "path": "/functions/ident_current.html"
             },
             {
-              "title": "ident_incr \uD83D\uDEA7",
+              "title": "ident_incr",
               "collapsable": false,
               "path": "/functions/ident_incr.html"
             },
             {
-              "title": "ident_seed \uD83D\uDEA7",
+              "title": "ident_seed",
               "collapsable": false,
               "path": "/functions/ident_seed.html"
             },
             {
-              "title": "index_col \uD83D\uDEA7",
+              "title": "identity",
+              "collapsable": false,
+              "path": "/functions/identity.html"
+            },
+            {
+              "title": "index_col",
               "collapsable": false,
               "path": "/functions/index_col.html"
             },
@@ -979,12 +1147,12 @@
               "path": "/functions/indexproperty.html"
             },
             {
-              "title": "is_member \uD83D\uDEA7",
+              "title": "is_member",
               "collapsable": false,
               "path": "/functions/is_member.html"
             },
             {
-              "title": "is_srvrolemember \uD83D\uDEA7",
+              "title": "is_srvrolemember",
               "collapsable": false,
               "path": "/functions/is_srvrolemember.html"
             },
@@ -1004,12 +1172,17 @@
               "path": "/functions/newid.html"
             },
             {
-              "title": "object_id \uD83D\uDEA7",
+              "title": "newsequentialid",
+              "collapsable": false,
+              "path": "/functions/newsequentialid.html"
+            },
+            {
+              "title": "object_id",
               "collapsable": false,
               "path": "/functions/object_id.html"
             },
             {
-              "title": "object_name \uD83D\uDEA7",
+              "title": "object_name",
               "collapsable": false,
               "path": "/functions/object_name.html"
             },
@@ -1044,14 +1217,29 @@
               "path": "/functions/permissions.html"
             },
             {
-              "title": "rowcount_big \uD83D\uDEA7",
+              "title": "rowcount_big",
               "collapsable": false,
               "path": "/functions/rowcount_big.html"
             },
             {
-              "title": "scope_identity \uD83D\uDEA7",
+              "title": "schema_id",
+              "collapsable": false,
+              "path": "/functions/schema_id.html"
+            },
+            {
+              "title": "schema_name",
+              "collapsable": false,
+              "path": "/functions/schema_name.html"
+            },
+            {
+              "title": "scope_identity",
               "collapsable": false,
               "path": "/functions/scope_identity.html"
+            },
+            {
+              "title": "security",
+              "collapsable": false,
+              "path": "/functions/security.html"
             },
             {
               "title": "serverproperty",
@@ -1059,7 +1247,7 @@
               "path": "/functions/serverproperty.html"
             },
             {
-              "title": "session_user \u2747\uFE0F \uD83D\uDEA7",
+              "title": "session_user \u2747\uFE0F",
               "collapsable": false,
               "path": "/functions/session_user.html"
             },
@@ -1069,29 +1257,44 @@
               "path": "/functions/sessionproperty.html"
             },
             {
-              "title": "sql_variant_property \uD83D\uDEA7",
+              "title": "sql_variant_property",
               "collapsable": false,
               "path": "/functions/sql_variant_property.html"
             },
             {
-              "title": "stats_date \uD83D\uDEA7",
+              "title": "stats_date",
               "collapsable": false,
               "path": "/functions/stats_date.html"
             },
             {
-              "title": "suser_sid \uD83D\uDEA7",
+              "title": "suser_id",
+              "collapsable": false,
+              "path": "/functions/suser_id.html"
+            },
+            {
+              "title": "suser_name",
+              "collapsable": false,
+              "path": "/functions/suser_name.html"
+            },
+            {
+              "title": "suser_sid",
               "collapsable": false,
               "path": "/functions/suser_sid.html"
             },
             {
-              "title": "suser_sname \uD83D\uDEA7",
+              "title": "suser_sname",
               "collapsable": false,
               "path": "/functions/suser_sname.html"
             },
             {
-              "title": "system_user \u2747\uFE0F \uD83D\uDEA7",
+              "title": "system_user \u2747\uFE0F",
               "collapsable": false,
               "path": "/functions/system_user.html"
+            },
+            {
+              "title": "type_name",
+              "collapsable": false,
+              "path": "/functions/type_name.html"
             },
             {
               "title": "typeproperty",
@@ -1099,41 +1302,9 @@
               "path": "/functions/typeproperty.html"
             },
             {
-              "title": "user_name \uD83D\uDEA7",
+              "title": "user_name",
               "collapsable": false,
               "path": "/functions/user_name.html"
-            }
-          ]
-        },
-        {
-          "title": "Miscel\u00E1nea",
-          "collapsable": false,
-          "path": "/functions/Miscel\u00E1nea.html",
-          "children": [
-            {
-              "title": "md5 \u2747\uFE0F \uD83D\uDEA7",
-              "collapsable": false,
-              "path": "/functions/md5.html"
-            },
-            {
-              "title": "nameof \u2747\uFE0F \uD83D\uDEA7",
-              "collapsable": false,
-              "path": "/functions/nameof.html"
-            },
-            {
-              "title": "sha1 \u2747\uFE0F \uD83D\uDEA7",
-              "collapsable": false,
-              "path": "/functions/sha1.html"
-            },
-            {
-              "title": "sha256 \u2747\uFE0F \uD83D\uDEA7",
-              "collapsable": false,
-              "path": "/functions/sha256.html"
-            },
-            {
-              "title": "valueof \u2747\uFE0F \uD83D\uDEA7",
-              "collapsable": false,
-              "path": "/functions/valueof.html"
             }
           ]
         }

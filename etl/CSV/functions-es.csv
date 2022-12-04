@@ -1,332 +1,327 @@
-﻿abs|Una función matemática que devuelve el valor absoluto (positivo) de la expresión numérica especificada. (`ABS` cambia los valores negativos a valores positivos. `ABS` no tiene efecto sobre los valores cero o positivos).
-acos|Una función que devuelve el ángulo, en radianes, cuyo coseno es la expresión flotante especificada. Esto también se llama arcocoseno.
-aggregate|Una función agregada realiza un cálculo en un conjunto de valores y devuelve un solo valor. Excepto por `COUNT(*)`, las funciones agregadas ignoran los valores nulos. Las funciones agregadas a menudo se usan con la cláusula GROUP BY de la declaración SELECT.
-analytic|SQL Server admite estas funciones analíticas:
-app|Esta función devuelve el nombre de la aplicación para la sesión actual, si la aplicación establece ese valor de nombre.
-applock|Esta función devuelve el modo de bloqueo mantenido por el propietario del bloqueo en un recurso de aplicación en particular. Como función de bloqueo de aplicaciones, APPLOCK_MODE opera en la base de datos actual. La base de datos es el ámbito de aplicación de los bloqueos.
-applock|Esta función devuelve información sobre si se puede otorgar o no un bloqueo en un recurso de aplicación en particular, para un propietario de bloqueo específico, sin la adquisición del bloqueo. Como función de bloqueo de aplicaciones, APPLOCK_TEST opera en la base de datos actual. La base de datos es el ámbito de aplicación de los bloqueos.
-approx|Esta función devuelve el número aproximado de valores únicos no nulos en un grupo.
-approx|Esta función devuelve un valor interpolado aproximado del conjunto de valores en un grupo basado en el valor percentil y la especificación de clasificación. Dado que esta es una función aproximada, la salida estaría dentro del límite de error basado en el rango con cierta confianza. El valor percentil devuelto por esta función se basa en una distribución continua de los valores de la columna y el resultado se interpolaría. Debido a esto, es posible que la salida no sea uno de los valores del conjunto de datos. Uno de los casos de uso común para esta función es evitar los datos atípicos. Esta función se puede utilizar como alternativa a PERCENTILE_CONT para grandes conjuntos de datos en los que es aceptable un error insignificante con una respuesta más rápida en comparación con un valor de percentil preciso con un tiempo de respuesta lento.
-approx|Esta función devuelve el valor del conjunto de valores en un grupo en función del percentil proporcionado y la especificación de clasificación. Dado que esta es una función aproximada, la salida estaría dentro del límite de error basado en el rango con cierta confianza. Como este percentil aproximado se basa en una distribución discreta de los valores de la columna, el valor de salida sería igual a uno de los valores específicos de la columna. Esta función se puede utilizar como alternativa a PERCENTILE_DISC para grandes conjuntos de datos en los que es aceptable un error insignificante con una respuesta más rápida en comparación con un valor de percentil preciso con un tiempo de respuesta lento.
-ascii|Devuelve el valor del código ASCII del carácter más a la izquierda de una expresión de carácter.
-asin|Una función que devuelve el ángulo, en radianes, cuyo seno es la expresión **flotante** especificada. Esto también se llama **arcoseno**.
-assemblyproperty|Esta función devuelve información sobre una propiedad de un ensamblaje.
-asymkey|Devuelve el ID de una clave asimétrica.
-asymkeyproperty|Esta función devuelve las propiedades de una clave asimétrica.
-atan|Una función que devuelve el ángulo, en radianes, cuya tangente es una expresión **flotante** especificada. Esto también se llama arcotangente.
-atn2|Devuelve el ángulo, en radianes, entre el eje x positivo y el rayo desde el origen hasta el punto (y, x), donde x e y son los valores de las dos expresiones flotantes especificadas.
-avg|Esta función devuelve el promedio de los valores en un grupo. Ignora los valores nulos.
-binary|Devuelve el valor de la suma de comprobación binaria calculado sobre una fila de una tabla o sobre una lista de expresiones.
-bit|BIT_COUNT toma un parámetro y devuelve el número de bits establecidos en 1 en ese parámetro como un tipo **bigint**.
-bit|Las funciones de manipulación de bits, como mover, recuperar (obtener), configurar o contar bits individuales dentro de un valor entero o binario, le permiten procesar y almacenar datos de manera más eficiente que con bits individuales.
-cast|Estas funciones convierten una expresión de un tipo de datos a otro.
-ceiling|Esta función devuelve el entero más pequeño mayor o igual que la expresión numérica especificada.
-cert|Esta función devuelve el valor de ID de un certificado.
-certencoded|Esta función devuelve la parte pública de un certificado en formato binario. Esta función toma un ID de certificado como argumento y devuelve el certificado codificado. Para crear un nuevo certificado, pase el resultado binario a **CREAR CERTIFICADO... CON BINARIO**.
-certprivatekey|Esta función devuelve la clave privada de un certificado en formato binario. Esta función toma tres argumentos.
-certproperty|Devuelve el valor de una propiedad de certificado especificada.
-char|Devuelve el carácter de un solo byte con el código entero especificado, según lo definido por el juego de caracteres y la codificación de la intercalación predeterminada de la base de datos actual.
-charindex|Esta función busca una expresión de carácter dentro de una segunda expresión de carácter y, si la encuentra, devuelve la posición inicial de la primera expresión.
-checksum|Esta función devuelve la suma de comprobación de los valores de un grupo. `CHECKSUM_AGG` ignora los valores nulos. La [cláusula OVER](../../t-sql/queries/select-over-clause-transact-sql.md) puede seguir a `CHECKSUM_AGG`.
-checksum|La función `CHECKSUM` devuelve el valor de la suma de comprobación calculado sobre una fila de tabla o sobre una lista de expresiones. Use `CHECKSUM` para construir índices hash.
-col|Esta función devuelve la longitud definida de una columna, en bytes.
-col|Esta función devuelve el nombre de una columna de la tabla, en función del número de identificación de la tabla y los valores del número de identificación de la columna de esa columna de la tabla.
-collation|Esta función devuelve la propiedad solicitada de una colación especificada.
-collation|Para cada carácter en una expresión de cadena no Unicode, definida con una intercalación terciaria de SQL, esta función devuelve una cadena binaria de pesos.
-columnproperty|Esta función devuelve información de columna o parámetro.
-columns|Esta función devuelve un patrón de bits **varbinary** que indica las columnas insertadas o actualizadas de una tabla o vista. Use `COLUMNS_UPDATED` en cualquier lugar dentro del cuerpo de un disparador [!INCLUDE[tsql](../../includes/tsql-md.md)] INSERT o UPDATE para probar si el disparador debe ejecutar ciertas acciones.
-compress|Esta función comprime la expresión de entrada, utilizando el algoritmo GZIP. La función devuelve una matriz de bytes de tipo **varbinary(max)**.
-concat|Esta función devuelve una cadena que resulta de la concatenación o unión de dos o más valores de cadena de un extremo a otro. (Para agregar un valor de separación durante la concatenación, consulte [CONCAT_WS](../../t-sql/functions/concat-ws-transact-sql.md).)
-concat|Esta función devuelve una cadena que resulta de la concatenación o unión de dos o más valores de cadena de un extremo a otro. Separa esos valores de cadena concatenados con el delimitador especificado en el primer argumento de la función. (`CONCAT_WS` indica *concatenar con separador*.)
-configuration|Estas funciones escalares devuelven información sobre las opciones de configuración actuales:
-connectionproperty|Para una solicitud que ingresa al servidor, esta función devuelve información sobre las propiedades de conexión de la conexión única que admite esa solicitud.
-connections|Esta función devuelve el número de intentos de conexión, tanto exitosos como fallidos, desde que [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] se inició por última vez.
-context|Esta función devuelve el valor **context_info** establecido para la sesión o lote actual, o derivado mediante el uso de [SET CONTEXT_INFO](../../t-sql/statements/set-context-info-transact- sql.md) declaración.
-conversion|Estas funciones admiten la conversión y conversión de tipos de datos:
-cos|Una función matemática que devuelve el coseno trigonométrico del ángulo especificado, medido en radianes, en la expresión especificada.
-cot|Una función matemática que devuelve la cotangente trigonométrica del ángulo especificado, en radianes, en la expresión **float** especificada.
-count|Esta función devuelve el número de elementos encontrados en un grupo. `COUNT_BIG` funciona como la función [COUNT](../../t-sql/functions/count-transact-sql.md). Estas funciones difieren solo en los tipos de datos de sus valores de retorno. `COUNT_BIG` siempre devuelve un valor de tipo de datos **bigint**. `COUNT` siempre devuelve un valor de tipo de datos **int**.
-count|Esta función devuelve el número de elementos encontrados en un grupo. `COUNT` funciona como la función [COUNT_BIG](../../t-sql/functions/count-big-transact-sql.md). Estas funciones difieren solo en los tipos de datos de sus valores de retorno. `COUNT` siempre devuelve un valor de tipo de datos **int**. `COUNT_BIG` siempre devuelve un valor de tipo de datos **bigint**.
-cpu|Esta función devuelve la cantidad de tiempo que [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] ha pasado en operación activa desde su último inicio. `@@CPU_BUSY` devuelve un resultado medido en incrementos de tiempo de CPU, o "ticks". Este valor es acumulativo para todas las CPU, por lo que puede superar el tiempo transcurrido real. Para convertir a microsegundos, multiplique por [@@TIMETICKS](./timeticks-transact-sql.md).
-crypt|Esta función devuelve un número criptográfico, generado aleatoriamente, generado por Crypto API (CAPI). `CRYPT_GEN_RANDOM` devuelve un número hexadecimal con una longitud de un número específico de bytes.
-cryptographic|Estas funciones admiten firma digital, validación de firma digital, cifrado y descifrado.
-cume|Para [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)], esta función calcula la distribución acumulativa de un valor dentro de un grupo de valores. En otras palabras, `CUME_DIST` calcula la posición relativa de un valor específico en un grupo de valores. Asumiendo un orden ascendente, el `CUME_DIST` de un valor en la fila _r_ se define como el número de filas con valores menores o iguales a ese valor en la fila _r_, dividido por el número de filas evaluadas en el conjunto de resultados de partición o consulta. `CUME_DIST` es similar a la función `PERCENT_RANK`.
-current|Esta función devuelve el ID de la solicitud actual dentro de la sesión actual.
-current|Esta función devuelve la marca de tiempo actual del sistema de la base de datos como un valor de **fecha y hora**, sin el desplazamiento de la zona horaria de la base de datos. `CURRENT_TIMESTAMP` deriva este valor del sistema operativo de la computadora en la que se ejecuta la instancia de [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)].
-current|Esta función devuelve el ID de la zona horaria observada por un servidor o una instancia. Para Instancia administrada de Azure SQL, el valor devuelto se basa en la zona horaria de la propia instancia asignada durante la creación de la instancia, no en la zona horaria del sistema operativo subyacente.
-current|Esta función devuelve el nombre de la zona horaria observada por un servidor o una instancia. Para Instancia administrada de SQL, el valor devuelto se basa en la zona horaria de la propia instancia asignada durante la creación de la instancia, no en la zona horaria del sistema operativo subyacente.
-current|Esta función devuelve el ID de transacción de la transacción actual en la sesión actual.
-current|Esta función devuelve el nombre del usuario actual. Esta función es equivalente a `USER_NAME()`.
-cursor|Estas funciones escalares devuelven información sobre los cursores:
-cursor|Esto devuelve el número de filas calificadas actualmente en el último cursor abierto en la conexión. Para mejorar el rendimiento, [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] puede llenar conjuntos de claves grandes y cursores estáticos de forma asíncrona. Se puede llamar a `@@CURSOR_ROWS` para determinar que el número de filas que califican para un cursor se recuperan en el momento de la llamada @@CURSOR_ROWS.
-cursor|Para un parámetro dado, `CURSOR_STATUS` muestra si una declaración de cursor ha devuelto o no un cursor y un conjunto de resultados.
-data|Estas funciones escalares devuelven información sobre varios valores de tipos de datos.
-database|Esta función devuelve el número de identificación de un principal en la base de datos actual. Consulte [Principals &#40;Motor de base de datos&#41;](../../relational-databases/security/authentication-access/principals-database-engine.md) para obtener más información sobre los principales.
-databasepropertyex|Para una base de datos especificada en [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)], esta función devuelve la configuración actual de la propiedad o opción de base de datos especificada.
-datalength|Esta función devuelve el número de bytes utilizados para representar cualquier expresión.
-date|Las secciones de este artículo cubren todos los tipos y funciones de datos de fecha y hora [!INCLUDE[tsql](../../includes/tsql-md.md)].
-date|Esta función devuelve el valor de fecha y hora correspondiente al inicio de cada cubo de fecha y hora desde la marca de tiempo definida por el parámetro `origen`, o el valor de origen predeterminado de `1900-01-01 00:00:00.000` si el origen el parámetro no está especificado.
-dateadd|Esta función agrega un *número* (un entero con signo) a una *parte de fecha* de una *fecha* de entrada y devuelve un valor de fecha/hora modificado. Por ejemplo, puede usar esta función para encontrar la fecha que es 7000 minutos a partir de hoy: *número* = 7000, *datepart* = minuto, *fecha* = hoy.
-datediff|Esta función devuelve el recuento (como un valor entero grande con signo) de los límites *datepart* especificados cruzados entre la *fecha de inicio* y la *fecha de finalización* especificadas.
-datediff|Esta función devuelve el recuento (como un valor entero con signo) de los límites de parte de fecha especificados cruzados entre la *fecha de inicio* y la *fecha de finalización* especificadas.
-datefirst|Esta función devuelve el valor actual de [SET DATEFIRST](../../t-sql/statements/set-datefirst-transact-sql.md), para una sesión específica.
-datefromparts|Esta función devuelve un valor de **fecha** que se asigna a los valores de año, mes y día especificados.
-datename|Esta función devuelve una cadena de caracteres que representa el *datepart* especificado de la *fecha* especificada.
-datepart|Esta función devuelve un número entero que representa el *datepart* especificado de la *fecha* especificada.
-datetime2fromparts|Esta función devuelve un valor **datetime2** para los argumentos de fecha y hora especificados. El valor devuelto tiene una precisión especificada por el argumento de precisión.
-datetimefromparts|Esta función devuelve un valor **datetime** para los argumentos de fecha y hora especificados.
-datetimeoffsetfromparts|Devuelve un valor **datetimeoffset** para los argumentos de fecha y hora especificados. El valor devuelto tiene una precisión especificada por el argumento de precisión y un desplazamiento según lo especificado por los argumentos de desplazamiento.
-datetrunc|Comenzando con [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)], esta función devuelve una *fecha* de entrada truncada a una *parte de fecha* especificada.
-day|Esta función devuelve un número entero que representa el día (día del mes) de la *fecha* especificada.
-db|Esta función devuelve el número de identificación (ID) de la base de datos de una base de datos especificada.
-db|Esta función devuelve el nombre de una base de datos especificada.
-dbts|Esta función devuelve el valor del tipo de datos de **marca de tiempo** actual para la base de datos actual. La base de datos actual tendrá un valor de marca de tiempo único garantizado.
-decompress|Esta función descomprimirá un valor de expresión de entrada, utilizando el algoritmo GZIP. `DECOMPRESS` devolverá una matriz de bytes (tipo VARBINARY(MAX)).
-decryptbyasymkey|Esta función utiliza una clave asimétrica para descifrar datos cifrados.
-decryptbycert|Esta función utiliza la clave privada de un certificado para descifrar datos cifrados.
-decryptbykey|Esta función utiliza una clave simétrica para descifrar datos.
-decryptbykeyautoasymkey|Esta función descifra los datos cifrados. Para hacer esto, primero descifra una clave simétrica con una clave asimétrica separada y luego descifra los datos cifrados con la clave simétrica extraída en el primer "paso".
-decryptbykeyautocert|Esta función descifra los datos con una clave simétrica. Esa clave simétrica se descifra automáticamente con un certificado.
-decryptbypassphrase|Esta función descifra los datos cifrados originalmente con una frase de contraseña.
-degrees|Esta función devuelve el ángulo correspondiente, en grados, para un ángulo especificado en radianes.
-dense|Esta función devuelve la clasificación de cada fila dentro de una partición de conjunto de resultados, sin espacios en los valores de clasificación. El rango de una fila específica es uno más el número de valores de rango distintos que vienen antes de esa fila específica.
-difference|Esta función devuelve un valor entero que mide la diferencia entre los valores [SOUNDEX()](./soundex-transact-sql.md) de dos expresiones de caracteres diferentes.
-edge|Devuelve la representación de caracteres (JSON) del Id. de borde para un Id. de objeto y un Id. de gráfico determinados.
-encryptbyasymkey|Esta función cifra los datos con una clave asimétrica.
-encryptbycert|Cifra los datos con la clave pública de un certificado.
-encryptbykey|Cifra los datos mediante una clave simétrica.
-encryptbypassphrase|Cifre los datos con una frase de contraseña utilizando el algoritmo TRIPLE DES con una longitud de bits de clave de 128.
-eomonth|Esta función devuelve el último día del mes que contiene una fecha específica, con un desplazamiento opcional.
-error|Esta función devuelve el número de línea de ocurrencia de un error que provocó la ejecución del bloque CATCH de una construcción TRY...CATCH.
-error|Esta función devuelve el texto del mensaje del error que provocó la ejecución del bloque CATCH de una construcción TRY...CATCH.
-error|Esta función devuelve el número de error del error que provocó la ejecución del bloque CATCH de una construcción TRY...CATCH.
-error|Esta función devuelve el nombre del procedimiento almacenado o activador donde se produce un error, si ese error hizo que se ejecutara el bloque CATCH de una construcción TRY...CATCH.
-error|Esta función devuelve el valor de gravedad del error cuando se produce un error, si ese error hizo que se ejecutara el bloque CATCH de una construcción TRY...CATCH.
-error|Devuelve el número de estado del error que provocó la ejecución del bloque CATCH de una construcción TRY...CATCH.
-error|Devuelve el número de error de la última instrucción [!INCLUDE[tsql](../../includes/tsql-md.md)] ejecutada.
-eventdata|Esta función devuelve información sobre eventos del servidor o de la base de datos. Cuando se activa una notificación de evento y el intermediario de servicios especificado recibe los resultados, se llama a `EVENTDATA`. Un activador de inicio de sesión o DDL también admite el uso interno de `EVENTDATA`.
-exp|Devuelve el valor exponencial de la expresión **flotante** especificada.
-fetch|Esta función devuelve el estado de la última instrucción FETCH de cursor emitida contra cualquier cursor actualmente abierto por la conexión.
-file|Para el nombre lógico proporcionado para un archivo componente de la base de datos actual, esta función devuelve el número de identificación (ID) del archivo.
-file|Esta función devuelve el número de identificación (ID) del archivo para el nombre lógico especificado de un archivo de datos, registro o texto completo de la base de datos actual.
-file|Esta función devuelve el nombre de archivo lógico para un número de identificación (ID) de archivo dado.
-filegroup|Esta función devuelve el número de identificación (ID) del grupo de archivos para un nombre de grupo de archivos especificado.
-filegroup|Esta función devuelve el nombre del grupo de archivos para el número de identificación (ID) del grupo de archivos especificado.
-filegroupproperty|Esta función devuelve el valor de la propiedad del grupo de archivos para un nombre y un valor de grupo de archivos especificados.
-fileproperty|Devuelve el valor de propiedad del nombre de archivo especificado cuando se especifica un nombre de archivo en la base de datos actual y un nombre de propiedad. Devuelve NULL para archivos que no están en la base de datos actual.
-filepropertyex|Devuelve el valor de propiedad de archivo extendido especificado cuando se especifica un nombre de archivo en la base de datos actual y un nombre de propiedad. Devuelve NULL para archivos que no están en la base de datos actual o para propiedades de archivo extendidas que no existen. Actualmente, las propiedades de archivo extendidas solo se aplican a las bases de datos que se encuentran en Azure Blob Storage.
-first|Devuelve el primer valor de un conjunto ordenado de valores.
-floor|Devuelve el entero más grande menor o igual que la expresión numérica especificada.
-format|Devuelve un valor formateado con el formato especificado y la referencia cultural opcional. Utilice la función FORMAT para dar formato a la configuración regional de los valores numéricos y de fecha/hora como cadenas. Para conversiones generales de tipos de datos, utilice CAST o CONVERT.
-formatmessage|Construye un mensaje a partir de un mensaje existente en sys.messages o de una cadena proporcionada. La funcionalidad de FORMATMESSAGE se asemeja a la de la instrucción RAISERROR. Sin embargo, RAISERROR imprime el mensaje inmediatamente, mientras que FORMATMESSAGE devuelve el mensaje formateado para su posterior procesamiento.
-fulltextcatalogproperty|Devuelve información sobre las propiedades del catálogo de texto completo en [!INCLUDE[ssnoversion](../../includes/ssnoversion-md.md)].
-fulltextserviceproperty|Devuelve información relacionada con las propiedades del motor de texto completo. Estas propiedades se pueden establecer y recuperar mediante **sp_fulltext_service**.
-functions.md|Obtenga información sobre las categorías de funciones integradas que puede usar con las bases de datos SQL. Puede utilizar las funciones integradas o crear sus propias funciones definidas por el usuario.
-generate|Genera una serie de números dentro de un intervalo dado. El usuario define el intervalo y el paso entre los valores de la serie.
-get|GET_BIT toma dos parámetros y devuelve el bit en *expression_value* que está en el desplazamiento definido por *bit_offset*.
-get|Devuelve un token que representa el contexto de transacción actual de una sesión. Una aplicación utiliza el token para vincular las operaciones de transmisión del sistema de archivos FILESTREAM a la transacción. Para obtener una lista de temas de FILESTREAM, consulte [Binary Large Object &#40;Blob&#41; Datos &#40;SQL Server&#41;](../../relational-databases/blob/binary-large-object-blob-data-sql-server.md).
-getansinull|Devuelve la nulabilidad predeterminada para la base de datos para esta sesión.
-getdate|Devuelve la marca de tiempo actual del sistema de la base de datos como un valor de **fecha y hora** sin el desplazamiento de la zona horaria de la base de datos. Este valor se deriva del sistema operativo de la computadora en la que se ejecuta la instancia de [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)].
-getutcdate|Devuelve la marca de tiempo del sistema de la base de datos actual como un valor de **fechahora**. El desplazamiento de la zona horaria de la base de datos no está incluido. Este valor representa la hora UTC actual (Tiempo Universal Coordinado). Este valor se deriva del sistema operativo de la computadora en la que se ejecuta la instancia de [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)].
-graph|Utilice las funciones descritas en las páginas de esta sección para extraer valores y transformar valores en pseudocolumnas utilizadas en SQL Graph.
-graph|Devuelve el ID de gráfico interno para un ID de borde dado.
-graph|Devuelve el ID de gráfico interno para un ID de nodo determinado.
-grouping|Es una función que calcula el nivel de agrupación. GROUPING_ID solo se puede usar en las cláusulas SELECT \<select> list, HAVING u ORDER BY cuando se especifica GROUP BY.
-grouping|Indica si una expresión de columna especificada en una lista GROUP BY está agregada o no. GROUPING devuelve 1 para agregados o 0 para no agregados en el conjunto de resultados. GROUPING solo se puede usar en las cláusulas SELECT \<select> list, HAVING y ORDER BY cuando se especifica GROUP BY.
-has|Devuelve información sobre si el usuario tiene acceso a la base de datos especificada.
-has|Evalúa el permiso efectivo del usuario actual en un asegurable. Una función relacionada es [fn_my_permissions](../../relational-databases/system-functions/sys-fn-my-permissions-transact-sql.md).
-hashbytes|Devuelve el hash MD2, MD4, MD5, SHA, SHA1 o SHA2 de su entrada en [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)].
-host|Devuelve el número de identificación de la estación de trabajo. El número de identificación de la estación de trabajo es el ID de proceso (PID) de la aplicación en la computadora cliente que se conecta a [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)].
-host|Devuelve el nombre de la estación de trabajo.
-ident|Devuelve el último valor de identidad generado para una tabla o vista especificada. El último valor de identidad generado puede ser para cualquier sesión y cualquier ámbito.
-ident|Devuelve el valor de incremento especificado al crear una columna de identidad de tabla o vista.
-ident|Devuelve el valor semilla original especificado al crear una columna de identidad en una tabla o vista. Cambiar el valor actual de una columna de identidad mediante DBCC CHECKIDENT no cambia el valor devuelto por esta función.
-identity|Se usa solo en una instrucción SELECT con una cláusula INTO *table* para insertar una columna de identidad en una nueva tabla. Aunque es similar, la función IDENTITY no es la propiedad IDENTITY que se usa con CREATE TABLE y ALTER TABLE.
-identity|Es una función del sistema que devuelve el último valor de identidad insertado.
-idle|Devuelve el tiempo que [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] estuvo inactivo desde que se inició por última vez. El resultado está en incrementos de tiempo de CPU, o "marcas", y es acumulativo para todas las CPU, por lo que puede exceder el tiempo real transcurrido. Multiplique por @@TIMETICKS para convertir a microsegundos.
-index|Devuelve el nombre de la columna indexada. Devuelve NULL para índices XML.
-indexkey|Devuelve información sobre la clave de índice. Devuelve NULL para índices XML.
-indexproperty|Devuelve el índice con nombre o el valor de la propiedad de estadísticas de un número de identificación de tabla especificado, el nombre del índice o de las estadísticas y el nombre de la propiedad. Devuelve NULL para índices XML.
-io|Devuelve el tiempo que [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] ha dedicado a realizar operaciones de entrada y salida desde [!INCLUDE[ssNoVersion](../../includes/ssnoversion -md.md)] se inició por última vez. El resultado está en incrementos de tiempo de CPU ("ticks") y es acumulativo para todas las CPU, por lo que puede exceder el tiempo transcurrido real. Multiplique por @@TIMETICKS para convertir a microsegundos.
-is|Indica si el usuario actual es miembro del grupo de Windows especificado [!INCLUDE[msCoName](../../includes/msconame-md.md)] o [!INCLUDE[ssNoVersion](../../includes /ssnoversion-md.md)] rol de base de datos. La función IS_MEMBER no es compatible con los grupos de Azure Active Directory.
-is|Indica si un objeto está firmado por un certificado especificado o una clave asimétrica.
-is|Indica si un principal de base de datos especificado es miembro del rol de base de datos especificado.
-is|Indica si un inicio de sesión [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] es miembro del rol de servidor especificado.
-isdate|Devuelve 1 si la *expresión* es un valor de **fechahora** válido; de lo contrario, 0.
-isjson|Comprueba si una cadena contiene JSON válido.
-isnull|Reemplaza NULL con el valor de reemplazo especificado.
-isnumeric|Determina si una expresión es un tipo numérico válido.
-json|Construye texto de matriz JSON a partir de cero o más expresiones.
-json|Utilice las funciones descritas en las páginas de esta sección para validar o cambiar el texto JSON o para extraer valores simples o complejos.
-json|Actualiza el valor de una propiedad en una cadena JSON y devuelve la cadena JSON actualizada.
-json|Construye texto de objeto JSON a partir de cero o más expresiones.
-json|Comprueba si existe una ruta SQL/JSON especificada en la cadena JSON de entrada.
-json|Extrae un objeto o una matriz de una cadena JSON.
-json|Extrae un valor escalar de una cadena JSON.
-key|Devuelve el GUID de una clave simétrica en la base de datos.
-key|Devuelve el ID de una clave simétrica en la base de datos actual.
-key|Devuelve el nombre de la clave simétrica desde un GUID de clave simétrica o texto cifrado.
-lag|Accede a los datos de una fila anterior en el mismo conjunto de resultados sin el uso de una combinación automática que comience con [!INCLUDE[ssSQL11](../../includes/sssql11-md.md)]. LAG proporciona acceso a una fila en un desplazamiento físico dado que viene antes de la fila actual. Utilice esta función analítica en una declaración SELECT para comparar valores en la fila actual con valores en una fila anterior.
-langid|Devuelve el identificador de idioma local (ID) del idioma que se está utilizando actualmente.
-language|Devuelve el nombre del idioma que se está utilizando actualmente.
-last|Devuelve el último valor de un conjunto ordenado de valores.
-lead|Accede a los datos de una fila posterior en el mismo conjunto de resultados sin el uso de una autocombinación que comience con [!INCLUDE[ssSQL11](../../includes/sssql11-md.md)]. LEAD proporciona acceso a una fila en un desplazamiento físico dado que sigue a la fila actual. Utilice esta función analítica en una declaración SELECT para comparar valores en la fila actual con valores en una fila siguiente.
-left|LEFT_SHIFT toma dos parámetros y devuelve el primer parámetro desplazado en bits a la izquierda por el número de bits especificado en el segundo parámetro.
-left|Devuelve la parte izquierda de una cadena de caracteres con el número de caracteres especificado.
-len|Devuelve el número de caracteres de la expresión de cadena especificada, sin incluir los espacios finales.
-lock|Devuelve la configuración de tiempo de espera de bloqueo actual en milisegundos para la sesión actual.
-log|Devuelve el logaritmo natural de la expresión **float** especificada en [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)].
-log10|Devuelve el logaritmo en base 10 de la expresión **flotante** especificada.
-logical|Devuelve el elemento en el índice especificado de una lista de valores en [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)].
-logical|Esta función devuelve el valor máximo de una lista de una o más expresiones.
-logical|Devuelve uno de dos valores, dependiendo de si la expresión booleana se evalúa como verdadera o falsa en [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)].
-logical|Esta función devuelve el valor mínimo de una lista de una o más expresiones.
-loginproperty|Devuelve información sobre la configuración de la política de inicio de sesión.
-lower|Devuelve una expresión de carácter después de convertir los datos de caracteres en mayúsculas a minúsculas.
-ltrim|::: moniker range="<=sql-server-ver15 || <=sql-server-linux-ver15 || = azure-sqldw-latest || = azuresqldb-actual || = azuresqldb-mi-actual"
-mathematical|Las siguientes funciones escalares realizan un cálculo, generalmente basado en valores de entrada que se proporcionan como argumentos, y devuelven un valor numérico:
-max|Devuelve el número máximo de conexiones de usuario simultáneas permitidas en una instancia de [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]. El número devuelto no es necesariamente el número configurado actualmente.
-max|Devuelve el nivel de precisión utilizado por los tipos de datos **decimales** y **numéricos** tal como se establece actualmente en el servidor.
-max|Devuelve el valor máximo de la expresión.
-metadata|Las siguientes funciones escalares devuelven información sobre la base de datos y los objetos de la base de datos:
-min|Devuelve el valor **rowversion** activo más bajo en la base de datos actual. Un valor de **rowversion** está activo si se usa en una transacción que aún no se ha confirmado. Para obtener más información, consulte [rowversion &#40;Transact-SQL&#41;](../../t-sql/data-types/rowversion-transact-sql.md).
-min|Devuelve el valor mínimo de la expresión. Puede ir seguido de la [cláusula OVER](../../t-sql/queries/select-over-clause-transact-sql.md).
-month|Devuelve un número entero que representa el mes de la *fecha* especificada.
-nchar|Devuelve el carácter Unicode con el código entero especificado, tal como lo define el estándar Unicode.
-nestlevel|Devuelve el nivel de anidamiento de la ejecución del procedimiento almacenado actual (inicialmente 0) en el servidor local.
-newid|Crea un valor único de tipo **identificador único**.
-newsequentialid|Crea un GUID que es mayor que cualquier GUID generado previamente por esta función en una computadora específica desde que se inició Windows. Después de reiniciar Windows, el GUID puede comenzar nuevamente desde un rango más bajo, pero aún es único globalmente. Cuando se usa una columna GUID como identificador de fila, usar NEWSEQUENTIALID puede ser más rápido que usar la función NEWID. Esto se debe a que la función NEWID genera actividad aleatoria y utiliza menos páginas de datos en caché. El uso de NEWSEQUENTIALID también ayuda a llenar completamente las páginas de datos e índices.
-next|Genera un número de secuencia a partir del objeto de secuencia especificado.
-node|Devuelve la representación de caracteres (JSON) del ID de nodo para un ID de objeto y un ID de gráfico determinados.
-ntile|Distribuye las filas de una partición ordenada en un número específico de grupos. Los grupos están numerados, empezando por el uno. Para cada fila, NTILE devuelve el número del grupo al que pertenece la fila.
-object|Devuelve el texto fuente [!INCLUDE[tsql](../../includes/tsql-md.md)] de la definición de un objeto especificado.
-object|Devuelve el Id. de objeto para un Id. de borde de gráfico dado.
-object|Devuelve el Id. de objeto para un Id. de nodo gráfico determinado.
-object|Devuelve el número de identificación del objeto de la base de datos de un objeto del ámbito del esquema.
-object|Devuelve el nombre del objeto de la base de datos para los objetos del ámbito del esquema. Para obtener una lista de objetos con ámbito de esquema, consulte [sys.objects &#40;Transact-SQL&#41;](../../relational-databases/system-catalog-views/sys-objects-transact-sql. Maryland).
-object|Devuelve el nombre del esquema de la base de datos para los objetos del ámbito del esquema. Para obtener una lista de objetos con ámbito de esquema, consulte [sys.objects &#40;Transact-SQL&#41;](../../relational-databases/system-catalog-views/sys-objects-transact-sql. Maryland).
-objectproperty|Devuelve información sobre los objetos del ámbito del esquema en la base de datos actual. Para obtener una lista de objetos con ámbito de esquema, consulte [sys.objects &#40;Transact-SQL&#41;](../../relational-databases/system-catalog-views/sys-objects-transact-sql. Maryland). Esta función no se puede usar para objetos que no tienen un ámbito de esquema, como desencadenadores de lenguaje de definición de datos (DDL) y notificaciones de eventos.
-objectpropertyex|Devuelve información sobre los objetos del ámbito del esquema en la base de datos actual. Para obtener una lista de estos objetos, consulte [sys.objects &#40;Transact-SQL&#41;](../../relational-databases/system-catalog-views/sys-objects-transact-sql.md) . OBJECTPROPERTYEX no se puede usar para objetos que no tienen un ámbito de esquema, como desencadenadores de lenguaje de definición de datos (DDL) y notificaciones de eventos.
-odbc|Puede usar [Funciones escalares de ODBC](../../odbc/reference/appendixes/appendix-e-scalar-functions.md) en [!INCLUDE[tsql](../../includes/tsql-md .md)] declaraciones. Estas declaraciones son interpretadas por [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]. Se pueden utilizar en procedimientos almacenados y funciones definidas por el usuario. Estas incluyen funciones de cadena, numéricas, de hora, de fecha, de intervalo y del sistema.
-opendatasource|Proporciona información de conexión ad hoc como parte de un nombre de objeto de cuatro partes sin usar un nombre de servidor vinculado.
-openjson|**OPENJSON** es una función con valores de tabla que analiza texto JSON y devuelve objetos y propiedades de la entrada JSON como filas y columnas. En otras palabras, **OPENJSON** proporciona una vista de conjunto de filas sobre un documento JSON. Puede especificar explícitamente las columnas en el conjunto de filas y las rutas de propiedad JSON utilizadas para completar las columnas. Dado que **OPENJSON** devuelve un conjunto de filas, puede usar **OPENJSON** en la cláusula `FROM` de [!INCLUDE[tsql](../../includes/tsql-md.md)] tal como puede usar cualquier otra tabla, vista o función con valores de tabla.
-openquery|Ejecuta la consulta de paso a través especificada en el servidor vinculado especificado. Este servidor es una fuente de datos OLE DB. Se puede hacer referencia a OPENQUERY en la cláusula FROM de una consulta como si fuera un nombre de tabla. También se puede hacer referencia a OPENQUERY como la tabla de destino de una instrucción INSERT, UPDATE o DELETE. Esto está sujeto a las capacidades del proveedor OLE DB. Aunque la consulta puede devolver varios conjuntos de resultados, OPENQUERY solo devuelve el primero.
-openrowset|Incluye toda la información de conexión necesaria para acceder a datos remotos desde un origen de datos OLE DB. Este método es una alternativa al acceso a tablas en un servidor vinculado y es un método ad hoc único para conectarse y acceder a datos remotos mediante OLE DB. Para referencias más frecuentes a orígenes de datos OLE DB, utilice servidores vinculados en su lugar. Para obtener más información, consulte [Servidores vinculados &#40;Motor de base de datos&#41;](../../relational-databases/linked-servers/linked-servers-database-engine.md). Se puede hacer referencia a la función `OPENROWSET` en la cláusula FROM de una consulta como si fuera el nombre de una tabla. También se puede hacer referencia a la función `OPENROWSET` como la tabla de destino de una instrucción `INSERT`, `UPDATE` o `DELETE`, sujeto a las capacidades del proveedor OLE DB. Aunque la consulta puede devolver varios conjuntos de resultados, `OPENROWSET` solo devuelve el primero.
-openxml|OPENXML proporciona una vista de conjunto de filas sobre un documento XML. Dado que OPENXML es un proveedor de conjuntos de filas, OPENXML se puede usar en instrucciones [!INCLUDE[tsql](../../includes/tsql-md.md)] en las que los proveedores de conjuntos de filas, como una tabla, una vista o la función OPENROWSET puede aparecer
-options|Devuelve información sobre las opciones SET actuales.
-original|Devuelve el nombre de la base de datos especificado por el usuario en la cadena de conexión de la base de datos. Esta base de datos se especifica mediante la opción **sqlcmd-d** (USE *base de datos*). También se puede especificar con la expresión de origen de datos Open Database Connectivity (ODBC) (catálogo inicial =*nombre de base de datos*).
-original|Devuelve el nombre del inicio de sesión que se conectó a la instancia de [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]. Puede usar esta función para devolver la identidad del inicio de sesión original en sesiones en las que hay muchos cambios de contexto explícitos o implícitos.
-pack|Devuelve el número de paquetes de entrada leídos de la red por [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] desde que se inició por última vez.
-pack|Devuelve el número de paquetes de salida escritos en la red por [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] desde que se inició por última vez.
-packet|Devuelve el número de errores de paquetes de red que han ocurrido en las conexiones [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] desde [!INCLUDE[ssNoVersion](../../includes/ ssnoversion-md.md)] se inició por última vez.
-parse|Devuelve el resultado de una expresión, traducido al tipo de datos solicitado en [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)].
-parsename|Devuelve la parte especificada de un nombre de objeto. Las partes de un objeto que se pueden recuperar son el nombre del objeto, el nombre del esquema, el nombre de la base de datos y el nombre del servidor.
-partition|Devuelve el número de partición en el que se asignaría un conjunto de valores de columna de partición para cualquier función de partición especificada.
-patindex|Devuelve la posición inicial de la primera aparición de un patrón en una expresión especificada, o cero si no se encuentra el patrón, en todos los tipos de datos de texto y caracteres válidos.
-percent|Calcula el rango relativo de una fila dentro de un grupo de filas en [!INCLUDE[ssnoversion](../../includes/ssnoversion-md.md)]. Utilice PERCENT_RANK para evaluar la posición relativa de un valor dentro de una partición o conjunto de resultados de consulta. PERCENT_RANK es similar a la función CUME_DIST.
-percentile|Calcula un percentil basado en una distribución continua del valor de la columna en [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]. El resultado se interpola y puede no ser igual a ninguno de los valores específicos de la columna.
-percentile|Calcula un percentil específico para los valores ordenados en un conjunto de filas completo o dentro de las distintas particiones de un conjunto de filas en [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]. Para un valor de percentil dado *P*, PERCENTILE_DISC ordena los valores de expresión en la cláusula ORDER BY. Luego devuelve el valor con el valor CUME_DIST más pequeño proporcionado (con respecto a la misma especificación de clasificación) que es mayor o igual que *P*. Por ejemplo, PERCENTILE_DISC (0.5) calculará el percentil 50 (es decir, la mediana) de una expresión. PERCENTILE_DISC calcula el percentil en función de una distribución discreta de los valores de la columna. El resultado es igual a un valor de columna específico.
-permissions|Devuelve un valor que contiene un mapa de bits que indica los permisos de declaración, objeto o columna del usuario actual.
-pi|Devuelve el valor constante de PI.
-power|Devuelve el valor de la expresión especificada a la potencia especificada.
-procid|Devuelve el identificador de objeto (ID) del módulo [!INCLUDE[tsql](../../includes/tsql-md.md)] actual. Un módulo [!INCLUDE[tsql](../../includes/tsql-md.md)] puede ser un procedimiento almacenado, una función definida por el usuario o un disparador. @@PROCID no se puede especificar en los módulos CLR o en el proveedor de acceso a datos en proceso.
-pwdcompare|Hash una contraseña y compara el hash con el hash de una contraseña existente. PWDCOMPARE se puede utilizar para buscar contraseñas de inicio de sesión en blanco [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] o contraseñas débiles comunes.
-pwdencrypt|Devuelve el hash de contraseña [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] del valor de entrada que usa la versión actual del algoritmo de hash de contraseña.
-quotename|Devuelve una cadena Unicode con los delimitadores agregados para convertir la cadena de entrada en un identificador delimitado [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] válido.
-radians|Devuelve radianes cuando se ingresa una expresión numérica, en grados.
-rand|Devuelve un valor **flotante** pseudoaleatorio de 0 a 1, exclusivo.
-rank|Devuelve el rango de cada fila dentro de la partición de un conjunto de resultados. El rango de una fila es uno más el número de rangos que preceden a la fila en cuestión.
-ranking|Las funciones de clasificación devuelven un valor de clasificación para cada fila en una partición. Dependiendo de la función que se utilice, algunas filas pueden recibir el mismo valor que otras filas. Las funciones de clasificación no son deterministas.
-remserver|
-replace|Reemplaza todas las apariciones de un valor de cadena especificado con otro valor de cadena.
-replicate|Repite un valor de cadena un número específico de veces.
-replication|Devuelve el nombre del publicador de origen de una base de datos publicada que participa en una sesión de creación de reflejo de la base de datos. Esta función se ejecuta en una instancia de Publisher de [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] en la base de datos de publicaciones. Úselo para determinar el publicador original de la base de datos publicada.
-reverse|Devuelve el orden inverso de un valor de cadena.
-right|RIGHT_SHIFT toma dos parámetros y devuelve el primer parámetro desplazado en bits a la derecha por el número de bits especificado en el segundo parámetro.
-right|Devuelve la parte derecha de una cadena de caracteres con el número de caracteres especificado.
-round|Devuelve un valor numérico, redondeado a la longitud o precisión especificada.
-row|Numera la salida de un conjunto de resultados. Más específicamente, devuelve el número secuencial de una fila dentro de una partición de un conjunto de resultados, comenzando en 1 para la primera fila de cada partición.
-rowcount|Devuelve el número de filas afectadas por la última instrucción ejecutada. Esta función funciona como [@@ROWCOUNT](../../t-sql/functions/rowcount-transact-sql.md), excepto que el tipo de retorno de ROWCOUNT_BIG es **bigint**.
-rowcount|Devuelve el número de filas afectadas por la última instrucción. Si el número de filas es superior a 2 mil millones, use [ROWCOUNT_BIG](../../t-sql/functions/rowcount-big-transact-sql.md).
-rtrim|::: moniker range="<=sql-server-ver15 || <=sql-server-linux-ver15 || = azure-sqldw-latest || = azuresqldb-actual || = azuresqldb-mi-actual"
-schema|Devuelve el ID de esquema asociado con un nombre de esquema.
-schema|Devuelve el nombre de esquema asociado con un ID de esquema.
-scope|Devuelve el último valor de identidad insertado en una columna de identidad en el mismo ámbito. Un ámbito es un módulo: un procedimiento almacenado, desencadenador, función o lote. Por lo tanto, si dos declaraciones están en el mismo procedimiento almacenado, función o lote, están en el mismo ámbito.
-security|Las siguientes funciones devuelven información que es útil para administrar la seguridad. Las funciones adicionales se enumeran en [Funciones criptográficas &#40;Transact-SQL&#41;](../../t-sql/functions/cryptographic-functions-transact-sql.md).
-servername|Devuelve el nombre del servidor local que ejecuta [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)].
-serverproperty|Devuelve información de propiedad sobre la instancia del servidor.
-servicename|Devuelve el nombre de la clave de registro bajo la cual se ejecuta [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]. @@SERVICENAME devuelve 'MSSQLSERVER' si la instancia actual es la instancia predeterminada; esta función devuelve el nombre de la instancia si la instancia actual es una instancia con nombre.
-session|Devuelve el valor de la clave especificada en el contexto de la sesión actual. El valor se establece mediante [sp_set_session_context &#40;Transact-SQL&#41;](../../relational-databases/system-stored-procedures/sp-set-session-context-transact-sql.md ) procedimiento.
-session|Devuelve el ID del [!INCLUDE[ssSDW](../../includes/sssdw-md.md)] o [!INCLUDE[ssPDW_md](../../includes/sspdw-md.md) actual ] sesión.
-session|SESSION_USER devuelve el nombre de usuario del contexto actual en la base de datos actual.
-sessionproperty|Devuelve la configuración de opciones SET de una sesión.
-set|SET_BIT devuelve *expression_value* compensado por el bit definido por *bit_offset*. El valor de bit predeterminado es 1, o se establece mediante *bit_value*.
-sign|Devuelve el signo positivo (+1), cero (0) o negativo (-1) de la expresión especificada.
-signbyasymkey|Firma texto sin formato con una clave asimétrica
-signbycert|Firma texto con un certificado y devuelve la firma.
-sin|Devuelve el seno trigonométrico del ángulo especificado, en radianes y en una expresión numérica aproximada, **flotante**.
-smalldatetimefromparts|Devuelve un valor **smalldatetime** para la fecha y hora especificadas.
-soundex|Devuelve un código de cuatro caracteres (SOUNDEX) para evaluar la similitud de dos cadenas.
-space|Devuelve una cadena de espacios repetidos.
-spid|Devuelve el ID de sesión del proceso de usuario actual.
-sql|Devuelve el tipo de datos base y otra información sobre un valor de **sql_variant**.
-sqrt|Devuelve la raíz cuadrada del valor flotante especificado.
-square|Devuelve el cuadrado del valor flotante especificado.
-stats|Devuelve la fecha de la actualización más reciente de las estadísticas de una tabla o vista indexada.
-stdev|Devuelve la desviación estándar estadística de todos los valores de la expresión especificada.
-stdevp|Devuelve la desviación estándar estadística de la población para todos los valores de la expresión especificada.
-str|Devuelve datos de caracteres convertidos a partir de datos numéricos. Los datos de caracteres están justificados a la derecha, con una longitud especificada y una precisión decimal.
-string|<!--[!INCLUDE [sqlserver2017-asdb-asdbmi-asa](../../includes/applies-to-version/sqlserver2017-asdb-asdbmi-asa.md)]-->
-string|Escapa caracteres especiales en textos y devuelve texto con caracteres escapados. **STRING_ESCAPE** es una función determinista, introducida en SQL Server 2016.
-string|Las siguientes funciones escalares realizan una operación en un valor de entrada de cadena y devuelven una cadena o un valor numérico:
-string|Una función con valores de tabla que divide una cadena en filas de subcadenas, en función de un carácter separador especificado.
-stuff|La función STUFF inserta una cadena dentro de otra cadena. Elimina una longitud específica de caracteres en la primera cadena en la posición de inicio y luego inserta la segunda cadena en la primera cadena en la posición de inicio.
-substring|Devuelve parte de una expresión de carácter, binario, texto o imagen en [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)].
-sum|Devuelve la suma de todos los valores, o solo los valores DISTINCT, en la expresión. SUM solo se puede usar con columnas numéricas. Los valores nulos se ignoran.
-suser|Devuelve el número de identificación de inicio de sesión del usuario.
-suser|Devuelve el nombre de identificación de inicio de sesión del usuario.
-suser|Devuelve el número de identificación de seguridad (SID) del nombre de inicio de sesión especificado.
-suser|Devuelve el nombre de inicio de sesión asociado con un número de identificación de seguridad (SID).
-switchoffset|Devuelve un valor de **datetimeoffset** que se cambia del desplazamiento de zona horaria almacenado a un nuevo desplazamiento de zona horaria especificado.
-symkeyproperty|Devuelve el algoritmo de una clave simétrica creada a partir de un módulo EKM.
-sysdatetime|Devuelve un valor **datetime2(7)** que contiene la fecha y la hora del equipo en el que se ejecuta la instancia de [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)].
-sysdatetimeoffset|Devuelve un valor **datetimeoffset(7)** que contiene la fecha y la hora del equipo en el que se ejecuta la instancia de [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]. Se incluye el desplazamiento de la zona horaria.
-system|Las siguientes funciones del sistema realizan operaciones y devuelven información sobre valores, objetos y configuraciones en [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)].
-system|Las siguientes funciones escalares devuelven información estadística sobre el sistema:
-system|Permite insertar en una tabla un valor proporcionado por el sistema para el inicio de sesión actual cuando no se especifica ningún valor predeterminado.
-sysutcdatetime|Devuelve un valor **datetime2** que contiene la fecha y la hora del equipo en el que se ejecuta la instancia de [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]. La fecha y la hora se devuelven como hora UTC (hora universal coordinada). La especificación de precisión de fracciones de segundo tiene un rango de 1 a 7 dígitos. La precisión predeterminada es de 7 dígitos.
-tan|Devuelve la tangente de la expresión de entrada.
-text|Devuelve el valor del puntero de texto que corresponde a una columna **text**, **ntext** o **image** en formato **varbinary**. El valor del puntero de texto recuperado se puede usar en instrucciones READTEXT, WRITETEXT y UPDATETEXT.
-text|Una función **text**, **ntext** o **image** que comprueba si un puntero de texto específico es válido.
-textsize|Devuelve el valor actual de la opción [TEXTSIZE](../../t-sql/statements/set-textsize-transact-sql.md).
-timefromparts|Devuelve un valor de **hora** para la hora especificada y con la precisión especificada.
-timeticks|Devuelve el número de microsegundos por tick.
-todatetimeoffset|Devuelve un valor de **datetimeoffset** que se traduce de una expresión **datetime2**.
-total|Devuelve el número de errores de escritura en disco encontrados por [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] desde [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md .md)] iniciado por última vez.
-total|Devuelve el número de lecturas de disco, no lecturas de caché, por [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] desde [!INCLUDE[ssNoVersion](../../includes/ ssnoversion-md.md)] se inició por última vez.
-total|Devuelve el número de escrituras en disco por [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] desde [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md )] se inició por última vez.
-trancount|Devuelve el número de instrucciones BEGIN TRANSACTION que se han producido en la conexión actual.
-translate|Devuelve la cadena proporcionada como primer argumento, después de que algunos caracteres especificados en el segundo argumento se traduzcan a un conjunto de caracteres de destino, especificado en el tercer argumento.
-trigger|Las siguientes funciones escalares se pueden usar en la definición de un disparador para probar cambios en los valores de los datos o para devolver otros datos.
-trigger|Devuelve el número de activadores ejecutados para la instrucción que activó el activador. TRIGGER_NESTLEVEL se usa en disparadores DML y DDL para determinar el nivel actual de anidamiento.
-trim|Elimina el carácter de espacio `char(32)` u otros caracteres especificados desde el principio y el final de una cadena.
-try|Devuelve una conversión de valor al tipo de datos especificado si la conversión tiene éxito; de lo contrario, devuelve nulo.
-try|Devuelve una conversión de valor al tipo de datos especificado si la conversión tiene éxito; de lo contrario, devuelve nulo.
-try|Devuelve el resultado de una expresión, traducido al tipo de datos solicitado o nulo si la conversión falla en [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]. Use TRY_PARSE solo para convertir de cadena a tipo de fecha/hora y número.
-type|Devuelve el ID de un nombre de tipo de datos especificado.
-type|Devuelve el nombre de tipo no calificado de un ID de tipo especificado.
-typeproperty|Devuelve información sobre un tipo de datos.
-unicode|Devuelve el valor entero, tal como lo define el estándar Unicode, para el primer carácter de la expresión de entrada.
-update|Devuelve un valor booleano que indica si se realizó un intento de INSERCIÓN o ACTUALIZACIÓN en una columna específica de una tabla o vista. UPDATE() se usa en cualquier lugar dentro del cuerpo de un disparador [!INCLUDE[tsql](../../includes/tsql-md.md)] INSERT o UPDATE para probar si el disparador debe ejecutar ciertas acciones.
-upper|Devuelve una expresión de caracteres con datos de caracteres en minúsculas convertidos a mayúsculas.
-user|Devuelve el número de identificación de un usuario de la base de datos.
-user|Devuelve un nombre de usuario de la base de datos a partir de un número de identificación especificado.
-user|Permite insertar en una tabla un valor proporcionado por el sistema para el nombre de usuario de la base de datos del usuario actual cuando no se especifica ningún valor predeterminado.
-var|Devuelve la varianza estadística de todos los valores de la expresión especificada. Puede ir seguido de la [cláusula OVER](../../t-sql/queries/select-over-clause-transact-sql.md).
-varp|Devuelve la varianza estadística de la población para todos los valores de la expresión especificada.
-verifysignedbyasymkey|Comprueba si los datos firmados digitalmente han cambiado desde que se firmaron.
-verifysignedbycert|Comprueba si los datos firmados digitalmente han cambiado desde que se firmaron.
-version|Devuelve información del sistema y compilación para la instalación actual de [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)].
-version|Devuelve la versión de [!INCLUDE[ssSDW](../../includes/sssdw-md.md)] o [!INCLUDE[ssPDW_md](../../includes/sspdw-md.md)] en ejecución en el aparato.
-xact|Es una función escalar que informa el estado de transacción del usuario de una solicitud en ejecución actual. XACT_STATE indica si la solicitud tiene una transacción de usuario activa y si la transacción se puede confirmar.
-year|Devuelve un entero que representa el año de la *fecha* especificada.
+﻿ABS|Una función matemática que devuelve el valor absoluto (positivo) de la expresión numérica especificada. (`ABS` cambia los valores negativos a valores positivos. `ABS` no tiene efecto sobre los valores cero o positivos).
+ACOS|Una función que devuelve el ángulo, en radianes, cuyo coseno es la expresión flotante especificada. Esto también se llama arcocoseno.
+Aggregate|Una función agregada realiza un cálculo en un conjunto de valores y devuelve un solo valor. Excepto por `COUNT(*)`, las funciones agregadas ignoran los valores nulos. Las funciones agregadas a menudo se usan con la cláusula GROUP BY de la instrucción SELECT.
+Analytic|SQL Server admite estas funciones analíticas:
+APP_NAME|Esta función devuelve el nombre de la aplicación para la sesión actual, si la aplicación establece ese valor de nombre.
+APPLOCK_MODE|Esta función devuelve el modo de bloqueo mantenido por el propietario del bloqueo en un recurso de aplicación en particular. Como función de bloqueo de aplicaciones, APPLOCK_MODE opera en la base de datos actual. La base de datos es el ámbito de aplicación de los bloqueos.
+APPLOCK_TEST|Esta función devuelve información sobre si se puede otorgar o no un bloqueo en un recurso de aplicación en particular, para un propietario de bloqueo específico, sin la adquisición del bloqueo. Como función de bloqueo de aplicaciones, APPLOCK_TEST opera en la base de datos actual. La base de datos es el ámbito de aplicación de los bloqueos.
+APPROX_COUNT_DISTINCT|Esta función devuelve el número aproximado de valores únicos no nulos en un grupo.
+APPROX_PERCENTILE_CONT|Esta función devuelve un valor interpolado aproximado del conjunto de valores en un grupo basado en el valor percentil y la especificación de clasificación. Dado que esta es una función aproximada, la salida estaría dentro del límite de error basado en el rango con cierta confianza. El valor percentil devuelto por esta función se basa en una distribución continua de los valores de la columna y el resultado se interpolaría. Debido a esto, es posible que la salida no sea uno de los valores del conjunto de datos. Uno de los casos de uso común para esta función es evitar los datos atípicos. Esta función se puede utilizar como alternativa a PERCENTILE_CONT para grandes conjuntos de datos en los que es aceptable un error insignificante con una respuesta más rápida en comparación con un valor de percentil preciso con un tiempo de respuesta lento.
+APPROX_PERCENTILE_DISC|Esta función devuelve el valor del conjunto de valores en un grupo en función del percentil proporcionado y la especificación de clasificación. Dado que esta es una función aproximada, la salida estaría dentro del límite de error basado en el rango con cierta confianza. Como este percentil aproximado se basa en una distribución discreta de los valores de la columna, el valor de salida sería igual a uno de los valores específicos de la columna. Esta función se puede utilizar como alternativa a PERCENTILE_DISC para grandes conjuntos de datos en los que es aceptable un error insignificante con una respuesta más rápida en comparación con un valor de percentil preciso con un tiempo de respuesta lento.
+ASCII|Devuelve el valor del código ASCII del carácter más a la izquierda de una expresión de carácter.
+ASIN|Una función que devuelve el ángulo, en radianes, cuyo seno es la expresión **flotante** especificada. Esto también se llama **arcoseno**.
+ASSEMBLYPROPERTY|Esta función devuelve información sobre una propiedad de un ensamblaje.
+ASYMKEY_ID|Devuelve el ID de una clave asimétrica.
+ASYMKEYPROPERTY|Esta función devuelve las propiedades de una clave asimétrica.
+ATAN|Una función que devuelve el ángulo, en radianes, cuya tangente es una expresión **flotante** especificada. Esto también se llama arcotangente.
+ATN2|Devuelve el ángulo, en radianes, entre el eje x positivo y el rayo desde el origen hasta el punto (y, x), donde x e y son los valores de las dos expresiones flotantes especificadas.
+AVG|Esta función devuelve el promedio de los valores en un grupo. Ignora los valores nulos.
+BINARY_CHECKSUM|Devuelve el valor de la suma de comprobación binaria calculado sobre una fila de una tabla o sobre una lista de expresiones.
+BIT_COUNT|BIT_COUNT toma un parámetro y devuelve el número de bits establecidos en 1 en ese parámetro como un tipo **bigint**.
+CAST|Estas funciones convierten una expresión de un tipo de datos a otro.
+CEILING|Esta función devuelve el entero más pequeño mayor o igual que la expresión numérica especificada.
+CERT_ID|Esta función devuelve el valor de ID de un certificado.
+CERTENCODED|Esta función devuelve la parte pública de un certificado en formato binario. Esta función toma un ID de certificado como argumento y devuelve el certificado codificado. Para crear un nuevo certificado, pase el resultado binario a **CREAR CERTIFICADO... CON BINARIO**.
+CERTPRIVATEKEY|Esta función devuelve la clave privada de un certificado en formato binario. Esta función toma tres argumentos.
+CERTPROPERTY|Devuelve el valor de una propiedad de certificado especificada.
+CHAR|Devuelve el carácter de un solo byte con el código entero especificado, según lo definido por el juego de caracteres y la codificación de la intercalación predeterminada de la base de datos actual.
+CHARINDEX|Esta función busca una expresión de carácter dentro de una segunda expresión de carácter y, si la encuentra, devuelve la posición inicial de la primera expresión.
+CHECKSUM_AGG|Esta función devuelve la suma de comprobación de los valores de un grupo. `CHECKSUM_AGG` ignora los valores nulos. La [cláusula OVER](../../t-sql/queries/select-over-clause-transact-sql.md) puede seguir a `CHECKSUM_AGG`.
+CHECKSUM|La función `CHECKSUM` devuelve el valor de la suma de comprobación calculado sobre una fila de tabla o sobre una lista de expresiones. Use `CHECKSUM` para construir índices hash.
+COL_LENGTH|Esta función devuelve la longitud definida de una columna, en bytes.
+COL_NAME|Esta función devuelve el nombre de una columna de la tabla, en función del número de identificación de la tabla y los valores del número de identificación de la columna de esa columna de la tabla.
+COLLATIONPROPERTY|Esta función devuelve la propiedad solicitada de una colación especificada.
+TERTIARY_WEIGHTS|Para cada carácter en una expresión de cadena no Unicode, definida con una intercalación terciaria de SQL, esta función devuelve una cadena binaria de pesos.
+COLUMNPROPERTY|Esta función devuelve información de columna o parámetro.
+COLUMNS_UPDATED|Esta función devuelve un patrón de bits **varbinary** que indica las columnas insertadas o actualizadas de una tabla o vista. Use `COLUMNS_UPDATED` en cualquier lugar dentro del cuerpo de un disparador [!INCLUDE[tsql](../../includes/tsql-md.md)] INSERT o UPDATE para probar si el disparador debe ejecutar ciertas acciones.
+COMPRESS|Esta función comprime la expresión de entrada, utilizando el algoritmo GZIP. La función devuelve una matriz de bytes de tipo **varbinary(max)**.
+CONCAT|Esta función devuelve una cadena que resulta de la concatenación o unión de dos o más valores de cadena de un extremo a otro. (Para agregar un valor de separación durante la concatenación, consulte [CONCAT_WS](../../t-sql/functions/concat-ws-transact-sql.md).)
+CONCAT_WS|Esta función devuelve una cadena que resulta de la concatenación o unión de dos o más valores de cadena de un extremo a otro. Separa esos valores de cadena concatenados con el delimitador especificado en el primer argumento de la función. (`CONCAT_WS` indica *concatenar con separador*.)
+Configuration|Estas funciones escalares devuelven información sobre las opciones de configuración actuales:
+CONNECTIONPROPERTY|Para una solicitud que ingresa al servidor, esta función devuelve información sobre las propiedades de conexión de la conexión única que admite esa solicitud.
+@@CONNECTIONS|Esta función devuelve el número de intentos de conexión, tanto exitosos como fallidos, desde que [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] se inició por última vez.
+CONTEXT_INFO|Esta función devuelve el valor **context_info** establecido para la sesión o lote actual, o derivado mediante el uso de [SET CONTEXT_INFO](../../t-sql/statements/set-context-info-transact- sql.md) declaración.
+Conversion|Estas funciones admiten la conversión y conversión de tipos de datos:
+COS|Una función matemática que devuelve el coseno trigonométrico del ángulo especificado, medido en radianes, en la expresión especificada.
+COT|Una función matemática que devuelve la cotangente trigonométrica del ángulo especificado, en radianes, en la expresión **float** especificada.
+COUNT_BIG|Esta función devuelve el número de elementos encontrados en un grupo. `COUNT_BIG` funciona como la función [COUNT](../../t-sql/functions/count-transact-sql.md). Estas funciones difieren solo en los tipos de datos de sus valores de retorno. `COUNT_BIG` siempre devuelve un valor de tipo de datos **bigint**. `COUNT` siempre devuelve un valor de tipo de datos **int**.
+COUNT|Esta función devuelve el número de elementos encontrados en un grupo. `COUNT` funciona como la función [COUNT_BIG](../../t-sql/functions/count-big-transact-sql.md). Estas funciones difieren solo en los tipos de datos de sus valores de retorno. `COUNT` siempre devuelve un valor de tipo de datos **int**. `COUNT_BIG` siempre devuelve un valor de tipo de datos **bigint**.
+CPU_BUSY|Esta función devuelve la cantidad de tiempo que [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] ha pasado en operación activa desde su último inicio. `@@CPU_BUSY` devuelve un resultado medido en incrementos de tiempo de CPU, o "ticks". Este valor es acumulativo para todas las CPU, por lo que puede superar el tiempo transcurrido real. Para convertir a microsegundos, multiplique por [@@TIMETICKS](./timeticks-transact-sql.md).
+CRYPT_GEN_RANDOM|Esta función devuelve un número criptográfico, generado aleatoriamente, generado por Crypto API (CAPI). `CRYPT_GEN_RANDOM` devuelve un número hexadecimal con una longitud de un número específico de bytes.
+Cryptographic|Estas funciones admiten firma digital, validación de firma digital, cifrado y descifrado.
+CUME_DIST|Para [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)], esta función calcula la distribución acumulativa de un valor dentro de un grupo de valores. En otras palabras, `CUME_DIST` calcula la posición relativa de un valor específico en un grupo de valores. Asumiendo un orden ascendente, el `CUME_DIST` de un valor en la fila _r_ se define como el número de filas con valores menores o iguales a ese valor en la fila _r_, dividido por el número de filas evaluadas en el conjunto de resultados de partición o consulta. `CUME_DIST` es similar a la función `PERCENT_RANK`.
+CURRENT_REQUEST_ID|Esta función devuelve el ID de la solicitud actual dentro de la sesión actual.
+CURRENT_TIMESTAMP|Esta función devuelve la marca de tiempo actual del sistema de la base de datos como un valor de **fecha y hora**, sin el desplazamiento de la zona horaria de la base de datos. `CURRENT_TIMESTAMP` deriva este valor del sistema operativo de la computadora en la que se ejecuta la instancia de [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)].
+CURRENT_TIMEZONE_ID|Esta función devuelve el ID de la zona horaria observada por un servidor o una instancia. Para Instancia administrada de Azure SQL, el valor devuelto se basa en la zona horaria de la propia instancia asignada durante la creación de la instancia, no en la zona horaria del sistema operativo subyacente.
+CURRENT_TIMEZONE|Esta función devuelve el nombre de la zona horaria observada por un servidor o una instancia. Para Instancia administrada de SQL, el valor devuelto se basa en la zona horaria de la propia instancia asignada durante la creación de la instancia, no en la zona horaria del sistema operativo subyacente.
+CURRENT_TRANSACTION_ID|Esta función devuelve el ID de transacción de la transacción actual en la sesión actual.
+CURRENT_USER|Esta función devuelve el nombre del usuario actual. Esta función es equivalente a `USER_NAME()`.
+Cursor|Estas funciones escalares devuelven información sobre los cursores:
+@@CURSOR_ROWS|Esto devuelve el número de filas calificadas actualmente en el último cursor abierto en la conexión. Para mejorar el rendimiento, [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] puede llenar conjuntos de claves grandes y cursores estáticos de forma asíncrona. Se puede llamar a `@@CURSOR_ROWS` para determinar que el número de filas que califican para un cursor se recuperan en el momento de la llamada @@CURSOR_ROWS.
+CURSOR_STATUS|Para un parámetro dado, `CURSOR_STATUS` muestra si una declaración de cursor ha devuelto o no un cursor y un conjunto de resultados.
+Data|Estas funciones escalares devuelven información sobre varios valores de tipos de datos.
+DATABASE_PRINCIPAL_ID|Esta función devuelve el número de identificación de un principal en la base de datos actual. Consulte [Principals &#40;Motor de base de datos&#41;](../../relational-databases/security/authentication-access/principals-database-engine.md) para obtener más información sobre los principales.
+DATABASEPROPERTYEX|Para una base de datos especificada en [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)], esta función devuelve la configuración actual de la propiedad o opción de base de datos especificada.
+DATALENGTH|Esta función devuelve el número de bytes utilizados para representar cualquier expresión.
+Date|Las secciones de este artículo cubren todos los tipos y funciones de datos de fecha y hora [!INCLUDE[tsql](../../includes/tsql-md.md)].
+DATE_BUCKET|Esta función devuelve el valor de fecha y hora correspondiente al inicio de cada cubo de fecha y hora desde la marca de tiempo definida por el parámetro `origen`, o el valor de origen predeterminado de `1900-01-01 00:00:00.000` si el origen el parámetro no está especificado.
+DATEADD|Esta función agrega un *número* (un entero con signo) a una *parte de fecha* de una *fecha* de entrada y devuelve un valor de fecha/hora modificado. Por ejemplo, puede usar esta función para encontrar la fecha que es 7000 minutos a partir de hoy: *número* = 7000, *datepart* = minuto, *fecha* = hoy.
+DATEDIFF_BIG|Esta función devuelve el recuento (como un valor entero grande con signo) de los límites *datepart* especificados cruzados entre la *fecha de inicio* y la *fecha de finalización* especificadas.
+DATEDIFF|Esta función devuelve el recuento (como un valor entero con signo) de los límites de parte de fecha especificados cruzados entre la *fecha de inicio* y la *fecha de finalización* especificadas.
+@@DATEFIRST|Esta función devuelve el valor actual de [SET DATEFIRST](../../t-sql/statements/set-datefirst-transact-sql.md), para una sesión específica.
+DATEFROMPARTS|Esta función devuelve un valor de **fecha** que se asigna a los valores de año, mes y día especificados.
+DATENAME|Esta función devuelve una cadena de caracteres que representa el *datepart* especificado de la *fecha* especificada.
+DATEPART|Esta función devuelve un número entero que representa el *datepart* especificado de la *fecha* especificada.
+DATETIME2FROMPARTS|Esta función devuelve un valor **datetime2** para los argumentos de fecha y hora especificados. El valor devuelto tiene una precisión especificada por el argumento de precisión.
+DATETIMEFROMPARTS|Esta función devuelve un valor **datetime** para los argumentos de fecha y hora especificados.
+DATETIMEOFFSETFROMPARTS|Devuelve un valor **datetimeoffset** para los argumentos de fecha y hora especificados. El valor devuelto tiene una precisión especificada por el argumento de precisión y un desplazamiento según lo especificado por los argumentos de desplazamiento.
+DATETRUNC|Comenzando con [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)], esta función devuelve una *fecha* de entrada truncada a una *parte de fecha* especificada.
+DAY|Esta función devuelve un número entero que representa el día (día del mes) de la *fecha* especificada.
+DB_ID|Esta función devuelve el número de identificación (ID) de la base de datos de una base de datos especificada.
+DB_NAME|Esta función devuelve el nombre de una base de datos especificada.
+DBTS|Esta función devuelve el valor del tipo de datos de **marca de tiempo** actual para la base de datos actual. La base de datos actual tendrá un valor de marca de tiempo único garantizado.
+DECOMPRESS|Esta función descomprimirá un valor de expresión de entrada, usando el algoritmo GZIP. `DECOMPRESS` devolverá una matriz de bytes (tipo VARBINARY(MAX)).
+DECRYPTBYASYMKEY|Esta función utiliza una clave asimétrica para descifrar datos cifrados.
+DECRYPTBYCERT|Esta función utiliza la clave privada de un certificado para descifrar datos cifrados.
+DECRYPTBYKEY|Esta función utiliza una clave simétrica para descifrar datos.
+DECRYPTBYKEYAUTOASYMKEY|Esta función descifra los datos cifrados. Para hacer esto, primero descifra una clave simétrica con una clave asimétrica separada y luego descifra los datos cifrados con la clave simétrica extraída en el primer "paso".
+DECRYPTBYKEYAUTOCERT|Esta función descifra los datos con una clave simétrica. Esa clave simétrica se descifra automáticamente con un certificado.
+DECRYPTBYPASSPHRASE|Esta función descifra los datos cifrados originalmente con una frase de contraseña.
+DEGREES|Esta función devuelve el ángulo correspondiente, en grados, para un ángulo especificado en radianes.
+DENSE_RANK|Esta función devuelve la clasificación de cada fila dentro de una partición de conjunto de resultados, sin espacios en los valores de clasificación. El rango de una fila específica es uno más el número de valores de rango distintos que vienen antes de esa fila específica.
+DIFFERENCE|Esta función devuelve un valor entero que mide la diferencia entre los valores [SOUNDEX()](./soundex-transact-sql.md) de dos expresiones de caracteres diferentes.
+EDGE_ID_FROM_PARTS|Devuelve la representación de caracteres (JSON) del Id. de borde para un Id. de objeto y un Id. de gráfico determinados.
+ENCRYPTBYASYMKEY|Esta función cifra los datos con una clave asimétrica.
+ENCRYPTBYCERT|Cifra los datos con la clave pública de un certificado.
+ENCRYPTBYKEY|Cifra los datos mediante una clave simétrica.
+ENCRYPTBYPASSPHRASE|Cifre los datos con una frase de contraseña utilizando el algoritmo TRIPLE DES con una longitud de bits de clave de 128.
+EOMONTH|Esta función devuelve el último día del mes que contiene una fecha específica, con un desplazamiento opcional.
+ERROR_LINE|Esta función devuelve el número de línea de ocurrencia de un error que provocó la ejecución del bloque CATCH de una construcción TRY...CATCH.
+ERROR_MESSAGE|Esta función devuelve el texto del mensaje del error que provocó la ejecución del bloque CATCH de una construcción TRY...CATCH.
+ERROR_NUMBER|Esta función devuelve el número de error del error que provocó la ejecución del bloque CATCH de una construcción TRY...CATCH.
+ERROR_PROCEDURE|Esta función devuelve el nombre del procedimiento almacenado o activador donde se produce un error, si ese error hizo que se ejecutara el bloque CATCH de una construcción TRY...CATCH.
+ERROR_SEVERITY|Esta función devuelve el valor de gravedad del error cuando se produce un error, si ese error hizo que se ejecutara el bloque CATCH de una construcción TRY...CATCH.
+ERROR_STATE|Devuelve el número de estado del error que provocó la ejecución del bloque CATCH de una construcción TRY...CATCH.
+@@ERROR|Devuelve el número de error de la última instrucción [!INCLUDE[tsql](../../includes/tsql-md.md)] ejecutada.
+EVENTDATA|Esta función devuelve información sobre eventos del servidor o de la base de datos. Cuando se activa una notificación de evento y el intermediario de servicios especificado recibe los resultados, se llama a `EVENTDATA`. Un activador de inicio de sesión o DDL también admite el uso interno de `EVENTDATA`.
+EXP|Devuelve el valor exponencial de la expresión **flotante** especificada.
+FETCH_STATUS|Esta función devuelve el estado de la última instrucción FETCH de cursor emitida contra cualquier cursor actualmente abierto por la conexión.
+FILE_ID|Para el nombre lógico proporcionado para un archivo componente de la base de datos actual, esta función devuelve el número de identificación (ID) del archivo.
+FILE_IDEX|Esta función devuelve el número de identificación (ID) del archivo para el nombre lógico especificado de un archivo de datos, registro o texto completo de la base de datos actual.
+FILE_NAME|Esta función devuelve el nombre de archivo lógico para un número de identificación (ID) de archivo dado.
+FILEGROUP_ID|Esta función devuelve el número de identificación (ID) del grupo de archivos para un nombre de grupo de archivos especificado.
+FILEGROUP_NAME|Esta función devuelve el nombre del grupo de archivos para el número de identificación (ID) del grupo de archivos especificado.
+FILEGROUPPROPERTY|Esta función devuelve el valor de la propiedad del grupo de archivos para un nombre y un valor de grupo de archivos especificados.
+FILEPROPERTY|Devuelve el valor de propiedad del nombre de archivo especificado cuando se especifica un nombre de archivo en la base de datos actual y un nombre de propiedad. Devuelve NULL para archivos que no están en la base de datos actual.
+FILEPROPERTYEX|Devuelve el valor de propiedad de archivo extendido especificado cuando se especifica un nombre de archivo en la base de datos actual y un nombre de propiedad. Devuelve NULL para archivos que no están en la base de datos actual o para propiedades de archivo extendidas que no existen. Actualmente, las propiedades de archivo extendidas solo se aplican a las bases de datos que se encuentran en Azure Blob Storage.
+FIRST_VALUE|Devuelve el primer valor de un conjunto ordenado de valores.
+FLOOR|Devuelve el entero más grande menor o igual que la expresión numérica especificada.
+FORMAT|Devuelve un valor formateado con el formato especificado y la referencia cultural opcional. Utilice la función FORMAT para dar formato a la configuración regional de los valores numéricos y de fecha/hora como cadenas. Para conversiones generales de tipos de datos, utilice CAST o CONVERT.
+FORMATMESSAGE|Construye un mensaje a partir de un mensaje existente en sys.messages o de una cadena proporcionada. La funcionalidad de FORMATMESSAGE se asemeja a la de la instrucción RAISERROR. Sin embargo, RAISERROR imprime el mensaje inmediatamente, mientras que FORMATMESSAGE devuelve el mensaje formateado para su posterior procesamiento.
+FULLTEXTCATALOGPROPERTY|Devuelve información sobre las propiedades del catálogo de texto completo en [!INCLUDE[ssnoversion](../../includes/ssnoversion-md.md)].
+FULLTEXTSERVICEPROPERTY|Devuelve información relacionada con las propiedades del motor de texto completo. Estas propiedades se pueden establecer y recuperar mediante **sp_fulltext_service**.
+GENERATE_SERIES|Genera una serie de números dentro de un intervalo dado. El usuario define el intervalo y el paso entre los valores de la serie.
+GET_BIT|GET_BIT toma dos parámetros y devuelve el bit en *expression_value* que está en el desplazamiento definido por *bit_offset*.
+GET_FILESTREAM_TRANSACTION_CONTEXT|Devuelve un token que representa el contexto de transacción actual de una sesión. Una aplicación utiliza el token para vincular las operaciones de transmisión del sistema de archivos FILESTREAM a la transacción. Para obtener una lista de temas de FILESTREAM, consulte [Binary Large Object &#40;Blob&#41; Datos &#40;SQL Server&#41;](../../relational-databases/blob/binary-large-object-blob-data-sql-server.md).
+GETANSINULL|Devuelve la nulabilidad predeterminada para la base de datos para esta sesión.
+GETDATE|Devuelve la marca de tiempo actual del sistema de la base de datos como un valor de **fecha y hora** sin el desplazamiento de la zona horaria de la base de datos. Este valor se deriva del sistema operativo de la computadora en la que se ejecuta la instancia de [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)].
+GETUTCDATE|Devuelve la marca de tiempo del sistema de la base de datos actual como un valor de **fechahora**. El desplazamiento de la zona horaria de la base de datos no está incluido. Este valor representa la hora UTC actual (Tiempo Universal Coordinado). Este valor se deriva del sistema operativo de la computadora en la que se ejecuta la instancia de [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)].
+Graph|Utilice las funciones descritas en las páginas de esta sección para extraer valores y transformar valores en pseudocolumnas utilizadas en SQL Graph.
+GRAPH_ID_FROM_EDGE_ID|Devuelve el ID de gráfico interno para un ID de borde determinado.
+GRAPH_ID_FROM_NODE_ID|Devuelve el ID de gráfico interno para un ID de nodo determinado.
+GROUPING_ID|Es una función que calcula el nivel de agrupación. GROUPING_ID solo se puede usar en las cláusulas SELECT \<select> list, HAVING u ORDER BY cuando se especifica GROUP BY.
+GROUPING|Indica si una expresión de columna especificada en una lista GROUP BY está agregada o no. GROUPING devuelve 1 para agregados o 0 para no agregados en el conjunto de resultados. GROUPING solo se puede usar en las cláusulas SELECT \<select> list, HAVING y ORDER BY cuando se especifica GROUP BY.
+HAS_DBACCESS|Devuelve información sobre si el usuario tiene acceso a la base de datos especificada.
+HAS_PERMS_BY_NAME|Evalúa el permiso efectivo del usuario actual en un asegurable. Una función relacionada es [fn_my_permissions](../../relational-databases/system-functions/sys-fn-my-permissions-transact-sql.md).
+HASHBYTES|Devuelve el hash MD2, MD4, MD5, SHA, SHA1 o SHA2 de su entrada en [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)].
+HOST_ID|Devuelve el número de identificación de la estación de trabajo. El número de identificación de la estación de trabajo es el ID de proceso (PID) de la aplicación en la computadora cliente que se conecta a [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)].
+HOST_NAME|Devuelve el nombre de la estación de trabajo.
+IDENT_CURRENT|Devuelve el último valor de identidad generado para una tabla o vista especificada. El último valor de identidad generado puede ser para cualquier sesión y cualquier ámbito.
+IDENT_INCR|Devuelve el valor de incremento especificado al crear una columna de identidad de tabla o vista.
+IDENT_SEED|Devuelve el valor semilla original especificado al crear una columna de identidad en una tabla o vista. Cambiar el valor actual de una columna de identidad mediante DBCC CHECKIDENT no cambia el valor devuelto por esta función.
+IDENTITY|Se usa solo en una instrucción SELECT con una cláusula INTO *table* para insertar una columna de identidad en una nueva tabla. Aunque es similar, la función IDENTITY no es la propiedad IDENTITY que se usa con CREATE TABLE y ALTER TABLE.
+@@IDENTITY|Es una función del sistema que devuelve el último valor de identidad insertado.
+@@IDLE|Devuelve el tiempo que [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] estuvo inactivo desde que se inició por última vez. El resultado está en incrementos de tiempo de CPU, o "marcas", y es acumulativo para todas las CPU, por lo que puede exceder el tiempo real transcurrido. Multiplique por @@TIMETICKS para convertir a microsegundos.
+INDEX_COL|Devuelve el nombre de la columna indexada. Devuelve NULL para índices XML.
+INDEXKEY_PROPERTY|Devuelve información sobre la clave de índice. Devuelve NULL para índices XML.
+INDEXPROPERTY|Devuelve el índice con nombre o el valor de la propiedad de estadísticas de un número de identificación de tabla especificado, el nombre del índice o de las estadísticas y el nombre de la propiedad. Devuelve NULL para índices XML.
+@@IO_BUSY|Devuelve el tiempo que [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] ha dedicado a realizar operaciones de entrada y salida desde [!INCLUDE[ssNoVersion](../../includes/ssnoversion -md.md)] se inició por última vez. El resultado está en incrementos de tiempo de CPU ("ticks") y es acumulativo para todas las CPU, por lo que puede exceder el tiempo transcurrido real. Multiplique por @@TIMETICKS para convertir a microsegundos.
+IS_MEMBER|Indica si el usuario actual es miembro del grupo de Windows especificado [!INCLUDE[msCoName](../../includes/msconame-md.md)] o [!INCLUDE[ssNoVersion](../../includes /ssnoversion-md.md)] rol de base de datos. La función IS_MEMBER no es compatible con los grupos de Azure Active Directory.
+IS_OBJECTSIGNED|Indica si un objeto está firmado por un certificado especificado o una clave asimétrica.
+IS_ROLEMEMBER|Indica si un principal de base de datos especificado es miembro del rol de base de datos especificado.
+IS_SRVROLEMEMBER|Indica si un inicio de sesión [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] es miembro del rol de servidor especificado.
+ISDATE|Devuelve 1 si la *expresión* es un valor de **fechahora** válido; de lo contrario, 0.
+ISJSON|Comprueba si una cadena contiene JSON válido.
+ISNULL|Reemplaza NULL con el valor de reemplazo especificado.
+ISNUMERIC|Determina si una expresión es un tipo numérico válido.
+JSON_ARRAY|Construye texto de matriz JSON a partir de cero o más expresiones.
+JSON|Utilice las funciones descritas en las páginas de esta sección para validar o cambiar el texto JSON o para extraer valores simples o complejos.
+JSON_MODIFY|Actualiza el valor de una propiedad en una cadena JSON y devuelve la cadena JSON actualizada.
+JSON_OBJECT|Construye texto de objeto JSON a partir de cero o más expresiones.
+JSON_PATH_EXISTS|Comprueba si existe una ruta SQL/JSON especificada en la cadena JSON de entrada.
+JSON_QUERY|Extrae un objeto o una matriz de una cadena JSON.
+JSON_VALUE|Extrae un valor escalar de una cadena JSON.
+KEY_GUID|Devuelve el GUID de una clave simétrica en la base de datos.
+KEY_ID|Devuelve el ID de una clave simétrica en la base de datos actual.
+KEY_NAME|Devuelve el nombre de la clave simétrica desde un GUID de clave simétrica o texto cifrado.
+LAG|Accede a los datos de una fila anterior en el mismo conjunto de resultados sin el uso de una combinación automática que comience con [!INCLUDE[ssSQL11](../../includes/sssql11-md.md)]. LAG proporciona acceso a una fila en un desplazamiento físico dado que viene antes de la fila actual. Utilice esta función analítica en una declaración SELECT para comparar valores en la fila actual con valores en una fila anterior.
+@@LANGID|Devuelve el identificador de idioma local (ID) del idioma que se está utilizando actualmente.
+@@LANGUAGE|Devuelve el nombre del idioma que se está utilizando actualmente.
+LAST_VALUE|Devuelve el último valor de un conjunto ordenado de valores.
+LEAD|Accede a los datos de una fila posterior en el mismo conjunto de resultados sin el uso de una autocombinación que comience con [!INCLUDE[ssSQL11](../../includes/sssql11-md.md)]. LEAD proporciona acceso a una fila en un desplazamiento físico determinado que sigue a la fila actual. Utilice esta función analítica en una declaración SELECT para comparar valores en la fila actual con valores en una fila siguiente.
+LEFT_SHIFT|LEFT_SHIFT toma dos parámetros y devuelve el primer parámetro desplazado en bits a la izquierda por el número de bits especificado en el segundo parámetro.
+LEFT|Devuelve la parte izquierda de una cadena de caracteres con el número de caracteres especificado.
+LEN|Devuelve el número de caracteres de la expresión de cadena especificada, sin incluir los espacios finales.
+@@LOCK_TIMEOUT|Devuelve la configuración de tiempo de espera de bloqueo actual en milisegundos para la sesión actual.
+LOG|Devuelve el logaritmo natural de la expresión **float** especificada en [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)].
+LOG10|Devuelve el logaritmo en base 10 de la expresión **flotante** especificada.
+CHOOSE|Devuelve el elemento en el índice especificado de una lista de valores en [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)].
+GREATEST|Esta función devuelve el valor máximo de una lista de una o más expresiones.
+IIF|Devuelve uno de dos valores, dependiendo de si la expresión booleana se evalúa como verdadera o falsa en [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)].
+LEAST|Esta función devuelve el valor mínimo de una lista de una o más expresiones.
+LOGINPROPERTY|Devuelve información sobre la configuración de la política de inicio de sesión.
+LOWER|Devuelve una expresión de carácter después de convertir los datos de caracteres en mayúsculas a minúsculas.
+LTRIM|::: moniker range="<=sql-server-ver15 || <=sql-server-linux-ver15 || = azure-sqldw-latest || = azuresqldb-actual || = azuresqldb-mi-actual"
+Mathematical|Las siguientes funciones escalares realizan un cálculo, generalmente basado en valores de entrada que se proporcionan como argumentos, y devuelven un valor numérico:
+@@MAX_CONNECTIONS|Devuelve el número máximo de conexiones de usuario simultáneas permitidas en una instancia de [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]. El número devuelto no es necesariamente el número configurado actualmente.
+@@MAX_PRECISION|Devuelve el nivel de precisión utilizado por los tipos de datos **decimales** y **numéricos** tal como se establece actualmente en el servidor.
+MAX|Devuelve el valor máximo de la expresión.
+Metadata|Las siguientes funciones escalares devuelven información sobre la base de datos y los objetos de la base de datos:
+MIN_ACTIVE_ROWVERSION|Devuelve el valor **rowversion** activo más bajo en la base de datos actual. Un valor de **rowversion** está activo si se usa en una transacción que aún no se ha confirmado. Para obtener más información, consulte [rowversion &#40;Transact-SQL&#41;](../../t-sql/data-types/rowversion-transact-sql.md).
+MIN|Devuelve el valor mínimo de la expresión. Puede ir seguido de la [cláusula OVER](../../t-sql/queries/select-over-clause-transact-sql.md).
+MONTH|Devuelve un número entero que representa el mes de la *fecha* especificada.
+NCHAR|Devuelve el carácter Unicode con el código entero especificado, tal como lo define el estándar Unicode.
+@@NESTLEVEL|Devuelve el nivel de anidamiento de la ejecución del procedimiento almacenado actual (inicialmente 0) en el servidor local.
+NEWID|Crea un valor único de tipo **identificador único**.
+NEWSEQUENTIALID|Crea un GUID que es mayor que cualquier GUID generado previamente por esta función en una computadora específica desde que se inició Windows. Después de reiniciar Windows, el GUID puede comenzar nuevamente desde un rango más bajo, pero aún es único globalmente. Cuando se usa una columna GUID como identificador de fila, usar NEWSEQUENTIALID puede ser más rápido que usar la función NEWID. Esto se debe a que la función NEWID genera actividad aleatoria y utiliza menos páginas de datos en caché. El uso de NEWSEQUENTIALID también ayuda a llenar completamente las páginas de datos e índices.
+NEXT|Genera un número de secuencia a partir del objeto de secuencia especificado.
+NODE_ID_FROM_PARTS|Devuelve la representación de caracteres (JSON) del ID de nodo para un ID de objeto y un ID de gráfico determinados.
+NTILE|Distribuye las filas de una partición ordenada en un número específico de grupos. Los grupos están numerados, empezando por el uno. Para cada fila, NTILE devuelve el número del grupo al que pertenece la fila.
+OBJECT_DEFINITION|Devuelve el texto fuente [!INCLUDE[tsql](../../includes/tsql-md.md)] de la definición de un objeto especificado.
+OBJECT_ID_FROM_EDGE_ID|Devuelve el Id. de objeto para un Id. de borde de gráfico dado.
+OBJECT_ID_FROM_NODE_ID|Devuelve el Id. de objeto para un Id. de nodo gráfico determinado.
+OBJECT_ID|Devuelve el número de identificación del objeto de la base de datos de un objeto del ámbito del esquema.
+OBJECT_NAME|Devuelve el nombre del objeto de la base de datos para los objetos del ámbito del esquema. Para obtener una lista de objetos con ámbito de esquema, consulte [sys.objects &#40;Transact-SQL&#41;](../../relational-databases/system-catalog-views/sys-objects-transact-sql. Maryland).
+OBJECT_SCHEMA_NAME|Devuelve el nombre del esquema de la base de datos para los objetos del ámbito del esquema. Para obtener una lista de objetos con ámbito de esquema, consulte [sys.objects &#40;Transact-SQL&#41;](../../relational-databases/system-catalog-views/sys-objects-transact-sql. Maryland).
+OBJECTPROPERTY|Devuelve información sobre los objetos del ámbito del esquema en la base de datos actual. Para obtener una lista de objetos con ámbito de esquema, consulte [sys.objects &#40;Transact-SQL&#41;](../../relational-databases/system-catalog-views/sys-objects-transact-sql. Maryland). Esta función no se puede usar para objetos que no tienen un ámbito de esquema, como desencadenadores de lenguaje de definición de datos (DDL) y notificaciones de eventos.
+OBJECTPROPERTYEX|Devuelve información sobre los objetos del ámbito del esquema en la base de datos actual. Para obtener una lista de estos objetos, consulte [sys.objects &#40;Transact-SQL&#41;](../../relational-databases/system-catalog-views/sys-objects-transact-sql.md) . OBJECTPROPERTYEX no se puede usar para objetos que no tienen un ámbito de esquema, como desencadenadores de lenguaje de definición de datos (DDL) y notificaciones de eventos.
+ODBC|Puede usar [Funciones escalares de ODBC](../../odbc/reference/appendixes/appendix-e-scalar-functions.md) en [!INCLUDE[tsql](../../includes/tsql-md .md)] declaraciones. Estas declaraciones son interpretadas por [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]. Se pueden utilizar en procedimientos almacenados y funciones definidas por el usuario. Estas incluyen funciones de cadena, numéricas, de hora, de fecha, de intervalo y del sistema.
+OPENDATASOURCE|Proporciona información de conexión ad hoc como parte de un nombre de objeto de cuatro partes sin usar un nombre de servidor vinculado.
+OPENJSON|**OPENJSON** es una función con valores de tabla que analiza texto JSON y devuelve objetos y propiedades de la entrada JSON como filas y columnas. En otras palabras, **OPENJSON** proporciona una vista de conjunto de filas sobre un documento JSON. Puede especificar explícitamente las columnas en el conjunto de filas y las rutas de propiedad JSON utilizadas para completar las columnas. Dado que **OPENJSON** devuelve un conjunto de filas, puede usar **OPENJSON** en la cláusula `FROM` de [!INCLUDE[tsql](../../includes/tsql-md.md)] tal como puede usar cualquier otra tabla, vista o función con valores de tabla.
+OPENQUERY|Ejecuta la consulta de paso a través especificada en el servidor vinculado especificado. Este servidor es una fuente de datos OLE DB. Se puede hacer referencia a OPENQUERY en la cláusula FROM de una consulta como si fuera un nombre de tabla. También se puede hacer referencia a OPENQUERY como la tabla de destino de una instrucción INSERT, UPDATE o DELETE. Esto está sujeto a las capacidades del proveedor OLE DB. Aunque la consulta puede devolver varios conjuntos de resultados, OPENQUERY solo devuelve el primero.
+OPENROWSET|Incluye toda la información de conexión necesaria para acceder a datos remotos desde un origen de datos OLE DB. Este método es una alternativa al acceso a tablas en un servidor vinculado y es un método ad hoc único para conectarse y acceder a datos remotos mediante OLE DB. Para referencias más frecuentes a orígenes de datos OLE DB, utilice servidores vinculados en su lugar. Para obtener más información, consulte [Servidores vinculados &#40;Motor de base de datos&#41;](../../relational-databases/linked-servers/linked-servers-database-engine.md). Se puede hacer referencia a la función `OPENROWSET` en la cláusula FROM de una consulta como si fuera el nombre de una tabla. También se puede hacer referencia a la función `OPENROWSET` como la tabla de destino de una instrucción `INSERT`, `UPDATE` o `DELETE`, sujeto a las capacidades del proveedor OLE DB. Aunque la consulta puede devolver varios conjuntos de resultados, `OPENROWSET` solo devuelve el primero.
+OPENXML|OPENXML proporciona una vista de conjunto de filas sobre un documento XML. Dado que OPENXML es un proveedor de conjuntos de filas, OPENXML se puede usar en instrucciones [!INCLUDE[tsql](../../includes/tsql-md.md)] en las que los proveedores de conjuntos de filas, como una tabla, una vista o la función OPENROWSET puede aparecer
+@@OPTIONS|Devuelve información sobre las opciones SET actuales.
+ORIGINAL_DB_NAME|Devuelve el nombre de la base de datos especificado por el usuario en la cadena de conexión de la base de datos. Esta base de datos se especifica mediante la opción **sqlcmd-d** (USE *base de datos*). También se puede especificar con la expresión de origen de datos Open Database Connectivity (ODBC) (catálogo inicial =*nombre de base de datos*).
+ORIGINAL_LOGIN|Devuelve el nombre del inicio de sesión que se conectó a la instancia de [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]. Puede usar esta función para devolver la identidad del inicio de sesión original en sesiones en las que hay muchos cambios de contexto explícitos o implícitos.
+@@PACK_RECEIVED|Devuelve el número de paquetes de entrada leídos de la red por [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] desde que se inició por última vez.
+@@PACK_SENT|Devuelve el número de paquetes de salida escritos en la red por [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] desde que se inició por última vez.
+@@PACKET_ERRORS|Devuelve el número de errores de paquetes de red que han ocurrido en las conexiones [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] desde [!INCLUDE[ssNoVersion](../../includes/ ssnoversion-md.md)] se inició por última vez.
+PARSE|Devuelve el resultado de una expresión, traducido al tipo de datos solicitado en [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)].
+PARSENAME|Devuelve la parte especificada de un nombre de objeto. Las partes de un objeto que se pueden recuperar son el nombre del objeto, el nombre del esquema, el nombre de la base de datos y el nombre del servidor.
+$PARTITION|Devuelve el número de partición en el que se asignaría un conjunto de valores de columna de partición para cualquier función de partición especificada.
+PATINDEX|Devuelve la posición inicial de la primera aparición de un patrón en una expresión especificada, o cero si no se encuentra el patrón, en todos los tipos de datos de texto y caracteres válidos.
+PERCENT_RANK|Calcula el rango relativo de una fila dentro de un grupo de filas en [!INCLUDE[ssnoversion](../../includes/ssnoversion-md.md)]. Utilice PERCENT_RANK para evaluar la posición relativa de un valor dentro de una partición o conjunto de resultados de consulta. PERCENT_RANK es similar a la función CUME_DIST.
+PERCENTILE_CONT|Calcula un percentil basado en una distribución continua del valor de la columna en [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]. El resultado se interpola y puede no ser igual a ninguno de los valores específicos de la columna.
+PERCENTILE_DISC|Calcula un percentil específico para los valores ordenados en un conjunto de filas completo o dentro de las distintas particiones de un conjunto de filas en [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]. Para un valor de percentil dado *P*, PERCENTILE_DISC ordena los valores de expresión en la cláusula ORDER BY. Luego devuelve el valor con el valor CUME_DIST más pequeño proporcionado (con respecto a la misma especificación de clasificación) que es mayor o igual que *P*. Por ejemplo, PERCENTILE_DISC (0.5) calculará el percentil 50 (es decir, la mediana) de una expresión. PERCENTILE_DISC calcula el percentil en función de una distribución discreta de los valores de la columna. El resultado es igual a un valor de columna específico.
+PERMISSIONS|Devuelve un valor que contiene un mapa de bits que indica los permisos de declaración, objeto o columna del usuario actual.
+PI|Devuelve el valor constante de PI.
+POWER|Devuelve el valor de la expresión especificada a la potencia especificada.
+@@PROCID|Devuelve el identificador de objeto (ID) del módulo [!INCLUDE[tsql](../../includes/tsql-md.md)] actual. Un módulo [!INCLUDE[tsql](../../includes/tsql-md.md)] puede ser un procedimiento almacenado, una función definida por el usuario o un disparador. @@PROCID no se puede especificar en los módulos CLR o en el proveedor de acceso a datos en proceso.
+PWDCOMPARE|Hash una contraseña y compara el hash con el hash de una contraseña existente. PWDCOMPARE se puede utilizar para buscar contraseñas de inicio de sesión en blanco [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] o contraseñas débiles comunes.
+PWDENCRYPT|Devuelve el hash de contraseña [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] del valor de entrada que usa la versión actual del algoritmo de hash de contraseña.
+QUOTENAME|Devuelve una cadena Unicode con los delimitadores agregados para convertir la cadena de entrada en un identificador delimitado [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] válido.
+RADIANS|Devuelve radianes cuando se ingresa una expresión numérica, en grados.
+RAND|Devuelve un valor **flotante** pseudoaleatorio de 0 a 1, exclusivo.
+RANK|Devuelve el rango de cada fila dentro de la partición de un conjunto de resultados. El rango de una fila es uno más el número de rangos que preceden a la fila en cuestión.
+Ranking|Las funciones de clasificación devuelven un valor de clasificación para cada fila en una partición. Dependiendo de la función que se utilice, algunas filas pueden recibir el mismo valor que otras filas. Las funciones de clasificación no son deterministas.
+@@REMSERVER|
+REPLACE|Reemplaza todas las apariciones de un valor de cadena especificado con otro valor de cadena.
+REPLICATE|Repite un valor de cadena un número específico de veces.
+REVERSE|Devuelve el orden inverso de un valor de cadena.
+RIGHT_SHIFT|RIGHT_SHIFT toma dos parámetros y devuelve el primer parámetro desplazado en bits a la derecha por el número de bits especificado en el segundo parámetro.
+RIGHT|Devuelve la parte derecha de una cadena de caracteres con el número de caracteres especificado.
+ROUND|Devuelve un valor numérico, redondeado a la longitud o precisión especificada.
+ROW_NUMBER|Numera la salida de un conjunto de resultados. Más específicamente, devuelve el número secuencial de una fila dentro de una partición de un conjunto de resultados, comenzando en 1 para la primera fila de cada partición.
+ROWCOUNT_BIG|Devuelve el número de filas afectadas por la última instrucción ejecutada. Esta función funciona como [@@ROWCOUNT](../../t-sql/functions/rowcount-transact-sql.md), excepto que el tipo de devolución de ROWCOUNT_BIG es **bigint**.
+@@ROWCOUNT|Devuelve el número de filas afectadas por la última sentencia. Si el número de filas es superior a 2 mil millones, use [ROWCOUNT_BIG](../../t-sql/functions/rowcount-big-transact-sql.md).
+RTRIM|::: moniker range="<=sql-server-ver15 || <=sql-server-linux-ver15 || = azure-sqldw-latest || = azuresqldb-actual || = azuresqldb-mi-actual"
+SCHEMA_ID|Devuelve el ID de esquema asociado con un nombre de esquema.
+SCHEMA_NAME|Devuelve el nombre de esquema asociado con un ID de esquema.
+SCOPE_IDENTITY|Devuelve el último valor de identidad insertado en una columna de identidad en el mismo ámbito. Un ámbito es un módulo: un procedimiento almacenado, desencadenador, función o lote. Por lo tanto, si dos declaraciones están en el mismo procedimiento almacenado, función o lote, están en el mismo ámbito.
+Security|Las siguientes funciones devuelven información que es útil para administrar la seguridad. Las funciones adicionales se enumeran en [Funciones criptográficas &#40;Transact-SQL&#41;](../../t-sql/functions/cryptographic-functions-transact-sql.md).
+@@SERVERNAME|Devuelve el nombre del servidor local que ejecuta [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)].
+SERVERPROPERTY|Devuelve información de propiedad sobre la instancia del servidor.
+@@SERVICENAME|Devuelve el nombre de la clave de registro bajo la cual se ejecuta [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]. @@SERVICENAME devuelve 'MSSQLSERVER' si la instancia actual es la instancia predeterminada; esta función devuelve el nombre de la instancia si la instancia actual es una instancia con nombre.
+SESSION_CONTEXT|Devuelve el valor de la clave especificada en el contexto de la sesión actual. El valor se establece mediante [sp_set_session_context &#40;Transact-SQL&#41;](../../relational-databases/system-stored-procedures/sp-set-session-context-transact-sql.md ) procedimiento.
+SESSION_ID|Devuelve el ID del [!INCLUDE[ssSDW](../../includes/sssdw-md.md)] o [!INCLUDE[ssPDW_md](../../includes/sspdw-md.md) actual ] sesión.
+SESSION_USER|SESSION_USER devuelve el nombre de usuario del contexto actual en la base de datos actual.
+SESSIONPROPERTY|Devuelve la configuración de opciones SET de una sesión.
+SET_BIT|SET_BIT devuelve *expression_value* compensado por el bit definido por *bit_offset*. El valor de bit predeterminado es 1, o se establece mediante *bit_value*.
+SIGN|Devuelve el signo positivo (+1), cero (0) o negativo (-1) de la expresión especificada.
+SIGNBYASYMKEY|Firma texto sin formato con una clave asimétrica
+SIGNBYCERT|Firma texto con un certificado y devuelve la firma.
+SIN|Devuelve el seno trigonométrico del ángulo especificado, en radianes y en una expresión numérica aproximada, **flotante**.
+SMALLDATETIMEFROMPARTS|Devuelve un valor **smalldatetime** para la fecha y hora especificadas.
+SOUNDEX|Devuelve un código de cuatro caracteres (SOUNDEX) para evaluar la similitud de dos cadenas.
+SPACE|Devuelve una cadena de espacios repetidos.
+@@SPID|Devuelve el ID de sesión del proceso de usuario actual.
+SQL_VARIANT_PROPERTY|Devuelve el tipo de datos base y otra información sobre un valor de **sql_variant**.
+SQRT|Devuelve la raíz cuadrada del valor flotante especificado.
+SQUARE|Devuelve el cuadrado del valor flotante especificado.
+STATS_DATE|Devuelve la fecha de la actualización más reciente de las estadísticas de una tabla o vista indexada.
+STDEV|Devuelve la desviación estándar estadística de todos los valores de la expresión especificada.
+STDEVP|Devuelve la desviación estándar estadística de la población para todos los valores de la expresión especificada.
+STR|Devuelve datos de caracteres convertidos a partir de datos numéricos. Los datos de caracteres están justificados a la derecha, con una longitud especificada y una precisión decimal.
+STRING_AGG|<!--[!INCLUDE [sqlserver2017-asdb-asdbmi-asa](../../includes/applies-to-version/sqlserver2017-asdb-asdbmi-asa.md)]-->
+STRING_ESCAPE|Escapa caracteres especiales en textos y devuelve texto con caracteres escapados. **STRING_ESCAPE** es una función determinista, introducida en SQL Server 2016.
+String|Las siguientes funciones escalares realizan una operación en un valor de entrada de cadena y devuelven una cadena o un valor numérico:
+STRING_SPLIT|Una función con valores de tabla que divide una cadena en filas de subcadenas, en función de un carácter separador especificado.
+STUFF|La función STUFF inserta una cadena dentro de otra cadena. Elimina una longitud específica de caracteres en la primera cadena en la posición de inicio y luego inserta la segunda cadena en la primera cadena en la posición de inicio.
+SUBSTRING|Devuelve parte de una expresión de carácter, binario, texto o imagen en [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)].
+SUM|Devuelve la suma de todos los valores, o solo los valores DISTINCT, en la expresión. SUM solo se puede usar con columnas numéricas. Los valores nulos se ignoran.
+SUSER_ID|Devuelve el número de identificación de inicio de sesión del usuario.
+SUSER_NAME|Devuelve el nombre de identificación de inicio de sesión del usuario.
+SUSER_SID|Devuelve el número de identificación de seguridad (SID) del nombre de inicio de sesión especificado.
+SUSER_SNAME|Devuelve el nombre de inicio de sesión asociado con un número de identificación de seguridad (SID).
+SWITCHOFFSET|Devuelve un valor de **datetimeoffset** que se cambia del desplazamiento de zona horaria almacenado a un nuevo desplazamiento de zona horaria especificado.
+SYMKEYPROPERTY|Devuelve el algoritmo de una clave simétrica creada a partir de un módulo EKM.
+SYSDATETIME|Devuelve un valor **datetime2(7)** que contiene la fecha y la hora del equipo en el que se ejecuta la instancia de [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)].
+SYSDATETIMEOFFSET|Devuelve un valor **datetimeoffset(7)** que contiene la fecha y la hora del equipo en el que se ejecuta la instancia de [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]. Se incluye el desplazamiento de la zona horaria.
+System|Las siguientes funciones del sistema realizan operaciones y devuelven información sobre valores, objetos y configuraciones en [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)].
+System|Las siguientes funciones escalares devuelven información estadística sobre el sistema:
+SYSTEM_USER|Permite insertar en una tabla un valor proporcionado por el sistema para el inicio de sesión actual cuando no se especifica ningún valor predeterminado.
+SYSUTCDATETIME|Devuelve un valor **datetime2** que contiene la fecha y la hora del equipo en el que se ejecuta la instancia de [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]. La fecha y la hora se devuelven como hora UTC (hora universal coordinada). La especificación de precisión de fracciones de segundo tiene un rango de 1 a 7 dígitos. La precisión predeterminada es de 7 dígitos.
+TAN|Devuelve la tangente de la expresión de entrada.
+TEXTPTR|Devuelve el valor del puntero de texto que corresponde a una columna **text**, **ntext** o **image** en formato **varbinary**. El valor del puntero de texto recuperado se puede usar en instrucciones READTEXT, WRITETEXT y UPDATETEXT.
+TEXTVALID|Una función **text**, **ntext** o **image** que comprueba si un puntero de texto específico es válido.
+@@TEXTSIZE|Devuelve el valor actual de la opción [TEXTSIZE](../../t-sql/statements/set-textsize-transact-sql.md).
+TIMEFROMPARTS|Devuelve un valor de **hora** para la hora especificada y con la precisión especificada.
+@@TIMETICKS|Devuelve el número de microsegundos por tick.
+TODATETIMEOFFSET|Devuelve un valor de **datetimeoffset** que se traduce de una expresión **datetime2**.
+@@TOTAL_ERRORS|Devuelve el número de errores de escritura en disco encontrados por [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] desde [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md .md)] iniciado por última vez.
+@@TOTAL_READ|Devuelve el número de lecturas de disco, no lecturas de caché, por [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] desde [!INCLUDE[ssNoVersion](../../includes/ ssnoversion-md.md)] se inició por última vez.
+@@TOTAL_WRITE|Devuelve el número de escrituras en disco por [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] desde [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md )] se inició por última vez.
+@@TRANCOUNT|Devuelve el número de instrucciones BEGIN TRANSACTION que se han producido en la conexión actual.
+TRANSLATE|Devuelve la cadena proporcionada como primer argumento, después de que algunos caracteres especificados en el segundo argumento se traduzcan a un conjunto de caracteres de destino, especificado en el tercer argumento.
+Trigger|Las siguientes funciones escalares se pueden usar en la definición de un disparador para probar cambios en los valores de los datos o para devolver otros datos.
+TRIGGER_NESTLEVEL|Devuelve el número de activadores ejecutados para la instrucción que activó el activador. TRIGGER_NESTLEVEL se usa en disparadores DML y DDL para determinar el nivel actual de anidamiento.
+TRIM|Elimina el carácter de espacio `char(32)` u otros caracteres especificados al principio y al final de una cadena.
+TRY_CAST|Devuelve una conversión de valor al tipo de datos especificado si la conversión tiene éxito; de lo contrario, devuelve nulo.
+TRY_CONVERT|Devuelve una conversión de valor al tipo de datos especificado si la conversión tiene éxito; de lo contrario, devuelve nulo.
+TRY_PARSE|Devuelve el resultado de una expresión, traducido al tipo de datos solicitado o nulo si la conversión falla en [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]. Use TRY_PARSE solo para convertir de cadena a tipo de fecha/hora y número.
+TYPE_ID|Devuelve el ID de un nombre de tipo de datos especificado.
+TYPE_NAME|Devuelve el nombre de tipo no calificado de un ID de tipo especificado.
+TYPEPROPERTY|Devuelve información sobre un tipo de datos.
+UNICODE|Devuelve el valor entero, tal como lo define el estándar Unicode, para el primer carácter de la expresión de entrada.
+UPDATE()|Devuelve un valor booleano que indica si se realizó un intento de INSERCIÓN o ACTUALIZACIÓN en una columna específica de una tabla o vista. UPDATE() se usa en cualquier lugar dentro del cuerpo de un disparador [!INCLUDE[tsql](../../includes/tsql-md.md)] INSERT o UPDATE para probar si el disparador debe ejecutar ciertas acciones.
+UPPER|Devuelve una expresión de caracteres con datos de caracteres en minúsculas convertidos a mayúsculas.
+USER_ID|Devuelve el número de identificación de un usuario de la base de datos.
+USER_NAME|Devuelve un nombre de usuario de la base de datos a partir de un número de identificación especificado.
+USER|Permite insertar en una tabla un valor proporcionado por el sistema para el nombre de usuario de la base de datos del usuario actual cuando no se especifica ningún valor predeterminado.
+VAR|Devuelve la varianza estadística de todos los valores de la expresión especificada. Puede ir seguido de la [cláusula OVER](../../t-sql/queries/select-over-clause-transact-sql.md).
+VARP|Devuelve la varianza estadística de la población para todos los valores de la expresión especificada.
+VERIFYSIGNEDBYASYMKEY|Comprueba si los datos firmados digitalmente han cambiado desde que se firmaron.
+VERIFYSIGNEDBYCERT|Comprueba si los datos firmados digitalmente han cambiado desde que se firmaron.
+XACT_STATE|Es una función escalar que informa el estado de transacción del usuario de una solicitud en ejecución actual. XACT_STATE indica si la solicitud tiene una transacción de usuario activa y si la transacción se puede confirmar.
+YEAR|Devuelve un entero que representa el año de la *fecha* especificada.

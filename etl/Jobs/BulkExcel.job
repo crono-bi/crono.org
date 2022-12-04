@@ -1,0 +1,14 @@
+﻿-- crono run32 "D:\GitHub\cronosql.io\etl\Jobs\BulkExcel.job"
+	
+
+
+	[BULK EXCEL SET] (
+		[Directory]='D:\GitHub\cronosql.io\etl\CSV',
+		CleanMode='Drop',
+		[Tables]=(
+			[EXCEL TABLE](Filename='Functions.xlsx', Name='Functions$', TargetTableName='Functions')
+		)
+	)
+	
+	
+	
