@@ -1,0 +1,41 @@
+---
+title: "Propiedades del columna"
+position: 12
+---
+
+# Propiedades de columna
+
+Desde el menú contextual de una columna se puede abrir la ventana de "Propiedades de columna". Tiene tres pestañas o vistas.
+
+## Vista "Definición"
+
+La primera vista permite definir los e
+
+- **Nombre:** Nombre de la columna (que aparecerá en el título de la columna). De manera predeterminada, se respeta el nombre del indicador o dimensión del catálogo, pero se puede establecer otro nombre si es necesario.
+- **Fórmula**: Es la expresión Crono SQL de la columna. Puede ser directamente el nombre de un indicador o dimensión del catálogo o alguna expresión más compleja (Ver "Columnas calculadas")
+- **Fórmula a partir de las columnas existentes en la consulta**: Determina si la fórmula es un cálculo a partir de las columnas de la consulta o a partir de los elementos del catálogo.
+
+![Propiedades de columna 1](/images/analysis/PropiedadesColumna1.png)
+
+
+## Vista "Formato"
+
+Desde la vista formato se define el formato del indicador o dimensión.
+
+![Propiedades de columna 2](/images/analysis/PropiedadesColumna2.png)
+
+Además de los formatos habituales (números con decimales, fechas, porcentaje, ...) existen algunos casos particulares:
+
+- El formato **"hipervínculo"** muestra el texto de la expresión como un enlace web. La página destino del enlace se define desde la vista "Información adicional"
+- El formato **"Duración"** convierte un número en un formato `d.h.min.seg`. El valor numérico corresponde a los segundos del intervalo.
+
+## Vista "Avanzadas"
+
+La vista de propiedades avanzadas incluye estas personalizaciones:
+
+- **Color** del fondo de la celda
+- **Fuente** a utilizar (para que se muestre en negrita, en cursiva, o con algún tamaño o tipo de letra especial...)
+- **Mostrar texto en ventana independiente**: Si el texto de la columna puede ser largo (por ejemplo, si corresponde a alguna descripción o texto libre, esta opción permite leer el texto íntegro en una ventana independiente (lo que no podría hacerse en una celda normal de una tabla).
+- **Filtrar esta columna en paneles dependientes**: De manera predeterminada, al seleccionar una fila de la tabla, se filtran automáticamente los paneles dependientes. Este filtro se calcula a partir de todas las dimensiones de la fila (o filas) seleccionada. Este comportamiento puede impedirse, evitando que alguna columna actúe como filtro.  
+
+![Propiedades de columna 3](/images/analysis/PropiedadesColumna3.png)

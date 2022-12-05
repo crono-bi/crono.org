@@ -1,4 +1,88 @@
 ﻿{
+  "/analysis/": [
+    {
+      "title": "Manual Crono Analysis",
+      "collapsable": false,
+      "type": "group",
+      "children": [
+        {
+          "title": "Introducci\u00F3n",
+          "collapsable": false,
+          "path": "/analysis/introduction.html"
+        },
+        {
+          "title": "Estructura de un documento",
+          "collapsable": false,
+          "path": "/analysis/analysis-document.html"
+        },
+        {
+          "title": "Crear una consulta",
+          "collapsable": false,
+          "path": "/analysis/create-query.html"
+        },
+        {
+          "title": "Filtros",
+          "collapsable": false,
+          "path": "/analysis/filters.html"
+        },
+        {
+          "title": "Columnas calculadas",
+          "collapsable": false,
+          "path": "/analysis/calculated-columns.html"
+        },
+        {
+          "title": "Bloquear al documento",
+          "collapsable": false,
+          "path": "/analysis/block-report.html"
+        },
+        {
+          "title": "Exportaci\u00F3n",
+          "collapsable": false,
+          "path": "/analysis/export-report.html"
+        },
+        {
+          "title": "Modo de propagaci\u00F3n",
+          "collapsable": false,
+          "path": "/analysis/propagation.html"
+        },
+        {
+          "title": "Tipos de visualizaci\u00F3n",
+          "collapsable": false,
+          "path": "/analysis/visualizations.html"
+        },
+        {
+          "title": "Editor de consultas",
+          "collapsable": false,
+          "path": "/analysis/query-editor.html"
+        },
+        {
+          "title": "Propiedades del documento",
+          "collapsable": false,
+          "path": "/analysis/document-properties.html"
+        },
+        {
+          "title": "Propiedades del informe",
+          "collapsable": false,
+          "path": "/analysis/report-properties.html"
+        },
+        {
+          "title": "Propiedades del hoja",
+          "collapsable": false,
+          "path": "/analysis/sheet-properties.html"
+        },
+        {
+          "title": "Propiedades del panel",
+          "collapsable": false,
+          "path": "/analysis/panel-properties.html"
+        },
+        {
+          "title": "Propiedades del columna",
+          "collapsable": false,
+          "path": "/analysis/column-properties.html"
+        }
+      ]
+    }
+  ],
   "/functions/": [
     {
       "title": "Funciones",

@@ -18,12 +18,173 @@
       "Children": []
     },
     {
+      "Path": "/analysis/",
+      "Url": "https://cronosql.io/analysis/",
+      "Title": "Manual Crono Analysis",
+      "Id": null,
+      "Date": null,
+      "Position": 1,
+      "Visible": true,
+      "Children": [
+        {
+          "Path": "/analysis/introduction.html",
+          "Url": "https://cronosql.io/analysis/introduction.html",
+          "Title": "Introducci\u00F3n",
+          "Id": null,
+          "Date": null,
+          "Position": 0,
+          "Visible": true,
+          "Children": []
+        },
+        {
+          "Path": "/analysis/analysis-document.html",
+          "Url": "https://cronosql.io/analysis/analysis-document.html",
+          "Title": "Estructura de un documento",
+          "Id": null,
+          "Date": null,
+          "Position": 1,
+          "Visible": true,
+          "Children": []
+        },
+        {
+          "Path": "/analysis/create-query.html",
+          "Url": "https://cronosql.io/analysis/create-query.html",
+          "Title": "Crear una consulta",
+          "Id": null,
+          "Date": null,
+          "Position": 2,
+          "Visible": true,
+          "Children": []
+        },
+        {
+          "Path": "/analysis/filters.html",
+          "Url": "https://cronosql.io/analysis/filters.html",
+          "Title": "Filtros",
+          "Id": null,
+          "Date": null,
+          "Position": 3,
+          "Visible": true,
+          "Children": []
+        },
+        {
+          "Path": "/analysis/calculated-columns.html",
+          "Url": "https://cronosql.io/analysis/calculated-columns.html",
+          "Title": "Columnas calculadas",
+          "Id": null,
+          "Date": null,
+          "Position": 4,
+          "Visible": true,
+          "Children": []
+        },
+        {
+          "Path": "/analysis/block-report.html",
+          "Url": "https://cronosql.io/analysis/block-report.html",
+          "Title": "Bloquear al documento",
+          "Id": null,
+          "Date": null,
+          "Position": 5,
+          "Visible": true,
+          "Children": []
+        },
+        {
+          "Path": "/analysis/export-report.html",
+          "Url": "https://cronosql.io/analysis/export-report.html",
+          "Title": "Exportaci\u00F3n",
+          "Id": null,
+          "Date": null,
+          "Position": 5,
+          "Visible": true,
+          "Children": []
+        },
+        {
+          "Path": "/analysis/propagation.html",
+          "Url": "https://cronosql.io/analysis/propagation.html",
+          "Title": "Modo de propagaci\u00F3n",
+          "Id": null,
+          "Date": null,
+          "Position": 6,
+          "Visible": true,
+          "Children": []
+        },
+        {
+          "Path": "/analysis/visualizations.html",
+          "Url": "https://cronosql.io/analysis/visualizations.html",
+          "Title": "Tipos de visualizaci\u00F3n",
+          "Id": null,
+          "Date": null,
+          "Position": 7,
+          "Visible": true,
+          "Children": []
+        },
+        {
+          "Path": "/analysis/query-editor.html",
+          "Url": "https://cronosql.io/analysis/query-editor.html",
+          "Title": "Editor de consultas",
+          "Id": null,
+          "Date": null,
+          "Position": 8,
+          "Visible": true,
+          "Children": []
+        },
+        {
+          "Path": "/analysis/document-properties.html",
+          "Url": "https://cronosql.io/analysis/document-properties.html",
+          "Title": "Propiedades del documento",
+          "Id": null,
+          "Date": null,
+          "Position": 9,
+          "Visible": true,
+          "Children": []
+        },
+        {
+          "Path": "/analysis/report-properties.html",
+          "Url": "https://cronosql.io/analysis/report-properties.html",
+          "Title": "Propiedades del informe",
+          "Id": null,
+          "Date": null,
+          "Position": 10,
+          "Visible": true,
+          "Children": []
+        },
+        {
+          "Path": "/analysis/sheet-properties.html",
+          "Url": "https://cronosql.io/analysis/sheet-properties.html",
+          "Title": "Propiedades del hoja",
+          "Id": null,
+          "Date": null,
+          "Position": 11,
+          "Visible": true,
+          "Children": []
+        },
+        {
+          "Path": "/analysis/panel-properties.html",
+          "Url": "https://cronosql.io/analysis/panel-properties.html",
+          "Title": "Propiedades del panel",
+          "Id": null,
+          "Date": null,
+          "Position": 11,
+          "Visible": true,
+          "Children": []
+        },
+        {
+          "Path": "/analysis/column-properties.html",
+          "Url": "https://cronosql.io/analysis/column-properties.html",
+          "Title": "Propiedades del columna",
+          "Id": null,
+          "Date": null,
+          "Position": 12,
+          "Visible": true,
+          "Children": []
+        }
+      ]
+    },
+    {
       "Path": "/functions/",
       "Url": "https://cronosql.io/functions/",
       "Title": "Funciones",
       "Id": null,
       "Date": null,
-      "Position": 1,
+      "Position": 2,
       "Visible": true,
       "Children": [
         {
@@ -2676,12 +2837,22 @@
       ]
     },
     {
+      "Path": "/metadata/",
+      "Url": "https://cronosql.io/metadata/",
+      "Title": "Manual Crono Metadata",
+      "Id": null,
+      "Date": null,
+      "Position": 2,
+      "Visible": true,
+      "Children": []
+    },
+    {
       "Path": "/guide/",
       "Url": "https://cronosql.io/guide/",
       "Title": "Introducci\u00F3n",
       "Id": null,
       "Date": null,
-      "Position": 2,
+      "Position": 3,
       "Visible": true,
       "Children": []
     },
@@ -2782,7 +2953,7 @@
       "Title": "Vistas",
       "Id": null,
       "Date": null,
-      "Position": 4,
+      "Position": 6,
       "Visible": true,
       "Children": [
         {
