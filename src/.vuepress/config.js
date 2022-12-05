@@ -32,6 +32,14 @@ module.exports = {
       {
         text: 'Funciones',
         link: '/functions/',
+      },
+      {
+        text: 'Crono Analysis',
+        link: '/analysis/',
+      },
+      {
+        text: 'Crono Metadata',
+        link: '/metadata/',
       }
     ],
     sidebar 
