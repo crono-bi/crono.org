@@ -1,0 +1,27 @@
+---
+title: Crear elementos de negocio
+position: 5
+---
+
+
+# Crear elementos de negocio
+
+Los objetos de negocio son las dimensiones, indicadores y filtros que forman el catálogo y que podrá utilizar el usuario para generar sus consultas e informes.
+
+![image-20200302130450547](/images/catalogo6.png)
+
+Los pasos para crear los objetos de negocio son:
+
+1. Ir a la _vista catálogo_ pulsando el botón "Catálogo" en la esquina inferior izquierda.
+2. Arrastrando una tabla desde el diagrama a la _vista catálogo_ se crea una carpeta con una dimensión para cada uno de los campos de la tabla.
+3. Si hay columnas que no quieres que aparezcan en el catálogo puedes eliminarlas desde el menú contextual (por ejemplo, campos _ID_ o campos de auditoría que sean irrelevantes al usuario). 
+4. También se puede arrastrar una columna desde el _panel de columnas_ a la vista catálogo
+5. Finalmente, puedes crear una carpeta o un objeto de negocio desde el menú contextual de la _vista catálogo_.
+6. Desde el menú contextual puedes **Convertir en indicador** las columnas numéricas como "Ventas", "Unidades", "Cantidad", etc.
+7. Desde el menú contextual puedes abrir las **Propiedades de objeto de negocio** para establecer el formato adecuado, las [listas de valores](#listas-de-valores) y otras propiedades de cada objeto de negocio.
+8. Finalmente, puedes organizar los objetos del catálogo mediante _Drag & Drop_.
+
+Es importante que los objetos tengan nombres reconocible por el usuario de negocio. También deben estar correctamente ordenados para facilitar su uso.
+
+![image-20200302131304907](/images/catalogo7.png)
+

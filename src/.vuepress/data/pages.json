@@ -2844,7 +2844,188 @@
       "Date": null,
       "Position": 2,
       "Visible": true,
-      "Children": []
+      "Children": [
+        {
+          "Path": "/metadata/introduction.html",
+          "Url": "https://cronosql.io/metadata/introduction.html",
+          "Title": "Introducci\u00F3n",
+          "Id": null,
+          "Date": null,
+          "Position": 1,
+          "Visible": true,
+          "Children": []
+        },
+        {
+          "Path": "/metadata/first-catalog.html",
+          "Url": "https://cronosql.io/metadata/first-catalog.html",
+          "Title": "C\u00F3mo crear tu primer cat\u00E1logo",
+          "Id": null,
+          "Date": null,
+          "Position": 2,
+          "Visible": true,
+          "Children": []
+        },
+        {
+          "Path": "/metadata/diagram-creation.html",
+          "Url": "https://cronosql.io/metadata/diagram-creation.html",
+          "Title": "C\u00F3mo crear un diagrama",
+          "Id": null,
+          "Date": null,
+          "Position": 3,
+          "Visible": true,
+          "Children": []
+        },
+        {
+          "Path": "/metadata/business-items-creation.html",
+          "Url": "https://cronosql.io/metadata/business-items-creation.html",
+          "Title": "Crear elementos de negocio",
+          "Id": null,
+          "Date": null,
+          "Position": 5,
+          "Visible": true,
+          "Children": []
+        },
+        {
+          "Path": "/metadata/list-of-values.html",
+          "Url": "https://cronosql.io/metadata/list-of-values.html",
+          "Title": "Listas de valores",
+          "Id": null,
+          "Date": null,
+          "Position": 6,
+          "Visible": true,
+          "Children": []
+        },
+        {
+          "Path": "/metadata/calculated-columns.html",
+          "Url": "https://cronosql.io/metadata/calculated-columns.html",
+          "Title": "Campos calculados",
+          "Id": null,
+          "Date": null,
+          "Position": 7,
+          "Visible": true,
+          "Children": []
+        },
+        {
+          "Path": "/metadata/predefined-filters.html",
+          "Url": "https://cronosql.io/metadata/predefined-filters.html",
+          "Title": "Filtros predefinidos",
+          "Id": null,
+          "Date": null,
+          "Position": 8,
+          "Visible": true,
+          "Children": []
+        },
+        {
+          "Path": "/metadata/aggregated-tables.html",
+          "Url": "https://cronosql.io/metadata/aggregated-tables.html",
+          "Title": "Tablas agregadas",
+          "Id": null,
+          "Date": null,
+          "Position": 9,
+          "Visible": true,
+          "Children": []
+        },
+        {
+          "Path": "/metadata/parameters.html",
+          "Url": "https://cronosql.io/metadata/parameters.html",
+          "Title": "Par\u00E1metros definidos en el cat\u00E1logo",
+          "Id": null,
+          "Date": null,
+          "Position": 11,
+          "Visible": true,
+          "Children": []
+        },
+        {
+          "Path": "/metadata/multilanguage-catalogs.html",
+          "Url": "https://cronosql.io/metadata/multilanguage-catalogs.html",
+          "Title": "Cat\u00E1logos multi-idioma",
+          "Id": null,
+          "Date": null,
+          "Position": 12,
+          "Visible": true,
+          "Children": []
+        },
+        {
+          "Path": "/metadata/geographic-dimensions.html",
+          "Url": "https://cronosql.io/metadata/geographic-dimensions.html",
+          "Title": "Dimensiones geogr\u00E1ficas",
+          "Id": null,
+          "Date": null,
+          "Position": 13,
+          "Visible": true,
+          "Children": []
+        },
+        {
+          "Path": "/metadata/security-catalog.html",
+          "Url": "https://cronosql.io/metadata/security-catalog.html",
+          "Title": "Seguridad y permisos de acceso",
+          "Id": null,
+          "Date": null,
+          "Position": 14,
+          "Visible": true,
+          "Children": []
+        },
+        {
+          "Path": "/metadata/catalog-properties.html",
+          "Url": "https://cronosql.io/metadata/catalog-properties.html",
+          "Title": "Propiedades de cat\u00E1logo",
+          "Id": null,
+          "Date": null,
+          "Position": 15,
+          "Visible": true,
+          "Children": []
+        },
+        {
+          "Path": "/metadata/conection-properties.html",
+          "Url": "https://cronosql.io/metadata/conection-properties.html",
+          "Title": "Propiedades de conexi\u00F3n",
+          "Id": null,
+          "Date": null,
+          "Position": 16,
+          "Visible": true,
+          "Children": []
+        },
+        {
+          "Path": "/metadata/business-item-properties.html",
+          "Url": "https://cronosql.io/metadata/business-item-properties.html",
+          "Title": "Propiedades de elementos de negocio",
+          "Id": null,
+          "Date": null,
+          "Position": 17,
+          "Visible": true,
+          "Children": []
+        },
+        {
+          "Path": "/metadata/table-properties.html",
+          "Url": "https://cronosql.io/metadata/table-properties.html",
+          "Title": "Propiedades de tabla",
+          "Id": null,
+          "Date": null,
+          "Position": 18,
+          "Visible": true,
+          "Children": []
+        },
+        {
+          "Path": "/metadata/column-properties.html",
+          "Url": "https://cronosql.io/metadata/column-properties.html",
+          "Title": "Propiedades de columna",
+          "Id": null,
+          "Date": null,
+          "Position": 19,
+          "Visible": true,
+          "Children": []
+        },
+        {
+          "Path": "/metadata/join-properties.html",
+          "Url": "https://cronosql.io/metadata/join-properties.html",
+          "Title": "Propiedades de relaci\u00F3n",
+          "Id": null,
+          "Date": null,
+          "Position": 19,
+          "Visible": true,
+          "Children": []
+        }
+      ]
     },
     {
       "Path": "/guide/",

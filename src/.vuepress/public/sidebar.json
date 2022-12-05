@@ -1445,6 +1445,105 @@
       ]
     }
   ],
+  "/metadata/": [
+    {
+      "title": "Manual Crono Metadata",
+      "collapsable": false,
+      "type": "group",
+      "children": [
+        {
+          "title": "Introducci\u00F3n",
+          "collapsable": false,
+          "path": "/metadata/introduction.html"
+        },
+        {
+          "title": "C\u00F3mo crear tu primer cat\u00E1logo",
+          "collapsable": false,
+          "path": "/metadata/first-catalog.html"
+        },
+        {
+          "title": "C\u00F3mo crear un diagrama",
+          "collapsable": false,
+          "path": "/metadata/diagram-creation.html"
+        },
+        {
+          "title": "Crear elementos de negocio",
+          "collapsable": false,
+          "path": "/metadata/business-items-creation.html"
+        },
+        {
+          "title": "Listas de valores",
+          "collapsable": false,
+          "path": "/metadata/list-of-values.html"
+        },
+        {
+          "title": "Campos calculados",
+          "collapsable": false,
+          "path": "/metadata/calculated-columns.html"
+        },
+        {
+          "title": "Filtros predefinidos",
+          "collapsable": false,
+          "path": "/metadata/predefined-filters.html"
+        },
+        {
+          "title": "Tablas agregadas",
+          "collapsable": false,
+          "path": "/metadata/aggregated-tables.html"
+        },
+        {
+          "title": "Par\u00E1metros definidos en el cat\u00E1logo",
+          "collapsable": false,
+          "path": "/metadata/parameters.html"
+        },
+        {
+          "title": "Cat\u00E1logos multi-idioma",
+          "collapsable": false,
+          "path": "/metadata/multilanguage-catalogs.html"
+        },
+        {
+          "title": "Dimensiones geogr\u00E1ficas",
+          "collapsable": false,
+          "path": "/metadata/geographic-dimensions.html"
+        },
+        {
+          "title": "Seguridad y permisos de acceso",
+          "collapsable": false,
+          "path": "/metadata/security-catalog.html"
+        },
+        {
+          "title": "Propiedades de cat\u00E1logo",
+          "collapsable": false,
+          "path": "/metadata/catalog-properties.html"
+        },
+        {
+          "title": "Propiedades de conexi\u00F3n",
+          "collapsable": false,
+          "path": "/metadata/conection-properties.html"
+        },
+        {
+          "title": "Propiedades de elementos de negocio",
+          "collapsable": false,
+          "path": "/metadata/business-item-properties.html"
+        },
+        {
+          "title": "Propiedades de tabla",
+          "collapsable": false,
+          "path": "/metadata/table-properties.html"
+        },
+        {
+          "title": "Propiedades de columna",
+          "collapsable": false,
+          "path": "/metadata/column-properties.html"
+        },
+        {
+          "title": "Propiedades de relaci\u00F3n",
+          "collapsable": false,
+          "path": "/metadata/join-properties.html"
+        }
+      ]
+    }
+  ],
   "/views/": [
     {
       "title": "Vistas",
