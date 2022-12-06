@@ -13,7 +13,7 @@
       "Title": "Manual Crono Analysis",
       "Id": null,
       "Date": null,
-      "Position": 1,
+      "Position": 0,
       "Visible": true,
       "Children": [
         {
@@ -22,7 +22,7 @@
           "Title": "Introducci\u00F3n",
           "Id": null,
           "Date": null,
-          "Position": 0,
+          "Position": 1,
           "Visible": true,
           "Children": []
         },
@@ -32,7 +32,7 @@
           "Title": "Estructura de un documento",
           "Id": null,
           "Date": null,
-          "Position": 1,
+          "Position": 2,
           "Visible": true,
           "Children": []
         },
@@ -42,7 +42,7 @@
           "Title": "Crear una consulta",
           "Id": null,
           "Date": null,
-          "Position": 2,
+          "Position": 3,
           "Visible": true,
           "Children": []
         },
@@ -52,7 +52,7 @@
           "Title": "Filtros",
           "Id": null,
           "Date": null,
-          "Position": 3,
+          "Position": 4,
           "Visible": true,
           "Children": []
         },
@@ -62,7 +62,7 @@
           "Title": "Columnas calculadas",
           "Id": null,
           "Date": null,
-          "Position": 4,
+          "Position": 5,
           "Visible": true,
           "Children": []
         },
@@ -72,7 +72,7 @@
           "Title": "Bloquear al documento",
           "Id": null,
           "Date": null,
-          "Position": 5,
+          "Position": 6,
           "Visible": true,
           "Children": []
         },
@@ -82,7 +82,7 @@
           "Title": "Exportaci\u00F3n",
           "Id": null,
           "Date": null,
-          "Position": 5,
+          "Position": 7,
           "Visible": true,
           "Children": []
         },
@@ -92,7 +92,7 @@
           "Title": "Modo de propagaci\u00F3n",
           "Id": null,
           "Date": null,
-          "Position": 6,
+          "Position": 8,
           "Visible": true,
           "Children": []
         },
@@ -102,7 +102,7 @@
           "Title": "Tipos de visualizaci\u00F3n",
           "Id": null,
           "Date": null,
-          "Position": 7,
+          "Position": 9,
           "Visible": true,
           "Children": []
         },
@@ -112,7 +112,7 @@
           "Title": "Editor de consultas",
           "Id": null,
           "Date": null,
-          "Position": 8,
+          "Position": 10,
           "Visible": true,
           "Children": []
         },
@@ -122,7 +122,7 @@
           "Title": "Propiedades del documento",
           "Id": null,
           "Date": null,
-          "Position": 9,
+          "Position": 11,
           "Visible": true,
           "Children": []
         },
@@ -132,7 +132,7 @@
           "Title": "Propiedades del informe",
           "Id": null,
           "Date": null,
-          "Position": 10,
+          "Position": 12,
           "Visible": true,
           "Children": []
         },
@@ -142,7 +142,7 @@
           "Title": "Propiedades del hoja",
           "Id": null,
           "Date": null,
-          "Position": 11,
+          "Position": 13,
           "Visible": true,
           "Children": []
         },
@@ -152,7 +152,7 @@
           "Title": "Propiedades del panel",
           "Id": null,
           "Date": null,
-          "Position": 11,
+          "Position": 14,
           "Visible": true,
           "Children": []
         },
@@ -162,7 +162,7 @@
           "Title": "Propiedades del columna",
           "Id": null,
           "Date": null,
-          "Position": 12,
+          "Position": 15,
           "Visible": true,
           "Children": []
         }
@@ -174,7 +174,7 @@
       "Title": "Manual Crono Metadata",
       "Id": null,
       "Date": null,
-      "Position": 1,
+      "Position": 0,
       "Visible": true,
       "Children": [
         {
@@ -213,7 +213,7 @@
           "Title": "Crear elementos de negocio",
           "Id": null,
           "Date": null,
-          "Position": 5,
+          "Position": 4,
           "Visible": true,
           "Children": []
         },
@@ -223,7 +223,7 @@
           "Title": "Listas de valores",
           "Id": null,
           "Date": null,
-          "Position": 6,
+          "Position": 5,
           "Visible": true,
           "Children": []
         },
@@ -233,7 +233,7 @@
           "Title": "Campos calculados",
           "Id": null,
           "Date": null,
-          "Position": 7,
+          "Position": 6,
           "Visible": true,
           "Children": []
         },
@@ -243,7 +243,7 @@
           "Title": "Filtros predefinidos",
           "Id": null,
           "Date": null,
-          "Position": 8,
+          "Position": 7,
           "Visible": true,
           "Children": []
         },
@@ -253,7 +253,7 @@
           "Title": "Tablas agregadas",
           "Id": null,
           "Date": null,
-          "Position": 9,
+          "Position": 8,
           "Visible": true,
           "Children": []
         },
@@ -263,7 +263,7 @@
           "Title": "Par\u00E1metros definidos en el cat\u00E1logo",
           "Id": null,
           "Date": null,
-          "Position": 11,
+          "Position": 9,
           "Visible": true,
           "Children": []
         },
@@ -273,7 +273,7 @@
           "Title": "Cat\u00E1logos multi-idioma",
           "Id": null,
           "Date": null,
-          "Position": 12,
+          "Position": 10,
           "Visible": true,
           "Children": []
         },
@@ -283,7 +283,17 @@
           "Title": "Dimensiones geogr\u00E1ficas",
           "Id": null,
           "Date": null,
-          "Position": 13,
+          "Position": 11,
+          "Visible": true,
+          "Children": []
+        },
+        {
+          "Path": "/metadata/catalog-validation.html",
+          "Url": "https://cronosql.io/metadata/catalog-validation.html",
+          "Title": "Validar cat\u00E1logo",
+          "Id": null,
+          "Date": null,
+          "Position": 12,
           "Visible": true,
           "Children": []
         },
@@ -293,7 +303,7 @@
           "Title": "Seguridad y permisos de acceso",
           "Id": null,
           "Date": null,
-          "Position": 14,
+          "Position": 13,
           "Visible": true,
           "Children": []
         },
@@ -303,7 +313,7 @@
           "Title": "Propiedades de cat\u00E1logo",
           "Id": null,
           "Date": null,
-          "Position": 15,
+          "Position": 14,
           "Visible": true,
           "Children": []
         },
@@ -313,7 +323,7 @@
           "Title": "Propiedades de conexi\u00F3n",
           "Id": null,
           "Date": null,
-          "Position": 16,
+          "Position": 15,
           "Visible": true,
           "Children": []
         },
@@ -323,7 +333,7 @@
           "Title": "Propiedades de elementos de negocio",
           "Id": null,
           "Date": null,
-          "Position": 17,
+          "Position": 16,
           "Visible": true,
           "Children": []
         },
@@ -333,7 +343,7 @@
           "Title": "Propiedades de tabla",
           "Id": null,
           "Date": null,
-          "Position": 18,
+          "Position": 17,
           "Visible": true,
           "Children": []
         },
@@ -343,7 +353,7 @@
           "Title": "Propiedades de columna",
           "Id": null,
           "Date": null,
-          "Position": 19,
+          "Position": 18,
           "Visible": true,
           "Children": []
         },

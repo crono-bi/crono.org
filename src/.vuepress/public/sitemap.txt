@@ -21,6 +21,7 @@ https://cronosql.io/metadata/business-item-properties.html
 https://cronosql.io/metadata/business-items-creation.html
 https://cronosql.io/metadata/calculated-columns.html
 https://cronosql.io/metadata/catalog-properties.html
+https://cronosql.io/metadata/catalog-validation.html
 https://cronosql.io/metadata/column-properties.html
 https://cronosql.io/metadata/conection-properties.html
 https://cronosql.io/metadata/diagram-creation.html

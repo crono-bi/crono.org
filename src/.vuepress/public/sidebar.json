@@ -145,6 +145,11 @@
           "path": "/metadata/geographic-dimensions.html"
         },
         {
+          "title": "Validar cat\u00E1logo",
+          "collapsable": false,
+          "path": "/metadata/catalog-validation.html"
+        },
+        {
           "title": "Seguridad y permisos de acceso",
           "collapsable": false,
           "path": "/metadata/security-catalog.html"

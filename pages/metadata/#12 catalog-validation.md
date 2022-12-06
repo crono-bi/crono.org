@@ -1,6 +1,5 @@
 ---
 title: Validar catálogo
-position: 10
 sidebarDepth: 2
 ---
 

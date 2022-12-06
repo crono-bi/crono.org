@@ -1,0 +1,82 @@
+---
+title: Tablas agregadas
+sidebarDepth: 2
+---
+
+
+# Tablas agregadas
+
+Ejecutar una consulta contra una tabla de hechos con decenas de millones de registros puede ser costoso. Para resolver esta problemática es habitual crear **tablas agregadas** que contengan la misma información pero más agrupada (por ejemplo, además de tener las ventas tickets a ticket, podemos tener una tabla con las ventas diarias, o por producto...).
+
+**Crono** es capaz de aprovechar la existencia de **tablas agregadas** escogiendo en cada ocasión la tabla más conveniente según la consulta del usuario.
+
+Una misma tabla de hechos puede tener varias tablas agregadas (por ejemplo, podríamos tener un resumen diario y un resumen mensual...)
+
+Definir una tabla agregada en **Crono Metadata** es muy sencillo:
+
+1. Se tiene que definir el diagrama de la tabla de hechos agregada
+2. Se tiene que indicar cuál es la tabla de hechos detallada.
+
+
+
+## Diagrama de la tabla agregada
+
+El diagrama de la tabla agregada se crea exactamente igual que el diagrama de cualquier otra tabla de hecho (ver [Cómo crear un diagrama](#como-crear-un-diagrama)).
+
+El ejemplo de *LA BIBLIO* tiene una tabla `dbo.LB_VENTAS_DIARIAS`que contiene un resumen de las ventas día a día de cada tienda (sin el detalle de producto). La siguiente imagen muestra el diagrama de la tabla detallada (`dbo.LB_VENTAS`) y el de la tabla agregada (`dbo.LB_VENTAS_DIARIAS`).
+
+![image-20200303005454326](/images/catalogo19.png)
+
+Los dos diagramas comparten las tablas de dimensión, exceptuando la dimensión `dbo.LB_LIBROS`que solo aparece en primer diagrama. **Crono** utilizará esta información para utilizar la tabla detallada solamente cuando se pida información de los libros. En cualquier otro caso, será preferible utilizar la tabla agregada.
+
+## Propiedades de la tabla agregada
+
+Para que **Crono** utilice la tabla agregada se debe indicar cual es su tabla de detalle desde la ventana de propiedades:
+
+![image-20200303010911577](/images/catalogo20.png)
+
+Desde _"Propiedades de tabla"_ podemos especificar también el número de registros aproximado de cada tabla. Esta información solo es relevante cuando existen varias tablas agregadas. En ese caso, **Crono** utilizará la tabla más pequeña entre todas las posibles.
+
+Es importante que los campos de la tabla de hechos se llamen igual que los campos de la tabla agregada. En nuestro ejemplo, los campos de ventas son `UNIDADES`y `PVP`y se lllaman igual en ambas tablas.
+
+
+
+## Uso de las talas agregadas
+
+El uso de las tablas agregadas es transparente para el usuario. El usuario realizará la consulta arrastrando las dimensiones e indicadores del catálogo y **Crono** generará la mejor consulta posible.
+
+Por ejemplo, si no existiese la tabla agregada, y el usuario pidiese las ventas mensuales del año 2012, Crono generaría la siguiente consulta:
+
+
+
+```sql
+SELECT
+  LB_MESES.ANYO AS [Año],
+  LB_MESES.NOMBRE_MES AS Mes,
+  sum(LB_VENTAS.UNIDADES) AS [Unidades vendidas]
+FROM dbo.LB_VENTAS LB_VENTAS
+INNER JOIN dbo.LB_TIEMPO LB_TIEMPO ON (LB_VENTAS.FECHA=LB_TIEMPO.FECHA)
+INNER JOIN dbo.LB_MESES LB_MESES ON (LB_TIEMPO.ANYO=LB_MESES.ANYO AND LB_TIEMPO.MES=LB_MESES.MES)
+WHERE LB_MESES.ANYO=2012
+GROUP BY
+  LB_MESES.ANYO,
+  LB_MESES.NOMBRE_MES
+```
+
+En cambio, con la tabla agregada correctamente definida la misma consulta del usuario generará este código SQL:
+
+```sql
+SELECT
+  LB_MESES.NOMBRE_MES AS Mes,
+  sum(LB_VENTAS_DIARIAS.UNIDADES) AS [Unidades vendidas]
+FROM dbo.LB_VENTAS_DIARIAS LB_VENTAS_DIARIAS
+INNER JOIN dbo.LB_TIEMPO LB_TIEMPO ON (LB_VENTAS_DIARIAS.FECHA=LB_TIEMPO.FECHA)
+INNER JOIN dbo.LB_MESES LB_MESES ON (LB_TIEMPO.ANYO=LB_MESES.ANYO AND LB_TIEMPO.MES=LB_MESES.MES)
+WHERE LB_MESES.ANYO=2012
+GROUP BY LB_MESES.NOMBRE_MES
+```
+
+
+
+En ambos casos el resultado será el mismo (siempre y cuando la tabla agregada esté correctamente cargada).
+

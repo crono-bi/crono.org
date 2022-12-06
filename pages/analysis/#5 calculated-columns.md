@@ -1,0 +1,30 @@
+---
+title: "Columnas calculadas"
+---
+
+
+# Columnas calculadas
+
+Además de las dimensiones e indicadores definidos en el catálogo se pueden crear **columnas calculadas**. Las columnas calculadas son expresiones a partir de las columnas de la consulta o la información del catálogo. Por ejemplo, se puede definir el "Precio" como el cociente entre el "Importe" y las "Unidades vendidas".
+
+Los cálculos más habituales se pueden incluir desde el menú contextual de una columna. Así podemos, por ejemplo, añadir el porcentaje que representa cada registro respecto el total.
+
+![Menú contextual de columnas calculadas](/images/analysis/ColumnasCalculadas1.png)
+
+La siguiente imagen muestra el resultado de añadir una columna con el porcentaje respecto el total:
+
+
+![Columna calculada](/images/analysis/ColumnasCalculadas2.png)
+
+Desde el menú contextual de la columna calculada podemos acceder a sus propiedades y ver (o editar) el cálculo:
+
+
+![Columna calculada](/images/analysis/ColumnasCalculadas3.png)
+
+La expresión puede incluir todos los operadores habituales (`+`, `-`, `*`, `/`, ...). Tambien se pueden utilizar las funciones propias de Crono SQL (`addition`, `divide`, ...) y las de la base de datos (`substr`, `upper`, ...).
+
+:::tip RECUERDA
+El uso excesivo de columnas calculadas en el informe suele ser indicador de un diseño del catálogo deficiente. 
+
+Las cálculos habituales deben estar definidos en el catálogo para facilitar su reutilización.
+:::

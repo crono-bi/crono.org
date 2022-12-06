@@ -1,0 +1,48 @@
+---
+title: "Exportación"
+sidebarDepth: 2
+---
+
+# Exportación
+
+## Copiar y pegar
+
+Una vez tienes los datos en tu informe de Crono puedes exportarlos a otros formatos o aplicaciones. La manera más fácil es **copiar y pegar** los datos. Se puede copiar cualquier tabla o visualización. También se puede copiar una selección de celdas.
+
+Los datos copiados en la aplicación de destino estarán formateados para tener una apariencia agradable. La siguiente animación muestra cómo se copia una tabla de Crono a un documento Word utilizando `Ctrol C` y `Ctrol V`:
+
+![Copiar y pegar](/images/analysis/Exportacion1.gif)
+
+Por supuesto, de la misma manera se pueden pegar los datos en un correo electrónico o en una hoja de cálculo *Microsoft Excel*.
+
+Desde el menu contextual de una visualización también se pueden copiar los datos y se ofrecen opciones adicionales:
+
+- Copiar como tabla: Copia los datos tabulares en formato HTML que se puede pegar en muchas aplicaciones (es el predeterminado)
+- Copiar como texto:  Copia los datos en formato CSV
+- Copiar como imagen: Copia una imagen PNG con la visualización  
+- Copiar como servicio: Copia la URL que devuelve los datos de la consulta en formato JSON.
+
+![Copiar y pegar](/images/analysis/Exportacion2.png)
+
+## Exportar a PDF, Excel...
+
+Además de la opción de copiar y pegar los datos, Crono ofrece la opción de exportar directamente un panel (o toda la hoja) a distintos formatos:
+
+![Exportar](/images/analysis/Exportacion3.png)
+
+El documento exportado incluye una copia de los datos de cada panel. Sin embargo, el aspecto y funcionalidad es muy limitado ya que carece del dinamismo propio de los informes de Crono.
+
+
+::: tip RECUERDA
+Las opciones de exportación son limitadas. La mejor manera de visualizazar y navegar por un informe de Crono es mediante Crono Analysis.
+:::
+
+## Crono Excel
+
+Si el requerimiento es generar un informe en Excel muchas veces la mejor opción es utilizar **Crono Excel**. **Crono Excel** permite utilizar los catálogos de Crono para generar consultar y copiar el resultado en Excel.
+
+Las consultas creadas con **Crono Excel** se pueden actualizar, por lo que es fácil mantener actualizados los datos de la hoja de cálculo con los datos de la base de datos (a diferencia de las opciones de "Copiar y pegar" y de "Exportar").
+
+
+![Crono Excel](/images/analysis/Exportacion4.png)
+

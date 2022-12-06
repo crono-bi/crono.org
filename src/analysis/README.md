@@ -13,6 +13,6 @@ features:
   details: Con toda la potencia y funcionalidades de las mejores herramientas de BI. 🛠️
 footer: Made by Crono with ❤️
 title: Manual Crono Analysis
-position: 1
+position: 0
 ---
 
