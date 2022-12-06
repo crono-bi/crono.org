@@ -71,8 +71,7 @@ Además de verificar el catálogo desde **Crono Metadata**, podemos probarlo tam
 
 - Abrimos Crono Analysis, y hacemos clic en **Archivo**, **Nuevo documento**.
 
-- Nos aparecerá la ventana **"Seleccionar catálogo"** y seleccionaremos el fichero .metadata desde la **vista "Catálogo local"**.
-
+- Nos aparecerá la ventana **"Seleccionar catálogo"** y seleccionaremos el fichero *.metadata* desde la **vista "Catálogo local"**.
   
 
 Al seleccionar el catálogo, se abrirá la ventana principal de Crono Analysis con un informe en blanco.

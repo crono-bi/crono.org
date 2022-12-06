@@ -25,11 +25,10 @@ La longitud y la latitud de cada elemento de la dimensión geográfica debe esta
 - Municipios, provincias y comunidades de España
 
 
-
 **Crono ETL** incluye también vistas predefinidas con esta información:
 
 ![image-20200304194131547](/images/geo2.png)
 
 Estas vistas se llaman: `Crono$Countries`, `Crono$SpanishCities`,`Crono$SpanishProvinces`y `Crono$SpanishRegions.`
 
-Para más información, consulte el artículo de **Crono ETL** sobre vistas predefinidas.
+Para más información, consulte el artículo de **Crono SQL** sobre vistas predefinidas.

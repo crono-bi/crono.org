@@ -8,7 +8,7 @@
         {
           "title": "Introducci\u00F3n",
           "collapsable": false,
-          "path": "/analysis/introduction.html"
+          "path": "/analysis/intro.html"
         },
         {
           "title": "El cat\u00E1logo",
@@ -16,14 +16,14 @@
           "path": "/analysis/catalog.html"
         },
         {
-          "title": "Crear una consulta",
-          "collapsable": false,
-          "path": "/analysis/create-query.html"
-        },
-        {
           "title": "Estructura de un documento",
           "collapsable": false,
           "path": "/analysis/analysis-document.html"
+        },
+        {
+          "title": "Crear una consulta",
+          "collapsable": false,
+          "path": "/analysis/create-query.html"
         },
         {
           "title": "Filtros",
@@ -33,7 +33,7 @@
         {
           "title": "Columnas calculadas",
           "collapsable": false,
-          "path": "/analysis/calculated-columns.html"
+          "path": "/analysis/analysis-calculated-columns.html"
         },
         {
           "title": "Bloquear al documento",
@@ -83,7 +83,7 @@
         {
           "title": "Propiedades del columna",
           "collapsable": false,
-          "path": "/analysis/column-properties.html"
+          "path": "/analysis/analysis-column-properties.html"
         }
       ]
     }
@@ -97,7 +97,7 @@
         {
           "title": "Introducci\u00F3n",
           "collapsable": false,
-          "path": "/metadata/introduction.html"
+          "path": "/metadata/intro.html"
         },
         {
           "title": "C\u00F3mo crear tu primer cat\u00E1logo",
@@ -167,7 +167,7 @@
         {
           "title": "Propiedades de conexi\u00F3n",
           "collapsable": false,
-          "path": "/metadata/conection-properties.html"
+          "path": "/metadata/connection-properties.html"
         },
         {
           "title": "Propiedades de elementos de negocio",

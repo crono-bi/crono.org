@@ -12,12 +12,9 @@ sidebarDepth: 2
 ## Ejemplo
 
 
-
 En la definición de los elementos del catálogo podemos utilizar expresiones y fórmulas para filtrar, por ejemplo, el año actual, el año 2012, o cualquier otro.
 
-Para filtrar el _"año actual"_ utilizaríamos la expresión `[Año]=year(getdate())`y para filtrar el año 2019 definiríamos el filtro como `[Año]=2019`, por ejemplo.
-
-
+Para filtrar el _"año actual"_ utilizaríamos la expresión `[Año]=year(getdate())` y para filtrar el año 2022 definiríamos el filtro como `[Año]=2022`, por ejemplo.
 
 
 
@@ -28,7 +25,6 @@ Para filtrar el _"año actual"_ utilizaríamos la expresión `[Año]=year(getdat
 **Crono Metadata** permite definir también filtros que dependen de un parámetro variable. Podríamos definir el filtro _"Año X"_ como `[Año]=@AñoX`. De este modo, el filtro es variable y **Crono Analysis** preguntará el año que quiere seleccionar cuando utilice este elemento del catálogo.
 
 ![Ejemplo uso parámetros](/images/parametros2.gif)
-
 
 
 Para crear en el catálogo un elemento de negocio que utilice parámetros variables solo es necesario incluir una variable (precedida por el símbolo `@`) en la expresión SQL. Si la variable no se ha definido todavía, **Crono Metadata** nos permitirá crearla en ese mismo momento.

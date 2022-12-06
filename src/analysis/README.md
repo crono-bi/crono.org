@@ -3,7 +3,7 @@ home: true
 heroImage: /analysis.png
 tagline: Crono Analysis es una aplicación de Business Intelligence fácil de usar. ❤️
 actionText: Acceder al manual →
-actionLink: /analysis/introduction
+actionLink: /analysis/intro
 features:
 - title: Business Intelligence fácil
   details: La característica principal de Crono es la facilidad de uso. Así de simple. 💧

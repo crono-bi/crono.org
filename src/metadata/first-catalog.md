@@ -20,7 +20,7 @@ Es sencillo crear un catálogo siguiendo estos pasos:
 
 Al hacer clic en "Crear nuevo catálogo" aparece el formulario de "Configurar conexión". 
 
-Si la base de datos donde se encuentra tu información es **SQL Server**, simplemente completa la información de conexión (servidor, base de datos y usuario). Una vez completado el formulario pulsa el  botón "Verificar conexión" para confirmar que todos los datos con correctos.
+Si la base de datos donde se encuentra tu información es **SQL Server**, simplemente completa la información de conexión (servidor, base de datos y usuario). Una vez completado el formulario pulsa el botón "Verificar conexión" para confirmar que todos los datos con correctos.
 
 ![Conexión](/images/conexion.gif)
 

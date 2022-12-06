@@ -3,7 +3,7 @@ home: true
 heroImage: /metadata.png
 tagline: Crono Metadata es la aplicación para construir la capa semántica de Crono. 
 actionText: Acceder al manual →
-actionLink: /metadata/introduction
+actionLink: /metadata/intro
 features:
 - title: Business Intelligence fácil
   details: La característica principal de Crono es la facilidad de uso. Así de simple. ❤️

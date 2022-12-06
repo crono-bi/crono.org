@@ -17,12 +17,12 @@
       "Visible": true,
       "Children": [
         {
-          "Path": "/analysis/introduction.html",
-          "Url": "https://cronosql.io/analysis/introduction.html",
+          "Path": "/analysis/intro.html",
+          "Url": "https://cronosql.io/analysis/intro.html",
           "Title": "Introducci\u00F3n",
           "Id": null,
           "Date": null,
-          "Position": 1,
+          "Position": 10,
           "Visible": true,
           "Children": []
         },
@@ -32,17 +32,7 @@
           "Title": "El cat\u00E1logo",
           "Id": null,
           "Date": null,
-          "Position": 2,
-          "Visible": true,
-          "Children": []
-        },
-        {
-          "Path": "/analysis/create-query.html",
-          "Url": "https://cronosql.io/analysis/create-query.html",
-          "Title": "Crear una consulta",
-          "Id": null,
-          "Date": null,
-          "Position": 3,
+          "Position": 20,
           "Visible": true,
           "Children": []
         },
@@ -52,7 +42,17 @@
           "Title": "Estructura de un documento",
           "Id": null,
           "Date": null,
-          "Position": 3,
+          "Position": 30,
+          "Visible": true,
+          "Children": []
+        },
+        {
+          "Path": "/analysis/create-query.html",
+          "Url": "https://cronosql.io/analysis/create-query.html",
+          "Title": "Crear una consulta",
+          "Id": null,
+          "Date": null,
+          "Position": 40,
           "Visible": true,
           "Children": []
         },
@@ -62,17 +62,17 @@
           "Title": "Filtros",
           "Id": null,
           "Date": null,
-          "Position": 4,
+          "Position": 50,
           "Visible": true,
           "Children": []
         },
         {
-          "Path": "/analysis/calculated-columns.html",
-          "Url": "https://cronosql.io/analysis/calculated-columns.html",
+          "Path": "/analysis/analysis-calculated-columns.html",
+          "Url": "https://cronosql.io/analysis/analysis-calculated-columns.html",
           "Title": "Columnas calculadas",
           "Id": null,
           "Date": null,
-          "Position": 5,
+          "Position": 60,
           "Visible": true,
           "Children": []
         },
@@ -82,7 +82,7 @@
           "Title": "Bloquear al documento",
           "Id": null,
           "Date": null,
-          "Position": 6,
+          "Position": 70,
           "Visible": true,
           "Children": []
         },
@@ -92,7 +92,7 @@
           "Title": "Exportaci\u00F3n",
           "Id": null,
           "Date": null,
-          "Position": 7,
+          "Position": 80,
           "Visible": true,
           "Children": []
         },
@@ -102,7 +102,7 @@
           "Title": "Modo de propagaci\u00F3n",
           "Id": null,
           "Date": null,
-          "Position": 8,
+          "Position": 90,
           "Visible": true,
           "Children": []
         },
@@ -112,7 +112,7 @@
           "Title": "Tipos de visualizaci\u00F3n",
           "Id": null,
           "Date": null,
-          "Position": 9,
+          "Position": 100,
           "Visible": true,
           "Children": []
         },
@@ -122,7 +122,7 @@
           "Title": "Editor de consultas",
           "Id": null,
           "Date": null,
-          "Position": 10,
+          "Position": 110,
           "Visible": true,
           "Children": []
         },
@@ -132,7 +132,7 @@
           "Title": "Propiedades del documento",
           "Id": null,
           "Date": null,
-          "Position": 11,
+          "Position": 120,
           "Visible": true,
           "Children": []
         },
@@ -142,7 +142,7 @@
           "Title": "Propiedades del informe",
           "Id": null,
           "Date": null,
-          "Position": 12,
+          "Position": 130,
           "Visible": true,
           "Children": []
         },
@@ -152,7 +152,7 @@
           "Title": "Propiedades de hoja",
           "Id": null,
           "Date": null,
-          "Position": 13,
+          "Position": 140,
           "Visible": true,
           "Children": []
         },
@@ -162,17 +162,17 @@
           "Title": "Propiedades del panel",
           "Id": null,
           "Date": null,
-          "Position": 14,
+          "Position": 150,
           "Visible": true,
           "Children": []
         },
         {
-          "Path": "/analysis/column-properties.html",
-          "Url": "https://cronosql.io/analysis/column-properties.html",
+          "Path": "/analysis/analysis-column-properties.html",
+          "Url": "https://cronosql.io/analysis/analysis-column-properties.html",
           "Title": "Propiedades del columna",
           "Id": null,
           "Date": null,
-          "Position": 15,
+          "Position": 160,
           "Visible": true,
           "Children": []
         }
@@ -188,8 +188,8 @@
       "Visible": true,
       "Children": [
         {
-          "Path": "/metadata/introduction.html",
-          "Url": "https://cronosql.io/metadata/introduction.html",
+          "Path": "/metadata/intro.html",
+          "Url": "https://cronosql.io/metadata/intro.html",
           "Title": "Introducci\u00F3n",
           "Id": null,
           "Date": null,
@@ -328,8 +328,8 @@
           "Children": []
         },
         {
-          "Path": "/metadata/conection-properties.html",
-          "Url": "https://cronosql.io/metadata/conection-properties.html",
+          "Path": "/metadata/connection-properties.html",
+          "Url": "https://cronosql.io/metadata/connection-properties.html",
           "Title": "Propiedades de conexi\u00F3n",
           "Id": null,
           "Date": null,
