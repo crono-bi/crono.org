@@ -3,6 +3,7 @@ https://cronosql.io/analysis/
 https://cronosql.io/analysis/analysis-document.html
 https://cronosql.io/analysis/block-report.html
 https://cronosql.io/analysis/calculated-columns.html
+https://cronosql.io/analysis/catalog.html
 https://cronosql.io/analysis/column-properties.html
 https://cronosql.io/analysis/create-query.html
 https://cronosql.io/analysis/document-properties.html

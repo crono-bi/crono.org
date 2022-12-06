@@ -1,0 +1,18 @@
+---
+title: "El catálogo"
+---
+
+# El catálogo
+
+El **catálogo** de Crono es el diccionario de atributos e indicadores que se pueden utilizar en los informes. 
+
+- Cada documento de **Crono Analysis** utiliza un único catálogo.
+- El **catálogo** lo crea habitualmente el departamento de IT, incluyendo la información que necesitan los usuarios de negocio.
+- Una vez creado el **catálogo**, es sencillo crear consultas e informes, y el propio usuario de negocio puede crear los documentos si es preciso (y sin necesidad de conocimientos técnicos).
+- Un **catálogo** está formado por indicadores, dimensiones y filtros organizados jerárquicamente mediante carpetas.
+
+![Catálogo](/images/analysis/Catalogo.png)
+
+Al catálogo se le denomina también "capa semántica" o "metadatos", pues representa la traducción de las tablas y relaciones de la base de datos en términos de negocio conocidos por los usuarios. 
+
+Los catálogos de Crono se crean con **Crono Metadata**.

@@ -1,5 +1,5 @@
 ---
-title: "Propiedades del hoja"
+title: "Propiedades de hoja"
 ---
 
 

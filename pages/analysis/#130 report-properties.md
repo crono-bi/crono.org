@@ -14,7 +14,7 @@ En esta ventana se especifica la siguiente información:
 - **Nombre:** Es el nombre del informe que aparecerá en el *árbol de informes*.
 
 ::: tip RECUERDA
-Un documento de Crono Analysis puede contener varios innformes. 
+Un documento de Crono Analysis puede contener varios informes. 
 :::
 
 

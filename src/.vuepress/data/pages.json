@@ -27,9 +27,9 @@
           "Children": []
         },
         {
-          "Path": "/analysis/analysis-document.html",
-          "Url": "https://cronosql.io/analysis/analysis-document.html",
-          "Title": "Estructura de un documento",
+          "Path": "/analysis/catalog.html",
+          "Url": "https://cronosql.io/analysis/catalog.html",
+          "Title": "El cat\u00E1logo",
           "Id": null,
           "Date": null,
           "Position": 2,
@@ -40,6 +40,16 @@
           "Path": "/analysis/create-query.html",
           "Url": "https://cronosql.io/analysis/create-query.html",
           "Title": "Crear una consulta",
+          "Id": null,
+          "Date": null,
+          "Position": 3,
+          "Visible": true,
+          "Children": []
+        },
+        {
+          "Path": "/analysis/analysis-document.html",
+          "Url": "https://cronosql.io/analysis/analysis-document.html",
+          "Title": "Estructura de un documento",
           "Id": null,
           "Date": null,
           "Position": 3,
@@ -139,7 +149,7 @@
         {
           "Path": "/analysis/sheet-properties.html",
           "Url": "https://cronosql.io/analysis/sheet-properties.html",
-          "Title": "Propiedades del hoja",
+          "Title": "Propiedades de hoja",
           "Id": null,
           "Date": null,
           "Position": 13,

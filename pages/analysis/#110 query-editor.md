@@ -36,7 +36,7 @@ Finalmente, el editor de consultas también incluye botones para eliminar rápid
 
 Internamente **Crono** utiliza el lenguage **Crono SQL** para crear consultas a partir del catálogo. Al utilizar la **vista Diseño** del **editor de consultas** (o al crear una consultas arrastrando el catálogo) el usuario está construyendo visualmente una consulta **Crono SQL**.
 
-Desde esta vista se puede ver el código **Crono SQL** generado. Este código puede modificarse.
+Desde esta vista se puede ver el código **Crono SQL** generado. Este código **no** puede modificarse.
 
 ![Vista Crono SQL](/images/analysis/EditorConsultaVistaCronoSql.png)
 

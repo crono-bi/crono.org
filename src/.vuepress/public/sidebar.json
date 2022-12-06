@@ -11,14 +11,19 @@
           "path": "/analysis/introduction.html"
         },
         {
-          "title": "Estructura de un documento",
+          "title": "El cat\u00E1logo",
           "collapsable": false,
-          "path": "/analysis/analysis-document.html"
+          "path": "/analysis/catalog.html"
         },
         {
           "title": "Crear una consulta",
           "collapsable": false,
           "path": "/analysis/create-query.html"
+        },
+        {
+          "title": "Estructura de un documento",
+          "collapsable": false,
+          "path": "/analysis/analysis-document.html"
         },
         {
           "title": "Filtros",
@@ -66,7 +71,7 @@
           "path": "/analysis/report-properties.html"
         },
         {
-          "title": "Propiedades del hoja",
+          "title": "Propiedades de hoja",
           "collapsable": false,
           "path": "/analysis/sheet-properties.html"
         },
