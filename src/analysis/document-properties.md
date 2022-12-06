@@ -1,6 +1,7 @@
 ---
 title: "Propiedades del documento"
 position: 9
+sidebarDepth: 2
 ---
 
 
@@ -45,7 +46,7 @@ Existen tres tipos de parámetros:
 - **Parámetro calculado**: En este caso el usuario no introduce el valor, si no que se calcula a partir de una expresión. Por ejemplo, se puede definir el `@año` como `year(getdate())` y esa variable contendrá siempre el año en curso.
 - **Elemento de negocio parametrizable**: En este caso el usuario selecciona un indicador (o una dimensión). Por ejemplo, se puede dejar al usuario escoger el `@kpi` entre una lista de indicadores. De este modo un mismo informe se puede actualizar con los valores de un indicador u otro.
 
-### Vista "Informes"
+## Vista "Informes"
 
 Deste esta ventana se pueden ver todas los informes del documento. 
 

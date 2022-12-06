@@ -1,6 +1,7 @@
 ---
 title: "Introducción"
 position: 0
+sidebarDepth: 2
 ---
 
 # Introducción a Crono Analysis

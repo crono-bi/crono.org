@@ -3,7 +3,7 @@ const { description } = require('../../package')
 const sidebar =require ('./public/sidebar.json')
 
 module.exports = {
-  title: 'Crono SQL',
+  title: 'Crono Manuales',
   description: description,
   head: [
     ['meta', { name: 'theme-color', content: '#007bcc' }],
@@ -18,30 +18,23 @@ module.exports = {
     lastUpdated: false,
     nav: [
       {
-        text: 'Introducción',
-        link: '/guide/',
-      },
-      {
-        text: 'Lenguaje',
-        link: '/language/',
-      },
-      {
-        text: 'Vistas',
-        link: '/views/',
-      },
-      {
-        text: 'Funciones',
-        link: '/functions/',
-      },
-      {
         text: 'Crono Analysis',
         link: '/analysis/',
       },
       {
         text: 'Crono Metadata',
         link: '/metadata/',
+      },
+      {
+        text: 'Crono SQL',
+        link: '/sql/',
+      },
+      {
+        text: 'Empresa 🏛️',
+        link: 'https://businessintelligence.es',
       }
     ],
+    sidebarDepth: 0,
     sidebar 
   },
   plugins: [

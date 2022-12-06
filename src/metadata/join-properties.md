@@ -1,6 +1,7 @@
 ---
 title: Propiedades de relación
 position: 19
+sidebarDepth: 2
 ---
 
 

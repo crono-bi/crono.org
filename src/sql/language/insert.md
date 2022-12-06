@@ -1,6 +1,7 @@
 ---
 title: Sentencia INSERT
 position: 2
+sidebarDepth: 2
 ---
 
 # Sentencia INSERT

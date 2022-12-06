@@ -1,6 +1,7 @@
 ---
 title: Propiedades de conexión
 position: 16
+sidebarDepth: 2
 ---
 
 

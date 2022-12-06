@@ -1,6 +1,7 @@
 ---
 title: "Editor de consultas"
 position: 8
+sidebarDepth: 2
 ---
 
 

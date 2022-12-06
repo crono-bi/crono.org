@@ -1,6 +1,7 @@
 ---
 title: Propiedades de tabla
 position: 18
+sidebarDepth: 2
 ---
 
 # Propiedades de tabla

@@ -1,6 +1,7 @@
 ---
 title: Parámetros definidos en el catálogo
 position: 11
+sidebarDepth: 2
 ---
 
 

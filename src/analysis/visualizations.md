@@ -1,6 +1,7 @@
 ---
 title: "Tipos de visualización"
 position: 7
+sidebarDepth: 2
 ---
 
 

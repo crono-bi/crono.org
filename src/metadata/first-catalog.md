@@ -1,6 +1,7 @@
 ---
 title: Cómo crear tu primer catálogo
 position: 2
+sidebarDepth: 2
 ---
 
 # Cómo crear tu primer catálogo

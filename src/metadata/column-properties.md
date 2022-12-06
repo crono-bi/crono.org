@@ -1,6 +1,7 @@
 ---
 title: Propiedades de columna
 position: 19
+sidebarDepth: 2
 ---
 
 

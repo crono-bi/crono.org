@@ -1,6 +1,7 @@
 ---
 title: Sentencia MERGE ❤️
 position: 4
+sidebarDepth: 2
 ---
 
 # Sentencia MERGE

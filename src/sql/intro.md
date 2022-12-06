@@ -1,6 +1,6 @@
 ﻿---
-sidebar: auto
 title: "Introducción"
+position: 1
 ---
 
 # Lenguaje Crono SQL

@@ -1,6 +1,7 @@
 ---
 title: Propiedades de elementos de negocio
 position: 17
+sidebarDepth: 2
 ---
 
 

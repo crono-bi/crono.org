@@ -1,6 +1,7 @@
 ---
 title: Listas de valores
 position: 6
+sidebarDepth: 2
 ---
 
 

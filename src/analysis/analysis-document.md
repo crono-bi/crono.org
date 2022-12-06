@@ -1,6 +1,7 @@
 ---
 title: "Estructura de un documento"
 position: 1
+sidebarDepth: 2
 ---
 
 # Estructura de un documento de Crono Analysis

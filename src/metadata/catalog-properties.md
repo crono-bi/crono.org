@@ -1,6 +1,7 @@
 ---
 title: Propiedades de catálogo
 position: 15
+sidebarDepth: 2
 ---
 
 
@@ -29,7 +30,7 @@ La vista general muestra la siguiente información:
 - **Evitar incluir tablas...**: Esta opción no tiene ninguna funcionalidad actualmente.
 - **Tipo de filtro de columna**: Indica el modificador que utilizará **Crono Analysis** para crear los filtros de columna. Esto es relevante para bases de datos que no soportan la sintaxis consultas CTE (sintaxis `WITH`)
 
-### Vista "Parámetros"
+## Vista "Parámetros"
 
 Ver el artículo sobre [Parámetros definidos en el catálogo](#parametros-definidos-en-el-catalogo)
 

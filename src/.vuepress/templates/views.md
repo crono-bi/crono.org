@@ -5,7 +5,7 @@ Catalog: "cronosql.metadata"
 Api: "views"
 UrlColumn: "Pseudoview"
 GroupColumn: "ViewGroup"
-Target: "/views/"
+Target: "/sql/views/"
 DirectoryStructure: "Files"
 ---
 

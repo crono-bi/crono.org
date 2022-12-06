@@ -5,7 +5,7 @@ Catalog: "cronosql.metadata"
 Api: "functions"
 UrlColumn: "FunctionName"
 GroupColumn: "FunctionGroup"
-Target: "/functions/"
+Target: "/sql/functions/"
 DirectoryStructure: "Files"
 ---
 

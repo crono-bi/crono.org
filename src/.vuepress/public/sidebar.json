@@ -83,1368 +83,6 @@
       ]
     }
   ],
-  "/functions/": [
-    {
-      "title": "Funciones",
-      "collapsable": false,
-      "path": "/functions/",
-      "type": "group",
-      "children": [
-        {
-          "title": "Funciones de agregaci\u00F3n",
-          "collapsable": false,
-          "path": "/functions/index-aggregation-functions.html",
-          "children": [
-            {
-              "title": "avg",
-              "collapsable": false,
-              "path": "/functions/avg.html"
-            },
-            {
-              "title": "checksum_agg",
-              "collapsable": false,
-              "path": "/functions/checksum_agg.html"
-            },
-            {
-              "title": "concat_ws",
-              "collapsable": false,
-              "path": "/functions/concat_ws.html"
-            },
-            {
-              "title": "count",
-              "collapsable": false,
-              "path": "/functions/count.html"
-            },
-            {
-              "title": "count_big",
-              "collapsable": false,
-              "path": "/functions/count_big.html"
-            },
-            {
-              "title": "countdistinct \u2747\uFE0F",
-              "collapsable": false,
-              "path": "/functions/countdistinct.html"
-            },
-            {
-              "title": "cume_dist",
-              "collapsable": false,
-              "path": "/functions/cume_dist.html"
-            },
-            {
-              "title": "decile \u2747\uFE0F",
-              "collapsable": false,
-              "path": "/functions/decile.html"
-            },
-            {
-              "title": "dense_rank",
-              "collapsable": false,
-              "path": "/functions/dense_rank.html"
-            },
-            {
-              "title": "first_value",
-              "collapsable": false,
-              "path": "/functions/first_value.html"
-            },
-            {
-              "title": "lag",
-              "collapsable": false,
-              "path": "/functions/lag.html"
-            },
-            {
-              "title": "last_value",
-              "collapsable": false,
-              "path": "/functions/last_value.html"
-            },
-            {
-              "title": "lead",
-              "collapsable": false,
-              "path": "/functions/lead.html"
-            },
-            {
-              "title": "least",
-              "collapsable": false,
-              "path": "/functions/least.html"
-            },
-            {
-              "title": "max",
-              "collapsable": false,
-              "path": "/functions/max.html"
-            },
-            {
-              "title": "min",
-              "collapsable": false,
-              "path": "/functions/min.html"
-            },
-            {
-              "title": "next_value \u2747\uFE0F",
-              "collapsable": false,
-              "path": "/functions/next_value.html"
-            },
-            {
-              "title": "ntile",
-              "collapsable": false,
-              "path": "/functions/ntile.html"
-            },
-            {
-              "title": "pct \u2747\uFE0F",
-              "collapsable": false,
-              "path": "/functions/pct.html"
-            },
-            {
-              "title": "pctrank \u2747\uFE0F",
-              "collapsable": false,
-              "path": "/functions/pctrank.html"
-            },
-            {
-              "title": "pctvariance \u2747\uFE0F \uD83D\uDEA7",
-              "collapsable": false,
-              "path": "/functions/pctvariance.html"
-            },
-            {
-              "title": "percent_rank",
-              "collapsable": false,
-              "path": "/functions/percent_rank.html"
-            },
-            {
-              "title": "percentile \u2747\uFE0F",
-              "collapsable": false,
-              "path": "/functions/percentile.html"
-            },
-            {
-              "title": "percentile_cont",
-              "collapsable": false,
-              "path": "/functions/percentile_cont.html"
-            },
-            {
-              "title": "percentile_disc",
-              "collapsable": false,
-              "path": "/functions/percentile_disc.html"
-            },
-            {
-              "title": "quantile \u2747\uFE0F",
-              "collapsable": false,
-              "path": "/functions/quantile.html"
-            },
-            {
-              "title": "quartile \u2747\uFE0F",
-              "collapsable": false,
-              "path": "/functions/quartile.html"
-            },
-            {
-              "title": "rank",
-              "collapsable": false,
-              "path": "/functions/rank.html"
-            },
-            {
-              "title": "row_number",
-              "collapsable": false,
-              "path": "/functions/row_number.html"
-            },
-            {
-              "title": "runningpct \u2747\uFE0F",
-              "collapsable": false,
-              "path": "/functions/runningpct.html"
-            },
-            {
-              "title": "runningsum \u2747\uFE0F",
-              "collapsable": false,
-              "path": "/functions/runningsum.html"
-            },
-            {
-              "title": "single \u2747\uFE0F \uD83D\uDEA7",
-              "collapsable": false,
-              "path": "/functions/single.html"
-            },
-            {
-              "title": "stdev",
-              "collapsable": false,
-              "path": "/functions/stdev.html"
-            },
-            {
-              "title": "stdevp",
-              "collapsable": false,
-              "path": "/functions/stdevp.html"
-            },
-            {
-              "title": "string_agg",
-              "collapsable": false,
-              "path": "/functions/string_agg.html"
-            },
-            {
-              "title": "sum \u2764\uFE0F",
-              "collapsable": false,
-              "path": "/functions/sum.html"
-            },
-            {
-              "title": "total \u2747\uFE0F",
-              "collapsable": false,
-              "path": "/functions/total.html"
-            },
-            {
-              "title": "var",
-              "collapsable": false,
-              "path": "/functions/var.html"
-            },
-            {
-              "title": "varp",
-              "collapsable": false,
-              "path": "/functions/varp.html"
-            }
-          ]
-        },
-        {
-          "title": "Funciones de conversi\u00F3n y l\u00F3gicas",
-          "collapsable": false,
-          "path": "/functions/index-conversion-functions.html",
-          "children": [
-            {
-              "title": "bighex \u2747\uFE0F \uD83D\uDEA7",
-              "collapsable": false,
-              "path": "/functions/bighex.html"
-            },
-            {
-              "title": "bigint \u2747\uFE0F \uD83D\uDEA7",
-              "collapsable": false,
-              "path": "/functions/bigint.html"
-            },
-            {
-              "title": "binary_checksum",
-              "collapsable": false,
-              "path": "/functions/binary_checksum.html"
-            },
-            {
-              "title": "bit \u2747\uFE0F \uD83D\uDEA7",
-              "collapsable": false,
-              "path": "/functions/bit.html"
-            },
-            {
-              "title": "cast",
-              "collapsable": false,
-              "path": "/functions/cast.html"
-            },
-            {
-              "title": "char",
-              "collapsable": false,
-              "path": "/functions/char.html"
-            },
-            {
-              "title": "choose",
-              "collapsable": false,
-              "path": "/functions/choose.html"
-            },
-            {
-              "title": "coalesce \u2747\uFE0F \u2764\uFE0F",
-              "collapsable": false,
-              "path": "/functions/coalesce.html"
-            },
-            {
-              "title": "convert \uD83D\uDEA7",
-              "collapsable": false,
-              "path": "/functions/convert.html"
-            },
-            {
-              "title": "date \u2747\uFE0F",
-              "collapsable": false,
-              "path": "/functions/date.html"
-            },
-            {
-              "title": "datetime \u2747\uFE0F \uD83D\uDEA7",
-              "collapsable": false,
-              "path": "/functions/datetime.html"
-            },
-            {
-              "title": "datetime2 \u2747\uFE0F \uD83D\uDEA7",
-              "collapsable": false,
-              "path": "/functions/datetime2.html"
-            },
-            {
-              "title": "elementat \u2747\uFE0F",
-              "collapsable": false,
-              "path": "/functions/elementat.html"
-            },
-            {
-              "title": "emptyifnull \u2747\uFE0F",
-              "collapsable": false,
-              "path": "/functions/emptyifnull.html"
-            },
-            {
-              "title": "float \u2747\uFE0F \uD83D\uDEA7",
-              "collapsable": false,
-              "path": "/functions/float.html"
-            },
-            {
-              "title": "hex \u2747\uFE0F \uD83D\uDEA7",
-              "collapsable": false,
-              "path": "/functions/hex.html"
-            },
-            {
-              "title": "iif",
-              "collapsable": false,
-              "path": "/functions/iif.html"
-            },
-            {
-              "title": "indexof \u2747\uFE0F",
-              "collapsable": false,
-              "path": "/functions/indexof.html"
-            },
-            {
-              "title": "int \u2747\uFE0F \uD83D\uDEA7",
-              "collapsable": false,
-              "path": "/functions/int.html"
-            },
-            {
-              "title": "isnull",
-              "collapsable": false,
-              "path": "/functions/isnull.html"
-            },
-            {
-              "title": "isnumeric",
-              "collapsable": false,
-              "path": "/functions/isnumeric.html"
-            },
-            {
-              "title": "nullif \uD83D\uDEA7",
-              "collapsable": false,
-              "path": "/functions/nullif.html"
-            },
-            {
-              "title": "nullifempty \u2747\uFE0F",
-              "collapsable": false,
-              "path": "/functions/nullifempty.html"
-            },
-            {
-              "title": "nullifzero \u2747\uFE0F",
-              "collapsable": false,
-              "path": "/functions/nullifzero.html"
-            },
-            {
-              "title": "parse",
-              "collapsable": false,
-              "path": "/functions/parse.html"
-            },
-            {
-              "title": "smallhex \u2747\uFE0F \uD83D\uDEA7",
-              "collapsable": false,
-              "path": "/functions/smallhex.html"
-            },
-            {
-              "title": "smallint \u2747\uFE0F \uD83D\uDEA7",
-              "collapsable": false,
-              "path": "/functions/smallint.html"
-            },
-            {
-              "title": "switch \u2747\uFE0F",
-              "collapsable": false,
-              "path": "/functions/switch.html"
-            },
-            {
-              "title": "time \u2747\uFE0F \uD83D\uDEA7",
-              "collapsable": false,
-              "path": "/functions/time.html"
-            },
-            {
-              "title": "tinyhex \u2747\uFE0F \uD83D\uDEA7",
-              "collapsable": false,
-              "path": "/functions/tinyhex.html"
-            },
-            {
-              "title": "tinyint \u2747\uFE0F \uD83D\uDEA7",
-              "collapsable": false,
-              "path": "/functions/tinyint.html"
-            },
-            {
-              "title": "try_cast",
-              "collapsable": false,
-              "path": "/functions/try_cast.html"
-            },
-            {
-              "title": "try_convert",
-              "collapsable": false,
-              "path": "/functions/try_convert.html"
-            },
-            {
-              "title": "try_parse",
-              "collapsable": false,
-              "path": "/functions/try_parse.html"
-            },
-            {
-              "title": "unicodechar \u2747\uFE0F \uD83D\uDEA7",
-              "collapsable": false,
-              "path": "/functions/unicodechar.html"
-            },
-            {
-              "title": "zeroifnull \u2747\uFE0F",
-              "collapsable": false,
-              "path": "/functions/zeroifnull.html"
-            }
-          ]
-        },
-        {
-          "title": "Funciones de fecha",
-          "collapsable": false,
-          "path": "/functions/index-date-functions.html",
-          "children": [
-            {
-              "title": "current_date \u2747\uFE0F \uD83D\uDEA7",
-              "collapsable": false,
-              "path": "/functions/current_date.html"
-            },
-            {
-              "title": "current_time \u2747\uFE0F \uD83D\uDEA7",
-              "collapsable": false,
-              "path": "/functions/current_time.html"
-            },
-            {
-              "title": "current_timestamp \u2747\uFE0F",
-              "collapsable": false,
-              "path": "/functions/current_timestamp.html"
-            },
-            {
-              "title": "current_timezone",
-              "collapsable": false,
-              "path": "/functions/current_timezone.html"
-            },
-            {
-              "title": "current_timezone_id",
-              "collapsable": false,
-              "path": "/functions/current_timezone_id.html"
-            },
-            {
-              "title": "dateadd",
-              "collapsable": false,
-              "path": "/functions/dateadd.html"
-            },
-            {
-              "title": "datediff \u2747\uFE0F",
-              "collapsable": false,
-              "path": "/functions/datediff.html"
-            },
-            {
-              "title": "datediff_big",
-              "collapsable": false,
-              "path": "/functions/datediff_big.html"
-            },
-            {
-              "title": "datefromparts",
-              "collapsable": false,
-              "path": "/functions/datefromparts.html"
-            },
-            {
-              "title": "datename \u2747\uFE0F",
-              "collapsable": false,
-              "path": "/functions/datename.html"
-            },
-            {
-              "title": "datepart \u2747\uFE0F",
-              "collapsable": false,
-              "path": "/functions/datepart.html"
-            },
-            {
-              "title": "datetime2fromparts",
-              "collapsable": false,
-              "path": "/functions/datetime2fromparts.html"
-            },
-            {
-              "title": "datetimefromparts",
-              "collapsable": false,
-              "path": "/functions/datetimefromparts.html"
-            },
-            {
-              "title": "datetimeoffsetfromparts",
-              "collapsable": false,
-              "path": "/functions/datetimeoffsetfromparts.html"
-            },
-            {
-              "title": "datetrunc",
-              "collapsable": false,
-              "path": "/functions/datetrunc.html"
-            },
-            {
-              "title": "day",
-              "collapsable": false,
-              "path": "/functions/day.html"
-            },
-            {
-              "title": "eomonth",
-              "collapsable": false,
-              "path": "/functions/eomonth.html"
-            },
-            {
-              "title": "getdate \u2764\uFE0F",
-              "collapsable": false,
-              "path": "/functions/getdate.html"
-            },
-            {
-              "title": "getenddate \u2747\uFE0F \uD83D\uDEA7",
-              "collapsable": false,
-              "path": "/functions/getenddate.html"
-            },
-            {
-              "title": "getenddatetime \u2747\uFE0F \uD83D\uDEA7",
-              "collapsable": false,
-              "path": "/functions/getenddatetime.html"
-            },
-            {
-              "title": "getutcdate",
-              "collapsable": false,
-              "path": "/functions/getutcdate.html"
-            },
-            {
-              "title": "hour \u2747\uFE0F",
-              "collapsable": false,
-              "path": "/functions/hour.html"
-            },
-            {
-              "title": "isdate",
-              "collapsable": false,
-              "path": "/functions/isdate.html"
-            },
-            {
-              "title": "isoweek \u2747\uFE0F",
-              "collapsable": false,
-              "path": "/functions/isoweek.html"
-            },
-            {
-              "title": "isoweekcode \u2747\uFE0F",
-              "collapsable": false,
-              "path": "/functions/isoweekcode.html"
-            },
-            {
-              "title": "isoweekshortcode \u2747\uFE0F",
-              "collapsable": false,
-              "path": "/functions/isoweekshortcode.html"
-            },
-            {
-              "title": "isoweekyear \u2747\uFE0F",
-              "collapsable": false,
-              "path": "/functions/isoweekyear.html"
-            },
-            {
-              "title": "localdate \u2747\uFE0F",
-              "collapsable": false,
-              "path": "/functions/localdate.html"
-            },
-            {
-              "title": "localdatetimeoffset \u2747\uFE0F",
-              "collapsable": false,
-              "path": "/functions/localdatetimeoffset.html"
-            },
-            {
-              "title": "month",
-              "collapsable": false,
-              "path": "/functions/month.html"
-            },
-            {
-              "title": "smalldatetimefromparts",
-              "collapsable": false,
-              "path": "/functions/smalldatetimefromparts.html"
-            },
-            {
-              "title": "switchoffset",
-              "collapsable": false,
-              "path": "/functions/switchoffset.html"
-            },
-            {
-              "title": "sysdatetime",
-              "collapsable": false,
-              "path": "/functions/sysdatetime.html"
-            },
-            {
-              "title": "sysdatetimeoffset",
-              "collapsable": false,
-              "path": "/functions/sysdatetimeoffset.html"
-            },
-            {
-              "title": "sysutcdatetime",
-              "collapsable": false,
-              "path": "/functions/sysutcdatetime.html"
-            },
-            {
-              "title": "timefromparts",
-              "collapsable": false,
-              "path": "/functions/timefromparts.html"
-            },
-            {
-              "title": "todatetimeoffset",
-              "collapsable": false,
-              "path": "/functions/todatetimeoffset.html"
-            },
-            {
-              "title": "today \u2747\uFE0F",
-              "collapsable": false,
-              "path": "/functions/today.html"
-            },
-            {
-              "title": "tomorrow \u2747\uFE0F",
-              "collapsable": false,
-              "path": "/functions/tomorrow.html"
-            },
-            {
-              "title": "year",
-              "collapsable": false,
-              "path": "/functions/year.html"
-            },
-            {
-              "title": "yyyymmdd \u2747\uFE0F \uD83D\uDEA7",
-              "collapsable": false,
-              "path": "/functions/yyyymmdd.html"
-            }
-          ]
-        },
-        {
-          "title": "Funciones de texto",
-          "collapsable": false,
-          "path": "/functions/index-text-functions.html",
-          "children": [
-            {
-              "title": "abc \u2747\uFE0F",
-              "collapsable": false,
-              "path": "/functions/abc.html"
-            },
-            {
-              "title": "ascii",
-              "collapsable": false,
-              "path": "/functions/ascii.html"
-            },
-            {
-              "title": "charindex",
-              "collapsable": false,
-              "path": "/functions/charindex.html"
-            },
-            {
-              "title": "compress",
-              "collapsable": false,
-              "path": "/functions/compress.html"
-            },
-            {
-              "title": "concat \u2764\uFE0F",
-              "collapsable": false,
-              "path": "/functions/concat.html"
-            },
-            {
-              "title": "decompress",
-              "collapsable": false,
-              "path": "/functions/decompress.html"
-            },
-            {
-              "title": "difference",
-              "collapsable": false,
-              "path": "/functions/difference.html"
-            },
-            {
-              "title": "format",
-              "collapsable": false,
-              "path": "/functions/format.html"
-            },
-            {
-              "title": "hashbytes",
-              "collapsable": false,
-              "path": "/functions/hashbytes.html"
-            },
-            {
-              "title": "left \u2747\uFE0F \u2764\uFE0F",
-              "collapsable": false,
-              "path": "/functions/left.html"
-            },
-            {
-              "title": "len",
-              "collapsable": false,
-              "path": "/functions/len.html"
-            },
-            {
-              "title": "lower",
-              "collapsable": false,
-              "path": "/functions/lower.html"
-            },
-            {
-              "title": "ltrim",
-              "collapsable": false,
-              "path": "/functions/ltrim.html"
-            },
-            {
-              "title": "nchar",
-              "collapsable": false,
-              "path": "/functions/nchar.html"
-            },
-            {
-              "title": "patindex",
-              "collapsable": false,
-              "path": "/functions/patindex.html"
-            },
-            {
-              "title": "quotename",
-              "collapsable": false,
-              "path": "/functions/quotename.html"
-            },
-            {
-              "title": "replace \u2764\uFE0F",
-              "collapsable": false,
-              "path": "/functions/replace.html"
-            },
-            {
-              "title": "replicate",
-              "collapsable": false,
-              "path": "/functions/replicate.html"
-            },
-            {
-              "title": "reverse",
-              "collapsable": false,
-              "path": "/functions/reverse.html"
-            },
-            {
-              "title": "right \u2747\uFE0F",
-              "collapsable": false,
-              "path": "/functions/right.html"
-            },
-            {
-              "title": "rtrim",
-              "collapsable": false,
-              "path": "/functions/rtrim.html"
-            },
-            {
-              "title": "soundex",
-              "collapsable": false,
-              "path": "/functions/soundex.html"
-            },
-            {
-              "title": "str",
-              "collapsable": false,
-              "path": "/functions/str.html"
-            },
-            {
-              "title": "string_split",
-              "collapsable": false,
-              "path": "/functions/string_split.html"
-            },
-            {
-              "title": "stuff",
-              "collapsable": false,
-              "path": "/functions/stuff.html"
-            },
-            {
-              "title": "substring",
-              "collapsable": false,
-              "path": "/functions/substring.html"
-            },
-            {
-              "title": "trim \u2747\uFE0F",
-              "collapsable": false,
-              "path": "/functions/trim.html"
-            },
-            {
-              "title": "unicode",
-              "collapsable": false,
-              "path": "/functions/unicode.html"
-            },
-            {
-              "title": "upper",
-              "collapsable": false,
-              "path": "/functions/upper.html"
-            }
-          ]
-        },
-        {
-          "title": "Funciones matem\u00E1ticas",
-          "collapsable": false,
-          "path": "/functions/index-math-functions.html",
-          "children": [
-            {
-              "title": "abs \u2764\uFE0F",
-              "collapsable": false,
-              "path": "/functions/abs.html"
-            },
-            {
-              "title": "acos",
-              "collapsable": false,
-              "path": "/functions/acos.html"
-            },
-            {
-              "title": "addition \u2747\uFE0F \u2764\uFE0F",
-              "collapsable": false,
-              "path": "/functions/addition.html"
-            },
-            {
-              "title": "asin",
-              "collapsable": false,
-              "path": "/functions/asin.html"
-            },
-            {
-              "title": "atan",
-              "collapsable": false,
-              "path": "/functions/atan.html"
-            },
-            {
-              "title": "atn2",
-              "collapsable": false,
-              "path": "/functions/atn2.html"
-            },
-            {
-              "title": "ceiling",
-              "collapsable": false,
-              "path": "/functions/ceiling.html"
-            },
-            {
-              "title": "cos",
-              "collapsable": false,
-              "path": "/functions/cos.html"
-            },
-            {
-              "title": "cot",
-              "collapsable": false,
-              "path": "/functions/cot.html"
-            },
-            {
-              "title": "degrees",
-              "collapsable": false,
-              "path": "/functions/degrees.html"
-            },
-            {
-              "title": "divide \u2747\uFE0F",
-              "collapsable": false,
-              "path": "/functions/divide.html"
-            },
-            {
-              "title": "exp",
-              "collapsable": false,
-              "path": "/functions/exp.html"
-            },
-            {
-              "title": "floor",
-              "collapsable": false,
-              "path": "/functions/floor.html"
-            },
-            {
-              "title": "generate_series",
-              "collapsable": false,
-              "path": "/functions/generate_series.html"
-            },
-            {
-              "title": "greatest",
-              "collapsable": false,
-              "path": "/functions/greatest.html"
-            },
-            {
-              "title": "log",
-              "collapsable": false,
-              "path": "/functions/log.html"
-            },
-            {
-              "title": "log10",
-              "collapsable": false,
-              "path": "/functions/log10.html"
-            },
-            {
-              "title": "margin \u2747\uFE0F \uD83D\uDEA7",
-              "collapsable": false,
-              "path": "/functions/margin.html"
-            },
-            {
-              "title": "markup \u2747\uFE0F \uD83D\uDEA7",
-              "collapsable": false,
-              "path": "/functions/markup.html"
-            },
-            {
-              "title": "maximum \u2747\uFE0F",
-              "collapsable": false,
-              "path": "/functions/maximum.html"
-            },
-            {
-              "title": "minimum \u2747\uFE0F",
-              "collapsable": false,
-              "path": "/functions/minimum.html"
-            },
-            {
-              "title": "mod \u2747\uFE0F",
-              "collapsable": false,
-              "path": "/functions/mod.html"
-            },
-            {
-              "title": "pi",
-              "collapsable": false,
-              "path": "/functions/pi.html"
-            },
-            {
-              "title": "power",
-              "collapsable": false,
-              "path": "/functions/power.html"
-            },
-            {
-              "title": "radians",
-              "collapsable": false,
-              "path": "/functions/radians.html"
-            },
-            {
-              "title": "rand",
-              "collapsable": false,
-              "path": "/functions/rand.html"
-            },
-            {
-              "title": "round \u2747\uFE0F \u2764\uFE0F",
-              "collapsable": false,
-              "path": "/functions/round.html"
-            },
-            {
-              "title": "sign",
-              "collapsable": false,
-              "path": "/functions/sign.html"
-            },
-            {
-              "title": "sin",
-              "collapsable": false,
-              "path": "/functions/sin.html"
-            },
-            {
-              "title": "space",
-              "collapsable": false,
-              "path": "/functions/space.html"
-            },
-            {
-              "title": "sqrt",
-              "collapsable": false,
-              "path": "/functions/sqrt.html"
-            },
-            {
-              "title": "square",
-              "collapsable": false,
-              "path": "/functions/square.html"
-            },
-            {
-              "title": "substraction \u2747\uFE0F",
-              "collapsable": false,
-              "path": "/functions/substraction.html"
-            },
-            {
-              "title": "tan",
-              "collapsable": false,
-              "path": "/functions/tan.html"
-            }
-          ]
-        },
-        {
-          "title": "Funciones de sistema",
-          "collapsable": false,
-          "path": "/functions/index-system-functions.html",
-          "children": [
-            {
-              "title": "checksum",
-              "collapsable": false,
-              "path": "/functions/checksum.html"
-            },
-            {
-              "title": "col_length",
-              "collapsable": false,
-              "path": "/functions/col_length.html"
-            },
-            {
-              "title": "col_name",
-              "collapsable": false,
-              "path": "/functions/col_name.html"
-            },
-            {
-              "title": "collationproperty",
-              "collapsable": false,
-              "path": "/functions/collationproperty.html"
-            },
-            {
-              "title": "columnproperty",
-              "collapsable": false,
-              "path": "/functions/columnproperty.html"
-            },
-            {
-              "title": "columns_updated",
-              "collapsable": false,
-              "path": "/functions/columns_updated.html"
-            },
-            {
-              "title": "current_transaction_id",
-              "collapsable": false,
-              "path": "/functions/current_transaction_id.html"
-            },
-            {
-              "title": "current_user \u2747\uFE0F",
-              "collapsable": false,
-              "path": "/functions/current_user.html"
-            },
-            {
-              "title": "currentusername \u2747\uFE0F \u2764\uFE0F",
-              "collapsable": false,
-              "path": "/functions/currentusername.html"
-            },
-            {
-              "title": "cursor_status",
-              "collapsable": false,
-              "path": "/functions/cursor_status.html"
-            },
-            {
-              "title": "database_principal_id",
-              "collapsable": false,
-              "path": "/functions/database_principal_id.html"
-            },
-            {
-              "title": "databaseproperty \uD83D\uDEA7",
-              "collapsable": false,
-              "path": "/functions/databaseproperty.html"
-            },
-            {
-              "title": "databasepropertyex",
-              "collapsable": false,
-              "path": "/functions/databasepropertyex.html"
-            },
-            {
-              "title": "datalength",
-              "collapsable": false,
-              "path": "/functions/datalength.html"
-            },
-            {
-              "title": "date_bucket",
-              "collapsable": false,
-              "path": "/functions/date_bucket.html"
-            },
-            {
-              "title": "db_id",
-              "collapsable": false,
-              "path": "/functions/db_id.html"
-            },
-            {
-              "title": "db_name",
-              "collapsable": false,
-              "path": "/functions/db_name.html"
-            },
-            {
-              "title": "error_line",
-              "collapsable": false,
-              "path": "/functions/error_line.html"
-            },
-            {
-              "title": "error_message",
-              "collapsable": false,
-              "path": "/functions/error_message.html"
-            },
-            {
-              "title": "error_number",
-              "collapsable": false,
-              "path": "/functions/error_number.html"
-            },
-            {
-              "title": "error_procedure",
-              "collapsable": false,
-              "path": "/functions/error_procedure.html"
-            },
-            {
-              "title": "error_severity",
-              "collapsable": false,
-              "path": "/functions/error_severity.html"
-            },
-            {
-              "title": "error_state",
-              "collapsable": false,
-              "path": "/functions/error_state.html"
-            },
-            {
-              "title": "file_name",
-              "collapsable": false,
-              "path": "/functions/file_name.html"
-            },
-            {
-              "title": "filegroup_id",
-              "collapsable": false,
-              "path": "/functions/filegroup_id.html"
-            },
-            {
-              "title": "filegroup_name",
-              "collapsable": false,
-              "path": "/functions/filegroup_name.html"
-            },
-            {
-              "title": "filegroupproperty",
-              "collapsable": false,
-              "path": "/functions/filegroupproperty.html"
-            },
-            {
-              "title": "fileproperty",
-              "collapsable": false,
-              "path": "/functions/fileproperty.html"
-            },
-            {
-              "title": "formatmessage",
-              "collapsable": false,
-              "path": "/functions/formatmessage.html"
-            },
-            {
-              "title": "fulltextcatalogproperty",
-              "collapsable": false,
-              "path": "/functions/fulltextcatalogproperty.html"
-            },
-            {
-              "title": "fulltextserviceproperty",
-              "collapsable": false,
-              "path": "/functions/fulltextserviceproperty.html"
-            },
-            {
-              "title": "getansinull",
-              "collapsable": false,
-              "path": "/functions/getansinull.html"
-            },
-            {
-              "title": "has_dbaccess",
-              "collapsable": false,
-              "path": "/functions/has_dbaccess.html"
-            },
-            {
-              "title": "host_id",
-              "collapsable": false,
-              "path": "/functions/host_id.html"
-            },
-            {
-              "title": "host_name",
-              "collapsable": false,
-              "path": "/functions/host_name.html"
-            },
-            {
-              "title": "ident_current",
-              "collapsable": false,
-              "path": "/functions/ident_current.html"
-            },
-            {
-              "title": "ident_incr",
-              "collapsable": false,
-              "path": "/functions/ident_incr.html"
-            },
-            {
-              "title": "ident_seed",
-              "collapsable": false,
-              "path": "/functions/ident_seed.html"
-            },
-            {
-              "title": "identity",
-              "collapsable": false,
-              "path": "/functions/identity.html"
-            },
-            {
-              "title": "index_col",
-              "collapsable": false,
-              "path": "/functions/index_col.html"
-            },
-            {
-              "title": "indexproperty",
-              "collapsable": false,
-              "path": "/functions/indexproperty.html"
-            },
-            {
-              "title": "is_member",
-              "collapsable": false,
-              "path": "/functions/is_member.html"
-            },
-            {
-              "title": "is_srvrolemember",
-              "collapsable": false,
-              "path": "/functions/is_srvrolemember.html"
-            },
-            {
-              "title": "ismemberof \u2747\uFE0F",
-              "collapsable": false,
-              "path": "/functions/ismemberof.html"
-            },
-            {
-              "title": "memberof \u2747\uFE0F",
-              "collapsable": false,
-              "path": "/functions/memberof.html"
-            },
-            {
-              "title": "newid",
-              "collapsable": false,
-              "path": "/functions/newid.html"
-            },
-            {
-              "title": "newsequentialid",
-              "collapsable": false,
-              "path": "/functions/newsequentialid.html"
-            },
-            {
-              "title": "object_id",
-              "collapsable": false,
-              "path": "/functions/object_id.html"
-            },
-            {
-              "title": "object_name",
-              "collapsable": false,
-              "path": "/functions/object_name.html"
-            },
-            {
-              "title": "objectproperty",
-              "collapsable": false,
-              "path": "/functions/objectproperty.html"
-            },
-            {
-              "title": "opendatasource",
-              "collapsable": false,
-              "path": "/functions/opendatasource.html"
-            },
-            {
-              "title": "openquery",
-              "collapsable": false,
-              "path": "/functions/openquery.html"
-            },
-            {
-              "title": "openrowset",
-              "collapsable": false,
-              "path": "/functions/openrowset.html"
-            },
-            {
-              "title": "parsename",
-              "collapsable": false,
-              "path": "/functions/parsename.html"
-            },
-            {
-              "title": "permissions",
-              "collapsable": false,
-              "path": "/functions/permissions.html"
-            },
-            {
-              "title": "rowcount_big",
-              "collapsable": false,
-              "path": "/functions/rowcount_big.html"
-            },
-            {
-              "title": "schema_id",
-              "collapsable": false,
-              "path": "/functions/schema_id.html"
-            },
-            {
-              "title": "schema_name",
-              "collapsable": false,
-              "path": "/functions/schema_name.html"
-            },
-            {
-              "title": "scope_identity",
-              "collapsable": false,
-              "path": "/functions/scope_identity.html"
-            },
-            {
-              "title": "security",
-              "collapsable": false,
-              "path": "/functions/security.html"
-            },
-            {
-              "title": "serverproperty",
-              "collapsable": false,
-              "path": "/functions/serverproperty.html"
-            },
-            {
-              "title": "session_user \u2747\uFE0F",
-              "collapsable": false,
-              "path": "/functions/session_user.html"
-            },
-            {
-              "title": "sessionproperty",
-              "collapsable": false,
-              "path": "/functions/sessionproperty.html"
-            },
-            {
-              "title": "sql_variant_property",
-              "collapsable": false,
-              "path": "/functions/sql_variant_property.html"
-            },
-            {
-              "title": "stats_date",
-              "collapsable": false,
-              "path": "/functions/stats_date.html"
-            },
-            {
-              "title": "suser_id",
-              "collapsable": false,
-              "path": "/functions/suser_id.html"
-            },
-            {
-              "title": "suser_name",
-              "collapsable": false,
-              "path": "/functions/suser_name.html"
-            },
-            {
-              "title": "suser_sid",
-              "collapsable": false,
-              "path": "/functions/suser_sid.html"
-            },
-            {
-              "title": "suser_sname",
-              "collapsable": false,
-              "path": "/functions/suser_sname.html"
-            },
-            {
-              "title": "system_user \u2747\uFE0F",
-              "collapsable": false,
-              "path": "/functions/system_user.html"
-            },
-            {
-              "title": "type_name",
-              "collapsable": false,
-              "path": "/functions/type_name.html"
-            },
-            {
-              "title": "typeproperty",
-              "collapsable": false,
-              "path": "/functions/typeproperty.html"
-            },
-            {
-              "title": "user_name",
-              "collapsable": false,
-              "path": "/functions/user_name.html"
-            }
-          ]
-        }
-      ]
-    }
-  ],
-  "/language/": [
-    {
-      "title": "Lenguaje Crono SQL",
-      "collapsable": false,
-      "path": "/language/",
-      "type": "group",
-      "children": [
-        {
-          "title": "Sentencia SELECT \u2764\uFE0F",
-          "collapsable": false,
-          "path": "/language/select.html"
-        },
-        {
-          "title": "Sentencia INSERT",
-          "collapsable": false,
-          "path": "/language/insert.html"
-        },
-        {
-          "title": "Sentencia UPDATE",
-          "collapsable": false,
-          "path": "/language/update.html"
-        },
-        {
-          "title": "Sentencia MERGE \u2764\uFE0F",
-          "collapsable": false,
-          "path": "/language/merge.html"
-        },
-        {
-          "title": "Sentencia DELETE",
-          "collapsable": false,
-          "path": "/language/delete..html"
-        },
-        {
-          "title": "Sentencia TRUNCATE",
-          "collapsable": false,
-          "path": "/language/truncate.html"
-        },
-        {
-          "title": "Sentencia LOAD",
-          "collapsable": false,
-          "path": "/language/load.html"
-        },
-        {
-          "title": "Sentencias DDL",
-          "collapsable": false,
-          "path": "/language/ddl.html"
-        }
-      ]
-    }
-  ],
   "/metadata/": [
     {
       "title": "Manual Crono Metadata",
@@ -1544,220 +182,1587 @@
       ]
     }
   ],
-  "/views/": [
+  "/sql/": [
     {
-      "title": "Vistas",
+      "title": null,
       "collapsable": false,
-      "path": "/views/",
       "type": "group",
       "children": [
         {
-          "title": "Vistas de base de datos",
+          "title": "Introducci\u00F3n",
           "collapsable": false,
-          "path": "/views/index-db-views.html",
+          "path": "/sql/intro.html"
+        },
+        {
+          "title": "Lenguaje Crono SQL",
+          "collapsable": false,
+          "path": "/sql/language/",
           "children": [
             {
-              "title": "Crono$AnsiColumns",
+              "title": "Sentencia SELECT \u2764\uFE0F",
               "collapsable": false,
-              "path": "/views/cronoansicolumns.html"
+              "path": "/sql/language/select.html"
             },
             {
-              "title": "Crono$AnsiForeignKeys",
+              "title": "Sentencia INSERT",
               "collapsable": false,
-              "path": "/views/cronoansiforeignkeys.html"
+              "path": "/sql/language/insert.html"
             },
             {
-              "title": "Crono$ColumnExtendedProperties",
+              "title": "Sentencia UPDATE",
               "collapsable": false,
-              "path": "/views/cronocolumnextendedproperties.html"
+              "path": "/sql/language/update.html"
             },
             {
-              "title": "Crono$Columns \u2764\uFE0F",
+              "title": "Sentencia MERGE \u2764\uFE0F",
               "collapsable": false,
-              "path": "/views/cronocolumns.html"
+              "path": "/sql/language/merge.html"
             },
             {
-              "title": "Crono$Constraints",
+              "title": "Sentencia DELETE",
               "collapsable": false,
-              "path": "/views/cronoconstraints.html"
+              "path": "/sql/language/delete..html"
             },
             {
-              "title": "Crono$ConstraintsColumns",
+              "title": "Sentencia TRUNCATE",
               "collapsable": false,
-              "path": "/views/cronoconstraintscolumns.html"
+              "path": "/sql/language/truncate.html"
             },
             {
-              "title": "Crono$DatabaseExtendedProperties",
+              "title": "Sentencia LOAD",
               "collapsable": false,
-              "path": "/views/cronodatabaseextendedproperties.html"
+              "path": "/sql/language/load.html"
             },
             {
-              "title": "Crono$Databases",
+              "title": "Sentencias DDL",
               "collapsable": false,
-              "path": "/views/cronodatabases.html"
-            },
-            {
-              "title": "Crono$ForeignKeys",
-              "collapsable": false,
-              "path": "/views/cronoforeignkeys.html"
-            },
-            {
-              "title": "Crono$IndexColumns",
-              "collapsable": false,
-              "path": "/views/cronoindexcolumns.html"
-            },
-            {
-              "title": "Crono$Indexes",
-              "collapsable": false,
-              "path": "/views/cronoindexes.html"
-            },
-            {
-              "title": "Crono$Parameters",
-              "collapsable": false,
-              "path": "/views/cronoparameters.html"
-            },
-            {
-              "title": "Crono$ProcedureExtendedProperties",
-              "collapsable": false,
-              "path": "/views/cronoprocedureextendedproperties.html"
-            },
-            {
-              "title": "Crono$Procedures \u2764\uFE0F",
-              "collapsable": false,
-              "path": "/views/cronoprocedures.html"
-            },
-            {
-              "title": "Crono$Routines",
-              "collapsable": false,
-              "path": "/views/cronoroutines.html"
-            },
-            {
-              "title": "Crono$Schemas",
-              "collapsable": false,
-              "path": "/views/cronoschemas.html"
-            },
-            {
-              "title": "Crono$TableExtendedProperties",
-              "collapsable": false,
-              "path": "/views/cronotableextendedproperties.html"
-            },
-            {
-              "title": "Crono$Tables \u2764\uFE0F",
-              "collapsable": false,
-              "path": "/views/cronotables.html"
+              "path": "/sql/language/ddl.html"
             }
           ]
         },
         {
-          "title": "Vistas de metadata de Crono",
+          "title": "Funciones",
           "collapsable": false,
-          "path": "/views/index-metadata-views.html",
+          "path": "/sql/functions/",
           "children": [
             {
-              "title": "Crono$CronoFunctions",
+              "title": "Funciones de agregaci\u00F3n",
               "collapsable": false,
-              "path": "/views/cronocronofunctions.html"
+              "path": "/sql/functions/index-aggregation-functions.html",
+              "children": [
+                {
+                  "title": "avg",
+                  "collapsable": false,
+                  "path": "/sql/functions/avg.html"
+                },
+                {
+                  "title": "checksum_agg",
+                  "collapsable": false,
+                  "path": "/sql/functions/checksum_agg.html"
+                },
+                {
+                  "title": "concat_ws",
+                  "collapsable": false,
+                  "path": "/sql/functions/concat_ws.html"
+                },
+                {
+                  "title": "count",
+                  "collapsable": false,
+                  "path": "/sql/functions/count.html"
+                },
+                {
+                  "title": "count_big",
+                  "collapsable": false,
+                  "path": "/sql/functions/count_big.html"
+                },
+                {
+                  "title": "countdistinct \u2747\uFE0F",
+                  "collapsable": false,
+                  "path": "/sql/functions/countdistinct.html"
+                },
+                {
+                  "title": "cume_dist",
+                  "collapsable": false,
+                  "path": "/sql/functions/cume_dist.html"
+                },
+                {
+                  "title": "decile \u2747\uFE0F",
+                  "collapsable": false,
+                  "path": "/sql/functions/decile.html"
+                },
+                {
+                  "title": "dense_rank",
+                  "collapsable": false,
+                  "path": "/sql/functions/dense_rank.html"
+                },
+                {
+                  "title": "first_value",
+                  "collapsable": false,
+                  "path": "/sql/functions/first_value.html"
+                },
+                {
+                  "title": "lag",
+                  "collapsable": false,
+                  "path": "/sql/functions/lag.html"
+                },
+                {
+                  "title": "last_value",
+                  "collapsable": false,
+                  "path": "/sql/functions/last_value.html"
+                },
+                {
+                  "title": "lead",
+                  "collapsable": false,
+                  "path": "/sql/functions/lead.html"
+                },
+                {
+                  "title": "least",
+                  "collapsable": false,
+                  "path": "/sql/functions/least.html"
+                },
+                {
+                  "title": "max",
+                  "collapsable": false,
+                  "path": "/sql/functions/max.html"
+                },
+                {
+                  "title": "min",
+                  "collapsable": false,
+                  "path": "/sql/functions/min.html"
+                },
+                {
+                  "title": "next_value \u2747\uFE0F",
+                  "collapsable": false,
+                  "path": "/sql/functions/next_value.html"
+                },
+                {
+                  "title": "ntile",
+                  "collapsable": false,
+                  "path": "/sql/functions/ntile.html"
+                },
+                {
+                  "title": "pct \u2747\uFE0F",
+                  "collapsable": false,
+                  "path": "/sql/functions/pct.html"
+                },
+                {
+                  "title": "pctrank \u2747\uFE0F",
+                  "collapsable": false,
+                  "path": "/sql/functions/pctrank.html"
+                },
+                {
+                  "title": "pctvariance \u2747\uFE0F \uD83D\uDEA7",
+                  "collapsable": false,
+                  "path": "/sql/functions/pctvariance.html"
+                },
+                {
+                  "title": "percent_rank",
+                  "collapsable": false,
+                  "path": "/sql/functions/percent_rank.html"
+                },
+                {
+                  "title": "percentile \u2747\uFE0F",
+                  "collapsable": false,
+                  "path": "/sql/functions/percentile.html"
+                },
+                {
+                  "title": "percentile_cont",
+                  "collapsable": false,
+                  "path": "/sql/functions/percentile_cont.html"
+                },
+                {
+                  "title": "percentile_disc",
+                  "collapsable": false,
+                  "path": "/sql/functions/percentile_disc.html"
+                },
+                {
+                  "title": "quantile \u2747\uFE0F",
+                  "collapsable": false,
+                  "path": "/sql/functions/quantile.html"
+                },
+                {
+                  "title": "quartile \u2747\uFE0F",
+                  "collapsable": false,
+                  "path": "/sql/functions/quartile.html"
+                },
+                {
+                  "title": "rank",
+                  "collapsable": false,
+                  "path": "/sql/functions/rank.html"
+                },
+                {
+                  "title": "row_number",
+                  "collapsable": false,
+                  "path": "/sql/functions/row_number.html"
+                },
+                {
+                  "title": "runningpct \u2747\uFE0F",
+                  "collapsable": false,
+                  "path": "/sql/functions/runningpct.html"
+                },
+                {
+                  "title": "runningsum \u2747\uFE0F",
+                  "collapsable": false,
+                  "path": "/sql/functions/runningsum.html"
+                },
+                {
+                  "title": "single \u2747\uFE0F \uD83D\uDEA7",
+                  "collapsable": false,
+                  "path": "/sql/functions/single.html"
+                },
+                {
+                  "title": "stdev",
+                  "collapsable": false,
+                  "path": "/sql/functions/stdev.html"
+                },
+                {
+                  "title": "stdevp",
+                  "collapsable": false,
+                  "path": "/sql/functions/stdevp.html"
+                },
+                {
+                  "title": "string_agg",
+                  "collapsable": false,
+                  "path": "/sql/functions/string_agg.html"
+                },
+                {
+                  "title": "sum \u2764\uFE0F",
+                  "collapsable": false,
+                  "path": "/sql/functions/sum.html"
+                },
+                {
+                  "title": "total \u2747\uFE0F",
+                  "collapsable": false,
+                  "path": "/sql/functions/total.html"
+                },
+                {
+                  "title": "var",
+                  "collapsable": false,
+                  "path": "/sql/functions/var.html"
+                },
+                {
+                  "title": "varp",
+                  "collapsable": false,
+                  "path": "/sql/functions/varp.html"
+                }
+              ]
             },
             {
-              "title": "Crono$CronoViews",
+              "title": "Funciones de conversi\u00F3n y l\u00F3gicas",
               "collapsable": false,
-              "path": "/views/cronocronoviews.html"
+              "path": "/sql/functions/index-conversion-functions.html",
+              "children": [
+                {
+                  "title": "bighex \u2747\uFE0F \uD83D\uDEA7",
+                  "collapsable": false,
+                  "path": "/sql/functions/bighex.html"
+                },
+                {
+                  "title": "bigint \u2747\uFE0F \uD83D\uDEA7",
+                  "collapsable": false,
+                  "path": "/sql/functions/bigint.html"
+                },
+                {
+                  "title": "binary_checksum",
+                  "collapsable": false,
+                  "path": "/sql/functions/binary_checksum.html"
+                },
+                {
+                  "title": "bit \u2747\uFE0F \uD83D\uDEA7",
+                  "collapsable": false,
+                  "path": "/sql/functions/bit.html"
+                },
+                {
+                  "title": "cast",
+                  "collapsable": false,
+                  "path": "/sql/functions/cast.html"
+                },
+                {
+                  "title": "char",
+                  "collapsable": false,
+                  "path": "/sql/functions/char.html"
+                },
+                {
+                  "title": "choose",
+                  "collapsable": false,
+                  "path": "/sql/functions/choose.html"
+                },
+                {
+                  "title": "coalesce \u2747\uFE0F \u2764\uFE0F",
+                  "collapsable": false,
+                  "path": "/sql/functions/coalesce.html"
+                },
+                {
+                  "title": "convert \uD83D\uDEA7",
+                  "collapsable": false,
+                  "path": "/sql/functions/convert.html"
+                },
+                {
+                  "title": "date \u2747\uFE0F",
+                  "collapsable": false,
+                  "path": "/sql/functions/date.html"
+                },
+                {
+                  "title": "datetime \u2747\uFE0F \uD83D\uDEA7",
+                  "collapsable": false,
+                  "path": "/sql/functions/datetime.html"
+                },
+                {
+                  "title": "datetime2 \u2747\uFE0F \uD83D\uDEA7",
+                  "collapsable": false,
+                  "path": "/sql/functions/datetime2.html"
+                },
+                {
+                  "title": "elementat \u2747\uFE0F",
+                  "collapsable": false,
+                  "path": "/sql/functions/elementat.html"
+                },
+                {
+                  "title": "emptyifnull \u2747\uFE0F",
+                  "collapsable": false,
+                  "path": "/sql/functions/emptyifnull.html"
+                },
+                {
+                  "title": "float \u2747\uFE0F \uD83D\uDEA7",
+                  "collapsable": false,
+                  "path": "/sql/functions/float.html"
+                },
+                {
+                  "title": "hex \u2747\uFE0F \uD83D\uDEA7",
+                  "collapsable": false,
+                  "path": "/sql/functions/hex.html"
+                },
+                {
+                  "title": "iif",
+                  "collapsable": false,
+                  "path": "/sql/functions/iif.html"
+                },
+                {
+                  "title": "indexof \u2747\uFE0F",
+                  "collapsable": false,
+                  "path": "/sql/functions/indexof.html"
+                },
+                {
+                  "title": "int \u2747\uFE0F \uD83D\uDEA7",
+                  "collapsable": false,
+                  "path": "/sql/functions/int.html"
+                },
+                {
+                  "title": "isnull",
+                  "collapsable": false,
+                  "path": "/sql/functions/isnull.html"
+                },
+                {
+                  "title": "isnumeric",
+                  "collapsable": false,
+                  "path": "/sql/functions/isnumeric.html"
+                },
+                {
+                  "title": "nullif \uD83D\uDEA7",
+                  "collapsable": false,
+                  "path": "/sql/functions/nullif.html"
+                },
+                {
+                  "title": "nullifempty \u2747\uFE0F",
+                  "collapsable": false,
+                  "path": "/sql/functions/nullifempty.html"
+                },
+                {
+                  "title": "nullifzero \u2747\uFE0F",
+                  "collapsable": false,
+                  "path": "/sql/functions/nullifzero.html"
+                },
+                {
+                  "title": "parse",
+                  "collapsable": false,
+                  "path": "/sql/functions/parse.html"
+                },
+                {
+                  "title": "smallhex \u2747\uFE0F \uD83D\uDEA7",
+                  "collapsable": false,
+                  "path": "/sql/functions/smallhex.html"
+                },
+                {
+                  "title": "smallint \u2747\uFE0F \uD83D\uDEA7",
+                  "collapsable": false,
+                  "path": "/sql/functions/smallint.html"
+                },
+                {
+                  "title": "switch \u2747\uFE0F",
+                  "collapsable": false,
+                  "path": "/sql/functions/switch.html"
+                },
+                {
+                  "title": "time \u2747\uFE0F \uD83D\uDEA7",
+                  "collapsable": false,
+                  "path": "/sql/functions/time.html"
+                },
+                {
+                  "title": "tinyhex \u2747\uFE0F \uD83D\uDEA7",
+                  "collapsable": false,
+                  "path": "/sql/functions/tinyhex.html"
+                },
+                {
+                  "title": "tinyint \u2747\uFE0F \uD83D\uDEA7",
+                  "collapsable": false,
+                  "path": "/sql/functions/tinyint.html"
+                },
+                {
+                  "title": "try_cast",
+                  "collapsable": false,
+                  "path": "/sql/functions/try_cast.html"
+                },
+                {
+                  "title": "try_convert",
+                  "collapsable": false,
+                  "path": "/sql/functions/try_convert.html"
+                },
+                {
+                  "title": "try_parse",
+                  "collapsable": false,
+                  "path": "/sql/functions/try_parse.html"
+                },
+                {
+                  "title": "unicodechar \u2747\uFE0F \uD83D\uDEA7",
+                  "collapsable": false,
+                  "path": "/sql/functions/unicodechar.html"
+                },
+                {
+                  "title": "zeroifnull \u2747\uFE0F",
+                  "collapsable": false,
+                  "path": "/sql/functions/zeroifnull.html"
+                }
+              ]
             },
             {
-              "title": "Crono$Functions",
+              "title": "Funciones de fecha",
               "collapsable": false,
-              "path": "/views/cronofunctions.html"
+              "path": "/sql/functions/index-date-functions.html",
+              "children": [
+                {
+                  "title": "current_date \u2747\uFE0F \uD83D\uDEA7",
+                  "collapsable": false,
+                  "path": "/sql/functions/current_date.html"
+                },
+                {
+                  "title": "current_time \u2747\uFE0F \uD83D\uDEA7",
+                  "collapsable": false,
+                  "path": "/sql/functions/current_time.html"
+                },
+                {
+                  "title": "current_timestamp \u2747\uFE0F",
+                  "collapsable": false,
+                  "path": "/sql/functions/current_timestamp.html"
+                },
+                {
+                  "title": "current_timezone",
+                  "collapsable": false,
+                  "path": "/sql/functions/current_timezone.html"
+                },
+                {
+                  "title": "current_timezone_id",
+                  "collapsable": false,
+                  "path": "/sql/functions/current_timezone_id.html"
+                },
+                {
+                  "title": "dateadd",
+                  "collapsable": false,
+                  "path": "/sql/functions/dateadd.html"
+                },
+                {
+                  "title": "datediff \u2747\uFE0F",
+                  "collapsable": false,
+                  "path": "/sql/functions/datediff.html"
+                },
+                {
+                  "title": "datediff_big",
+                  "collapsable": false,
+                  "path": "/sql/functions/datediff_big.html"
+                },
+                {
+                  "title": "datefromparts",
+                  "collapsable": false,
+                  "path": "/sql/functions/datefromparts.html"
+                },
+                {
+                  "title": "datename \u2747\uFE0F",
+                  "collapsable": false,
+                  "path": "/sql/functions/datename.html"
+                },
+                {
+                  "title": "datepart \u2747\uFE0F",
+                  "collapsable": false,
+                  "path": "/sql/functions/datepart.html"
+                },
+                {
+                  "title": "datetime2fromparts",
+                  "collapsable": false,
+                  "path": "/sql/functions/datetime2fromparts.html"
+                },
+                {
+                  "title": "datetimefromparts",
+                  "collapsable": false,
+                  "path": "/sql/functions/datetimefromparts.html"
+                },
+                {
+                  "title": "datetimeoffsetfromparts",
+                  "collapsable": false,
+                  "path": "/sql/functions/datetimeoffsetfromparts.html"
+                },
+                {
+                  "title": "datetrunc",
+                  "collapsable": false,
+                  "path": "/sql/functions/datetrunc.html"
+                },
+                {
+                  "title": "day",
+                  "collapsable": false,
+                  "path": "/sql/functions/day.html"
+                },
+                {
+                  "title": "eomonth",
+                  "collapsable": false,
+                  "path": "/sql/functions/eomonth.html"
+                },
+                {
+                  "title": "getdate \u2764\uFE0F",
+                  "collapsable": false,
+                  "path": "/sql/functions/getdate.html"
+                },
+                {
+                  "title": "getenddate \u2747\uFE0F \uD83D\uDEA7",
+                  "collapsable": false,
+                  "path": "/sql/functions/getenddate.html"
+                },
+                {
+                  "title": "getenddatetime \u2747\uFE0F \uD83D\uDEA7",
+                  "collapsable": false,
+                  "path": "/sql/functions/getenddatetime.html"
+                },
+                {
+                  "title": "getutcdate",
+                  "collapsable": false,
+                  "path": "/sql/functions/getutcdate.html"
+                },
+                {
+                  "title": "hour \u2747\uFE0F",
+                  "collapsable": false,
+                  "path": "/sql/functions/hour.html"
+                },
+                {
+                  "title": "isdate",
+                  "collapsable": false,
+                  "path": "/sql/functions/isdate.html"
+                },
+                {
+                  "title": "isoweek \u2747\uFE0F",
+                  "collapsable": false,
+                  "path": "/sql/functions/isoweek.html"
+                },
+                {
+                  "title": "isoweekcode \u2747\uFE0F",
+                  "collapsable": false,
+                  "path": "/sql/functions/isoweekcode.html"
+                },
+                {
+                  "title": "isoweekshortcode \u2747\uFE0F",
+                  "collapsable": false,
+                  "path": "/sql/functions/isoweekshortcode.html"
+                },
+                {
+                  "title": "isoweekyear \u2747\uFE0F",
+                  "collapsable": false,
+                  "path": "/sql/functions/isoweekyear.html"
+                },
+                {
+                  "title": "localdate \u2747\uFE0F",
+                  "collapsable": false,
+                  "path": "/sql/functions/localdate.html"
+                },
+                {
+                  "title": "localdatetimeoffset \u2747\uFE0F",
+                  "collapsable": false,
+                  "path": "/sql/functions/localdatetimeoffset.html"
+                },
+                {
+                  "title": "month",
+                  "collapsable": false,
+                  "path": "/sql/functions/month.html"
+                },
+                {
+                  "title": "smalldatetimefromparts",
+                  "collapsable": false,
+                  "path": "/sql/functions/smalldatetimefromparts.html"
+                },
+                {
+                  "title": "switchoffset",
+                  "collapsable": false,
+                  "path": "/sql/functions/switchoffset.html"
+                },
+                {
+                  "title": "sysdatetime",
+                  "collapsable": false,
+                  "path": "/sql/functions/sysdatetime.html"
+                },
+                {
+                  "title": "sysdatetimeoffset",
+                  "collapsable": false,
+                  "path": "/sql/functions/sysdatetimeoffset.html"
+                },
+                {
+                  "title": "sysutcdatetime",
+                  "collapsable": false,
+                  "path": "/sql/functions/sysutcdatetime.html"
+                },
+                {
+                  "title": "timefromparts",
+                  "collapsable": false,
+                  "path": "/sql/functions/timefromparts.html"
+                },
+                {
+                  "title": "todatetimeoffset",
+                  "collapsable": false,
+                  "path": "/sql/functions/todatetimeoffset.html"
+                },
+                {
+                  "title": "today \u2747\uFE0F",
+                  "collapsable": false,
+                  "path": "/sql/functions/today.html"
+                },
+                {
+                  "title": "tomorrow \u2747\uFE0F",
+                  "collapsable": false,
+                  "path": "/sql/functions/tomorrow.html"
+                },
+                {
+                  "title": "year",
+                  "collapsable": false,
+                  "path": "/sql/functions/year.html"
+                },
+                {
+                  "title": "yyyymmdd \u2747\uFE0F \uD83D\uDEA7",
+                  "collapsable": false,
+                  "path": "/sql/functions/yyyymmdd.html"
+                }
+              ]
             },
             {
-              "title": "Crono$Keywords",
+              "title": "Funciones de texto",
               "collapsable": false,
-              "path": "/views/cronokeywords.html"
+              "path": "/sql/functions/index-text-functions.html",
+              "children": [
+                {
+                  "title": "abc \u2747\uFE0F",
+                  "collapsable": false,
+                  "path": "/sql/functions/abc.html"
+                },
+                {
+                  "title": "ascii",
+                  "collapsable": false,
+                  "path": "/sql/functions/ascii.html"
+                },
+                {
+                  "title": "charindex",
+                  "collapsable": false,
+                  "path": "/sql/functions/charindex.html"
+                },
+                {
+                  "title": "compress",
+                  "collapsable": false,
+                  "path": "/sql/functions/compress.html"
+                },
+                {
+                  "title": "concat \u2764\uFE0F",
+                  "collapsable": false,
+                  "path": "/sql/functions/concat.html"
+                },
+                {
+                  "title": "decompress",
+                  "collapsable": false,
+                  "path": "/sql/functions/decompress.html"
+                },
+                {
+                  "title": "difference",
+                  "collapsable": false,
+                  "path": "/sql/functions/difference.html"
+                },
+                {
+                  "title": "format",
+                  "collapsable": false,
+                  "path": "/sql/functions/format.html"
+                },
+                {
+                  "title": "hashbytes",
+                  "collapsable": false,
+                  "path": "/sql/functions/hashbytes.html"
+                },
+                {
+                  "title": "left \u2747\uFE0F \u2764\uFE0F",
+                  "collapsable": false,
+                  "path": "/sql/functions/left.html"
+                },
+                {
+                  "title": "len",
+                  "collapsable": false,
+                  "path": "/sql/functions/len.html"
+                },
+                {
+                  "title": "lower",
+                  "collapsable": false,
+                  "path": "/sql/functions/lower.html"
+                },
+                {
+                  "title": "ltrim",
+                  "collapsable": false,
+                  "path": "/sql/functions/ltrim.html"
+                },
+                {
+                  "title": "nchar",
+                  "collapsable": false,
+                  "path": "/sql/functions/nchar.html"
+                },
+                {
+                  "title": "patindex",
+                  "collapsable": false,
+                  "path": "/sql/functions/patindex.html"
+                },
+                {
+                  "title": "quotename",
+                  "collapsable": false,
+                  "path": "/sql/functions/quotename.html"
+                },
+                {
+                  "title": "replace \u2764\uFE0F",
+                  "collapsable": false,
+                  "path": "/sql/functions/replace.html"
+                },
+                {
+                  "title": "replicate",
+                  "collapsable": false,
+                  "path": "/sql/functions/replicate.html"
+                },
+                {
+                  "title": "reverse",
+                  "collapsable": false,
+                  "path": "/sql/functions/reverse.html"
+                },
+                {
+                  "title": "right \u2747\uFE0F",
+                  "collapsable": false,
+                  "path": "/sql/functions/right.html"
+                },
+                {
+                  "title": "rtrim",
+                  "collapsable": false,
+                  "path": "/sql/functions/rtrim.html"
+                },
+                {
+                  "title": "soundex",
+                  "collapsable": false,
+                  "path": "/sql/functions/soundex.html"
+                },
+                {
+                  "title": "str",
+                  "collapsable": false,
+                  "path": "/sql/functions/str.html"
+                },
+                {
+                  "title": "string_split",
+                  "collapsable": false,
+                  "path": "/sql/functions/string_split.html"
+                },
+                {
+                  "title": "stuff",
+                  "collapsable": false,
+                  "path": "/sql/functions/stuff.html"
+                },
+                {
+                  "title": "substring",
+                  "collapsable": false,
+                  "path": "/sql/functions/substring.html"
+                },
+                {
+                  "title": "trim \u2747\uFE0F",
+                  "collapsable": false,
+                  "path": "/sql/functions/trim.html"
+                },
+                {
+                  "title": "unicode",
+                  "collapsable": false,
+                  "path": "/sql/functions/unicode.html"
+                },
+                {
+                  "title": "upper",
+                  "collapsable": false,
+                  "path": "/sql/functions/upper.html"
+                }
+              ]
             },
             {
-              "title": "Crono$SqlFunctions",
+              "title": "Funciones matem\u00E1ticas",
               "collapsable": false,
-              "path": "/views/cronosqlfunctions.html"
+              "path": "/sql/functions/index-math-functions.html",
+              "children": [
+                {
+                  "title": "abs \u2764\uFE0F",
+                  "collapsable": false,
+                  "path": "/sql/functions/abs.html"
+                },
+                {
+                  "title": "acos",
+                  "collapsable": false,
+                  "path": "/sql/functions/acos.html"
+                },
+                {
+                  "title": "addition \u2747\uFE0F \u2764\uFE0F",
+                  "collapsable": false,
+                  "path": "/sql/functions/addition.html"
+                },
+                {
+                  "title": "asin",
+                  "collapsable": false,
+                  "path": "/sql/functions/asin.html"
+                },
+                {
+                  "title": "atan",
+                  "collapsable": false,
+                  "path": "/sql/functions/atan.html"
+                },
+                {
+                  "title": "atn2",
+                  "collapsable": false,
+                  "path": "/sql/functions/atn2.html"
+                },
+                {
+                  "title": "ceiling",
+                  "collapsable": false,
+                  "path": "/sql/functions/ceiling.html"
+                },
+                {
+                  "title": "cos",
+                  "collapsable": false,
+                  "path": "/sql/functions/cos.html"
+                },
+                {
+                  "title": "cot",
+                  "collapsable": false,
+                  "path": "/sql/functions/cot.html"
+                },
+                {
+                  "title": "degrees",
+                  "collapsable": false,
+                  "path": "/sql/functions/degrees.html"
+                },
+                {
+                  "title": "divide \u2747\uFE0F",
+                  "collapsable": false,
+                  "path": "/sql/functions/divide.html"
+                },
+                {
+                  "title": "exp",
+                  "collapsable": false,
+                  "path": "/sql/functions/exp.html"
+                },
+                {
+                  "title": "floor",
+                  "collapsable": false,
+                  "path": "/sql/functions/floor.html"
+                },
+                {
+                  "title": "generate_series",
+                  "collapsable": false,
+                  "path": "/sql/functions/generate_series.html"
+                },
+                {
+                  "title": "greatest",
+                  "collapsable": false,
+                  "path": "/sql/functions/greatest.html"
+                },
+                {
+                  "title": "log",
+                  "collapsable": false,
+                  "path": "/sql/functions/log.html"
+                },
+                {
+                  "title": "log10",
+                  "collapsable": false,
+                  "path": "/sql/functions/log10.html"
+                },
+                {
+                  "title": "margin \u2747\uFE0F \uD83D\uDEA7",
+                  "collapsable": false,
+                  "path": "/sql/functions/margin.html"
+                },
+                {
+                  "title": "markup \u2747\uFE0F \uD83D\uDEA7",
+                  "collapsable": false,
+                  "path": "/sql/functions/markup.html"
+                },
+                {
+                  "title": "maximum \u2747\uFE0F",
+                  "collapsable": false,
+                  "path": "/sql/functions/maximum.html"
+                },
+                {
+                  "title": "minimum \u2747\uFE0F",
+                  "collapsable": false,
+                  "path": "/sql/functions/minimum.html"
+                },
+                {
+                  "title": "mod \u2747\uFE0F",
+                  "collapsable": false,
+                  "path": "/sql/functions/mod.html"
+                },
+                {
+                  "title": "pi",
+                  "collapsable": false,
+                  "path": "/sql/functions/pi.html"
+                },
+                {
+                  "title": "power",
+                  "collapsable": false,
+                  "path": "/sql/functions/power.html"
+                },
+                {
+                  "title": "radians",
+                  "collapsable": false,
+                  "path": "/sql/functions/radians.html"
+                },
+                {
+                  "title": "rand",
+                  "collapsable": false,
+                  "path": "/sql/functions/rand.html"
+                },
+                {
+                  "title": "round \u2747\uFE0F \u2764\uFE0F",
+                  "collapsable": false,
+                  "path": "/sql/functions/round.html"
+                },
+                {
+                  "title": "sign",
+                  "collapsable": false,
+                  "path": "/sql/functions/sign.html"
+                },
+                {
+                  "title": "sin",
+                  "collapsable": false,
+                  "path": "/sql/functions/sin.html"
+                },
+                {
+                  "title": "space",
+                  "collapsable": false,
+                  "path": "/sql/functions/space.html"
+                },
+                {
+                  "title": "sqrt",
+                  "collapsable": false,
+                  "path": "/sql/functions/sqrt.html"
+                },
+                {
+                  "title": "square",
+                  "collapsable": false,
+                  "path": "/sql/functions/square.html"
+                },
+                {
+                  "title": "substraction \u2747\uFE0F",
+                  "collapsable": false,
+                  "path": "/sql/functions/substraction.html"
+                },
+                {
+                  "title": "tan",
+                  "collapsable": false,
+                  "path": "/sql/functions/tan.html"
+                }
+              ]
+            },
+            {
+              "title": "Funciones de sistema",
+              "collapsable": false,
+              "path": "/sql/functions/index-system-functions.html",
+              "children": [
+                {
+                  "title": "checksum",
+                  "collapsable": false,
+                  "path": "/sql/functions/checksum.html"
+                },
+                {
+                  "title": "col_length",
+                  "collapsable": false,
+                  "path": "/sql/functions/col_length.html"
+                },
+                {
+                  "title": "col_name",
+                  "collapsable": false,
+                  "path": "/sql/functions/col_name.html"
+                },
+                {
+                  "title": "collationproperty",
+                  "collapsable": false,
+                  "path": "/sql/functions/collationproperty.html"
+                },
+                {
+                  "title": "columnproperty",
+                  "collapsable": false,
+                  "path": "/sql/functions/columnproperty.html"
+                },
+                {
+                  "title": "columns_updated",
+                  "collapsable": false,
+                  "path": "/sql/functions/columns_updated.html"
+                },
+                {
+                  "title": "current_transaction_id",
+                  "collapsable": false,
+                  "path": "/sql/functions/current_transaction_id.html"
+                },
+                {
+                  "title": "current_user \u2747\uFE0F",
+                  "collapsable": false,
+                  "path": "/sql/functions/current_user.html"
+                },
+                {
+                  "title": "currentusername \u2747\uFE0F \u2764\uFE0F",
+                  "collapsable": false,
+                  "path": "/sql/functions/currentusername.html"
+                },
+                {
+                  "title": "cursor_status",
+                  "collapsable": false,
+                  "path": "/sql/functions/cursor_status.html"
+                },
+                {
+                  "title": "database_principal_id",
+                  "collapsable": false,
+                  "path": "/sql/functions/database_principal_id.html"
+                },
+                {
+                  "title": "databaseproperty \uD83D\uDEA7",
+                  "collapsable": false,
+                  "path": "/sql/functions/databaseproperty.html"
+                },
+                {
+                  "title": "databasepropertyex",
+                  "collapsable": false,
+                  "path": "/sql/functions/databasepropertyex.html"
+                },
+                {
+                  "title": "datalength",
+                  "collapsable": false,
+                  "path": "/sql/functions/datalength.html"
+                },
+                {
+                  "title": "date_bucket",
+                  "collapsable": false,
+                  "path": "/sql/functions/date_bucket.html"
+                },
+                {
+                  "title": "db_id",
+                  "collapsable": false,
+                  "path": "/sql/functions/db_id.html"
+                },
+                {
+                  "title": "db_name",
+                  "collapsable": false,
+                  "path": "/sql/functions/db_name.html"
+                },
+                {
+                  "title": "error_line",
+                  "collapsable": false,
+                  "path": "/sql/functions/error_line.html"
+                },
+                {
+                  "title": "error_message",
+                  "collapsable": false,
+                  "path": "/sql/functions/error_message.html"
+                },
+                {
+                  "title": "error_number",
+                  "collapsable": false,
+                  "path": "/sql/functions/error_number.html"
+                },
+                {
+                  "title": "error_procedure",
+                  "collapsable": false,
+                  "path": "/sql/functions/error_procedure.html"
+                },
+                {
+                  "title": "error_severity",
+                  "collapsable": false,
+                  "path": "/sql/functions/error_severity.html"
+                },
+                {
+                  "title": "error_state",
+                  "collapsable": false,
+                  "path": "/sql/functions/error_state.html"
+                },
+                {
+                  "title": "file_name",
+                  "collapsable": false,
+                  "path": "/sql/functions/file_name.html"
+                },
+                {
+                  "title": "filegroup_id",
+                  "collapsable": false,
+                  "path": "/sql/functions/filegroup_id.html"
+                },
+                {
+                  "title": "filegroup_name",
+                  "collapsable": false,
+                  "path": "/sql/functions/filegroup_name.html"
+                },
+                {
+                  "title": "filegroupproperty",
+                  "collapsable": false,
+                  "path": "/sql/functions/filegroupproperty.html"
+                },
+                {
+                  "title": "fileproperty",
+                  "collapsable": false,
+                  "path": "/sql/functions/fileproperty.html"
+                },
+                {
+                  "title": "formatmessage",
+                  "collapsable": false,
+                  "path": "/sql/functions/formatmessage.html"
+                },
+                {
+                  "title": "fulltextcatalogproperty",
+                  "collapsable": false,
+                  "path": "/sql/functions/fulltextcatalogproperty.html"
+                },
+                {
+                  "title": "fulltextserviceproperty",
+                  "collapsable": false,
+                  "path": "/sql/functions/fulltextserviceproperty.html"
+                },
+                {
+                  "title": "getansinull",
+                  "collapsable": false,
+                  "path": "/sql/functions/getansinull.html"
+                },
+                {
+                  "title": "has_dbaccess",
+                  "collapsable": false,
+                  "path": "/sql/functions/has_dbaccess.html"
+                },
+                {
+                  "title": "host_id",
+                  "collapsable": false,
+                  "path": "/sql/functions/host_id.html"
+                },
+                {
+                  "title": "host_name",
+                  "collapsable": false,
+                  "path": "/sql/functions/host_name.html"
+                },
+                {
+                  "title": "ident_current",
+                  "collapsable": false,
+                  "path": "/sql/functions/ident_current.html"
+                },
+                {
+                  "title": "ident_incr",
+                  "collapsable": false,
+                  "path": "/sql/functions/ident_incr.html"
+                },
+                {
+                  "title": "ident_seed",
+                  "collapsable": false,
+                  "path": "/sql/functions/ident_seed.html"
+                },
+                {
+                  "title": "identity",
+                  "collapsable": false,
+                  "path": "/sql/functions/identity.html"
+                },
+                {
+                  "title": "index_col",
+                  "collapsable": false,
+                  "path": "/sql/functions/index_col.html"
+                },
+                {
+                  "title": "indexproperty",
+                  "collapsable": false,
+                  "path": "/sql/functions/indexproperty.html"
+                },
+                {
+                  "title": "is_member",
+                  "collapsable": false,
+                  "path": "/sql/functions/is_member.html"
+                },
+                {
+                  "title": "is_srvrolemember",
+                  "collapsable": false,
+                  "path": "/sql/functions/is_srvrolemember.html"
+                },
+                {
+                  "title": "ismemberof \u2747\uFE0F",
+                  "collapsable": false,
+                  "path": "/sql/functions/ismemberof.html"
+                },
+                {
+                  "title": "memberof \u2747\uFE0F",
+                  "collapsable": false,
+                  "path": "/sql/functions/memberof.html"
+                },
+                {
+                  "title": "newid",
+                  "collapsable": false,
+                  "path": "/sql/functions/newid.html"
+                },
+                {
+                  "title": "newsequentialid",
+                  "collapsable": false,
+                  "path": "/sql/functions/newsequentialid.html"
+                },
+                {
+                  "title": "object_id",
+                  "collapsable": false,
+                  "path": "/sql/functions/object_id.html"
+                },
+                {
+                  "title": "object_name",
+                  "collapsable": false,
+                  "path": "/sql/functions/object_name.html"
+                },
+                {
+                  "title": "objectproperty",
+                  "collapsable": false,
+                  "path": "/sql/functions/objectproperty.html"
+                },
+                {
+                  "title": "opendatasource",
+                  "collapsable": false,
+                  "path": "/sql/functions/opendatasource.html"
+                },
+                {
+                  "title": "openquery",
+                  "collapsable": false,
+                  "path": "/sql/functions/openquery.html"
+                },
+                {
+                  "title": "openrowset",
+                  "collapsable": false,
+                  "path": "/sql/functions/openrowset.html"
+                },
+                {
+                  "title": "parsename",
+                  "collapsable": false,
+                  "path": "/sql/functions/parsename.html"
+                },
+                {
+                  "title": "permissions",
+                  "collapsable": false,
+                  "path": "/sql/functions/permissions.html"
+                },
+                {
+                  "title": "rowcount_big",
+                  "collapsable": false,
+                  "path": "/sql/functions/rowcount_big.html"
+                },
+                {
+                  "title": "schema_id",
+                  "collapsable": false,
+                  "path": "/sql/functions/schema_id.html"
+                },
+                {
+                  "title": "schema_name",
+                  "collapsable": false,
+                  "path": "/sql/functions/schema_name.html"
+                },
+                {
+                  "title": "scope_identity",
+                  "collapsable": false,
+                  "path": "/sql/functions/scope_identity.html"
+                },
+                {
+                  "title": "security",
+                  "collapsable": false,
+                  "path": "/sql/functions/security.html"
+                },
+                {
+                  "title": "serverproperty",
+                  "collapsable": false,
+                  "path": "/sql/functions/serverproperty.html"
+                },
+                {
+                  "title": "session_user \u2747\uFE0F",
+                  "collapsable": false,
+                  "path": "/sql/functions/session_user.html"
+                },
+                {
+                  "title": "sessionproperty",
+                  "collapsable": false,
+                  "path": "/sql/functions/sessionproperty.html"
+                },
+                {
+                  "title": "sql_variant_property",
+                  "collapsable": false,
+                  "path": "/sql/functions/sql_variant_property.html"
+                },
+                {
+                  "title": "stats_date",
+                  "collapsable": false,
+                  "path": "/sql/functions/stats_date.html"
+                },
+                {
+                  "title": "suser_id",
+                  "collapsable": false,
+                  "path": "/sql/functions/suser_id.html"
+                },
+                {
+                  "title": "suser_name",
+                  "collapsable": false,
+                  "path": "/sql/functions/suser_name.html"
+                },
+                {
+                  "title": "suser_sid",
+                  "collapsable": false,
+                  "path": "/sql/functions/suser_sid.html"
+                },
+                {
+                  "title": "suser_sname",
+                  "collapsable": false,
+                  "path": "/sql/functions/suser_sname.html"
+                },
+                {
+                  "title": "system_user \u2747\uFE0F",
+                  "collapsable": false,
+                  "path": "/sql/functions/system_user.html"
+                },
+                {
+                  "title": "type_name",
+                  "collapsable": false,
+                  "path": "/sql/functions/type_name.html"
+                },
+                {
+                  "title": "typeproperty",
+                  "collapsable": false,
+                  "path": "/sql/functions/typeproperty.html"
+                },
+                {
+                  "title": "user_name",
+                  "collapsable": false,
+                  "path": "/sql/functions/user_name.html"
+                }
+              ]
             }
           ]
         },
         {
-          "title": "Vistas de tiempo",
+          "title": "Vistas",
           "collapsable": false,
-          "path": "/views/index-time-views.html",
+          "path": "/sql/views/",
           "children": [
             {
-              "title": "Crono$Dates \u2764\uFE0F",
+              "title": "Vistas de base de datos",
               "collapsable": false,
-              "path": "/views/cronodates.html"
+              "path": "/sql/views/index-db-views.html",
+              "children": [
+                {
+                  "title": "Crono$AnsiColumns",
+                  "collapsable": false,
+                  "path": "/sql/views/cronoansicolumns.html"
+                },
+                {
+                  "title": "Crono$AnsiForeignKeys",
+                  "collapsable": false,
+                  "path": "/sql/views/cronoansiforeignkeys.html"
+                },
+                {
+                  "title": "Crono$ColumnExtendedProperties",
+                  "collapsable": false,
+                  "path": "/sql/views/cronocolumnextendedproperties.html"
+                },
+                {
+                  "title": "Crono$Columns \u2764\uFE0F",
+                  "collapsable": false,
+                  "path": "/sql/views/cronocolumns.html"
+                },
+                {
+                  "title": "Crono$Constraints",
+                  "collapsable": false,
+                  "path": "/sql/views/cronoconstraints.html"
+                },
+                {
+                  "title": "Crono$ConstraintsColumns",
+                  "collapsable": false,
+                  "path": "/sql/views/cronoconstraintscolumns.html"
+                },
+                {
+                  "title": "Crono$DatabaseExtendedProperties",
+                  "collapsable": false,
+                  "path": "/sql/views/cronodatabaseextendedproperties.html"
+                },
+                {
+                  "title": "Crono$Databases",
+                  "collapsable": false,
+                  "path": "/sql/views/cronodatabases.html"
+                },
+                {
+                  "title": "Crono$ForeignKeys",
+                  "collapsable": false,
+                  "path": "/sql/views/cronoforeignkeys.html"
+                },
+                {
+                  "title": "Crono$IndexColumns",
+                  "collapsable": false,
+                  "path": "/sql/views/cronoindexcolumns.html"
+                },
+                {
+                  "title": "Crono$Indexes",
+                  "collapsable": false,
+                  "path": "/sql/views/cronoindexes.html"
+                },
+                {
+                  "title": "Crono$Parameters",
+                  "collapsable": false,
+                  "path": "/sql/views/cronoparameters.html"
+                },
+                {
+                  "title": "Crono$ProcedureExtendedProperties",
+                  "collapsable": false,
+                  "path": "/sql/views/cronoprocedureextendedproperties.html"
+                },
+                {
+                  "title": "Crono$Procedures \u2764\uFE0F",
+                  "collapsable": false,
+                  "path": "/sql/views/cronoprocedures.html"
+                },
+                {
+                  "title": "Crono$Routines",
+                  "collapsable": false,
+                  "path": "/sql/views/cronoroutines.html"
+                },
+                {
+                  "title": "Crono$Schemas",
+                  "collapsable": false,
+                  "path": "/sql/views/cronoschemas.html"
+                },
+                {
+                  "title": "Crono$TableExtendedProperties",
+                  "collapsable": false,
+                  "path": "/sql/views/cronotableextendedproperties.html"
+                },
+                {
+                  "title": "Crono$Tables \u2764\uFE0F",
+                  "collapsable": false,
+                  "path": "/sql/views/cronotables.html"
+                }
+              ]
             },
             {
-              "title": "Crono$Months",
+              "title": "Vistas de metadata de Crono",
               "collapsable": false,
-              "path": "/views/cronomonths.html"
+              "path": "/sql/views/index-metadata-views.html",
+              "children": [
+                {
+                  "title": "Crono$CronoFunctions",
+                  "collapsable": false,
+                  "path": "/sql/views/cronocronofunctions.html"
+                },
+                {
+                  "title": "Crono$CronoViews",
+                  "collapsable": false,
+                  "path": "/sql/views/cronocronoviews.html"
+                },
+                {
+                  "title": "Crono$Functions",
+                  "collapsable": false,
+                  "path": "/sql/views/cronofunctions.html"
+                },
+                {
+                  "title": "Crono$Keywords",
+                  "collapsable": false,
+                  "path": "/sql/views/cronokeywords.html"
+                },
+                {
+                  "title": "Crono$SqlFunctions",
+                  "collapsable": false,
+                  "path": "/sql/views/cronosqlfunctions.html"
+                }
+              ]
             },
             {
-              "title": "Crono$Weeks",
+              "title": "Vistas de tiempo",
               "collapsable": false,
-              "path": "/views/cronoweeks.html"
-            }
-          ]
-        },
-        {
-          "title": "Vistas del Directorio Activo",
-          "collapsable": false,
-          "path": "/views/index-ad-views.html",
-          "children": [
-            {
-              "title": "Crono$ActiveDirectoryGroups",
-              "collapsable": false,
-              "path": "/views/cronoactivedirectorygroups.html"
+              "path": "/sql/views/index-time-views.html",
+              "children": [
+                {
+                  "title": "Crono$Dates \u2764\uFE0F",
+                  "collapsable": false,
+                  "path": "/sql/views/cronodates.html"
+                },
+                {
+                  "title": "Crono$Months",
+                  "collapsable": false,
+                  "path": "/sql/views/cronomonths.html"
+                },
+                {
+                  "title": "Crono$Weeks",
+                  "collapsable": false,
+                  "path": "/sql/views/cronoweeks.html"
+                }
+              ]
             },
             {
-              "title": "Crono$ActiveDirectoryGroupsOf",
+              "title": "Vistas del Directorio Activo",
               "collapsable": false,
-              "path": "/views/cronoactivedirectorygroupsof.html"
+              "path": "/sql/views/index-ad-views.html",
+              "children": [
+                {
+                  "title": "Crono$ActiveDirectoryGroups",
+                  "collapsable": false,
+                  "path": "/sql/views/cronoactivedirectorygroups.html"
+                },
+                {
+                  "title": "Crono$ActiveDirectoryGroupsOf",
+                  "collapsable": false,
+                  "path": "/sql/views/cronoactivedirectorygroupsof.html"
+                },
+                {
+                  "title": "Crono$ActiveDirectoryMyGroups",
+                  "collapsable": false,
+                  "path": "/sql/views/cronoactivedirectorymygroups.html"
+                },
+                {
+                  "title": "Crono$ActiveDirectoryUsers",
+                  "collapsable": false,
+                  "path": "/sql/views/cronoactivedirectoryusers.html"
+                }
+              ]
             },
             {
-              "title": "Crono$ActiveDirectoryMyGroups",
+              "title": "Vistas miscel\u00E1neas",
               "collapsable": false,
-              "path": "/views/cronoactivedirectorymygroups.html"
-            },
-            {
-              "title": "Crono$ActiveDirectoryUsers",
-              "collapsable": false,
-              "path": "/views/cronoactivedirectoryusers.html"
-            }
-          ]
-        },
-        {
-          "title": "Vistas miscel\u00E1neas",
-          "collapsable": false,
-          "path": "/views/index-misc-views.html",
-          "children": [
-            {
-              "title": "Crono$Countries",
-              "collapsable": false,
-              "path": "/views/cronocountries.html"
-            },
-            {
-              "title": "Crono$SpanishCities",
-              "collapsable": false,
-              "path": "/views/cronospanishcities.html"
-            },
-            {
-              "title": "Crono$SpanishProvinces",
-              "collapsable": false,
-              "path": "/views/cronospanishprovinces.html"
-            },
-            {
-              "title": "Crono$SpanishRegions",
-              "collapsable": false,
-              "path": "/views/cronospanishregions.html"
-            },
-            {
-              "title": "Crono$TimeZones",
-              "collapsable": false,
-              "path": "/views/cronotimezones.html"
+              "path": "/sql/views/index-misc-views.html",
+              "children": [
+                {
+                  "title": "Crono$Countries",
+                  "collapsable": false,
+                  "path": "/sql/views/cronocountries.html"
+                },
+                {
+                  "title": "Crono$SpanishCities",
+                  "collapsable": false,
+                  "path": "/sql/views/cronospanishcities.html"
+                },
+                {
+                  "title": "Crono$SpanishProvinces",
+                  "collapsable": false,
+                  "path": "/sql/views/cronospanishprovinces.html"
+                },
+                {
+                  "title": "Crono$SpanishRegions",
+                  "collapsable": false,
+                  "path": "/sql/views/cronospanishregions.html"
+                },
+                {
+                  "title": "Crono$TimeZones",
+                  "collapsable": false,
+                  "path": "/sql/views/cronotimezones.html"
+                }
+              ]
             }
           ]
         }
