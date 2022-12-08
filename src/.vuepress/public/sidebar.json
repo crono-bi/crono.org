@@ -36,7 +36,7 @@
           "path": "/analysis/analysis-calculated-columns.html"
         },
         {
-          "title": "Bloquear al documento",
+          "title": "Bloquear el documento",
           "collapsable": false,
           "path": "/analysis/block-report.html"
         },
@@ -61,12 +61,12 @@
           "path": "/analysis/query-editor.html"
         },
         {
-          "title": "Propiedades del documento",
+          "title": "Propiedades de documento",
           "collapsable": false,
           "path": "/analysis/document-properties.html"
         },
         {
-          "title": "Propiedades del informe",
+          "title": "Propiedades de informe",
           "collapsable": false,
           "path": "/analysis/report-properties.html"
         },
@@ -76,12 +76,12 @@
           "path": "/analysis/sheet-properties.html"
         },
         {
-          "title": "Propiedades del panel",
+          "title": "Propiedades de panel",
           "collapsable": false,
           "path": "/analysis/panel-properties.html"
         },
         {
-          "title": "Propiedades del columna",
+          "title": "Propiedades de columna",
           "collapsable": false,
           "path": "/analysis/analysis-column-properties.html"
         }
@@ -224,7 +224,7 @@
               "path": "/sql/language/update.html"
             },
             {
-              "title": "Sentencia MERGE \u2764\uFE0F",
+              "title": "Sentencias MERGE \u2764\uFE0F",
               "collapsable": false,
               "path": "/sql/language/merge.html"
             },
@@ -239,14 +239,66 @@
               "path": "/sql/language/truncate.html"
             },
             {
-              "title": "Sentencia LOAD",
-              "collapsable": false,
-              "path": "/sql/language/load.html"
-            },
-            {
               "title": "Sentencias DDL",
               "collapsable": false,
               "path": "/sql/language/ddl.html"
+            }
+          ]
+        },
+        {
+          "title": "Referencia lenguaje",
+          "collapsable": false,
+          "path": "/sql/reference/",
+          "children": [
+            {
+              "title": "CHECK SNOWFLAKE",
+              "collapsable": false,
+              "path": "/sql/reference/check-snowflake.html"
+            },
+            {
+              "title": "FILE",
+              "collapsable": false,
+              "path": "/sql/reference/file.html"
+            },
+            {
+              "title": "INTEGERS BETWEEN",
+              "collapsable": false,
+              "path": "/sql/reference/integers-between.html"
+            },
+            {
+              "title": "JOIN",
+              "collapsable": false,
+              "path": "/sql/reference/join.html"
+            },
+            {
+              "title": "MATERIALIZE",
+              "collapsable": false,
+              "path": "/sql/reference/materialize.html"
+            },
+            {
+              "title": "OVER",
+              "collapsable": false,
+              "path": "/sql/reference/over.html"
+            },
+            {
+              "title": "ROWS y COLUMNS",
+              "collapsable": false,
+              "path": "/sql/reference/rows-columns.html"
+            },
+            {
+              "title": "SELECTs anidados",
+              "collapsable": false,
+              "path": "/sql/reference/select-anidado.html"
+            },
+            {
+              "title": "Tabla de tiempo",
+              "collapsable": false,
+              "path": "/sql/reference/time-table.html"
+            },
+            {
+              "title": "UNPIVOT",
+              "collapsable": false,
+              "path": "/sql/reference/unpivot.html"
             }
           ]
         },

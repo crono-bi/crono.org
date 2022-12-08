@@ -1,7 +1,3 @@
----
-title: "Modo de propagación"
----
-
 
 
 # Modo de propagación

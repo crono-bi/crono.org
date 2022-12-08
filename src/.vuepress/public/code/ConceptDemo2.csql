@@ -1,0 +1,19 @@
+MERGE CLONE dwh.FactSalesOrderDetails(SalesOrderDetailSid)
+SELECT
+	SalesOrderDetail.SalesOrderDetailID #SalesOrderDetailID,
+	DimProducts.ProductSid						ProductSid	NONUNIQUE REFERENCES dwh.DimProducts,
+	FactSalesOrderHeader.SalesOrderSid			SalesOrderSid NONUNIQUE	REFERENCES dwh.FactSalesOrderHeader,
+	SalesOrderDetail.CarrierTrackingNumber,
+	SalesOrderDetail.OrderQty,
+	SalesOrderDetail.UnitPrice,
+	SalesOrderDetail.UnitPriceDiscount,
+	SalesOrderDetail.LineTotal,
+	SpecialOffer.Description SpecialOffer,
+	SpecialOffer.Type			SpecialOfferType,
+	SpecialOffer.Category		SpecialOfferCategory,
+from @@erp.SalesOrderDetail SalesOrderDetail
+inner join @@erp.SalesOrderHeader using (SalesOrderID)  
+inner join @@erp.SpecialOffer using (SpecialOfferID)
+inner join @@erp.Product using (ProductID)
+inner join dwh.DimProducts using Product(ProductID)
+inner join dwh.FactSalesOrderHeader using SalesOrderHeader(SalesOrderID)

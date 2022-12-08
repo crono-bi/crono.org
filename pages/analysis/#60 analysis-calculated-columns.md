@@ -1,7 +1,3 @@
----
-title: "Columnas calculadas"
----
-
 
 # Columnas calculadas
 

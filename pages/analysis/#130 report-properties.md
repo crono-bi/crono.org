@@ -1,6 +1,3 @@
----
-title: "Propiedades del informe"
----
 
 
 # Propiedades de informe

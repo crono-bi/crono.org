@@ -79,7 +79,7 @@
         {
           "Path": "/analysis/block-report.html",
           "Url": "https://cronosql.io/analysis/block-report.html",
-          "Title": "Bloquear al documento",
+          "Title": "Bloquear el documento",
           "Id": null,
           "Date": null,
           "Position": 70,
@@ -129,7 +129,7 @@
         {
           "Path": "/analysis/document-properties.html",
           "Url": "https://cronosql.io/analysis/document-properties.html",
-          "Title": "Propiedades del documento",
+          "Title": "Propiedades de documento",
           "Id": null,
           "Date": null,
           "Position": 120,
@@ -139,7 +139,7 @@
         {
           "Path": "/analysis/report-properties.html",
           "Url": "https://cronosql.io/analysis/report-properties.html",
-          "Title": "Propiedades del informe",
+          "Title": "Propiedades de informe",
           "Id": null,
           "Date": null,
           "Position": 130,
@@ -159,7 +159,7 @@
         {
           "Path": "/analysis/panel-properties.html",
           "Url": "https://cronosql.io/analysis/panel-properties.html",
-          "Title": "Propiedades del panel",
+          "Title": "Propiedades de panel",
           "Id": null,
           "Date": null,
           "Position": 150,
@@ -169,7 +169,7 @@
         {
           "Path": "/analysis/analysis-column-properties.html",
           "Url": "https://cronosql.io/analysis/analysis-column-properties.html",
-          "Title": "Propiedades del columna",
+          "Title": "Propiedades de columna",
           "Id": null,
           "Date": null,
           "Position": 160,
@@ -394,7 +394,7 @@
           "Title": "Introducci\u00F3n",
           "Id": null,
           "Date": null,
-          "Position": 1,
+          "Position": 0,
           "Visible": true,
           "Children": []
         },
@@ -404,7 +404,7 @@
           "Title": "Lenguaje Crono SQL",
           "Id": null,
           "Date": null,
-          "Position": 3,
+          "Position": 1,
           "Visible": true,
           "Children": [
             {
@@ -413,7 +413,7 @@
               "Title": "Sentencia SELECT \u2764\uFE0F",
               "Id": null,
               "Date": null,
-              "Position": 1,
+              "Position": 10,
               "Visible": true,
               "Children": []
             },
@@ -423,7 +423,7 @@
               "Title": "Sentencia INSERT",
               "Id": null,
               "Date": null,
-              "Position": 2,
+              "Position": 11,
               "Visible": true,
               "Children": []
             },
@@ -433,17 +433,17 @@
               "Title": "Sentencia UPDATE",
               "Id": null,
               "Date": null,
-              "Position": 3,
+              "Position": 12,
               "Visible": true,
               "Children": []
             },
             {
               "Path": "/sql/language/merge.html",
               "Url": "https://cronosql.io/sql/language/merge.html",
-              "Title": "Sentencia MERGE \u2764\uFE0F",
+              "Title": "Sentencias MERGE \u2764\uFE0F",
               "Id": null,
               "Date": null,
-              "Position": 4,
+              "Position": 13,
               "Visible": true,
               "Children": []
             },
@@ -453,7 +453,7 @@
               "Title": "Sentencia DELETE",
               "Id": null,
               "Date": null,
-              "Position": 5,
+              "Position": 14,
               "Visible": true,
               "Children": []
             },
@@ -463,17 +463,7 @@
               "Title": "Sentencia TRUNCATE",
               "Id": null,
               "Date": null,
-              "Position": 6,
-              "Visible": true,
-              "Children": []
-            },
-            {
-              "Path": "/sql/language/load.html",
-              "Url": "https://cronosql.io/sql/language/load.html",
-              "Title": "Sentencia LOAD",
-              "Id": null,
-              "Date": null,
-              "Position": 7,
+              "Position": 15,
               "Visible": true,
               "Children": []
             },
@@ -483,7 +473,118 @@
               "Title": "Sentencias DDL",
               "Id": null,
               "Date": null,
-              "Position": 8,
+              "Position": 16,
+              "Visible": true,
+              "Children": []
+            }
+          ]
+        },
+        {
+          "Path": "/sql/reference/",
+          "Url": "https://cronosql.io/sql/reference/",
+          "Title": "Referencia lenguaje",
+          "Id": null,
+          "Date": null,
+          "Position": 2,
+          "Visible": true,
+          "Children": [
+            {
+              "Path": "/sql/reference/check-snowflake.html",
+              "Url": "https://cronosql.io/sql/reference/check-snowflake.html",
+              "Title": "CHECK SNOWFLAKE",
+              "Id": null,
+              "Date": null,
+              "Position": 21474836,
+              "Visible": true,
+              "Children": []
+            },
+            {
+              "Path": "/sql/reference/file.html",
+              "Url": "https://cronosql.io/sql/reference/file.html",
+              "Title": "FILE",
+              "Id": null,
+              "Date": null,
+              "Position": 21474836,
+              "Visible": true,
+              "Children": []
+            },
+            {
+              "Path": "/sql/reference/integers-between.html",
+              "Url": "https://cronosql.io/sql/reference/integers-between.html",
+              "Title": "INTEGERS BETWEEN",
+              "Id": null,
+              "Date": null,
+              "Position": 21474836,
+              "Visible": true,
+              "Children": []
+            },
+            {
+              "Path": "/sql/reference/join.html",
+              "Url": "https://cronosql.io/sql/reference/join.html",
+              "Title": "JOIN",
+              "Id": null,
+              "Date": null,
+              "Position": 21474836,
+              "Visible": true,
+              "Children": []
+            },
+            {
+              "Path": "/sql/reference/materialize.html",
+              "Url": "https://cronosql.io/sql/reference/materialize.html",
+              "Title": "MATERIALIZE",
+              "Id": null,
+              "Date": null,
+              "Position": 21474836,
+              "Visible": true,
+              "Children": []
+            },
+            {
+              "Path": "/sql/reference/over.html",
+              "Url": "https://cronosql.io/sql/reference/over.html",
+              "Title": "OVER",
+              "Id": null,
+              "Date": null,
+              "Position": 21474836,
+              "Visible": true,
+              "Children": []
+            },
+            {
+              "Path": "/sql/reference/rows-columns.html",
+              "Url": "https://cronosql.io/sql/reference/rows-columns.html",
+              "Title": "ROWS y COLUMNS",
+              "Id": null,
+              "Date": null,
+              "Position": 21474836,
+              "Visible": true,
+              "Children": []
+            },
+            {
+              "Path": "/sql/reference/select-anidado.html",
+              "Url": "https://cronosql.io/sql/reference/select-anidado.html",
+              "Title": "SELECTs anidados",
+              "Id": null,
+              "Date": null,
+              "Position": 21474836,
+              "Visible": true,
+              "Children": []
+            },
+            {
+              "Path": "/sql/reference/time-table.html",
+              "Url": "https://cronosql.io/sql/reference/time-table.html",
+              "Title": "Tabla de tiempo",
+              "Id": null,
+              "Date": null,
+              "Position": 21474836,
+              "Visible": true,
+              "Children": []
+            },
+            {
+              "Path": "/sql/reference/unpivot.html",
+              "Url": "https://cronosql.io/sql/reference/unpivot.html",
+              "Title": "UNPIVOT",
+              "Id": null,
+              "Date": null,
+              "Position": 21474836,
               "Visible": true,
               "Children": []
             }
@@ -495,7 +596,7 @@
           "Title": "Funciones",
           "Id": null,
           "Date": null,
-          "Position": 21474836,
+          "Position": 3,
           "Visible": true,
           "Children": [
             {
@@ -504,7 +605,7 @@
               "Title": "Funciones de agregaci\u00F3n",
               "Id": null,
               "Date": null,
-              "Position": 1,
+              "Position": 11,
               "Visible": true,
               "Children": [
                 {
@@ -905,7 +1006,7 @@
               "Title": "Funciones de conversi\u00F3n y l\u00F3gicas",
               "Id": null,
               "Date": null,
-              "Position": 2,
+              "Position": 12,
               "Visible": true,
               "Children": [
                 {
@@ -1276,7 +1377,7 @@
               "Title": "Funciones de fecha",
               "Id": null,
               "Date": null,
-              "Position": 3,
+              "Position": 13,
               "Visible": true,
               "Children": [
                 {
@@ -1697,7 +1798,7 @@
               "Title": "Funciones de texto",
               "Id": null,
               "Date": null,
-              "Position": 4,
+              "Position": 14,
               "Visible": true,
               "Children": [
                 {
@@ -1998,7 +2099,7 @@
               "Title": "Funciones matem\u00E1ticas",
               "Id": null,
               "Date": null,
-              "Position": 6,
+              "Position": 15,
               "Visible": true,
               "Children": [
                 {
@@ -2349,7 +2450,7 @@
               "Title": "Funciones de sistema",
               "Id": null,
               "Date": null,
-              "Position": 7,
+              "Position": 16,
               "Visible": true,
               "Children": [
                 {
@@ -3087,10 +3188,10 @@
             {
               "Path": "/sql/functions/index-misc-functions.html",
               "Url": "https://cronosql.io/sql/functions/index-misc-functions.html",
-              "Title": " Funciones miscel\u00E1neas",
+              "Title": "Funciones miscel\u00E1neas",
               "Id": null,
               "Date": null,
-              "Position": 21474836,
+              "Position": 17,
               "Visible": false,
               "Children": [
                 {
@@ -3153,7 +3254,7 @@
           "Title": "Vistas",
           "Id": null,
           "Date": null,
-          "Position": 21474836,
+          "Position": 4,
           "Visible": true,
           "Children": [
             {
@@ -3162,7 +3263,7 @@
               "Title": "Vistas de base de datos",
               "Id": null,
               "Date": null,
-              "Position": 21474836,
+              "Position": 11,
               "Visible": true,
               "Children": [
                 {
@@ -3353,7 +3454,7 @@
               "Title": "Vistas de metadata de Crono",
               "Id": null,
               "Date": null,
-              "Position": 21474836,
+              "Position": 12,
               "Visible": true,
               "Children": [
                 {
@@ -3414,7 +3515,7 @@
               "Title": "Vistas de tiempo",
               "Id": null,
               "Date": null,
-              "Position": 21474836,
+              "Position": 13,
               "Visible": true,
               "Children": [
                 {
@@ -3455,7 +3556,7 @@
               "Title": "Vistas del Directorio Activo",
               "Id": null,
               "Date": null,
-              "Position": 21474836,
+              "Position": 14,
               "Visible": true,
               "Children": [
                 {
@@ -3506,7 +3607,7 @@
               "Title": "Vistas miscel\u00E1neas",
               "Id": null,
               "Date": null,
-              "Position": 21474836,
+              "Position": 15,
               "Visible": true,
               "Children": [
                 {

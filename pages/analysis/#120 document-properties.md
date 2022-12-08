@@ -1,5 +1,4 @@
 ---
-title: "Propiedades del documento"
 sidebarDepth: 2
 ---
 

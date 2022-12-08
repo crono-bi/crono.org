@@ -1,7 +1,3 @@
----
-title: "Propiedades de hoja"
----
-
 
 
 # Propiedades de hoja

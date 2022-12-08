@@ -1,5 +1,5 @@
-﻿LOAD dwh.FactSalesOrderHeader(#SalesOrderSid autoincrement) WITH INCREMENTAL
-DECLARE @last timestamp=(select max(InsertTimestamp) from FactSalesOrderHeader)
+﻿DECLARE @last timestamp=(select max(InsertTimestamp) from FactSalesOrderHeader)
+MERGE INCREMENTAL dwh.FactSalesOrderHeader(SalesOrderSid)
 SELECT 
   SalesOrderHeader.SalesOrderId,
   Customer.CustomerId,
@@ -17,4 +17,4 @@ SELECT
   SalesOrderHeader.InsertTimestamp
 FROM staging.SalesOrderHeader
 INNER JOIN staging.customer using SalesOrderHeader(customerId)
-where SalesOrderHeader.InsertTimestamp&gt;@last
+where SalesOrderHeader.InsertTimestamp>@last

@@ -1,38 +1,4 @@
-﻿IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA='dwh' AND TABLE_NAME='DimProducts')
-CREATE TABLE dwh.DimProducts(
-  ProductSid int IDENTITY(1,1) NOT NULL,
-  CONSTRAINT PK_DimProducts PRIMARY KEY CLUSTERED (ProductSid)
-)
-
-
-IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA='dwh' AND TABLE_NAME='DimProducts' AND COLUMN_NAME='ProductSid')
-ALTER TABLE dwh.DimProducts ADD ProductSid int
-
-
-IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA='dwh' AND TABLE_NAME='DimProducts' AND COLUMN_NAME='ProductSid' AND IS_NULLABLE='YES')
-ALTER TABLE dwh.DimProducts ALTER COLUMN ProductSid int NOT NULL
-
-
-IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS WHERE TABLE_SCHEMA='dwh' AND TABLE_NAME='DimProducts' AND CONSTRAINT_NAME='PK_DimProducts')
-ALTER TABLE dwh.DimProducts ADD CONSTRAINT PK_DimProducts PRIMARY KEY CLUSTERED (ProductSid)
-
-
-IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA='dwh' AND TABLE_NAME='DimProducts' AND COLUMN_NAME='FechaAlta')
-ALTER TABLE dwh.DimProducts ADD FechaAlta datetime;
-
-ALTER TABLE dwh.DimProducts ALTER COLUMN FechaAlta datetime;
-
-IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA='dwh' AND TABLE_NAME='DimProducts' AND COLUMN_NAME='FechaModificacion')
-ALTER TABLE dwh.DimProducts ADD FechaModificacion datetime;
-
-ALTER TABLE dwh.DimProducts ALTER COLUMN FechaModificacion datetime;
-
-IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA='dwh' AND TABLE_NAME='DimProducts' AND COLUMN_NAME='FechaBaja')
-ALTER TABLE dwh.DimProducts ADD FechaBaja datetime;
-
-ALTER TABLE dwh.DimProducts ALTER COLUMN FechaBaja datetime;
-
-;WITH
+﻿;WITH
 query AS (
   SELECT
     ProductID,
@@ -64,8 +30,7 @@ WHEN MATCHED AND ((DimProducts.Product<>query.Product OR (DimProducts.Product IS
                   OR DimProducts.ListPrice<>query.ListPrice OR (DimProducts.ListPrice IS NULL AND query.ListPrice IS NOT NULL) OR  (DimProducts.ListPrice IS NOT NULL AND query.ListPrice IS NULL)
                   OR DimProducts.Size<>query.Size OR (DimProducts.Size IS NULL AND query.Size IS NOT NULL) OR  (DimProducts.Size IS NOT NULL AND query.Size IS NULL)
                   OR DimProducts.SizeUnitMeasureCode<>query.SizeUnitMeasureCode OR (DimProducts.SizeUnitMeasureCode IS NULL AND query.SizeUnitMeasureCode IS NOT NULL) OR  (DimProducts.SizeUnitMeasureCode IS NOT NULL AND query.SizeUnitMeasureCode IS NULL)
-                  OR DimProducts.Weight<>query.Weight OR (DimProducts.Weight IS NULL AND query.Weight IS NOT NULL) OR  (DimProducts.Weight IS NOT NULL AND query.Weight IS NULL)
-                  OR (FechaBaja IS NOT NULL))) THEN
+                  OR DimProducts.Weight<>query.Weight OR (DimProducts.Weight IS NULL AND query.Weight IS NOT NULL) OR  (DimProducts.Weight IS NOT NULL AND query.Weight IS NULL))) THEN
   UPDATE SET
     Product=query.Product,
     ProductCategory=query.ProductCategory,
@@ -78,10 +43,9 @@ WHEN MATCHED AND ((DimProducts.Product<>query.Product OR (DimProducts.Product IS
     Size=query.Size,
     SizeUnitMeasureCode=query.SizeUnitMeasureCode,
     Weight=query.Weight,
-    FechaModificacion=getdate(),
-    FechaBaja=null
+    UpdateDate=getdate()
 WHEN NOT MATCHED THEN
-  INSERT (ProductID,Product,ProductCategory,ProductSubCategory,ProductNumber,ProductModel,Color,StandardCost,ListPrice,Size,SizeUnitMeasureCode,Weight,FechaAlta,FechaModificacion) VALUES (
+  INSERT (ProductID,Product,ProductCategory,ProductSubCategory,ProductNumber,ProductModel,Color,StandardCost,ListPrice,Size,SizeUnitMeasureCode,Weight,InsertDate) VALUES (
     query.ProductID,
     query.Product,
     query.ProductCategory,
@@ -94,9 +58,7 @@ WHEN NOT MATCHED THEN
     query.Size,
     query.SizeUnitMeasureCode,
     query.Weight,
-    getdate(),
     getdate())
-WHEN NOT MATCHED BY SOURCE AND (FechaBaja IS NULL) THEN
+WHEN NOT MATCHED BY SOURCE AND (DeleteDate IS NULL) THEN
   UPDATE SET
-    FechaBaja=getdate(),
-    FechaModificacion=getdate();
+    DeleteDate=getdate();

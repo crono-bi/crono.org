@@ -1,0 +1,18 @@
+MERGE CLONE dwh.DimProducts(ProductSid)
+select 
+  #ProductID,
+  Product.Name Product,
+  ProductCategory.name ProductCategory,
+  ProductSubCategory.name ProductSubCategory,
+  ProductNumber,
+  ProductModel.name ProductModel,
+  Color,
+  StandardCost,
+  ListPrice,
+  Size,
+  SizeUnitMeasureCode,
+  Weight
+FROM staging.Product
+LEFT JOIN staging.ProductSubCategory using Product(ProductSubcategoryID)
+LEFT JOIN staging.ProductCategory using ProductSubCategory(ProductCategoryId)
+LEFT JOIN staging.ProductModel using Product(ProductModelID)

@@ -1,5 +1,4 @@
 ---
-title: "Crear una consulta"
 sidebarDepth: 2
 ---
 

@@ -1,5 +1,4 @@
 ---
-title: "Editor de consultas"
 sidebarDepth: 2
 ---
 

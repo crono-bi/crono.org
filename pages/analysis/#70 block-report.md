@@ -1,7 +1,3 @@
----
-title: "Bloquear al documento"
----
-
 
 
 # Bloquear el documento

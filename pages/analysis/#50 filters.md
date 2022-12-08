@@ -1,5 +1,4 @@
 ---
-title: "Filtros"
 sidebarDepth: 2
 ---
 

@@ -1,5 +1,4 @@
 ---
-title: "Propiedades del columna"
 sidebarDepth: 2
 ---
 

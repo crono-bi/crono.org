@@ -1,28 +1,4 @@
-﻿IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA='dwh' AND TABLE_NAME='FactSalesOrderHeader')
-CREATE TABLE dwh.FactSalesOrderHeader(
-  SalesOrderSid int IDENTITY(1,1) NOT NULL,
-  CONSTRAINT PK_FactSalesOrderHeader PRIMARY KEY CLUSTERED (SalesOrderSid)
-)
-
-
-IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA='dwh' AND TABLE_NAME='FactSalesOrderHeader' AND COLUMN_NAME='SalesOrderSid')
-ALTER TABLE dwh.FactSalesOrderHeader ADD SalesOrderSid int
-
-
-IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA='dwh' AND TABLE_NAME='FactSalesOrderHeader' AND COLUMN_NAME='SalesOrderSid' AND IS_NULLABLE='YES')
-ALTER TABLE dwh.FactSalesOrderHeader ALTER COLUMN SalesOrderSid int NOT NULL
-
-
-IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS WHERE TABLE_SCHEMA='dwh' AND TABLE_NAME='FactSalesOrderHeader' AND CONSTRAINT_NAME='PK_FactSalesOrderHeader')
-ALTER TABLE dwh.FactSalesOrderHeader ADD CONSTRAINT PK_FactSalesOrderHeader PRIMARY KEY CLUSTERED (SalesOrderSid)
-
-
-IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA='dwh' AND TABLE_NAME='FactSalesOrderHeader' AND COLUMN_NAME='FechaAlta')
-ALTER TABLE dwh.FactSalesOrderHeader ADD FechaAlta datetime;
-
-ALTER TABLE dwh.FactSalesOrderHeader ALTER COLUMN FechaAlta datetime;
-
-;WITH
+﻿;WITH
 query AS (
   SELECT
     SalesOrderHeader.SalesOrderId AS SalesOrderId,
@@ -42,7 +18,7 @@ query AS (
   INNER JOIN staging.customer ON (SalesOrderHeader.customerId=customer.customerId)
   WHERE CAST(SalesOrderHeader.OrderDate AS date)<=getdate()-30
 )
-INSERT dwh.FactSalesOrderHeader(SalesOrderId,CustomerId,OrderDate,SalesOrderNumber,DueDate,ShipDate,OnlineOrderFlag,PurchaseOrderNumber,AccountNumber,Freight,CreditCardApprovalCode,Amount,TaxAmt,FechaAlta)
+INSERT dwh.FactSalesOrderHeader(SalesOrderId,CustomerId,OrderDate,SalesOrderNumber,DueDate,ShipDate,OnlineOrderFlag,PurchaseOrderNumber,AccountNumber,Freight,CreditCardApprovalCode,Amount,TaxAmt,InsertDate)
 SELECT
   query.SalesOrderId,
   query.CustomerId,

@@ -1,4 +1,4 @@
-﻿LOAD dwh.DimProducts(#ProductSid autoincrement) WITH SCD1
+﻿MERGE dwh.DimProducts(ProductSid)
 select 
   #ProductID,
   Product.Name Product,

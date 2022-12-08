@@ -1,5 +1,4 @@
 ---
-title: "Exportación"
 sidebarDepth: 2
 ---
 

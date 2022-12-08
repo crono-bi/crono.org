@@ -12,8 +12,8 @@
  
 <script>
 import axios from "axios";
-import { title } from "process";
 export default {
+  props: ["src"],
   data() {
     return {
       Path: null,
@@ -33,7 +33,7 @@ export default {
   },
   mounted(){
     axios.get("/sidebar.json").then((response)=>{ 
-      this.Path=document.location.pathname
+      this.Path=this.src?this.src:document.location.pathname
       let jsonDic=response.data
       let titles=Object.values(jsonDic).flatMap(x=>x)
       let item=this.findTitle(titles,this.Path)

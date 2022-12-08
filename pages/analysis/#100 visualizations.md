@@ -1,5 +1,4 @@
 ---
-title: "Tipos de visualización"
 sidebarDepth: 2
 ---
 

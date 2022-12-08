@@ -1,4 +1,4 @@
-﻿LOAD dwh.FactSalesOrderHeader(#SalesOrderSid autoincrement) WITH INCREMENTAL
+﻿MERGE INCREMENTAL dwh.FactSalesOrderHeader(SalesOrderSid)
 SELECT 
   SalesOrderHeader.SalesOrderId,
   Customer.CustomerId,
@@ -15,4 +15,4 @@ SELECT
   SalesOrderHeader.TaxAmt
 FROM staging.SalesOrderHeader
 INNER JOIN staging.customer using SalesOrderHeader(customerId)
-where cast(OrderDate as date)=cast(getdate()-1 as date)
+where cast(OrderDate as date)=today()

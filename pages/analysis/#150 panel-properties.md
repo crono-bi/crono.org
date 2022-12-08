@@ -1,6 +1,3 @@
----
-title: "Propiedades del panel"
----
 
 
 # Propiedades de panel
