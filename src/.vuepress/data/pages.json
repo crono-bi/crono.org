@@ -380,12 +380,22 @@
       ]
     },
     {
+      "Path": "/etl/",
+      "Url": "https://cronosql.io/etl/",
+      "Title": null,
+      "Id": null,
+      "Date": null,
+      "Position": 1,
+      "Visible": true,
+      "Children": []
+    },
+    {
       "Path": "/sql/",
       "Url": "https://cronosql.io/sql/",
       "Title": null,
       "Id": null,
       "Date": null,
-      "Position": 2,
+      "Position": 3,
       "Visible": true,
       "Children": [
         {

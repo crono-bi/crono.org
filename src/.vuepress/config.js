@@ -26,6 +26,10 @@ module.exports = {
         link: '/metadata/',
       },
       {
+        text: 'Crono ETL',
+        link: '/etl/',
+      },
+      {
         text: 'Crono SQL',
         link: '/sql/',
       },
