@@ -16,7 +16,6 @@ export default {
   props: ["src"],
   data() {
     return {
-      Path: null,
       Items: null
     };
   },
@@ -33,10 +32,19 @@ export default {
   },
   mounted(){
     axios.get("/sidebar.json").then((response)=>{ 
-      this.Path=this.src?this.src:document.location.pathname
+      var path = this.src
+      if(!path) path=document.location.pathname.split("#")[0]
       let jsonDic=response.data
-      let titles=Object.values(jsonDic).flatMap(x=>x)
-      let item=this.findTitle(titles,this.Path)
+      console.warn(path)
+      var item
+      if(jsonDic[path]){
+        console.warn(jsonDic[path])
+        item= jsonDic[path][0]
+      } else {
+        var titles=Object.values(jsonDic).flatMap(x=>x)
+        item= this.findTitle(titles,path)
+      }
+     
       if(item && item.children) this.Items= item.children
     })
   }

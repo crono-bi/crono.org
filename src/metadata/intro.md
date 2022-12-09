@@ -15,4 +15,6 @@ Mediante drag & drop, y con un mínimo conocimiento de SQL, se definen las dimen
 
 Al catálogo se le denomina también "capa semántica" o "metadatos", pues incluye información sobre la estructura de la base de datos y representa la traducción de las tablas y relaciones de la base de datos en términos de negocio conocidos por los usuarios. 
 
-Los catálogos de Crono se crean con **Crono Metadata**.
+Los catálogos de Crono se crean con **Crono Metadata**. En los siguientes aparatos se describe el funcionamiento de la aplicación.
+
+<section-index src="/metadata/" />

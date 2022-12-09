@@ -246,10 +246,15 @@
           ]
         },
         {
-          "title": "Referencia lenguaje",
+          "title": "Referencia del lenguaje",
           "collapsable": false,
           "path": "/sql/reference/",
           "children": [
+            {
+              "title": "Sentencias principales",
+              "collapsable": false,
+              "path": "/sql/reference/main-sentences.html"
+            },
             {
               "title": "CHECK SNOWFLAKE",
               "collapsable": false,
@@ -266,7 +271,7 @@
               "path": "/sql/reference/integers-between.html"
             },
             {
-              "title": "JOIN",
+              "title": "JOIN \uD83D\uDEA7",
               "collapsable": false,
               "path": "/sql/reference/join.html"
             },
@@ -276,7 +281,7 @@
               "path": "/sql/reference/materialize.html"
             },
             {
-              "title": "OVER",
+              "title": "OVER \uD83D\uDEA7",
               "collapsable": false,
               "path": "/sql/reference/over.html"
             },

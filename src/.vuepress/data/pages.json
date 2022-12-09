@@ -482,12 +482,22 @@
         {
           "Path": "/sql/reference/",
           "Url": "https://cronosql.io/sql/reference/",
-          "Title": "Referencia lenguaje",
+          "Title": "Referencia del lenguaje",
           "Id": null,
           "Date": null,
           "Position": 2,
           "Visible": true,
           "Children": [
+            {
+              "Path": "/sql/reference/main-sentences.html",
+              "Url": "https://cronosql.io/sql/reference/main-sentences.html",
+              "Title": "Sentencias principales",
+              "Id": null,
+              "Date": null,
+              "Position": 5,
+              "Visible": true,
+              "Children": []
+            },
             {
               "Path": "/sql/reference/check-snowflake.html",
               "Url": "https://cronosql.io/sql/reference/check-snowflake.html",
@@ -521,7 +531,7 @@
             {
               "Path": "/sql/reference/join.html",
               "Url": "https://cronosql.io/sql/reference/join.html",
-              "Title": "JOIN",
+              "Title": "JOIN \uD83D\uDEA7",
               "Id": null,
               "Date": null,
               "Position": 21474836,
@@ -541,7 +551,7 @@
             {
               "Path": "/sql/reference/over.html",
               "Url": "https://cronosql.io/sql/reference/over.html",
-              "Title": "OVER",
+              "Title": "OVER \uD83D\uDEA7",
               "Id": null,
               "Date": null,
               "Position": 21474836,

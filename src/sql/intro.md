@@ -89,10 +89,7 @@ Este manual documenta el funcionamiento de la sentencia **SELECT** del lenguaje 
 
 El manual se organiza en estas secciones:
 
-- **Lenguaje SQL**: Describe mediante ejemplos las instrucciones principales del lenguaje (**SELECT**, **MERGE**, y todas las demás).
-- **Referencia lenguaje**: Amplia la información de la sección anterior completándola con sintaxis o funcionalidades más avanzadas.
-- **Funciones**: Listado de todas las funciones del lenguaje agrupadas en 6 subsecciones: Funciones de asgregación, de conversión y lógicas, de fecha, de texto, matemáticas y funciones de sistema.
-- **Vistas**: Listado de todas las "vistas" predefinidas que incluye el lenguaje.
-
-
-<section-index />
+- [**Lenguaje SQL**](/sql/language/): Describe mediante ejemplos las instrucciones principales del lenguaje (**SELECT**, **MERGE**, y todas las demás).
+- [**Referencia lenguaje**](/sql/reference/): Amplia la información de la sección anterior completándola con sintaxis o funcionalidades más avanzadas.
+- [**Funciones**](/sql/functions/): Listado de todas las funciones del lenguaje agrupadas en 6 subsecciones: Funciones de asgregación, de conversión y lógicas, de fecha, de texto, matemáticas y funciones de sistema.
+- [**Vistas**](/sql/views/): Listado de todas las "vistas" predefinidas que incluye el lenguaje.

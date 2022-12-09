@@ -11,7 +11,6 @@ En este apartado se incluyen las definiciones de estos términos.
 
 En los siguiente apartados se explica la importancia y finalidad del "catálogo", la estructura de un documento de **Crono Analysis**, y seguidamente se muestra cómo construir informes fácilmente utilizando únicamente el ratón. El manual termina explicando las opciones más avanzadas disponibles desde las ventanas de "Propiedades".
 
-# Definiciones
 
 ## ¿Qué es el Business Intelligence?
 
@@ -44,3 +43,10 @@ En general, los dashboards son una forma eficiente de presentar información par
 ## ¿Qué es el reporting tradicional?
 
 El reporting tradicional es un tipo de informe BI que permite generar informes estáticos y predefinidos que muestran datos y métricas relevantes para un negocio. Estos informes suelen ser creados y distribuidos periódicamente, y pueden ser utilizados para tomar decisiones estratégicas en una empresa. El reporting tradicional suele ser muy detallado y preciso, pero también puede estar limitado en términos de flexibilidad y capacidad de análisis en profundidad.
+
+## Estructura del manual
+
+**Crono Analysis** es una herramientas de Business Intelligence fácil de usar que permite la realización de análisis libre, la construcción de dashboards e informes predefinidos. En los siguientes aparatos se describe el funcionamiento de la aplicación.
+
+
+<section-index src="/analysis/" />

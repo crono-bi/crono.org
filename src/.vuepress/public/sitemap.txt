@@ -317,6 +317,7 @@ https://cronosql.io/sql/reference/check-snowflake.html
 https://cronosql.io/sql/reference/file.html
 https://cronosql.io/sql/reference/integers-between.html
 https://cronosql.io/sql/reference/join.html
+https://cronosql.io/sql/reference/main-sentences.html
 https://cronosql.io/sql/reference/materialize.html
 https://cronosql.io/sql/reference/over.html
 https://cronosql.io/sql/reference/rows-columns.html

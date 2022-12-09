@@ -2,7 +2,7 @@
 home: true
 heroImage: /sql.png
 tagline: Crono SQL añade sintaxis y funciones al SQL ANSI para facilitar la construcción de data warehouses
-actionText: Introducción →
+actionText: Acceder al manual →
 actionLink: /sql/intro/
 features:
 - title: SQL con superpoderes

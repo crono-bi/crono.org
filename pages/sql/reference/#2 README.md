@@ -1,6 +1,6 @@
 
 
-# Referencia lenguaje
+# Referencia del lenguaje
 
 En la sección anterior se muestran mediante ejemplo las instrucciones principales del lenguaje **Crono SQL**.
 
