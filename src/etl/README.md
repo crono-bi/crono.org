@@ -1,6 +1,6 @@
 ---
 home: true
-heroImage: /etl.png
+heroImage: /etl.webp
 tagline: Una herramienta ETL especializada en proyectos DWH/ETL
 actionText: Próximamente →
 actionLink: /etl/

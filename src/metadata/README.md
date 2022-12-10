@@ -1,7 +1,7 @@
 ---
 home: true
-heroImage: /metadata.png
-tagline: Crono Metadata es la aplicación para construir la capa semántica de Crono. 
+heroImage: /metadata.webp
+tagline: Crono Metadata es la aplicación para construir la capa semántica de Crono
 actionText: Acceder al manual →
 actionLink: /metadata/intro
 features:

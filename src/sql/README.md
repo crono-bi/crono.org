@@ -1,7 +1,7 @@
 ---
 home: true
-heroImage: /sql.png
-tagline: Crono SQL añade sintaxis y funciones al SQL ANSI para facilitar la construcción de data warehouses
+heroImage: /sql.webp
+tagline: Crono SQL añade sintaxis y funciones al SQL para facilitar la construcción de data warehouses
 actionText: Acceder al manual →
 actionLink: /sql/intro/
 features:

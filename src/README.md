@@ -1,7 +1,7 @@
 ---
 home: true
-heroImage: crono.png
-tagline: Una completa solución de Business Intelligence para seres humanos.
+heroImage: crono.webp
+tagline: Una solución Business Intelligence fácil de usar
 actionText: Manual de Crono Analysis →
 actionLink: /analysis/
 features:

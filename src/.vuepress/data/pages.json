@@ -1,6 +1,6 @@
 ﻿{
   "Path": "/",
-  "Url": "https://cronosql.io/",
+  "Url": "https://crono.org/",
   "Title": null,
   "Id": null,
   "Date": null,
@@ -9,7 +9,7 @@
   "Children": [
     {
       "Path": "/analysis/",
-      "Url": "https://cronosql.io/analysis/",
+      "Url": "https://crono.org/analysis/",
       "Title": "Manual Crono Analysis",
       "Id": null,
       "Date": null,
@@ -18,7 +18,7 @@
       "Children": [
         {
           "Path": "/analysis/intro.html",
-          "Url": "https://cronosql.io/analysis/intro.html",
+          "Url": "https://crono.org/analysis/intro.html",
           "Title": "Introducci\u00F3n",
           "Id": null,
           "Date": null,
@@ -28,7 +28,7 @@
         },
         {
           "Path": "/analysis/catalog.html",
-          "Url": "https://cronosql.io/analysis/catalog.html",
+          "Url": "https://crono.org/analysis/catalog.html",
           "Title": "El cat\u00E1logo",
           "Id": null,
           "Date": null,
@@ -38,7 +38,7 @@
         },
         {
           "Path": "/analysis/analysis-document.html",
-          "Url": "https://cronosql.io/analysis/analysis-document.html",
+          "Url": "https://crono.org/analysis/analysis-document.html",
           "Title": "Estructura de un documento",
           "Id": null,
           "Date": null,
@@ -48,7 +48,7 @@
         },
         {
           "Path": "/analysis/create-query.html",
-          "Url": "https://cronosql.io/analysis/create-query.html",
+          "Url": "https://crono.org/analysis/create-query.html",
           "Title": "Crear una consulta",
           "Id": null,
           "Date": null,
@@ -58,7 +58,7 @@
         },
         {
           "Path": "/analysis/filters.html",
-          "Url": "https://cronosql.io/analysis/filters.html",
+          "Url": "https://crono.org/analysis/filters.html",
           "Title": "Filtros",
           "Id": null,
           "Date": null,
@@ -68,7 +68,7 @@
         },
         {
           "Path": "/analysis/analysis-calculated-columns.html",
-          "Url": "https://cronosql.io/analysis/analysis-calculated-columns.html",
+          "Url": "https://crono.org/analysis/analysis-calculated-columns.html",
           "Title": "Columnas calculadas",
           "Id": null,
           "Date": null,
@@ -78,7 +78,7 @@
         },
         {
           "Path": "/analysis/block-report.html",
-          "Url": "https://cronosql.io/analysis/block-report.html",
+          "Url": "https://crono.org/analysis/block-report.html",
           "Title": "Bloquear el documento",
           "Id": null,
           "Date": null,
@@ -88,7 +88,7 @@
         },
         {
           "Path": "/analysis/export-report.html",
-          "Url": "https://cronosql.io/analysis/export-report.html",
+          "Url": "https://crono.org/analysis/export-report.html",
           "Title": "Exportaci\u00F3n",
           "Id": null,
           "Date": null,
@@ -98,7 +98,7 @@
         },
         {
           "Path": "/analysis/propagation.html",
-          "Url": "https://cronosql.io/analysis/propagation.html",
+          "Url": "https://crono.org/analysis/propagation.html",
           "Title": "Modo de propagaci\u00F3n",
           "Id": null,
           "Date": null,
@@ -108,7 +108,7 @@
         },
         {
           "Path": "/analysis/visualizations.html",
-          "Url": "https://cronosql.io/analysis/visualizations.html",
+          "Url": "https://crono.org/analysis/visualizations.html",
           "Title": "Tipos de visualizaci\u00F3n",
           "Id": null,
           "Date": null,
@@ -118,7 +118,7 @@
         },
         {
           "Path": "/analysis/query-editor.html",
-          "Url": "https://cronosql.io/analysis/query-editor.html",
+          "Url": "https://crono.org/analysis/query-editor.html",
           "Title": "Editor de consultas",
           "Id": null,
           "Date": null,
@@ -128,7 +128,7 @@
         },
         {
           "Path": "/analysis/document-properties.html",
-          "Url": "https://cronosql.io/analysis/document-properties.html",
+          "Url": "https://crono.org/analysis/document-properties.html",
           "Title": "Propiedades de documento",
           "Id": null,
           "Date": null,
@@ -138,7 +138,7 @@
         },
         {
           "Path": "/analysis/report-properties.html",
-          "Url": "https://cronosql.io/analysis/report-properties.html",
+          "Url": "https://crono.org/analysis/report-properties.html",
           "Title": "Propiedades de informe",
           "Id": null,
           "Date": null,
@@ -148,7 +148,7 @@
         },
         {
           "Path": "/analysis/sheet-properties.html",
-          "Url": "https://cronosql.io/analysis/sheet-properties.html",
+          "Url": "https://crono.org/analysis/sheet-properties.html",
           "Title": "Propiedades de hoja",
           "Id": null,
           "Date": null,
@@ -158,7 +158,7 @@
         },
         {
           "Path": "/analysis/panel-properties.html",
-          "Url": "https://cronosql.io/analysis/panel-properties.html",
+          "Url": "https://crono.org/analysis/panel-properties.html",
           "Title": "Propiedades de panel",
           "Id": null,
           "Date": null,
@@ -168,7 +168,7 @@
         },
         {
           "Path": "/analysis/analysis-column-properties.html",
-          "Url": "https://cronosql.io/analysis/analysis-column-properties.html",
+          "Url": "https://crono.org/analysis/analysis-column-properties.html",
           "Title": "Propiedades de columna",
           "Id": null,
           "Date": null,
@@ -180,7 +180,7 @@
     },
     {
       "Path": "/metadata/",
-      "Url": "https://cronosql.io/metadata/",
+      "Url": "https://crono.org/metadata/",
       "Title": "Manual Crono Metadata",
       "Id": null,
       "Date": null,
@@ -189,7 +189,7 @@
       "Children": [
         {
           "Path": "/metadata/intro.html",
-          "Url": "https://cronosql.io/metadata/intro.html",
+          "Url": "https://crono.org/metadata/intro.html",
           "Title": "Introducci\u00F3n",
           "Id": null,
           "Date": null,
@@ -199,7 +199,7 @@
         },
         {
           "Path": "/metadata/first-catalog.html",
-          "Url": "https://cronosql.io/metadata/first-catalog.html",
+          "Url": "https://crono.org/metadata/first-catalog.html",
           "Title": "C\u00F3mo crear tu primer cat\u00E1logo",
           "Id": null,
           "Date": null,
@@ -209,7 +209,7 @@
         },
         {
           "Path": "/metadata/diagram-creation.html",
-          "Url": "https://cronosql.io/metadata/diagram-creation.html",
+          "Url": "https://crono.org/metadata/diagram-creation.html",
           "Title": "C\u00F3mo crear un diagrama",
           "Id": null,
           "Date": null,
@@ -219,7 +219,7 @@
         },
         {
           "Path": "/metadata/business-items-creation.html",
-          "Url": "https://cronosql.io/metadata/business-items-creation.html",
+          "Url": "https://crono.org/metadata/business-items-creation.html",
           "Title": "Crear elementos de negocio",
           "Id": null,
           "Date": null,
@@ -229,7 +229,7 @@
         },
         {
           "Path": "/metadata/list-of-values.html",
-          "Url": "https://cronosql.io/metadata/list-of-values.html",
+          "Url": "https://crono.org/metadata/list-of-values.html",
           "Title": "Listas de valores",
           "Id": null,
           "Date": null,
@@ -239,7 +239,7 @@
         },
         {
           "Path": "/metadata/calculated-columns.html",
-          "Url": "https://cronosql.io/metadata/calculated-columns.html",
+          "Url": "https://crono.org/metadata/calculated-columns.html",
           "Title": "Campos calculados",
           "Id": null,
           "Date": null,
@@ -249,7 +249,7 @@
         },
         {
           "Path": "/metadata/predefined-filters.html",
-          "Url": "https://cronosql.io/metadata/predefined-filters.html",
+          "Url": "https://crono.org/metadata/predefined-filters.html",
           "Title": "Filtros predefinidos",
           "Id": null,
           "Date": null,
@@ -259,7 +259,7 @@
         },
         {
           "Path": "/metadata/aggregated-tables.html",
-          "Url": "https://cronosql.io/metadata/aggregated-tables.html",
+          "Url": "https://crono.org/metadata/aggregated-tables.html",
           "Title": "Tablas agregadas",
           "Id": null,
           "Date": null,
@@ -269,7 +269,7 @@
         },
         {
           "Path": "/metadata/parameters.html",
-          "Url": "https://cronosql.io/metadata/parameters.html",
+          "Url": "https://crono.org/metadata/parameters.html",
           "Title": "Par\u00E1metros definidos en el cat\u00E1logo",
           "Id": null,
           "Date": null,
@@ -279,7 +279,7 @@
         },
         {
           "Path": "/metadata/multilanguage-catalogs.html",
-          "Url": "https://cronosql.io/metadata/multilanguage-catalogs.html",
+          "Url": "https://crono.org/metadata/multilanguage-catalogs.html",
           "Title": "Cat\u00E1logos multi-idioma",
           "Id": null,
           "Date": null,
@@ -289,7 +289,7 @@
         },
         {
           "Path": "/metadata/geographic-dimensions.html",
-          "Url": "https://cronosql.io/metadata/geographic-dimensions.html",
+          "Url": "https://crono.org/metadata/geographic-dimensions.html",
           "Title": "Dimensiones geogr\u00E1ficas",
           "Id": null,
           "Date": null,
@@ -299,7 +299,7 @@
         },
         {
           "Path": "/metadata/catalog-validation.html",
-          "Url": "https://cronosql.io/metadata/catalog-validation.html",
+          "Url": "https://crono.org/metadata/catalog-validation.html",
           "Title": "Validar cat\u00E1logo",
           "Id": null,
           "Date": null,
@@ -309,7 +309,7 @@
         },
         {
           "Path": "/metadata/security-catalog.html",
-          "Url": "https://cronosql.io/metadata/security-catalog.html",
+          "Url": "https://crono.org/metadata/security-catalog.html",
           "Title": "Seguridad y permisos de acceso",
           "Id": null,
           "Date": null,
@@ -319,7 +319,7 @@
         },
         {
           "Path": "/metadata/catalog-properties.html",
-          "Url": "https://cronosql.io/metadata/catalog-properties.html",
+          "Url": "https://crono.org/metadata/catalog-properties.html",
           "Title": "Propiedades de cat\u00E1logo",
           "Id": null,
           "Date": null,
@@ -329,7 +329,7 @@
         },
         {
           "Path": "/metadata/connection-properties.html",
-          "Url": "https://cronosql.io/metadata/connection-properties.html",
+          "Url": "https://crono.org/metadata/connection-properties.html",
           "Title": "Propiedades de conexi\u00F3n",
           "Id": null,
           "Date": null,
@@ -339,7 +339,7 @@
         },
         {
           "Path": "/metadata/business-item-properties.html",
-          "Url": "https://cronosql.io/metadata/business-item-properties.html",
+          "Url": "https://crono.org/metadata/business-item-properties.html",
           "Title": "Propiedades de elementos de negocio",
           "Id": null,
           "Date": null,
@@ -349,7 +349,7 @@
         },
         {
           "Path": "/metadata/table-properties.html",
-          "Url": "https://cronosql.io/metadata/table-properties.html",
+          "Url": "https://crono.org/metadata/table-properties.html",
           "Title": "Propiedades de tabla",
           "Id": null,
           "Date": null,
@@ -359,7 +359,7 @@
         },
         {
           "Path": "/metadata/column-properties.html",
-          "Url": "https://cronosql.io/metadata/column-properties.html",
+          "Url": "https://crono.org/metadata/column-properties.html",
           "Title": "Propiedades de columna",
           "Id": null,
           "Date": null,
@@ -369,7 +369,7 @@
         },
         {
           "Path": "/metadata/join-properties.html",
-          "Url": "https://cronosql.io/metadata/join-properties.html",
+          "Url": "https://crono.org/metadata/join-properties.html",
           "Title": "Propiedades de relaci\u00F3n",
           "Id": null,
           "Date": null,
@@ -381,7 +381,7 @@
     },
     {
       "Path": "/etl/",
-      "Url": "https://cronosql.io/etl/",
+      "Url": "https://crono.org/etl/",
       "Title": null,
       "Id": null,
       "Date": null,
@@ -391,7 +391,7 @@
     },
     {
       "Path": "/sql/",
-      "Url": "https://cronosql.io/sql/",
+      "Url": "https://crono.org/sql/",
       "Title": null,
       "Id": null,
       "Date": null,
@@ -400,7 +400,7 @@
       "Children": [
         {
           "Path": "/sql/intro.html",
-          "Url": "https://cronosql.io/sql/intro.html",
+          "Url": "https://crono.org/sql/intro.html",
           "Title": "Introducci\u00F3n",
           "Id": null,
           "Date": null,
@@ -410,7 +410,7 @@
         },
         {
           "Path": "/sql/language/",
-          "Url": "https://cronosql.io/sql/language/",
+          "Url": "https://crono.org/sql/language/",
           "Title": "Lenguaje Crono SQL",
           "Id": null,
           "Date": null,
@@ -419,7 +419,7 @@
           "Children": [
             {
               "Path": "/sql/language/select.html",
-              "Url": "https://cronosql.io/sql/language/select.html",
+              "Url": "https://crono.org/sql/language/select.html",
               "Title": "Sentencia SELECT \u2764\uFE0F",
               "Id": null,
               "Date": null,
@@ -429,7 +429,7 @@
             },
             {
               "Path": "/sql/language/insert.html",
-              "Url": "https://cronosql.io/sql/language/insert.html",
+              "Url": "https://crono.org/sql/language/insert.html",
               "Title": "Sentencia INSERT",
               "Id": null,
               "Date": null,
@@ -439,7 +439,7 @@
             },
             {
               "Path": "/sql/language/update.html",
-              "Url": "https://cronosql.io/sql/language/update.html",
+              "Url": "https://crono.org/sql/language/update.html",
               "Title": "Sentencia UPDATE",
               "Id": null,
               "Date": null,
@@ -449,7 +449,7 @@
             },
             {
               "Path": "/sql/language/merge.html",
-              "Url": "https://cronosql.io/sql/language/merge.html",
+              "Url": "https://crono.org/sql/language/merge.html",
               "Title": "Sentencias MERGE \u2764\uFE0F",
               "Id": null,
               "Date": null,
@@ -459,7 +459,7 @@
             },
             {
               "Path": "/sql/language/delete..html",
-              "Url": "https://cronosql.io/sql/language/delete..html",
+              "Url": "https://crono.org/sql/language/delete..html",
               "Title": "Sentencia DELETE",
               "Id": null,
               "Date": null,
@@ -469,7 +469,7 @@
             },
             {
               "Path": "/sql/language/truncate.html",
-              "Url": "https://cronosql.io/sql/language/truncate.html",
+              "Url": "https://crono.org/sql/language/truncate.html",
               "Title": "Sentencia TRUNCATE",
               "Id": null,
               "Date": null,
@@ -479,7 +479,7 @@
             },
             {
               "Path": "/sql/language/ddl.html",
-              "Url": "https://cronosql.io/sql/language/ddl.html",
+              "Url": "https://crono.org/sql/language/ddl.html",
               "Title": "Sentencias DDL",
               "Id": null,
               "Date": null,
@@ -491,7 +491,7 @@
         },
         {
           "Path": "/sql/reference/",
-          "Url": "https://cronosql.io/sql/reference/",
+          "Url": "https://crono.org/sql/reference/",
           "Title": "Referencia del lenguaje",
           "Id": null,
           "Date": null,
@@ -500,7 +500,7 @@
           "Children": [
             {
               "Path": "/sql/reference/main-sentences.html",
-              "Url": "https://cronosql.io/sql/reference/main-sentences.html",
+              "Url": "https://crono.org/sql/reference/main-sentences.html",
               "Title": "Sentencias principales",
               "Id": null,
               "Date": null,
@@ -510,7 +510,7 @@
             },
             {
               "Path": "/sql/reference/check-snowflake.html",
-              "Url": "https://cronosql.io/sql/reference/check-snowflake.html",
+              "Url": "https://crono.org/sql/reference/check-snowflake.html",
               "Title": "CHECK SNOWFLAKE",
               "Id": null,
               "Date": null,
@@ -520,7 +520,7 @@
             },
             {
               "Path": "/sql/reference/file.html",
-              "Url": "https://cronosql.io/sql/reference/file.html",
+              "Url": "https://crono.org/sql/reference/file.html",
               "Title": "FILE",
               "Id": null,
               "Date": null,
@@ -530,7 +530,7 @@
             },
             {
               "Path": "/sql/reference/integers-between.html",
-              "Url": "https://cronosql.io/sql/reference/integers-between.html",
+              "Url": "https://crono.org/sql/reference/integers-between.html",
               "Title": "INTEGERS BETWEEN",
               "Id": null,
               "Date": null,
@@ -540,7 +540,7 @@
             },
             {
               "Path": "/sql/reference/join.html",
-              "Url": "https://cronosql.io/sql/reference/join.html",
+              "Url": "https://crono.org/sql/reference/join.html",
               "Title": "JOIN \uD83D\uDEA7",
               "Id": null,
               "Date": null,
@@ -550,7 +550,7 @@
             },
             {
               "Path": "/sql/reference/materialize.html",
-              "Url": "https://cronosql.io/sql/reference/materialize.html",
+              "Url": "https://crono.org/sql/reference/materialize.html",
               "Title": "MATERIALIZE",
               "Id": null,
               "Date": null,
@@ -560,7 +560,7 @@
             },
             {
               "Path": "/sql/reference/over.html",
-              "Url": "https://cronosql.io/sql/reference/over.html",
+              "Url": "https://crono.org/sql/reference/over.html",
               "Title": "OVER \uD83D\uDEA7",
               "Id": null,
               "Date": null,
@@ -570,7 +570,7 @@
             },
             {
               "Path": "/sql/reference/rows-columns.html",
-              "Url": "https://cronosql.io/sql/reference/rows-columns.html",
+              "Url": "https://crono.org/sql/reference/rows-columns.html",
               "Title": "ROWS y COLUMNS",
               "Id": null,
               "Date": null,
@@ -580,7 +580,7 @@
             },
             {
               "Path": "/sql/reference/select-anidado.html",
-              "Url": "https://cronosql.io/sql/reference/select-anidado.html",
+              "Url": "https://crono.org/sql/reference/select-anidado.html",
               "Title": "SELECTs anidados",
               "Id": null,
               "Date": null,
@@ -590,7 +590,7 @@
             },
             {
               "Path": "/sql/reference/time-table.html",
-              "Url": "https://cronosql.io/sql/reference/time-table.html",
+              "Url": "https://crono.org/sql/reference/time-table.html",
               "Title": "Tabla de tiempo",
               "Id": null,
               "Date": null,
@@ -600,7 +600,7 @@
             },
             {
               "Path": "/sql/reference/unpivot.html",
-              "Url": "https://cronosql.io/sql/reference/unpivot.html",
+              "Url": "https://crono.org/sql/reference/unpivot.html",
               "Title": "UNPIVOT",
               "Id": null,
               "Date": null,
@@ -612,7 +612,7 @@
         },
         {
           "Path": "/sql/functions/",
-          "Url": "https://cronosql.io/sql/functions/",
+          "Url": "https://crono.org/sql/functions/",
           "Title": "Funciones",
           "Id": null,
           "Date": null,
@@ -621,7 +621,7 @@
           "Children": [
             {
               "Path": "/sql/functions/index-aggregation-functions.html",
-              "Url": "https://cronosql.io/sql/functions/index-aggregation-functions.html",
+              "Url": "https://crono.org/sql/functions/index-aggregation-functions.html",
               "Title": "Funciones de agregaci\u00F3n",
               "Id": null,
               "Date": null,
@@ -630,7 +630,7 @@
               "Children": [
                 {
                   "Path": "/sql/functions/avg.html",
-                  "Url": "https://cronosql.io/sql/functions/avg.html",
+                  "Url": "https://crono.org/sql/functions/avg.html",
                   "Title": "avg",
                   "Id": null,
                   "Date": null,
@@ -640,7 +640,7 @@
                 },
                 {
                   "Path": "/sql/functions/checksum_agg.html",
-                  "Url": "https://cronosql.io/sql/functions/checksum_agg.html",
+                  "Url": "https://crono.org/sql/functions/checksum_agg.html",
                   "Title": "checksum_agg",
                   "Id": null,
                   "Date": null,
@@ -650,7 +650,7 @@
                 },
                 {
                   "Path": "/sql/functions/concat_ws.html",
-                  "Url": "https://cronosql.io/sql/functions/concat_ws.html",
+                  "Url": "https://crono.org/sql/functions/concat_ws.html",
                   "Title": "concat_ws",
                   "Id": null,
                   "Date": null,
@@ -660,7 +660,7 @@
                 },
                 {
                   "Path": "/sql/functions/count.html",
-                  "Url": "https://cronosql.io/sql/functions/count.html",
+                  "Url": "https://crono.org/sql/functions/count.html",
                   "Title": "count",
                   "Id": null,
                   "Date": null,
@@ -670,7 +670,7 @@
                 },
                 {
                   "Path": "/sql/functions/count_big.html",
-                  "Url": "https://cronosql.io/sql/functions/count_big.html",
+                  "Url": "https://crono.org/sql/functions/count_big.html",
                   "Title": "count_big",
                   "Id": null,
                   "Date": null,
@@ -680,7 +680,7 @@
                 },
                 {
                   "Path": "/sql/functions/countdistinct.html",
-                  "Url": "https://cronosql.io/sql/functions/countdistinct.html",
+                  "Url": "https://crono.org/sql/functions/countdistinct.html",
                   "Title": "countdistinct \u2747\uFE0F",
                   "Id": null,
                   "Date": null,
@@ -690,7 +690,7 @@
                 },
                 {
                   "Path": "/sql/functions/cume_dist.html",
-                  "Url": "https://cronosql.io/sql/functions/cume_dist.html",
+                  "Url": "https://crono.org/sql/functions/cume_dist.html",
                   "Title": "cume_dist",
                   "Id": null,
                   "Date": null,
@@ -700,7 +700,7 @@
                 },
                 {
                   "Path": "/sql/functions/decile.html",
-                  "Url": "https://cronosql.io/sql/functions/decile.html",
+                  "Url": "https://crono.org/sql/functions/decile.html",
                   "Title": "decile \u2747\uFE0F",
                   "Id": null,
                   "Date": null,
@@ -710,7 +710,7 @@
                 },
                 {
                   "Path": "/sql/functions/dense_rank.html",
-                  "Url": "https://cronosql.io/sql/functions/dense_rank.html",
+                  "Url": "https://crono.org/sql/functions/dense_rank.html",
                   "Title": "dense_rank",
                   "Id": null,
                   "Date": null,
@@ -720,7 +720,7 @@
                 },
                 {
                   "Path": "/sql/functions/first_value.html",
-                  "Url": "https://cronosql.io/sql/functions/first_value.html",
+                  "Url": "https://crono.org/sql/functions/first_value.html",
                   "Title": "first_value",
                   "Id": null,
                   "Date": null,
@@ -730,7 +730,7 @@
                 },
                 {
                   "Path": "/sql/functions/lag.html",
-                  "Url": "https://cronosql.io/sql/functions/lag.html",
+                  "Url": "https://crono.org/sql/functions/lag.html",
                   "Title": "lag",
                   "Id": null,
                   "Date": null,
@@ -740,7 +740,7 @@
                 },
                 {
                   "Path": "/sql/functions/last_value.html",
-                  "Url": "https://cronosql.io/sql/functions/last_value.html",
+                  "Url": "https://crono.org/sql/functions/last_value.html",
                   "Title": "last_value",
                   "Id": null,
                   "Date": null,
@@ -750,7 +750,7 @@
                 },
                 {
                   "Path": "/sql/functions/lead.html",
-                  "Url": "https://cronosql.io/sql/functions/lead.html",
+                  "Url": "https://crono.org/sql/functions/lead.html",
                   "Title": "lead",
                   "Id": null,
                   "Date": null,
@@ -760,7 +760,7 @@
                 },
                 {
                   "Path": "/sql/functions/least.html",
-                  "Url": "https://cronosql.io/sql/functions/least.html",
+                  "Url": "https://crono.org/sql/functions/least.html",
                   "Title": "least",
                   "Id": null,
                   "Date": null,
@@ -770,7 +770,7 @@
                 },
                 {
                   "Path": "/sql/functions/max.html",
-                  "Url": "https://cronosql.io/sql/functions/max.html",
+                  "Url": "https://crono.org/sql/functions/max.html",
                   "Title": "max",
                   "Id": null,
                   "Date": null,
@@ -780,7 +780,7 @@
                 },
                 {
                   "Path": "/sql/functions/min.html",
-                  "Url": "https://cronosql.io/sql/functions/min.html",
+                  "Url": "https://crono.org/sql/functions/min.html",
                   "Title": "min",
                   "Id": null,
                   "Date": null,
@@ -790,7 +790,7 @@
                 },
                 {
                   "Path": "/sql/functions/next_value.html",
-                  "Url": "https://cronosql.io/sql/functions/next_value.html",
+                  "Url": "https://crono.org/sql/functions/next_value.html",
                   "Title": "next_value \u2747\uFE0F",
                   "Id": null,
                   "Date": null,
@@ -800,7 +800,7 @@
                 },
                 {
                   "Path": "/sql/functions/ntile.html",
-                  "Url": "https://cronosql.io/sql/functions/ntile.html",
+                  "Url": "https://crono.org/sql/functions/ntile.html",
                   "Title": "ntile",
                   "Id": null,
                   "Date": null,
@@ -810,7 +810,7 @@
                 },
                 {
                   "Path": "/sql/functions/pct.html",
-                  "Url": "https://cronosql.io/sql/functions/pct.html",
+                  "Url": "https://crono.org/sql/functions/pct.html",
                   "Title": "pct \u2747\uFE0F",
                   "Id": null,
                   "Date": null,
@@ -820,7 +820,7 @@
                 },
                 {
                   "Path": "/sql/functions/pctrank.html",
-                  "Url": "https://cronosql.io/sql/functions/pctrank.html",
+                  "Url": "https://crono.org/sql/functions/pctrank.html",
                   "Title": "pctrank \u2747\uFE0F",
                   "Id": null,
                   "Date": null,
@@ -830,7 +830,7 @@
                 },
                 {
                   "Path": "/sql/functions/pctvariance.html",
-                  "Url": "https://cronosql.io/sql/functions/pctvariance.html",
+                  "Url": "https://crono.org/sql/functions/pctvariance.html",
                   "Title": "pctvariance \u2747\uFE0F \uD83D\uDEA7",
                   "Id": null,
                   "Date": null,
@@ -840,7 +840,7 @@
                 },
                 {
                   "Path": "/sql/functions/percent_rank.html",
-                  "Url": "https://cronosql.io/sql/functions/percent_rank.html",
+                  "Url": "https://crono.org/sql/functions/percent_rank.html",
                   "Title": "percent_rank",
                   "Id": null,
                   "Date": null,
@@ -850,7 +850,7 @@
                 },
                 {
                   "Path": "/sql/functions/percentile.html",
-                  "Url": "https://cronosql.io/sql/functions/percentile.html",
+                  "Url": "https://crono.org/sql/functions/percentile.html",
                   "Title": "percentile \u2747\uFE0F",
                   "Id": null,
                   "Date": null,
@@ -860,7 +860,7 @@
                 },
                 {
                   "Path": "/sql/functions/percentile_cont.html",
-                  "Url": "https://cronosql.io/sql/functions/percentile_cont.html",
+                  "Url": "https://crono.org/sql/functions/percentile_cont.html",
                   "Title": "percentile_cont",
                   "Id": null,
                   "Date": null,
@@ -870,7 +870,7 @@
                 },
                 {
                   "Path": "/sql/functions/percentile_disc.html",
-                  "Url": "https://cronosql.io/sql/functions/percentile_disc.html",
+                  "Url": "https://crono.org/sql/functions/percentile_disc.html",
                   "Title": "percentile_disc",
                   "Id": null,
                   "Date": null,
@@ -880,7 +880,7 @@
                 },
                 {
                   "Path": "/sql/functions/quantile.html",
-                  "Url": "https://cronosql.io/sql/functions/quantile.html",
+                  "Url": "https://crono.org/sql/functions/quantile.html",
                   "Title": "quantile \u2747\uFE0F",
                   "Id": null,
                   "Date": null,
@@ -890,7 +890,7 @@
                 },
                 {
                   "Path": "/sql/functions/quartile.html",
-                  "Url": "https://cronosql.io/sql/functions/quartile.html",
+                  "Url": "https://crono.org/sql/functions/quartile.html",
                   "Title": "quartile \u2747\uFE0F",
                   "Id": null,
                   "Date": null,
@@ -900,7 +900,7 @@
                 },
                 {
                   "Path": "/sql/functions/rank.html",
-                  "Url": "https://cronosql.io/sql/functions/rank.html",
+                  "Url": "https://crono.org/sql/functions/rank.html",
                   "Title": "rank",
                   "Id": null,
                   "Date": null,
@@ -910,7 +910,7 @@
                 },
                 {
                   "Path": "/sql/functions/row_number.html",
-                  "Url": "https://cronosql.io/sql/functions/row_number.html",
+                  "Url": "https://crono.org/sql/functions/row_number.html",
                   "Title": "row_number",
                   "Id": null,
                   "Date": null,
@@ -920,7 +920,7 @@
                 },
                 {
                   "Path": "/sql/functions/runningpct.html",
-                  "Url": "https://cronosql.io/sql/functions/runningpct.html",
+                  "Url": "https://crono.org/sql/functions/runningpct.html",
                   "Title": "runningpct \u2747\uFE0F",
                   "Id": null,
                   "Date": null,
@@ -930,7 +930,7 @@
                 },
                 {
                   "Path": "/sql/functions/runningsum.html",
-                  "Url": "https://cronosql.io/sql/functions/runningsum.html",
+                  "Url": "https://crono.org/sql/functions/runningsum.html",
                   "Title": "runningsum \u2747\uFE0F",
                   "Id": null,
                   "Date": null,
@@ -940,7 +940,7 @@
                 },
                 {
                   "Path": "/sql/functions/single.html",
-                  "Url": "https://cronosql.io/sql/functions/single.html",
+                  "Url": "https://crono.org/sql/functions/single.html",
                   "Title": "single \u2747\uFE0F \uD83D\uDEA7",
                   "Id": null,
                   "Date": null,
@@ -950,7 +950,7 @@
                 },
                 {
                   "Path": "/sql/functions/stdev.html",
-                  "Url": "https://cronosql.io/sql/functions/stdev.html",
+                  "Url": "https://crono.org/sql/functions/stdev.html",
                   "Title": "stdev",
                   "Id": null,
                   "Date": null,
@@ -960,7 +960,7 @@
                 },
                 {
                   "Path": "/sql/functions/stdevp.html",
-                  "Url": "https://cronosql.io/sql/functions/stdevp.html",
+                  "Url": "https://crono.org/sql/functions/stdevp.html",
                   "Title": "stdevp",
                   "Id": null,
                   "Date": null,
@@ -970,7 +970,7 @@
                 },
                 {
                   "Path": "/sql/functions/string_agg.html",
-                  "Url": "https://cronosql.io/sql/functions/string_agg.html",
+                  "Url": "https://crono.org/sql/functions/string_agg.html",
                   "Title": "string_agg",
                   "Id": null,
                   "Date": null,
@@ -980,7 +980,7 @@
                 },
                 {
                   "Path": "/sql/functions/sum.html",
-                  "Url": "https://cronosql.io/sql/functions/sum.html",
+                  "Url": "https://crono.org/sql/functions/sum.html",
                   "Title": "sum \u2764\uFE0F",
                   "Id": null,
                   "Date": null,
@@ -990,7 +990,7 @@
                 },
                 {
                   "Path": "/sql/functions/total.html",
-                  "Url": "https://cronosql.io/sql/functions/total.html",
+                  "Url": "https://crono.org/sql/functions/total.html",
                   "Title": "total \u2747\uFE0F",
                   "Id": null,
                   "Date": null,
@@ -1000,7 +1000,7 @@
                 },
                 {
                   "Path": "/sql/functions/var.html",
-                  "Url": "https://cronosql.io/sql/functions/var.html",
+                  "Url": "https://crono.org/sql/functions/var.html",
                   "Title": "var",
                   "Id": null,
                   "Date": null,
@@ -1010,7 +1010,7 @@
                 },
                 {
                   "Path": "/sql/functions/varp.html",
-                  "Url": "https://cronosql.io/sql/functions/varp.html",
+                  "Url": "https://crono.org/sql/functions/varp.html",
                   "Title": "varp",
                   "Id": null,
                   "Date": null,
@@ -1022,7 +1022,7 @@
             },
             {
               "Path": "/sql/functions/index-conversion-functions.html",
-              "Url": "https://cronosql.io/sql/functions/index-conversion-functions.html",
+              "Url": "https://crono.org/sql/functions/index-conversion-functions.html",
               "Title": "Funciones de conversi\u00F3n y l\u00F3gicas",
               "Id": null,
               "Date": null,
@@ -1031,7 +1031,7 @@
               "Children": [
                 {
                   "Path": "/sql/functions/bighex.html",
-                  "Url": "https://cronosql.io/sql/functions/bighex.html",
+                  "Url": "https://crono.org/sql/functions/bighex.html",
                   "Title": "bighex \u2747\uFE0F \uD83D\uDEA7",
                   "Id": null,
                   "Date": null,
@@ -1041,7 +1041,7 @@
                 },
                 {
                   "Path": "/sql/functions/bigint.html",
-                  "Url": "https://cronosql.io/sql/functions/bigint.html",
+                  "Url": "https://crono.org/sql/functions/bigint.html",
                   "Title": "bigint \u2747\uFE0F \uD83D\uDEA7",
                   "Id": null,
                   "Date": null,
@@ -1051,7 +1051,7 @@
                 },
                 {
                   "Path": "/sql/functions/binary_checksum.html",
-                  "Url": "https://cronosql.io/sql/functions/binary_checksum.html",
+                  "Url": "https://crono.org/sql/functions/binary_checksum.html",
                   "Title": "binary_checksum",
                   "Id": null,
                   "Date": null,
@@ -1061,7 +1061,7 @@
                 },
                 {
                   "Path": "/sql/functions/bit.html",
-                  "Url": "https://cronosql.io/sql/functions/bit.html",
+                  "Url": "https://crono.org/sql/functions/bit.html",
                   "Title": "bit \u2747\uFE0F \uD83D\uDEA7",
                   "Id": null,
                   "Date": null,
@@ -1071,7 +1071,7 @@
                 },
                 {
                   "Path": "/sql/functions/cast.html",
-                  "Url": "https://cronosql.io/sql/functions/cast.html",
+                  "Url": "https://crono.org/sql/functions/cast.html",
                   "Title": "cast",
                   "Id": null,
                   "Date": null,
@@ -1081,7 +1081,7 @@
                 },
                 {
                   "Path": "/sql/functions/char.html",
-                  "Url": "https://cronosql.io/sql/functions/char.html",
+                  "Url": "https://crono.org/sql/functions/char.html",
                   "Title": "char",
                   "Id": null,
                   "Date": null,
@@ -1091,7 +1091,7 @@
                 },
                 {
                   "Path": "/sql/functions/choose.html",
-                  "Url": "https://cronosql.io/sql/functions/choose.html",
+                  "Url": "https://crono.org/sql/functions/choose.html",
                   "Title": "choose",
                   "Id": null,
                   "Date": null,
@@ -1101,7 +1101,7 @@
                 },
                 {
                   "Path": "/sql/functions/coalesce.html",
-                  "Url": "https://cronosql.io/sql/functions/coalesce.html",
+                  "Url": "https://crono.org/sql/functions/coalesce.html",
                   "Title": "coalesce \u2747\uFE0F \u2764\uFE0F",
                   "Id": null,
                   "Date": null,
@@ -1111,7 +1111,7 @@
                 },
                 {
                   "Path": "/sql/functions/convert.html",
-                  "Url": "https://cronosql.io/sql/functions/convert.html",
+                  "Url": "https://crono.org/sql/functions/convert.html",
                   "Title": "convert \uD83D\uDEA7",
                   "Id": null,
                   "Date": null,
@@ -1121,7 +1121,7 @@
                 },
                 {
                   "Path": "/sql/functions/date.html",
-                  "Url": "https://cronosql.io/sql/functions/date.html",
+                  "Url": "https://crono.org/sql/functions/date.html",
                   "Title": "date \u2747\uFE0F",
                   "Id": null,
                   "Date": null,
@@ -1131,7 +1131,7 @@
                 },
                 {
                   "Path": "/sql/functions/datetime.html",
-                  "Url": "https://cronosql.io/sql/functions/datetime.html",
+                  "Url": "https://crono.org/sql/functions/datetime.html",
                   "Title": "datetime \u2747\uFE0F \uD83D\uDEA7",
                   "Id": null,
                   "Date": null,
@@ -1141,7 +1141,7 @@
                 },
                 {
                   "Path": "/sql/functions/datetime2.html",
-                  "Url": "https://cronosql.io/sql/functions/datetime2.html",
+                  "Url": "https://crono.org/sql/functions/datetime2.html",
                   "Title": "datetime2 \u2747\uFE0F \uD83D\uDEA7",
                   "Id": null,
                   "Date": null,
@@ -1151,7 +1151,7 @@
                 },
                 {
                   "Path": "/sql/functions/elementat.html",
-                  "Url": "https://cronosql.io/sql/functions/elementat.html",
+                  "Url": "https://crono.org/sql/functions/elementat.html",
                   "Title": "elementat \u2747\uFE0F",
                   "Id": null,
                   "Date": null,
@@ -1161,7 +1161,7 @@
                 },
                 {
                   "Path": "/sql/functions/emptyifnull.html",
-                  "Url": "https://cronosql.io/sql/functions/emptyifnull.html",
+                  "Url": "https://crono.org/sql/functions/emptyifnull.html",
                   "Title": "emptyifnull \u2747\uFE0F",
                   "Id": null,
                   "Date": null,
@@ -1171,7 +1171,7 @@
                 },
                 {
                   "Path": "/sql/functions/float.html",
-                  "Url": "https://cronosql.io/sql/functions/float.html",
+                  "Url": "https://crono.org/sql/functions/float.html",
                   "Title": "float \u2747\uFE0F \uD83D\uDEA7",
                   "Id": null,
                   "Date": null,
@@ -1181,7 +1181,7 @@
                 },
                 {
                   "Path": "/sql/functions/hex.html",
-                  "Url": "https://cronosql.io/sql/functions/hex.html",
+                  "Url": "https://crono.org/sql/functions/hex.html",
                   "Title": "hex \u2747\uFE0F \uD83D\uDEA7",
                   "Id": null,
                   "Date": null,
@@ -1191,7 +1191,7 @@
                 },
                 {
                   "Path": "/sql/functions/iif.html",
-                  "Url": "https://cronosql.io/sql/functions/iif.html",
+                  "Url": "https://crono.org/sql/functions/iif.html",
                   "Title": "iif",
                   "Id": null,
                   "Date": null,
@@ -1201,7 +1201,7 @@
                 },
                 {
                   "Path": "/sql/functions/indexof.html",
-                  "Url": "https://cronosql.io/sql/functions/indexof.html",
+                  "Url": "https://crono.org/sql/functions/indexof.html",
                   "Title": "indexof \u2747\uFE0F",
                   "Id": null,
                   "Date": null,
@@ -1211,7 +1211,7 @@
                 },
                 {
                   "Path": "/sql/functions/int.html",
-                  "Url": "https://cronosql.io/sql/functions/int.html",
+                  "Url": "https://crono.org/sql/functions/int.html",
                   "Title": "int \u2747\uFE0F \uD83D\uDEA7",
                   "Id": null,
                   "Date": null,
@@ -1221,7 +1221,7 @@
                 },
                 {
                   "Path": "/sql/functions/isnull.html",
-                  "Url": "https://cronosql.io/sql/functions/isnull.html",
+                  "Url": "https://crono.org/sql/functions/isnull.html",
                   "Title": "isnull",
                   "Id": null,
                   "Date": null,
@@ -1231,7 +1231,7 @@
                 },
                 {
                   "Path": "/sql/functions/isnumeric.html",
-                  "Url": "https://cronosql.io/sql/functions/isnumeric.html",
+                  "Url": "https://crono.org/sql/functions/isnumeric.html",
                   "Title": "isnumeric",
                   "Id": null,
                   "Date": null,
@@ -1241,7 +1241,7 @@
                 },
                 {
                   "Path": "/sql/functions/nullif.html",
-                  "Url": "https://cronosql.io/sql/functions/nullif.html",
+                  "Url": "https://crono.org/sql/functions/nullif.html",
                   "Title": "nullif \uD83D\uDEA7",
                   "Id": null,
                   "Date": null,
@@ -1251,7 +1251,7 @@
                 },
                 {
                   "Path": "/sql/functions/nullifempty.html",
-                  "Url": "https://cronosql.io/sql/functions/nullifempty.html",
+                  "Url": "https://crono.org/sql/functions/nullifempty.html",
                   "Title": "nullifempty \u2747\uFE0F",
                   "Id": null,
                   "Date": null,
@@ -1261,7 +1261,7 @@
                 },
                 {
                   "Path": "/sql/functions/nullifzero.html",
-                  "Url": "https://cronosql.io/sql/functions/nullifzero.html",
+                  "Url": "https://crono.org/sql/functions/nullifzero.html",
                   "Title": "nullifzero \u2747\uFE0F",
                   "Id": null,
                   "Date": null,
@@ -1271,7 +1271,7 @@
                 },
                 {
                   "Path": "/sql/functions/parse.html",
-                  "Url": "https://cronosql.io/sql/functions/parse.html",
+                  "Url": "https://crono.org/sql/functions/parse.html",
                   "Title": "parse",
                   "Id": null,
                   "Date": null,
@@ -1281,7 +1281,7 @@
                 },
                 {
                   "Path": "/sql/functions/smallhex.html",
-                  "Url": "https://cronosql.io/sql/functions/smallhex.html",
+                  "Url": "https://crono.org/sql/functions/smallhex.html",
                   "Title": "smallhex \u2747\uFE0F \uD83D\uDEA7",
                   "Id": null,
                   "Date": null,
@@ -1291,7 +1291,7 @@
                 },
                 {
                   "Path": "/sql/functions/smallint.html",
-                  "Url": "https://cronosql.io/sql/functions/smallint.html",
+                  "Url": "https://crono.org/sql/functions/smallint.html",
                   "Title": "smallint \u2747\uFE0F \uD83D\uDEA7",
                   "Id": null,
                   "Date": null,
@@ -1301,7 +1301,7 @@
                 },
                 {
                   "Path": "/sql/functions/switch.html",
-                  "Url": "https://cronosql.io/sql/functions/switch.html",
+                  "Url": "https://crono.org/sql/functions/switch.html",
                   "Title": "switch \u2747\uFE0F",
                   "Id": null,
                   "Date": null,
@@ -1311,7 +1311,7 @@
                 },
                 {
                   "Path": "/sql/functions/time.html",
-                  "Url": "https://cronosql.io/sql/functions/time.html",
+                  "Url": "https://crono.org/sql/functions/time.html",
                   "Title": "time \u2747\uFE0F \uD83D\uDEA7",
                   "Id": null,
                   "Date": null,
@@ -1321,7 +1321,7 @@
                 },
                 {
                   "Path": "/sql/functions/tinyhex.html",
-                  "Url": "https://cronosql.io/sql/functions/tinyhex.html",
+                  "Url": "https://crono.org/sql/functions/tinyhex.html",
                   "Title": "tinyhex \u2747\uFE0F \uD83D\uDEA7",
                   "Id": null,
                   "Date": null,
@@ -1331,7 +1331,7 @@
                 },
                 {
                   "Path": "/sql/functions/tinyint.html",
-                  "Url": "https://cronosql.io/sql/functions/tinyint.html",
+                  "Url": "https://crono.org/sql/functions/tinyint.html",
                   "Title": "tinyint \u2747\uFE0F \uD83D\uDEA7",
                   "Id": null,
                   "Date": null,
@@ -1341,7 +1341,7 @@
                 },
                 {
                   "Path": "/sql/functions/try_cast.html",
-                  "Url": "https://cronosql.io/sql/functions/try_cast.html",
+                  "Url": "https://crono.org/sql/functions/try_cast.html",
                   "Title": "try_cast",
                   "Id": null,
                   "Date": null,
@@ -1351,7 +1351,7 @@
                 },
                 {
                   "Path": "/sql/functions/try_convert.html",
-                  "Url": "https://cronosql.io/sql/functions/try_convert.html",
+                  "Url": "https://crono.org/sql/functions/try_convert.html",
                   "Title": "try_convert",
                   "Id": null,
                   "Date": null,
@@ -1361,7 +1361,7 @@
                 },
                 {
                   "Path": "/sql/functions/try_parse.html",
-                  "Url": "https://cronosql.io/sql/functions/try_parse.html",
+                  "Url": "https://crono.org/sql/functions/try_parse.html",
                   "Title": "try_parse",
                   "Id": null,
                   "Date": null,
@@ -1371,7 +1371,7 @@
                 },
                 {
                   "Path": "/sql/functions/unicodechar.html",
-                  "Url": "https://cronosql.io/sql/functions/unicodechar.html",
+                  "Url": "https://crono.org/sql/functions/unicodechar.html",
                   "Title": "unicodechar \u2747\uFE0F \uD83D\uDEA7",
                   "Id": null,
                   "Date": null,
@@ -1381,7 +1381,7 @@
                 },
                 {
                   "Path": "/sql/functions/zeroifnull.html",
-                  "Url": "https://cronosql.io/sql/functions/zeroifnull.html",
+                  "Url": "https://crono.org/sql/functions/zeroifnull.html",
                   "Title": "zeroifnull \u2747\uFE0F",
                   "Id": null,
                   "Date": null,
@@ -1393,7 +1393,7 @@
             },
             {
               "Path": "/sql/functions/index-date-functions.html",
-              "Url": "https://cronosql.io/sql/functions/index-date-functions.html",
+              "Url": "https://crono.org/sql/functions/index-date-functions.html",
               "Title": "Funciones de fecha",
               "Id": null,
               "Date": null,
@@ -1402,7 +1402,7 @@
               "Children": [
                 {
                   "Path": "/sql/functions/current_date.html",
-                  "Url": "https://cronosql.io/sql/functions/current_date.html",
+                  "Url": "https://crono.org/sql/functions/current_date.html",
                   "Title": "current_date \u2747\uFE0F \uD83D\uDEA7",
                   "Id": null,
                   "Date": null,
@@ -1412,7 +1412,7 @@
                 },
                 {
                   "Path": "/sql/functions/current_time.html",
-                  "Url": "https://cronosql.io/sql/functions/current_time.html",
+                  "Url": "https://crono.org/sql/functions/current_time.html",
                   "Title": "current_time \u2747\uFE0F \uD83D\uDEA7",
                   "Id": null,
                   "Date": null,
@@ -1422,7 +1422,7 @@
                 },
                 {
                   "Path": "/sql/functions/current_timestamp.html",
-                  "Url": "https://cronosql.io/sql/functions/current_timestamp.html",
+                  "Url": "https://crono.org/sql/functions/current_timestamp.html",
                   "Title": "current_timestamp \u2747\uFE0F",
                   "Id": null,
                   "Date": null,
@@ -1432,7 +1432,7 @@
                 },
                 {
                   "Path": "/sql/functions/current_timezone.html",
-                  "Url": "https://cronosql.io/sql/functions/current_timezone.html",
+                  "Url": "https://crono.org/sql/functions/current_timezone.html",
                   "Title": "current_timezone",
                   "Id": null,
                   "Date": null,
@@ -1442,7 +1442,7 @@
                 },
                 {
                   "Path": "/sql/functions/current_timezone_id.html",
-                  "Url": "https://cronosql.io/sql/functions/current_timezone_id.html",
+                  "Url": "https://crono.org/sql/functions/current_timezone_id.html",
                   "Title": "current_timezone_id",
                   "Id": null,
                   "Date": null,
@@ -1452,7 +1452,7 @@
                 },
                 {
                   "Path": "/sql/functions/dateadd.html",
-                  "Url": "https://cronosql.io/sql/functions/dateadd.html",
+                  "Url": "https://crono.org/sql/functions/dateadd.html",
                   "Title": "dateadd",
                   "Id": null,
                   "Date": null,
@@ -1462,7 +1462,7 @@
                 },
                 {
                   "Path": "/sql/functions/datediff.html",
-                  "Url": "https://cronosql.io/sql/functions/datediff.html",
+                  "Url": "https://crono.org/sql/functions/datediff.html",
                   "Title": "datediff \u2747\uFE0F",
                   "Id": null,
                   "Date": null,
@@ -1472,7 +1472,7 @@
                 },
                 {
                   "Path": "/sql/functions/datediff_big.html",
-                  "Url": "https://cronosql.io/sql/functions/datediff_big.html",
+                  "Url": "https://crono.org/sql/functions/datediff_big.html",
                   "Title": "datediff_big",
                   "Id": null,
                   "Date": null,
@@ -1482,7 +1482,7 @@
                 },
                 {
                   "Path": "/sql/functions/datefromparts.html",
-                  "Url": "https://cronosql.io/sql/functions/datefromparts.html",
+                  "Url": "https://crono.org/sql/functions/datefromparts.html",
                   "Title": "datefromparts",
                   "Id": null,
                   "Date": null,
@@ -1492,7 +1492,7 @@
                 },
                 {
                   "Path": "/sql/functions/datename.html",
-                  "Url": "https://cronosql.io/sql/functions/datename.html",
+                  "Url": "https://crono.org/sql/functions/datename.html",
                   "Title": "datename \u2747\uFE0F",
                   "Id": null,
                   "Date": null,
@@ -1502,7 +1502,7 @@
                 },
                 {
                   "Path": "/sql/functions/datepart.html",
-                  "Url": "https://cronosql.io/sql/functions/datepart.html",
+                  "Url": "https://crono.org/sql/functions/datepart.html",
                   "Title": "datepart \u2747\uFE0F",
                   "Id": null,
                   "Date": null,
@@ -1512,7 +1512,7 @@
                 },
                 {
                   "Path": "/sql/functions/datetime2fromparts.html",
-                  "Url": "https://cronosql.io/sql/functions/datetime2fromparts.html",
+                  "Url": "https://crono.org/sql/functions/datetime2fromparts.html",
                   "Title": "datetime2fromparts",
                   "Id": null,
                   "Date": null,
@@ -1522,7 +1522,7 @@
                 },
                 {
                   "Path": "/sql/functions/datetimefromparts.html",
-                  "Url": "https://cronosql.io/sql/functions/datetimefromparts.html",
+                  "Url": "https://crono.org/sql/functions/datetimefromparts.html",
                   "Title": "datetimefromparts",
                   "Id": null,
                   "Date": null,
@@ -1532,7 +1532,7 @@
                 },
                 {
                   "Path": "/sql/functions/datetimeoffsetfromparts.html",
-                  "Url": "https://cronosql.io/sql/functions/datetimeoffsetfromparts.html",
+                  "Url": "https://crono.org/sql/functions/datetimeoffsetfromparts.html",
                   "Title": "datetimeoffsetfromparts",
                   "Id": null,
                   "Date": null,
@@ -1542,7 +1542,7 @@
                 },
                 {
                   "Path": "/sql/functions/datetrunc.html",
-                  "Url": "https://cronosql.io/sql/functions/datetrunc.html",
+                  "Url": "https://crono.org/sql/functions/datetrunc.html",
                   "Title": "datetrunc",
                   "Id": null,
                   "Date": null,
@@ -1552,7 +1552,7 @@
                 },
                 {
                   "Path": "/sql/functions/day.html",
-                  "Url": "https://cronosql.io/sql/functions/day.html",
+                  "Url": "https://crono.org/sql/functions/day.html",
                   "Title": "day",
                   "Id": null,
                   "Date": null,
@@ -1562,7 +1562,7 @@
                 },
                 {
                   "Path": "/sql/functions/eomonth.html",
-                  "Url": "https://cronosql.io/sql/functions/eomonth.html",
+                  "Url": "https://crono.org/sql/functions/eomonth.html",
                   "Title": "eomonth",
                   "Id": null,
                   "Date": null,
@@ -1572,7 +1572,7 @@
                 },
                 {
                   "Path": "/sql/functions/getdate.html",
-                  "Url": "https://cronosql.io/sql/functions/getdate.html",
+                  "Url": "https://crono.org/sql/functions/getdate.html",
                   "Title": "getdate \u2764\uFE0F",
                   "Id": null,
                   "Date": null,
@@ -1582,7 +1582,7 @@
                 },
                 {
                   "Path": "/sql/functions/getenddate.html",
-                  "Url": "https://cronosql.io/sql/functions/getenddate.html",
+                  "Url": "https://crono.org/sql/functions/getenddate.html",
                   "Title": "getenddate \u2747\uFE0F \uD83D\uDEA7",
                   "Id": null,
                   "Date": null,
@@ -1592,7 +1592,7 @@
                 },
                 {
                   "Path": "/sql/functions/getenddatetime.html",
-                  "Url": "https://cronosql.io/sql/functions/getenddatetime.html",
+                  "Url": "https://crono.org/sql/functions/getenddatetime.html",
                   "Title": "getenddatetime \u2747\uFE0F \uD83D\uDEA7",
                   "Id": null,
                   "Date": null,
@@ -1602,7 +1602,7 @@
                 },
                 {
                   "Path": "/sql/functions/getutcdate.html",
-                  "Url": "https://cronosql.io/sql/functions/getutcdate.html",
+                  "Url": "https://crono.org/sql/functions/getutcdate.html",
                   "Title": "getutcdate",
                   "Id": null,
                   "Date": null,
@@ -1612,7 +1612,7 @@
                 },
                 {
                   "Path": "/sql/functions/hour.html",
-                  "Url": "https://cronosql.io/sql/functions/hour.html",
+                  "Url": "https://crono.org/sql/functions/hour.html",
                   "Title": "hour \u2747\uFE0F",
                   "Id": null,
                   "Date": null,
@@ -1622,7 +1622,7 @@
                 },
                 {
                   "Path": "/sql/functions/isdate.html",
-                  "Url": "https://cronosql.io/sql/functions/isdate.html",
+                  "Url": "https://crono.org/sql/functions/isdate.html",
                   "Title": "isdate",
                   "Id": null,
                   "Date": null,
@@ -1632,7 +1632,7 @@
                 },
                 {
                   "Path": "/sql/functions/isoweek.html",
-                  "Url": "https://cronosql.io/sql/functions/isoweek.html",
+                  "Url": "https://crono.org/sql/functions/isoweek.html",
                   "Title": "isoweek \u2747\uFE0F",
                   "Id": null,
                   "Date": null,
@@ -1642,7 +1642,7 @@
                 },
                 {
                   "Path": "/sql/functions/isoweekcode.html",
-                  "Url": "https://cronosql.io/sql/functions/isoweekcode.html",
+                  "Url": "https://crono.org/sql/functions/isoweekcode.html",
                   "Title": "isoweekcode \u2747\uFE0F",
                   "Id": null,
                   "Date": null,
@@ -1652,7 +1652,7 @@
                 },
                 {
                   "Path": "/sql/functions/isoweekshortcode.html",
-                  "Url": "https://cronosql.io/sql/functions/isoweekshortcode.html",
+                  "Url": "https://crono.org/sql/functions/isoweekshortcode.html",
                   "Title": "isoweekshortcode \u2747\uFE0F",
                   "Id": null,
                   "Date": null,
@@ -1662,7 +1662,7 @@
                 },
                 {
                   "Path": "/sql/functions/isoweekyear.html",
-                  "Url": "https://cronosql.io/sql/functions/isoweekyear.html",
+                  "Url": "https://crono.org/sql/functions/isoweekyear.html",
                   "Title": "isoweekyear \u2747\uFE0F",
                   "Id": null,
                   "Date": null,
@@ -1672,7 +1672,7 @@
                 },
                 {
                   "Path": "/sql/functions/localdate.html",
-                  "Url": "https://cronosql.io/sql/functions/localdate.html",
+                  "Url": "https://crono.org/sql/functions/localdate.html",
                   "Title": "localdate \u2747\uFE0F",
                   "Id": null,
                   "Date": null,
@@ -1682,7 +1682,7 @@
                 },
                 {
                   "Path": "/sql/functions/localdatetimeoffset.html",
-                  "Url": "https://cronosql.io/sql/functions/localdatetimeoffset.html",
+                  "Url": "https://crono.org/sql/functions/localdatetimeoffset.html",
                   "Title": "localdatetimeoffset \u2747\uFE0F",
                   "Id": null,
                   "Date": null,
@@ -1692,7 +1692,7 @@
                 },
                 {
                   "Path": "/sql/functions/month.html",
-                  "Url": "https://cronosql.io/sql/functions/month.html",
+                  "Url": "https://crono.org/sql/functions/month.html",
                   "Title": "month",
                   "Id": null,
                   "Date": null,
@@ -1702,7 +1702,7 @@
                 },
                 {
                   "Path": "/sql/functions/smalldatetimefromparts.html",
-                  "Url": "https://cronosql.io/sql/functions/smalldatetimefromparts.html",
+                  "Url": "https://crono.org/sql/functions/smalldatetimefromparts.html",
                   "Title": "smalldatetimefromparts",
                   "Id": null,
                   "Date": null,
@@ -1712,7 +1712,7 @@
                 },
                 {
                   "Path": "/sql/functions/switchoffset.html",
-                  "Url": "https://cronosql.io/sql/functions/switchoffset.html",
+                  "Url": "https://crono.org/sql/functions/switchoffset.html",
                   "Title": "switchoffset",
                   "Id": null,
                   "Date": null,
@@ -1722,7 +1722,7 @@
                 },
                 {
                   "Path": "/sql/functions/sysdatetime.html",
-                  "Url": "https://cronosql.io/sql/functions/sysdatetime.html",
+                  "Url": "https://crono.org/sql/functions/sysdatetime.html",
                   "Title": "sysdatetime",
                   "Id": null,
                   "Date": null,
@@ -1732,7 +1732,7 @@
                 },
                 {
                   "Path": "/sql/functions/sysdatetimeoffset.html",
-                  "Url": "https://cronosql.io/sql/functions/sysdatetimeoffset.html",
+                  "Url": "https://crono.org/sql/functions/sysdatetimeoffset.html",
                   "Title": "sysdatetimeoffset",
                   "Id": null,
                   "Date": null,
@@ -1742,7 +1742,7 @@
                 },
                 {
                   "Path": "/sql/functions/sysutcdatetime.html",
-                  "Url": "https://cronosql.io/sql/functions/sysutcdatetime.html",
+                  "Url": "https://crono.org/sql/functions/sysutcdatetime.html",
                   "Title": "sysutcdatetime",
                   "Id": null,
                   "Date": null,
@@ -1752,7 +1752,7 @@
                 },
                 {
                   "Path": "/sql/functions/timefromparts.html",
-                  "Url": "https://cronosql.io/sql/functions/timefromparts.html",
+                  "Url": "https://crono.org/sql/functions/timefromparts.html",
                   "Title": "timefromparts",
                   "Id": null,
                   "Date": null,
@@ -1762,7 +1762,7 @@
                 },
                 {
                   "Path": "/sql/functions/todatetimeoffset.html",
-                  "Url": "https://cronosql.io/sql/functions/todatetimeoffset.html",
+                  "Url": "https://crono.org/sql/functions/todatetimeoffset.html",
                   "Title": "todatetimeoffset",
                   "Id": null,
                   "Date": null,
@@ -1772,7 +1772,7 @@
                 },
                 {
                   "Path": "/sql/functions/today.html",
-                  "Url": "https://cronosql.io/sql/functions/today.html",
+                  "Url": "https://crono.org/sql/functions/today.html",
                   "Title": "today \u2747\uFE0F",
                   "Id": null,
                   "Date": null,
@@ -1782,7 +1782,7 @@
                 },
                 {
                   "Path": "/sql/functions/tomorrow.html",
-                  "Url": "https://cronosql.io/sql/functions/tomorrow.html",
+                  "Url": "https://crono.org/sql/functions/tomorrow.html",
                   "Title": "tomorrow \u2747\uFE0F",
                   "Id": null,
                   "Date": null,
@@ -1792,7 +1792,7 @@
                 },
                 {
                   "Path": "/sql/functions/year.html",
-                  "Url": "https://cronosql.io/sql/functions/year.html",
+                  "Url": "https://crono.org/sql/functions/year.html",
                   "Title": "year",
                   "Id": null,
                   "Date": null,
@@ -1802,7 +1802,7 @@
                 },
                 {
                   "Path": "/sql/functions/yyyymmdd.html",
-                  "Url": "https://cronosql.io/sql/functions/yyyymmdd.html",
+                  "Url": "https://crono.org/sql/functions/yyyymmdd.html",
                   "Title": "yyyymmdd \u2747\uFE0F \uD83D\uDEA7",
                   "Id": null,
                   "Date": null,
@@ -1814,7 +1814,7 @@
             },
             {
               "Path": "/sql/functions/index-text-functions.html",
-              "Url": "https://cronosql.io/sql/functions/index-text-functions.html",
+              "Url": "https://crono.org/sql/functions/index-text-functions.html",
               "Title": "Funciones de texto",
               "Id": null,
               "Date": null,
@@ -1823,7 +1823,7 @@
               "Children": [
                 {
                   "Path": "/sql/functions/abc.html",
-                  "Url": "https://cronosql.io/sql/functions/abc.html",
+                  "Url": "https://crono.org/sql/functions/abc.html",
                   "Title": "abc \u2747\uFE0F",
                   "Id": null,
                   "Date": null,
@@ -1833,7 +1833,7 @@
                 },
                 {
                   "Path": "/sql/functions/ascii.html",
-                  "Url": "https://cronosql.io/sql/functions/ascii.html",
+                  "Url": "https://crono.org/sql/functions/ascii.html",
                   "Title": "ascii",
                   "Id": null,
                   "Date": null,
@@ -1843,7 +1843,7 @@
                 },
                 {
                   "Path": "/sql/functions/charindex.html",
-                  "Url": "https://cronosql.io/sql/functions/charindex.html",
+                  "Url": "https://crono.org/sql/functions/charindex.html",
                   "Title": "charindex",
                   "Id": null,
                   "Date": null,
@@ -1853,7 +1853,7 @@
                 },
                 {
                   "Path": "/sql/functions/compress.html",
-                  "Url": "https://cronosql.io/sql/functions/compress.html",
+                  "Url": "https://crono.org/sql/functions/compress.html",
                   "Title": "compress",
                   "Id": null,
                   "Date": null,
@@ -1863,7 +1863,7 @@
                 },
                 {
                   "Path": "/sql/functions/concat.html",
-                  "Url": "https://cronosql.io/sql/functions/concat.html",
+                  "Url": "https://crono.org/sql/functions/concat.html",
                   "Title": "concat \u2764\uFE0F",
                   "Id": null,
                   "Date": null,
@@ -1873,7 +1873,7 @@
                 },
                 {
                   "Path": "/sql/functions/decompress.html",
-                  "Url": "https://cronosql.io/sql/functions/decompress.html",
+                  "Url": "https://crono.org/sql/functions/decompress.html",
                   "Title": "decompress",
                   "Id": null,
                   "Date": null,
@@ -1883,7 +1883,7 @@
                 },
                 {
                   "Path": "/sql/functions/difference.html",
-                  "Url": "https://cronosql.io/sql/functions/difference.html",
+                  "Url": "https://crono.org/sql/functions/difference.html",
                   "Title": "difference",
                   "Id": null,
                   "Date": null,
@@ -1893,7 +1893,7 @@
                 },
                 {
                   "Path": "/sql/functions/format.html",
-                  "Url": "https://cronosql.io/sql/functions/format.html",
+                  "Url": "https://crono.org/sql/functions/format.html",
                   "Title": "format",
                   "Id": null,
                   "Date": null,
@@ -1903,7 +1903,7 @@
                 },
                 {
                   "Path": "/sql/functions/hashbytes.html",
-                  "Url": "https://cronosql.io/sql/functions/hashbytes.html",
+                  "Url": "https://crono.org/sql/functions/hashbytes.html",
                   "Title": "hashbytes",
                   "Id": null,
                   "Date": null,
@@ -1913,7 +1913,7 @@
                 },
                 {
                   "Path": "/sql/functions/left.html",
-                  "Url": "https://cronosql.io/sql/functions/left.html",
+                  "Url": "https://crono.org/sql/functions/left.html",
                   "Title": "left \u2747\uFE0F \u2764\uFE0F",
                   "Id": null,
                   "Date": null,
@@ -1923,7 +1923,7 @@
                 },
                 {
                   "Path": "/sql/functions/len.html",
-                  "Url": "https://cronosql.io/sql/functions/len.html",
+                  "Url": "https://crono.org/sql/functions/len.html",
                   "Title": "len",
                   "Id": null,
                   "Date": null,
@@ -1933,7 +1933,7 @@
                 },
                 {
                   "Path": "/sql/functions/lower.html",
-                  "Url": "https://cronosql.io/sql/functions/lower.html",
+                  "Url": "https://crono.org/sql/functions/lower.html",
                   "Title": "lower",
                   "Id": null,
                   "Date": null,
@@ -1943,7 +1943,7 @@
                 },
                 {
                   "Path": "/sql/functions/ltrim.html",
-                  "Url": "https://cronosql.io/sql/functions/ltrim.html",
+                  "Url": "https://crono.org/sql/functions/ltrim.html",
                   "Title": "ltrim",
                   "Id": null,
                   "Date": null,
@@ -1953,7 +1953,7 @@
                 },
                 {
                   "Path": "/sql/functions/nchar.html",
-                  "Url": "https://cronosql.io/sql/functions/nchar.html",
+                  "Url": "https://crono.org/sql/functions/nchar.html",
                   "Title": "nchar",
                   "Id": null,
                   "Date": null,
@@ -1963,7 +1963,7 @@
                 },
                 {
                   "Path": "/sql/functions/patindex.html",
-                  "Url": "https://cronosql.io/sql/functions/patindex.html",
+                  "Url": "https://crono.org/sql/functions/patindex.html",
                   "Title": "patindex",
                   "Id": null,
                   "Date": null,
@@ -1973,7 +1973,7 @@
                 },
                 {
                   "Path": "/sql/functions/quotename.html",
-                  "Url": "https://cronosql.io/sql/functions/quotename.html",
+                  "Url": "https://crono.org/sql/functions/quotename.html",
                   "Title": "quotename",
                   "Id": null,
                   "Date": null,
@@ -1983,7 +1983,7 @@
                 },
                 {
                   "Path": "/sql/functions/replace.html",
-                  "Url": "https://cronosql.io/sql/functions/replace.html",
+                  "Url": "https://crono.org/sql/functions/replace.html",
                   "Title": "replace \u2764\uFE0F",
                   "Id": null,
                   "Date": null,
@@ -1993,7 +1993,7 @@
                 },
                 {
                   "Path": "/sql/functions/replicate.html",
-                  "Url": "https://cronosql.io/sql/functions/replicate.html",
+                  "Url": "https://crono.org/sql/functions/replicate.html",
                   "Title": "replicate",
                   "Id": null,
                   "Date": null,
@@ -2003,7 +2003,7 @@
                 },
                 {
                   "Path": "/sql/functions/reverse.html",
-                  "Url": "https://cronosql.io/sql/functions/reverse.html",
+                  "Url": "https://crono.org/sql/functions/reverse.html",
                   "Title": "reverse",
                   "Id": null,
                   "Date": null,
@@ -2013,7 +2013,7 @@
                 },
                 {
                   "Path": "/sql/functions/right.html",
-                  "Url": "https://cronosql.io/sql/functions/right.html",
+                  "Url": "https://crono.org/sql/functions/right.html",
                   "Title": "right \u2747\uFE0F",
                   "Id": null,
                   "Date": null,
@@ -2023,7 +2023,7 @@
                 },
                 {
                   "Path": "/sql/functions/rtrim.html",
-                  "Url": "https://cronosql.io/sql/functions/rtrim.html",
+                  "Url": "https://crono.org/sql/functions/rtrim.html",
                   "Title": "rtrim",
                   "Id": null,
                   "Date": null,
@@ -2033,7 +2033,7 @@
                 },
                 {
                   "Path": "/sql/functions/soundex.html",
-                  "Url": "https://cronosql.io/sql/functions/soundex.html",
+                  "Url": "https://crono.org/sql/functions/soundex.html",
                   "Title": "soundex",
                   "Id": null,
                   "Date": null,
@@ -2043,7 +2043,7 @@
                 },
                 {
                   "Path": "/sql/functions/str.html",
-                  "Url": "https://cronosql.io/sql/functions/str.html",
+                  "Url": "https://crono.org/sql/functions/str.html",
                   "Title": "str",
                   "Id": null,
                   "Date": null,
@@ -2053,7 +2053,7 @@
                 },
                 {
                   "Path": "/sql/functions/string_split.html",
-                  "Url": "https://cronosql.io/sql/functions/string_split.html",
+                  "Url": "https://crono.org/sql/functions/string_split.html",
                   "Title": "string_split",
                   "Id": null,
                   "Date": null,
@@ -2063,7 +2063,7 @@
                 },
                 {
                   "Path": "/sql/functions/stuff.html",
-                  "Url": "https://cronosql.io/sql/functions/stuff.html",
+                  "Url": "https://crono.org/sql/functions/stuff.html",
                   "Title": "stuff",
                   "Id": null,
                   "Date": null,
@@ -2073,7 +2073,7 @@
                 },
                 {
                   "Path": "/sql/functions/substring.html",
-                  "Url": "https://cronosql.io/sql/functions/substring.html",
+                  "Url": "https://crono.org/sql/functions/substring.html",
                   "Title": "substring",
                   "Id": null,
                   "Date": null,
@@ -2083,7 +2083,7 @@
                 },
                 {
                   "Path": "/sql/functions/trim.html",
-                  "Url": "https://cronosql.io/sql/functions/trim.html",
+                  "Url": "https://crono.org/sql/functions/trim.html",
                   "Title": "trim \u2747\uFE0F",
                   "Id": null,
                   "Date": null,
@@ -2093,7 +2093,7 @@
                 },
                 {
                   "Path": "/sql/functions/unicode.html",
-                  "Url": "https://cronosql.io/sql/functions/unicode.html",
+                  "Url": "https://crono.org/sql/functions/unicode.html",
                   "Title": "unicode",
                   "Id": null,
                   "Date": null,
@@ -2103,7 +2103,7 @@
                 },
                 {
                   "Path": "/sql/functions/upper.html",
-                  "Url": "https://cronosql.io/sql/functions/upper.html",
+                  "Url": "https://crono.org/sql/functions/upper.html",
                   "Title": "upper",
                   "Id": null,
                   "Date": null,
@@ -2115,7 +2115,7 @@
             },
             {
               "Path": "/sql/functions/index-math-functions.html",
-              "Url": "https://cronosql.io/sql/functions/index-math-functions.html",
+              "Url": "https://crono.org/sql/functions/index-math-functions.html",
               "Title": "Funciones matem\u00E1ticas",
               "Id": null,
               "Date": null,
@@ -2124,7 +2124,7 @@
               "Children": [
                 {
                   "Path": "/sql/functions/abs.html",
-                  "Url": "https://cronosql.io/sql/functions/abs.html",
+                  "Url": "https://crono.org/sql/functions/abs.html",
                   "Title": "abs \u2764\uFE0F",
                   "Id": null,
                   "Date": null,
@@ -2134,7 +2134,7 @@
                 },
                 {
                   "Path": "/sql/functions/acos.html",
-                  "Url": "https://cronosql.io/sql/functions/acos.html",
+                  "Url": "https://crono.org/sql/functions/acos.html",
                   "Title": "acos",
                   "Id": null,
                   "Date": null,
@@ -2144,7 +2144,7 @@
                 },
                 {
                   "Path": "/sql/functions/addition.html",
-                  "Url": "https://cronosql.io/sql/functions/addition.html",
+                  "Url": "https://crono.org/sql/functions/addition.html",
                   "Title": "addition \u2747\uFE0F \u2764\uFE0F",
                   "Id": null,
                   "Date": null,
@@ -2154,7 +2154,7 @@
                 },
                 {
                   "Path": "/sql/functions/asin.html",
-                  "Url": "https://cronosql.io/sql/functions/asin.html",
+                  "Url": "https://crono.org/sql/functions/asin.html",
                   "Title": "asin",
                   "Id": null,
                   "Date": null,
@@ -2164,7 +2164,7 @@
                 },
                 {
                   "Path": "/sql/functions/atan.html",
-                  "Url": "https://cronosql.io/sql/functions/atan.html",
+                  "Url": "https://crono.org/sql/functions/atan.html",
                   "Title": "atan",
                   "Id": null,
                   "Date": null,
@@ -2174,7 +2174,7 @@
                 },
                 {
                   "Path": "/sql/functions/atn2.html",
-                  "Url": "https://cronosql.io/sql/functions/atn2.html",
+                  "Url": "https://crono.org/sql/functions/atn2.html",
                   "Title": "atn2",
                   "Id": null,
                   "Date": null,
@@ -2184,7 +2184,7 @@
                 },
                 {
                   "Path": "/sql/functions/ceiling.html",
-                  "Url": "https://cronosql.io/sql/functions/ceiling.html",
+                  "Url": "https://crono.org/sql/functions/ceiling.html",
                   "Title": "ceiling",
                   "Id": null,
                   "Date": null,
@@ -2194,7 +2194,7 @@
                 },
                 {
                   "Path": "/sql/functions/cos.html",
-                  "Url": "https://cronosql.io/sql/functions/cos.html",
+                  "Url": "https://crono.org/sql/functions/cos.html",
                   "Title": "cos",
                   "Id": null,
                   "Date": null,
@@ -2204,7 +2204,7 @@
                 },
                 {
                   "Path": "/sql/functions/cot.html",
-                  "Url": "https://cronosql.io/sql/functions/cot.html",
+                  "Url": "https://crono.org/sql/functions/cot.html",
                   "Title": "cot",
                   "Id": null,
                   "Date": null,
@@ -2214,7 +2214,7 @@
                 },
                 {
                   "Path": "/sql/functions/degrees.html",
-                  "Url": "https://cronosql.io/sql/functions/degrees.html",
+                  "Url": "https://crono.org/sql/functions/degrees.html",
                   "Title": "degrees",
                   "Id": null,
                   "Date": null,
@@ -2224,7 +2224,7 @@
                 },
                 {
                   "Path": "/sql/functions/divide.html",
-                  "Url": "https://cronosql.io/sql/functions/divide.html",
+                  "Url": "https://crono.org/sql/functions/divide.html",
                   "Title": "divide \u2747\uFE0F",
                   "Id": null,
                   "Date": null,
@@ -2234,7 +2234,7 @@
                 },
                 {
                   "Path": "/sql/functions/exp.html",
-                  "Url": "https://cronosql.io/sql/functions/exp.html",
+                  "Url": "https://crono.org/sql/functions/exp.html",
                   "Title": "exp",
                   "Id": null,
                   "Date": null,
@@ -2244,7 +2244,7 @@
                 },
                 {
                   "Path": "/sql/functions/floor.html",
-                  "Url": "https://cronosql.io/sql/functions/floor.html",
+                  "Url": "https://crono.org/sql/functions/floor.html",
                   "Title": "floor",
                   "Id": null,
                   "Date": null,
@@ -2254,7 +2254,7 @@
                 },
                 {
                   "Path": "/sql/functions/generate_series.html",
-                  "Url": "https://cronosql.io/sql/functions/generate_series.html",
+                  "Url": "https://crono.org/sql/functions/generate_series.html",
                   "Title": "generate_series",
                   "Id": null,
                   "Date": null,
@@ -2264,7 +2264,7 @@
                 },
                 {
                   "Path": "/sql/functions/greatest.html",
-                  "Url": "https://cronosql.io/sql/functions/greatest.html",
+                  "Url": "https://crono.org/sql/functions/greatest.html",
                   "Title": "greatest",
                   "Id": null,
                   "Date": null,
@@ -2274,7 +2274,7 @@
                 },
                 {
                   "Path": "/sql/functions/log.html",
-                  "Url": "https://cronosql.io/sql/functions/log.html",
+                  "Url": "https://crono.org/sql/functions/log.html",
                   "Title": "log",
                   "Id": null,
                   "Date": null,
@@ -2284,7 +2284,7 @@
                 },
                 {
                   "Path": "/sql/functions/log10.html",
-                  "Url": "https://cronosql.io/sql/functions/log10.html",
+                  "Url": "https://crono.org/sql/functions/log10.html",
                   "Title": "log10",
                   "Id": null,
                   "Date": null,
@@ -2294,7 +2294,7 @@
                 },
                 {
                   "Path": "/sql/functions/margin.html",
-                  "Url": "https://cronosql.io/sql/functions/margin.html",
+                  "Url": "https://crono.org/sql/functions/margin.html",
                   "Title": "margin \u2747\uFE0F \uD83D\uDEA7",
                   "Id": null,
                   "Date": null,
@@ -2304,7 +2304,7 @@
                 },
                 {
                   "Path": "/sql/functions/markup.html",
-                  "Url": "https://cronosql.io/sql/functions/markup.html",
+                  "Url": "https://crono.org/sql/functions/markup.html",
                   "Title": "markup \u2747\uFE0F \uD83D\uDEA7",
                   "Id": null,
                   "Date": null,
@@ -2314,7 +2314,7 @@
                 },
                 {
                   "Path": "/sql/functions/maximum.html",
-                  "Url": "https://cronosql.io/sql/functions/maximum.html",
+                  "Url": "https://crono.org/sql/functions/maximum.html",
                   "Title": "maximum \u2747\uFE0F",
                   "Id": null,
                   "Date": null,
@@ -2324,7 +2324,7 @@
                 },
                 {
                   "Path": "/sql/functions/minimum.html",
-                  "Url": "https://cronosql.io/sql/functions/minimum.html",
+                  "Url": "https://crono.org/sql/functions/minimum.html",
                   "Title": "minimum \u2747\uFE0F",
                   "Id": null,
                   "Date": null,
@@ -2334,7 +2334,7 @@
                 },
                 {
                   "Path": "/sql/functions/mod.html",
-                  "Url": "https://cronosql.io/sql/functions/mod.html",
+                  "Url": "https://crono.org/sql/functions/mod.html",
                   "Title": "mod \u2747\uFE0F",
                   "Id": null,
                   "Date": null,
@@ -2344,7 +2344,7 @@
                 },
                 {
                   "Path": "/sql/functions/pi.html",
-                  "Url": "https://cronosql.io/sql/functions/pi.html",
+                  "Url": "https://crono.org/sql/functions/pi.html",
                   "Title": "pi",
                   "Id": null,
                   "Date": null,
@@ -2354,7 +2354,7 @@
                 },
                 {
                   "Path": "/sql/functions/power.html",
-                  "Url": "https://cronosql.io/sql/functions/power.html",
+                  "Url": "https://crono.org/sql/functions/power.html",
                   "Title": "power",
                   "Id": null,
                   "Date": null,
@@ -2364,7 +2364,7 @@
                 },
                 {
                   "Path": "/sql/functions/radians.html",
-                  "Url": "https://cronosql.io/sql/functions/radians.html",
+                  "Url": "https://crono.org/sql/functions/radians.html",
                   "Title": "radians",
                   "Id": null,
                   "Date": null,
@@ -2374,7 +2374,7 @@
                 },
                 {
                   "Path": "/sql/functions/rand.html",
-                  "Url": "https://cronosql.io/sql/functions/rand.html",
+                  "Url": "https://crono.org/sql/functions/rand.html",
                   "Title": "rand",
                   "Id": null,
                   "Date": null,
@@ -2384,7 +2384,7 @@
                 },
                 {
                   "Path": "/sql/functions/round.html",
-                  "Url": "https://cronosql.io/sql/functions/round.html",
+                  "Url": "https://crono.org/sql/functions/round.html",
                   "Title": "round \u2747\uFE0F \u2764\uFE0F",
                   "Id": null,
                   "Date": null,
@@ -2394,7 +2394,7 @@
                 },
                 {
                   "Path": "/sql/functions/sign.html",
-                  "Url": "https://cronosql.io/sql/functions/sign.html",
+                  "Url": "https://crono.org/sql/functions/sign.html",
                   "Title": "sign",
                   "Id": null,
                   "Date": null,
@@ -2404,7 +2404,7 @@
                 },
                 {
                   "Path": "/sql/functions/sin.html",
-                  "Url": "https://cronosql.io/sql/functions/sin.html",
+                  "Url": "https://crono.org/sql/functions/sin.html",
                   "Title": "sin",
                   "Id": null,
                   "Date": null,
@@ -2414,7 +2414,7 @@
                 },
                 {
                   "Path": "/sql/functions/space.html",
-                  "Url": "https://cronosql.io/sql/functions/space.html",
+                  "Url": "https://crono.org/sql/functions/space.html",
                   "Title": "space",
                   "Id": null,
                   "Date": null,
@@ -2424,7 +2424,7 @@
                 },
                 {
                   "Path": "/sql/functions/sqrt.html",
-                  "Url": "https://cronosql.io/sql/functions/sqrt.html",
+                  "Url": "https://crono.org/sql/functions/sqrt.html",
                   "Title": "sqrt",
                   "Id": null,
                   "Date": null,
@@ -2434,7 +2434,7 @@
                 },
                 {
                   "Path": "/sql/functions/square.html",
-                  "Url": "https://cronosql.io/sql/functions/square.html",
+                  "Url": "https://crono.org/sql/functions/square.html",
                   "Title": "square",
                   "Id": null,
                   "Date": null,
@@ -2444,7 +2444,7 @@
                 },
                 {
                   "Path": "/sql/functions/substraction.html",
-                  "Url": "https://cronosql.io/sql/functions/substraction.html",
+                  "Url": "https://crono.org/sql/functions/substraction.html",
                   "Title": "substraction \u2747\uFE0F",
                   "Id": null,
                   "Date": null,
@@ -2454,7 +2454,7 @@
                 },
                 {
                   "Path": "/sql/functions/tan.html",
-                  "Url": "https://cronosql.io/sql/functions/tan.html",
+                  "Url": "https://crono.org/sql/functions/tan.html",
                   "Title": "tan",
                   "Id": null,
                   "Date": null,
@@ -2466,7 +2466,7 @@
             },
             {
               "Path": "/sql/functions/index-system-functions.html",
-              "Url": "https://cronosql.io/sql/functions/index-system-functions.html",
+              "Url": "https://crono.org/sql/functions/index-system-functions.html",
               "Title": "Funciones de sistema",
               "Id": null,
               "Date": null,
@@ -2475,7 +2475,7 @@
               "Children": [
                 {
                   "Path": "/sql/functions/checksum.html",
-                  "Url": "https://cronosql.io/sql/functions/checksum.html",
+                  "Url": "https://crono.org/sql/functions/checksum.html",
                   "Title": "checksum",
                   "Id": null,
                   "Date": null,
@@ -2485,7 +2485,7 @@
                 },
                 {
                   "Path": "/sql/functions/col_length.html",
-                  "Url": "https://cronosql.io/sql/functions/col_length.html",
+                  "Url": "https://crono.org/sql/functions/col_length.html",
                   "Title": "col_length",
                   "Id": null,
                   "Date": null,
@@ -2495,7 +2495,7 @@
                 },
                 {
                   "Path": "/sql/functions/col_name.html",
-                  "Url": "https://cronosql.io/sql/functions/col_name.html",
+                  "Url": "https://crono.org/sql/functions/col_name.html",
                   "Title": "col_name",
                   "Id": null,
                   "Date": null,
@@ -2505,7 +2505,7 @@
                 },
                 {
                   "Path": "/sql/functions/collationproperty.html",
-                  "Url": "https://cronosql.io/sql/functions/collationproperty.html",
+                  "Url": "https://crono.org/sql/functions/collationproperty.html",
                   "Title": "collationproperty",
                   "Id": null,
                   "Date": null,
@@ -2515,7 +2515,7 @@
                 },
                 {
                   "Path": "/sql/functions/columnproperty.html",
-                  "Url": "https://cronosql.io/sql/functions/columnproperty.html",
+                  "Url": "https://crono.org/sql/functions/columnproperty.html",
                   "Title": "columnproperty",
                   "Id": null,
                   "Date": null,
@@ -2525,7 +2525,7 @@
                 },
                 {
                   "Path": "/sql/functions/columns_updated.html",
-                  "Url": "https://cronosql.io/sql/functions/columns_updated.html",
+                  "Url": "https://crono.org/sql/functions/columns_updated.html",
                   "Title": "columns_updated",
                   "Id": null,
                   "Date": null,
@@ -2535,7 +2535,7 @@
                 },
                 {
                   "Path": "/sql/functions/current_transaction_id.html",
-                  "Url": "https://cronosql.io/sql/functions/current_transaction_id.html",
+                  "Url": "https://crono.org/sql/functions/current_transaction_id.html",
                   "Title": "current_transaction_id",
                   "Id": null,
                   "Date": null,
@@ -2545,7 +2545,7 @@
                 },
                 {
                   "Path": "/sql/functions/current_user.html",
-                  "Url": "https://cronosql.io/sql/functions/current_user.html",
+                  "Url": "https://crono.org/sql/functions/current_user.html",
                   "Title": "current_user \u2747\uFE0F",
                   "Id": null,
                   "Date": null,
@@ -2555,7 +2555,7 @@
                 },
                 {
                   "Path": "/sql/functions/currentusername.html",
-                  "Url": "https://cronosql.io/sql/functions/currentusername.html",
+                  "Url": "https://crono.org/sql/functions/currentusername.html",
                   "Title": "currentusername \u2747\uFE0F \u2764\uFE0F",
                   "Id": null,
                   "Date": null,
@@ -2565,7 +2565,7 @@
                 },
                 {
                   "Path": "/sql/functions/cursor_status.html",
-                  "Url": "https://cronosql.io/sql/functions/cursor_status.html",
+                  "Url": "https://crono.org/sql/functions/cursor_status.html",
                   "Title": "cursor_status",
                   "Id": null,
                   "Date": null,
@@ -2575,7 +2575,7 @@
                 },
                 {
                   "Path": "/sql/functions/database_principal_id.html",
-                  "Url": "https://cronosql.io/sql/functions/database_principal_id.html",
+                  "Url": "https://crono.org/sql/functions/database_principal_id.html",
                   "Title": "database_principal_id",
                   "Id": null,
                   "Date": null,
@@ -2585,7 +2585,7 @@
                 },
                 {
                   "Path": "/sql/functions/databaseproperty.html",
-                  "Url": "https://cronosql.io/sql/functions/databaseproperty.html",
+                  "Url": "https://crono.org/sql/functions/databaseproperty.html",
                   "Title": "databaseproperty \uD83D\uDEA7",
                   "Id": null,
                   "Date": null,
@@ -2595,7 +2595,7 @@
                 },
                 {
                   "Path": "/sql/functions/databasepropertyex.html",
-                  "Url": "https://cronosql.io/sql/functions/databasepropertyex.html",
+                  "Url": "https://crono.org/sql/functions/databasepropertyex.html",
                   "Title": "databasepropertyex",
                   "Id": null,
                   "Date": null,
@@ -2605,7 +2605,7 @@
                 },
                 {
                   "Path": "/sql/functions/datalength.html",
-                  "Url": "https://cronosql.io/sql/functions/datalength.html",
+                  "Url": "https://crono.org/sql/functions/datalength.html",
                   "Title": "datalength",
                   "Id": null,
                   "Date": null,
@@ -2615,7 +2615,7 @@
                 },
                 {
                   "Path": "/sql/functions/date_bucket.html",
-                  "Url": "https://cronosql.io/sql/functions/date_bucket.html",
+                  "Url": "https://crono.org/sql/functions/date_bucket.html",
                   "Title": "date_bucket",
                   "Id": null,
                   "Date": null,
@@ -2625,7 +2625,7 @@
                 },
                 {
                   "Path": "/sql/functions/db_id.html",
-                  "Url": "https://cronosql.io/sql/functions/db_id.html",
+                  "Url": "https://crono.org/sql/functions/db_id.html",
                   "Title": "db_id",
                   "Id": null,
                   "Date": null,
@@ -2635,7 +2635,7 @@
                 },
                 {
                   "Path": "/sql/functions/db_name.html",
-                  "Url": "https://cronosql.io/sql/functions/db_name.html",
+                  "Url": "https://crono.org/sql/functions/db_name.html",
                   "Title": "db_name",
                   "Id": null,
                   "Date": null,
@@ -2645,7 +2645,7 @@
                 },
                 {
                   "Path": "/sql/functions/error_line.html",
-                  "Url": "https://cronosql.io/sql/functions/error_line.html",
+                  "Url": "https://crono.org/sql/functions/error_line.html",
                   "Title": "error_line",
                   "Id": null,
                   "Date": null,
@@ -2655,7 +2655,7 @@
                 },
                 {
                   "Path": "/sql/functions/error_message.html",
-                  "Url": "https://cronosql.io/sql/functions/error_message.html",
+                  "Url": "https://crono.org/sql/functions/error_message.html",
                   "Title": "error_message",
                   "Id": null,
                   "Date": null,
@@ -2665,7 +2665,7 @@
                 },
                 {
                   "Path": "/sql/functions/error_number.html",
-                  "Url": "https://cronosql.io/sql/functions/error_number.html",
+                  "Url": "https://crono.org/sql/functions/error_number.html",
                   "Title": "error_number",
                   "Id": null,
                   "Date": null,
@@ -2675,7 +2675,7 @@
                 },
                 {
                   "Path": "/sql/functions/error_procedure.html",
-                  "Url": "https://cronosql.io/sql/functions/error_procedure.html",
+                  "Url": "https://crono.org/sql/functions/error_procedure.html",
                   "Title": "error_procedure",
                   "Id": null,
                   "Date": null,
@@ -2685,7 +2685,7 @@
                 },
                 {
                   "Path": "/sql/functions/error_severity.html",
-                  "Url": "https://cronosql.io/sql/functions/error_severity.html",
+                  "Url": "https://crono.org/sql/functions/error_severity.html",
                   "Title": "error_severity",
                   "Id": null,
                   "Date": null,
@@ -2695,7 +2695,7 @@
                 },
                 {
                   "Path": "/sql/functions/error_state.html",
-                  "Url": "https://cronosql.io/sql/functions/error_state.html",
+                  "Url": "https://crono.org/sql/functions/error_state.html",
                   "Title": "error_state",
                   "Id": null,
                   "Date": null,
@@ -2705,7 +2705,7 @@
                 },
                 {
                   "Path": "/sql/functions/file_name.html",
-                  "Url": "https://cronosql.io/sql/functions/file_name.html",
+                  "Url": "https://crono.org/sql/functions/file_name.html",
                   "Title": "file_name",
                   "Id": null,
                   "Date": null,
@@ -2715,7 +2715,7 @@
                 },
                 {
                   "Path": "/sql/functions/filegroup_id.html",
-                  "Url": "https://cronosql.io/sql/functions/filegroup_id.html",
+                  "Url": "https://crono.org/sql/functions/filegroup_id.html",
                   "Title": "filegroup_id",
                   "Id": null,
                   "Date": null,
@@ -2725,7 +2725,7 @@
                 },
                 {
                   "Path": "/sql/functions/filegroup_name.html",
-                  "Url": "https://cronosql.io/sql/functions/filegroup_name.html",
+                  "Url": "https://crono.org/sql/functions/filegroup_name.html",
                   "Title": "filegroup_name",
                   "Id": null,
                   "Date": null,
@@ -2735,7 +2735,7 @@
                 },
                 {
                   "Path": "/sql/functions/filegroupproperty.html",
-                  "Url": "https://cronosql.io/sql/functions/filegroupproperty.html",
+                  "Url": "https://crono.org/sql/functions/filegroupproperty.html",
                   "Title": "filegroupproperty",
                   "Id": null,
                   "Date": null,
@@ -2745,7 +2745,7 @@
                 },
                 {
                   "Path": "/sql/functions/fileproperty.html",
-                  "Url": "https://cronosql.io/sql/functions/fileproperty.html",
+                  "Url": "https://crono.org/sql/functions/fileproperty.html",
                   "Title": "fileproperty",
                   "Id": null,
                   "Date": null,
@@ -2755,7 +2755,7 @@
                 },
                 {
                   "Path": "/sql/functions/formatmessage.html",
-                  "Url": "https://cronosql.io/sql/functions/formatmessage.html",
+                  "Url": "https://crono.org/sql/functions/formatmessage.html",
                   "Title": "formatmessage",
                   "Id": null,
                   "Date": null,
@@ -2765,7 +2765,7 @@
                 },
                 {
                   "Path": "/sql/functions/fulltextcatalogproperty.html",
-                  "Url": "https://cronosql.io/sql/functions/fulltextcatalogproperty.html",
+                  "Url": "https://crono.org/sql/functions/fulltextcatalogproperty.html",
                   "Title": "fulltextcatalogproperty",
                   "Id": null,
                   "Date": null,
@@ -2775,7 +2775,7 @@
                 },
                 {
                   "Path": "/sql/functions/fulltextserviceproperty.html",
-                  "Url": "https://cronosql.io/sql/functions/fulltextserviceproperty.html",
+                  "Url": "https://crono.org/sql/functions/fulltextserviceproperty.html",
                   "Title": "fulltextserviceproperty",
                   "Id": null,
                   "Date": null,
@@ -2785,7 +2785,7 @@
                 },
                 {
                   "Path": "/sql/functions/getansinull.html",
-                  "Url": "https://cronosql.io/sql/functions/getansinull.html",
+                  "Url": "https://crono.org/sql/functions/getansinull.html",
                   "Title": "getansinull",
                   "Id": null,
                   "Date": null,
@@ -2795,7 +2795,7 @@
                 },
                 {
                   "Path": "/sql/functions/has_dbaccess.html",
-                  "Url": "https://cronosql.io/sql/functions/has_dbaccess.html",
+                  "Url": "https://crono.org/sql/functions/has_dbaccess.html",
                   "Title": "has_dbaccess",
                   "Id": null,
                   "Date": null,
@@ -2805,7 +2805,7 @@
                 },
                 {
                   "Path": "/sql/functions/host_id.html",
-                  "Url": "https://cronosql.io/sql/functions/host_id.html",
+                  "Url": "https://crono.org/sql/functions/host_id.html",
                   "Title": "host_id",
                   "Id": null,
                   "Date": null,
@@ -2815,7 +2815,7 @@
                 },
                 {
                   "Path": "/sql/functions/host_name.html",
-                  "Url": "https://cronosql.io/sql/functions/host_name.html",
+                  "Url": "https://crono.org/sql/functions/host_name.html",
                   "Title": "host_name",
                   "Id": null,
                   "Date": null,
@@ -2825,7 +2825,7 @@
                 },
                 {
                   "Path": "/sql/functions/ident_current.html",
-                  "Url": "https://cronosql.io/sql/functions/ident_current.html",
+                  "Url": "https://crono.org/sql/functions/ident_current.html",
                   "Title": "ident_current",
                   "Id": null,
                   "Date": null,
@@ -2835,7 +2835,7 @@
                 },
                 {
                   "Path": "/sql/functions/ident_incr.html",
-                  "Url": "https://cronosql.io/sql/functions/ident_incr.html",
+                  "Url": "https://crono.org/sql/functions/ident_incr.html",
                   "Title": "ident_incr",
                   "Id": null,
                   "Date": null,
@@ -2845,7 +2845,7 @@
                 },
                 {
                   "Path": "/sql/functions/ident_seed.html",
-                  "Url": "https://cronosql.io/sql/functions/ident_seed.html",
+                  "Url": "https://crono.org/sql/functions/ident_seed.html",
                   "Title": "ident_seed",
                   "Id": null,
                   "Date": null,
@@ -2855,7 +2855,7 @@
                 },
                 {
                   "Path": "/sql/functions/identity.html",
-                  "Url": "https://cronosql.io/sql/functions/identity.html",
+                  "Url": "https://crono.org/sql/functions/identity.html",
                   "Title": "identity",
                   "Id": null,
                   "Date": null,
@@ -2865,7 +2865,7 @@
                 },
                 {
                   "Path": "/sql/functions/index_col.html",
-                  "Url": "https://cronosql.io/sql/functions/index_col.html",
+                  "Url": "https://crono.org/sql/functions/index_col.html",
                   "Title": "index_col",
                   "Id": null,
                   "Date": null,
@@ -2875,7 +2875,7 @@
                 },
                 {
                   "Path": "/sql/functions/indexproperty.html",
-                  "Url": "https://cronosql.io/sql/functions/indexproperty.html",
+                  "Url": "https://crono.org/sql/functions/indexproperty.html",
                   "Title": "indexproperty",
                   "Id": null,
                   "Date": null,
@@ -2885,7 +2885,7 @@
                 },
                 {
                   "Path": "/sql/functions/is_member.html",
-                  "Url": "https://cronosql.io/sql/functions/is_member.html",
+                  "Url": "https://crono.org/sql/functions/is_member.html",
                   "Title": "is_member",
                   "Id": null,
                   "Date": null,
@@ -2895,7 +2895,7 @@
                 },
                 {
                   "Path": "/sql/functions/is_srvrolemember.html",
-                  "Url": "https://cronosql.io/sql/functions/is_srvrolemember.html",
+                  "Url": "https://crono.org/sql/functions/is_srvrolemember.html",
                   "Title": "is_srvrolemember",
                   "Id": null,
                   "Date": null,
@@ -2905,7 +2905,7 @@
                 },
                 {
                   "Path": "/sql/functions/ismemberof.html",
-                  "Url": "https://cronosql.io/sql/functions/ismemberof.html",
+                  "Url": "https://crono.org/sql/functions/ismemberof.html",
                   "Title": "ismemberof \u2747\uFE0F",
                   "Id": null,
                   "Date": null,
@@ -2915,7 +2915,7 @@
                 },
                 {
                   "Path": "/sql/functions/memberof.html",
-                  "Url": "https://cronosql.io/sql/functions/memberof.html",
+                  "Url": "https://crono.org/sql/functions/memberof.html",
                   "Title": "memberof \u2747\uFE0F",
                   "Id": null,
                   "Date": null,
@@ -2925,7 +2925,7 @@
                 },
                 {
                   "Path": "/sql/functions/newid.html",
-                  "Url": "https://cronosql.io/sql/functions/newid.html",
+                  "Url": "https://crono.org/sql/functions/newid.html",
                   "Title": "newid",
                   "Id": null,
                   "Date": null,
@@ -2935,7 +2935,7 @@
                 },
                 {
                   "Path": "/sql/functions/newsequentialid.html",
-                  "Url": "https://cronosql.io/sql/functions/newsequentialid.html",
+                  "Url": "https://crono.org/sql/functions/newsequentialid.html",
                   "Title": "newsequentialid",
                   "Id": null,
                   "Date": null,
@@ -2945,7 +2945,7 @@
                 },
                 {
                   "Path": "/sql/functions/object_id.html",
-                  "Url": "https://cronosql.io/sql/functions/object_id.html",
+                  "Url": "https://crono.org/sql/functions/object_id.html",
                   "Title": "object_id",
                   "Id": null,
                   "Date": null,
@@ -2955,7 +2955,7 @@
                 },
                 {
                   "Path": "/sql/functions/object_name.html",
-                  "Url": "https://cronosql.io/sql/functions/object_name.html",
+                  "Url": "https://crono.org/sql/functions/object_name.html",
                   "Title": "object_name",
                   "Id": null,
                   "Date": null,
@@ -2965,7 +2965,7 @@
                 },
                 {
                   "Path": "/sql/functions/objectproperty.html",
-                  "Url": "https://cronosql.io/sql/functions/objectproperty.html",
+                  "Url": "https://crono.org/sql/functions/objectproperty.html",
                   "Title": "objectproperty",
                   "Id": null,
                   "Date": null,
@@ -2975,7 +2975,7 @@
                 },
                 {
                   "Path": "/sql/functions/opendatasource.html",
-                  "Url": "https://cronosql.io/sql/functions/opendatasource.html",
+                  "Url": "https://crono.org/sql/functions/opendatasource.html",
                   "Title": "opendatasource",
                   "Id": null,
                   "Date": null,
@@ -2985,7 +2985,7 @@
                 },
                 {
                   "Path": "/sql/functions/openquery.html",
-                  "Url": "https://cronosql.io/sql/functions/openquery.html",
+                  "Url": "https://crono.org/sql/functions/openquery.html",
                   "Title": "openquery",
                   "Id": null,
                   "Date": null,
@@ -2995,7 +2995,7 @@
                 },
                 {
                   "Path": "/sql/functions/openrowset.html",
-                  "Url": "https://cronosql.io/sql/functions/openrowset.html",
+                  "Url": "https://crono.org/sql/functions/openrowset.html",
                   "Title": "openrowset",
                   "Id": null,
                   "Date": null,
@@ -3005,7 +3005,7 @@
                 },
                 {
                   "Path": "/sql/functions/parsename.html",
-                  "Url": "https://cronosql.io/sql/functions/parsename.html",
+                  "Url": "https://crono.org/sql/functions/parsename.html",
                   "Title": "parsename",
                   "Id": null,
                   "Date": null,
@@ -3015,7 +3015,7 @@
                 },
                 {
                   "Path": "/sql/functions/permissions.html",
-                  "Url": "https://cronosql.io/sql/functions/permissions.html",
+                  "Url": "https://crono.org/sql/functions/permissions.html",
                   "Title": "permissions",
                   "Id": null,
                   "Date": null,
@@ -3025,7 +3025,7 @@
                 },
                 {
                   "Path": "/sql/functions/rowcount_big.html",
-                  "Url": "https://cronosql.io/sql/functions/rowcount_big.html",
+                  "Url": "https://crono.org/sql/functions/rowcount_big.html",
                   "Title": "rowcount_big",
                   "Id": null,
                   "Date": null,
@@ -3035,7 +3035,7 @@
                 },
                 {
                   "Path": "/sql/functions/schema_id.html",
-                  "Url": "https://cronosql.io/sql/functions/schema_id.html",
+                  "Url": "https://crono.org/sql/functions/schema_id.html",
                   "Title": "schema_id",
                   "Id": null,
                   "Date": null,
@@ -3045,7 +3045,7 @@
                 },
                 {
                   "Path": "/sql/functions/schema_name.html",
-                  "Url": "https://cronosql.io/sql/functions/schema_name.html",
+                  "Url": "https://crono.org/sql/functions/schema_name.html",
                   "Title": "schema_name",
                   "Id": null,
                   "Date": null,
@@ -3055,7 +3055,7 @@
                 },
                 {
                   "Path": "/sql/functions/scope_identity.html",
-                  "Url": "https://cronosql.io/sql/functions/scope_identity.html",
+                  "Url": "https://crono.org/sql/functions/scope_identity.html",
                   "Title": "scope_identity",
                   "Id": null,
                   "Date": null,
@@ -3065,7 +3065,7 @@
                 },
                 {
                   "Path": "/sql/functions/security.html",
-                  "Url": "https://cronosql.io/sql/functions/security.html",
+                  "Url": "https://crono.org/sql/functions/security.html",
                   "Title": "security",
                   "Id": null,
                   "Date": null,
@@ -3075,7 +3075,7 @@
                 },
                 {
                   "Path": "/sql/functions/serverproperty.html",
-                  "Url": "https://cronosql.io/sql/functions/serverproperty.html",
+                  "Url": "https://crono.org/sql/functions/serverproperty.html",
                   "Title": "serverproperty",
                   "Id": null,
                   "Date": null,
@@ -3085,7 +3085,7 @@
                 },
                 {
                   "Path": "/sql/functions/session_user.html",
-                  "Url": "https://cronosql.io/sql/functions/session_user.html",
+                  "Url": "https://crono.org/sql/functions/session_user.html",
                   "Title": "session_user \u2747\uFE0F",
                   "Id": null,
                   "Date": null,
@@ -3095,7 +3095,7 @@
                 },
                 {
                   "Path": "/sql/functions/sessionproperty.html",
-                  "Url": "https://cronosql.io/sql/functions/sessionproperty.html",
+                  "Url": "https://crono.org/sql/functions/sessionproperty.html",
                   "Title": "sessionproperty",
                   "Id": null,
                   "Date": null,
@@ -3105,7 +3105,7 @@
                 },
                 {
                   "Path": "/sql/functions/sql_variant_property.html",
-                  "Url": "https://cronosql.io/sql/functions/sql_variant_property.html",
+                  "Url": "https://crono.org/sql/functions/sql_variant_property.html",
                   "Title": "sql_variant_property",
                   "Id": null,
                   "Date": null,
@@ -3115,7 +3115,7 @@
                 },
                 {
                   "Path": "/sql/functions/stats_date.html",
-                  "Url": "https://cronosql.io/sql/functions/stats_date.html",
+                  "Url": "https://crono.org/sql/functions/stats_date.html",
                   "Title": "stats_date",
                   "Id": null,
                   "Date": null,
@@ -3125,7 +3125,7 @@
                 },
                 {
                   "Path": "/sql/functions/suser_id.html",
-                  "Url": "https://cronosql.io/sql/functions/suser_id.html",
+                  "Url": "https://crono.org/sql/functions/suser_id.html",
                   "Title": "suser_id",
                   "Id": null,
                   "Date": null,
@@ -3135,7 +3135,7 @@
                 },
                 {
                   "Path": "/sql/functions/suser_name.html",
-                  "Url": "https://cronosql.io/sql/functions/suser_name.html",
+                  "Url": "https://crono.org/sql/functions/suser_name.html",
                   "Title": "suser_name",
                   "Id": null,
                   "Date": null,
@@ -3145,7 +3145,7 @@
                 },
                 {
                   "Path": "/sql/functions/suser_sid.html",
-                  "Url": "https://cronosql.io/sql/functions/suser_sid.html",
+                  "Url": "https://crono.org/sql/functions/suser_sid.html",
                   "Title": "suser_sid",
                   "Id": null,
                   "Date": null,
@@ -3155,7 +3155,7 @@
                 },
                 {
                   "Path": "/sql/functions/suser_sname.html",
-                  "Url": "https://cronosql.io/sql/functions/suser_sname.html",
+                  "Url": "https://crono.org/sql/functions/suser_sname.html",
                   "Title": "suser_sname",
                   "Id": null,
                   "Date": null,
@@ -3165,7 +3165,7 @@
                 },
                 {
                   "Path": "/sql/functions/system_user.html",
-                  "Url": "https://cronosql.io/sql/functions/system_user.html",
+                  "Url": "https://crono.org/sql/functions/system_user.html",
                   "Title": "system_user \u2747\uFE0F",
                   "Id": null,
                   "Date": null,
@@ -3175,7 +3175,7 @@
                 },
                 {
                   "Path": "/sql/functions/type_name.html",
-                  "Url": "https://cronosql.io/sql/functions/type_name.html",
+                  "Url": "https://crono.org/sql/functions/type_name.html",
                   "Title": "type_name",
                   "Id": null,
                   "Date": null,
@@ -3185,7 +3185,7 @@
                 },
                 {
                   "Path": "/sql/functions/typeproperty.html",
-                  "Url": "https://cronosql.io/sql/functions/typeproperty.html",
+                  "Url": "https://crono.org/sql/functions/typeproperty.html",
                   "Title": "typeproperty",
                   "Id": null,
                   "Date": null,
@@ -3195,7 +3195,7 @@
                 },
                 {
                   "Path": "/sql/functions/user_name.html",
-                  "Url": "https://cronosql.io/sql/functions/user_name.html",
+                  "Url": "https://crono.org/sql/functions/user_name.html",
                   "Title": "user_name",
                   "Id": null,
                   "Date": null,
@@ -3207,7 +3207,7 @@
             },
             {
               "Path": "/sql/functions/index-misc-functions.html",
-              "Url": "https://cronosql.io/sql/functions/index-misc-functions.html",
+              "Url": "https://crono.org/sql/functions/index-misc-functions.html",
               "Title": "Funciones miscel\u00E1neas",
               "Id": null,
               "Date": null,
@@ -3216,7 +3216,7 @@
               "Children": [
                 {
                   "Path": "/sql/functions/md5.html",
-                  "Url": "https://cronosql.io/sql/functions/md5.html",
+                  "Url": "https://crono.org/sql/functions/md5.html",
                   "Title": "md5 \u2747\uFE0F \uD83D\uDEA7",
                   "Id": null,
                   "Date": null,
@@ -3226,7 +3226,7 @@
                 },
                 {
                   "Path": "/sql/functions/nameof.html",
-                  "Url": "https://cronosql.io/sql/functions/nameof.html",
+                  "Url": "https://crono.org/sql/functions/nameof.html",
                   "Title": "nameof \u2747\uFE0F \uD83D\uDEA7",
                   "Id": null,
                   "Date": null,
@@ -3236,7 +3236,7 @@
                 },
                 {
                   "Path": "/sql/functions/sha1.html",
-                  "Url": "https://cronosql.io/sql/functions/sha1.html",
+                  "Url": "https://crono.org/sql/functions/sha1.html",
                   "Title": "sha1 \u2747\uFE0F \uD83D\uDEA7",
                   "Id": null,
                   "Date": null,
@@ -3246,7 +3246,7 @@
                 },
                 {
                   "Path": "/sql/functions/sha256.html",
-                  "Url": "https://cronosql.io/sql/functions/sha256.html",
+                  "Url": "https://crono.org/sql/functions/sha256.html",
                   "Title": "sha256 \u2747\uFE0F \uD83D\uDEA7",
                   "Id": null,
                   "Date": null,
@@ -3256,7 +3256,7 @@
                 },
                 {
                   "Path": "/sql/functions/valueof.html",
-                  "Url": "https://cronosql.io/sql/functions/valueof.html",
+                  "Url": "https://crono.org/sql/functions/valueof.html",
                   "Title": "valueof \u2747\uFE0F \uD83D\uDEA7",
                   "Id": null,
                   "Date": null,
@@ -3270,7 +3270,7 @@
         },
         {
           "Path": "/sql/views/",
-          "Url": "https://cronosql.io/sql/views/",
+          "Url": "https://crono.org/sql/views/",
           "Title": "Vistas",
           "Id": null,
           "Date": null,
@@ -3279,7 +3279,7 @@
           "Children": [
             {
               "Path": "/sql/views/index-db-views.html",
-              "Url": "https://cronosql.io/sql/views/index-db-views.html",
+              "Url": "https://crono.org/sql/views/index-db-views.html",
               "Title": "Vistas de base de datos",
               "Id": null,
               "Date": null,
@@ -3288,7 +3288,7 @@
               "Children": [
                 {
                   "Path": "/sql/views/cronoansicolumns.html",
-                  "Url": "https://cronosql.io/sql/views/cronoansicolumns.html",
+                  "Url": "https://crono.org/sql/views/cronoansicolumns.html",
                   "Title": "Crono$AnsiColumns",
                   "Id": null,
                   "Date": null,
@@ -3298,7 +3298,7 @@
                 },
                 {
                   "Path": "/sql/views/cronoansiforeignkeys.html",
-                  "Url": "https://cronosql.io/sql/views/cronoansiforeignkeys.html",
+                  "Url": "https://crono.org/sql/views/cronoansiforeignkeys.html",
                   "Title": "Crono$AnsiForeignKeys",
                   "Id": null,
                   "Date": null,
@@ -3308,7 +3308,7 @@
                 },
                 {
                   "Path": "/sql/views/cronocolumnextendedproperties.html",
-                  "Url": "https://cronosql.io/sql/views/cronocolumnextendedproperties.html",
+                  "Url": "https://crono.org/sql/views/cronocolumnextendedproperties.html",
                   "Title": "Crono$ColumnExtendedProperties",
                   "Id": null,
                   "Date": null,
@@ -3318,7 +3318,7 @@
                 },
                 {
                   "Path": "/sql/views/cronocolumns.html",
-                  "Url": "https://cronosql.io/sql/views/cronocolumns.html",
+                  "Url": "https://crono.org/sql/views/cronocolumns.html",
                   "Title": "Crono$Columns \u2764\uFE0F",
                   "Id": null,
                   "Date": null,
@@ -3328,7 +3328,7 @@
                 },
                 {
                   "Path": "/sql/views/cronoconstraints.html",
-                  "Url": "https://cronosql.io/sql/views/cronoconstraints.html",
+                  "Url": "https://crono.org/sql/views/cronoconstraints.html",
                   "Title": "Crono$Constraints",
                   "Id": null,
                   "Date": null,
@@ -3338,7 +3338,7 @@
                 },
                 {
                   "Path": "/sql/views/cronoconstraintscolumns.html",
-                  "Url": "https://cronosql.io/sql/views/cronoconstraintscolumns.html",
+                  "Url": "https://crono.org/sql/views/cronoconstraintscolumns.html",
                   "Title": "Crono$ConstraintsColumns",
                   "Id": null,
                   "Date": null,
@@ -3348,7 +3348,7 @@
                 },
                 {
                   "Path": "/sql/views/cronodatabaseextendedproperties.html",
-                  "Url": "https://cronosql.io/sql/views/cronodatabaseextendedproperties.html",
+                  "Url": "https://crono.org/sql/views/cronodatabaseextendedproperties.html",
                   "Title": "Crono$DatabaseExtendedProperties",
                   "Id": null,
                   "Date": null,
@@ -3358,7 +3358,7 @@
                 },
                 {
                   "Path": "/sql/views/cronodatabases.html",
-                  "Url": "https://cronosql.io/sql/views/cronodatabases.html",
+                  "Url": "https://crono.org/sql/views/cronodatabases.html",
                   "Title": "Crono$Databases",
                   "Id": null,
                   "Date": null,
@@ -3368,7 +3368,7 @@
                 },
                 {
                   "Path": "/sql/views/cronoforeignkeys.html",
-                  "Url": "https://cronosql.io/sql/views/cronoforeignkeys.html",
+                  "Url": "https://crono.org/sql/views/cronoforeignkeys.html",
                   "Title": "Crono$ForeignKeys",
                   "Id": null,
                   "Date": null,
@@ -3378,7 +3378,7 @@
                 },
                 {
                   "Path": "/sql/views/cronoindexcolumns.html",
-                  "Url": "https://cronosql.io/sql/views/cronoindexcolumns.html",
+                  "Url": "https://crono.org/sql/views/cronoindexcolumns.html",
                   "Title": "Crono$IndexColumns",
                   "Id": null,
                   "Date": null,
@@ -3388,7 +3388,7 @@
                 },
                 {
                   "Path": "/sql/views/cronoindexes.html",
-                  "Url": "https://cronosql.io/sql/views/cronoindexes.html",
+                  "Url": "https://crono.org/sql/views/cronoindexes.html",
                   "Title": "Crono$Indexes",
                   "Id": null,
                   "Date": null,
@@ -3398,7 +3398,7 @@
                 },
                 {
                   "Path": "/sql/views/cronoparameters.html",
-                  "Url": "https://cronosql.io/sql/views/cronoparameters.html",
+                  "Url": "https://crono.org/sql/views/cronoparameters.html",
                   "Title": "Crono$Parameters",
                   "Id": null,
                   "Date": null,
@@ -3408,7 +3408,7 @@
                 },
                 {
                   "Path": "/sql/views/cronoprocedureextendedproperties.html",
-                  "Url": "https://cronosql.io/sql/views/cronoprocedureextendedproperties.html",
+                  "Url": "https://crono.org/sql/views/cronoprocedureextendedproperties.html",
                   "Title": "Crono$ProcedureExtendedProperties",
                   "Id": null,
                   "Date": null,
@@ -3418,7 +3418,7 @@
                 },
                 {
                   "Path": "/sql/views/cronoprocedures.html",
-                  "Url": "https://cronosql.io/sql/views/cronoprocedures.html",
+                  "Url": "https://crono.org/sql/views/cronoprocedures.html",
                   "Title": "Crono$Procedures \u2764\uFE0F",
                   "Id": null,
                   "Date": null,
@@ -3428,7 +3428,7 @@
                 },
                 {
                   "Path": "/sql/views/cronoroutines.html",
-                  "Url": "https://cronosql.io/sql/views/cronoroutines.html",
+                  "Url": "https://crono.org/sql/views/cronoroutines.html",
                   "Title": "Crono$Routines",
                   "Id": null,
                   "Date": null,
@@ -3438,7 +3438,7 @@
                 },
                 {
                   "Path": "/sql/views/cronoschemas.html",
-                  "Url": "https://cronosql.io/sql/views/cronoschemas.html",
+                  "Url": "https://crono.org/sql/views/cronoschemas.html",
                   "Title": "Crono$Schemas",
                   "Id": null,
                   "Date": null,
@@ -3448,7 +3448,7 @@
                 },
                 {
                   "Path": "/sql/views/cronotableextendedproperties.html",
-                  "Url": "https://cronosql.io/sql/views/cronotableextendedproperties.html",
+                  "Url": "https://crono.org/sql/views/cronotableextendedproperties.html",
                   "Title": "Crono$TableExtendedProperties",
                   "Id": null,
                   "Date": null,
@@ -3458,7 +3458,7 @@
                 },
                 {
                   "Path": "/sql/views/cronotables.html",
-                  "Url": "https://cronosql.io/sql/views/cronotables.html",
+                  "Url": "https://crono.org/sql/views/cronotables.html",
                   "Title": "Crono$Tables \u2764\uFE0F",
                   "Id": null,
                   "Date": null,
@@ -3470,7 +3470,7 @@
             },
             {
               "Path": "/sql/views/index-metadata-views.html",
-              "Url": "https://cronosql.io/sql/views/index-metadata-views.html",
+              "Url": "https://crono.org/sql/views/index-metadata-views.html",
               "Title": "Vistas de metadata de Crono",
               "Id": null,
               "Date": null,
@@ -3479,7 +3479,7 @@
               "Children": [
                 {
                   "Path": "/sql/views/cronocronofunctions.html",
-                  "Url": "https://cronosql.io/sql/views/cronocronofunctions.html",
+                  "Url": "https://crono.org/sql/views/cronocronofunctions.html",
                   "Title": "Crono$CronoFunctions",
                   "Id": null,
                   "Date": null,
@@ -3489,7 +3489,7 @@
                 },
                 {
                   "Path": "/sql/views/cronocronoviews.html",
-                  "Url": "https://cronosql.io/sql/views/cronocronoviews.html",
+                  "Url": "https://crono.org/sql/views/cronocronoviews.html",
                   "Title": "Crono$CronoViews",
                   "Id": null,
                   "Date": null,
@@ -3499,7 +3499,7 @@
                 },
                 {
                   "Path": "/sql/views/cronofunctions.html",
-                  "Url": "https://cronosql.io/sql/views/cronofunctions.html",
+                  "Url": "https://crono.org/sql/views/cronofunctions.html",
                   "Title": "Crono$Functions",
                   "Id": null,
                   "Date": null,
@@ -3509,7 +3509,7 @@
                 },
                 {
                   "Path": "/sql/views/cronokeywords.html",
-                  "Url": "https://cronosql.io/sql/views/cronokeywords.html",
+                  "Url": "https://crono.org/sql/views/cronokeywords.html",
                   "Title": "Crono$Keywords",
                   "Id": null,
                   "Date": null,
@@ -3519,7 +3519,7 @@
                 },
                 {
                   "Path": "/sql/views/cronosqlfunctions.html",
-                  "Url": "https://cronosql.io/sql/views/cronosqlfunctions.html",
+                  "Url": "https://crono.org/sql/views/cronosqlfunctions.html",
                   "Title": "Crono$SqlFunctions",
                   "Id": null,
                   "Date": null,
@@ -3531,7 +3531,7 @@
             },
             {
               "Path": "/sql/views/index-time-views.html",
-              "Url": "https://cronosql.io/sql/views/index-time-views.html",
+              "Url": "https://crono.org/sql/views/index-time-views.html",
               "Title": "Vistas de tiempo",
               "Id": null,
               "Date": null,
@@ -3540,7 +3540,7 @@
               "Children": [
                 {
                   "Path": "/sql/views/cronodates.html",
-                  "Url": "https://cronosql.io/sql/views/cronodates.html",
+                  "Url": "https://crono.org/sql/views/cronodates.html",
                   "Title": "Crono$Dates \u2764\uFE0F",
                   "Id": null,
                   "Date": null,
@@ -3550,7 +3550,7 @@
                 },
                 {
                   "Path": "/sql/views/cronomonths.html",
-                  "Url": "https://cronosql.io/sql/views/cronomonths.html",
+                  "Url": "https://crono.org/sql/views/cronomonths.html",
                   "Title": "Crono$Months",
                   "Id": null,
                   "Date": null,
@@ -3560,7 +3560,7 @@
                 },
                 {
                   "Path": "/sql/views/cronoweeks.html",
-                  "Url": "https://cronosql.io/sql/views/cronoweeks.html",
+                  "Url": "https://crono.org/sql/views/cronoweeks.html",
                   "Title": "Crono$Weeks",
                   "Id": null,
                   "Date": null,
@@ -3572,7 +3572,7 @@
             },
             {
               "Path": "/sql/views/index-ad-views.html",
-              "Url": "https://cronosql.io/sql/views/index-ad-views.html",
+              "Url": "https://crono.org/sql/views/index-ad-views.html",
               "Title": "Vistas del Directorio Activo",
               "Id": null,
               "Date": null,
@@ -3581,7 +3581,7 @@
               "Children": [
                 {
                   "Path": "/sql/views/cronoactivedirectorygroups.html",
-                  "Url": "https://cronosql.io/sql/views/cronoactivedirectorygroups.html",
+                  "Url": "https://crono.org/sql/views/cronoactivedirectorygroups.html",
                   "Title": "Crono$ActiveDirectoryGroups",
                   "Id": null,
                   "Date": null,
@@ -3591,7 +3591,7 @@
                 },
                 {
                   "Path": "/sql/views/cronoactivedirectorygroupsof.html",
-                  "Url": "https://cronosql.io/sql/views/cronoactivedirectorygroupsof.html",
+                  "Url": "https://crono.org/sql/views/cronoactivedirectorygroupsof.html",
                   "Title": "Crono$ActiveDirectoryGroupsOf",
                   "Id": null,
                   "Date": null,
@@ -3601,7 +3601,7 @@
                 },
                 {
                   "Path": "/sql/views/cronoactivedirectorymygroups.html",
-                  "Url": "https://cronosql.io/sql/views/cronoactivedirectorymygroups.html",
+                  "Url": "https://crono.org/sql/views/cronoactivedirectorymygroups.html",
                   "Title": "Crono$ActiveDirectoryMyGroups",
                   "Id": null,
                   "Date": null,
@@ -3611,7 +3611,7 @@
                 },
                 {
                   "Path": "/sql/views/cronoactivedirectoryusers.html",
-                  "Url": "https://cronosql.io/sql/views/cronoactivedirectoryusers.html",
+                  "Url": "https://crono.org/sql/views/cronoactivedirectoryusers.html",
                   "Title": "Crono$ActiveDirectoryUsers",
                   "Id": null,
                   "Date": null,
@@ -3623,7 +3623,7 @@
             },
             {
               "Path": "/sql/views/index-misc-views.html",
-              "Url": "https://cronosql.io/sql/views/index-misc-views.html",
+              "Url": "https://crono.org/sql/views/index-misc-views.html",
               "Title": "Vistas miscel\u00E1neas",
               "Id": null,
               "Date": null,
@@ -3632,7 +3632,7 @@
               "Children": [
                 {
                   "Path": "/sql/views/cronocountries.html",
-                  "Url": "https://cronosql.io/sql/views/cronocountries.html",
+                  "Url": "https://crono.org/sql/views/cronocountries.html",
                   "Title": "Crono$Countries",
                   "Id": null,
                   "Date": null,
@@ -3642,7 +3642,7 @@
                 },
                 {
                   "Path": "/sql/views/cronospanishcities.html",
-                  "Url": "https://cronosql.io/sql/views/cronospanishcities.html",
+                  "Url": "https://crono.org/sql/views/cronospanishcities.html",
                   "Title": "Crono$SpanishCities",
                   "Id": null,
                   "Date": null,
@@ -3652,7 +3652,7 @@
                 },
                 {
                   "Path": "/sql/views/cronospanishprovinces.html",
-                  "Url": "https://cronosql.io/sql/views/cronospanishprovinces.html",
+                  "Url": "https://crono.org/sql/views/cronospanishprovinces.html",
                   "Title": "Crono$SpanishProvinces",
                   "Id": null,
                   "Date": null,
@@ -3662,7 +3662,7 @@
                 },
                 {
                   "Path": "/sql/views/cronospanishregions.html",
-                  "Url": "https://cronosql.io/sql/views/cronospanishregions.html",
+                  "Url": "https://crono.org/sql/views/cronospanishregions.html",
                   "Title": "Crono$SpanishRegions",
                   "Id": null,
                   "Date": null,
@@ -3672,7 +3672,7 @@
                 },
                 {
                   "Path": "/sql/views/cronotimezones.html",
-                  "Url": "https://cronosql.io/sql/views/cronotimezones.html",
+                  "Url": "https://crono.org/sql/views/cronotimezones.html",
                   "Title": "Crono$TimeZones",
                   "Id": null,
                   "Date": null,
