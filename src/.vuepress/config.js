@@ -3,7 +3,7 @@ const { description } = require('../../package')
 const sidebar =require ('./public/sidebar.json')
 
 module.exports = {
-  title: 'Crono Manuales',
+  title: 'Manual de usuario',
   description: description,
   head: [
     ['meta', { name: 'theme-color', content: '#007bcc' }],
