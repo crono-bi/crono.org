@@ -1,6 +1,0 @@
-﻿SELECT
-  AddressId,
-  AddressItem,
-  content
-FROM staging.Address
-UNPIVOT (content FOR AddressItem in (AddressLine1,AddressLine2)) as unpvt

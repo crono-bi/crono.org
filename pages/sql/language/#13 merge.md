@@ -1,4 +1,4 @@
----
+﻿---
 sidebarDepth: 2
 ---
 
@@ -37,7 +37,27 @@ Se utiliza en tablas de hechos pequeñas o en aquellas tablas de dimensión en q
 
 La sintaxis es idéntica a la utilizada en la sintaxis **Crono SQL** de **UPDATE** o **INSERT**, tal y como muestra este ejemplo.
 
-<view-sql-code fileName="MergeClone"/>
+``` CronoSqlSample
+MERGE CLONE dwh.DimProducts(ProductSid)
+select 
+  #ProductID,
+  Product.Name Product,
+  ProductCategory.name ProductCategory,
+  ProductSubCategory.name ProductSubCategory,
+  ProductNumber,
+  ProductModel.name ProductModel,
+  Color,
+  StandardCost,
+  ListPrice,
+  Size,
+  SizeUnitMeasureCode,
+  Weight
+FROM staging.Product
+LEFT JOIN staging.ProductSubCategory using Product(ProductSubcategoryID)
+LEFT JOIN staging.ProductCategory using ProductSubCategory(ProductCategoryId)
+LEFT JOIN staging.ProductModel using Product(ProductModelID)
+```
+
 
 Es importante observar que el campo *ProductId* está precedido por el **carácter numeral #**. Esta marca sirve para identificar la **clave de actualización**. Habitualmente coincide con la clave de negocio (código único que identifica a cada registro).
 
@@ -53,7 +73,29 @@ En este ejemplo, después de los **JOIN**, se ha incluido la clausula **CHECK SN
 
 El código generado es óptimo y presenta un gran rendimiento, por lo que esta estrategia es adecuada también en tablas de hechos no excesivamente grandes:
 
-<view-sql-code fileName="MergeClone2"/>
+``` CronoSqlSample
+MERGE CLONE dwh.FactSalesOrderDetails(SalesOrderDetailSid)
+SELECT
+	SalesOrderDetail.SalesOrderDetailID #SalesOrderDetailID,
+	DimProducts.ProductSid						ProductSid	NONUNIQUE REFERENCES dwh.DimProducts,
+	FactSalesOrderHeader.SalesOrderSid			SalesOrderSid NONUNIQUE	REFERENCES dwh.FactSalesOrderHeader,
+	SalesOrderDetail.CarrierTrackingNumber,
+	SalesOrderDetail.OrderQty,
+	SalesOrderDetail.UnitPrice,
+	SalesOrderDetail.UnitPriceDiscount,
+	SalesOrderDetail.LineTotal,
+	SpecialOffer.Description SpecialOffer,
+	SpecialOffer.Type			SpecialOfferType,
+	SpecialOffer.Category		SpecialOfferCategory,
+from @@erp.SalesOrderDetail SalesOrderDetail
+inner join @@erp.SalesOrderHeader using (SalesOrderID)  
+inner join @@erp.SpecialOffer using (SpecialOfferID)
+inner join @@erp.Product using (ProductID)
+inner join dwh.DimProducts using Product(ProductID)
+inner join dwh.FactSalesOrderHeader using SalesOrderHeader(SalesOrderID)
+check snowflake
+```
+
 
 Incluso si la tabla de origen tuviese unos pocos millones de registros, la carga anterior se ejecutaría rápidamente (con el Hardware adecuado).
 
@@ -68,7 +110,28 @@ La instrucción **MERGE UPSERT** es una carga de **dimensión lentamente cambian
 
 Se utiliza habitualmente para cargar tablas de dimensión, ya que se requiere mantener los registros antiguos para respetar la integridad (no queremos borrar un producto o un cliente que tal vez tiene ventas u otras transacciones asociadas).
 
-<view-sql-code fileName="SCD1-1"/>
+``` CronoSqlSample
+MERGE UPSERT dwh.DimProducts(ProductSid)
+SELECT 
+  #ProductID,
+  Product.Name Product,
+  ProductCategory.name ProductCategory,
+  ProductSubCategory.name ProductSubCategory,
+  ProductNumber,
+  ProductModel.name ProductModel,
+  Color,
+  StandardCost,
+  ListPrice,
+  Size,
+  SizeUnitMeasureCode,
+  Weight
+FROM staging.Product
+LEFT JOIN staging.ProductSubCategory using Product(ProductSubcategoryID)
+LEFT JOIN staging.ProductCategory using ProductSubCategory(ProductCategoryId)
+LEFT JOIN staging.ProductModel using Product(ProductModelID)
+CHECK SNOWFLAKE
+```
+
 
 Es importante observar que el campo *ProductId* está precedido por el **carácter numeral #**. Esta marca es importante ya que sirve para identificar la **clave de actualización**. Habitualmente coincide con la clave de negocio (código único que identifica a cada registro)
 
@@ -78,20 +141,83 @@ Al igual que en todas las instrucciones **MERGE** de **Crono SQL**, se creará l
 
 Las estrategía **UPSERT** es la predeterminada del **MERGE**. Por este motivo, el siguiente ejemplo es exactamente equivalente a ejecutar **MERGE UPSERT**.
 
-<view-sql-code fileName="SCD1-2"/>
+``` CronoSqlSample
+MERGE dwh.DimProducts(ProductSid)
+select 
+  #ProductID,
+  Product.Name Product,
+  ProductCategory.name ProductCategory,
+  ProductSubCategory.name ProductSubCategory,
+  ProductNumber,
+  ProductModel.name ProductModel,
+  Color,
+  StandardCost,
+  ListPrice,
+  Size,
+  SizeUnitMeasureCode,
+  Weight
+FROM staging.Product
+LEFT JOIN staging.ProductSubCategory using Product(ProductSubcategoryID)
+LEFT JOIN staging.ProductCategory using ProductSubCategory(ProductCategoryId)
+LEFT JOIN staging.ProductModel using Product(ProductModelID)
+CHECK SNOWFLAKE
+```
+
 
 ## MERGE ALL
 
 La instrucción **MERGE ALL** se comparta igual que **MERGE UPSERT**. La única diferencia es que **MERGE ALL** actualiza todos los registros (hayan cambiado o no). Esta diferencia raramente aportará ningún beneficio (¡Al contrario... penalizará el rendimiento por actualizar registros que no lo necesitan!), por lo que se prefiere usar **MERGE UPSERT**.
 
-<view-sql-code fileName="MergeAll"/>
+``` CronoSqlSample
+MERGE ALL dwh.DimProducts(ProductSid)
+SELECT 
+  #ProductID,
+  Product.Name Product,
+  ProductCategory.name ProductCategory,
+  ProductSubCategory.name ProductSubCategory,
+  ProductNumber,
+  ProductModel.name ProductModel,
+  Color,
+  StandardCost,
+  ListPrice,
+  Size,
+  SizeUnitMeasureCode,
+  Weight
+FROM staging.Product
+LEFT JOIN staging.ProductSubCategory using Product(ProductSubcategoryID)
+LEFT JOIN staging.ProductCategory using ProductSubCategory(ProductCategoryId)
+LEFT JOIN staging.ProductModel using Product(ProductModelID)
+CHECK SNOWFLAKE
+```
+
 
 
 ## MERGE UPDATE
 
 La instrucción **MERGE UPDATE** actualiza los registros que aparecen en la consulta de origen y ya existen en la tabla de destino. No elimina ni inserta ningún registro.
 
-<view-sql-code fileName="MergeUpdate"/>
+``` CronoSqlSample
+MERGE UPDATE dwh.DimProducts(ProductSid)
+SELECT 
+  #ProductID,
+  Product.Name Product,
+  ProductCategory.name ProductCategory,
+  ProductSubCategory.name ProductSubCategory,
+  ProductNumber,
+  ProductModel.name ProductModel,
+  Color,
+  StandardCost,
+  ListPrice,
+  Size,
+  SizeUnitMeasureCode,
+  Weight
+FROM staging.Product
+LEFT JOIN staging.ProductSubCategory using Product(ProductSubcategoryID)
+LEFT JOIN staging.ProductCategory using ProductSubCategory(ProductCategoryId)
+LEFT JOIN staging.ProductModel using Product(ProductModelID)
+CHECK SNOWFLAKE
+```
+
 
 La instrucción **MERGE UPDATE** es equivalente a la instrucción **UPDATE** de **Crono SQL**
 
@@ -101,7 +227,27 @@ La instrucción **MERGE SOFT DELETE** actualiza los registros que se han modific
 
 Se utiliza habitualmente para cargar tablas de dimensión, ya que se requiere mantener los registros antiguos para respetar la integridad (no queremos borrar un producto o un cliente que tal vez tiene ventas u otras transacciones asociadas).
 
-<view-sql-code fileName="SCD1-3"/>
+``` CronoSqlSample
+MERGE SOFT DELETE dwh.DimProducts(ProductSid)
+select 
+  #ProductID,
+  Product.Name Product,
+  ProductCategory.name ProductCategory,
+  ProductSubCategory.name ProductSubCategory,
+  ProductNumber,
+  ProductModel.name ProductModel,
+  Color,
+  StandardCost,
+  ListPrice,
+  Size,
+  SizeUnitMeasureCode,
+  Weight
+FROM staging.Product
+LEFT JOIN staging.ProductSubCategory using Product(ProductSubcategoryID)
+LEFT JOIN staging.ProductCategory using ProductSubCategory(ProductCategoryId)
+LEFT JOIN staging.ProductModel using Product(ProductModelID)
+```
+
 
 
 ## MERGE INCREMENTAL
@@ -119,13 +265,53 @@ Frecuentemente las cargas incrementales son problemáticas:
 Por estos motivos, si el tiempo de ejecución es aceptable, es preferible utilizar **MERGE CLONE** siempre que sea posible, aunque el tiempo de ejecución sea algo mayor.
 
 
-<view-sql-code fileName="INCREMENTAL-1"/>
+``` CronoSqlSample
+MERGE INCREMENTAL dwh.FactSalesOrderHeader(SalesOrderSid)
+SELECT 
+  SalesOrderHeader.SalesOrderId,
+  Customer.CustomerId,
+  cast(SalesOrderHeader.OrderDate as date) OrderDate,
+  SalesOrderHeader.SalesOrderNumber,
+  cast(SalesOrderHeader.DueDate as date) DueDate,
+  cast(SalesOrderHeader.ShipDate as date) ShipDate,
+  SalesOrderHeader.OnlineOrderFlag,
+  SalesOrderHeader.PurchaseOrderNumber,
+  SalesOrderHeader.AccountNumber,
+  SalesOrderHeader.Freight,
+  SalesOrderHeader.CreditCardApprovalCode,
+  SalesOrderHeader.SubTotal Amount,
+  SalesOrderHeader.TaxAmt
+FROM staging.SalesOrderHeader
+INNER JOIN staging.customer using SalesOrderHeader(customerId)
+where cast(OrderDate as date)=today()
+```
+
 
 La anterior sentencia cargará las ventas del día anterior (y solo las del día anterior). Evidentemente, esta estrategia es débil y propensa a errores. Dejará de cargar registros si algún día no se ejecuta la carga, o podría duplicarlos si se ejecutase dos veces un mismo día. También fallaría si algún proceso del ERP se retrasase varios días en insertar los datos de alguna tienda...
 
 La siguiente estrategia resuelve parcialmente el problema: 
 
- <view-sql-code fileName="INCREMENTAL-2"/>
+ ``` CronoSqlSample
+MERGE INCREMENTAL dwh.FactSalesOrderHeader(SalesOrderSid)
+SELECT 
+  SalesOrderHeader.SalesOrderId #SalesOrderId,
+  Customer.CustomerId,
+  cast(SalesOrderHeader.OrderDate as date) OrderDate,
+  SalesOrderHeader.SalesOrderNumber,
+  cast(SalesOrderHeader.DueDate as date) DueDate,
+  cast(SalesOrderHeader.ShipDate as date) ShipDate,
+  SalesOrderHeader.OnlineOrderFlag,
+  SalesOrderHeader.PurchaseOrderNumber,
+  SalesOrderHeader.AccountNumber,
+  SalesOrderHeader.Freight,
+  SalesOrderHeader.CreditCardApprovalCode,
+  SalesOrderHeader.SubTotal Amount,
+  SalesOrderHeader.TaxAmt
+FROM staging.SalesOrderHeader
+INNER JOIN staging.customer using SalesOrderHeader(customerId)
+where OrderDate<=getdate()-30
+```
+
 
 En el caso anterior se cargarían las ventas de los últimos 30 días que no se hayan cargado previamente. La marca **#** especifica la **clave de inserción**, es decir, que no se insertarán *SalesOrderId* que ya existan en la tabla de destino. Esta estrategia es recomendable si tenemos la seguridad de que:
 
@@ -134,7 +320,29 @@ En el caso anterior se cargarían las ventas de los últimos 30 días que no se 
 
 Otra opción sería añadir incrementalmente aquellos registros añadidos en el ERP desde la última carga (requiere un campo "*timestamp*" en el origen).
 
-<view-sql-code fileName="INCREMENTAL-3"/>
+``` CronoSqlSample
+DECLARE @last timestamp=(select max(InsertTimestamp) from FactSalesOrderHeader)
+MERGE INCREMENTAL dwh.FactSalesOrderHeader(SalesOrderSid)
+SELECT 
+  SalesOrderHeader.SalesOrderId,
+  Customer.CustomerId,
+  cast(SalesOrderHeader.OrderDate as date) OrderDate,
+  SalesOrderHeader.SalesOrderNumber,
+  cast(SalesOrderHeader.DueDate as date) DueDate,
+  cast(SalesOrderHeader.ShipDate as date) ShipDate,
+  SalesOrderHeader.OnlineOrderFlag,
+  SalesOrderHeader.PurchaseOrderNumber,
+  SalesOrderHeader.AccountNumber,
+  SalesOrderHeader.Freight,
+  SalesOrderHeader.CreditCardApprovalCode,
+  SalesOrderHeader.SubTotal Amount,
+  SalesOrderHeader.TaxAmt,
+  SalesOrderHeader.InsertTimestamp
+FROM staging.SalesOrderHeader
+INNER JOIN staging.customer using SalesOrderHeader(customerId)
+where SalesOrderHeader.InsertTimestamp>@last
+```
+
 
 Observad como en este caso se ha declarado la variable *@last* con la fecha del último registro insertado. 
 
@@ -152,7 +360,28 @@ Se utiliza para cargar tablas de dimensión en las que es necesario guardar la h
 
 La sintaxis es la misma que en los casos anteriores (y la mismas que la del **INSERT** o **UPDATE**....).Únicamente es necesario cambiar el nombre de la estrategia a utilizar: **MERGE HISTORY** 
 
-<view-sql-code fileName="SCD2-1"/>
+``` CronoSqlSample
+MERGE HISTORY dwh.DimProducts(ProductSid) 
+select 
+  #ProductID,
+  Product.Name Product,
+  ProductCategory.name ProductCategory,
+  ProductSubCategory.name ProductSubCategory,
+  ProductNumber,
+  ProductModel.name ProductModel,
+  Color,
+  StandardCost,
+  ListPrice,
+  Size,
+  SizeUnitMeasureCode,
+  Weight
+FROM staging.Product
+LEFT JOIN staging.ProductSubCategory using Product(ProductSubcategoryID)
+LEFT JOIN staging.ProductCategory using ProductSubCategory(ProductCategoryId)
+LEFT JOIN staging.ProductModel using Product(ProductModelID)
+CHECK SNOWFLAKE
+```
+
 
 El código generado realiza un **MERGE** para actualizar las fechas de fin vigencia, y un **INSERT** para añadir los registros que han cambiado y los nuevos registros.
 
@@ -173,7 +402,54 @@ Es interesante observar que la elección entre **MERGE CLONE**, **MERGE UPSERT**
 
 El lenguaje **Crono SQL** admite también la sintaxis SQL estándar de la sentencia **MERGE**:
 
-<view-sql-code fileName="Merge1"/>
+``` CronoSqlSample
+WITH
+query AS (
+  SELECT
+    ProductID AS ProductId,
+    Product.Name AS Product,
+    ProductCategory.name AS ProductCategory,
+    ProductSubCategory.name AS ProductSubCategory,
+    ProductNumber,
+    ProductModel.name AS ProductModel,
+    Product.Color AS Color,
+    Product.StandardCost AS ProductCost
+  FROM staging.Product
+  LEFT JOIN staging.ProductSubCategory ON (Product.ProductSubcategoryID=ProductSubCategory.ProductSubcategoryID)
+  LEFT JOIN staging.ProductCategory ON (ProductSubCategory.ProductCategoryId=ProductCategory.ProductCategoryId)
+  LEFT JOIN staging.ProductModel ON (Product.ProductModelID=ProductModel.ProductModelID)
+)
+MERGE dwh.DimProducts AS DimProducts
+USING query ON query.ProductId=DimProducts.ProductId
+WHEN MATCHED THEN
+  UPDATE SET
+    Product=query.Product,
+    ProductCategory=query.ProductCategory,
+    ProductSubCategory=query.ProductSubCategory,
+    ProductNumber=query.ProductNumber,
+    ProductModel=query.ProductModel,
+    Color=query.Color,
+    ProductCost=query.ProductCost
+WHEN NOT MATCHED THEN 
+  INSERT (
+    ProductId,
+    Product,
+    ProductCategory,
+    ProductSubCategory,
+    ProductNumber,
+    ProductModel,
+    Color,ProductCost)
+  VALUES (
+    query.ProductId,
+    query.Product,
+    query.ProductCategory,
+    query.ProductSubCategory,
+    query.ProductNumber,
+    query.ProductModel,
+    query.Color,
+    query.ProductCost)
+```
+
 
 La sentencia **MERGE**, en función de una serie de condiciones definidas, ejecutará un **UPDATE** de los registros que hayan cambiado y un **INSERT** de los registros de la consulta origen que no existan en la tabla destino. Por este motivo se le conoce como **UPSERT** (**UPDATE**+**INSERT**).
 

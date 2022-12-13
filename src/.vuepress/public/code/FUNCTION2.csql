@@ -1,8 +1,0 @@
-﻿CREATE OR REPLACE FUNCTION dbo.ProductSales(@ProductId int) RETURNS TABLE
-SELECT 
-  year(FactSalesOrderHeader.OrderDate) OrderYear,
-  sum(FactSalesOrderDetails.LineTotal) Sales
-FROM dwh.FactSalesOrderDetails
-INNER JOIN dwh.FactSalesOrderHeader USING SalesOrderId
-INNER JOIN dwh.DimProducts USING ProductSid
-WHERE DimProducts.ProductId=@ProductId

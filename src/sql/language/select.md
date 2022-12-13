@@ -16,61 +16,547 @@ A continuación se describen sistemáticamente todas las características soport
 ## Basado en el lenguaje SQL 
 
 
-**Proposición:** Cualquier sentencia **SELECT** válida en SQL es válida también en **Crono SQL**
+**Proposición:** Cuualquier sentencia **SELECT** válida en SQL es válida también en **Crono SQL**
 
-<view-sql-code fileName="SelectHelloWorld"/>
+
+<div class="mt-1 mb-2 row">
+  <div class="col-lg-12">
+
+``` sql
+SELECT 'Hola mundo';
+```
+
+  <b-button class="float-right btn" size="sm" v-b-modal.modal-1 style="background-color: #3eaf7c">Ver SQL compilado</b-button>
+
+  <b-modal id="modal-1" size="lg" title="Ver SQL compilado" :hide-footer="true" > 
+``` sql
+SELECT 'Hola mundo' AS expr1
+```
+  </b-modal>
+
+  </div>
+</div>
+
 
 Si ninguna tabla participa en la consulta, se debe terminar la sentencia con el carácter punto y coma ";". En cualquier otro caso, el punto y coma es opcional.
 
-<view-sql-code fileName="SelectAsterisk"/>
+<div class="mt-1 mb-2 row">
+  <div class="col-lg-12">
+
+``` sql
+select *
+from staging.Customer
+```
+
+  <b-button class="float-right btn" size="sm" v-b-modal.modal-2 style="background-color: #3eaf7c">Ver SQL compilado</b-button>
+
+  <b-modal id="modal-2" size="lg" title="Ver SQL compilado" :hide-footer="true" > 
+``` sql
+SELECT *
+FROM staging.Customer
+
+```
+  </b-modal>
+
+  </div>
+</div>
+
+
 
 Se pueden incluir las cláusulas **JOIN**, **WHERE**, **GROUP BY**, **HAVING** y/o **ORDER BY**
 
-<view-sql-code fileName="SelectFull"/>
+<div class="mt-1 mb-2 row">
+  <div class="col-lg-12">
+
+``` sql
+SELECT
+  Customer.CustomerId AS CustomerId,
+  Person.FirstName AS FirstName,
+  Person.LastName AS LastName,
+  sum(Sales.subtotal) AS Amount
+FROM staging.SalesOrderHeader Sales
+INNER JOIN staging.Customer ON (Sales.customerId=Customer.customerId)
+LEFT JOIN staging.Person ON (Customer.PersonID=Person.BusinessEntityId)
+WHERE Person.FirstName='Fernando'
+GROUP BY
+  Customer.CustomerId,
+  Person.FirstName,
+  Person.LastName
+HAVING sum(Sales.subtotal)>3000
+ORDER BY sum(Sales.subtotal) DESC
+```
+
+  <b-button class="float-right btn" size="sm" v-b-modal.modal-3 style="background-color: #3eaf7c">Ver SQL compilado</b-button>
+
+  <b-modal id="modal-3" size="lg" title="Ver SQL compilado" :hide-footer="true" > 
+``` sql
+SELECT
+  Customer.CustomerId AS CustomerId,
+  Person.FirstName AS FirstName,
+  Person.LastName AS LastName,
+  sum(Sales.subtotal) AS Amount
+FROM staging.SalesOrderHeader Sales
+INNER JOIN staging.Customer ON (Sales.customerId=Customer.customerId)
+LEFT JOIN staging.Person ON (Customer.PersonID=Person.BusinessEntityId)
+WHERE Person.FirstName='Fernando'
+GROUP BY
+  Customer.CustomerId,
+  Person.FirstName,
+  Person.LastName
+HAVING sum(Sales.subtotal)>3000
+ORDER BY sum(Sales.subtotal) DESC
+
+```
+  </b-modal>
+
+  </div>
+</div>
+
+
 
 Se pueden utilizar las funciones propias del motor de base de datos o funciones definidas por el usuario.
 
-<view-sql-code fileName="DatabaseFunctions"/>
+
+<div class="mt-1 mb-2 row">
+  <div class="col-lg-12">
+
+``` sql
+SELECT
+  year(sales.OrderDate) AS OrderYear,
+  Customer.CustomerId AS CustomerId,
+  concat(CustomerPerson.FirstName,' ',CustomerPerson.LastName) AS Customer,
+  CustomerPerson.FirstName AS FirstName,
+  CustomerPerson.LastName AS LastName,
+  sum(sales.subtotal) AS Amount
+FROM staging.SalesOrderHeader sales
+INNER JOIN staging.customer ON (sales.customerId=customer.customerId)
+LEFT JOIN staging.Person CustomerPerson ON (Customer.PersonID=CustomerPerson.BusinessEntityId)
+WHERE year(sales.OrderDate)=2012
+GROUP BY
+  year(sales.OrderDate),
+  Customer.CustomerId,
+  concat(CustomerPerson.FirstName,' ',CustomerPerson.LastName),
+  CustomerPerson.FirstName,
+  CustomerPerson.LastName
+```
+
+  <b-button class="float-right btn" size="sm" v-b-modal.modal-4 style="background-color: #3eaf7c">Ver SQL compilado</b-button>
+
+  <b-modal id="modal-4" size="lg" title="Ver SQL compilado" :hide-footer="true" > 
+``` sql
+SELECT
+  year(sales.OrderDate) AS OrderYear,
+  Customer.CustomerId AS CustomerId,
+  concat(CustomerPerson.FirstName,' ',CustomerPerson.LastName) AS Customer,
+  CustomerPerson.FirstName AS FirstName,
+  CustomerPerson.LastName AS LastName,
+  sum(sales.subtotal) AS Amount
+FROM staging.SalesOrderHeader sales
+INNER JOIN staging.customer ON (sales.customerId=customer.customerId)
+LEFT JOIN staging.Person CustomerPerson ON (Customer.PersonID=CustomerPerson.BusinessEntityId)
+WHERE year(sales.OrderDate)=2012
+GROUP BY
+  year(sales.OrderDate),
+  Customer.CustomerId,
+  concat(CustomerPerson.FirstName,' ',CustomerPerson.LastName),
+  CustomerPerson.FirstName,
+  CustomerPerson.LastName
+
+```
+  </b-modal>
+
+  </div>
+</div>
+
 
 ## Referencia a columnas existentes
 
 A diferencia del SQL ISO, en **Crono SQL** se puede hacer referencia a otra columna de la sentencia SELECT mediante el Alias de la columna.
 
-<view-sql-code fileName="ColumnReuse"/>
+
+
+<div class="mt-1 mb-2 row">
+  <div class="col-lg-12">
+
+``` sql
+SELECT
+  year(sales.OrderDate) AS OrderYear,
+  Customer.CustomerId AS CustomerId,
+  concat(CustomerPerson.FirstName,' ',CustomerPerson.LastName) AS Customer,
+  upper(customer) UpperCustomer,
+  CustomerPerson.FirstName AS FirstName,
+  CustomerPerson.LastName AS LastName,
+  sum(sales.subtotal) AS Amount
+FROM staging.SalesOrderHeader sales
+INNER JOIN staging.customer ON sales.CustomerId=customer.CustomerId
+LEFT JOIN staging.Person CustomerPerson ON Customer.PersonID=CustomerPerson.BusinessEntityId
+WHERE OrderYear=2012
+```
+
+  <b-button class="float-right btn" size="sm" v-b-modal.modal-5 style="background-color: #3eaf7c">Ver SQL compilado</b-button>
+
+  <b-modal id="modal-5" size="lg" title="Ver SQL compilado" :hide-footer="true" > 
+``` sql
+SELECT
+  year(sales.OrderDate) AS OrderYear,
+  Customer.CustomerId AS CustomerId,
+  concat(CustomerPerson.FirstName,' ',CustomerPerson.LastName) AS Customer,
+  upper(concat(CustomerPerson.FirstName,' ',CustomerPerson.LastName)) AS UpperCustomer,
+  CustomerPerson.FirstName AS FirstName,
+  CustomerPerson.LastName AS LastName,
+  sum(sales.subtotal) AS Amount
+FROM staging.SalesOrderHeader sales
+INNER JOIN staging.customer ON (sales.CustomerId=customer.CustomerId)
+LEFT JOIN staging.Person CustomerPerson ON (Customer.PersonID=CustomerPerson.BusinessEntityId)
+WHERE year(sales.OrderDate)=2012
+GROUP BY
+  year(sales.OrderDate),
+  Customer.CustomerId,
+  concat(CustomerPerson.FirstName,' ',CustomerPerson.LastName),
+  upper(concat(CustomerPerson.FirstName,' ',CustomerPerson.LastName)),
+  CustomerPerson.FirstName,
+  CustomerPerson.LastName
+
+```
+  </b-modal>
+
+  </div>
+</div>
+
 
 ## Prescindiendo del GROUP BY
 
 Se puede utilizar la cláusula **GROUP BY ALL** para indicar que se agrupe por todas las columnas que no sean funciones de agregación. 
 
-<view-sql-code fileName="GroupByAll"/>
+<div class="mt-1 mb-2 row">
+  <div class="col-lg-12">
+
+``` sql
+SELECT
+  year(sales.OrderDate) AS OrderYear,
+  Customer.CustomerId AS CustomerId,
+  concat(CustomerPerson.FirstName,' ',CustomerPerson.LastName) AS Customer,
+  CustomerPerson.FirstName AS FirstName,
+  CustomerPerson.LastName AS LastName,
+  sum(sales.subtotal) AS Amount
+FROM staging.SalesOrderHeader sales
+INNER JOIN staging.customer ON (sales.customerId=customer.customerId)
+LEFT JOIN staging.Person CustomerPerson ON (Customer.PersonID=CustomerPerson.BusinessEntityId)
+WHERE year(sales.OrderDate)=2012
+GROUP BY ALL
+```
+
+  <b-button class="float-right btn" size="sm" v-b-modal.modal-6 style="background-color: #3eaf7c">Ver SQL compilado</b-button>
+
+  <b-modal id="modal-6" size="lg" title="Ver SQL compilado" :hide-footer="true" > 
+``` sql
+SELECT
+  year(sales.OrderDate) AS OrderYear,
+  Customer.CustomerId AS CustomerId,
+  concat(CustomerPerson.FirstName,' ',CustomerPerson.LastName) AS Customer,
+  CustomerPerson.FirstName AS FirstName,
+  CustomerPerson.LastName AS LastName,
+  sum(sales.subtotal) AS Amount
+FROM staging.SalesOrderHeader sales
+INNER JOIN staging.customer ON (sales.customerId=customer.customerId)
+LEFT JOIN staging.Person CustomerPerson ON (Customer.PersonID=CustomerPerson.BusinessEntityId)
+WHERE year(sales.OrderDate)=2012
+GROUP BY
+  year(sales.OrderDate),
+  Customer.CustomerId,
+  concat(CustomerPerson.FirstName,' ',CustomerPerson.LastName),
+  CustomerPerson.FirstName,
+  CustomerPerson.LastName
+
+```
+  </b-modal>
+
+  </div>
+</div>
+
 
 Siempre se puede prescindir totalmente de la cláusula **GROUP BY**. **Crono SQL** incluirá las columnas necesarias en el SQL generado.
 
-<view-sql-code fileName="NoGroupBy"/>
+<div class="mt-1 mb-2 row">
+  <div class="col-lg-12">
+
+``` sql
+SELECT
+  year(sales.OrderDate) AS OrderYear,
+  Customer.CustomerId AS CustomerId,
+  concat(CustomerPerson.FirstName,' ',CustomerPerson.LastName) AS Customer,
+  CustomerPerson.FirstName AS FirstName,
+  CustomerPerson.LastName AS LastName,
+  sum(sales.subtotal) AS Amount
+FROM staging.SalesOrderHeader sales
+INNER JOIN staging.customer ON (sales.customerId=customer.customerId)
+LEFT JOIN staging.Person CustomerPerson ON (Customer.PersonID=CustomerPerson.BusinessEntityId)
+WHERE year(sales.OrderDate)=2012
+```
+
+  <b-button class="float-right btn" size="sm" v-b-modal.modal-7 style="background-color: #3eaf7c">Ver SQL compilado</b-button>
+
+  <b-modal id="modal-7" size="lg" title="Ver SQL compilado" :hide-footer="true" > 
+``` sql
+SELECT
+  year(sales.OrderDate) AS OrderYear,
+  Customer.CustomerId AS CustomerId,
+  concat(CustomerPerson.FirstName,' ',CustomerPerson.LastName) AS Customer,
+  CustomerPerson.FirstName AS FirstName,
+  CustomerPerson.LastName AS LastName,
+  sum(sales.subtotal) AS Amount
+FROM staging.SalesOrderHeader sales
+INNER JOIN staging.customer ON (sales.customerId=customer.customerId)
+LEFT JOIN staging.Person CustomerPerson ON (Customer.PersonID=CustomerPerson.BusinessEntityId)
+WHERE year(sales.OrderDate)=2012
+GROUP BY
+  year(sales.OrderDate),
+  Customer.CustomerId,
+  concat(CustomerPerson.FirstName,' ',CustomerPerson.LastName),
+  CustomerPerson.FirstName,
+  CustomerPerson.LastName
+
+```
+  </b-modal>
+
+  </div>
+</div>
+
 
 ## USING
 
 Se puede utilizar la cláusula **USING**  para simplificar la sintaxis de los JOIN equi-join.
 
-<view-sql-code fileName="Using1"/>
+<div class="mt-1 mb-2 row">
+  <div class="col-lg-12">
+
+``` sql
+SELECT
+  year(sales.OrderDate) AS OrderYear,
+  Customer.CustomerId AS CustomerId,
+  concat(CustomerPerson.FirstName,' ',CustomerPerson.LastName) AS Customer,
+  CustomerPerson.FirstName AS FirstName,
+  CustomerPerson.LastName AS LastName,
+  sum(sales.subtotal) AS Amount
+FROM staging.SalesOrderHeader sales
+INNER JOIN staging.customer USING Sales(CustomerId)
+LEFT JOIN staging.Person CustomerPerson ON (Customer.PersonID=CustomerPerson.BusinessEntityId)
+WHERE year(sales.OrderDate)=2012
+```
+
+  <b-button class="float-right btn" size="sm" v-b-modal.modal-8 style="background-color: #3eaf7c">Ver SQL compilado</b-button>
+
+  <b-modal id="modal-8" size="lg" title="Ver SQL compilado" :hide-footer="true" > 
+``` sql
+SELECT
+  year(sales.OrderDate) AS OrderYear,
+  Customer.CustomerId AS CustomerId,
+  concat(CustomerPerson.FirstName,' ',CustomerPerson.LastName) AS Customer,
+  CustomerPerson.FirstName AS FirstName,
+  CustomerPerson.LastName AS LastName,
+  sum(sales.subtotal) AS Amount
+FROM staging.SalesOrderHeader sales
+INNER JOIN staging.customer ON (Sales.CustomerId=customer.CustomerId)
+LEFT JOIN staging.Person CustomerPerson ON (Customer.PersonID=CustomerPerson.BusinessEntityId)
+WHERE year(sales.OrderDate)=2012
+GROUP BY
+  year(sales.OrderDate),
+  Customer.CustomerId,
+  concat(CustomerPerson.FirstName,' ',CustomerPerson.LastName),
+  CustomerPerson.FirstName,
+  CustomerPerson.LastName
+
+```
+  </b-modal>
+
+  </div>
+</div>
+
 
 La cláusula **USING** también puede utilizarse cuando los campos de la equi-join tienen distinto nombre.
 
-<view-sql-code fileName="Using2"/>
+<div class="mt-1 mb-2 row">
+  <div class="col-lg-12">
+
+``` sql
+SELECT
+  year(sales.OrderDate) AS OrderYear,
+  Customer.CustomerId AS CustomerId,
+  concat(CustomerPerson.FirstName,' ',CustomerPerson.LastName) AS Customer,
+  CustomerPerson.FirstName AS FirstName,
+  CustomerPerson.LastName AS LastName,
+  sum(sales.subtotal) AS Amount
+FROM staging.SalesOrderHeader sales
+INNER JOIN staging.customer USING Sales(CustomerId)
+LEFT JOIN staging.Person CustomerPerson USING Customer(PersonID BusinessEntityId)
+WHERE year(sales.OrderDate)=2012
+```
+
+  <b-button class="float-right btn" size="sm" v-b-modal.modal-9 style="background-color: #3eaf7c">Ver SQL compilado</b-button>
+
+  <b-modal id="modal-9" size="lg" title="Ver SQL compilado" :hide-footer="true" > 
+``` sql
+SELECT
+  year(sales.OrderDate) AS OrderYear,
+  Customer.CustomerId AS CustomerId,
+  concat(CustomerPerson.FirstName,' ',CustomerPerson.LastName) AS Customer,
+  CustomerPerson.FirstName AS FirstName,
+  CustomerPerson.LastName AS LastName,
+  sum(sales.subtotal) AS Amount
+FROM staging.SalesOrderHeader sales
+INNER JOIN staging.customer ON (Sales.CustomerId=customer.CustomerId)
+LEFT JOIN staging.Person CustomerPerson ON (Customer.PersonID=CustomerPerson.BusinessEntityId)
+WHERE year(sales.OrderDate)=2012
+GROUP BY
+  year(sales.OrderDate),
+  Customer.CustomerId,
+  concat(CustomerPerson.FirstName,' ',CustomerPerson.LastName),
+  CustomerPerson.FirstName,
+  CustomerPerson.LastName
+
+```
+  </b-modal>
+
+  </div>
+</div>
+
 
 Si no se especifica el nombre de la tabla izquierda en la cláusula **USING**, se asume que es la tabla del **FROM** es la que participa en la relación. 
 
-<view-sql-code fileName="Using3"/>
+<div class="mt-1 mb-2 row">
+  <div class="col-lg-12">
+
+``` sql
+SELECT
+  year(sales.OrderDate) AS OrderYear,
+  Customer.CustomerId AS CustomerId,
+  concat(CustomerPerson.FirstName,' ',CustomerPerson.LastName) AS Customer,
+  CustomerPerson.FirstName AS FirstName,
+  CustomerPerson.LastName AS LastName,
+  sum(sales.subtotal) AS Amount
+FROM staging.SalesOrderHeader sales
+INNER JOIN staging.customer USING CustomerId
+LEFT JOIN staging.Person CustomerPerson USING Customer(PersonID BusinessEntityId)
+WHERE year(sales.OrderDate)=2012
+```
+
+  <b-button class="float-right btn" size="sm" v-b-modal.modal-10 style="background-color: #3eaf7c">Ver SQL compilado</b-button>
+
+  <b-modal id="modal-10" size="lg" title="Ver SQL compilado" :hide-footer="true" > 
+``` sql
+SELECT
+  year(sales.OrderDate) AS OrderYear,
+  Customer.CustomerId AS CustomerId,
+  concat(CustomerPerson.FirstName,' ',CustomerPerson.LastName) AS Customer,
+  CustomerPerson.FirstName AS FirstName,
+  CustomerPerson.LastName AS LastName,
+  sum(sales.subtotal) AS Amount
+FROM staging.SalesOrderHeader sales
+INNER JOIN staging.customer ON (sales.CustomerId=customer.CustomerId)
+LEFT JOIN staging.Person CustomerPerson ON (Customer.PersonID=CustomerPerson.BusinessEntityId)
+WHERE year(sales.OrderDate)=2012
+GROUP BY
+  year(sales.OrderDate),
+  Customer.CustomerId,
+  concat(CustomerPerson.FirstName,' ',CustomerPerson.LastName),
+  CustomerPerson.FirstName,
+  CustomerPerson.LastName
+
+```
+  </b-modal>
+
+  </div>
+</div>
+
 
 Si la relación equi-join está formada por distintos campos, se pueden especificar en la cláusula **USING** separados por comas.
 
-<view-sql-code fileName="Using4"/>
+<div class="mt-1 mb-2 row">
+  <div class="col-lg-12">
+
+``` sql
+SELECT count(*)
+FROM staging.SalesOrderHeader sales
+INNER JOIN staging.customer USING (CompanyId,CustomerId)
+LEFT JOIN staging.Person CustomerPerson USING customer(CompanyId,PersonID BusinessEntityId)
+WHERE year(sales.OrderDate)=2012
+```
+
+  <b-button class="float-right btn" size="sm" v-b-modal.modal-11 style="background-color: #3eaf7c">Ver SQL compilado</b-button>
+
+  <b-modal id="modal-11" size="lg" title="Ver SQL compilado" :hide-footer="true" > 
+``` sql
+SELECT count(*) AS expr1
+FROM staging.SalesOrderHeader sales
+INNER JOIN staging.customer ON (sales.CompanyId=customer.CompanyId AND sales.CustomerId=customer.CustomerId)
+LEFT JOIN staging.Person CustomerPerson ON (customer.CompanyId=CustomerPerson.CompanyId AND customer.PersonID=CustomerPerson.BusinessEntityId)
+WHERE year(sales.OrderDate)=2012
+
+```
+  </b-modal>
+
+  </div>
+</div>
+
 
 ## CHECK SNOWFLAKE
 
 La cláusula **CHECK SNOWFLAKE**, colocada justo después de todos los **JOINs**, verifica que las relaciones no pierden ni duplican ningún registro de la tabla del **FROM**. Se trata de una comprobación fundamental para validar que no estamos cometiendo ninguna equivocación al escribir la consulta y que los datos de origen son coherentes con lo esperado.
 
-<view-sql-code fileName="CheckSnowflake"/>
+<div class="mt-1 mb-2 row">
+  <div class="col-lg-12">
+
+``` sql
+SELECT
+  year(sales.OrderDate) AS OrderYear,
+  Customer.CustomerId AS CustomerId,
+  concat(CustomerPerson.FirstName,' ',CustomerPerson.LastName) AS Customer,
+  CustomerPerson.FirstName AS FirstName,
+  CustomerPerson.LastName AS LastName,
+  sum(sales.subtotal) AS Amount
+FROM staging.SalesOrderHeader sales
+INNER JOIN staging.customer USING CustomerId
+INNER JOIN staging.Person CustomerPerson USING Customer(PersonID BusinessEntityId)
+CHECK SNOWFLAKE
+WHERE year(sales.OrderDate)=2012
+```
+
+  <b-button class="float-right btn" size="sm" v-b-modal.modal-12 style="background-color: #3eaf7c">Ver SQL compilado</b-button>
+
+  <b-modal id="modal-12" size="lg" title="Ver SQL compilado" :hide-footer="true" > 
+``` sql
+IF EXISTS (
+  SELECT count(*)
+  FROM staging.SalesOrderHeader sales
+  LEFT JOIN staging.customer ON (sales.CustomerId=customer.CustomerId)
+  LEFT JOIN staging.Person CustomerPerson ON (Customer.PersonID=CustomerPerson.BusinessEntityId)
+  HAVING count(CASE WHEN customer.CustomerId IS NOT NULL AND CustomerPerson.BusinessEntityId IS NOT NULL THEN 1 END) <> (SELECT count(*) FROM staging.SalesOrderHeader sales)
+) THROW 50001,'Las relaciones de esta consulta pierden o duplican registros de sales.',1
+
+SELECT
+  year(sales.OrderDate) AS OrderYear,
+  Customer.CustomerId AS CustomerId,
+  concat(CustomerPerson.FirstName,' ',CustomerPerson.LastName) AS Customer,
+  CustomerPerson.FirstName AS FirstName,
+  CustomerPerson.LastName AS LastName,
+  sum(sales.subtotal) AS Amount
+FROM staging.SalesOrderHeader sales
+INNER JOIN staging.customer ON (sales.CustomerId=customer.CustomerId)
+INNER JOIN staging.Person CustomerPerson ON (Customer.PersonID=CustomerPerson.BusinessEntityId)
+WHERE year(sales.OrderDate)=2012
+GROUP BY
+  year(sales.OrderDate),
+  Customer.CustomerId,
+  concat(CustomerPerson.FirstName,' ',CustomerPerson.LastName),
+  CustomerPerson.FirstName,
+  CustomerPerson.LastName
+
+```
+  </b-modal>
+
+  </div>
+</div>
+
 
 La cláusula **CHECK SNOWFLAKE** verifica que todas las ventas correspondan a un cliente y que ese cliente exista en la tabla de personas. Si no fuera así, la consulta no se ejecutaría y devolvería un error.
 
@@ -80,23 +566,224 @@ La cláusula **CHECK SNOWFLAKE** verifica que todas las ventas correspondan a un
 
 Se pueden incluir subconsultas.
 
-<view-sql-code fileName="Subqueries"/>
+<div class="mt-1 mb-2 row">
+  <div class="col-lg-12">
+
+``` sql
+SELECT 
+  Person.BusinessEntityId,
+  Person.LastName,
+  HomeAddress.AddressLine1 HomeAddressLine1,
+  HomeAddress.AddressLine2 HomeAddressLine2,
+  HomeAddress.City HomeCity,
+  ShippingAddress.AddressLine1 ShippingAddressLine1,
+  ShippingAddress.AddressLine2 ShippingAddressLine2,
+  ShippingAddress.City ShippingCity
+FROM staging.Person
+LEFT JOIN (
+  select * from staging.BusinessEntityAddress 
+  where AddressTypeId=2) BEHomeAddress using BusinessEntityId
+LEFT JOIN (
+  select * from staging.BusinessEntityAddress 
+  where AddressTypeId=5) BEShippingAddress using BusinessEntityId
+LEFT JOIN staging.Address HomeAddress using BEHomeAddress(AddressId)
+LEFT JOIN staging.Address ShippingAddress using BEShippingAddress(AddressId)
+```
+
+  <b-button class="float-right btn" size="sm" v-b-modal.modal-13 style="background-color: #3eaf7c">Ver SQL compilado</b-button>
+
+  <b-modal id="modal-13" size="lg" title="Ver SQL compilado" :hide-footer="true" > 
+``` sql
+SELECT
+  Person.BusinessEntityId AS BusinessEntityId,
+  Person.LastName AS LastName,
+  HomeAddress.AddressLine1 AS HomeAddressLine1,
+  HomeAddress.AddressLine2 AS HomeAddressLine2,
+  HomeAddress.City AS HomeCity,
+  ShippingAddress.AddressLine1 AS ShippingAddressLine1,
+  ShippingAddress.AddressLine2 AS ShippingAddressLine2,
+  ShippingAddress.City AS ShippingCity
+FROM staging.Person
+LEFT JOIN (SELECT *
+           FROM staging.BusinessEntityAddress
+           WHERE AddressTypeId=2) BEHomeAddress ON Person.BusinessEntityId=BEHomeAddress.BusinessEntityId
+LEFT JOIN (SELECT *
+           FROM staging.BusinessEntityAddress
+           WHERE AddressTypeId=5) BEShippingAddress ON Person.BusinessEntityId=BEShippingAddress.BusinessEntityId
+LEFT JOIN staging.Address HomeAddress ON (BEHomeAddress.AddressId=HomeAddress.AddressId)
+LEFT JOIN staging.Address ShippingAddress ON (BEShippingAddress.AddressId=ShippingAddress.AddressId)
+
+```
+  </b-modal>
+
+  </div>
+</div>
+
 
 ## Subconsultas con FILTER y COLUMNS
 
 Después del nombre de la tabla, se puede incluir la cláusula **FILTER** para seleccionar solo una parte de los registros de la tabla. El código SQL generado incluirá una subconsulta similar a la del Ejemplo anterior.
 
-<view-sql-code fileName="FilterSentence"/>
+<div class="mt-1 mb-2 row">
+  <div class="col-lg-12">
+
+``` sql
+SELECT 
+  Person.BusinessEntityId,
+  Person.PersonType,
+  Person.LastName,
+  HomeAddress.AddressLine1	HomeAddressLine1,
+  HomeAddress.AddressLine2	HomeAddressLine2,
+  HomeAddress.City		HomeCity,
+  ShippingAddress.AddressLine1	ShippingAddressLine1,
+  ShippingAddress.AddressLine2	ShippingAddressLine2,
+  ShippingAddress.City		ShippingCity
+FROM staging.Person
+LEFT JOIN staging.BusinessEntityAddress FILTER (AddressTypeId=2) BEHomeAddress using BusinessEntityId
+LEFT JOIN staging.BusinessEntityAddress FILTER (AddressTypeId=5) BEShippingAddress using BusinessEntityId
+LEFT JOIN staging.Address HomeAddress using BEHomeAddress(AddressId)
+LEFT JOIN staging.Address ShippingAddress using BEShippingAddress(AddressId)
+```
+
+  <b-button class="float-right btn" size="sm" v-b-modal.modal-14 style="background-color: #3eaf7c">Ver SQL compilado</b-button>
+
+  <b-modal id="modal-14" size="lg" title="Ver SQL compilado" :hide-footer="true" > 
+``` sql
+SELECT
+  Person.BusinessEntityId AS BusinessEntityId,
+  Person.PersonType AS PersonType,
+  Person.LastName AS LastName,
+  HomeAddress.AddressLine1 AS HomeAddressLine1,
+  HomeAddress.AddressLine2 AS HomeAddressLine2,
+  HomeAddress.City AS HomeCity,
+  ShippingAddress.AddressLine1 AS ShippingAddressLine1,
+  ShippingAddress.AddressLine2 AS ShippingAddressLine2,
+  ShippingAddress.City AS ShippingCity
+FROM staging.Person
+LEFT JOIN (SELECT * FROM staging.BusinessEntityAddress WHERE AddressTypeId=2) BEHomeAddress ON (Person.BusinessEntityId=BEHomeAddress.BusinessEntityId)
+LEFT JOIN (SELECT * FROM staging.BusinessEntityAddress WHERE AddressTypeId=5) BEShippingAddress ON (Person.BusinessEntityId=BEShippingAddress.BusinessEntityId)
+LEFT JOIN staging.Address HomeAddress ON (BEHomeAddress.AddressId=HomeAddress.AddressId)
+LEFT JOIN staging.Address ShippingAddress ON (BEShippingAddress.AddressId=ShippingAddress.AddressId)
+
+```
+  </b-modal>
+
+  </div>
+</div>
+
 
 
 La cláusula **FILTER** es muy útil en combinación con la cláusula **CHECK SNOWFLAKE**. En el siguiente ejemplo, se verifica que cada persona tenga una única *HomeAddress* (o ninguna) y una única *ShippingAddress* (o ninguna). Si no fuera así, la consulta no duplicaría los registros  porque devolvería previamente un error. 
 
-<view-sql-code fileName="FilterAndCheckSnowflake"/>
+<div class="mt-1 mb-2 row">
+  <div class="col-lg-12">
+
+``` sql
+SELECT 
+  Person.BusinessEntityId,
+  Person.PersonType,
+  Person.LastName,
+  HomeAddress.AddressLine1	HomeAddressLine1,
+  HomeAddress.AddressLine2	HomeAddressLine2,
+  HomeAddress.City		HomeCity,
+  ShippingAddress.AddressLine1	ShippingAddressLine1,
+  ShippingAddress.AddressLine2	ShippingAddressLine2,
+  ShippingAddress.City		ShippingCity
+FROM staging.Person
+LEFT JOIN staging.BusinessEntityAddress FILTER (AddressTypeId=2) BEHomeAddress using BusinessEntityId
+LEFT JOIN staging.BusinessEntityAddress FILTER (AddressTypeId=5) BEShippingAddress using BusinessEntityId
+LEFT JOIN staging.Address HomeAddress using BEHomeAddress(AddressId)
+LEFT JOIN staging.Address ShippingAddress using BEShippingAddress(AddressId)
+CHECK SNOWFLAKE
+```
+
+  <b-button class="float-right btn" size="sm" v-b-modal.modal-15 style="background-color: #3eaf7c">Ver SQL compilado</b-button>
+
+  <b-modal id="modal-15" size="lg" title="Ver SQL compilado" :hide-footer="true" > 
+``` sql
+IF EXISTS (
+  SELECT count(*)
+  FROM staging.Person
+  LEFT JOIN (SELECT * FROM staging.BusinessEntityAddress WHERE AddressTypeId=2) BEHomeAddress ON (Person.BusinessEntityId=BEHomeAddress.BusinessEntityId)
+  LEFT JOIN (SELECT * FROM staging.BusinessEntityAddress WHERE AddressTypeId=5) BEShippingAddress ON (Person.BusinessEntityId=BEShippingAddress.BusinessEntityId)
+  LEFT JOIN staging.Address HomeAddress ON (BEHomeAddress.AddressId=HomeAddress.AddressId)
+  LEFT JOIN staging.Address ShippingAddress ON (BEShippingAddress.AddressId=ShippingAddress.AddressId)
+  HAVING count(*) <> (SELECT count(*) FROM staging.Person)
+) THROW 50001,'Las relaciones de esta consulta pierden o duplican registros de Person.',1
+
+SELECT
+  Person.BusinessEntityId AS BusinessEntityId,
+  Person.PersonType AS PersonType,
+  Person.LastName AS LastName,
+  HomeAddress.AddressLine1 AS HomeAddressLine1,
+  HomeAddress.AddressLine2 AS HomeAddressLine2,
+  HomeAddress.City AS HomeCity,
+  ShippingAddress.AddressLine1 AS ShippingAddressLine1,
+  ShippingAddress.AddressLine2 AS ShippingAddressLine2,
+  ShippingAddress.City AS ShippingCity
+FROM staging.Person
+LEFT JOIN (SELECT * FROM staging.BusinessEntityAddress WHERE AddressTypeId=2) BEHomeAddress ON (Person.BusinessEntityId=BEHomeAddress.BusinessEntityId)
+LEFT JOIN (SELECT * FROM staging.BusinessEntityAddress WHERE AddressTypeId=5) BEShippingAddress ON (Person.BusinessEntityId=BEShippingAddress.BusinessEntityId)
+LEFT JOIN staging.Address HomeAddress ON (BEHomeAddress.AddressId=HomeAddress.AddressId)
+LEFT JOIN staging.Address ShippingAddress ON (BEShippingAddress.AddressId=ShippingAddress.AddressId)
+
+```
+  </b-modal>
+
+  </div>
+</div>
+
 
 
 Se puede utilizar la cláusula **COLUMNS** para seleccionar, renombrar, u operar sobre las columnas físicas de la tabla. El código SQL generado incluirá una subconsulta con esas columnas.
     
-<view-sql-code fileName="FilterAndColumns"/>
+<div class="mt-1 mb-2 row">
+  <div class="col-lg-12">
+
+``` sql
+SELECT 
+  Person.BusinessEntityId,
+  Person.PersonType,
+  Person.PersonName,
+  HomeAddress.AddressLine1	HomeAddressLine1,
+  HomeAddress.AddressLine2	HomeAddressLine2,
+  HomeAddress.City			HomeCity,
+  ShippingAddress.AddressLine1	ShippingAddressLine1,
+  ShippingAddress.AddressLine2	ShippingAddressLine2,
+  ShippingAddress.City			ShippingCity
+FROM staging.Person COLUMNS (BusinessEntityId,PersonType,LastName PersonName) FILTER (PersonType='IN')
+LEFT JOIN staging.BusinessEntityAddress FILTER (AddressTypeId=2) BEHomeAddress using BusinessEntityId
+LEFT JOIN staging.BusinessEntityAddress FILTER (AddressTypeId=5) BEShippingAddress using BusinessEntityId
+LEFT JOIN staging.Address HomeAddress using BEHomeAddress(AddressId)
+LEFT JOIN staging.Address ShippingAddress using BEShippingAddress(AddressId)
+```
+
+  <b-button class="float-right btn" size="sm" v-b-modal.modal-16 style="background-color: #3eaf7c">Ver SQL compilado</b-button>
+
+  <b-modal id="modal-16" size="lg" title="Ver SQL compilado" :hide-footer="true" > 
+``` sql
+SELECT
+  Person.BusinessEntityId AS BusinessEntityId,
+  Person.PersonType AS PersonType,
+  Person.PersonName AS PersonName,
+  HomeAddress.AddressLine1 AS HomeAddressLine1,
+  HomeAddress.AddressLine2 AS HomeAddressLine2,
+  HomeAddress.City AS HomeCity,
+  ShippingAddress.AddressLine1 AS ShippingAddressLine1,
+  ShippingAddress.AddressLine2 AS ShippingAddressLine2,
+  ShippingAddress.City AS ShippingCity
+FROM (SELECT BusinessEntityId, PersonType, LastName AS PersonName FROM staging.Person WHERE PersonType='IN') Person
+LEFT JOIN (SELECT * FROM staging.BusinessEntityAddress WHERE AddressTypeId=2) BEHomeAddress ON (Person.BusinessEntityId=BEHomeAddress.BusinessEntityId)
+LEFT JOIN (SELECT * FROM staging.BusinessEntityAddress WHERE AddressTypeId=5) BEShippingAddress ON (Person.BusinessEntityId=BEShippingAddress.BusinessEntityId)
+LEFT JOIN staging.Address HomeAddress ON (BEHomeAddress.AddressId=HomeAddress.AddressId)
+LEFT JOIN staging.Address ShippingAddress ON (BEShippingAddress.AddressId=ShippingAddress.AddressId)
+
+```
+  </b-modal>
+
+  </div>
+</div>
+
 
 
 ## ANTI JOIN
@@ -113,13 +800,57 @@ Además, implementa el **ANTI JOIN**. Un **ANTI JOIN** devuelve todos los regist
 
 La  siguiente consulta devuelve todos los clientes que no tienen ninguna venta.  Puede ampliar la información sobre los **ANTI JOIN** en [el blog de SQL Server de Dale Burnett](http://daleburnett.com/2011/10/semi-joins-and-anti-joins/).
 
-<view-sql-code fileName="AntiJoin"/>    
+<div class="mt-1 mb-2 row">
+  <div class="col-lg-12">
+
+``` sql
+select *
+FROM staging.customer 
+ANTI JOIN staging.SalesOrderHeader sales using customerId
+```
+
+  <b-button class="float-right btn" size="sm" v-b-modal.modal-17 style="background-color: #3eaf7c">Ver SQL compilado</b-button>
+
+  <b-modal id="modal-17" size="lg" title="Ver SQL compilado" :hide-footer="true" > 
+``` sql
+SELECT *
+FROM staging.customer
+WHERE NOT EXISTS (SELECT 1 FROM staging.SalesOrderHeader sales WHERE customer.customerId=sales.customerId)
+
+```
+  </b-modal>
+
+  </div>
+</div>
+    
 
 El **ANTI JOIN** se puede combinar con el resto de características del lenguaje.  
 
 Esta consulta devuelve todos las personas que no tienen Home Address.
 
-<view-sql-code fileName="AntiJoinAndFilter"/>
+<div class="mt-1 mb-2 row">
+  <div class="col-lg-12">
+
+``` sql
+select *
+FROM staging.Person
+ANTI JOIN staging.BusinessEntityAddress FILTER (AddressTypeId=2) BEHomeAddress using BusinessEntityId
+```
+
+  <b-button class="float-right btn" size="sm" v-b-modal.modal-18 style="background-color: #3eaf7c">Ver SQL compilado</b-button>
+
+  <b-modal id="modal-18" size="lg" title="Ver SQL compilado" :hide-footer="true" > 
+``` sql
+SELECT *
+FROM staging.Person
+WHERE NOT EXISTS (SELECT 1 FROM (SELECT * FROM staging.BusinessEntityAddress WHERE AddressTypeId=2) BEHomeAddress WHERE Person.BusinessEntityId=BEHomeAddress.BusinessEntityId)
+
+```
+  </b-modal>
+
+  </div>
+</div>
+
 
 ## SEMI JOIN
 
@@ -128,7 +859,29 @@ El lenguaje **Crono SQL** implementa también la relación **SEMI JOIN**. Un **S
 Esta consulta devuelve todos los clientes que tienen alguna venta (sin duplicados). Puede ampliar la información sobre los **SEMI JOIN** en [el blog de SQL Server de Dale Burnett](http://daleburnett.com/2011/10/semi-joins-and-anti-joins/).
      
 
-<view-sql-code fileName="SemiJoin"/>
+<div class="mt-1 mb-2 row">
+  <div class="col-lg-12">
+
+``` sql
+select *
+FROM staging.customer 
+SEMI JOIN staging.SalesOrderHeader sales using customerId
+```
+
+  <b-button class="float-right btn" size="sm" v-b-modal.modal-19 style="background-color: #3eaf7c">Ver SQL compilado</b-button>
+
+  <b-modal id="modal-19" size="lg" title="Ver SQL compilado" :hide-footer="true" > 
+``` sql
+SELECT *
+FROM staging.customer
+WHERE EXISTS (SELECT 1 FROM staging.SalesOrderHeader sales WHERE customer.customerId=sales.customerId)
+
+```
+  </b-modal>
+
+  </div>
+</div>
+
 
 ## UNPIVOT
 
@@ -136,27 +889,141 @@ Se puede utilizar el operador **UNPIVOT** (según la [sintaxis de T-SQL](https:/
 
 En este ejemplo, las columna *“AddressLine1”*  y *“AddressLine2”* se han convertido en filas diferenciadas, duplicándose los registros.
 
-<view-sql-code fileName="Unpivot"/>
+<div class="mt-1 mb-2 row">
+  <div class="col-lg-12">
+
+``` sql
+SELECT
+  AddressId,
+  AddressItem,
+  content
+FROM staging.Address
+UNPIVOT (content FOR AddressItem in (AddressLine1,AddressLine2)) as unpvt
+```
+
+  <b-button class="float-right btn" size="sm" v-b-modal.modal-20 style="background-color: #3eaf7c">Ver SQL compilado</b-button>
+
+  <b-modal id="modal-20" size="lg" title="Ver SQL compilado" :hide-footer="true" > 
+``` sql
+SELECT
+  AddressId,
+  AddressItem,
+  content
+FROM staging.Address
+UNPIVOT (content FOR AddressItem IN (AddressLine1,AddressLine2)) unpvt
+
+```
+  </b-modal>
+
+  </div>
+</div>
+
 
 ## ORDER BY
 
 Se puede utilizar la cláusula **ORDER BY** para forzar la ordenación del resultado.
 
 
-<view-sql-code fileName="OrderBy1"/>
+<div class="mt-1 mb-2 row">
+  <div class="col-lg-12">
+
+``` sql
+SELECT
+  year(sales.OrderDate) AS OrderYear,
+  month(sales.OrderDate) as OrderMonth,
+  sum(sales.subtotal) AS Amount
+FROM staging.SalesOrderHeader sales
+ORDER BY OrderYear, OrderMonth
+```
+
+  <b-button class="float-right btn" size="sm" v-b-modal.modal-21 style="background-color: #3eaf7c">Ver SQL compilado</b-button>
+
+  <b-modal id="modal-21" size="lg" title="Ver SQL compilado" :hide-footer="true" > 
+``` sql
+SELECT
+  year(sales.OrderDate) AS OrderYear,
+  month(sales.OrderDate) AS OrderMonth,
+  sum(sales.subtotal) AS Amount
+FROM staging.SalesOrderHeader sales
+GROUP BY
+  year(sales.OrderDate),
+  month(sales.OrderDate)
+ORDER BY
+  year(sales.OrderDate),
+  month(sales.OrderDate)
+
+```
+  </b-modal>
+
+  </div>
+</div>
+
     
     
 El **ORDER BY** se puede escribir haciendo referencia a la posición de las columnas. 
     
 
-<view-sql-code fileName="OrderBy2"/>
+<div class="mt-1 mb-2 row">
+  <div class="col-lg-12">
+
+``` sql
+SELECT
+  year(sales.OrderDate) AS OrderYear,
+  month(sales.OrderDate) as OrderMonth,
+  sum(sales.subtotal) AS Amount
+FROM staging.SalesOrderHeader sales
+ORDER BY 1,2
+```
+
+  <b-button class="float-right btn" size="sm" v-b-modal.modal-22 style="background-color: #3eaf7c">Ver SQL compilado</b-button>
+
+  <b-modal id="modal-22" size="lg" title="Ver SQL compilado" :hide-footer="true" > 
+``` sql
+SELECT
+  year(sales.OrderDate) AS OrderYear,
+  month(sales.OrderDate) AS OrderMonth,
+  sum(sales.subtotal) AS Amount
+FROM staging.SalesOrderHeader sales
+GROUP BY
+  year(sales.OrderDate),
+  month(sales.OrderDate)
+ORDER BY
+  1,
+  2
+
+```
+  </b-modal>
+
+  </div>
+</div>
+
 
 ## SELECT DISTINCT
 
 Se puede utilizar la palabra clave **DISTINCT** para obtener los valores distintos
     
     
-<view-sql-code fileName="SelectDistinct"/>
+<div class="mt-1 mb-2 row">
+  <div class="col-lg-12">
+
+``` sql
+SELECT DISTINCT FirstName
+FROM staging.Person
+```
+
+  <b-button class="float-right btn" size="sm" v-b-modal.modal-23 style="background-color: #3eaf7c">Ver SQL compilado</b-button>
+
+  <b-modal id="modal-23" size="lg" title="Ver SQL compilado" :hide-footer="true" > 
+``` sql
+SELECT DISTINCT FirstName
+FROM staging.Person
+
+```
+  </b-modal>
+
+  </div>
+</div>
+
 
 
 ## SELECT TOP
@@ -165,7 +1032,50 @@ Se puede utilizar la palabra clave **TOP** para limitar el número de registros 
 
 Esta consulta devuelve los 5 clientes con mayores ventas. 
 
-<view-sql-code fileName="Top"/>
+<div class="mt-1 mb-2 row">
+  <div class="col-lg-12">
+
+``` sql
+SELECT TOP 5
+  SalesTerritory.Name Territory,
+  Customer.CustomerId,
+  CustomerPerson.FirstName,
+  CustomerPerson.LastName,
+  sum(sales.subtotal) Amount			 
+FROM staging.SalesOrderHeader sales
+INNER JOIN staging.customer USING sales(customerId)
+INNER JOIN staging.SalesTerritory USING TerritoryId
+LEFT JOIN staging.Person CustomerPerson USING Customer(PersonID BusinessEntityId)
+ORDER BY Amount DESC
+```
+
+  <b-button class="float-right btn" size="sm" v-b-modal.modal-24 style="background-color: #3eaf7c">Ver SQL compilado</b-button>
+
+  <b-modal id="modal-24" size="lg" title="Ver SQL compilado" :hide-footer="true" > 
+``` sql
+SELECT TOP 5
+  SalesTerritory.Name AS Territory,
+  Customer.CustomerId AS CustomerId,
+  CustomerPerson.FirstName AS FirstName,
+  CustomerPerson.LastName AS LastName,
+  sum(sales.subtotal) AS Amount
+FROM staging.SalesOrderHeader sales
+INNER JOIN staging.customer ON (sales.customerId=customer.customerId)
+INNER JOIN staging.SalesTerritory ON (sales.TerritoryId=SalesTerritory.TerritoryId)
+LEFT JOIN staging.Person CustomerPerson ON (Customer.PersonID=CustomerPerson.BusinessEntityId)
+GROUP BY
+  SalesTerritory.Name,
+  Customer.CustomerId,
+  CustomerPerson.FirstName,
+  CustomerPerson.LastName
+ORDER BY sum(sales.subtotal) DESC
+
+```
+  </b-modal>
+
+  </div>
+</div>
+
 
 
 ## OVER ()
@@ -174,7 +1084,42 @@ Las funciones de ventana **OVER (…)** también están soportadas.
 
 Esta consulta devuelve las ventas acumuladas desde el principio de cada año. La funciones de ventana, también llamadas funciones analíticas, tienen mucha utilidad en entornos ETL/DWH y permiten simplificar el desarrollo de muchos escenarios ETL comunes.  Puede ampliar la información sobre las funciones de ventana en la documentación de la [cláusula **OVER** en T-SQL](https://msdn.microsoft.com/es-es/library/ms189461.aspx).
 
-<view-sql-code fileName="Over"/>
+<div class="mt-1 mb-2 row">
+  <div class="col-lg-12">
+
+``` sql
+SELECT
+  year(sales.OrderDate) AS OrderYear,
+  month(sales.OrderDate) as OrderMonth,
+  sum(sales.subtotal) AS Amount,
+  sum(Amount) over (partition by OrderYear order by OrderMonth)  AmountYTD
+FROM staging.SalesOrderHeader sales
+ORDER BY OrderYear, OrderMonth
+```
+
+  <b-button class="float-right btn" size="sm" v-b-modal.modal-25 style="background-color: #3eaf7c">Ver SQL compilado</b-button>
+
+  <b-modal id="modal-25" size="lg" title="Ver SQL compilado" :hide-footer="true" > 
+``` sql
+SELECT
+  year(sales.OrderDate) AS OrderYear,
+  month(sales.OrderDate) AS OrderMonth,
+  sum(sales.subtotal) AS Amount,
+  sum(sum(sales.subtotal)) OVER (PARTITION BY year(sales.OrderDate) ORDER BY month(sales.OrderDate)) AS AmountYTD
+FROM staging.SalesOrderHeader sales
+GROUP BY
+  year(sales.OrderDate),
+  month(sales.OrderDate)
+ORDER BY
+  year(sales.OrderDate),
+  month(sales.OrderDate)
+
+```
+  </b-modal>
+
+  </div>
+</div>
+
 
 
 ## TOP OVER ()
@@ -184,12 +1129,123 @@ Se puede incluir la cláusula **OVER** junto a la palabra clave **TOP** para lim
 Esta consulta devuelve los tres clientes con más ventas en cada territorio.
 
 
-<view-sql-code fileName="TopOver1"/>
+<div class="mt-1 mb-2 row">
+  <div class="col-lg-12">
+
+``` sql
+SELECT TOP 3 OVER (PARTITION BY Territory ORDER BY Amount DESC)  
+  SalesTerritory.Name Territory,
+  Customer.CustomerId,
+  CustomerPerson.FirstName,
+  CustomerPerson.LastName,
+  sum(sales.subtotal) Amount			 
+FROM staging.SalesOrderHeader sales
+INNER JOIN staging.customer USING sales(customerId)
+INNER JOIN staging.SalesTerritory USING TerritoryId
+INNER JOIN staging.Person CustomerPerson USING Customer(PersonID BusinessEntityId)
+```
+
+  <b-button class="float-right btn" size="sm" v-b-modal.modal-26 style="background-color: #3eaf7c">Ver SQL compilado</b-button>
+
+  <b-modal id="modal-26" size="lg" title="Ver SQL compilado" :hide-footer="true" > 
+``` sql
+SELECT
+  Territory,
+  CustomerId,
+  FirstName,
+  LastName,
+  Amount
+FROM (
+    SELECT
+      Territory,
+      CustomerId,
+      FirstName,
+      LastName,
+      Amount,
+      ROW_NUMBER() OVER (PARTITION BY Territory ORDER BY Amount DESC) rownumber
+    FROM (
+        SELECT
+          SalesTerritory.Name AS Territory,
+          Customer.CustomerId AS CustomerId,
+          CustomerPerson.FirstName AS FirstName,
+          CustomerPerson.LastName AS LastName,
+          sum(sales.subtotal) AS Amount
+        FROM staging.SalesOrderHeader sales
+        INNER JOIN staging.customer ON (sales.customerId=customer.customerId)
+        INNER JOIN staging.SalesTerritory ON (sales.TerritoryId=SalesTerritory.TerritoryId)
+        INNER JOIN staging.Person CustomerPerson ON (Customer.PersonID=CustomerPerson.BusinessEntityId)
+        GROUP BY
+          SalesTerritory.Name,
+          Customer.CustomerId,
+          CustomerPerson.FirstName,
+          CustomerPerson.LastName
+      ) allRows
+  ) allRowsNumbered
+WHERE rownumber<=3
+
+```
+  </b-modal>
+
+  </div>
+</div>
+
 
 La combinación **TOP n OVER ()** tiene muchos usos en procesos ETL/DWH. La sentencia SQL generada es un consulta sobre una subconsulta de una subconsulta. La siguiente consulta devuelve la última venta de cada cliente.
 
 
-<view-sql-code fileName="TopOver2"/>
+<div class="mt-1 mb-2 row">
+  <div class="col-lg-12">
+
+``` sql
+SELECT TOP 1 OVER (PARTITION BY customerId ORDER BY orderDate desc)
+  Customer.CustomerId,
+  CustomerPerson.FirstName,
+  CustomerPerson.LastName,
+  SalesOrderHeader.OrderDate,
+  SalesOrderHeader.subtotal Amount
+FROM staging.SalesOrderHeader 
+INNER JOIN staging.Customer USING customerId
+INNER JOIN staging.Person CustomerPerson USING Customer(PersonID BusinessEntityId)
+```
+
+  <b-button class="float-right btn" size="sm" v-b-modal.modal-27 style="background-color: #3eaf7c">Ver SQL compilado</b-button>
+
+  <b-modal id="modal-27" size="lg" title="Ver SQL compilado" :hide-footer="true" > 
+``` sql
+SELECT
+  CustomerId,
+  FirstName,
+  LastName,
+  OrderDate,
+  Amount
+FROM (
+    SELECT
+      CustomerId,
+      FirstName,
+      LastName,
+      OrderDate,
+      Amount,
+      ROW_NUMBER() OVER (PARTITION BY CustomerId ORDER BY OrderDate DESC) rownumber
+    FROM (
+        SELECT
+          Customer.CustomerId AS CustomerId,
+          CustomerPerson.FirstName AS FirstName,
+          CustomerPerson.LastName AS LastName,
+          SalesOrderHeader.OrderDate AS OrderDate,
+          SalesOrderHeader.subtotal AS Amount
+        FROM staging.SalesOrderHeader
+        INNER JOIN staging.Customer ON (SalesOrderHeader.customerId=Customer.customerId)
+        INNER JOIN staging.Person CustomerPerson ON (Customer.PersonID=CustomerPerson.BusinessEntityId)
+      ) allRows
+  ) allRowsNumbered
+WHERE rownumber=1
+
+```
+  </b-modal>
+
+  </div>
+</div>
+
 
 
 
@@ -198,7 +1254,67 @@ La combinación **TOP n OVER ()** tiene muchos usos en procesos ETL/DWH. La sent
 
 Las [sentencias CTE](https://msdn.microsoft.com/es-es/library/ms175972.aspx) con cláusula **WITH** están soportadas.
 
-<view-sql-code fileName="With"/>
+<div class="mt-1 mb-2 row">
+  <div class="col-lg-12">
+
+``` sql
+WITH addresses AS (
+  SELECT bia.BusinessEntityID,bia.AddressTypeId,CountryRegion.Name Region,Address.AddressLine1,Address.City
+  FROM staging.BusinessEntityAddress bia
+  INNER JOIN staging.Address using AddressId
+  INNER JOIN staging.StateProvince USING Address(StateProvinceId)
+  INNER JOIN staging.CountryRegion USING StateProvince(CountryRegionCode)
+) 
+SELECT 
+  Person.FirstName,
+  Person.LastName,
+  HomeAddress.AddressLine1 HomeAddressLine1,
+  HomeAddress.City HomeCity,
+  HomeAddress.Region HomeRegion,
+  ShippingAddress.AddressLine1 ShippingAddressLine1,
+  ShippingAddress.City ShippingCity ,
+  ShippingAddress.Region ShippingRegion ,
+FROM staging.Person 
+LEFT JOIN addresses FILTER (AddressTypeId=2) HomeAddress USING BusinessEntityID
+LEFT JOIN addresses FILTER (AddressTypeId=5) ShippingAddress USING BusinessEntityID
+```
+
+  <b-button class="float-right btn" size="sm" v-b-modal.modal-28 style="background-color: #3eaf7c">Ver SQL compilado</b-button>
+
+  <b-modal id="modal-28" size="lg" title="Ver SQL compilado" :hide-footer="true" > 
+``` sql
+;WITH
+addresses AS (
+  SELECT
+    bia.BusinessEntityID AS BusinessEntityID,
+    bia.AddressTypeId AS AddressTypeId,
+    CountryRegion.Name AS Region,
+    Address.AddressLine1 AS AddressLine1,
+    Address.City AS City
+  FROM staging.BusinessEntityAddress bia
+  INNER JOIN staging.Address ON (bia.AddressId=Address.AddressId)
+  INNER JOIN staging.StateProvince ON (Address.StateProvinceId=StateProvince.StateProvinceId)
+  INNER JOIN staging.CountryRegion ON (StateProvince.CountryRegionCode=CountryRegion.CountryRegionCode)
+)
+SELECT
+  Person.FirstName AS FirstName,
+  Person.LastName AS LastName,
+  HomeAddress.AddressLine1 AS HomeAddressLine1,
+  HomeAddress.City AS HomeCity,
+  HomeAddress.Region AS HomeRegion,
+  ShippingAddress.AddressLine1 AS ShippingAddressLine1,
+  ShippingAddress.City AS ShippingCity,
+  ShippingAddress.Region AS ShippingRegion
+FROM staging.Person
+LEFT JOIN (SELECT * FROM addresses WHERE AddressTypeId=2) HomeAddress ON (Person.BusinessEntityID=HomeAddress.BusinessEntityID)
+LEFT JOIN (SELECT * FROM addresses WHERE AddressTypeId=5) ShippingAddress ON (Person.BusinessEntityID=ShippingAddress.BusinessEntityID)
+
+```
+  </b-modal>
+
+  </div>
+</div>
+
 
 
 ## UNION y UNION ALL
@@ -208,7 +1324,59 @@ Se pueden utilizar los operadores **UNION** y **UNION ALL**
 Este ejemplo tiene únicamente fines didácticos. Para combinar de este modo dos o más consultas es preferible el operador **COMBINE** que se muestra continuación.
 
 
-<view-sql-code fileName="Union"/>
+<div class="mt-1 mb-2 row">
+  <div class="col-lg-12">
+
+``` sql
+SELECT
+  CustomerPerson.LastName AS LastName,
+  sum(sales.subtotal) AS Amount2012,
+  null Amount2013
+FROM staging.SalesOrderHeader sales
+INNER JOIN staging.customer ON (sales.customerId=customer.customerId)
+LEFT JOIN staging.Person CustomerPerson ON (Customer.PersonID=CustomerPerson.BusinessEntityId)
+WHERE year(sales.OrderDate)=2012
+UNION 
+  SELECT
+    CustomerPerson.LastName AS LastName,
+    null Amount2012,
+    sum(sales.subtotal) AS Amount2013
+  FROM staging.SalesOrderHeader sales
+  INNER JOIN staging.customer ON (sales.customerId=customer.customerId)
+  LEFT JOIN staging.Person CustomerPerson ON (Customer.PersonID=CustomerPerson.BusinessEntityId)
+  WHERE year(sales.OrderDate)=2013
+```
+
+  <b-button class="float-right btn" size="sm" v-b-modal.modal-29 style="background-color: #3eaf7c">Ver SQL compilado</b-button>
+
+  <b-modal id="modal-29" size="lg" title="Ver SQL compilado" :hide-footer="true" > 
+``` sql
+SELECT
+  CustomerPerson.LastName AS LastName,
+  sum(sales.subtotal) AS Amount2012,
+  NULL AS Amount2013
+FROM staging.SalesOrderHeader sales
+INNER JOIN staging.customer ON (sales.customerId=customer.customerId)
+LEFT JOIN staging.Person CustomerPerson ON (Customer.PersonID=CustomerPerson.BusinessEntityId)
+WHERE year(sales.OrderDate)=2012
+GROUP BY CustomerPerson.LastName
+UNION
+SELECT
+  CustomerPerson.LastName AS LastName,
+  NULL AS Amount2012,
+  sum(sales.subtotal) AS Amount2013
+FROM staging.SalesOrderHeader sales
+INNER JOIN staging.customer ON (sales.customerId=customer.customerId)
+LEFT JOIN staging.Person CustomerPerson ON (Customer.PersonID=CustomerPerson.BusinessEntityId)
+WHERE year(sales.OrderDate)=2013
+GROUP BY CustomerPerson.LastName
+
+```
+  </b-modal>
+
+  </div>
+</div>
+
 
 ## COMBINE
 
@@ -216,29 +1384,307 @@ Este ejemplo tiene únicamente fines didácticos. Para combinar de este modo dos
 El operador **COMBINE BY** permite combinar dos o más consultas en un único resultado.
 
     
-<view-sql-code fileName="Combine1"/>    
+<div class="mt-1 mb-2 row">
+  <div class="col-lg-12">
+
+``` sql
+COMBINE BY firstname,LastName
+  sales2012 AS (
+    SELECT
+      Person.FirstName AS FirstName,
+      Person.LastName AS LastName,
+      sum(sales.subtotal) AS Amount2012
+    FROM staging.SalesOrderHeader sales
+    INNER JOIN staging.customer USING customerId
+    LEFT JOIN staging.Person USING Customer(PersonID BusinessEntityId)
+    WHERE year(sales.OrderDate)=2012),
+  sales2013 AS ( 
+    SELECT
+      Person.FirstName AS FirstName,
+      Person.LastName AS LastName,
+      sum(sales.subtotal) AS Amount2013
+    FROM staging.SalesOrderHeader sales
+    INNER JOIN staging.customer USING customerId
+    LEFT JOIN staging.Person USING Customer(PersonID BusinessEntityId)
+    WHERE year(sales.OrderDate)=2013)
+```
+
+  <b-button class="float-right btn" size="sm" v-b-modal.modal-30 style="background-color: #3eaf7c">Ver SQL compilado</b-button>
+
+  <b-modal id="modal-30" size="lg" title="Ver SQL compilado" :hide-footer="true" > 
+``` sql
+SELECT
+  coalesce(sales2012.FirstName,sales2013.FirstName) AS FirstName,
+  coalesce(sales2012.LastName,sales2013.LastName) AS LastName,
+  sales2012.Amount2012 AS Amount2012,
+  sales2013.Amount2013 AS Amount2013
+FROM 
+    (SELECT
+      Person.FirstName AS FirstName,
+      Person.LastName AS LastName,
+      sum(sales.subtotal) AS Amount2012
+    FROM staging.SalesOrderHeader sales
+    INNER JOIN staging.customer ON (sales.customerId=customer.customerId)
+    LEFT JOIN staging.Person ON (Customer.PersonID=Person.BusinessEntityId)
+    WHERE year(sales.OrderDate)=2012
+    GROUP BY
+      Person.FirstName,
+      Person.LastName) sales2012
+FULL JOIN 
+    (SELECT
+      Person.FirstName AS FirstName,
+      Person.LastName AS LastName,
+      sum(sales.subtotal) AS Amount2013
+    FROM staging.SalesOrderHeader sales
+    INNER JOIN staging.customer ON (sales.customerId=customer.customerId)
+    LEFT JOIN staging.Person ON (Customer.PersonID=Person.BusinessEntityId)
+    WHERE year(sales.OrderDate)=2013
+    GROUP BY
+      Person.FirstName,
+      Person.LastName) AS sales2013 ON (sales2012.FirstName=sales2013.FirstName AND sales2012.LastName=sales2013.LastName)
+
+```
+  </b-modal>
+
+  </div>
+</div>
+    
 
 Se pueden utilizar tablas distintas en cada consulta del **COMBINE**. En este ejemplo, se comparan las ventas y las compras por producto. El SQL generado combinará los resultados utilizando un **FULL JOIN**.
 
-<view-sql-code fileName="Combine2"/>
+<div class="mt-1 mb-2 row">
+  <div class="col-lg-12">
+
+``` sql
+COMBINE BY Product,ProductNumber
+  sales (
+	select 
+	  Product.Name Product,
+	  Product.ProductNumber ProductNumber,
+	  sum(PurchaseOrderDetail.LineTotal) Purchases
+	from staging.PurchaseOrderDetail
+	inner join staging.Product  using ProductId
+  ),
+  purchases (
+	select 
+	  Product.Name #Product,
+	  Product.ProductNumber #ProductNumber,
+	  sum(SalesOrderDetail.LineTotal) Sales
+	from staging.SalesOrderDetail
+	inner join staging.Product  using ProductId
+  )
+```
+
+  <b-button class="float-right btn" size="sm" v-b-modal.modal-31 style="background-color: #3eaf7c">Ver SQL compilado</b-button>
+
+  <b-modal id="modal-31" size="lg" title="Ver SQL compilado" :hide-footer="true" > 
+``` sql
+SELECT
+  coalesce(sales.Product,purchases.Product) AS Product,
+  coalesce(sales.ProductNumber,purchases.ProductNumber) AS ProductNumber,
+  sales.Purchases AS Purchases,
+  purchases.Sales AS Sales
+FROM 
+    (SELECT
+      Product.Name AS Product,
+      Product.ProductNumber AS ProductNumber,
+      sum(PurchaseOrderDetail.LineTotal) AS Purchases
+    FROM staging.PurchaseOrderDetail
+    INNER JOIN staging.Product ON (PurchaseOrderDetail.ProductId=Product.ProductId)
+    GROUP BY
+      Product.Name,
+      Product.ProductNumber) sales
+FULL JOIN 
+    (SELECT
+      Product.Name AS Product,
+      Product.ProductNumber AS ProductNumber,
+      sum(SalesOrderDetail.LineTotal) AS Sales
+    FROM staging.SalesOrderDetail
+    INNER JOIN staging.Product ON (SalesOrderDetail.ProductId=Product.ProductId)
+    GROUP BY
+      Product.Name,
+      Product.ProductNumber) AS purchases ON (sales.Product=purchases.Product AND sales.ProductNumber=purchases.ProductNumber)
+
+```
+  </b-modal>
+
+  </div>
+</div>
+
 
 ## MATERIALIZE
 
 La cláusula **MATERIALIZE** permite crear una tabla temporal con el contenido de una subconsulta. Es decir, antes de la ejecución de la consulta, se crean las tablas temporales necesarias y finalmente se ejecuta la consulta utilizando dichas tablas. Esta estrategia de carga simplifica el plan de ejecución del motor de base de datos y se pueden obtener mejoras de rendimiento muy significativas, sin penalizar o dificultar la escritura de la consulta.
 
-<view-sql-code fileName="Materialize1"/>
+<div class="mt-1 mb-2 row">
+  <div class="col-lg-12">
+
+``` sql
+SELECT
+  SalesOrderHeader.OrderDate,
+  Product.Name Product,
+  Product.ProductNumber,
+  sum(Sales.LineTotal) Sales
+FROM staging.SalesOrderDetail FILTER (year(ModifiedDate)=2014) MATERIALIZE Sales
+INNER JOIN staging.SalesOrderHeader USING SalesOrderId
+INNER JOIN staging.Product USING ProductId
+```
+
+  <b-button class="float-right btn" size="sm" v-b-modal.modal-32 style="background-color: #3eaf7c">Ver SQL compilado</b-button>
+
+  <b-modal id="modal-32" size="lg" title="Ver SQL compilado" :hide-footer="true" > 
+``` sql
+-- Materialized query: Sales
+SELECT *
+INTO #Sales__39872
+FROM (SELECT * FROM staging.SalesOrderDetail WHERE year(ModifiedDate)=2014) SalesOrderDetail
+
+SELECT
+  SalesOrderHeader.OrderDate AS OrderDate,
+  Product.Name AS Product,
+  Product.ProductNumber AS ProductNumber,
+  sum(Sales.LineTotal) AS Sales
+FROM #Sales__39872 Sales
+INNER JOIN staging.SalesOrderHeader ON (Sales.SalesOrderId=SalesOrderHeader.SalesOrderId)
+INNER JOIN staging.Product ON (Sales.ProductId=Product.ProductId)
+GROUP BY
+  SalesOrderHeader.OrderDate,
+  Product.Name,
+  Product.ProductNumber
+
+```
+  </b-modal>
+
+  </div>
+</div>
+
 
 
 Con la cláusula **MATERIALIZE**, también se pueden materializar las consultas de una sentencia **COMBINE**. En este ejemplo, primero se ejecutará la consulta con las ventas, luego se ejecutará una consulta con las compras, y finalmente se combinarán en un único resultado.
 
 
-<view-sql-code fileName="MaterializeCombine"/>
+<div class="mt-1 mb-2 row">
+  <div class="col-lg-12">
+
+``` sql
+COMBINE bY Product,productNumber
+  MATERIALIZE sales (
+	select 
+	  Product.Name Product,
+	  Product.ProductNumber ProductNumber,
+	  sum(PurchaseOrderDetail.LineTotal) Purchases
+	from staging.PurchaseOrderDetail
+	inner join staging.Product  using ProductId
+  ),
+  MATERIALIZE purchases (
+	select 
+	  Product.Name Product,
+	  Product.ProductNumber ProductNumber,
+	  sum(SalesOrderDetail.LineTotal) Sales
+	from staging.SalesOrderDetail
+	inner join staging.Product  using ProductId
+  )
+```
+
+  <b-button class="float-right btn" size="sm" v-b-modal.modal-33 style="background-color: #3eaf7c">Ver SQL compilado</b-button>
+
+  <b-modal id="modal-33" size="lg" title="Ver SQL compilado" :hide-footer="true" > 
+``` sql
+-- Materialized query: sales
+SELECT
+  Product.Name AS Product,
+  Product.ProductNumber AS ProductNumber,
+  sum(PurchaseOrderDetail.LineTotal) AS Purchases
+INTO #sales__D83E4
+FROM staging.PurchaseOrderDetail
+INNER JOIN staging.Product ON (PurchaseOrderDetail.ProductId=Product.ProductId)
+GROUP BY
+  Product.Name,
+  Product.ProductNumber
+
+-- Materialized query: purchases
+SELECT
+  Product.Name AS Product,
+  Product.ProductNumber AS ProductNumber,
+  sum(SalesOrderDetail.LineTotal) AS Sales
+INTO #purchases__1CD26
+FROM staging.SalesOrderDetail
+INNER JOIN staging.Product ON (SalesOrderDetail.ProductId=Product.ProductId)
+GROUP BY
+  Product.Name,
+  Product.ProductNumber
+
+SELECT
+  coalesce(sales.Product,purchases.Product) AS Product,
+  coalesce(sales.ProductNumber,purchases.ProductNumber) AS ProductNumber,
+  sales.Purchases AS Purchases,
+  purchases.Sales AS Sales
+FROM #sales__D83E4 sales
+FULL JOIN #purchases__1CD26 purchases ON (sales.Product=purchases.Product AND sales.ProductNumber=purchases.ProductNumber)
+
+```
+  </b-modal>
+
+  </div>
+</div>
+
 
 ## CAST automático
 
 Se puede forzar el tipo de datos resultante de una columna especificándolo justo después del alias de la columna. El SQL generado incluirá una llamada a la función **CAST**.
 
-<view-sql-code fileName="AutomaticCast"/>
+<div class="mt-1 mb-2 row">
+  <div class="col-lg-12">
+
+``` sql
+SELECT
+   year(sales.OrderDate)	OrderYear varchar(4),
+  Customer.CustomerId,
+  concat(CustomerPerson.FirstName,' ',CustomerPerson.LastName) AS Customer,
+  Upper(customer) UpperCustomer,
+  CustomerPerson.FirstName,
+  CustomerPerson.LastName,
+  sum(sales.subtotal) AS Amount,
+  count(*)		TicketsCount,
+  Amount/TicketsCount AvgTicket numeric(12,2)
+FROM staging.SalesOrderHeader sales
+INNER JOIN staging.customer USING CustomerId
+LEFT JOIN staging.Person CustomerPerson USING Customer(PersonID BusinessEntityId)
+WHERE OrderYear=2012
+```
+
+  <b-button class="float-right btn" size="sm" v-b-modal.modal-34 style="background-color: #3eaf7c">Ver SQL compilado</b-button>
+
+  <b-modal id="modal-34" size="lg" title="Ver SQL compilado" :hide-footer="true" > 
+``` sql
+SELECT
+  cast(year(sales.OrderDate) AS varchar(4)) AS OrderYear,
+  Customer.CustomerId AS CustomerId,
+  concat(CustomerPerson.FirstName,' ',CustomerPerson.LastName) AS Customer,
+  Upper(concat(CustomerPerson.FirstName,' ',CustomerPerson.LastName)) AS UpperCustomer,
+  CustomerPerson.FirstName AS FirstName,
+  CustomerPerson.LastName AS LastName,
+  sum(sales.subtotal) AS Amount,
+  count(*) AS TicketsCount,
+  cast(sum(sales.subtotal)/count(*) AS numeric(12,2)) AS AvgTicket
+FROM staging.SalesOrderHeader sales
+INNER JOIN staging.customer ON (sales.CustomerId=customer.CustomerId)
+LEFT JOIN staging.Person CustomerPerson ON (Customer.PersonID=CustomerPerson.BusinessEntityId)
+WHERE cast(year(sales.OrderDate) AS varchar(4))=2012
+GROUP BY
+  year(sales.OrderDate),
+  Customer.CustomerId,
+  concat(CustomerPerson.FirstName,' ',CustomerPerson.LastName),
+  Upper(concat(CustomerPerson.FirstName,' ',CustomerPerson.LastName)),
+  CustomerPerson.FirstName,
+  CustomerPerson.LastName
+
+```
+  </b-modal>
+
+  </div>
+</div>
+
 
 ## SELECTs anidados
 
@@ -247,13 +1693,97 @@ Es posible incluir varios **SELECT** en una misma consulta. Esta sintaxis permit
 Este consulta devuelve la media de las ventas anuales de cada producto.
 
 
-<view-sql-code fileName="NestedSelects1"/>
+<div class="mt-1 mb-2 row">
+  <div class="col-lg-12">
+
+``` sql
+select
+  Product,
+  ProductNumber,
+  avg(Sales) AvgYearSales
+select 
+  Product.Name Product,
+  Product.ProductNumber,
+  year(OrderDate) OrderYear,
+  sum(SalesOrderDetail.LineTotal) Sales
+from staging.SalesOrderDetail
+inner join staging.SalesOrderHeader using SalesOrderId
+inner join staging.Product  using ProductId
+```
+
+  <b-button class="float-right btn" size="sm" v-b-modal.modal-35 style="background-color: #3eaf7c">Ver SQL compilado</b-button>
+
+  <b-modal id="modal-35" size="lg" title="Ver SQL compilado" :hide-footer="true" > 
+``` sql
+SELECT
+  Product,
+  ProductNumber,
+  avg(Sales) AS AvgYearSales
+FROM (
+    SELECT
+      Product.Name AS Product,
+      Product.ProductNumber AS ProductNumber,
+      year(OrderDate) AS OrderYear,
+      sum(SalesOrderDetail.LineTotal) AS Sales
+    FROM staging.SalesOrderDetail
+    INNER JOIN staging.SalesOrderHeader ON (SalesOrderDetail.SalesOrderId=SalesOrderHeader.SalesOrderId)
+    INNER JOIN staging.Product ON (SalesOrderDetail.ProductId=Product.ProductId)
+    GROUP BY
+      Product.Name,
+      Product.ProductNumber,
+      year(OrderDate)
+  ) a
+GROUP BY
+  Product,
+  ProductNumber
+
+```
+  </b-modal>
+
+  </div>
+</div>
+
 
 
 La cláusulas **SELECT** encadenadas permiten, por ejemplo, contar el número de registros que devuelve una consulta previa. La siguiente consulta ejecuta un **count(\*)** sobre el resultado de la consulta inferior.
 
 
-<view-sql-code fileName="NestedSelects2"/>
+<div class="mt-1 mb-2 row">
+  <div class="col-lg-12">
+
+``` sql
+SELECT count(*)
+SELECT
+  Product.Name Product,
+  Product.ProductNumber,
+  sum(SalesOrderDetail.LineTotal) Sales
+FROM staging.SalesOrderDetail
+INNER JOIN staging.Product USING ProductId
+```
+
+  <b-button class="float-right btn" size="sm" v-b-modal.modal-36 style="background-color: #3eaf7c">Ver SQL compilado</b-button>
+
+  <b-modal id="modal-36" size="lg" title="Ver SQL compilado" :hide-footer="true" > 
+``` sql
+SELECT count(*) AS expr1
+FROM (
+    SELECT
+      Product.Name AS Product,
+      Product.ProductNumber AS ProductNumber,
+      sum(SalesOrderDetail.LineTotal) AS Sales
+    FROM staging.SalesOrderDetail
+    INNER JOIN staging.Product ON (SalesOrderDetail.ProductId=Product.ProductId)
+    GROUP BY
+      Product.Name,
+      Product.ProductNumber
+  ) a
+
+```
+  </b-modal>
+
+  </div>
+</div>
+
 
 ## Resumen
 

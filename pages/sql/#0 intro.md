@@ -50,7 +50,30 @@ El siguiente ejemplo muestra todo lo anterior con más detalle. Incluye práctic
 
 Este manual asume que se tienen al menos conocimientos básicos de SQL.
 
-<view-sql-code fileName="ConceptDemo1"/>
+``` CronoSqlSample
+CREATE OR REPLACE PROCEDURE
+MERGE CLONE dwh.FactSalesOrderDetails(SalesOrderDetailSid)
+SELECT
+	SalesOrderDetail.SalesOrderDetailID #SalesOrderDetailID,
+	DimProducts.ProductSid						ProductSid	NONUNIQUE REFERENCES dwh.DimProducts,
+	FactSalesOrderHeader.SalesOrderSid			SalesOrderSid NONUNIQUE	REFERENCES dwh.FactSalesOrderHeader,
+	SalesOrderDetail.CarrierTrackingNumber,
+	SalesOrderDetail.OrderQty,
+	SalesOrderDetail.UnitPrice,
+	SalesOrderDetail.UnitPriceDiscount,
+	SalesOrderDetail.LineTotal,
+	SpecialOffer.Description SpecialOffer,
+	SpecialOffer.Type			SpecialOfferType,
+	SpecialOffer.Category		SpecialOfferCategory,
+from @@erp.SalesOrderDetail SalesOrderDetail
+inner join @@erp.SalesOrderHeader using (SalesOrderID)  
+inner join @@erp.SpecialOffer using (SpecialOfferID)
+inner join @@erp.Product using (ProductID)
+inner join dwh.DimProducts using Product(ProductID)
+inner join dwh.FactSalesOrderHeader using SalesOrderHeader(SalesOrderID)
+check snowflake
+```
+
 
 Estas 21 líneas de código hacen todo lo siguiente:
 
@@ -74,7 +97,28 @@ Aunque lo anterior ya es una gran ventaja respecto al código **SQL ANSI**, el m
 El siguiente código permite comparar la facilidad y legibilidad del código **Crono SQL** frente al código **SQL** estándar.
 
 
-<view-sql-code fileName="ConceptDemo2"/>
+``` CronoSqlSample
+MERGE CLONE dwh.FactSalesOrderDetails(SalesOrderDetailSid)
+SELECT
+	SalesOrderDetail.SalesOrderDetailID #SalesOrderDetailID,
+	DimProducts.ProductSid						ProductSid	NONUNIQUE REFERENCES dwh.DimProducts,
+	FactSalesOrderHeader.SalesOrderSid			SalesOrderSid NONUNIQUE	REFERENCES dwh.FactSalesOrderHeader,
+	SalesOrderDetail.CarrierTrackingNumber,
+	SalesOrderDetail.OrderQty,
+	SalesOrderDetail.UnitPrice,
+	SalesOrderDetail.UnitPriceDiscount,
+	SalesOrderDetail.LineTotal,
+	SpecialOffer.Description SpecialOffer,
+	SpecialOffer.Type			SpecialOfferType,
+	SpecialOffer.Category		SpecialOfferCategory,
+from @@erp.SalesOrderDetail SalesOrderDetail
+inner join @@erp.SalesOrderHeader using (SalesOrderID)  
+inner join @@erp.SpecialOffer using (SpecialOfferID)
+inner join @@erp.Product using (ProductID)
+inner join dwh.DimProducts using Product(ProductID)
+inner join dwh.FactSalesOrderHeader using SalesOrderHeader(SalesOrderID)
+```
+
 
 Además, el código generado es óptimo. Es imposible cargar esta tabla de una manera más rápida o eficiente. Con ninguna otra herramienta es posible cargar estos mismos datos más rápidamente.
 

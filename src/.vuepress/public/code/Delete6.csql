@@ -1,4 +1,0 @@
-﻿DELETE dwh.DimCustomers
-SELECT #customerSid
-FROM dwh.DimCustomers
-ANTI JOIN dwh.FactSalesOrderHeader USING CustomerSid

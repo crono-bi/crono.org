@@ -9,4 +9,31 @@ Se puede utilizar el operador **UNPIVOT** (según la [sintaxis de T-SQL](https:/
 
 En este ejemplo, las columna *“AddressLine1”*  y *“AddressLine2”* se han convertido en filas diferenciadas, duplicándose los registros.
 
-<view-sql-code fileName="Unpivot"/>
+<div class="mt-1 mb-2 row">
+  <div class="col-lg-12">
+
+``` sql
+SELECT
+  AddressId,
+  AddressItem,
+  content
+FROM staging.Address
+UNPIVOT (content FOR AddressItem in (AddressLine1,AddressLine2)) as unpvt
+```
+
+  <b-button class="float-right btn" size="sm" v-b-modal.modal-1 style="background-color: #3eaf7c">Ver SQL compilado</b-button>
+
+  <b-modal id="modal-1" size="lg" title="Ver SQL compilado" :hide-footer="true" > 
+``` sql
+SELECT
+  AddressId,
+  AddressItem,
+  content
+FROM staging.Address
+UNPIVOT (content FOR AddressItem IN (AddressLine1,AddressLine2)) unpvt
+
+```
+  </b-modal>
+
+  </div>
+</div>

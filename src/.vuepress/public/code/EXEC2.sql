@@ -1,1 +1,0 @@
-﻿EXECUTE [LOAD dwh.DimProducts];

@@ -1,7 +1,0 @@
-﻿SELECT count(*)
-SELECT
-  Product.Name Product,
-  Product.ProductNumber,
-  sum(SalesOrderDetail.LineTotal) Sales
-FROM staging.SalesOrderDetail
-INNER JOIN staging.Product USING ProductId

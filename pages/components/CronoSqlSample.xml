@@ -1,0 +1,19 @@
+
+
+<div class="mt-1 mb-2 row">
+  <div class="col-lg-12">
+
+``` sql
+$SLOT$
+```
+
+  <b-button class="float-right btn" size="sm" v-b-modal.modal-$MATCH$ style="background-color: #3eaf7c">Ver SQL compilado</b-button>
+
+  <b-modal id="modal-$MATCH$" size="lg" title="Ver SQL compilado" :hide-footer="true" > 
+``` sql
+$SLOT-TRANSPILE$
+```
+  </b-modal>
+
+  </div>
+</div>

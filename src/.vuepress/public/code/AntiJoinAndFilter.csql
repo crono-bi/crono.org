@@ -1,3 +1,0 @@
-﻿select *
-FROM staging.Person
-ANTI JOIN staging.BusinessEntityAddress FILTER (AddressTypeId=2) BEHomeAddress using BusinessEntityId

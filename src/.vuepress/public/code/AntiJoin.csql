@@ -1,3 +1,0 @@
-﻿select *
-FROM staging.customer 
-ANTI JOIN staging.SalesOrderHeader sales using customerId

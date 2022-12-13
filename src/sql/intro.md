@@ -52,7 +52,142 @@ El siguiente ejemplo muestra todo lo anterior con más detalle. Incluye práctic
 
 Este manual asume que se tienen al menos conocimientos básicos de SQL.
 
-<view-sql-code fileName="ConceptDemo1"/>
+<div class="mt-1 mb-2 row">
+  <div class="col-lg-12">
+
+``` sql
+CREATE OR REPLACE PROCEDURE
+MERGE CLONE dwh.FactSalesOrderDetails(SalesOrderDetailSid)
+SELECT
+	SalesOrderDetail.SalesOrderDetailID #SalesOrderDetailID,
+	DimProducts.ProductSid						ProductSid	NONUNIQUE REFERENCES dwh.DimProducts,
+	FactSalesOrderHeader.SalesOrderSid			SalesOrderSid NONUNIQUE	REFERENCES dwh.FactSalesOrderHeader,
+	SalesOrderDetail.CarrierTrackingNumber,
+	SalesOrderDetail.OrderQty,
+	SalesOrderDetail.UnitPrice,
+	SalesOrderDetail.UnitPriceDiscount,
+	SalesOrderDetail.LineTotal,
+	SpecialOffer.Description SpecialOffer,
+	SpecialOffer.Type			SpecialOfferType,
+	SpecialOffer.Category		SpecialOfferCategory,
+from @@erp.SalesOrderDetail SalesOrderDetail
+inner join @@erp.SalesOrderHeader using (SalesOrderID)  
+inner join @@erp.SpecialOffer using (SpecialOfferID)
+inner join @@erp.Product using (ProductID)
+inner join dwh.DimProducts using Product(ProductID)
+inner join dwh.FactSalesOrderHeader using SalesOrderHeader(SalesOrderID)
+check snowflake
+```
+
+  <b-button class="float-right btn" size="sm" v-b-modal.modal-1 style="background-color: #3eaf7c">Ver SQL compilado</b-button>
+
+  <b-modal id="modal-1" size="lg" title="Ver SQL compilado" :hide-footer="true" > 
+``` sql
+IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.ROUTINES WHERE ROUTINE_NAME='LOAD dwh.FactSalesOrderDetails' AND ROUTINE_TYPE='PROCEDURE')
+DROP PROCEDURE [LOAD dwh.FactSalesOrderDetails];
+
+CREATE PROCEDURE [LOAD dwh.FactSalesOrderDetails] AS
+BEGIN
+
+  IF EXISTS (
+    SELECT count(*)
+    FROM @@erp.SalesOrderDetail
+    LEFT JOIN @@erp.SalesOrderHeader ON (SalesOrderDetail.SalesOrderID=SalesOrderHeader.SalesOrderID)
+    LEFT JOIN @@erp.SpecialOffer ON (SalesOrderDetail.SpecialOfferID=SpecialOffer.SpecialOfferID)
+    LEFT JOIN @@erp.Product ON (SalesOrderDetail.ProductID=Product.ProductID)
+    LEFT JOIN dwh.DimProducts ON (Product.ProductID=DimProducts.ProductID)
+    LEFT JOIN dwh.FactSalesOrderHeader ON (SalesOrderHeader.SalesOrderID=FactSalesOrderHeader.SalesOrderID)
+    HAVING count(CASE WHEN SalesOrderHeader.SalesOrderID IS NOT NULL AND SpecialOffer.SpecialOfferID IS NOT NULL AND Product.ProductID IS NOT NULL AND DimProducts.ProductID IS NOT NULL AND FactSalesOrderHeader.SalesOrderID IS NOT NULL THEN 1 END) <> (SELECT count(*) FROM @@erp.SalesOrderDetail)
+  ) THROW 50001,'Las relaciones de esta consulta pierden o duplican registros de SalesOrderDetail.',1
+  
+  ;WITH
+  query AS (
+    SELECT
+      SalesOrderDetail.SalesOrderDetailID AS SalesOrderDetailID,
+      DimProducts.ProductSid AS ProductSid,
+      FactSalesOrderHeader.SalesOrderSid AS SalesOrderSid,
+      SalesOrderDetail.CarrierTrackingNumber AS CarrierTrackingNumber,
+      SalesOrderDetail.OrderQty AS OrderQty,
+      SalesOrderDetail.UnitPrice AS UnitPrice,
+      SalesOrderDetail.UnitPriceDiscount AS UnitPriceDiscount,
+      SalesOrderDetail.LineTotal AS LineTotal,
+      SpecialOffer.Description AS SpecialOffer,
+      SpecialOffer.Type AS SpecialOfferType,
+      SpecialOffer.Category AS SpecialOfferCategory
+    FROM @@erp.SalesOrderDetail
+    INNER JOIN @@erp.SalesOrderHeader ON (SalesOrderDetail.SalesOrderID=SalesOrderHeader.SalesOrderID)
+    INNER JOIN @@erp.SpecialOffer ON (SalesOrderDetail.SpecialOfferID=SpecialOffer.SpecialOfferID)
+    INNER JOIN @@erp.Product ON (SalesOrderDetail.ProductID=Product.ProductID)
+    INNER JOIN dwh.DimProducts ON (Product.ProductID=DimProducts.ProductID)
+    INNER JOIN dwh.FactSalesOrderHeader ON (SalesOrderHeader.SalesOrderID=FactSalesOrderHeader.SalesOrderID)
+  )
+  MERGE dwh.FactSalesOrderDetails AS FactSalesOrderDetails
+  USING query ON query.SalesOrderDetailID=FactSalesOrderDetails.SalesOrderDetailID
+  WHEN MATCHED AND ((FactSalesOrderDetails.ProductSid<>query.ProductSid OR (FactSalesOrderDetails.ProductSid IS NULL AND query.ProductSid IS NOT NULL) OR  (FactSalesOrderDetails.ProductSid IS NOT NULL AND query.ProductSid IS NULL)
+                    OR FactSalesOrderDetails.SalesOrderSid<>query.SalesOrderSid OR (FactSalesOrderDetails.SalesOrderSid IS NULL AND query.SalesOrderSid IS NOT NULL) OR  (FactSalesOrderDetails.SalesOrderSid IS NOT NULL AND query.SalesOrderSid IS NULL)
+                    OR FactSalesOrderDetails.CarrierTrackingNumber<>query.CarrierTrackingNumber OR (FactSalesOrderDetails.CarrierTrackingNumber IS NULL AND query.CarrierTrackingNumber IS NOT NULL) OR  (FactSalesOrderDetails.CarrierTrackingNumber IS NOT NULL AND query.CarrierTrackingNumber IS NULL)
+                    OR FactSalesOrderDetails.OrderQty<>query.OrderQty OR (FactSalesOrderDetails.OrderQty IS NULL AND query.OrderQty IS NOT NULL) OR  (FactSalesOrderDetails.OrderQty IS NOT NULL AND query.OrderQty IS NULL)
+                    OR FactSalesOrderDetails.UnitPrice<>query.UnitPrice OR (FactSalesOrderDetails.UnitPrice IS NULL AND query.UnitPrice IS NOT NULL) OR  (FactSalesOrderDetails.UnitPrice IS NOT NULL AND query.UnitPrice IS NULL)
+                    OR FactSalesOrderDetails.UnitPriceDiscount<>query.UnitPriceDiscount OR (FactSalesOrderDetails.UnitPriceDiscount IS NULL AND query.UnitPriceDiscount IS NOT NULL) OR  (FactSalesOrderDetails.UnitPriceDiscount IS NOT NULL AND query.UnitPriceDiscount IS NULL)
+                    OR FactSalesOrderDetails.LineTotal<>query.LineTotal OR (FactSalesOrderDetails.LineTotal IS NULL AND query.LineTotal IS NOT NULL) OR  (FactSalesOrderDetails.LineTotal IS NOT NULL AND query.LineTotal IS NULL)
+                    OR FactSalesOrderDetails.SpecialOffer<>query.SpecialOffer OR (FactSalesOrderDetails.SpecialOffer IS NULL AND query.SpecialOffer IS NOT NULL) OR  (FactSalesOrderDetails.SpecialOffer IS NOT NULL AND query.SpecialOffer IS NULL)
+                    OR FactSalesOrderDetails.SpecialOfferType<>query.SpecialOfferType OR (FactSalesOrderDetails.SpecialOfferType IS NULL AND query.SpecialOfferType IS NOT NULL) OR  (FactSalesOrderDetails.SpecialOfferType IS NOT NULL AND query.SpecialOfferType IS NULL)
+                    OR FactSalesOrderDetails.SpecialOfferCategory<>query.SpecialOfferCategory OR (FactSalesOrderDetails.SpecialOfferCategory IS NULL AND query.SpecialOfferCategory IS NOT NULL) OR  (FactSalesOrderDetails.SpecialOfferCategory IS NOT NULL AND query.SpecialOfferCategory IS NULL))) THEN
+    UPDATE SET
+      ProductSid=query.ProductSid,
+      SalesOrderSid=query.SalesOrderSid,
+      CarrierTrackingNumber=query.CarrierTrackingNumber,
+      OrderQty=query.OrderQty,
+      UnitPrice=query.UnitPrice,
+      UnitPriceDiscount=query.UnitPriceDiscount,
+      LineTotal=query.LineTotal,
+      SpecialOffer=query.SpecialOffer,
+      SpecialOfferType=query.SpecialOfferType,
+      SpecialOfferCategory=query.SpecialOfferCategory
+  WHEN NOT MATCHED THEN
+    INSERT (SalesOrderDetailID,ProductSid,SalesOrderSid,CarrierTrackingNumber,OrderQty,UnitPrice,UnitPriceDiscount,LineTotal,SpecialOffer,SpecialOfferType,SpecialOfferCategory) VALUES (
+      query.SalesOrderDetailID,
+      query.ProductSid,
+      query.SalesOrderSid,
+      query.CarrierTrackingNumber,
+      query.OrderQty,
+      query.UnitPrice,
+      query.UnitPriceDiscount,
+      query.LineTotal,
+      query.SpecialOffer,
+      query.SpecialOfferType,
+      query.SpecialOfferCategory)
+  WHEN NOT MATCHED BY SOURCE THEN
+    DELETE;
+  
+  DECLARE @LastExecutedDate datetime=getdate();
+  
+  IF EXISTS (SELECT p.Name AS Name FROM sys.extended_properties p INNER JOIN sys.all_objects sp ON (p.major_id=sp.object_id) WHERE p.minor_id=0 AND p.class=1 AND SCHEMA_NAME(sp.schema_id)='dbo' AND sp.name='LOAD dwh.FactSalesOrderDetails' AND p.Name='LastExecutedDate')
+  EXEC sys.sp_dropextendedproperty @level0type = 'SCHEMA',  @level0name = 'dbo',    @level1type = 'PROCEDURE', @level1name = 'LOAD dwh.FactSalesOrderDetails', @name = 'LastExecutedDate'
+  
+  EXEC sys.sp_addextendedproperty @level0type = 'SCHEMA',  @level0name = 'dbo',    @level1type = 'PROCEDURE', @level1name = 'LOAD dwh.FactSalesOrderDetails', @name = 'LastExecutedDate', @value=@LastExecutedDate
+  
+
+END
+
+EXEC sys.sp_addextendedproperty @level0type = 'SCHEMA',  @level0name = 'dbo',    @level1type = 'PROCEDURE', @level1name = 'LOAD dwh.FactSalesOrderDetails', @name = 'Hash', @value='D3B7FDA0D66B341F12BE2E5226A5E1FC'
+
+EXEC sys.sp_addextendedproperty @level0type = 'SCHEMA',  @level0name = 'dbo',    @level1type = 'PROCEDURE', @level1name = 'LOAD dwh.FactSalesOrderDetails', @name = 'UserName', @value='SELVA\pauur'
+
+EXEC sys.sp_addextendedproperty @level0type = 'SCHEMA',  @level0name = 'dbo',    @level1type = 'PROCEDURE', @level1name = 'LOAD dwh.FactSalesOrderDetails', @name = 'CronoVersion', @value='Crono SQL 22.50.1000.0'
+
+EXEC sys.sp_addextendedproperty @level0type = 'SCHEMA',  @level0name = 'dbo',    @level1type = 'PROCEDURE', @level1name = 'LOAD dwh.FactSalesOrderDetails', @name = 'LoadType', @value='Clone'
+
+EXEC sys.sp_addextendedproperty @level0type = 'SCHEMA',  @level0name = 'dbo',    @level1type = 'PROCEDURE', @level1name = 'LOAD dwh.FactSalesOrderDetails', @name = 'TableName', @value='FactSalesOrderDetails'
+
+EXEC sys.sp_addextendedproperty @level0type = 'SCHEMA',  @level0name = 'dbo',    @level1type = 'PROCEDURE', @level1name = 'LOAD dwh.FactSalesOrderDetails', @name = 'SchemaTableName', @value='dwh'
+
+```
+  </b-modal>
+
+  </div>
+</div>
+
 
 Estas 21 líneas de código hacen todo lo siguiente:
 
@@ -76,7 +211,101 @@ Aunque lo anterior ya es una gran ventaja respecto al código **SQL ANSI**, el m
 El siguiente código permite comparar la facilidad y legibilidad del código **Crono SQL** frente al código **SQL** estándar.
 
 
-<view-sql-code fileName="ConceptDemo2"/>
+<div class="mt-1 mb-2 row">
+  <div class="col-lg-12">
+
+``` sql
+MERGE CLONE dwh.FactSalesOrderDetails(SalesOrderDetailSid)
+SELECT
+	SalesOrderDetail.SalesOrderDetailID #SalesOrderDetailID,
+	DimProducts.ProductSid						ProductSid	NONUNIQUE REFERENCES dwh.DimProducts,
+	FactSalesOrderHeader.SalesOrderSid			SalesOrderSid NONUNIQUE	REFERENCES dwh.FactSalesOrderHeader,
+	SalesOrderDetail.CarrierTrackingNumber,
+	SalesOrderDetail.OrderQty,
+	SalesOrderDetail.UnitPrice,
+	SalesOrderDetail.UnitPriceDiscount,
+	SalesOrderDetail.LineTotal,
+	SpecialOffer.Description SpecialOffer,
+	SpecialOffer.Type			SpecialOfferType,
+	SpecialOffer.Category		SpecialOfferCategory,
+from @@erp.SalesOrderDetail SalesOrderDetail
+inner join @@erp.SalesOrderHeader using (SalesOrderID)  
+inner join @@erp.SpecialOffer using (SpecialOfferID)
+inner join @@erp.Product using (ProductID)
+inner join dwh.DimProducts using Product(ProductID)
+inner join dwh.FactSalesOrderHeader using SalesOrderHeader(SalesOrderID)
+```
+
+  <b-button class="float-right btn" size="sm" v-b-modal.modal-2 style="background-color: #3eaf7c">Ver SQL compilado</b-button>
+
+  <b-modal id="modal-2" size="lg" title="Ver SQL compilado" :hide-footer="true" > 
+``` sql
+;WITH
+query AS (
+  SELECT
+    SalesOrderDetail.SalesOrderDetailID AS SalesOrderDetailID,
+    DimProducts.ProductSid AS ProductSid,
+    FactSalesOrderHeader.SalesOrderSid AS SalesOrderSid,
+    SalesOrderDetail.CarrierTrackingNumber AS CarrierTrackingNumber,
+    SalesOrderDetail.OrderQty AS OrderQty,
+    SalesOrderDetail.UnitPrice AS UnitPrice,
+    SalesOrderDetail.UnitPriceDiscount AS UnitPriceDiscount,
+    SalesOrderDetail.LineTotal AS LineTotal,
+    SpecialOffer.Description AS SpecialOffer,
+    SpecialOffer.Type AS SpecialOfferType,
+    SpecialOffer.Category AS SpecialOfferCategory
+  FROM @@erp.SalesOrderDetail
+  INNER JOIN @@erp.SalesOrderHeader ON (SalesOrderDetail.SalesOrderID=SalesOrderHeader.SalesOrderID)
+  INNER JOIN @@erp.SpecialOffer ON (SalesOrderDetail.SpecialOfferID=SpecialOffer.SpecialOfferID)
+  INNER JOIN @@erp.Product ON (SalesOrderDetail.ProductID=Product.ProductID)
+  INNER JOIN dwh.DimProducts ON (Product.ProductID=DimProducts.ProductID)
+  INNER JOIN dwh.FactSalesOrderHeader ON (SalesOrderHeader.SalesOrderID=FactSalesOrderHeader.SalesOrderID)
+)
+MERGE dwh.FactSalesOrderDetails AS FactSalesOrderDetails
+USING query ON query.SalesOrderDetailID=FactSalesOrderDetails.SalesOrderDetailID
+WHEN MATCHED AND ((FactSalesOrderDetails.ProductSid<>query.ProductSid OR (FactSalesOrderDetails.ProductSid IS NULL AND query.ProductSid IS NOT NULL) OR  (FactSalesOrderDetails.ProductSid IS NOT NULL AND query.ProductSid IS NULL)
+                  OR FactSalesOrderDetails.SalesOrderSid<>query.SalesOrderSid OR (FactSalesOrderDetails.SalesOrderSid IS NULL AND query.SalesOrderSid IS NOT NULL) OR  (FactSalesOrderDetails.SalesOrderSid IS NOT NULL AND query.SalesOrderSid IS NULL)
+                  OR FactSalesOrderDetails.CarrierTrackingNumber<>query.CarrierTrackingNumber OR (FactSalesOrderDetails.CarrierTrackingNumber IS NULL AND query.CarrierTrackingNumber IS NOT NULL) OR  (FactSalesOrderDetails.CarrierTrackingNumber IS NOT NULL AND query.CarrierTrackingNumber IS NULL)
+                  OR FactSalesOrderDetails.OrderQty<>query.OrderQty OR (FactSalesOrderDetails.OrderQty IS NULL AND query.OrderQty IS NOT NULL) OR  (FactSalesOrderDetails.OrderQty IS NOT NULL AND query.OrderQty IS NULL)
+                  OR FactSalesOrderDetails.UnitPrice<>query.UnitPrice OR (FactSalesOrderDetails.UnitPrice IS NULL AND query.UnitPrice IS NOT NULL) OR  (FactSalesOrderDetails.UnitPrice IS NOT NULL AND query.UnitPrice IS NULL)
+                  OR FactSalesOrderDetails.UnitPriceDiscount<>query.UnitPriceDiscount OR (FactSalesOrderDetails.UnitPriceDiscount IS NULL AND query.UnitPriceDiscount IS NOT NULL) OR  (FactSalesOrderDetails.UnitPriceDiscount IS NOT NULL AND query.UnitPriceDiscount IS NULL)
+                  OR FactSalesOrderDetails.LineTotal<>query.LineTotal OR (FactSalesOrderDetails.LineTotal IS NULL AND query.LineTotal IS NOT NULL) OR  (FactSalesOrderDetails.LineTotal IS NOT NULL AND query.LineTotal IS NULL)
+                  OR FactSalesOrderDetails.SpecialOffer<>query.SpecialOffer OR (FactSalesOrderDetails.SpecialOffer IS NULL AND query.SpecialOffer IS NOT NULL) OR  (FactSalesOrderDetails.SpecialOffer IS NOT NULL AND query.SpecialOffer IS NULL)
+                  OR FactSalesOrderDetails.SpecialOfferType<>query.SpecialOfferType OR (FactSalesOrderDetails.SpecialOfferType IS NULL AND query.SpecialOfferType IS NOT NULL) OR  (FactSalesOrderDetails.SpecialOfferType IS NOT NULL AND query.SpecialOfferType IS NULL)
+                  OR FactSalesOrderDetails.SpecialOfferCategory<>query.SpecialOfferCategory OR (FactSalesOrderDetails.SpecialOfferCategory IS NULL AND query.SpecialOfferCategory IS NOT NULL) OR  (FactSalesOrderDetails.SpecialOfferCategory IS NOT NULL AND query.SpecialOfferCategory IS NULL))) THEN
+  UPDATE SET
+    ProductSid=query.ProductSid,
+    SalesOrderSid=query.SalesOrderSid,
+    CarrierTrackingNumber=query.CarrierTrackingNumber,
+    OrderQty=query.OrderQty,
+    UnitPrice=query.UnitPrice,
+    UnitPriceDiscount=query.UnitPriceDiscount,
+    LineTotal=query.LineTotal,
+    SpecialOffer=query.SpecialOffer,
+    SpecialOfferType=query.SpecialOfferType,
+    SpecialOfferCategory=query.SpecialOfferCategory
+WHEN NOT MATCHED THEN
+  INSERT (SalesOrderDetailID,ProductSid,SalesOrderSid,CarrierTrackingNumber,OrderQty,UnitPrice,UnitPriceDiscount,LineTotal,SpecialOffer,SpecialOfferType,SpecialOfferCategory) VALUES (
+    query.SalesOrderDetailID,
+    query.ProductSid,
+    query.SalesOrderSid,
+    query.CarrierTrackingNumber,
+    query.OrderQty,
+    query.UnitPrice,
+    query.UnitPriceDiscount,
+    query.LineTotal,
+    query.SpecialOffer,
+    query.SpecialOfferType,
+    query.SpecialOfferCategory)
+WHEN NOT MATCHED BY SOURCE THEN
+  DELETE;
+
+```
+  </b-modal>
+
+  </div>
+</div>
+
 
 Además, el código generado es óptimo. Es imposible cargar esta tabla de una manera más rápida o eficiente. Con ninguna otra herramienta es posible cargar estos mismos datos más rápidamente.
 

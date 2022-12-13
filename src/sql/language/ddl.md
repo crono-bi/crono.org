@@ -23,21 +23,560 @@ En este artículo se describe, mediante ejemplos, la sintaxis de:
 
 **Crono SQL** admite la sintaxis estándar de SQL para crear procedimientos almacenados:
 
-<view-sql-code fileName="CREATE-PROCEDURE1"/>
+<div class="mt-1 mb-2 row">
+  <div class="col-lg-12">
+
+``` sql
+CREATE PROCEDURE dbo.[cargar productos]
+BEGIN
+  
+  MERGE CLONE dwh.DimProducts(ProductSid)
+  SELECT
+    #ProductID,
+    Product.Name			Product,
+    ProductCategory.name 	ProductCategory,
+    ProductSubCategory.name ProductSubCategory,
+    ProductNumber,
+    ProductModel.name 		ProductModel,
+    Color,
+    StandardCost,
+    ListPrice,
+    Size,
+    SizeUnitMeasureCode,
+    Weight
+  FROM staging.Product
+  LEFT JOIN staging.ProductSubCategory using Product(ProductSubcategoryID)
+  LEFT JOIN staging.ProductCategory using ProductSubCategory(ProductCategoryId)
+  LEFT JOIN staging.ProductModel using Product(ProductModelID)
+  CHECK SNOWFLAKE
+  
+
+  PRINT 'Se ha cargado la tabla DimProducts'; 
+
+END
+```
+
+  <b-button class="float-right btn" size="sm" v-b-modal.modal-1 style="background-color: #3eaf7c">Ver SQL compilado</b-button>
+
+  <b-modal id="modal-1" size="lg" title="Ver SQL compilado" :hide-footer="true" > 
+``` sql
+CREATE PROCEDURE dbo.[cargar productos] AS
+BEGIN
+
+  IF EXISTS (
+    SELECT count(*)
+    FROM staging.Product
+    LEFT JOIN staging.ProductSubCategory ON (Product.ProductSubcategoryID=ProductSubCategory.ProductSubcategoryID)
+    LEFT JOIN staging.ProductCategory ON (ProductSubCategory.ProductCategoryId=ProductCategory.ProductCategoryId)
+    LEFT JOIN staging.ProductModel ON (Product.ProductModelID=ProductModel.ProductModelID)
+    HAVING count(*) <> (SELECT count(*) FROM staging.Product)
+  ) THROW 50001,'Las relaciones de esta consulta pierden o duplican registros de Product.',1
+  
+  ;WITH
+  query AS (
+    SELECT
+      ProductID,
+      Product.Name AS Product,
+      ProductCategory.name AS ProductCategory,
+      ProductSubCategory.name AS ProductSubCategory,
+      ProductNumber,
+      ProductModel.name AS ProductModel,
+      Color,
+      StandardCost,
+      ListPrice,
+      Size,
+      SizeUnitMeasureCode,
+      Weight
+    FROM staging.Product
+    LEFT JOIN staging.ProductSubCategory ON (Product.ProductSubcategoryID=ProductSubCategory.ProductSubcategoryID)
+    LEFT JOIN staging.ProductCategory ON (ProductSubCategory.ProductCategoryId=ProductCategory.ProductCategoryId)
+    LEFT JOIN staging.ProductModel ON (Product.ProductModelID=ProductModel.ProductModelID)
+  )
+  MERGE dwh.DimProducts AS DimProducts
+  USING query ON query.ProductID=DimProducts.ProductID
+  WHEN MATCHED AND ((DimProducts.Product<>query.Product OR (DimProducts.Product IS NULL AND query.Product IS NOT NULL) OR  (DimProducts.Product IS NOT NULL AND query.Product IS NULL)
+                    OR DimProducts.ProductCategory<>query.ProductCategory OR (DimProducts.ProductCategory IS NULL AND query.ProductCategory IS NOT NULL) OR  (DimProducts.ProductCategory IS NOT NULL AND query.ProductCategory IS NULL)
+                    OR DimProducts.ProductSubCategory<>query.ProductSubCategory OR (DimProducts.ProductSubCategory IS NULL AND query.ProductSubCategory IS NOT NULL) OR  (DimProducts.ProductSubCategory IS NOT NULL AND query.ProductSubCategory IS NULL)
+                    OR DimProducts.ProductNumber<>query.ProductNumber OR (DimProducts.ProductNumber IS NULL AND query.ProductNumber IS NOT NULL) OR  (DimProducts.ProductNumber IS NOT NULL AND query.ProductNumber IS NULL)
+                    OR DimProducts.ProductModel<>query.ProductModel OR (DimProducts.ProductModel IS NULL AND query.ProductModel IS NOT NULL) OR  (DimProducts.ProductModel IS NOT NULL AND query.ProductModel IS NULL)
+                    OR DimProducts.Color<>query.Color OR (DimProducts.Color IS NULL AND query.Color IS NOT NULL) OR  (DimProducts.Color IS NOT NULL AND query.Color IS NULL)
+                    OR DimProducts.StandardCost<>query.StandardCost OR (DimProducts.StandardCost IS NULL AND query.StandardCost IS NOT NULL) OR  (DimProducts.StandardCost IS NOT NULL AND query.StandardCost IS NULL)
+                    OR DimProducts.ListPrice<>query.ListPrice OR (DimProducts.ListPrice IS NULL AND query.ListPrice IS NOT NULL) OR  (DimProducts.ListPrice IS NOT NULL AND query.ListPrice IS NULL)
+                    OR DimProducts.Size<>query.Size OR (DimProducts.Size IS NULL AND query.Size IS NOT NULL) OR  (DimProducts.Size IS NOT NULL AND query.Size IS NULL)
+                    OR DimProducts.SizeUnitMeasureCode<>query.SizeUnitMeasureCode OR (DimProducts.SizeUnitMeasureCode IS NULL AND query.SizeUnitMeasureCode IS NOT NULL) OR  (DimProducts.SizeUnitMeasureCode IS NOT NULL AND query.SizeUnitMeasureCode IS NULL)
+                    OR DimProducts.Weight<>query.Weight OR (DimProducts.Weight IS NULL AND query.Weight IS NOT NULL) OR  (DimProducts.Weight IS NOT NULL AND query.Weight IS NULL))) THEN
+    UPDATE SET
+      Product=query.Product,
+      ProductCategory=query.ProductCategory,
+      ProductSubCategory=query.ProductSubCategory,
+      ProductNumber=query.ProductNumber,
+      ProductModel=query.ProductModel,
+      Color=query.Color,
+      StandardCost=query.StandardCost,
+      ListPrice=query.ListPrice,
+      Size=query.Size,
+      SizeUnitMeasureCode=query.SizeUnitMeasureCode,
+      Weight=query.Weight
+  WHEN NOT MATCHED THEN
+    INSERT (ProductID,Product,ProductCategory,ProductSubCategory,ProductNumber,ProductModel,Color,StandardCost,ListPrice,Size,SizeUnitMeasureCode,Weight) VALUES (
+      query.ProductID,
+      query.Product,
+      query.ProductCategory,
+      query.ProductSubCategory,
+      query.ProductNumber,
+      query.ProductModel,
+      query.Color,
+      query.StandardCost,
+      query.ListPrice,
+      query.Size,
+      query.SizeUnitMeasureCode,
+      query.Weight)
+  WHEN NOT MATCHED BY SOURCE THEN
+    DELETE;
+  
+  PRINT 'Se ha cargado la tabla DimProducts';
+  
+  DECLARE @LastExecutedDate datetime=getdate();
+  
+  IF EXISTS (SELECT p.Name AS Name FROM sys.extended_properties p INNER JOIN sys.all_objects sp ON (p.major_id=sp.object_id) WHERE p.minor_id=0 AND p.class=1 AND SCHEMA_NAME(sp.schema_id)='dbo' AND sp.name='cargar productos' AND p.Name='LastExecutedDate')
+  EXEC sys.sp_dropextendedproperty @level0type = 'SCHEMA',  @level0name = 'dbo',    @level1type = 'PROCEDURE', @level1name = 'cargar productos', @name = 'LastExecutedDate'
+  
+  EXEC sys.sp_addextendedproperty @level0type = 'SCHEMA',  @level0name = 'dbo',    @level1type = 'PROCEDURE', @level1name = 'cargar productos', @name = 'LastExecutedDate', @value=@LastExecutedDate
+  
+
+END
+
+EXEC sys.sp_addextendedproperty @level0type = 'SCHEMA',  @level0name = 'dbo',    @level1type = 'PROCEDURE', @level1name = 'cargar productos', @name = 'Hash', @value='3D63AB729FF896B922CC54B988CB20BF'
+
+EXEC sys.sp_addextendedproperty @level0type = 'SCHEMA',  @level0name = 'dbo',    @level1type = 'PROCEDURE', @level1name = 'cargar productos', @name = 'UserName', @value='SELVA\pauur'
+
+EXEC sys.sp_addextendedproperty @level0type = 'SCHEMA',  @level0name = 'dbo',    @level1type = 'PROCEDURE', @level1name = 'cargar productos', @name = 'CronoVersion', @value='Crono SQL 22.50.1000.0'
+
+EXEC sys.sp_addextendedproperty @level0type = 'SCHEMA',  @level0name = 'dbo',    @level1type = 'PROCEDURE', @level1name = 'cargar productos', @name = 'LoadType', @value='Clone'
+
+EXEC sys.sp_addextendedproperty @level0type = 'SCHEMA',  @level0name = 'dbo',    @level1type = 'PROCEDURE', @level1name = 'cargar productos', @name = 'TableName', @value='DimProducts'
+
+EXEC sys.sp_addextendedproperty @level0type = 'SCHEMA',  @level0name = 'dbo',    @level1type = 'PROCEDURE', @level1name = 'cargar productos', @name = 'SchemaTableName', @value='dwh'
+
+```
+  </b-modal>
+
+  </div>
+</div>
+
 
 El código SQL generado, y sin que el programador tenga que escribir ni configurar nada, apunta en una tabla de log información sobre su ejecución (*fecha de inicio*, *duración*, etc.). De manera predeterminada, todos los procedimientos auditan el resultado de sus ejecuciones en una tabla de logs. **Crono SQL** promociona el uso de buenas prácticas y es una buena práctica mantener un log completo y fiable de todas las ejecuciones. La **estrategia de log** se puede configurar y personalizar a nivel de proyecto.
 
 Por lo tanto, en el ejemplo anterior, la sentencia **PRINT** es innecesaria. De hecho, si el procedimiento tiene una sola instrucción, no es necesario tampoco crear el bloque **BEGIN ... END**. El siguiente código es equivalente    
 
-<view-sql-code fileName="CREATE-PROCEDURE2"/>
+<div class="mt-1 mb-2 row">
+  <div class="col-lg-12">
+
+``` sql
+CREATE PROCEDURE dbo.[cargar productos]
+MERGE CLONE dwh.DimProducts(ProductSid)
+SELECT
+  #ProductID,
+  Product.Name			Product,
+  ProductCategory.name 	ProductCategory,
+  ProductSubCategory.name ProductSubCategory,
+  ProductNumber,
+  ProductModel.name 		ProductModel,
+  Color,
+  StandardCost,
+  ListPrice,
+  Size,
+  SizeUnitMeasureCode,
+  Weight
+FROM staging.Product
+LEFT JOIN staging.ProductSubCategory using Product(ProductSubcategoryID)
+LEFT JOIN staging.ProductCategory using ProductSubCategory(ProductCategoryId)
+LEFT JOIN staging.ProductModel using Product(ProductModelID)
+CHECK SNOWFLAKE
+```
+
+  <b-button class="float-right btn" size="sm" v-b-modal.modal-2 style="background-color: #3eaf7c">Ver SQL compilado</b-button>
+
+  <b-modal id="modal-2" size="lg" title="Ver SQL compilado" :hide-footer="true" > 
+``` sql
+CREATE PROCEDURE dbo.[cargar productos] AS
+BEGIN
+
+  IF EXISTS (
+    SELECT count(*)
+    FROM staging.Product
+    LEFT JOIN staging.ProductSubCategory ON (Product.ProductSubcategoryID=ProductSubCategory.ProductSubcategoryID)
+    LEFT JOIN staging.ProductCategory ON (ProductSubCategory.ProductCategoryId=ProductCategory.ProductCategoryId)
+    LEFT JOIN staging.ProductModel ON (Product.ProductModelID=ProductModel.ProductModelID)
+    HAVING count(*) <> (SELECT count(*) FROM staging.Product)
+  ) THROW 50001,'Las relaciones de esta consulta pierden o duplican registros de Product.',1
+  
+  ;WITH
+  query AS (
+    SELECT
+      ProductID,
+      Product.Name AS Product,
+      ProductCategory.name AS ProductCategory,
+      ProductSubCategory.name AS ProductSubCategory,
+      ProductNumber,
+      ProductModel.name AS ProductModel,
+      Color,
+      StandardCost,
+      ListPrice,
+      Size,
+      SizeUnitMeasureCode,
+      Weight
+    FROM staging.Product
+    LEFT JOIN staging.ProductSubCategory ON (Product.ProductSubcategoryID=ProductSubCategory.ProductSubcategoryID)
+    LEFT JOIN staging.ProductCategory ON (ProductSubCategory.ProductCategoryId=ProductCategory.ProductCategoryId)
+    LEFT JOIN staging.ProductModel ON (Product.ProductModelID=ProductModel.ProductModelID)
+  )
+  MERGE dwh.DimProducts AS DimProducts
+  USING query ON query.ProductID=DimProducts.ProductID
+  WHEN MATCHED AND ((DimProducts.Product<>query.Product OR (DimProducts.Product IS NULL AND query.Product IS NOT NULL) OR  (DimProducts.Product IS NOT NULL AND query.Product IS NULL)
+                    OR DimProducts.ProductCategory<>query.ProductCategory OR (DimProducts.ProductCategory IS NULL AND query.ProductCategory IS NOT NULL) OR  (DimProducts.ProductCategory IS NOT NULL AND query.ProductCategory IS NULL)
+                    OR DimProducts.ProductSubCategory<>query.ProductSubCategory OR (DimProducts.ProductSubCategory IS NULL AND query.ProductSubCategory IS NOT NULL) OR  (DimProducts.ProductSubCategory IS NOT NULL AND query.ProductSubCategory IS NULL)
+                    OR DimProducts.ProductNumber<>query.ProductNumber OR (DimProducts.ProductNumber IS NULL AND query.ProductNumber IS NOT NULL) OR  (DimProducts.ProductNumber IS NOT NULL AND query.ProductNumber IS NULL)
+                    OR DimProducts.ProductModel<>query.ProductModel OR (DimProducts.ProductModel IS NULL AND query.ProductModel IS NOT NULL) OR  (DimProducts.ProductModel IS NOT NULL AND query.ProductModel IS NULL)
+                    OR DimProducts.Color<>query.Color OR (DimProducts.Color IS NULL AND query.Color IS NOT NULL) OR  (DimProducts.Color IS NOT NULL AND query.Color IS NULL)
+                    OR DimProducts.StandardCost<>query.StandardCost OR (DimProducts.StandardCost IS NULL AND query.StandardCost IS NOT NULL) OR  (DimProducts.StandardCost IS NOT NULL AND query.StandardCost IS NULL)
+                    OR DimProducts.ListPrice<>query.ListPrice OR (DimProducts.ListPrice IS NULL AND query.ListPrice IS NOT NULL) OR  (DimProducts.ListPrice IS NOT NULL AND query.ListPrice IS NULL)
+                    OR DimProducts.Size<>query.Size OR (DimProducts.Size IS NULL AND query.Size IS NOT NULL) OR  (DimProducts.Size IS NOT NULL AND query.Size IS NULL)
+                    OR DimProducts.SizeUnitMeasureCode<>query.SizeUnitMeasureCode OR (DimProducts.SizeUnitMeasureCode IS NULL AND query.SizeUnitMeasureCode IS NOT NULL) OR  (DimProducts.SizeUnitMeasureCode IS NOT NULL AND query.SizeUnitMeasureCode IS NULL)
+                    OR DimProducts.Weight<>query.Weight OR (DimProducts.Weight IS NULL AND query.Weight IS NOT NULL) OR  (DimProducts.Weight IS NOT NULL AND query.Weight IS NULL))) THEN
+    UPDATE SET
+      Product=query.Product,
+      ProductCategory=query.ProductCategory,
+      ProductSubCategory=query.ProductSubCategory,
+      ProductNumber=query.ProductNumber,
+      ProductModel=query.ProductModel,
+      Color=query.Color,
+      StandardCost=query.StandardCost,
+      ListPrice=query.ListPrice,
+      Size=query.Size,
+      SizeUnitMeasureCode=query.SizeUnitMeasureCode,
+      Weight=query.Weight
+  WHEN NOT MATCHED THEN
+    INSERT (ProductID,Product,ProductCategory,ProductSubCategory,ProductNumber,ProductModel,Color,StandardCost,ListPrice,Size,SizeUnitMeasureCode,Weight) VALUES (
+      query.ProductID,
+      query.Product,
+      query.ProductCategory,
+      query.ProductSubCategory,
+      query.ProductNumber,
+      query.ProductModel,
+      query.Color,
+      query.StandardCost,
+      query.ListPrice,
+      query.Size,
+      query.SizeUnitMeasureCode,
+      query.Weight)
+  WHEN NOT MATCHED BY SOURCE THEN
+    DELETE;
+  
+  DECLARE @LastExecutedDate datetime=getdate();
+  
+  IF EXISTS (SELECT p.Name AS Name FROM sys.extended_properties p INNER JOIN sys.all_objects sp ON (p.major_id=sp.object_id) WHERE p.minor_id=0 AND p.class=1 AND SCHEMA_NAME(sp.schema_id)='dbo' AND sp.name='cargar productos' AND p.Name='LastExecutedDate')
+  EXEC sys.sp_dropextendedproperty @level0type = 'SCHEMA',  @level0name = 'dbo',    @level1type = 'PROCEDURE', @level1name = 'cargar productos', @name = 'LastExecutedDate'
+  
+  EXEC sys.sp_addextendedproperty @level0type = 'SCHEMA',  @level0name = 'dbo',    @level1type = 'PROCEDURE', @level1name = 'cargar productos', @name = 'LastExecutedDate', @value=@LastExecutedDate
+  
+
+END
+
+EXEC sys.sp_addextendedproperty @level0type = 'SCHEMA',  @level0name = 'dbo',    @level1type = 'PROCEDURE', @level1name = 'cargar productos', @name = 'Hash', @value='33B48628006822A56D55C12BA710DBCB'
+
+EXEC sys.sp_addextendedproperty @level0type = 'SCHEMA',  @level0name = 'dbo',    @level1type = 'PROCEDURE', @level1name = 'cargar productos', @name = 'UserName', @value='SELVA\pauur'
+
+EXEC sys.sp_addextendedproperty @level0type = 'SCHEMA',  @level0name = 'dbo',    @level1type = 'PROCEDURE', @level1name = 'cargar productos', @name = 'CronoVersion', @value='Crono SQL 22.50.1000.0'
+
+EXEC sys.sp_addextendedproperty @level0type = 'SCHEMA',  @level0name = 'dbo',    @level1type = 'PROCEDURE', @level1name = 'cargar productos', @name = 'LoadType', @value='Clone'
+
+EXEC sys.sp_addextendedproperty @level0type = 'SCHEMA',  @level0name = 'dbo',    @level1type = 'PROCEDURE', @level1name = 'cargar productos', @name = 'TableName', @value='DimProducts'
+
+EXEC sys.sp_addextendedproperty @level0type = 'SCHEMA',  @level0name = 'dbo',    @level1type = 'PROCEDURE', @level1name = 'cargar productos', @name = 'SchemaTableName', @value='dwh'
+
+```
+  </b-modal>
+
+  </div>
+</div>
+
 
 Se puede utilizar la instrucción **CREATE OR REPLACE** (también se admite **CREATE OR ALTER**) para que el mismo código sirva para crear inicialmente el procedimiento o modificarlo si ya existe:
 
-<view-sql-code fileName="CREATE-PROCEDURE3"/>
+<div class="mt-1 mb-2 row">
+  <div class="col-lg-12">
+
+``` sql
+CREATE OR ALTER PROCEDURE dbo.[cargar productos]
+MERGE CLONE dwh.DimProducts(ProductSid) 
+SELECT
+  #ProductID,
+  Product.Name			Product,
+  ProductCategory.name 	ProductCategory,
+  ProductSubCategory.name ProductSubCategory,
+  ProductNumber,
+  ProductModel.name 		ProductModel,
+  Color,
+  StandardCost,
+  ListPrice,
+  Size,
+  SizeUnitMeasureCode,
+  Weight
+FROM staging.Product
+LEFT JOIN staging.ProductSubCategory using Product(ProductSubcategoryID)
+LEFT JOIN staging.ProductCategory using ProductSubCategory(ProductCategoryId)
+LEFT JOIN staging.ProductModel using Product(ProductModelID)
+CHECK SNOWFLAKE
+```
+
+  <b-button class="float-right btn" size="sm" v-b-modal.modal-3 style="background-color: #3eaf7c">Ver SQL compilado</b-button>
+
+  <b-modal id="modal-3" size="lg" title="Ver SQL compilado" :hide-footer="true" > 
+``` sql
+IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.ROUTINES WHERE ROUTINE_SCHEMA='dbo' AND ROUTINE_NAME='cargar productos' AND ROUTINE_TYPE='PROCEDURE')
+DROP PROCEDURE dbo.[cargar productos];
+
+CREATE PROCEDURE dbo.[cargar productos] AS
+BEGIN
+
+  IF EXISTS (
+    SELECT count(*)
+    FROM staging.Product
+    LEFT JOIN staging.ProductSubCategory ON (Product.ProductSubcategoryID=ProductSubCategory.ProductSubcategoryID)
+    LEFT JOIN staging.ProductCategory ON (ProductSubCategory.ProductCategoryId=ProductCategory.ProductCategoryId)
+    LEFT JOIN staging.ProductModel ON (Product.ProductModelID=ProductModel.ProductModelID)
+    HAVING count(*) <> (SELECT count(*) FROM staging.Product)
+  ) THROW 50001,'Las relaciones de esta consulta pierden o duplican registros de Product.',1
+  
+  ;WITH
+  query AS (
+    SELECT
+      ProductID,
+      Product.Name AS Product,
+      ProductCategory.name AS ProductCategory,
+      ProductSubCategory.name AS ProductSubCategory,
+      ProductNumber,
+      ProductModel.name AS ProductModel,
+      Color,
+      StandardCost,
+      ListPrice,
+      Size,
+      SizeUnitMeasureCode,
+      Weight
+    FROM staging.Product
+    LEFT JOIN staging.ProductSubCategory ON (Product.ProductSubcategoryID=ProductSubCategory.ProductSubcategoryID)
+    LEFT JOIN staging.ProductCategory ON (ProductSubCategory.ProductCategoryId=ProductCategory.ProductCategoryId)
+    LEFT JOIN staging.ProductModel ON (Product.ProductModelID=ProductModel.ProductModelID)
+  )
+  MERGE dwh.DimProducts AS DimProducts
+  USING query ON query.ProductID=DimProducts.ProductID
+  WHEN MATCHED AND ((DimProducts.Product<>query.Product OR (DimProducts.Product IS NULL AND query.Product IS NOT NULL) OR  (DimProducts.Product IS NOT NULL AND query.Product IS NULL)
+                    OR DimProducts.ProductCategory<>query.ProductCategory OR (DimProducts.ProductCategory IS NULL AND query.ProductCategory IS NOT NULL) OR  (DimProducts.ProductCategory IS NOT NULL AND query.ProductCategory IS NULL)
+                    OR DimProducts.ProductSubCategory<>query.ProductSubCategory OR (DimProducts.ProductSubCategory IS NULL AND query.ProductSubCategory IS NOT NULL) OR  (DimProducts.ProductSubCategory IS NOT NULL AND query.ProductSubCategory IS NULL)
+                    OR DimProducts.ProductNumber<>query.ProductNumber OR (DimProducts.ProductNumber IS NULL AND query.ProductNumber IS NOT NULL) OR  (DimProducts.ProductNumber IS NOT NULL AND query.ProductNumber IS NULL)
+                    OR DimProducts.ProductModel<>query.ProductModel OR (DimProducts.ProductModel IS NULL AND query.ProductModel IS NOT NULL) OR  (DimProducts.ProductModel IS NOT NULL AND query.ProductModel IS NULL)
+                    OR DimProducts.Color<>query.Color OR (DimProducts.Color IS NULL AND query.Color IS NOT NULL) OR  (DimProducts.Color IS NOT NULL AND query.Color IS NULL)
+                    OR DimProducts.StandardCost<>query.StandardCost OR (DimProducts.StandardCost IS NULL AND query.StandardCost IS NOT NULL) OR  (DimProducts.StandardCost IS NOT NULL AND query.StandardCost IS NULL)
+                    OR DimProducts.ListPrice<>query.ListPrice OR (DimProducts.ListPrice IS NULL AND query.ListPrice IS NOT NULL) OR  (DimProducts.ListPrice IS NOT NULL AND query.ListPrice IS NULL)
+                    OR DimProducts.Size<>query.Size OR (DimProducts.Size IS NULL AND query.Size IS NOT NULL) OR  (DimProducts.Size IS NOT NULL AND query.Size IS NULL)
+                    OR DimProducts.SizeUnitMeasureCode<>query.SizeUnitMeasureCode OR (DimProducts.SizeUnitMeasureCode IS NULL AND query.SizeUnitMeasureCode IS NOT NULL) OR  (DimProducts.SizeUnitMeasureCode IS NOT NULL AND query.SizeUnitMeasureCode IS NULL)
+                    OR DimProducts.Weight<>query.Weight OR (DimProducts.Weight IS NULL AND query.Weight IS NOT NULL) OR  (DimProducts.Weight IS NOT NULL AND query.Weight IS NULL))) THEN
+    UPDATE SET
+      Product=query.Product,
+      ProductCategory=query.ProductCategory,
+      ProductSubCategory=query.ProductSubCategory,
+      ProductNumber=query.ProductNumber,
+      ProductModel=query.ProductModel,
+      Color=query.Color,
+      StandardCost=query.StandardCost,
+      ListPrice=query.ListPrice,
+      Size=query.Size,
+      SizeUnitMeasureCode=query.SizeUnitMeasureCode,
+      Weight=query.Weight
+  WHEN NOT MATCHED THEN
+    INSERT (ProductID,Product,ProductCategory,ProductSubCategory,ProductNumber,ProductModel,Color,StandardCost,ListPrice,Size,SizeUnitMeasureCode,Weight) VALUES (
+      query.ProductID,
+      query.Product,
+      query.ProductCategory,
+      query.ProductSubCategory,
+      query.ProductNumber,
+      query.ProductModel,
+      query.Color,
+      query.StandardCost,
+      query.ListPrice,
+      query.Size,
+      query.SizeUnitMeasureCode,
+      query.Weight)
+  WHEN NOT MATCHED BY SOURCE THEN
+    DELETE;
+  
+  DECLARE @LastExecutedDate datetime=getdate();
+  
+  IF EXISTS (SELECT p.Name AS Name FROM sys.extended_properties p INNER JOIN sys.all_objects sp ON (p.major_id=sp.object_id) WHERE p.minor_id=0 AND p.class=1 AND SCHEMA_NAME(sp.schema_id)='dbo' AND sp.name='cargar productos' AND p.Name='LastExecutedDate')
+  EXEC sys.sp_dropextendedproperty @level0type = 'SCHEMA',  @level0name = 'dbo',    @level1type = 'PROCEDURE', @level1name = 'cargar productos', @name = 'LastExecutedDate'
+  
+  EXEC sys.sp_addextendedproperty @level0type = 'SCHEMA',  @level0name = 'dbo',    @level1type = 'PROCEDURE', @level1name = 'cargar productos', @name = 'LastExecutedDate', @value=@LastExecutedDate
+  
+
+END
+
+EXEC sys.sp_addextendedproperty @level0type = 'SCHEMA',  @level0name = 'dbo',    @level1type = 'PROCEDURE', @level1name = 'cargar productos', @name = 'Hash', @value='33B48628006822A56D55C12BA710DBCB'
+
+EXEC sys.sp_addextendedproperty @level0type = 'SCHEMA',  @level0name = 'dbo',    @level1type = 'PROCEDURE', @level1name = 'cargar productos', @name = 'UserName', @value='SELVA\pauur'
+
+EXEC sys.sp_addextendedproperty @level0type = 'SCHEMA',  @level0name = 'dbo',    @level1type = 'PROCEDURE', @level1name = 'cargar productos', @name = 'CronoVersion', @value='Crono SQL 22.50.1000.0'
+
+EXEC sys.sp_addextendedproperty @level0type = 'SCHEMA',  @level0name = 'dbo',    @level1type = 'PROCEDURE', @level1name = 'cargar productos', @name = 'LoadType', @value='Clone'
+
+EXEC sys.sp_addextendedproperty @level0type = 'SCHEMA',  @level0name = 'dbo',    @level1type = 'PROCEDURE', @level1name = 'cargar productos', @name = 'TableName', @value='DimProducts'
+
+EXEC sys.sp_addextendedproperty @level0type = 'SCHEMA',  @level0name = 'dbo',    @level1type = 'PROCEDURE', @level1name = 'cargar productos', @name = 'SchemaTableName', @value='dwh'
+
+```
+  </b-modal>
+
+  </div>
+</div>
+
 
 Finalmente, si el procedimiento carga una única tabla (lo que recomendamos), se puede prescindir del nombre del procedimiento. **Crono SQL** escogerá un nombre apropiado sin que el desarrollador tenga que elegir y memorizar uno.  
 
-<view-sql-code fileName="CREATE-PROCEDURE4"/>
+<div class="mt-1 mb-2 row">
+  <div class="col-lg-12">
+
+``` sql
+CREATE OR REPLACE PROCEDURE
+MERGE CLONE dwh.DimProducts(ProductSid)
+SELECT
+  #ProductID,
+  Product.Name			Product,
+  ProductCategory.name 	ProductCategory,
+  ProductSubCategory.name ProductSubCategory,
+  ProductNumber,
+  ProductModel.name 		ProductModel,
+  Color,
+  StandardCost,
+  ListPrice,
+  Size,
+  SizeUnitMeasureCode,
+  Weight
+FROM staging.Product
+LEFT JOIN staging.ProductSubCategory using Product(ProductSubcategoryID)
+LEFT JOIN staging.ProductCategory using ProductSubCategory(ProductCategoryId)
+LEFT JOIN staging.ProductModel using Product(ProductModelID)
+CHECK SNOWFLAKE
+```
+
+  <b-button class="float-right btn" size="sm" v-b-modal.modal-4 style="background-color: #3eaf7c">Ver SQL compilado</b-button>
+
+  <b-modal id="modal-4" size="lg" title="Ver SQL compilado" :hide-footer="true" > 
+``` sql
+IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.ROUTINES WHERE ROUTINE_NAME='LOAD dwh.DimProducts' AND ROUTINE_TYPE='PROCEDURE')
+DROP PROCEDURE [LOAD dwh.DimProducts];
+
+CREATE PROCEDURE [LOAD dwh.DimProducts] AS
+BEGIN
+
+  IF EXISTS (
+    SELECT count(*)
+    FROM staging.Product
+    LEFT JOIN staging.ProductSubCategory ON (Product.ProductSubcategoryID=ProductSubCategory.ProductSubcategoryID)
+    LEFT JOIN staging.ProductCategory ON (ProductSubCategory.ProductCategoryId=ProductCategory.ProductCategoryId)
+    LEFT JOIN staging.ProductModel ON (Product.ProductModelID=ProductModel.ProductModelID)
+    HAVING count(*) <> (SELECT count(*) FROM staging.Product)
+  ) THROW 50001,'Las relaciones de esta consulta pierden o duplican registros de Product.',1
+  
+  ;WITH
+  query AS (
+    SELECT
+      ProductID,
+      Product.Name AS Product,
+      ProductCategory.name AS ProductCategory,
+      ProductSubCategory.name AS ProductSubCategory,
+      ProductNumber,
+      ProductModel.name AS ProductModel,
+      Color,
+      StandardCost,
+      ListPrice,
+      Size,
+      SizeUnitMeasureCode,
+      Weight
+    FROM staging.Product
+    LEFT JOIN staging.ProductSubCategory ON (Product.ProductSubcategoryID=ProductSubCategory.ProductSubcategoryID)
+    LEFT JOIN staging.ProductCategory ON (ProductSubCategory.ProductCategoryId=ProductCategory.ProductCategoryId)
+    LEFT JOIN staging.ProductModel ON (Product.ProductModelID=ProductModel.ProductModelID)
+  )
+  MERGE dwh.DimProducts AS DimProducts
+  USING query ON query.ProductID=DimProducts.ProductID
+  WHEN MATCHED AND ((DimProducts.Product<>query.Product OR (DimProducts.Product IS NULL AND query.Product IS NOT NULL) OR  (DimProducts.Product IS NOT NULL AND query.Product IS NULL)
+                    OR DimProducts.ProductCategory<>query.ProductCategory OR (DimProducts.ProductCategory IS NULL AND query.ProductCategory IS NOT NULL) OR  (DimProducts.ProductCategory IS NOT NULL AND query.ProductCategory IS NULL)
+                    OR DimProducts.ProductSubCategory<>query.ProductSubCategory OR (DimProducts.ProductSubCategory IS NULL AND query.ProductSubCategory IS NOT NULL) OR  (DimProducts.ProductSubCategory IS NOT NULL AND query.ProductSubCategory IS NULL)
+                    OR DimProducts.ProductNumber<>query.ProductNumber OR (DimProducts.ProductNumber IS NULL AND query.ProductNumber IS NOT NULL) OR  (DimProducts.ProductNumber IS NOT NULL AND query.ProductNumber IS NULL)
+                    OR DimProducts.ProductModel<>query.ProductModel OR (DimProducts.ProductModel IS NULL AND query.ProductModel IS NOT NULL) OR  (DimProducts.ProductModel IS NOT NULL AND query.ProductModel IS NULL)
+                    OR DimProducts.Color<>query.Color OR (DimProducts.Color IS NULL AND query.Color IS NOT NULL) OR  (DimProducts.Color IS NOT NULL AND query.Color IS NULL)
+                    OR DimProducts.StandardCost<>query.StandardCost OR (DimProducts.StandardCost IS NULL AND query.StandardCost IS NOT NULL) OR  (DimProducts.StandardCost IS NOT NULL AND query.StandardCost IS NULL)
+                    OR DimProducts.ListPrice<>query.ListPrice OR (DimProducts.ListPrice IS NULL AND query.ListPrice IS NOT NULL) OR  (DimProducts.ListPrice IS NOT NULL AND query.ListPrice IS NULL)
+                    OR DimProducts.Size<>query.Size OR (DimProducts.Size IS NULL AND query.Size IS NOT NULL) OR  (DimProducts.Size IS NOT NULL AND query.Size IS NULL)
+                    OR DimProducts.SizeUnitMeasureCode<>query.SizeUnitMeasureCode OR (DimProducts.SizeUnitMeasureCode IS NULL AND query.SizeUnitMeasureCode IS NOT NULL) OR  (DimProducts.SizeUnitMeasureCode IS NOT NULL AND query.SizeUnitMeasureCode IS NULL)
+                    OR DimProducts.Weight<>query.Weight OR (DimProducts.Weight IS NULL AND query.Weight IS NOT NULL) OR  (DimProducts.Weight IS NOT NULL AND query.Weight IS NULL))) THEN
+    UPDATE SET
+      Product=query.Product,
+      ProductCategory=query.ProductCategory,
+      ProductSubCategory=query.ProductSubCategory,
+      ProductNumber=query.ProductNumber,
+      ProductModel=query.ProductModel,
+      Color=query.Color,
+      StandardCost=query.StandardCost,
+      ListPrice=query.ListPrice,
+      Size=query.Size,
+      SizeUnitMeasureCode=query.SizeUnitMeasureCode,
+      Weight=query.Weight
+  WHEN NOT MATCHED THEN
+    INSERT (ProductID,Product,ProductCategory,ProductSubCategory,ProductNumber,ProductModel,Color,StandardCost,ListPrice,Size,SizeUnitMeasureCode,Weight) VALUES (
+      query.ProductID,
+      query.Product,
+      query.ProductCategory,
+      query.ProductSubCategory,
+      query.ProductNumber,
+      query.ProductModel,
+      query.Color,
+      query.StandardCost,
+      query.ListPrice,
+      query.Size,
+      query.SizeUnitMeasureCode,
+      query.Weight)
+  WHEN NOT MATCHED BY SOURCE THEN
+    DELETE;
+  
+  DECLARE @LastExecutedDate datetime=getdate();
+  
+  IF EXISTS (SELECT p.Name AS Name FROM sys.extended_properties p INNER JOIN sys.all_objects sp ON (p.major_id=sp.object_id) WHERE p.minor_id=0 AND p.class=1 AND SCHEMA_NAME(sp.schema_id)='dbo' AND sp.name='LOAD dwh.DimProducts' AND p.Name='LastExecutedDate')
+  EXEC sys.sp_dropextendedproperty @level0type = 'SCHEMA',  @level0name = 'dbo',    @level1type = 'PROCEDURE', @level1name = 'LOAD dwh.DimProducts', @name = 'LastExecutedDate'
+  
+  EXEC sys.sp_addextendedproperty @level0type = 'SCHEMA',  @level0name = 'dbo',    @level1type = 'PROCEDURE', @level1name = 'LOAD dwh.DimProducts', @name = 'LastExecutedDate', @value=@LastExecutedDate
+  
+
+END
+
+EXEC sys.sp_addextendedproperty @level0type = 'SCHEMA',  @level0name = 'dbo',    @level1type = 'PROCEDURE', @level1name = 'LOAD dwh.DimProducts', @name = 'Hash', @value='8786EEE6F0431A7AE9AF443C4CADA1CB'
+
+EXEC sys.sp_addextendedproperty @level0type = 'SCHEMA',  @level0name = 'dbo',    @level1type = 'PROCEDURE', @level1name = 'LOAD dwh.DimProducts', @name = 'UserName', @value='SELVA\pauur'
+
+EXEC sys.sp_addextendedproperty @level0type = 'SCHEMA',  @level0name = 'dbo',    @level1type = 'PROCEDURE', @level1name = 'LOAD dwh.DimProducts', @name = 'CronoVersion', @value='Crono SQL 22.50.1000.0'
+
+EXEC sys.sp_addextendedproperty @level0type = 'SCHEMA',  @level0name = 'dbo',    @level1type = 'PROCEDURE', @level1name = 'LOAD dwh.DimProducts', @name = 'LoadType', @value='Clone'
+
+EXEC sys.sp_addextendedproperty @level0type = 'SCHEMA',  @level0name = 'dbo',    @level1type = 'PROCEDURE', @level1name = 'LOAD dwh.DimProducts', @name = 'TableName', @value='DimProducts'
+
+EXEC sys.sp_addextendedproperty @level0type = 'SCHEMA',  @level0name = 'dbo',    @level1type = 'PROCEDURE', @level1name = 'LOAD dwh.DimProducts', @name = 'SchemaTableName', @value='dwh'
+
+```
+  </b-modal>
+
+  </div>
+</div>
+
 
 Todos los anteriores ejemplos crearán tanto el procedimiento como la tabla *DimProducts*.  Antes de cargar la tabla, se ejecutará la comprobación **CHECK SNOWFLAKE** para asegurar que las relaciones no pierden ni duplican registros. También se informarán los campos de auditoria durante la ejecución de la carga. 
 
@@ -47,52 +586,384 @@ La sintaxis utilizada en el último ejemplo no es excepcional. De hecho, es el c
 
 Para ejecutar un procedimiento, se puede utilizar la sentencia **EXECUTE** (o el sinónimo **EXEC**):
 
-<view-sql-code fileName="EXEC1"/>
+<div class="mt-1 mb-2 row">
+  <div class="col-lg-12">
+
+``` sql
+EXECUTE dbo.[cargar productos]
+```
+
+  <b-button class="float-right btn" size="sm" v-b-modal.modal-5 style="background-color: #3eaf7c">Ver SQL compilado</b-button>
+
+  <b-modal id="modal-5" size="lg" title="Ver SQL compilado" :hide-footer="true" > 
+``` sql
+EXECUTE dbo.[cargar productos];
+```
+  </b-modal>
+
+  </div>
+</div>
+
 
 En el caso de los procedimientos "anónimos" se debe utilizar **EXECUTE LOAD** (o **EXEC LOAD**):
 
-<view-sql-code fileName="EXEC2"/>
+<div class="mt-1 mb-2 row">
+  <div class="col-lg-12">
+
+``` sql
+EXECUTE LOAD dwh.DimProducts
+```
+
+  <b-button class="float-right btn" size="sm" v-b-modal.modal-6 style="background-color: #3eaf7c">Ver SQL compilado</b-button>
+
+  <b-modal id="modal-6" size="lg" title="Ver SQL compilado" :hide-footer="true" > 
+``` sql
+EXECUTE [LOAD dwh.DimProducts];
+```
+  </b-modal>
+
+  </div>
+</div>
+
 
 El flujo normal de ejecución de la carga del DWH, se puede crear mediante un procedimiento que llame secuencialmente a la carga de todas las tablas:
 
-<view-sql-code fileName="CREATE-PROCEDURE5"/>
+<div class="mt-1 mb-2 row">
+  <div class="col-lg-12">
+
+``` sql
+CREATE OR REPLACE PROCEDURE dwh.cargar
+BEGIN
+
+  EXEC LOAD dwh.DimDates @log
+  EXEC LOAD dwh.DimEmployees  @log
+  EXEC LOAD dwh.DimProducts @log
+  EXEC LOAD dwh.DimCustomers @log
+  EXEC LOAD dwh.FactSalesOrderHeader @log 
+  EXEC LOAD dwh.FactSalesOrderDetails @log
+
+END
+```
+
+  <b-button class="float-right btn" size="sm" v-b-modal.modal-7 style="background-color: #3eaf7c">Ver SQL compilado</b-button>
+
+  <b-modal id="modal-7" size="lg" title="Ver SQL compilado" :hide-footer="true" > 
+``` sql
+IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.ROUTINES WHERE ROUTINE_SCHEMA='dwh' AND ROUTINE_NAME='cargar' AND ROUTINE_TYPE='PROCEDURE')
+DROP PROCEDURE dwh.cargar;
+
+CREATE PROCEDURE dwh.cargar AS
+BEGIN
+
+  EXECUTE [LOAD dwh.DimDates] @log;
+  
+  EXECUTE [LOAD dwh.DimEmployees] @log;
+  
+  EXECUTE [LOAD dwh.DimProducts] @log;
+  
+  EXECUTE [LOAD dwh.DimCustomers] @log;
+  
+  EXECUTE [LOAD dwh.FactSalesOrderHeader] @log;
+  
+  EXECUTE [LOAD dwh.FactSalesOrderDetails] @log;
+  
+  DECLARE @LastExecutedDate datetime=getdate();
+  
+  IF EXISTS (SELECT p.Name AS Name FROM sys.extended_properties p INNER JOIN sys.all_objects sp ON (p.major_id=sp.object_id) WHERE p.minor_id=0 AND p.class=1 AND SCHEMA_NAME(sp.schema_id)='dwh' AND sp.name='cargar' AND p.Name='LastExecutedDate')
+  EXEC sys.sp_dropextendedproperty @level0type = 'SCHEMA',  @level0name = 'dwh',    @level1type = 'PROCEDURE', @level1name = 'cargar', @name = 'LastExecutedDate'
+  
+  EXEC sys.sp_addextendedproperty @level0type = 'SCHEMA',  @level0name = 'dwh',    @level1type = 'PROCEDURE', @level1name = 'cargar', @name = 'LastExecutedDate', @value=@LastExecutedDate
+  
+
+END
+
+EXEC sys.sp_addextendedproperty @level0type = 'SCHEMA',  @level0name = 'dwh',    @level1type = 'PROCEDURE', @level1name = 'cargar', @name = 'Hash', @value='D9B1644C19582D7D3602DD0BA735BB93'
+
+EXEC sys.sp_addextendedproperty @level0type = 'SCHEMA',  @level0name = 'dwh',    @level1type = 'PROCEDURE', @level1name = 'cargar', @name = 'UserName', @value='SELVA\pauur'
+
+EXEC sys.sp_addextendedproperty @level0type = 'SCHEMA',  @level0name = 'dwh',    @level1type = 'PROCEDURE', @level1name = 'cargar', @name = 'CronoVersion', @value='Crono SQL 22.50.1000.0'
+
+```
+  </b-modal>
+
+  </div>
+</div>
+
 
 Y, de este modo, la carga del DWH se ejecutaría llamando a este procedimiento desde el programador de tareas de Windows o mediante el programador propio de la base de datos:
 
-<view-sql-code fileName="EXEC3"/>
+<div class="mt-1 mb-2 row">
+  <div class="col-lg-12">
+
+``` sql
+EXECUTE dwh.cargar
+```
+
+  <b-button class="float-right btn" size="sm" v-b-modal.modal-8 style="background-color: #3eaf7c">Ver SQL compilado</b-button>
+
+  <b-modal id="modal-8" size="lg" title="Ver SQL compilado" :hide-footer="true" > 
+``` sql
+EXECUTE dwh.cargar;
+```
+  </b-modal>
+
+  </div>
+</div>
+
 
 Se puede utilizar **DROP PROCEDURE** para eliminar un procedimiento existente. También se puede utilizar **DROP PROCEDURE IF EXISTS** para eliminar un procedimiento en el caso de que efectivamente exista.
 
-<view-sql-code fileName="DROP-PROCEDURE"/>
+<div class="mt-1 mb-2 row">
+  <div class="col-lg-12">
+
+``` sql
+DROP PROCEDURE IF EXISTS dwh.cargar
+```
+
+  <b-button class="float-right btn" size="sm" v-b-modal.modal-9 style="background-color: #3eaf7c">Ver SQL compilado</b-button>
+
+  <b-modal id="modal-9" size="lg" title="Ver SQL compilado" :hide-footer="true" > 
+``` sql
+IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.ROUTINES WHERE ROUTINE_SCHEMA='dwh' AND ROUTINE_NAME='cargar' AND ROUTINE_TYPE='PROCEDURE')
+DROP PROCEDURE dwh.cargar;
+
+```
+  </b-modal>
+
+  </div>
+</div>
+
 
 ## CREATE FUNCTION
 
 La sintaxis para crear una función escalar es la siguiente:
 
-<view-sql-code fileName="FUNCTION1"/>
+<div class="mt-1 mb-2 row">
+  <div class="col-lg-12">
+
+``` sql
+CREATE OR REPLACE FUNCTION dbo.MaxValue(@a int,@b int,@c int) RETURNS int
+BEGIN
+
+ DECLARE @result int
+ 
+ IF (@a>=@b AND @a>=@b) 
+   SET @result=@a
+ ELSE BEGIN
+   IF @b>=@c
+     SET @result=@b
+   ELSE
+     SET @result=@c
+ END
+ 
+ RETURN @result
+
+END
+```
+
+  <b-button class="float-right btn" size="sm" v-b-modal.modal-10 style="background-color: #3eaf7c">Ver SQL compilado</b-button>
+
+  <b-modal id="modal-10" size="lg" title="Ver SQL compilado" :hide-footer="true" > 
+``` sql
+IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.ROUTINES WHERE ROUTINE_SCHEMA='dbo' AND ROUTINE_NAME='MaxValue' AND ROUTINE_TYPE='FUNCTION')
+DROP FUNCTION dbo.MaxValue;
+
+CREATE FUNCTION dbo.MaxValue(@a int,@b int,@c int) RETURNS int AS
+BEGIN
+
+  DECLARE @result int;
+  
+  IF (@a>=@b AND @a>=@b)
+    SET @result=@a;
+  ELSE
+    BEGIN
+      IF @b>=@c
+        SET @result=@b;
+      ELSE
+        SET @result=@c;
+    END
+  
+  
+  RETURN @result
+END
+
+```
+  </b-modal>
+
+  </div>
+</div>
+
 
 También pueden crearse funciones que devuelven tablas de este modo simplificado:
 
-<view-sql-code fileName="FUNCTION2"/>
+<div class="mt-1 mb-2 row">
+  <div class="col-lg-12">
+
+``` sql
+CREATE OR REPLACE FUNCTION dbo.ProductSales(@ProductId int) RETURNS TABLE
+SELECT 
+  year(FactSalesOrderHeader.OrderDate) OrderYear,
+  sum(FactSalesOrderDetails.LineTotal) Sales
+FROM dwh.FactSalesOrderDetails
+INNER JOIN dwh.FactSalesOrderHeader USING SalesOrderId
+INNER JOIN dwh.DimProducts USING ProductSid
+WHERE DimProducts.ProductId=@ProductId
+```
+
+  <b-button class="float-right btn" size="sm" v-b-modal.modal-11 style="background-color: #3eaf7c">Ver SQL compilado</b-button>
+
+  <b-modal id="modal-11" size="lg" title="Ver SQL compilado" :hide-footer="true" > 
+``` sql
+IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.ROUTINES WHERE ROUTINE_SCHEMA='dbo' AND ROUTINE_NAME='ProductSales' AND ROUTINE_TYPE='FUNCTION')
+DROP FUNCTION dbo.ProductSales;
+
+CREATE FUNCTION dbo.ProductSales(@ProductId int) RETURNS TABLE AS
+RETURN (
+  SELECT
+    year(FactSalesOrderHeader.OrderDate) AS OrderYear,
+    sum(FactSalesOrderDetails.LineTotal) AS Sales
+  FROM dwh.FactSalesOrderDetails
+  INNER JOIN dwh.FactSalesOrderHeader ON (FactSalesOrderDetails.SalesOrderId=FactSalesOrderHeader.SalesOrderId)
+  INNER JOIN dwh.DimProducts ON (FactSalesOrderDetails.ProductSid=DimProducts.ProductSid)
+  WHERE DimProducts.ProductId=@ProductId
+  GROUP BY year(FactSalesOrderHeader.OrderDate)
+)
+
+```
+  </b-modal>
+
+  </div>
+</div>
+
 
 Se puede utilizar **DROP FUNCTION** o **DROP FUNCTION IF EXISTS** para eliminar una función. 
 
-<view-sql-code fileName="DROP-FUNCTION"/>
+<div class="mt-1 mb-2 row">
+  <div class="col-lg-12">
+
+``` sql
+DROP FUNCTION IF EXISTS dbo.ProductSales
+```
+
+  <b-button class="float-right btn" size="sm" v-b-modal.modal-12 style="background-color: #3eaf7c">Ver SQL compilado</b-button>
+
+  <b-modal id="modal-12" size="lg" title="Ver SQL compilado" :hide-footer="true" > 
+``` sql
+IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.ROUTINES WHERE ROUTINE_SCHEMA='dbo' AND ROUTINE_NAME='ProductSales' AND ROUTINE_TYPE='FUNCTION')
+DROP FUNCTION dbo.ProductSales;
+
+```
+  </b-modal>
+
+  </div>
+</div>
+
 
 ## CREATE VIEW
 
 **Crono SQL** admite la sintaxis estándar para crear vistas:
 
-<view-sql-code fileName="CREATE-VIEW1"/>
+<div class="mt-1 mb-2 row">
+  <div class="col-lg-12">
+
+``` sql
+CREATE VIEW dwh.ProductsAnnualSales AS
+SELECT  
+  DimProducts.Product,
+  year(FactSalesOrderHeader.OrderDate) OrderYear,
+  sum(FactSalesOrderDetails.LineTotal) Sales
+FROM dwh.FactSalesOrderDetails
+INNER JOIN dwh.FactSalesOrderHeader USING SalesOrderId
+INNER JOIN dwh.DimProducts USING ProductSid
+```
+
+  <b-button class="float-right btn" size="sm" v-b-modal.modal-13 style="background-color: #3eaf7c">Ver SQL compilado</b-button>
+
+  <b-modal id="modal-13" size="lg" title="Ver SQL compilado" :hide-footer="true" > 
+``` sql
+CREATE VIEW dwh.ProductsAnnualSales AS
+SELECT
+  DimProducts.Product AS Product,
+  year(FactSalesOrderHeader.OrderDate) AS OrderYear,
+  sum(FactSalesOrderDetails.LineTotal) AS Sales
+FROM dwh.FactSalesOrderDetails
+INNER JOIN dwh.FactSalesOrderHeader ON (FactSalesOrderDetails.SalesOrderId=FactSalesOrderHeader.SalesOrderId)
+INNER JOIN dwh.DimProducts ON (FactSalesOrderDetails.ProductSid=DimProducts.ProductSid)
+GROUP BY
+  DimProducts.Product,
+  year(FactSalesOrderHeader.OrderDate)
+
+```
+  </b-modal>
+
+  </div>
+</div>
+
 
 Se puede utilizar **CREATE OR ALTER VIEW** o **CREATE OR REPLACE VIEW** para actualizar la vista en el  caso de que ya exista.
 
 
-<view-sql-code fileName="CREATE-VIEW2"/>
+<div class="mt-1 mb-2 row">
+  <div class="col-lg-12">
+
+``` sql
+CREATE OR REPLACE VIEW dwh.ProductsAnnualSales
+SELECT  
+  DimProducts.Product,
+  year(FactSalesOrderHeader.OrderDate) OrderYear,
+  sum(FactSalesOrderDetails.LineTotal) Sales
+FROM dwh.FactSalesOrderDetails
+INNER JOIN dwh.FactSalesOrderHeader USING SalesOrderId
+INNER JOIN dwh.DimProducts USING ProductSid
+```
+
+  <b-button class="float-right btn" size="sm" v-b-modal.modal-14 style="background-color: #3eaf7c">Ver SQL compilado</b-button>
+
+  <b-modal id="modal-14" size="lg" title="Ver SQL compilado" :hide-footer="true" > 
+``` sql
+IF EXISTS (SELECT TABLE_NAME FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA='dwh' AND TABLE_NAME='ProductsAnnualSales') DROP VIEW dwh.ProductsAnnualSales
+
+CREATE VIEW dwh.ProductsAnnualSales AS
+SELECT
+  DimProducts.Product AS Product,
+  year(FactSalesOrderHeader.OrderDate) AS OrderYear,
+  sum(FactSalesOrderDetails.LineTotal) AS Sales
+FROM dwh.FactSalesOrderDetails
+INNER JOIN dwh.FactSalesOrderHeader ON (FactSalesOrderDetails.SalesOrderId=FactSalesOrderHeader.SalesOrderId)
+INNER JOIN dwh.DimProducts ON (FactSalesOrderDetails.ProductSid=DimProducts.ProductSid)
+GROUP BY
+  DimProducts.Product,
+  year(FactSalesOrderHeader.OrderDate)
+
+```
+  </b-modal>
+
+  </div>
+</div>
+
 
 Para eliminar una vista existente se puede utilizar **DROP VIEW** o **DROP VIEW IF EXISTS**
 
-<view-sql-code fileName="DROP-VIEW"/>
+<div class="mt-1 mb-2 row">
+  <div class="col-lg-12">
+
+``` sql
+DROP VIEW IF EXISTS dbo.ProductSales
+```
+
+  <b-button class="float-right btn" size="sm" v-b-modal.modal-15 style="background-color: #3eaf7c">Ver SQL compilado</b-button>
+
+  <b-modal id="modal-15" size="lg" title="Ver SQL compilado" :hide-footer="true" > 
+``` sql
+IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA='dbo' AND TABLE_NAME='ProductSales' AND TABLE_TYPE='VIEW')
+DROP VIEW dbo.ProductSales;
+
+```
+  </b-modal>
+
+  </div>
+</div>
+
 
 ## CREATE TABLE
 
@@ -100,18 +971,280 @@ En general, <u>no es necesario</u> escribir explícitamente el **CREATE TABLE** 
 
 De todos modos, si se prefiere, pueden crearse las tablas utilizando la sintaxis habitual de **CREATE TABLE**.
 
-<view-sql-code fileName="CREATE-TABLE1"/>
+<div class="mt-1 mb-2 row">
+  <div class="col-lg-12">
+
+``` sql
+CREATE TABLE dwh.DimCustomers(
+  CustomerSid int IDENTITY(1,1),
+  CustomerId int NOT NULL,
+  Customer nvarchar(101) NOT NULL,
+  CustomerType varchar(6) NOT NULL,
+  AccountNumber nvarchar(10),
+  FirstName nvarchar(50),
+  MiddleName nvarchar(50),
+  LastName nvarchar(50),
+  CustomerAddressCountry nvarchar(50),
+  CustomerProvince nvarchar(50),
+  Name nvarchar(50),
+  CustomerCountry nvarchar(50),
+  CONSTRAINT PK_DimCustomers PRIMARY KEY CLUSTERED (CustomerSid),
+  CONSTRAINT BK_DimCustomers UNIQUE (CustomerId)
+)
+```
+
+  <b-button class="float-right btn" size="sm" v-b-modal.modal-16 style="background-color: #3eaf7c">Ver SQL compilado</b-button>
+
+  <b-modal id="modal-16" size="lg" title="Ver SQL compilado" :hide-footer="true" > 
+``` sql
+CREATE TABLE dwh.DimCustomers(
+  CustomerSid int IDENTITY(1,1) NOT NULL,
+  CustomerId int NOT NULL,
+  Customer nvarchar(101) NOT NULL,
+  CustomerType varchar(6) NOT NULL,
+  AccountNumber nvarchar(10),
+  FirstName nvarchar(50),
+  MiddleName nvarchar(50),
+  LastName nvarchar(50),
+  CustomerAddressCountry nvarchar(50),
+  CustomerProvince nvarchar(50),
+  Name nvarchar(50),
+  CustomerCountry nvarchar(50),
+  CONSTRAINT PK_DimCustomers PRIMARY KEY CLUSTERED (CustomerSid),
+  CONSTRAINT BK_DimCustomers UNIQUE (CustomerId)
+)
+
+```
+  </b-modal>
+
+  </div>
+</div>
+
 
 Se puede utilizar **CREATE TABLE IF NOT EXISTS** para crearla únicamente si no existe aún. 
 
 La sentencia **CREATE OR REPLACE TABLE** elimina la tabla si ya existe (**DROP TABLE**) y posteriormente la recrea.
 
 
-<view-sql-code fileName="CREATE-TABLE2"/>
+<div class="mt-1 mb-2 row">
+  <div class="col-lg-12">
+
+``` sql
+CREATE OR REPLACE TABLE dwh.DimCustomers(
+  CustomerSid int IDENTITY(1,1),
+  CustomerId int NOT NULL,
+  Customer nvarchar(101) NOT NULL,
+  CustomerType varchar(6) NOT NULL,
+  AccountNumber nvarchar(10),
+  FirstName nvarchar(50),
+  MiddleName nvarchar(50),
+  LastName nvarchar(50),
+  CustomerAddressCountry nvarchar(50),
+  CustomerProvince nvarchar(50),
+  Name nvarchar(50),
+  CustomerCountry nvarchar(50),
+  CONSTRAINT PK_DimCustomers PRIMARY KEY CLUSTERED (CustomerSid),
+  CONSTRAINT BK_DimCustomers UNIQUE (CustomerId)
+)
+```
+
+  <b-button class="float-right btn" size="sm" v-b-modal.modal-17 style="background-color: #3eaf7c">Ver SQL compilado</b-button>
+
+  <b-modal id="modal-17" size="lg" title="Ver SQL compilado" :hide-footer="true" > 
+``` sql
+IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA='dwh' AND TABLE_NAME='DimCustomers' AND TABLE_TYPE='BASE TABLE')
+DROP TABLE dwh.DimCustomers
+
+CREATE TABLE dwh.DimCustomers(
+  CustomerSid int IDENTITY(1,1) NOT NULL,
+  CustomerId int NOT NULL,
+  Customer nvarchar(101) NOT NULL,
+  CustomerType varchar(6) NOT NULL,
+  AccountNumber nvarchar(10),
+  FirstName nvarchar(50),
+  MiddleName nvarchar(50),
+  LastName nvarchar(50),
+  CustomerAddressCountry nvarchar(50),
+  CustomerProvince nvarchar(50),
+  Name nvarchar(50),
+  CustomerCountry nvarchar(50),
+  CONSTRAINT PK_DimCustomers PRIMARY KEY CLUSTERED (CustomerSid),
+  CONSTRAINT BK_DimCustomers UNIQUE (CustomerId)
+)
+
+```
+  </b-modal>
+
+  </div>
+</div>
+
 
 También puede utilizarse **CREATE OR ALTER TABLE** para añadir nuevos campos, restricciones o índices a una tabla existente.
 
-<view-sql-code fileName="CREATE-TABLE3"/>
+<div class="mt-1 mb-2 row">
+  <div class="col-lg-12">
+
+``` sql
+CREATE OR ALTER TABLE dwh.DimCustomers(
+  CustomerSid int IDENTITY(1,1),
+  CustomerId int NOT NULL,
+  Customer nvarchar(101) NOT NULL,
+  CustomerType varchar(6) NOT NULL,
+  AccountNumber nvarchar(10),
+  FirstName nvarchar(50),
+  MiddleName nvarchar(50),
+  LastName nvarchar(50),
+  CustomerAddressCountry nvarchar(50),
+  CustomerProvince nvarchar(50),
+  Name nvarchar(50),
+  CustomerCountry nvarchar(50),
+  CONSTRAINT PK_DimCustomers PRIMARY KEY CLUSTERED (CustomerSid),
+  CONSTRAINT BK_DimCustomers UNIQUE (CustomerId)
+)
+```
+
+  <b-button class="float-right btn" size="sm" v-b-modal.modal-18 style="background-color: #3eaf7c">Ver SQL compilado</b-button>
+
+  <b-modal id="modal-18" size="lg" title="Ver SQL compilado" :hide-footer="true" > 
+``` sql
+IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA='dwh' AND TABLE_NAME='DimCustomers')
+CREATE TABLE dwh.DimCustomers(
+  CustomerSid int IDENTITY(1,1) NOT NULL,
+  CustomerId int NOT NULL,
+  Customer nvarchar(101) NOT NULL,
+  CustomerType varchar(6) NOT NULL,
+  AccountNumber nvarchar(10),
+  FirstName nvarchar(50),
+  MiddleName nvarchar(50),
+  LastName nvarchar(50),
+  CustomerAddressCountry nvarchar(50),
+  CustomerProvince nvarchar(50),
+  Name nvarchar(50),
+  CustomerCountry nvarchar(50),
+  CONSTRAINT PK_DimCustomers PRIMARY KEY CLUSTERED (CustomerSid),
+  CONSTRAINT BK_DimCustomers UNIQUE (CustomerId)
+)
+
+IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA='dwh' AND TABLE_NAME='DimCustomers' AND COLUMN_NAME='CustomerSid')
+ALTER TABLE dwh.DimCustomers ADD CustomerSid int
+
+IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA='dwh' AND TABLE_NAME='DimCustomers' AND COLUMN_NAME='CustomerId')
+ALTER TABLE dwh.DimCustomers ADD CustomerId int
+
+IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA='dwh' AND TABLE_NAME='DimCustomers' AND COLUMN_NAME='Customer')
+ALTER TABLE dwh.DimCustomers ADD Customer nvarchar(101)
+
+IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA='dwh' AND TABLE_NAME='DimCustomers' AND COLUMN_NAME='CustomerType')
+ALTER TABLE dwh.DimCustomers ADD CustomerType varchar(6)
+
+IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA='dwh' AND TABLE_NAME='DimCustomers' AND COLUMN_NAME='AccountNumber')
+ALTER TABLE dwh.DimCustomers ADD AccountNumber nvarchar(10)
+
+IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA='dwh' AND TABLE_NAME='DimCustomers' AND COLUMN_NAME='FirstName')
+ALTER TABLE dwh.DimCustomers ADD FirstName nvarchar(50)
+
+IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA='dwh' AND TABLE_NAME='DimCustomers' AND COLUMN_NAME='MiddleName')
+ALTER TABLE dwh.DimCustomers ADD MiddleName nvarchar(50)
+
+IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA='dwh' AND TABLE_NAME='DimCustomers' AND COLUMN_NAME='LastName')
+ALTER TABLE dwh.DimCustomers ADD LastName nvarchar(50)
+
+IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA='dwh' AND TABLE_NAME='DimCustomers' AND COLUMN_NAME='CustomerAddressCountry')
+ALTER TABLE dwh.DimCustomers ADD CustomerAddressCountry nvarchar(50)
+
+IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA='dwh' AND TABLE_NAME='DimCustomers' AND COLUMN_NAME='CustomerProvince')
+ALTER TABLE dwh.DimCustomers ADD CustomerProvince nvarchar(50)
+
+IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA='dwh' AND TABLE_NAME='DimCustomers' AND COLUMN_NAME='Name')
+ALTER TABLE dwh.DimCustomers ADD Name nvarchar(50)
+
+IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA='dwh' AND TABLE_NAME='DimCustomers' AND COLUMN_NAME='CustomerCountry')
+ALTER TABLE dwh.DimCustomers ADD CustomerCountry nvarchar(50)
+
+IF EXISTS(SELECT name FROM sys.objects WHERE name='DF dwh.DimCustomers CustomerSid' AND type='D')
+ALTER TABLE dwh.DimCustomers DROP CONSTRAINT [DF dwh.DimCustomers CustomerSid];
+
+IF EXISTS(SELECT name FROM sys.objects WHERE name='DF dwh.DimCustomers CustomerId' AND type='D')
+ALTER TABLE dwh.DimCustomers DROP CONSTRAINT [DF dwh.DimCustomers CustomerId];
+
+IF EXISTS(SELECT name FROM sys.objects WHERE name='DF dwh.DimCustomers Customer' AND type='D')
+ALTER TABLE dwh.DimCustomers DROP CONSTRAINT [DF dwh.DimCustomers Customer];
+
+IF EXISTS(SELECT name FROM sys.objects WHERE name='DF dwh.DimCustomers CustomerType' AND type='D')
+ALTER TABLE dwh.DimCustomers DROP CONSTRAINT [DF dwh.DimCustomers CustomerType];
+
+IF EXISTS(SELECT name FROM sys.objects WHERE name='DF dwh.DimCustomers AccountNumber' AND type='D')
+ALTER TABLE dwh.DimCustomers DROP CONSTRAINT [DF dwh.DimCustomers AccountNumber];
+
+IF EXISTS(SELECT name FROM sys.objects WHERE name='DF dwh.DimCustomers FirstName' AND type='D')
+ALTER TABLE dwh.DimCustomers DROP CONSTRAINT [DF dwh.DimCustomers FirstName];
+
+IF EXISTS(SELECT name FROM sys.objects WHERE name='DF dwh.DimCustomers MiddleName' AND type='D')
+ALTER TABLE dwh.DimCustomers DROP CONSTRAINT [DF dwh.DimCustomers MiddleName];
+
+IF EXISTS(SELECT name FROM sys.objects WHERE name='DF dwh.DimCustomers LastName' AND type='D')
+ALTER TABLE dwh.DimCustomers DROP CONSTRAINT [DF dwh.DimCustomers LastName];
+
+IF EXISTS(SELECT name FROM sys.objects WHERE name='DF dwh.DimCustomers CustomerAddressCountry' AND type='D')
+ALTER TABLE dwh.DimCustomers DROP CONSTRAINT [DF dwh.DimCustomers CustomerAddressCountry];
+
+IF EXISTS(SELECT name FROM sys.objects WHERE name='DF dwh.DimCustomers CustomerProvince' AND type='D')
+ALTER TABLE dwh.DimCustomers DROP CONSTRAINT [DF dwh.DimCustomers CustomerProvince];
+
+IF EXISTS(SELECT name FROM sys.objects WHERE name='DF dwh.DimCustomers Name' AND type='D')
+ALTER TABLE dwh.DimCustomers DROP CONSTRAINT [DF dwh.DimCustomers Name];
+
+IF EXISTS(SELECT name FROM sys.objects WHERE name='DF dwh.DimCustomers CustomerCountry' AND type='D')
+ALTER TABLE dwh.DimCustomers DROP CONSTRAINT [DF dwh.DimCustomers CustomerCountry];
+
+IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA='dwh' AND TABLE_NAME='DimCustomers' AND COLUMN_NAME='CustomerSid' AND IS_NULLABLE='YES')
+ALTER TABLE dwh.DimCustomers ALTER COLUMN CustomerSid int NOT NULL
+
+IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA='dwh' AND TABLE_NAME='DimCustomers' AND COLUMN_NAME='CustomerId' AND IS_NULLABLE='YES')
+ALTER TABLE dwh.DimCustomers ALTER COLUMN CustomerId int NOT NULL
+
+IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA='dwh' AND TABLE_NAME='DimCustomers' AND COLUMN_NAME='Customer' AND IS_NULLABLE='YES')
+ALTER TABLE dwh.DimCustomers ALTER COLUMN Customer nvarchar(101) NOT NULL
+
+IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA='dwh' AND TABLE_NAME='DimCustomers' AND COLUMN_NAME='CustomerType' AND IS_NULLABLE='YES')
+ALTER TABLE dwh.DimCustomers ALTER COLUMN CustomerType varchar(6) NOT NULL
+
+IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA='dwh' AND TABLE_NAME='DimCustomers' AND COLUMN_NAME='AccountNumber' AND IS_NULLABLE='NO')
+ALTER TABLE dwh.DimCustomers ALTER COLUMN AccountNumber nvarchar(10) NULL
+
+IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA='dwh' AND TABLE_NAME='DimCustomers' AND COLUMN_NAME='FirstName' AND IS_NULLABLE='NO')
+ALTER TABLE dwh.DimCustomers ALTER COLUMN FirstName nvarchar(50) NULL
+
+IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA='dwh' AND TABLE_NAME='DimCustomers' AND COLUMN_NAME='MiddleName' AND IS_NULLABLE='NO')
+ALTER TABLE dwh.DimCustomers ALTER COLUMN MiddleName nvarchar(50) NULL
+
+IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA='dwh' AND TABLE_NAME='DimCustomers' AND COLUMN_NAME='LastName' AND IS_NULLABLE='NO')
+ALTER TABLE dwh.DimCustomers ALTER COLUMN LastName nvarchar(50) NULL
+
+IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA='dwh' AND TABLE_NAME='DimCustomers' AND COLUMN_NAME='CustomerAddressCountry' AND IS_NULLABLE='NO')
+ALTER TABLE dwh.DimCustomers ALTER COLUMN CustomerAddressCountry nvarchar(50) NULL
+
+IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA='dwh' AND TABLE_NAME='DimCustomers' AND COLUMN_NAME='CustomerProvince' AND IS_NULLABLE='NO')
+ALTER TABLE dwh.DimCustomers ALTER COLUMN CustomerProvince nvarchar(50) NULL
+
+IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA='dwh' AND TABLE_NAME='DimCustomers' AND COLUMN_NAME='Name' AND IS_NULLABLE='NO')
+ALTER TABLE dwh.DimCustomers ALTER COLUMN Name nvarchar(50) NULL
+
+IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA='dwh' AND TABLE_NAME='DimCustomers' AND COLUMN_NAME='CustomerCountry' AND IS_NULLABLE='NO')
+ALTER TABLE dwh.DimCustomers ALTER COLUMN CustomerCountry nvarchar(50) NULL
+
+IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS WHERE TABLE_SCHEMA='dwh' AND TABLE_NAME='DimCustomers' AND CONSTRAINT_NAME='PK_DimCustomers')
+ALTER TABLE dwh.DimCustomers ADD CONSTRAINT PK_DimCustomers PRIMARY KEY CLUSTERED (CustomerSid)
+
+IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS WHERE TABLE_SCHEMA='dwh' AND TABLE_NAME='DimCustomers' AND CONSTRAINT_NAME='BK_DimCustomers')
+ALTER TABLE dwh.DimCustomers ADD CONSTRAINT BK_DimCustomers UNIQUE (CustomerId)
+
+```
+  </b-modal>
+
+  </div>
+</div>
+
 
 Además de los campos de la tabla, la sintaxis de **Crono SQL** admite las siguientes restricciones y índices:
 
@@ -122,7 +1255,89 @@ Además de los campos de la tabla, la sintaxis de **Crono SQL** admite las sigui
 - Restricciones **DEFAULT**
 - Indices **UNIQUE** y **NONUNIQUE** (que pueden ser **CLUSTERED** o **NONCLUSTERED**, y con la opción **INCLUDE**)
 
-<view-sql-code fileName="CREATE-TABLE5"/>
+<div class="mt-1 mb-2 row">
+  <div class="col-lg-12">
+
+``` sql
+CREATE OR REPLACE TABLE dwh.DimCustomer2(
+  #CustomerSid int IDENTITY(1,1),
+  ##CustomerId int,
+  Customer nvarchar(101) UNIQUE,
+  CustomerType varchar(6) NOT NULL DEFAULT 'Unknown',
+  AccountNumber nvarchar(10) NOT NULL,
+  FirstName nvarchar(50) NOT NULL DEFAULT '',
+  MiddleName nvarchar(50),
+  LastName nvarchar(50),
+  CustomerAddressCountry nvarchar(50),
+  CustomerProvince nvarchar(50),
+  Name nvarchar(50),
+  CustomerCountry nvarchar(50),
+  Store int REFERENCES dwh.DimStore ON DELETE CASCADE,
+  BirthDate	date REFERENCES dwh.DimDates(CalendarDate),
+  Store nvarchar(50),
+  StoreManager nvarchar(101),
+  StoreCountry nvarchar(50),
+  StoreProvince nvarchar(50),
+  StoreCity nvarchar(30),
+  CONSTRAINT constraint1 UNIQUE (FirstName, MiddleName, LastName),
+  INDEX UNIQUE CLUSTERED (AccountNumber),
+  INDEX NONUNIQUE (LastName) INCLUDE (Customer, AccountNumber),
+  INDEX NONUNIQUE (CustomerType)
+)
+```
+
+  <b-button class="float-right btn" size="sm" v-b-modal.modal-19 style="background-color: #3eaf7c">Ver SQL compilado</b-button>
+
+  <b-modal id="modal-19" size="lg" title="Ver SQL compilado" :hide-footer="true" > 
+``` sql
+IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA='dwh' AND TABLE_NAME='DimCustomer2' AND TABLE_TYPE='BASE TABLE')
+DROP TABLE dwh.DimCustomer2
+
+CREATE TABLE dwh.DimCustomer2(
+  CustomerSid int IDENTITY(1,1) NOT NULL,
+  [##CustomerId] int,
+  Customer nvarchar(101),
+  CustomerType varchar(6) NOT NULL,
+  AccountNumber nvarchar(10) NOT NULL,
+  FirstName nvarchar(50) NOT NULL,
+  MiddleName nvarchar(50),
+  LastName nvarchar(50),
+  CustomerAddressCountry nvarchar(50),
+  CustomerProvince nvarchar(50),
+  Name nvarchar(50),
+  CustomerCountry nvarchar(50),
+  Store int,
+  BirthDate date,
+  Store nvarchar(50),
+  StoreManager nvarchar(101),
+  StoreCountry nvarchar(50),
+  StoreProvince nvarchar(50),
+  StoreCity nvarchar(30),
+  CONSTRAINT constraint1 UNIQUE (FirstName,MiddleName,LastName)
+)
+
+ALTER TABLE dwh.DimCustomer2 ADD CONSTRAINT [DF dwh.DimCustomer2 CustomerType] DEFAULT 'Unknown' FOR CustomerType
+
+ALTER TABLE dwh.DimCustomer2 ADD CONSTRAINT [DF dwh.DimCustomer2 FirstName] DEFAULT '' FOR FirstName
+
+ALTER TABLE dwh.DimCustomer2 ADD CONSTRAINT [FK dwh.DimCustomer2(Store) dwh.DimStore] FOREIGN KEY (Store) REFERENCES dwh.DimStore(Store) ON DELETE CASCADE
+
+ALTER TABLE dwh.DimCustomer2 ADD CONSTRAINT [FK dwh.DimCustomer2(BirthDate) dwh.DimDates] FOREIGN KEY (BirthDate) REFERENCES dwh.DimDates(CalendarDate)
+
+CREATE UNIQUE INDEX [INDEX dwh.DimCustomer2 Customer] ON dwh.DimCustomer2(Customer)
+
+CREATE UNIQUE CLUSTERED INDEX [INDEX dwh.DimCustomer2 AccountNumber] ON dwh.DimCustomer2(AccountNumber)
+
+CREATE INDEX [INDEX dwh.DimCustomer2 LastName] ON dwh.DimCustomer2(LastName) INCLUDE (Customer,AccountNumber)
+
+CREATE INDEX [INDEX dwh.DimCustomer2 CustomerType] ON dwh.DimCustomer2(CustomerType)
+
+```
+  </b-modal>
+
+  </div>
+</div>
+
 
 Algunas características de esta sintaxis:
 
@@ -131,41 +1346,273 @@ Algunas características de esta sintaxis:
 
 Si se requiere alguna funcionalidad de la base de datos que no está soportada por la sintaxis de **Crono SQL**, se pueden utilizar los literales SQL. Por ejemplo, puede utilizarse un literal SQL para especificar el *file group* donde debe crearse un indice, o para definir el particionado, o crear indices columnares (**Crono SQL** no parseará ni traducirá el literal SQL).
 
-<view-sql-code fileName="CREATE-TABLE6"/>
+<div class="mt-1 mb-2 row">
+  <div class="col-lg-12">
+
+``` sql
+SQL `
+CREATE TABLE [dwh].[DimCustomer](
+  [CustomerSid] [int] IDENTITY(1,1) NOT NULL,
+  [CustomerId] [int] NULL,
+  [Customer] [nvarchar](101) NULL,
+  [CustomerType] [varchar](6) NOT NULL,
+  [AccountNumber] [nvarchar](10) NOT NULL,
+  [FirstName] [nvarchar](50) NOT NULL,
+  [MiddleName] [nvarchar](50) NULL,
+  [LastName] [nvarchar](50) NULL,
+  [CustomerAddressCountry] [nvarchar](50) NULL
+  CONSTRAINT [PK_DimCustomer] PRIMARY KEY NONCLUSTERED ([CustomerSid] ASC) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+`
+```
+
+  <b-button class="float-right btn" size="sm" v-b-modal.modal-20 style="background-color: #3eaf7c">Ver SQL compilado</b-button>
+
+  <b-modal id="modal-20" size="lg" title="Ver SQL compilado" :hide-footer="true" > 
+``` sql
+
+CREATE TABLE [dwh].[DimCustomer](
+  [CustomerSid] [int] IDENTITY(1,1) NOT NULL,
+  [CustomerId] [int] NULL,
+  [Customer] [nvarchar](101) NULL,
+  [CustomerType] [varchar](6) NOT NULL,
+  [AccountNumber] [nvarchar](10) NOT NULL,
+  [FirstName] [nvarchar](50) NOT NULL,
+  [MiddleName] [nvarchar](50) NULL,
+  [LastName] [nvarchar](50) NULL,
+  [CustomerAddressCountry] [nvarchar](50) NULL
+  CONSTRAINT [PK_DimCustomer] PRIMARY KEY NONCLUSTERED ([CustomerSid] ASC) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+
+```
+  </b-modal>
+
+  </div>
+</div>
+
 
 También se puede crear una tabla directamente a partir del resultado de una consulta.
 
-<view-sql-code fileName="CREATE-TABLE7"/>
+<div class="mt-1 mb-2 row">
+  <div class="col-lg-12">
+
+``` sql
+CREATE OR REPLACE TABLE dwh.CopiaDeCustomers
+SELECT 
+  Customer.CustomerId				#CustomerId,
+  concat(CustomerPerson.FirstName,' ',CustomerPerson.LastName)		Customer,
+  customer.AccountNumber,
+  CustomerPerson.FirstName,
+  CustomerPerson.MiddleName,
+  CustomerPerson.LastName,
+  CustomerCountry.Name 			CustomerAddressCountry,
+  CustomerProvince.Name 			CustomerProvince,
+  CustomerTerritory.Name,
+FROM staging.customer
+INNER JOIN staging.SalesTerritory CustomerTerritory using Customer(TerritoryId)
+INNER JOIN staging.CountryRegion SalesCountry using CustomerTerritory(CountryRegionCode)
+LEFT JOIN staging.Person CustomerPerson using Customer(PersonID BusinessEntityId)
+LEFT JOIN staging.BusinessEntityAddress filter (AddressTypeid=2) using Customer(PersonID BusinessEntityId)
+LEFT JOIN staging.Address CustomerAddress using BusinessEntityAddress(AddressId)
+LEFT JOIN staging.StateProvince CustomerProvince using CustomerAddress(StateProvinceId)
+LEFT JOIN staging.CountryRegion CustomerCountry using CustomerProvince(CountryRegionCode)
+```
+
+  <b-button class="float-right btn" size="sm" v-b-modal.modal-21 style="background-color: #3eaf7c">Ver SQL compilado</b-button>
+
+  <b-modal id="modal-21" size="lg" title="Ver SQL compilado" :hide-footer="true" > 
+``` sql
+IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA='dwh' AND TABLE_NAME='CopiaDeCustomers' AND TABLE_TYPE='BASE TABLE')
+DROP TABLE dwh.CopiaDeCustomers
+
+SELECT
+  Customer.CustomerId AS CustomerId,
+  concat(CustomerPerson.FirstName,' ',CustomerPerson.LastName) AS Customer,
+  customer.AccountNumber AS AccountNumber,
+  CustomerPerson.FirstName AS FirstName,
+  CustomerPerson.MiddleName AS MiddleName,
+  CustomerPerson.LastName AS LastName,
+  CustomerCountry.Name AS CustomerAddressCountry,
+  CustomerProvince.Name AS CustomerProvince,
+  CustomerTerritory.Name AS Name
+INTO dwh.CopiaDeCustomers
+FROM staging.customer
+INNER JOIN staging.SalesTerritory CustomerTerritory ON (Customer.TerritoryId=CustomerTerritory.TerritoryId)
+INNER JOIN staging.CountryRegion SalesCountry ON (CustomerTerritory.CountryRegionCode=SalesCountry.CountryRegionCode)
+LEFT JOIN staging.Person CustomerPerson ON (Customer.PersonID=CustomerPerson.BusinessEntityId)
+LEFT JOIN (SELECT * FROM staging.BusinessEntityAddress WHERE AddressTypeid=2) BusinessEntityAddress ON (Customer.PersonID=BusinessEntityAddress.BusinessEntityId)
+LEFT JOIN staging.Address CustomerAddress ON (BusinessEntityAddress.AddressId=CustomerAddress.AddressId)
+LEFT JOIN staging.StateProvince CustomerProvince ON (CustomerAddress.StateProvinceId=CustomerProvince.StateProvinceId)
+LEFT JOIN staging.CountryRegion CustomerCountry ON (CustomerProvince.CountryRegionCode=CustomerCountry.CountryRegionCode)
+
+```
+  </b-modal>
+
+  </div>
+</div>
+
 
 Para eliminar una tabla, **Crono SQL** proporciona las sentencias **DROP TABLE** y **DROP TABLE IF EXISTS**.
 
-<view-sql-code fileName="DROP-TABLE1"/>
+<div class="mt-1 mb-2 row">
+  <div class="col-lg-12">
+
+``` sql
+DROP TABLE IF EXISTS dwh.DimCustomer
+```
+
+  <b-button class="float-right btn" size="sm" v-b-modal.modal-22 style="background-color: #3eaf7c">Ver SQL compilado</b-button>
+
+  <b-modal id="modal-22" size="lg" title="Ver SQL compilado" :hide-footer="true" > 
+``` sql
+IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA='dwh' AND TABLE_NAME='DimCustomer' AND TABLE_TYPE='BASE TABLE')
+DROP TABLE dwh.DimCustomer
+
+```
+  </b-modal>
+
+  </div>
+</div>
+
 
 ## CREATE INDEX
 
 Los índices se pueden crear desde la misma sentencia **CREATE TABLE** pero también pueden definirse a postereri mediante las sentencias **CREATE INDEX**.
 
-<view-sql-code fileName="CREATE-INDEX1"/>
+<div class="mt-1 mb-2 row">
+  <div class="col-lg-12">
+
+``` sql
+CREATE INDEX IDX_Customer1 ON dwh.DimCustomers(LastName)
+```
+
+  <b-button class="float-right btn" size="sm" v-b-modal.modal-23 style="background-color: #3eaf7c">Ver SQL compilado</b-button>
+
+  <b-modal id="modal-23" size="lg" title="Ver SQL compilado" :hide-footer="true" > 
+``` sql
+CREATE INDEX IDX_Customer1 ON dwh.DimCustomers(LastName)
+```
+  </b-modal>
+
+  </div>
+</div>
+
 
 Se puede utilizar la instrucción **CREATE INDEX IF NOT EXISTS** para crear un índice si aún no existe.
 
-<view-sql-code fileName="CREATE-INDEX2"/>
+<div class="mt-1 mb-2 row">
+  <div class="col-lg-12">
+
+``` sql
+CREATE INDEX IF NOT EXISTS IDX_SalesHeader_CustomerSid ON dwh.FactSalesOrderHeader(CustomerSid)
+```
+
+  <b-button class="float-right btn" size="sm" v-b-modal.modal-24 style="background-color: #3eaf7c">Ver SQL compilado</b-button>
+
+  <b-modal id="modal-24" size="lg" title="Ver SQL compilado" :hide-footer="true" > 
+``` sql
+IF EXISTS (select name from sys.indexes where upper(name)='IDX_SALESHEADER_CUSTOMERSID' and is_unique=1)
+DROP INDEX IDX_SalesHeader_CustomerSid ON dwh.FactSalesOrderHeader
+
+IF NOT EXISTS (select name from sys.indexes where upper(name)='IDX_SALESHEADER_CUSTOMERSID')
+CREATE INDEX IDX_SalesHeader_CustomerSid ON dwh.FactSalesOrderHeader(CustomerSid)
+
+```
+  </b-modal>
+
+  </div>
+</div>
+
 
 También se puede utilizar **CREATE OR REPLACE INDEX** para crear un índice o recrearlo si ya existe. El siguiente ejemplo muestra, además, la posibilidad de utilizar la cláusula **INCLUDE** para añadir columnas adicionales al indice:
 
-<view-sql-code fileName="CREATE-INDEX3"/>
+<div class="mt-1 mb-2 row">
+  <div class="col-lg-12">
+
+``` sql
+CREATE OR REPLACE INDEX IDX_SalesHeader_CustomerSid2 ON dwh.FactSalesOrderHeader(CustomerSid) INCLUDE  (SalesOrderId)
+```
+
+  <b-button class="float-right btn" size="sm" v-b-modal.modal-25 style="background-color: #3eaf7c">Ver SQL compilado</b-button>
+
+  <b-modal id="modal-25" size="lg" title="Ver SQL compilado" :hide-footer="true" > 
+``` sql
+IF EXISTS (select name from sysindexes where upper(name)='IDX_SALESHEADER_CUSTOMERSID2')
+DROP INDEX IDX_SalesHeader_CustomerSid2 ON dwh.FactSalesOrderHeader
+
+CREATE INDEX IDX_SalesHeader_CustomerSid2 ON dwh.FactSalesOrderHeader(CustomerSid) INCLUDE (SalesOrderId)
+
+```
+  </b-modal>
+
+  </div>
+</div>
+
 
 Se puede crear índices **UNIQUE**, **CLUSTERED** y **NONCLUSTERED**.
 
-<view-sql-code fileName="CREATE-INDEX4"/>
+<div class="mt-1 mb-2 row">
+  <div class="col-lg-12">
+
+``` sql
+CREATE UNIQUE NONCLUSTERED INDEX IDX_Customer1 ON dwh.DimCustomers(Customer)
+```
+
+  <b-button class="float-right btn" size="sm" v-b-modal.modal-26 style="background-color: #3eaf7c">Ver SQL compilado</b-button>
+
+  <b-modal id="modal-26" size="lg" title="Ver SQL compilado" :hide-footer="true" > 
+``` sql
+CREATE UNIQUE NONCLUSTERED INDEX IDX_Customer1 ON dwh.DimCustomers(Customer)
+```
+  </b-modal>
+
+  </div>
+</div>
+
 
 Mediante **literales SQL** se puede crear cualquier otro índice que admita la base de datos.
 
-<view-sql-code fileName="CREATE-INDEX5"/>
+<div class="mt-1 mb-2 row">
+  <div class="col-lg-12">
+
+``` sql
+SQL `CREATE CLUSTERED COLUMNSTORE INDEX MyCCI ON MyFactTable;  `
+```
+
+  <b-button class="float-right btn" size="sm" v-b-modal.modal-27 style="background-color: #3eaf7c">Ver SQL compilado</b-button>
+
+  <b-modal id="modal-27" size="lg" title="Ver SQL compilado" :hide-footer="true" > 
+``` sql
+CREATE CLUSTERED COLUMNSTORE INDEX MyCCI ON MyFactTable;
+```
+  </b-modal>
+
+  </div>
+</div>
+
 
 La instrucción **DROP INDEX** permite eliminar un índice.
 
-<view-sql-code fileName="DROP-INDEX"/>
+<div class="mt-1 mb-2 row">
+  <div class="col-lg-12">
+
+``` sql
+DROP INDEX IF EXISTS IDX_SalesHeader_CustomerSid ON dwh.FactSalesOrderHeader
+```
+
+  <b-button class="float-right btn" size="sm" v-b-modal.modal-28 style="background-color: #3eaf7c">Ver SQL compilado</b-button>
+
+  <b-modal id="modal-28" size="lg" title="Ver SQL compilado" :hide-footer="true" > 
+``` sql
+IF EXISTS (select name from sysindexes where upper(name)='IDX_SALESHEADER_CUSTOMERSID')
+DROP INDEX IDX_SalesHeader_CustomerSid ON dwh.FactSalesOrderHeader
+
+```
+  </b-modal>
+
+  </div>
+</div>
+
 
 
 
@@ -174,19 +1621,94 @@ La instrucción **DROP INDEX** permite eliminar un índice.
 
 La sentencia **CREATE DATABASE** permite crear una base de datos con las opciones predeterminadas.
 
-<view-sql-code fileName="CREATE-DATABASE1"/>
+<div class="mt-1 mb-2 row">
+  <div class="col-lg-12">
+
+``` sql
+CREATE DATABASE IF NOT EXISTS CRONO_EJEMPLO
+```
+
+  <b-button class="float-right btn" size="sm" v-b-modal.modal-29 style="background-color: #3eaf7c">Ver SQL compilado</b-button>
+
+  <b-modal id="modal-29" size="lg" title="Ver SQL compilado" :hide-footer="true" > 
+``` sql
+IF DB_ID('CRONO_EJEMPLO') IS NULL
+CREATE DATABASE CRONO_EJEMPLO
+
+```
+  </b-modal>
+
+  </div>
+</div>
+
 
 También se puede especificar la intercalación:
 
-<view-sql-code fileName="CREATE-DATABASE2"/>
+<div class="mt-1 mb-2 row">
+  <div class="col-lg-12">
+
+``` sql
+CREATE DATABASE IF NOT EXISTS CRONO_EJEMPLO COLLATE Traditional_Spanish_ci_ai
+```
+
+  <b-button class="float-right btn" size="sm" v-b-modal.modal-30 style="background-color: #3eaf7c">Ver SQL compilado</b-button>
+
+  <b-modal id="modal-30" size="lg" title="Ver SQL compilado" :hide-footer="true" > 
+``` sql
+IF DB_ID('CRONO_EJEMPLO') IS NULL
+CREATE DATABASE CRONO_EJEMPLO COLLATE Traditional_Spanish_ci_ai
+
+```
+  </b-modal>
+
+  </div>
+</div>
+
 
 ## CREATE SCHEMA
 
 Se puede crear un esquema con las instrucciones **CREATE SCHEMA** y **CREATE SCHEMA IF NOT EXISTS**
 
-<view-sql-code fileName="CREATE-SCHEMA1"/>
+<div class="mt-1 mb-2 row">
+  <div class="col-lg-12">
+
+``` sql
+CREATE SCHEMA IF NOT EXISTS dwh
+```
+
+  <b-button class="float-right btn" size="sm" v-b-modal.modal-31 style="background-color: #3eaf7c">Ver SQL compilado</b-button>
+
+  <b-modal id="modal-31" size="lg" title="Ver SQL compilado" :hide-footer="true" > 
+``` sql
+IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME='dwh') 
+EXECUTE('CREATE SCHEMA dwh AUTHORIZATION dbo')
+
+```
+  </b-modal>
+
+  </div>
+</div>
+
 
 Es posible establecer el propietario del esquema.
 
 
-<view-sql-code fileName="CREATE-SCHEMA2"/>
+<div class="mt-1 mb-2 row">
+  <div class="col-lg-12">
+
+``` sql
+CREATE SCHEMA IF NOT EXISTS dwh AUTHORIZATION crono
+```
+
+  <b-button class="float-right btn" size="sm" v-b-modal.modal-32 style="background-color: #3eaf7c">Ver SQL compilado</b-button>
+
+  <b-modal id="modal-32" size="lg" title="Ver SQL compilado" :hide-footer="true" > 
+``` sql
+IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME='dwh') 
+EXECUTE('CREATE SCHEMA dwh AUTHORIZATION crono')
+
+```
+  </b-modal>
+
+  </div>
+</div>

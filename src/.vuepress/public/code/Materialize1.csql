@@ -1,8 +1,0 @@
-﻿SELECT
-  SalesOrderHeader.OrderDate,
-  Product.Name Product,
-  Product.ProductNumber,
-  sum(Sales.LineTotal) Sales
-FROM staging.SalesOrderDetail FILTER (year(ModifiedDate)=2014) MATERIALIZE Sales
-INNER JOIN staging.SalesOrderHeader USING SalesOrderId
-INNER JOIN staging.Product USING ProductId

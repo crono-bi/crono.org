@@ -1,6 +1,0 @@
-﻿UPDATE dwh.FactSalesOrderHeader
-SELECT 
-  #SalesOrderId,
-  Amount-TaxAmt NetAmount
-FROM dwh.FactSalesOrderHeader
-WHERE year(OrderDate)=2017

@@ -40,7 +40,102 @@ Se utiliza en tablas de hechos pequeñas o en aquellas tablas de dimensión en q
 
 La sintaxis es idéntica a la utilizada en la sintaxis **Crono SQL** de **UPDATE** o **INSERT**, tal y como muestra este ejemplo.
 
-<view-sql-code fileName="MergeClone"/>
+<div class="mt-1 mb-2 row">
+  <div class="col-lg-12">
+
+``` sql
+MERGE CLONE dwh.DimProducts(ProductSid)
+select 
+  #ProductID,
+  Product.Name Product,
+  ProductCategory.name ProductCategory,
+  ProductSubCategory.name ProductSubCategory,
+  ProductNumber,
+  ProductModel.name ProductModel,
+  Color,
+  StandardCost,
+  ListPrice,
+  Size,
+  SizeUnitMeasureCode,
+  Weight
+FROM staging.Product
+LEFT JOIN staging.ProductSubCategory using Product(ProductSubcategoryID)
+LEFT JOIN staging.ProductCategory using ProductSubCategory(ProductCategoryId)
+LEFT JOIN staging.ProductModel using Product(ProductModelID)
+```
+
+  <b-button class="float-right btn" size="sm" v-b-modal.modal-1 style="background-color: #3eaf7c">Ver SQL compilado</b-button>
+
+  <b-modal id="modal-1" size="lg" title="Ver SQL compilado" :hide-footer="true" > 
+``` sql
+;WITH
+query AS (
+  SELECT
+    ProductID,
+    Product.Name AS Product,
+    ProductCategory.name AS ProductCategory,
+    ProductSubCategory.name AS ProductSubCategory,
+    ProductNumber,
+    ProductModel.name AS ProductModel,
+    Color,
+    StandardCost,
+    ListPrice,
+    Size,
+    SizeUnitMeasureCode,
+    Weight
+  FROM staging.Product
+  LEFT JOIN staging.ProductSubCategory ON (Product.ProductSubcategoryID=ProductSubCategory.ProductSubcategoryID)
+  LEFT JOIN staging.ProductCategory ON (ProductSubCategory.ProductCategoryId=ProductCategory.ProductCategoryId)
+  LEFT JOIN staging.ProductModel ON (Product.ProductModelID=ProductModel.ProductModelID)
+)
+MERGE dwh.DimProducts AS DimProducts
+USING query ON query.ProductID=DimProducts.ProductID
+WHEN MATCHED AND ((DimProducts.Product<>query.Product OR (DimProducts.Product IS NULL AND query.Product IS NOT NULL) OR  (DimProducts.Product IS NOT NULL AND query.Product IS NULL)
+                  OR DimProducts.ProductCategory<>query.ProductCategory OR (DimProducts.ProductCategory IS NULL AND query.ProductCategory IS NOT NULL) OR  (DimProducts.ProductCategory IS NOT NULL AND query.ProductCategory IS NULL)
+                  OR DimProducts.ProductSubCategory<>query.ProductSubCategory OR (DimProducts.ProductSubCategory IS NULL AND query.ProductSubCategory IS NOT NULL) OR  (DimProducts.ProductSubCategory IS NOT NULL AND query.ProductSubCategory IS NULL)
+                  OR DimProducts.ProductNumber<>query.ProductNumber OR (DimProducts.ProductNumber IS NULL AND query.ProductNumber IS NOT NULL) OR  (DimProducts.ProductNumber IS NOT NULL AND query.ProductNumber IS NULL)
+                  OR DimProducts.ProductModel<>query.ProductModel OR (DimProducts.ProductModel IS NULL AND query.ProductModel IS NOT NULL) OR  (DimProducts.ProductModel IS NOT NULL AND query.ProductModel IS NULL)
+                  OR DimProducts.Color<>query.Color OR (DimProducts.Color IS NULL AND query.Color IS NOT NULL) OR  (DimProducts.Color IS NOT NULL AND query.Color IS NULL)
+                  OR DimProducts.StandardCost<>query.StandardCost OR (DimProducts.StandardCost IS NULL AND query.StandardCost IS NOT NULL) OR  (DimProducts.StandardCost IS NOT NULL AND query.StandardCost IS NULL)
+                  OR DimProducts.ListPrice<>query.ListPrice OR (DimProducts.ListPrice IS NULL AND query.ListPrice IS NOT NULL) OR  (DimProducts.ListPrice IS NOT NULL AND query.ListPrice IS NULL)
+                  OR DimProducts.Size<>query.Size OR (DimProducts.Size IS NULL AND query.Size IS NOT NULL) OR  (DimProducts.Size IS NOT NULL AND query.Size IS NULL)
+                  OR DimProducts.SizeUnitMeasureCode<>query.SizeUnitMeasureCode OR (DimProducts.SizeUnitMeasureCode IS NULL AND query.SizeUnitMeasureCode IS NOT NULL) OR  (DimProducts.SizeUnitMeasureCode IS NOT NULL AND query.SizeUnitMeasureCode IS NULL)
+                  OR DimProducts.Weight<>query.Weight OR (DimProducts.Weight IS NULL AND query.Weight IS NOT NULL) OR  (DimProducts.Weight IS NOT NULL AND query.Weight IS NULL))) THEN
+  UPDATE SET
+    Product=query.Product,
+    ProductCategory=query.ProductCategory,
+    ProductSubCategory=query.ProductSubCategory,
+    ProductNumber=query.ProductNumber,
+    ProductModel=query.ProductModel,
+    Color=query.Color,
+    StandardCost=query.StandardCost,
+    ListPrice=query.ListPrice,
+    Size=query.Size,
+    SizeUnitMeasureCode=query.SizeUnitMeasureCode,
+    Weight=query.Weight
+WHEN NOT MATCHED THEN
+  INSERT (ProductID,Product,ProductCategory,ProductSubCategory,ProductNumber,ProductModel,Color,StandardCost,ListPrice,Size,SizeUnitMeasureCode,Weight) VALUES (
+    query.ProductID,
+    query.Product,
+    query.ProductCategory,
+    query.ProductSubCategory,
+    query.ProductNumber,
+    query.ProductModel,
+    query.Color,
+    query.StandardCost,
+    query.ListPrice,
+    query.Size,
+    query.SizeUnitMeasureCode,
+    query.Weight)
+WHEN NOT MATCHED BY SOURCE THEN
+  DELETE;
+
+```
+  </b-modal>
+
+  </div>
+</div>
+
 
 Es importante observar que el campo *ProductId* está precedido por el **carácter numeral #**. Esta marca sirve para identificar la **clave de actualización**. Habitualmente coincide con la clave de negocio (código único que identifica a cada registro).
 
@@ -56,7 +151,113 @@ En este ejemplo, después de los **JOIN**, se ha incluido la clausula **CHECK SN
 
 El código generado es óptimo y presenta un gran rendimiento, por lo que esta estrategia es adecuada también en tablas de hechos no excesivamente grandes:
 
-<view-sql-code fileName="MergeClone2"/>
+<div class="mt-1 mb-2 row">
+  <div class="col-lg-12">
+
+``` sql
+MERGE CLONE dwh.FactSalesOrderDetails(SalesOrderDetailSid)
+SELECT
+	SalesOrderDetail.SalesOrderDetailID #SalesOrderDetailID,
+	DimProducts.ProductSid						ProductSid	NONUNIQUE REFERENCES dwh.DimProducts,
+	FactSalesOrderHeader.SalesOrderSid			SalesOrderSid NONUNIQUE	REFERENCES dwh.FactSalesOrderHeader,
+	SalesOrderDetail.CarrierTrackingNumber,
+	SalesOrderDetail.OrderQty,
+	SalesOrderDetail.UnitPrice,
+	SalesOrderDetail.UnitPriceDiscount,
+	SalesOrderDetail.LineTotal,
+	SpecialOffer.Description SpecialOffer,
+	SpecialOffer.Type			SpecialOfferType,
+	SpecialOffer.Category		SpecialOfferCategory,
+from @@erp.SalesOrderDetail SalesOrderDetail
+inner join @@erp.SalesOrderHeader using (SalesOrderID)  
+inner join @@erp.SpecialOffer using (SpecialOfferID)
+inner join @@erp.Product using (ProductID)
+inner join dwh.DimProducts using Product(ProductID)
+inner join dwh.FactSalesOrderHeader using SalesOrderHeader(SalesOrderID)
+check snowflake
+```
+
+  <b-button class="float-right btn" size="sm" v-b-modal.modal-2 style="background-color: #3eaf7c">Ver SQL compilado</b-button>
+
+  <b-modal id="modal-2" size="lg" title="Ver SQL compilado" :hide-footer="true" > 
+``` sql
+IF EXISTS (
+  SELECT count(*)
+  FROM @@erp.SalesOrderDetail
+  LEFT JOIN @@erp.SalesOrderHeader ON (SalesOrderDetail.SalesOrderID=SalesOrderHeader.SalesOrderID)
+  LEFT JOIN @@erp.SpecialOffer ON (SalesOrderDetail.SpecialOfferID=SpecialOffer.SpecialOfferID)
+  LEFT JOIN @@erp.Product ON (SalesOrderDetail.ProductID=Product.ProductID)
+  LEFT JOIN dwh.DimProducts ON (Product.ProductID=DimProducts.ProductID)
+  LEFT JOIN dwh.FactSalesOrderHeader ON (SalesOrderHeader.SalesOrderID=FactSalesOrderHeader.SalesOrderID)
+  HAVING count(CASE WHEN SalesOrderHeader.SalesOrderID IS NOT NULL AND SpecialOffer.SpecialOfferID IS NOT NULL AND Product.ProductID IS NOT NULL AND DimProducts.ProductID IS NOT NULL AND FactSalesOrderHeader.SalesOrderID IS NOT NULL THEN 1 END) <> (SELECT count(*) FROM @@erp.SalesOrderDetail)
+) THROW 50001,'Las relaciones de esta consulta pierden o duplican registros de SalesOrderDetail.',1
+
+;WITH
+query AS (
+  SELECT
+    SalesOrderDetail.SalesOrderDetailID AS SalesOrderDetailID,
+    DimProducts.ProductSid AS ProductSid,
+    FactSalesOrderHeader.SalesOrderSid AS SalesOrderSid,
+    SalesOrderDetail.CarrierTrackingNumber AS CarrierTrackingNumber,
+    SalesOrderDetail.OrderQty AS OrderQty,
+    SalesOrderDetail.UnitPrice AS UnitPrice,
+    SalesOrderDetail.UnitPriceDiscount AS UnitPriceDiscount,
+    SalesOrderDetail.LineTotal AS LineTotal,
+    SpecialOffer.Description AS SpecialOffer,
+    SpecialOffer.Type AS SpecialOfferType,
+    SpecialOffer.Category AS SpecialOfferCategory
+  FROM @@erp.SalesOrderDetail
+  INNER JOIN @@erp.SalesOrderHeader ON (SalesOrderDetail.SalesOrderID=SalesOrderHeader.SalesOrderID)
+  INNER JOIN @@erp.SpecialOffer ON (SalesOrderDetail.SpecialOfferID=SpecialOffer.SpecialOfferID)
+  INNER JOIN @@erp.Product ON (SalesOrderDetail.ProductID=Product.ProductID)
+  INNER JOIN dwh.DimProducts ON (Product.ProductID=DimProducts.ProductID)
+  INNER JOIN dwh.FactSalesOrderHeader ON (SalesOrderHeader.SalesOrderID=FactSalesOrderHeader.SalesOrderID)
+)
+MERGE dwh.FactSalesOrderDetails AS FactSalesOrderDetails
+USING query ON query.SalesOrderDetailID=FactSalesOrderDetails.SalesOrderDetailID
+WHEN MATCHED AND ((FactSalesOrderDetails.ProductSid<>query.ProductSid OR (FactSalesOrderDetails.ProductSid IS NULL AND query.ProductSid IS NOT NULL) OR  (FactSalesOrderDetails.ProductSid IS NOT NULL AND query.ProductSid IS NULL)
+                  OR FactSalesOrderDetails.SalesOrderSid<>query.SalesOrderSid OR (FactSalesOrderDetails.SalesOrderSid IS NULL AND query.SalesOrderSid IS NOT NULL) OR  (FactSalesOrderDetails.SalesOrderSid IS NOT NULL AND query.SalesOrderSid IS NULL)
+                  OR FactSalesOrderDetails.CarrierTrackingNumber<>query.CarrierTrackingNumber OR (FactSalesOrderDetails.CarrierTrackingNumber IS NULL AND query.CarrierTrackingNumber IS NOT NULL) OR  (FactSalesOrderDetails.CarrierTrackingNumber IS NOT NULL AND query.CarrierTrackingNumber IS NULL)
+                  OR FactSalesOrderDetails.OrderQty<>query.OrderQty OR (FactSalesOrderDetails.OrderQty IS NULL AND query.OrderQty IS NOT NULL) OR  (FactSalesOrderDetails.OrderQty IS NOT NULL AND query.OrderQty IS NULL)
+                  OR FactSalesOrderDetails.UnitPrice<>query.UnitPrice OR (FactSalesOrderDetails.UnitPrice IS NULL AND query.UnitPrice IS NOT NULL) OR  (FactSalesOrderDetails.UnitPrice IS NOT NULL AND query.UnitPrice IS NULL)
+                  OR FactSalesOrderDetails.UnitPriceDiscount<>query.UnitPriceDiscount OR (FactSalesOrderDetails.UnitPriceDiscount IS NULL AND query.UnitPriceDiscount IS NOT NULL) OR  (FactSalesOrderDetails.UnitPriceDiscount IS NOT NULL AND query.UnitPriceDiscount IS NULL)
+                  OR FactSalesOrderDetails.LineTotal<>query.LineTotal OR (FactSalesOrderDetails.LineTotal IS NULL AND query.LineTotal IS NOT NULL) OR  (FactSalesOrderDetails.LineTotal IS NOT NULL AND query.LineTotal IS NULL)
+                  OR FactSalesOrderDetails.SpecialOffer<>query.SpecialOffer OR (FactSalesOrderDetails.SpecialOffer IS NULL AND query.SpecialOffer IS NOT NULL) OR  (FactSalesOrderDetails.SpecialOffer IS NOT NULL AND query.SpecialOffer IS NULL)
+                  OR FactSalesOrderDetails.SpecialOfferType<>query.SpecialOfferType OR (FactSalesOrderDetails.SpecialOfferType IS NULL AND query.SpecialOfferType IS NOT NULL) OR  (FactSalesOrderDetails.SpecialOfferType IS NOT NULL AND query.SpecialOfferType IS NULL)
+                  OR FactSalesOrderDetails.SpecialOfferCategory<>query.SpecialOfferCategory OR (FactSalesOrderDetails.SpecialOfferCategory IS NULL AND query.SpecialOfferCategory IS NOT NULL) OR  (FactSalesOrderDetails.SpecialOfferCategory IS NOT NULL AND query.SpecialOfferCategory IS NULL))) THEN
+  UPDATE SET
+    ProductSid=query.ProductSid,
+    SalesOrderSid=query.SalesOrderSid,
+    CarrierTrackingNumber=query.CarrierTrackingNumber,
+    OrderQty=query.OrderQty,
+    UnitPrice=query.UnitPrice,
+    UnitPriceDiscount=query.UnitPriceDiscount,
+    LineTotal=query.LineTotal,
+    SpecialOffer=query.SpecialOffer,
+    SpecialOfferType=query.SpecialOfferType,
+    SpecialOfferCategory=query.SpecialOfferCategory
+WHEN NOT MATCHED THEN
+  INSERT (SalesOrderDetailID,ProductSid,SalesOrderSid,CarrierTrackingNumber,OrderQty,UnitPrice,UnitPriceDiscount,LineTotal,SpecialOffer,SpecialOfferType,SpecialOfferCategory) VALUES (
+    query.SalesOrderDetailID,
+    query.ProductSid,
+    query.SalesOrderSid,
+    query.CarrierTrackingNumber,
+    query.OrderQty,
+    query.UnitPrice,
+    query.UnitPriceDiscount,
+    query.LineTotal,
+    query.SpecialOffer,
+    query.SpecialOfferType,
+    query.SpecialOfferCategory)
+WHEN NOT MATCHED BY SOURCE THEN
+  DELETE;
+
+```
+  </b-modal>
+
+  </div>
+</div>
+
 
 Incluso si la tabla de origen tuviese unos pocos millones de registros, la carga anterior se ejecutaría rápidamente (con el Hardware adecuado).
 
@@ -71,7 +272,110 @@ La instrucción **MERGE UPSERT** es una carga de **dimensión lentamente cambian
 
 Se utiliza habitualmente para cargar tablas de dimensión, ya que se requiere mantener los registros antiguos para respetar la integridad (no queremos borrar un producto o un cliente que tal vez tiene ventas u otras transacciones asociadas).
 
-<view-sql-code fileName="SCD1-1"/>
+<div class="mt-1 mb-2 row">
+  <div class="col-lg-12">
+
+``` sql
+MERGE UPSERT dwh.DimProducts(ProductSid)
+SELECT 
+  #ProductID,
+  Product.Name Product,
+  ProductCategory.name ProductCategory,
+  ProductSubCategory.name ProductSubCategory,
+  ProductNumber,
+  ProductModel.name ProductModel,
+  Color,
+  StandardCost,
+  ListPrice,
+  Size,
+  SizeUnitMeasureCode,
+  Weight
+FROM staging.Product
+LEFT JOIN staging.ProductSubCategory using Product(ProductSubcategoryID)
+LEFT JOIN staging.ProductCategory using ProductSubCategory(ProductCategoryId)
+LEFT JOIN staging.ProductModel using Product(ProductModelID)
+CHECK SNOWFLAKE
+```
+
+  <b-button class="float-right btn" size="sm" v-b-modal.modal-3 style="background-color: #3eaf7c">Ver SQL compilado</b-button>
+
+  <b-modal id="modal-3" size="lg" title="Ver SQL compilado" :hide-footer="true" > 
+``` sql
+IF EXISTS (
+  SELECT count(*)
+  FROM staging.Product
+  LEFT JOIN staging.ProductSubCategory ON (Product.ProductSubcategoryID=ProductSubCategory.ProductSubcategoryID)
+  LEFT JOIN staging.ProductCategory ON (ProductSubCategory.ProductCategoryId=ProductCategory.ProductCategoryId)
+  LEFT JOIN staging.ProductModel ON (Product.ProductModelID=ProductModel.ProductModelID)
+  HAVING count(*) <> (SELECT count(*) FROM staging.Product)
+) THROW 50001,'Las relaciones de esta consulta pierden o duplican registros de Product.',1
+
+;WITH
+query AS (
+  SELECT
+    ProductID,
+    Product.Name AS Product,
+    ProductCategory.name AS ProductCategory,
+    ProductSubCategory.name AS ProductSubCategory,
+    ProductNumber,
+    ProductModel.name AS ProductModel,
+    Color,
+    StandardCost,
+    ListPrice,
+    Size,
+    SizeUnitMeasureCode,
+    Weight
+  FROM staging.Product
+  LEFT JOIN staging.ProductSubCategory ON (Product.ProductSubcategoryID=ProductSubCategory.ProductSubcategoryID)
+  LEFT JOIN staging.ProductCategory ON (ProductSubCategory.ProductCategoryId=ProductCategory.ProductCategoryId)
+  LEFT JOIN staging.ProductModel ON (Product.ProductModelID=ProductModel.ProductModelID)
+)
+MERGE dwh.DimProducts AS DimProducts
+USING query ON query.ProductID=DimProducts.ProductID
+WHEN MATCHED AND ((DimProducts.Product<>query.Product OR (DimProducts.Product IS NULL AND query.Product IS NOT NULL) OR  (DimProducts.Product IS NOT NULL AND query.Product IS NULL)
+                  OR DimProducts.ProductCategory<>query.ProductCategory OR (DimProducts.ProductCategory IS NULL AND query.ProductCategory IS NOT NULL) OR  (DimProducts.ProductCategory IS NOT NULL AND query.ProductCategory IS NULL)
+                  OR DimProducts.ProductSubCategory<>query.ProductSubCategory OR (DimProducts.ProductSubCategory IS NULL AND query.ProductSubCategory IS NOT NULL) OR  (DimProducts.ProductSubCategory IS NOT NULL AND query.ProductSubCategory IS NULL)
+                  OR DimProducts.ProductNumber<>query.ProductNumber OR (DimProducts.ProductNumber IS NULL AND query.ProductNumber IS NOT NULL) OR  (DimProducts.ProductNumber IS NOT NULL AND query.ProductNumber IS NULL)
+                  OR DimProducts.ProductModel<>query.ProductModel OR (DimProducts.ProductModel IS NULL AND query.ProductModel IS NOT NULL) OR  (DimProducts.ProductModel IS NOT NULL AND query.ProductModel IS NULL)
+                  OR DimProducts.Color<>query.Color OR (DimProducts.Color IS NULL AND query.Color IS NOT NULL) OR  (DimProducts.Color IS NOT NULL AND query.Color IS NULL)
+                  OR DimProducts.StandardCost<>query.StandardCost OR (DimProducts.StandardCost IS NULL AND query.StandardCost IS NOT NULL) OR  (DimProducts.StandardCost IS NOT NULL AND query.StandardCost IS NULL)
+                  OR DimProducts.ListPrice<>query.ListPrice OR (DimProducts.ListPrice IS NULL AND query.ListPrice IS NOT NULL) OR  (DimProducts.ListPrice IS NOT NULL AND query.ListPrice IS NULL)
+                  OR DimProducts.Size<>query.Size OR (DimProducts.Size IS NULL AND query.Size IS NOT NULL) OR  (DimProducts.Size IS NOT NULL AND query.Size IS NULL)
+                  OR DimProducts.SizeUnitMeasureCode<>query.SizeUnitMeasureCode OR (DimProducts.SizeUnitMeasureCode IS NULL AND query.SizeUnitMeasureCode IS NOT NULL) OR  (DimProducts.SizeUnitMeasureCode IS NOT NULL AND query.SizeUnitMeasureCode IS NULL)
+                  OR DimProducts.Weight<>query.Weight OR (DimProducts.Weight IS NULL AND query.Weight IS NOT NULL) OR  (DimProducts.Weight IS NOT NULL AND query.Weight IS NULL))) THEN
+  UPDATE SET
+    Product=query.Product,
+    ProductCategory=query.ProductCategory,
+    ProductSubCategory=query.ProductSubCategory,
+    ProductNumber=query.ProductNumber,
+    ProductModel=query.ProductModel,
+    Color=query.Color,
+    StandardCost=query.StandardCost,
+    ListPrice=query.ListPrice,
+    Size=query.Size,
+    SizeUnitMeasureCode=query.SizeUnitMeasureCode,
+    Weight=query.Weight
+WHEN NOT MATCHED THEN
+  INSERT (ProductID,Product,ProductCategory,ProductSubCategory,ProductNumber,ProductModel,Color,StandardCost,ListPrice,Size,SizeUnitMeasureCode,Weight) VALUES (
+    query.ProductID,
+    query.Product,
+    query.ProductCategory,
+    query.ProductSubCategory,
+    query.ProductNumber,
+    query.ProductModel,
+    query.Color,
+    query.StandardCost,
+    query.ListPrice,
+    query.Size,
+    query.SizeUnitMeasureCode,
+    query.Weight);
+
+```
+  </b-modal>
+
+  </div>
+</div>
+
 
 Es importante observar que el campo *ProductId* está precedido por el **carácter numeral #**. Esta marca es importante ya que sirve para identificar la **clave de actualización**. Habitualmente coincide con la clave de negocio (código único que identifica a cada registro)
 
@@ -81,20 +385,305 @@ Al igual que en todas las instrucciones **MERGE** de **Crono SQL**, se creará l
 
 Las estrategía **UPSERT** es la predeterminada del **MERGE**. Por este motivo, el siguiente ejemplo es exactamente equivalente a ejecutar **MERGE UPSERT**.
 
-<view-sql-code fileName="SCD1-2"/>
+<div class="mt-1 mb-2 row">
+  <div class="col-lg-12">
+
+``` sql
+MERGE dwh.DimProducts(ProductSid)
+select 
+  #ProductID,
+  Product.Name Product,
+  ProductCategory.name ProductCategory,
+  ProductSubCategory.name ProductSubCategory,
+  ProductNumber,
+  ProductModel.name ProductModel,
+  Color,
+  StandardCost,
+  ListPrice,
+  Size,
+  SizeUnitMeasureCode,
+  Weight
+FROM staging.Product
+LEFT JOIN staging.ProductSubCategory using Product(ProductSubcategoryID)
+LEFT JOIN staging.ProductCategory using ProductSubCategory(ProductCategoryId)
+LEFT JOIN staging.ProductModel using Product(ProductModelID)
+CHECK SNOWFLAKE
+```
+
+  <b-button class="float-right btn" size="sm" v-b-modal.modal-4 style="background-color: #3eaf7c">Ver SQL compilado</b-button>
+
+  <b-modal id="modal-4" size="lg" title="Ver SQL compilado" :hide-footer="true" > 
+``` sql
+IF EXISTS (
+  SELECT count(*)
+  FROM staging.Product
+  LEFT JOIN staging.ProductSubCategory ON (Product.ProductSubcategoryID=ProductSubCategory.ProductSubcategoryID)
+  LEFT JOIN staging.ProductCategory ON (ProductSubCategory.ProductCategoryId=ProductCategory.ProductCategoryId)
+  LEFT JOIN staging.ProductModel ON (Product.ProductModelID=ProductModel.ProductModelID)
+  HAVING count(*) <> (SELECT count(*) FROM staging.Product)
+) THROW 50001,'Las relaciones de esta consulta pierden o duplican registros de Product.',1
+
+;WITH
+query AS (
+  SELECT
+    ProductID,
+    Product.Name AS Product,
+    ProductCategory.name AS ProductCategory,
+    ProductSubCategory.name AS ProductSubCategory,
+    ProductNumber,
+    ProductModel.name AS ProductModel,
+    Color,
+    StandardCost,
+    ListPrice,
+    Size,
+    SizeUnitMeasureCode,
+    Weight
+  FROM staging.Product
+  LEFT JOIN staging.ProductSubCategory ON (Product.ProductSubcategoryID=ProductSubCategory.ProductSubcategoryID)
+  LEFT JOIN staging.ProductCategory ON (ProductSubCategory.ProductCategoryId=ProductCategory.ProductCategoryId)
+  LEFT JOIN staging.ProductModel ON (Product.ProductModelID=ProductModel.ProductModelID)
+)
+MERGE dwh.DimProducts AS DimProducts
+USING query ON query.ProductID=DimProducts.ProductID
+WHEN MATCHED AND ((DimProducts.Product<>query.Product OR (DimProducts.Product IS NULL AND query.Product IS NOT NULL) OR  (DimProducts.Product IS NOT NULL AND query.Product IS NULL)
+                  OR DimProducts.ProductCategory<>query.ProductCategory OR (DimProducts.ProductCategory IS NULL AND query.ProductCategory IS NOT NULL) OR  (DimProducts.ProductCategory IS NOT NULL AND query.ProductCategory IS NULL)
+                  OR DimProducts.ProductSubCategory<>query.ProductSubCategory OR (DimProducts.ProductSubCategory IS NULL AND query.ProductSubCategory IS NOT NULL) OR  (DimProducts.ProductSubCategory IS NOT NULL AND query.ProductSubCategory IS NULL)
+                  OR DimProducts.ProductNumber<>query.ProductNumber OR (DimProducts.ProductNumber IS NULL AND query.ProductNumber IS NOT NULL) OR  (DimProducts.ProductNumber IS NOT NULL AND query.ProductNumber IS NULL)
+                  OR DimProducts.ProductModel<>query.ProductModel OR (DimProducts.ProductModel IS NULL AND query.ProductModel IS NOT NULL) OR  (DimProducts.ProductModel IS NOT NULL AND query.ProductModel IS NULL)
+                  OR DimProducts.Color<>query.Color OR (DimProducts.Color IS NULL AND query.Color IS NOT NULL) OR  (DimProducts.Color IS NOT NULL AND query.Color IS NULL)
+                  OR DimProducts.StandardCost<>query.StandardCost OR (DimProducts.StandardCost IS NULL AND query.StandardCost IS NOT NULL) OR  (DimProducts.StandardCost IS NOT NULL AND query.StandardCost IS NULL)
+                  OR DimProducts.ListPrice<>query.ListPrice OR (DimProducts.ListPrice IS NULL AND query.ListPrice IS NOT NULL) OR  (DimProducts.ListPrice IS NOT NULL AND query.ListPrice IS NULL)
+                  OR DimProducts.Size<>query.Size OR (DimProducts.Size IS NULL AND query.Size IS NOT NULL) OR  (DimProducts.Size IS NOT NULL AND query.Size IS NULL)
+                  OR DimProducts.SizeUnitMeasureCode<>query.SizeUnitMeasureCode OR (DimProducts.SizeUnitMeasureCode IS NULL AND query.SizeUnitMeasureCode IS NOT NULL) OR  (DimProducts.SizeUnitMeasureCode IS NOT NULL AND query.SizeUnitMeasureCode IS NULL)
+                  OR DimProducts.Weight<>query.Weight OR (DimProducts.Weight IS NULL AND query.Weight IS NOT NULL) OR  (DimProducts.Weight IS NOT NULL AND query.Weight IS NULL))) THEN
+  UPDATE SET
+    Product=query.Product,
+    ProductCategory=query.ProductCategory,
+    ProductSubCategory=query.ProductSubCategory,
+    ProductNumber=query.ProductNumber,
+    ProductModel=query.ProductModel,
+    Color=query.Color,
+    StandardCost=query.StandardCost,
+    ListPrice=query.ListPrice,
+    Size=query.Size,
+    SizeUnitMeasureCode=query.SizeUnitMeasureCode,
+    Weight=query.Weight
+WHEN NOT MATCHED THEN
+  INSERT (ProductID,Product,ProductCategory,ProductSubCategory,ProductNumber,ProductModel,Color,StandardCost,ListPrice,Size,SizeUnitMeasureCode,Weight) VALUES (
+    query.ProductID,
+    query.Product,
+    query.ProductCategory,
+    query.ProductSubCategory,
+    query.ProductNumber,
+    query.ProductModel,
+    query.Color,
+    query.StandardCost,
+    query.ListPrice,
+    query.Size,
+    query.SizeUnitMeasureCode,
+    query.Weight);
+
+```
+  </b-modal>
+
+  </div>
+</div>
+
 
 ## MERGE ALL
 
 La instrucción **MERGE ALL** se comparta igual que **MERGE UPSERT**. La única diferencia es que **MERGE ALL** actualiza todos los registros (hayan cambiado o no). Esta diferencia raramente aportará ningún beneficio (¡Al contrario... penalizará el rendimiento por actualizar registros que no lo necesitan!), por lo que se prefiere usar **MERGE UPSERT**.
 
-<view-sql-code fileName="MergeAll"/>
+<div class="mt-1 mb-2 row">
+  <div class="col-lg-12">
+
+``` sql
+MERGE ALL dwh.DimProducts(ProductSid)
+SELECT 
+  #ProductID,
+  Product.Name Product,
+  ProductCategory.name ProductCategory,
+  ProductSubCategory.name ProductSubCategory,
+  ProductNumber,
+  ProductModel.name ProductModel,
+  Color,
+  StandardCost,
+  ListPrice,
+  Size,
+  SizeUnitMeasureCode,
+  Weight
+FROM staging.Product
+LEFT JOIN staging.ProductSubCategory using Product(ProductSubcategoryID)
+LEFT JOIN staging.ProductCategory using ProductSubCategory(ProductCategoryId)
+LEFT JOIN staging.ProductModel using Product(ProductModelID)
+CHECK SNOWFLAKE
+```
+
+  <b-button class="float-right btn" size="sm" v-b-modal.modal-5 style="background-color: #3eaf7c">Ver SQL compilado</b-button>
+
+  <b-modal id="modal-5" size="lg" title="Ver SQL compilado" :hide-footer="true" > 
+``` sql
+IF EXISTS (
+  SELECT count(*)
+  FROM staging.Product
+  LEFT JOIN staging.ProductSubCategory ON (Product.ProductSubcategoryID=ProductSubCategory.ProductSubcategoryID)
+  LEFT JOIN staging.ProductCategory ON (ProductSubCategory.ProductCategoryId=ProductCategory.ProductCategoryId)
+  LEFT JOIN staging.ProductModel ON (Product.ProductModelID=ProductModel.ProductModelID)
+  HAVING count(*) <> (SELECT count(*) FROM staging.Product)
+) THROW 50001,'Las relaciones de esta consulta pierden o duplican registros de Product.',1
+
+;WITH
+query AS (
+  SELECT
+    ProductID,
+    Product.Name AS Product,
+    ProductCategory.name AS ProductCategory,
+    ProductSubCategory.name AS ProductSubCategory,
+    ProductNumber,
+    ProductModel.name AS ProductModel,
+    Color,
+    StandardCost,
+    ListPrice,
+    Size,
+    SizeUnitMeasureCode,
+    Weight
+  FROM staging.Product
+  LEFT JOIN staging.ProductSubCategory ON (Product.ProductSubcategoryID=ProductSubCategory.ProductSubcategoryID)
+  LEFT JOIN staging.ProductCategory ON (ProductSubCategory.ProductCategoryId=ProductCategory.ProductCategoryId)
+  LEFT JOIN staging.ProductModel ON (Product.ProductModelID=ProductModel.ProductModelID)
+)
+MERGE dwh.DimProducts AS DimProducts
+USING query ON query.ProductID=DimProducts.ProductID
+WHEN MATCHED THEN
+  UPDATE SET
+    Product=query.Product,
+    ProductCategory=query.ProductCategory,
+    ProductSubCategory=query.ProductSubCategory,
+    ProductNumber=query.ProductNumber,
+    ProductModel=query.ProductModel,
+    Color=query.Color,
+    StandardCost=query.StandardCost,
+    ListPrice=query.ListPrice,
+    Size=query.Size,
+    SizeUnitMeasureCode=query.SizeUnitMeasureCode,
+    Weight=query.Weight
+WHEN NOT MATCHED THEN
+  INSERT (ProductID,Product,ProductCategory,ProductSubCategory,ProductNumber,ProductModel,Color,StandardCost,ListPrice,Size,SizeUnitMeasureCode,Weight) VALUES (
+    query.ProductID,
+    query.Product,
+    query.ProductCategory,
+    query.ProductSubCategory,
+    query.ProductNumber,
+    query.ProductModel,
+    query.Color,
+    query.StandardCost,
+    query.ListPrice,
+    query.Size,
+    query.SizeUnitMeasureCode,
+    query.Weight);
+
+```
+  </b-modal>
+
+  </div>
+</div>
+
 
 
 ## MERGE UPDATE
 
 La instrucción **MERGE UPDATE** actualiza los registros que aparecen en la consulta de origen y ya existen en la tabla de destino. No elimina ni inserta ningún registro.
 
-<view-sql-code fileName="MergeUpdate"/>
+<div class="mt-1 mb-2 row">
+  <div class="col-lg-12">
+
+``` sql
+MERGE UPDATE dwh.DimProducts(ProductSid)
+SELECT 
+  #ProductID,
+  Product.Name Product,
+  ProductCategory.name ProductCategory,
+  ProductSubCategory.name ProductSubCategory,
+  ProductNumber,
+  ProductModel.name ProductModel,
+  Color,
+  StandardCost,
+  ListPrice,
+  Size,
+  SizeUnitMeasureCode,
+  Weight
+FROM staging.Product
+LEFT JOIN staging.ProductSubCategory using Product(ProductSubcategoryID)
+LEFT JOIN staging.ProductCategory using ProductSubCategory(ProductCategoryId)
+LEFT JOIN staging.ProductModel using Product(ProductModelID)
+CHECK SNOWFLAKE
+```
+
+  <b-button class="float-right btn" size="sm" v-b-modal.modal-6 style="background-color: #3eaf7c">Ver SQL compilado</b-button>
+
+  <b-modal id="modal-6" size="lg" title="Ver SQL compilado" :hide-footer="true" > 
+``` sql
+IF EXISTS (
+  SELECT count(*)
+  FROM staging.Product
+  LEFT JOIN staging.ProductSubCategory ON (Product.ProductSubcategoryID=ProductSubCategory.ProductSubcategoryID)
+  LEFT JOIN staging.ProductCategory ON (ProductSubCategory.ProductCategoryId=ProductCategory.ProductCategoryId)
+  LEFT JOIN staging.ProductModel ON (Product.ProductModelID=ProductModel.ProductModelID)
+  HAVING count(*) <> (SELECT count(*) FROM staging.Product)
+) THROW 50001,'Las relaciones de esta consulta pierden o duplican registros de Product.',1
+
+;WITH
+query AS (
+  SELECT
+    ProductID,
+    Product.Name AS Product,
+    ProductCategory.name AS ProductCategory,
+    ProductSubCategory.name AS ProductSubCategory,
+    ProductNumber,
+    ProductModel.name AS ProductModel,
+    Color,
+    StandardCost,
+    ListPrice,
+    Size,
+    SizeUnitMeasureCode,
+    Weight
+  FROM staging.Product
+  LEFT JOIN staging.ProductSubCategory ON (Product.ProductSubcategoryID=ProductSubCategory.ProductSubcategoryID)
+  LEFT JOIN staging.ProductCategory ON (ProductSubCategory.ProductCategoryId=ProductCategory.ProductCategoryId)
+  LEFT JOIN staging.ProductModel ON (Product.ProductModelID=ProductModel.ProductModelID)
+)
+MERGE dwh.DimProducts AS DimProducts
+USING query ON query.ProductID=DimProducts.ProductID
+WHEN MATCHED AND ((DimProducts.Product<>query.Product OR (DimProducts.Product IS NULL AND query.Product IS NOT NULL) OR  (DimProducts.Product IS NOT NULL AND query.Product IS NULL)
+                  OR DimProducts.ProductCategory<>query.ProductCategory OR (DimProducts.ProductCategory IS NULL AND query.ProductCategory IS NOT NULL) OR  (DimProducts.ProductCategory IS NOT NULL AND query.ProductCategory IS NULL)
+                  OR DimProducts.ProductSubCategory<>query.ProductSubCategory OR (DimProducts.ProductSubCategory IS NULL AND query.ProductSubCategory IS NOT NULL) OR  (DimProducts.ProductSubCategory IS NOT NULL AND query.ProductSubCategory IS NULL)
+                  OR DimProducts.ProductNumber<>query.ProductNumber OR (DimProducts.ProductNumber IS NULL AND query.ProductNumber IS NOT NULL) OR  (DimProducts.ProductNumber IS NOT NULL AND query.ProductNumber IS NULL)
+                  OR DimProducts.ProductModel<>query.ProductModel OR (DimProducts.ProductModel IS NULL AND query.ProductModel IS NOT NULL) OR  (DimProducts.ProductModel IS NOT NULL AND query.ProductModel IS NULL)
+                  OR DimProducts.Color<>query.Color OR (DimProducts.Color IS NULL AND query.Color IS NOT NULL) OR  (DimProducts.Color IS NOT NULL AND query.Color IS NULL)
+                  OR DimProducts.StandardCost<>query.StandardCost OR (DimProducts.StandardCost IS NULL AND query.StandardCost IS NOT NULL) OR  (DimProducts.StandardCost IS NOT NULL AND query.StandardCost IS NULL)
+                  OR DimProducts.ListPrice<>query.ListPrice OR (DimProducts.ListPrice IS NULL AND query.ListPrice IS NOT NULL) OR  (DimProducts.ListPrice IS NOT NULL AND query.ListPrice IS NULL)
+                  OR DimProducts.Size<>query.Size OR (DimProducts.Size IS NULL AND query.Size IS NOT NULL) OR  (DimProducts.Size IS NOT NULL AND query.Size IS NULL)
+                  OR DimProducts.SizeUnitMeasureCode<>query.SizeUnitMeasureCode OR (DimProducts.SizeUnitMeasureCode IS NULL AND query.SizeUnitMeasureCode IS NOT NULL) OR  (DimProducts.SizeUnitMeasureCode IS NOT NULL AND query.SizeUnitMeasureCode IS NULL)
+                  OR DimProducts.Weight<>query.Weight OR (DimProducts.Weight IS NULL AND query.Weight IS NOT NULL) OR  (DimProducts.Weight IS NOT NULL AND query.Weight IS NULL))) THEN
+  UPDATE SET
+    Product=query.Product,
+    ProductCategory=query.ProductCategory,
+    ProductSubCategory=query.ProductSubCategory,
+    ProductNumber=query.ProductNumber,
+    ProductModel=query.ProductModel,
+    Color=query.Color,
+    StandardCost=query.StandardCost,
+    ListPrice=query.ListPrice,
+    Size=query.Size,
+    SizeUnitMeasureCode=query.SizeUnitMeasureCode,
+    Weight=query.Weight;
+
+```
+  </b-modal>
+
+  </div>
+</div>
+
 
 La instrucción **MERGE UPDATE** es equivalente a la instrucción **UPDATE** de **Crono SQL**
 
@@ -104,7 +693,100 @@ La instrucción **MERGE SOFT DELETE** actualiza los registros que se han modific
 
 Se utiliza habitualmente para cargar tablas de dimensión, ya que se requiere mantener los registros antiguos para respetar la integridad (no queremos borrar un producto o un cliente que tal vez tiene ventas u otras transacciones asociadas).
 
-<view-sql-code fileName="SCD1-3"/>
+<div class="mt-1 mb-2 row">
+  <div class="col-lg-12">
+
+``` sql
+MERGE SOFT DELETE dwh.DimProducts(ProductSid)
+select 
+  #ProductID,
+  Product.Name Product,
+  ProductCategory.name ProductCategory,
+  ProductSubCategory.name ProductSubCategory,
+  ProductNumber,
+  ProductModel.name ProductModel,
+  Color,
+  StandardCost,
+  ListPrice,
+  Size,
+  SizeUnitMeasureCode,
+  Weight
+FROM staging.Product
+LEFT JOIN staging.ProductSubCategory using Product(ProductSubcategoryID)
+LEFT JOIN staging.ProductCategory using ProductSubCategory(ProductCategoryId)
+LEFT JOIN staging.ProductModel using Product(ProductModelID)
+```
+
+  <b-button class="float-right btn" size="sm" v-b-modal.modal-7 style="background-color: #3eaf7c">Ver SQL compilado</b-button>
+
+  <b-modal id="modal-7" size="lg" title="Ver SQL compilado" :hide-footer="true" > 
+``` sql
+;WITH
+query AS (
+  SELECT
+    ProductID,
+    Product.Name AS Product,
+    ProductCategory.name AS ProductCategory,
+    ProductSubCategory.name AS ProductSubCategory,
+    ProductNumber,
+    ProductModel.name AS ProductModel,
+    Color,
+    StandardCost,
+    ListPrice,
+    Size,
+    SizeUnitMeasureCode,
+    Weight
+  FROM staging.Product
+  LEFT JOIN staging.ProductSubCategory ON (Product.ProductSubcategoryID=ProductSubCategory.ProductSubcategoryID)
+  LEFT JOIN staging.ProductCategory ON (ProductSubCategory.ProductCategoryId=ProductCategory.ProductCategoryId)
+  LEFT JOIN staging.ProductModel ON (Product.ProductModelID=ProductModel.ProductModelID)
+)
+MERGE dwh.DimProducts AS DimProducts
+USING query ON query.ProductID=DimProducts.ProductID
+WHEN MATCHED AND ((DimProducts.Product<>query.Product OR (DimProducts.Product IS NULL AND query.Product IS NOT NULL) OR  (DimProducts.Product IS NOT NULL AND query.Product IS NULL)
+                  OR DimProducts.ProductCategory<>query.ProductCategory OR (DimProducts.ProductCategory IS NULL AND query.ProductCategory IS NOT NULL) OR  (DimProducts.ProductCategory IS NOT NULL AND query.ProductCategory IS NULL)
+                  OR DimProducts.ProductSubCategory<>query.ProductSubCategory OR (DimProducts.ProductSubCategory IS NULL AND query.ProductSubCategory IS NOT NULL) OR  (DimProducts.ProductSubCategory IS NOT NULL AND query.ProductSubCategory IS NULL)
+                  OR DimProducts.ProductNumber<>query.ProductNumber OR (DimProducts.ProductNumber IS NULL AND query.ProductNumber IS NOT NULL) OR  (DimProducts.ProductNumber IS NOT NULL AND query.ProductNumber IS NULL)
+                  OR DimProducts.ProductModel<>query.ProductModel OR (DimProducts.ProductModel IS NULL AND query.ProductModel IS NOT NULL) OR  (DimProducts.ProductModel IS NOT NULL AND query.ProductModel IS NULL)
+                  OR DimProducts.Color<>query.Color OR (DimProducts.Color IS NULL AND query.Color IS NOT NULL) OR  (DimProducts.Color IS NOT NULL AND query.Color IS NULL)
+                  OR DimProducts.StandardCost<>query.StandardCost OR (DimProducts.StandardCost IS NULL AND query.StandardCost IS NOT NULL) OR  (DimProducts.StandardCost IS NOT NULL AND query.StandardCost IS NULL)
+                  OR DimProducts.ListPrice<>query.ListPrice OR (DimProducts.ListPrice IS NULL AND query.ListPrice IS NOT NULL) OR  (DimProducts.ListPrice IS NOT NULL AND query.ListPrice IS NULL)
+                  OR DimProducts.Size<>query.Size OR (DimProducts.Size IS NULL AND query.Size IS NOT NULL) OR  (DimProducts.Size IS NOT NULL AND query.Size IS NULL)
+                  OR DimProducts.SizeUnitMeasureCode<>query.SizeUnitMeasureCode OR (DimProducts.SizeUnitMeasureCode IS NULL AND query.SizeUnitMeasureCode IS NOT NULL) OR  (DimProducts.SizeUnitMeasureCode IS NOT NULL AND query.SizeUnitMeasureCode IS NULL)
+                  OR DimProducts.Weight<>query.Weight OR (DimProducts.Weight IS NULL AND query.Weight IS NOT NULL) OR  (DimProducts.Weight IS NOT NULL AND query.Weight IS NULL))) THEN
+  UPDATE SET
+    Product=query.Product,
+    ProductCategory=query.ProductCategory,
+    ProductSubCategory=query.ProductSubCategory,
+    ProductNumber=query.ProductNumber,
+    ProductModel=query.ProductModel,
+    Color=query.Color,
+    StandardCost=query.StandardCost,
+    ListPrice=query.ListPrice,
+    Size=query.Size,
+    SizeUnitMeasureCode=query.SizeUnitMeasureCode,
+    Weight=query.Weight
+WHEN NOT MATCHED THEN
+  INSERT (ProductID,Product,ProductCategory,ProductSubCategory,ProductNumber,ProductModel,Color,StandardCost,ListPrice,Size,SizeUnitMeasureCode,Weight) VALUES (
+    query.ProductID,
+    query.Product,
+    query.ProductCategory,
+    query.ProductSubCategory,
+    query.ProductNumber,
+    query.ProductModel,
+    query.Color,
+    query.StandardCost,
+    query.ListPrice,
+    query.Size,
+    query.SizeUnitMeasureCode,
+    query.Weight);
+
+```
+  </b-modal>
+
+  </div>
+</div>
+
 
 
 ## MERGE INCREMENTAL
@@ -122,13 +804,155 @@ Frecuentemente las cargas incrementales son problemáticas:
 Por estos motivos, si el tiempo de ejecución es aceptable, es preferible utilizar **MERGE CLONE** siempre que sea posible, aunque el tiempo de ejecución sea algo mayor.
 
 
-<view-sql-code fileName="INCREMENTAL-1"/>
+<div class="mt-1 mb-2 row">
+  <div class="col-lg-12">
+
+``` sql
+MERGE INCREMENTAL dwh.FactSalesOrderHeader(SalesOrderSid)
+SELECT 
+  SalesOrderHeader.SalesOrderId,
+  Customer.CustomerId,
+  cast(SalesOrderHeader.OrderDate as date) OrderDate,
+  SalesOrderHeader.SalesOrderNumber,
+  cast(SalesOrderHeader.DueDate as date) DueDate,
+  cast(SalesOrderHeader.ShipDate as date) ShipDate,
+  SalesOrderHeader.OnlineOrderFlag,
+  SalesOrderHeader.PurchaseOrderNumber,
+  SalesOrderHeader.AccountNumber,
+  SalesOrderHeader.Freight,
+  SalesOrderHeader.CreditCardApprovalCode,
+  SalesOrderHeader.SubTotal Amount,
+  SalesOrderHeader.TaxAmt
+FROM staging.SalesOrderHeader
+INNER JOIN staging.customer using SalesOrderHeader(customerId)
+where cast(OrderDate as date)=today()
+```
+
+  <b-button class="float-right btn" size="sm" v-b-modal.modal-8 style="background-color: #3eaf7c">Ver SQL compilado</b-button>
+
+  <b-modal id="modal-8" size="lg" title="Ver SQL compilado" :hide-footer="true" > 
+``` sql
+;WITH
+query AS (
+  SELECT
+    SalesOrderHeader.SalesOrderId AS SalesOrderId,
+    Customer.CustomerId AS CustomerId,
+    CAST(SalesOrderHeader.OrderDate AS date) AS OrderDate,
+    SalesOrderHeader.SalesOrderNumber AS SalesOrderNumber,
+    CAST(SalesOrderHeader.DueDate AS date) AS DueDate,
+    CAST(SalesOrderHeader.ShipDate AS date) AS ShipDate,
+    SalesOrderHeader.OnlineOrderFlag AS OnlineOrderFlag,
+    SalesOrderHeader.PurchaseOrderNumber AS PurchaseOrderNumber,
+    SalesOrderHeader.AccountNumber AS AccountNumber,
+    SalesOrderHeader.Freight AS Freight,
+    SalesOrderHeader.CreditCardApprovalCode AS CreditCardApprovalCode,
+    SalesOrderHeader.SubTotal AS Amount,
+    SalesOrderHeader.TaxAmt AS TaxAmt
+  FROM staging.SalesOrderHeader
+  INNER JOIN staging.customer ON (SalesOrderHeader.customerId=customer.customerId)
+  WHERE CAST(CAST(SalesOrderHeader.OrderDate AS date) AS date)=cast(getdate() as date)
+)
+INSERT dwh.FactSalesOrderHeader(SalesOrderId,CustomerId,OrderDate,SalesOrderNumber,DueDate,ShipDate,OnlineOrderFlag,PurchaseOrderNumber,AccountNumber,Freight,CreditCardApprovalCode,Amount,TaxAmt)
+SELECT
+  query.SalesOrderId,
+  query.CustomerId,
+  query.OrderDate,
+  query.SalesOrderNumber,
+  query.DueDate,
+  query.ShipDate,
+  query.OnlineOrderFlag,
+  query.PurchaseOrderNumber,
+  query.AccountNumber,
+  query.Freight,
+  query.CreditCardApprovalCode,
+  query.Amount,
+  query.TaxAmt
+FROM query;
+
+```
+  </b-modal>
+
+  </div>
+</div>
+
 
 La anterior sentencia cargará las ventas del día anterior (y solo las del día anterior). Evidentemente, esta estrategia es débil y propensa a errores. Dejará de cargar registros si algún día no se ejecuta la carga, o podría duplicarlos si se ejecutase dos veces un mismo día. También fallaría si algún proceso del ERP se retrasase varios días en insertar los datos de alguna tienda...
 
 La siguiente estrategia resuelve parcialmente el problema: 
 
- <view-sql-code fileName="INCREMENTAL-2"/>
+ <div class="mt-1 mb-2 row">
+  <div class="col-lg-12">
+
+``` sql
+MERGE INCREMENTAL dwh.FactSalesOrderHeader(SalesOrderSid)
+SELECT 
+  SalesOrderHeader.SalesOrderId #SalesOrderId,
+  Customer.CustomerId,
+  cast(SalesOrderHeader.OrderDate as date) OrderDate,
+  SalesOrderHeader.SalesOrderNumber,
+  cast(SalesOrderHeader.DueDate as date) DueDate,
+  cast(SalesOrderHeader.ShipDate as date) ShipDate,
+  SalesOrderHeader.OnlineOrderFlag,
+  SalesOrderHeader.PurchaseOrderNumber,
+  SalesOrderHeader.AccountNumber,
+  SalesOrderHeader.Freight,
+  SalesOrderHeader.CreditCardApprovalCode,
+  SalesOrderHeader.SubTotal Amount,
+  SalesOrderHeader.TaxAmt
+FROM staging.SalesOrderHeader
+INNER JOIN staging.customer using SalesOrderHeader(customerId)
+where OrderDate<=getdate()-30
+```
+
+  <b-button class="float-right btn" size="sm" v-b-modal.modal-9 style="background-color: #3eaf7c">Ver SQL compilado</b-button>
+
+  <b-modal id="modal-9" size="lg" title="Ver SQL compilado" :hide-footer="true" > 
+``` sql
+;WITH
+query AS (
+  SELECT
+    SalesOrderHeader.SalesOrderId AS SalesOrderId,
+    Customer.CustomerId AS CustomerId,
+    CAST(SalesOrderHeader.OrderDate AS date) AS OrderDate,
+    SalesOrderHeader.SalesOrderNumber AS SalesOrderNumber,
+    CAST(SalesOrderHeader.DueDate AS date) AS DueDate,
+    CAST(SalesOrderHeader.ShipDate AS date) AS ShipDate,
+    SalesOrderHeader.OnlineOrderFlag AS OnlineOrderFlag,
+    SalesOrderHeader.PurchaseOrderNumber AS PurchaseOrderNumber,
+    SalesOrderHeader.AccountNumber AS AccountNumber,
+    SalesOrderHeader.Freight AS Freight,
+    SalesOrderHeader.CreditCardApprovalCode AS CreditCardApprovalCode,
+    SalesOrderHeader.SubTotal AS Amount,
+    SalesOrderHeader.TaxAmt AS TaxAmt
+  FROM staging.SalesOrderHeader
+  INNER JOIN staging.customer ON (SalesOrderHeader.customerId=customer.customerId)
+  WHERE CAST(SalesOrderHeader.OrderDate AS date)<=getdate()-30
+)
+INSERT dwh.FactSalesOrderHeader(SalesOrderId,CustomerId,OrderDate,SalesOrderNumber,DueDate,ShipDate,OnlineOrderFlag,PurchaseOrderNumber,AccountNumber,Freight,CreditCardApprovalCode,Amount,TaxAmt)
+SELECT
+  query.SalesOrderId,
+  query.CustomerId,
+  query.OrderDate,
+  query.SalesOrderNumber,
+  query.DueDate,
+  query.ShipDate,
+  query.OnlineOrderFlag,
+  query.PurchaseOrderNumber,
+  query.AccountNumber,
+  query.Freight,
+  query.CreditCardApprovalCode,
+  query.Amount,
+  query.TaxAmt
+FROM query
+LEFT JOIN dwh.FactSalesOrderHeader ON (FactSalesOrderHeader.SalesOrderId=query.SalesOrderId)
+WHERE FactSalesOrderHeader.SalesOrderId IS NULL;
+
+```
+  </b-modal>
+
+  </div>
+</div>
+
 
 En el caso anterior se cargarían las ventas de los últimos 30 días que no se hayan cargado previamente. La marca **#** especifica la **clave de inserción**, es decir, que no se insertarán *SalesOrderId* que ya existan en la tabla de destino. Esta estrategia es recomendable si tenemos la seguridad de que:
 
@@ -137,7 +961,85 @@ En el caso anterior se cargarían las ventas de los últimos 30 días que no se 
 
 Otra opción sería añadir incrementalmente aquellos registros añadidos en el ERP desde la última carga (requiere un campo "*timestamp*" en el origen).
 
-<view-sql-code fileName="INCREMENTAL-3"/>
+<div class="mt-1 mb-2 row">
+  <div class="col-lg-12">
+
+``` sql
+DECLARE @last timestamp=(select max(InsertTimestamp) from FactSalesOrderHeader)
+MERGE INCREMENTAL dwh.FactSalesOrderHeader(SalesOrderSid)
+SELECT 
+  SalesOrderHeader.SalesOrderId,
+  Customer.CustomerId,
+  cast(SalesOrderHeader.OrderDate as date) OrderDate,
+  SalesOrderHeader.SalesOrderNumber,
+  cast(SalesOrderHeader.DueDate as date) DueDate,
+  cast(SalesOrderHeader.ShipDate as date) ShipDate,
+  SalesOrderHeader.OnlineOrderFlag,
+  SalesOrderHeader.PurchaseOrderNumber,
+  SalesOrderHeader.AccountNumber,
+  SalesOrderHeader.Freight,
+  SalesOrderHeader.CreditCardApprovalCode,
+  SalesOrderHeader.SubTotal Amount,
+  SalesOrderHeader.TaxAmt,
+  SalesOrderHeader.InsertTimestamp
+FROM staging.SalesOrderHeader
+INNER JOIN staging.customer using SalesOrderHeader(customerId)
+where SalesOrderHeader.InsertTimestamp>@last
+```
+
+  <b-button class="float-right btn" size="sm" v-b-modal.modal-10 style="background-color: #3eaf7c">Ver SQL compilado</b-button>
+
+  <b-modal id="modal-10" size="lg" title="Ver SQL compilado" :hide-footer="true" > 
+``` sql
+DECLARE @last timestamp=(SELECT max(InsertTimestamp) AS expr1
+FROM FactSalesOrderHeader
+);
+
+;WITH
+query AS (
+  SELECT
+    SalesOrderHeader.SalesOrderId AS SalesOrderId,
+    Customer.CustomerId AS CustomerId,
+    CAST(SalesOrderHeader.OrderDate AS date) AS OrderDate,
+    SalesOrderHeader.SalesOrderNumber AS SalesOrderNumber,
+    CAST(SalesOrderHeader.DueDate AS date) AS DueDate,
+    CAST(SalesOrderHeader.ShipDate AS date) AS ShipDate,
+    SalesOrderHeader.OnlineOrderFlag AS OnlineOrderFlag,
+    SalesOrderHeader.PurchaseOrderNumber AS PurchaseOrderNumber,
+    SalesOrderHeader.AccountNumber AS AccountNumber,
+    SalesOrderHeader.Freight AS Freight,
+    SalesOrderHeader.CreditCardApprovalCode AS CreditCardApprovalCode,
+    SalesOrderHeader.SubTotal AS Amount,
+    SalesOrderHeader.TaxAmt AS TaxAmt,
+    SalesOrderHeader.InsertTimestamp AS InsertTimestamp
+  FROM staging.SalesOrderHeader
+  INNER JOIN staging.customer ON (SalesOrderHeader.customerId=customer.customerId)
+  WHERE SalesOrderHeader.InsertTimestamp>@last
+)
+INSERT dwh.FactSalesOrderHeader(SalesOrderId,CustomerId,OrderDate,SalesOrderNumber,DueDate,ShipDate,OnlineOrderFlag,PurchaseOrderNumber,AccountNumber,Freight,CreditCardApprovalCode,Amount,TaxAmt,InsertTimestamp)
+SELECT
+  query.SalesOrderId,
+  query.CustomerId,
+  query.OrderDate,
+  query.SalesOrderNumber,
+  query.DueDate,
+  query.ShipDate,
+  query.OnlineOrderFlag,
+  query.PurchaseOrderNumber,
+  query.AccountNumber,
+  query.Freight,
+  query.CreditCardApprovalCode,
+  query.Amount,
+  query.TaxAmt,
+  query.InsertTimestamp
+FROM query;
+
+```
+  </b-modal>
+
+  </div>
+</div>
+
 
 Observad como en este caso se ha declarado la variable *@last* con la fecha del último registro insertado. 
 
@@ -155,7 +1057,123 @@ Se utiliza para cargar tablas de dimensión en las que es necesario guardar la h
 
 La sintaxis es la misma que en los casos anteriores (y la mismas que la del **INSERT** o **UPDATE**....).Únicamente es necesario cambiar el nombre de la estrategia a utilizar: **MERGE HISTORY** 
 
-<view-sql-code fileName="SCD2-1"/>
+<div class="mt-1 mb-2 row">
+  <div class="col-lg-12">
+
+``` sql
+MERGE HISTORY dwh.DimProducts(ProductSid) 
+select 
+  #ProductID,
+  Product.Name Product,
+  ProductCategory.name ProductCategory,
+  ProductSubCategory.name ProductSubCategory,
+  ProductNumber,
+  ProductModel.name ProductModel,
+  Color,
+  StandardCost,
+  ListPrice,
+  Size,
+  SizeUnitMeasureCode,
+  Weight
+FROM staging.Product
+LEFT JOIN staging.ProductSubCategory using Product(ProductSubcategoryID)
+LEFT JOIN staging.ProductCategory using ProductSubCategory(ProductCategoryId)
+LEFT JOIN staging.ProductModel using Product(ProductModelID)
+CHECK SNOWFLAKE
+```
+
+  <b-button class="float-right btn" size="sm" v-b-modal.modal-11 style="background-color: #3eaf7c">Ver SQL compilado</b-button>
+
+  <b-modal id="modal-11" size="lg" title="Ver SQL compilado" :hide-footer="true" > 
+``` sql
+IF EXISTS (
+  SELECT count(*)
+  FROM staging.Product
+  LEFT JOIN staging.ProductSubCategory ON (Product.ProductSubcategoryID=ProductSubCategory.ProductSubcategoryID)
+  LEFT JOIN staging.ProductCategory ON (ProductSubCategory.ProductCategoryId=ProductCategory.ProductCategoryId)
+  LEFT JOIN staging.ProductModel ON (Product.ProductModelID=ProductModel.ProductModelID)
+  HAVING count(*) <> (SELECT count(*) FROM staging.Product)
+) THROW 50001,'Las relaciones de esta consulta pierden o duplican registros de Product.',1
+
+;WITH
+query AS (
+  SELECT
+    ProductID,
+    Product.Name AS Product,
+    ProductCategory.name AS ProductCategory,
+    ProductSubCategory.name AS ProductSubCategory,
+    ProductNumber,
+    ProductModel.name AS ProductModel,
+    Color,
+    StandardCost,
+    ListPrice,
+    Size,
+    SizeUnitMeasureCode,
+    Weight
+  FROM staging.Product
+  LEFT JOIN staging.ProductSubCategory ON (Product.ProductSubcategoryID=ProductSubCategory.ProductSubcategoryID)
+  LEFT JOIN staging.ProductCategory ON (ProductSubCategory.ProductCategoryId=ProductCategory.ProductCategoryId)
+  LEFT JOIN staging.ProductModel ON (Product.ProductModelID=ProductModel.ProductModelID)
+)
+MERGE dwh.DimProducts AS DimProducts
+USING query ON query.ProductID=DimProducts.ProductID
+WHEN MATCHED AND ((DimProducts.Product<>query.Product OR (DimProducts.Product IS NULL AND query.Product IS NOT NULL) OR  (DimProducts.Product IS NOT NULL AND query.Product IS NULL)
+                  OR DimProducts.ProductCategory<>query.ProductCategory OR (DimProducts.ProductCategory IS NULL AND query.ProductCategory IS NOT NULL) OR  (DimProducts.ProductCategory IS NOT NULL AND query.ProductCategory IS NULL)
+                  OR DimProducts.ProductSubCategory<>query.ProductSubCategory OR (DimProducts.ProductSubCategory IS NULL AND query.ProductSubCategory IS NOT NULL) OR  (DimProducts.ProductSubCategory IS NOT NULL AND query.ProductSubCategory IS NULL)
+                  OR DimProducts.ProductNumber<>query.ProductNumber OR (DimProducts.ProductNumber IS NULL AND query.ProductNumber IS NOT NULL) OR  (DimProducts.ProductNumber IS NOT NULL AND query.ProductNumber IS NULL)
+                  OR DimProducts.ProductModel<>query.ProductModel OR (DimProducts.ProductModel IS NULL AND query.ProductModel IS NOT NULL) OR  (DimProducts.ProductModel IS NOT NULL AND query.ProductModel IS NULL)
+                  OR DimProducts.Color<>query.Color OR (DimProducts.Color IS NULL AND query.Color IS NOT NULL) OR  (DimProducts.Color IS NOT NULL AND query.Color IS NULL)
+                  OR DimProducts.StandardCost<>query.StandardCost OR (DimProducts.StandardCost IS NULL AND query.StandardCost IS NOT NULL) OR  (DimProducts.StandardCost IS NOT NULL AND query.StandardCost IS NULL)
+                  OR DimProducts.ListPrice<>query.ListPrice OR (DimProducts.ListPrice IS NULL AND query.ListPrice IS NOT NULL) OR  (DimProducts.ListPrice IS NOT NULL AND query.ListPrice IS NULL)
+                  OR DimProducts.Size<>query.Size OR (DimProducts.Size IS NULL AND query.Size IS NOT NULL) OR  (DimProducts.Size IS NOT NULL AND query.Size IS NULL)
+                  OR DimProducts.SizeUnitMeasureCode<>query.SizeUnitMeasureCode OR (DimProducts.SizeUnitMeasureCode IS NULL AND query.SizeUnitMeasureCode IS NOT NULL) OR  (DimProducts.SizeUnitMeasureCode IS NOT NULL AND query.SizeUnitMeasureCode IS NULL)
+                  OR DimProducts.Weight<>query.Weight OR (DimProducts.Weight IS NULL AND query.Weight IS NOT NULL) OR  (DimProducts.Weight IS NOT NULL AND query.Weight IS NULL))) THEN
+  UPDATE SET;
+
+;WITH
+query AS (
+  SELECT
+    ProductID,
+    Product.Name AS Product,
+    ProductCategory.name AS ProductCategory,
+    ProductSubCategory.name AS ProductSubCategory,
+    ProductNumber,
+    ProductModel.name AS ProductModel,
+    Color,
+    StandardCost,
+    ListPrice,
+    Size,
+    SizeUnitMeasureCode,
+    Weight
+  FROM staging.Product
+  LEFT JOIN staging.ProductSubCategory ON (Product.ProductSubcategoryID=ProductSubCategory.ProductSubcategoryID)
+  LEFT JOIN staging.ProductCategory ON (ProductSubCategory.ProductCategoryId=ProductCategory.ProductCategoryId)
+  LEFT JOIN staging.ProductModel ON (Product.ProductModelID=ProductModel.ProductModelID)
+)
+INSERT dwh.DimProducts(ProductID,Product,ProductCategory,ProductSubCategory,ProductNumber,ProductModel,Color,StandardCost,ListPrice,Size,SizeUnitMeasureCode,Weight)
+SELECT
+  query.ProductID,
+  query.Product,
+  query.ProductCategory,
+  query.ProductSubCategory,
+  query.ProductNumber,
+  query.ProductModel,
+  query.Color,
+  query.StandardCost,
+  query.ListPrice,
+  query.Size,
+  query.SizeUnitMeasureCode,
+  query.Weight
+FROM query
+LEFT JOIN dwh.DimProducts ON (DimProducts.ProductID=query.ProductID)
+WHERE DimProducts.ProductID IS NULL;
+
+```
+  </b-modal>
+
+  </div>
+</div>
+
 
 El código generado realiza un **MERGE** para actualizar las fechas de fin vigencia, y un **INSERT** para añadir los registros que han cambiado y los nuevos registros.
 
@@ -176,7 +1194,103 @@ Es interesante observar que la elección entre **MERGE CLONE**, **MERGE UPSERT**
 
 El lenguaje **Crono SQL** admite también la sintaxis SQL estándar de la sentencia **MERGE**:
 
-<view-sql-code fileName="Merge1"/>
+<div class="mt-1 mb-2 row">
+  <div class="col-lg-12">
+
+``` sql
+WITH
+query AS (
+  SELECT
+    ProductID AS ProductId,
+    Product.Name AS Product,
+    ProductCategory.name AS ProductCategory,
+    ProductSubCategory.name AS ProductSubCategory,
+    ProductNumber,
+    ProductModel.name AS ProductModel,
+    Product.Color AS Color,
+    Product.StandardCost AS ProductCost
+  FROM staging.Product
+  LEFT JOIN staging.ProductSubCategory ON (Product.ProductSubcategoryID=ProductSubCategory.ProductSubcategoryID)
+  LEFT JOIN staging.ProductCategory ON (ProductSubCategory.ProductCategoryId=ProductCategory.ProductCategoryId)
+  LEFT JOIN staging.ProductModel ON (Product.ProductModelID=ProductModel.ProductModelID)
+)
+MERGE dwh.DimProducts AS DimProducts
+USING query ON query.ProductId=DimProducts.ProductId
+WHEN MATCHED THEN
+  UPDATE SET
+    Product=query.Product,
+    ProductCategory=query.ProductCategory,
+    ProductSubCategory=query.ProductSubCategory,
+    ProductNumber=query.ProductNumber,
+    ProductModel=query.ProductModel,
+    Color=query.Color,
+    ProductCost=query.ProductCost
+WHEN NOT MATCHED THEN 
+  INSERT (
+    ProductId,
+    Product,
+    ProductCategory,
+    ProductSubCategory,
+    ProductNumber,
+    ProductModel,
+    Color,ProductCost)
+  VALUES (
+    query.ProductId,
+    query.Product,
+    query.ProductCategory,
+    query.ProductSubCategory,
+    query.ProductNumber,
+    query.ProductModel,
+    query.Color,
+    query.ProductCost)
+```
+
+  <b-button class="float-right btn" size="sm" v-b-modal.modal-12 style="background-color: #3eaf7c">Ver SQL compilado</b-button>
+
+  <b-modal id="modal-12" size="lg" title="Ver SQL compilado" :hide-footer="true" > 
+``` sql
+WITH
+query AS (
+  SELECT
+    ProductID AS ProductId,
+    Product.Name AS Product,
+    ProductCategory.name AS ProductCategory,
+    ProductSubCategory.name AS ProductSubCategory,
+    ProductNumber,
+    ProductModel.name AS ProductModel,
+    Product.Color AS Color,
+    Product.StandardCost AS ProductCost
+  FROM staging.Product
+  LEFT JOIN staging.ProductSubCategory ON (Product.ProductSubcategoryID=ProductSubCategory.ProductSubcategoryID)
+  LEFT JOIN staging.ProductCategory ON (ProductSubCategory.ProductCategoryId=ProductCategory.ProductCategoryId)
+  LEFT JOIN staging.ProductModel ON (Product.ProductModelID=ProductModel.ProductModelID)
+)
+MERGE dwh.DimProducts AS DimProducts
+USING query ON query.ProductId=DimProducts.ProductId
+WHEN MATCHED THEN UPDATE SET
+  Product=query.Product,
+  ProductCategory=query.ProductCategory,
+  ProductSubCategory=query.ProductSubCategory,
+  ProductNumber=query.ProductNumber,
+  ProductModel=query.ProductModel,
+  Color=query.Color,
+  ProductCost=query.ProductCost
+WHEN NOT MATCHED THEN INSERT (ProductId,Product,ProductCategory,ProductSubCategory,ProductNumber,ProductModel,Color,ProductCost) VALUES (
+  query.ProductId,
+  query.Product,
+  query.ProductCategory,
+  query.ProductSubCategory,
+  query.ProductNumber,
+  query.ProductModel,
+  query.Color,
+  query.ProductCost);
+
+```
+  </b-modal>
+
+  </div>
+</div>
+
 
 La sentencia **MERGE**, en función de una serie de condiciones definidas, ejecutará un **UPDATE** de los registros que hayan cambiado y un **INSERT** de los registros de la consulta origen que no existan en la tabla destino. Por este motivo se le conoce como **UPSERT** (**UPDATE**+**INSERT**).
 

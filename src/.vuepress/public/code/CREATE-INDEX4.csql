@@ -1,1 +1,0 @@
-﻿CREATE UNIQUE NONCLUSTERED INDEX IDX_Customer1 ON dwh.DimCustomers(Customer)

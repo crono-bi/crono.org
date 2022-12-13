@@ -1,1 +1,0 @@
-﻿CREATE OR REPLACE INDEX IDX_SalesHeader_CustomerSid2 ON dwh.FactSalesOrderHeader(CustomerSid) INCLUDE  (SalesOrderId)

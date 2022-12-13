@@ -1,5 +1,0 @@
-﻿SELECT count(*)
-FROM staging.SalesOrderHeader sales
-INNER JOIN staging.customer USING (CompanyId,CustomerId)
-LEFT JOIN staging.Person CustomerPerson USING customer(CompanyId,PersonID BusinessEntityId)
-WHERE year(sales.OrderDate)=2012

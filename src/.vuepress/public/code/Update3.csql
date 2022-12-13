@@ -1,5 +1,0 @@
-﻿UPDATE table1
-SELECT 
-  #code,
-  description CodeDescription
-from table2

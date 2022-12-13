@@ -1,1 +1,0 @@
-﻿DROP INDEX IF EXISTS IDX_SalesHeader_CustomerSid ON dwh.FactSalesOrderHeader

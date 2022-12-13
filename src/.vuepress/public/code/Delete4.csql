@@ -1,6 +1,0 @@
-﻿DELETE dwh.FactSalesOrderDetails
-select det.SalesOrderDetailSid #SalesOrderDetailSid, det.SalesOrderId, det.SalesOrderDetailsId
-from dwh.FactSalesOrderDetails det
-inner join dwh.FactSalesOrderHeader using SalesOrderSid
-inner join dwh.DimCustomers using FactSalesOrderHeader(CustomerSid)
-WHERE DimCustomers.Customer='Jada Morris'

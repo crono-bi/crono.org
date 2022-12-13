@@ -1,1 +1,0 @@
-﻿CREATE INDEX IF NOT EXISTS IDX_SalesHeader_CustomerSid ON dwh.FactSalesOrderHeader(CustomerSid)

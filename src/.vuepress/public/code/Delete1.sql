@@ -1,1 +1,0 @@
-﻿DELETE FROM dwh.FactSalesOrderDetails WHERE SalesOrderId=43659;

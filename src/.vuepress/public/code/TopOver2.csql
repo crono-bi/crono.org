@@ -1,9 +1,0 @@
-﻿SELECT TOP 1 OVER (PARTITION BY customerId ORDER BY orderDate desc)
-  Customer.CustomerId,
-  CustomerPerson.FirstName,
-  CustomerPerson.LastName,
-  SalesOrderHeader.OrderDate,
-  SalesOrderHeader.subtotal Amount
-FROM staging.SalesOrderHeader 
-INNER JOIN staging.Customer USING customerId
-INNER JOIN staging.Person CustomerPerson USING Customer(PersonID BusinessEntityId)
