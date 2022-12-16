@@ -1,7 +1,7 @@
 {
   "name": "crono.org",
   "version": "0.0.1",
-  "description": "Lenguaje Crono SQL",
+  "description": "Manual de Usuario Crono",
   "main": "index.js",
   "authors": {
     "name": "Pablo Urquizu",

@@ -1734,6 +1734,11 @@
                   "path": "/sql/views/cronocronoviews.html"
                 },
                 {
+                  "title": "Crono$Emojis",
+                  "collapsable": false,
+                  "path": "/sql/views/cronoemojis.html"
+                },
+                {
                   "title": "Crono$Functions",
                   "collapsable": false,
                   "path": "/sql/views/cronofunctions.html"

@@ -342,6 +342,7 @@ https://crono.org/sql/views/cronocronoviews.html
 https://crono.org/sql/views/cronodatabaseextendedproperties.html
 https://crono.org/sql/views/cronodatabases.html
 https://crono.org/sql/views/cronodates.html
+https://crono.org/sql/views/cronoemojis.html
 https://crono.org/sql/views/cronoforeignkeys.html
 https://crono.org/sql/views/cronofunctions.html
 https://crono.org/sql/views/cronoindexcolumns.html

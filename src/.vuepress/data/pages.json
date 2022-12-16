@@ -3498,6 +3498,16 @@
                   "Children": []
                 },
                 {
+                  "Path": "/sql/views/cronoemojis.html",
+                  "Url": "https://crono.org/sql/views/cronoemojis.html",
+                  "Title": "Crono$Emojis",
+                  "Id": null,
+                  "Date": null,
+                  "Position": 21474836,
+                  "Visible": true,
+                  "Children": []
+                },
+                {
                   "Path": "/sql/views/cronofunctions.html",
                   "Url": "https://crono.org/sql/views/cronofunctions.html",
                   "Title": "Crono$Functions",

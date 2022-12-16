@@ -150,7 +150,7 @@ EXEC sys.sp_addextendedproperty @level0type = 'SCHEMA',  @level0name = 'dbo',   
 
 EXEC sys.sp_addextendedproperty @level0type = 'SCHEMA',  @level0name = 'dbo',    @level1type = 'PROCEDURE', @level1name = 'cargar productos', @name = 'UserName', @value='SELVA\pauur'
 
-EXEC sys.sp_addextendedproperty @level0type = 'SCHEMA',  @level0name = 'dbo',    @level1type = 'PROCEDURE', @level1name = 'cargar productos', @name = 'CronoVersion', @value='Crono SQL 22.50.1000.0'
+EXEC sys.sp_addextendedproperty @level0type = 'SCHEMA',  @level0name = 'dbo',    @level1type = 'PROCEDURE', @level1name = 'cargar productos', @name = 'CronoVersion', @value='Crono SQL 22.50.5400.0'
 
 EXEC sys.sp_addextendedproperty @level0type = 'SCHEMA',  @level0name = 'dbo',    @level1type = 'PROCEDURE', @level1name = 'cargar productos', @name = 'LoadType', @value='Clone'
 
@@ -287,7 +287,7 @@ EXEC sys.sp_addextendedproperty @level0type = 'SCHEMA',  @level0name = 'dbo',   
 
 EXEC sys.sp_addextendedproperty @level0type = 'SCHEMA',  @level0name = 'dbo',    @level1type = 'PROCEDURE', @level1name = 'cargar productos', @name = 'UserName', @value='SELVA\pauur'
 
-EXEC sys.sp_addextendedproperty @level0type = 'SCHEMA',  @level0name = 'dbo',    @level1type = 'PROCEDURE', @level1name = 'cargar productos', @name = 'CronoVersion', @value='Crono SQL 22.50.1000.0'
+EXEC sys.sp_addextendedproperty @level0type = 'SCHEMA',  @level0name = 'dbo',    @level1type = 'PROCEDURE', @level1name = 'cargar productos', @name = 'CronoVersion', @value='Crono SQL 22.50.5400.0'
 
 EXEC sys.sp_addextendedproperty @level0type = 'SCHEMA',  @level0name = 'dbo',    @level1type = 'PROCEDURE', @level1name = 'cargar productos', @name = 'LoadType', @value='Clone'
 
@@ -425,7 +425,7 @@ EXEC sys.sp_addextendedproperty @level0type = 'SCHEMA',  @level0name = 'dbo',   
 
 EXEC sys.sp_addextendedproperty @level0type = 'SCHEMA',  @level0name = 'dbo',    @level1type = 'PROCEDURE', @level1name = 'cargar productos', @name = 'UserName', @value='SELVA\pauur'
 
-EXEC sys.sp_addextendedproperty @level0type = 'SCHEMA',  @level0name = 'dbo',    @level1type = 'PROCEDURE', @level1name = 'cargar productos', @name = 'CronoVersion', @value='Crono SQL 22.50.1000.0'
+EXEC sys.sp_addextendedproperty @level0type = 'SCHEMA',  @level0name = 'dbo',    @level1type = 'PROCEDURE', @level1name = 'cargar productos', @name = 'CronoVersion', @value='Crono SQL 22.50.5400.0'
 
 EXEC sys.sp_addextendedproperty @level0type = 'SCHEMA',  @level0name = 'dbo',    @level1type = 'PROCEDURE', @level1name = 'cargar productos', @name = 'LoadType', @value='Clone'
 
@@ -563,7 +563,7 @@ EXEC sys.sp_addextendedproperty @level0type = 'SCHEMA',  @level0name = 'dbo',   
 
 EXEC sys.sp_addextendedproperty @level0type = 'SCHEMA',  @level0name = 'dbo',    @level1type = 'PROCEDURE', @level1name = 'LOAD dwh.DimProducts', @name = 'UserName', @value='SELVA\pauur'
 
-EXEC sys.sp_addextendedproperty @level0type = 'SCHEMA',  @level0name = 'dbo',    @level1type = 'PROCEDURE', @level1name = 'LOAD dwh.DimProducts', @name = 'CronoVersion', @value='Crono SQL 22.50.1000.0'
+EXEC sys.sp_addextendedproperty @level0type = 'SCHEMA',  @level0name = 'dbo',    @level1type = 'PROCEDURE', @level1name = 'LOAD dwh.DimProducts', @name = 'CronoVersion', @value='Crono SQL 22.50.5400.0'
 
 EXEC sys.sp_addextendedproperty @level0type = 'SCHEMA',  @level0name = 'dbo',    @level1type = 'PROCEDURE', @level1name = 'LOAD dwh.DimProducts', @name = 'LoadType', @value='Clone'
 
@@ -681,7 +681,7 @@ EXEC sys.sp_addextendedproperty @level0type = 'SCHEMA',  @level0name = 'dwh',   
 
 EXEC sys.sp_addextendedproperty @level0type = 'SCHEMA',  @level0name = 'dwh',    @level1type = 'PROCEDURE', @level1name = 'cargar', @name = 'UserName', @value='SELVA\pauur'
 
-EXEC sys.sp_addextendedproperty @level0type = 'SCHEMA',  @level0name = 'dwh',    @level1type = 'PROCEDURE', @level1name = 'cargar', @name = 'CronoVersion', @value='Crono SQL 22.50.1000.0'
+EXEC sys.sp_addextendedproperty @level0type = 'SCHEMA',  @level0name = 'dwh',    @level1type = 'PROCEDURE', @level1name = 'cargar', @name = 'CronoVersion', @value='Crono SQL 22.50.5400.0'
 
 ```
   </b-modal>
