@@ -509,6 +509,16 @@
               "Children": []
             },
             {
+              "Path": "/sql/reference/keywords.html",
+              "Url": "https://crono.org/sql/reference/keywords.html",
+              "Title": "Palabras reservadas",
+              "Id": null,
+              "Date": null,
+              "Position": 6,
+              "Visible": true,
+              "Children": []
+            },
+            {
               "Path": "/sql/reference/check-snowflake.html",
               "Url": "https://crono.org/sql/reference/check-snowflake.html",
               "Title": "CHECK SNOWFLAKE",

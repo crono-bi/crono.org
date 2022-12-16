@@ -318,6 +318,7 @@ https://crono.org/sql/reference/check-snowflake.html
 https://crono.org/sql/reference/file.html
 https://crono.org/sql/reference/integers-between.html
 https://crono.org/sql/reference/join.html
+https://crono.org/sql/reference/keywords.html
 https://crono.org/sql/reference/main-sentences.html
 https://crono.org/sql/reference/materialize.html
 https://crono.org/sql/reference/over.html

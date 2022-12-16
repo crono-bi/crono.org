@@ -256,6 +256,11 @@
               "path": "/sql/reference/main-sentences.html"
             },
             {
+              "title": "Palabras reservadas",
+              "collapsable": false,
+              "path": "/sql/reference/keywords.html"
+            },
+            {
               "title": "CHECK SNOWFLAKE",
               "collapsable": false,
               "path": "/sql/reference/check-snowflake.html"
