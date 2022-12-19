@@ -21,7 +21,9 @@ from (select
 		mod([rank],5) col,
 		name
 	from Crono$Keywords
-  where not name starts with 'CRONO') a
+  where 
+    not name starts with 'CRONO'
+    and name<>'SET_PROPERTY_NAME_EQUAL') a
 group by [row]
 order by [row]
 ```
@@ -44,7 +46,8 @@ from (select
 		mod([rank],5) col,
 		name
 	from Crono$Keywords
-  where not name starts with 'CRONO') a
+  where not name starts with 'CRONO'
+  ) a
 group by [row]
 order by [row]
 ```

@@ -174,7 +174,7 @@ EXEC sys.sp_addextendedproperty @level0type = 'SCHEMA',  @level0name = 'dbo',   
 
 EXEC sys.sp_addextendedproperty @level0type = 'SCHEMA',  @level0name = 'dbo',    @level1type = 'PROCEDURE', @level1name = 'LOAD dwh.FactSalesOrderDetails', @name = 'UserName', @value='SELVA\pauur'
 
-EXEC sys.sp_addextendedproperty @level0type = 'SCHEMA',  @level0name = 'dbo',    @level1type = 'PROCEDURE', @level1name = 'LOAD dwh.FactSalesOrderDetails', @name = 'CronoVersion', @value='Crono SQL 22.50.5400.0'
+EXEC sys.sp_addextendedproperty @level0type = 'SCHEMA',  @level0name = 'dbo',    @level1type = 'PROCEDURE', @level1name = 'LOAD dwh.FactSalesOrderDetails', @name = 'CronoVersion', @value='Crono SQL 22.51.0.0'
 
 EXEC sys.sp_addextendedproperty @level0type = 'SCHEMA',  @level0name = 'dbo',    @level1type = 'PROCEDURE', @level1name = 'LOAD dwh.FactSalesOrderDetails', @name = 'LoadType', @value='Clone'
 

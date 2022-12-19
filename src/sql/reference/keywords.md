@@ -10,52 +10,51 @@ En la lista siguiente se incluyen todas las palabras reservadas por el generador
 
 Estas palabras clave se pueden utilizar como identificadores o nombres de objetos de base de datos, pero para ello se deben escribir entre corchetes.
 
-|Keyword1     |Keyword2        |Keyword3       |Keyword4                |Keyword5    |
-|-------------|----------------|---------------|------------------------|------------|
-|ACTION       |ADD             |ALL            |ALTER                   |AND         |
-|ANTI         |APPLY           |ARRAY          |AS                      |ASC         |
-|ASSERT       |AUTHORIZATION   |AUTO_INCREMENT |AVGIF                   |BEGIN       |
-|BETWEEN      |BREAK           |BULK           |BUNDLE                  |BUSINESS    |
-|BY           |CALCULATE       |CASCADE        |CASE                    |CAST        |
-|CATCH        |CHECK           |CLONE          |CLUSTERED               |COLLATE     |
-|COLUMN       |COLUMNS         |COMBINE        |COMMIT                  |COMPARE     |
-|COMPUTED     |CONCAT          |CONSTRAINT     |CONTAINS                |CONVERT     |
-|COUNTIF      |CREATE          |CROSS          |CURRENT                 |DATABASE    |
-|DECLARE      |DEFAULT         |DEFAULT-VALUE  |DELETE                  |DESC        |
-|DICTIONARY   |DIFFERENCES     |DIRECTORY      |DISTINCT                |DROP        |
-|DUPLICATES   |DYNAMIC         |EACH           |ELSE                    |END         |
-|ENDS         |EXCLUSIVE       |EXEC           |EXECUTE                 |EXISTS      |
-|EXPRESSION   |EXPRESSION_LIST |EXTENDED       |FACT                    |FILE        |
-|FILE_CONTENT |FILTER          |FINALIZATION   |FOLLOWING               |FOR         |
-|FOREIGN      |FROM            |FULL           |FULLSCAN                |FUNCTION    |
-|GROUP        |HAVING          |HISTORY        |IDENTITY                |IF          |
-|IIF          |IMMEDIATE       |IN             |INCLUDE                 |INCREMENTAL |
-|INDEX        |INFORMATION     |INITIALIZATION |INNER                   |INSERT      |
-|INTEGERS     |INTO            |IS             |JOIN                    |KEY         |
-|LEFT         |LIKE            |LIMIT          |LINKED                  |LOAD        |
-|LOGGER       |LOOKUP          |MAIN           |MATCHED                 |MATERIALIZE |
-|MAXIF        |MERGE           |MINIF          |MISSING                 |MODIFIED    |
-|MTD          |MULTI           |NAMES          |NEXT                    |NO          |
-|NO_ALTER     |NO_AUDIT        |NO_BK          |NO_WAIT                 |NOCHECK     |
-|NO-MERGE     |NONCLUSTERED    |NONE           |NONUNIQUE               |NOT         |
-|NULL         |OBJECT_TYPE     |OFF            |ON                      |ONLY        |
-|OPENROWSET   |OR              |ORDER          |OUT                     |OUTER       |
-|OUTPUT       |OVER            |PARAMETER_LIST |PARTITION               |PERCENT     |
-|PRECEDING    |PREVIOUS        |PRIMARY        |PRINT                   |PROCEDURE   |
-|PROPERTY     |QTD             |QUALIFY        |RAISERROR               |RANGE       |
-|REFERENCES   |REMOTE          |REMOVE         |REPLACE                 |RETURN      |
-|RETURNS      |RIGHT           |ROLLBACK       |ROUTINES                |ROW         |
-|ROWS         |SCHEMA          |SELECT         |SELECT_ALL              |SEMI        |
-|SEPARATOR    |SERVER          |SET            |SET_PROPERTY_NAME_EQUAL |SKIP        |
-|SNOWFLAKE    |SOFT            |SOURCE         |SQL                     |START       |
-|STARTS       |STATEMENT       |STATEMENTS     |STATISTICS              |STRATEGY    |
-|STRING_AGG   |SUMIF           |TABLE          |TABLES                  |TD          |
-|THAT         |THEN            |THROW          |TO                      |TOP         |
-|TRANSACTION  |TRUNCATE        |TRY            |UNBOUNDED               |UNDEFINED   |
-|UNION        |UNIQUE          |UNPIVOT        |UPDATE                  |UPSERT      |
-|URI          |USE             |USING          |VALUE                   |VALUES      |
-|VIEW         |WHEN            |WHERE          |WHILE                   |WITH        |
-|WITHIN       |WITHOUT         |YES            |YTD                     |            |
+|Keyword1        |Keyword2       |Keyword3       |Keyword4     |Keyword5       |
+|----------------|---------------|---------------|-------------|---------------|
+|ACTION          |ADD            |ALL            |ALTER        |AND            |
+|ANTI            |APPLY          |ARRAY          |AS           |ASC            |
+|ASSERT          |AUTHORIZATION  |AUTO_INCREMENT |AVGIF        |BEGIN          |
+|BETWEEN         |BREAK          |BULK           |BUNDLE       |BY             |
+|CALCULATE       |CASCADE        |CASE           |CAST         |CATCH          |
+|CHECK           |CLONE          |CLUSTERED      |COLLATE      |COLUMN         |
+|COLUMNS         |COMBINE        |COMMIT         |COMPARE      |COMPUTED       |
+|CONCAT          |CONSTRAINT     |CONTAINS       |CONVERT      |COUNTIF        |
+|CREATE          |CROSS          |CURRENT        |DATABASE     |DECLARE        |
+|DEFAULT         |DEFAULT-VALUE  |DELETE         |DESC         |DICTIONARY     |
+|DIFFERENCES     |DIRECTORY      |DISTINCT       |DROP         |DUPLICATES     |
+|DYNAMIC         |EACH           |ELSE           |END          |ENDS           |
+|EXCLUSIVE       |EXEC           |EXECUTE        |EXISTS       |EXPRESSION     |
+|EXPRESSION_LIST |EXTENDED       |FACT           |FILE         |FILE_CONTENT   |
+|FILTER          |FINALIZATION   |FOLLOWING      |FOR          |FOREIGN        |
+|FROM            |FULL           |FULLSCAN       |FUNCTION     |GROUP          |
+|HAVING          |HISTORY        |IDENTITY       |IF           |IIF            |
+|IMMEDIATE       |IN             |INCLUDE        |INCREMENTAL  |INDEX          |
+|INFORMATION     |INITIALIZATION |INNER          |INSERT       |INTEGERS       |
+|INTO            |IS             |JOIN           |KEY          |LEFT           |
+|LIKE            |LIMIT          |LINKED         |LOAD         |LOGGER         |
+|LOOKUP          |MAIN           |MATCHED        |MATERIALIZE  |MAXIF          |
+|MERGE           |MINIF          |MTD            |MULTI        |NAMES          |
+|NEXT            |NO             |NO_ALTER       |NO_AUDIT     |NO_BK          |
+|NO_WAIT         |NOCHECK        |NO-MERGE       |NONCLUSTERED |NONE           |
+|NONUNIQUE       |NOT            |NULL           |OBJECT_TYPE  |OFF            |
+|ON              |ONLY           |OPENROWSET     |OR           |ORDER          |
+|OUT             |OUTER          |OUTPUT         |OVER         |PARAMETER_LIST |
+|PARTITION       |PERCENT        |PRECEDING      |PREVIOUS     |PRIMARY        |
+|PRINT           |PROCEDURE      |PROPERTY       |QTD          |QUALIFY        |
+|RAISERROR       |RANGE          |REFERENCES     |REMOTE       |REMOVE         |
+|REPLACE         |RETURN         |RETURNS        |RIGHT        |ROLLBACK       |
+|ROUTINES        |ROW            |ROWS           |SCHEMA       |SELECT         |
+|SELECT_ALL      |SEMI           |SEPARATOR      |SERVER       |SET            |
+|SKIP            |SNOWFLAKE      |SOFT           |SOURCE       |SQL            |
+|START           |STARTS         |STATEMENT      |STATEMENTS   |STATISTICS     |
+|STRING_AGG      |SUMIF          |TABLE          |TABLES       |TD             |
+|THAT            |THEN           |THROW          |TO           |TOP            |
+|TRANSACTION     |TRUNCATE       |TRY            |UNBOUNDED    |UNDEFINED      |
+|UNION           |UNIQUE         |UNPIVOT        |UPDATE       |UPSERT         |
+|URI             |USE            |USING          |VALUE        |VALUES         |
+|VIEW            |WHEN           |WHERE          |WHILE        |WITH           |
+|WITHIN          |WITHOUT        |YES            |YTD          |               |
 
 
 El propio lenguaje **Crono SQL** permite consultar las palabras reservadas con la vista **Crono$Keywords**.
@@ -76,7 +75,8 @@ from (select
 		mod([rank],5) col,
 		name
 	from Crono$Keywords
-  where not name starts with 'CRONO') a
+  where not name starts with 'CRONO'
+  ) a
 group by [row]
 order by [row]
 ```

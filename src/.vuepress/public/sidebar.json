@@ -276,7 +276,7 @@
               "path": "/sql/reference/integers-between.html"
             },
             {
-              "title": "JOIN \uD83D\uDEA7",
+              "title": "JOIN",
               "collapsable": false,
               "path": "/sql/reference/join.html"
             },
@@ -446,6 +446,11 @@
                   "title": "percentile_disc",
                   "collapsable": false,
                   "path": "/sql/functions/percentile_disc.html"
+                },
+                {
+                  "title": "previous_value \u2747\uFE0F",
+                  "collapsable": false,
+                  "path": "/sql/functions/previous_value.html"
                 },
                 {
                   "title": "quantile \u2747\uFE0F",
@@ -693,6 +698,11 @@
                   "title": "try_parse",
                   "collapsable": false,
                   "path": "/sql/functions/try_parse.html"
+                },
+                {
+                  "title": "uchar \u2747\uFE0F",
+                  "collapsable": false,
+                  "path": "/sql/functions/uchar.html"
                 },
                 {
                   "title": "unicodechar \u2747\uFE0F \uD83D\uDEA7",
@@ -1757,6 +1767,16 @@
                   "title": "Crono$SqlFunctions",
                   "collapsable": false,
                   "path": "/sql/views/cronosqlfunctions.html"
+                },
+                {
+                  "title": "Crono$UnicodeChars",
+                  "collapsable": false,
+                  "path": "/sql/views/cronounicodechars.html"
+                },
+                {
+                  "title": "Crono$UnicodeTable",
+                  "collapsable": false,
+                  "path": "/sql/views/cronounicodetable.html"
                 }
               ]
             },

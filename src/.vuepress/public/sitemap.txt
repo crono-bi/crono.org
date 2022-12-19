@@ -223,6 +223,7 @@ https://crono.org/sql/functions/percentile.html
 https://crono.org/sql/functions/permissions.html
 https://crono.org/sql/functions/pi.html
 https://crono.org/sql/functions/power.html
+https://crono.org/sql/functions/previous_value.html
 https://crono.org/sql/functions/quantile.html
 https://crono.org/sql/functions/quartile.html
 https://crono.org/sql/functions/quotename.html
@@ -294,6 +295,7 @@ https://crono.org/sql/functions/try_convert.html
 https://crono.org/sql/functions/try_parse.html
 https://crono.org/sql/functions/type_name.html
 https://crono.org/sql/functions/typeproperty.html
+https://crono.org/sql/functions/uchar.html
 https://crono.org/sql/functions/unicode.html
 https://crono.org/sql/functions/unicodechar.html
 https://crono.org/sql/functions/upper.html
@@ -362,6 +364,8 @@ https://crono.org/sql/views/cronosqlfunctions.html
 https://crono.org/sql/views/cronotableextendedproperties.html
 https://crono.org/sql/views/cronotables.html
 https://crono.org/sql/views/cronotimezones.html
+https://crono.org/sql/views/cronounicodechars.html
+https://crono.org/sql/views/cronounicodetable.html
 https://crono.org/sql/views/cronoweeks.html
 https://crono.org/sql/views/index-ad-views.html
 https://crono.org/sql/views/index-db-views.html
