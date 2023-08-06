@@ -1,0 +1,14 @@
+
+
+<div>
+
+``` sql
+$SLOT$
+```
+
+El código SQL generado es:
+
+``` sql
+$SLOT-TRANSPILE$
+```
+</div>

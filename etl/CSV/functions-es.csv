@@ -15,7 +15,7 @@ ASYMKEY_ID|Devuelve el ID de una clave asimétrica.
 ASYMKEYPROPERTY|Esta función devuelve las propiedades de una clave asimétrica.
 ATAN|Una función que devuelve el ángulo, en radianes, cuya tangente es una expresión **flotante** especificada. Esto también se llama arcotangente.
 ATN2|Devuelve el ángulo, en radianes, entre el eje x positivo y el rayo desde el origen hasta el punto (y, x), donde x e y son los valores de las dos expresiones flotantes especificadas.
-AVG|Esta función devuelve el promedio de los valores en un grupo. Ignora los valores nulos.
+AVG|Esta función devuelve el promedio de los valores de un grupo. Ignora los valores nulos.
 BINARY_CHECKSUM|Devuelve el valor de la suma de comprobación binaria calculado sobre una fila de una tabla o sobre una lista de expresiones.
 BIT_COUNT|BIT_COUNT toma un parámetro y devuelve el número de bits establecidos en 1 en ese parámetro como un tipo **bigint**.
 CAST|Estas funciones convierten una expresión de un tipo de datos a otro.
@@ -104,11 +104,11 @@ ERROR_SEVERITY|Esta función devuelve el valor de gravedad del error cuando se p
 ERROR_STATE|Devuelve el número de estado del error que provocó la ejecución del bloque CATCH de una construcción TRY...CATCH.
 @@ERROR|Devuelve el número de error de la última instrucción [!INCLUDE[tsql](../../includes/tsql-md.md)] ejecutada.
 EVENTDATA|Esta función devuelve información sobre eventos del servidor o de la base de datos. Cuando se activa una notificación de evento y el intermediario de servicios especificado recibe los resultados, se llama a `EVENTDATA`. Un activador de inicio de sesión o DDL también admite el uso interno de `EVENTDATA`.
-EXP|Devuelve el valor exponencial de la expresión **float** especificada.
+EXP|Devuelve el valor exponencial de la expresión **flotante** especificada.
 FETCH_STATUS|Esta función devuelve el estado de la última instrucción FETCH de cursor emitida contra cualquier cursor actualmente abierto por la conexión.
 FILE_ID|Para el nombre lógico proporcionado para un archivo componente de la base de datos actual, esta función devuelve el número de identificación (ID) del archivo.
 FILE_IDEX|Esta función devuelve el número de identificación (ID) del archivo para el nombre lógico especificado de un archivo de datos, registro o texto completo de la base de datos actual.
-FILE_NAME|Esta función devuelve el nombre de archivo lógico para un número de identificación (ID) de archivo dado.
+FILE_NAME|Esta función devuelve el nombre de archivo lógico para un número de identificación (ID) de archivo determinado.
 FILEGROUP_ID|Esta función devuelve el número de identificación (ID) del grupo de archivos para un nombre de grupo de archivos especificado.
 FILEGROUP_NAME|Esta función devuelve el nombre del grupo de archivos para el número de identificación (ID) del grupo de archivos especificado.
 FILEGROUPPROPERTY|Esta función devuelve el valor de la propiedad del grupo de archivos para un nombre y un valor de grupo de archivos especificados.
@@ -127,7 +127,7 @@ GETANSINULL|Devuelve la nulabilidad predeterminada para la base de datos para es
 GETDATE|Devuelve la marca de tiempo actual del sistema de la base de datos como un valor de **fecha y hora** sin el desplazamiento de la zona horaria de la base de datos. Este valor se deriva del sistema operativo de la computadora en la que se ejecuta la instancia de [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)].
 GETUTCDATE|Devuelve la marca de tiempo del sistema de la base de datos actual como un valor de **fechahora**. El desplazamiento de la zona horaria de la base de datos no está incluido. Este valor representa la hora UTC actual (Tiempo Universal Coordinado). Este valor se deriva del sistema operativo de la computadora en la que se ejecuta la instancia de [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)].
 Graph|Utilice las funciones descritas en las páginas de esta sección para extraer valores y transformar valores en pseudocolumnas utilizadas en SQL Graph.
-GRAPH_ID_FROM_EDGE_ID|Devuelve el ID de gráfico interno para un ID de borde dado.
+GRAPH_ID_FROM_EDGE_ID|Devuelve el ID de gráfico interno para un ID de borde determinado.
 GRAPH_ID_FROM_NODE_ID|Devuelve el ID de gráfico interno para un ID de nodo determinado.
 GROUPING_ID|Es una función que calcula el nivel de agrupación. GROUPING_ID solo se puede usar en las cláusulas SELECT \<select> list, HAVING u ORDER BY cuando se especifica GROUP BY.
 GROUPING|Indica si una expresión de columna especificada en una lista GROUP BY está agregada o no. GROUPING devuelve 1 para agregados o 0 para no agregados en el conjunto de resultados. GROUPING solo se puede usar en las cláusulas SELECT \<select> list, HAVING y ORDER BY cuando se especifica GROUP BY.
@@ -198,7 +198,7 @@ NEXT|Genera un número de secuencia a partir del objeto de secuencia especificad
 NODE_ID_FROM_PARTS|Devuelve la representación de caracteres (JSON) del ID de nodo para un ID de objeto y un ID de gráfico determinados.
 NTILE|Distribuye las filas de una partición ordenada en un número específico de grupos. Los grupos están numerados, empezando por el uno. Para cada fila, NTILE devuelve el número del grupo al que pertenece la fila.
 OBJECT_DEFINITION|Devuelve el texto fuente [!INCLUDE[tsql](../../includes/tsql-md.md)] de la definición de un objeto especificado.
-OBJECT_ID_FROM_EDGE_ID|Devuelve el Id. de objeto para un Id. de borde de gráfico dado.
+OBJECT_ID_FROM_EDGE_ID|Devuelve el Id. de objeto para un Id. de borde de gráfico determinado.
 OBJECT_ID_FROM_NODE_ID|Devuelve el Id. de objeto para un Id. de nodo gráfico determinado.
 OBJECT_ID|Devuelve el número de identificación del objeto de la base de datos de un objeto del ámbito del esquema.
 OBJECT_NAME|Devuelve el nombre del objeto de la base de datos para los objetos del ámbito del esquema. Para obtener una lista de objetos con ámbito de esquema, consulte [sys.objects &#40;Transact-SQL&#41;](../../relational-databases/system-catalog-views/sys-objects-transact-sql. Maryland).
@@ -244,7 +244,7 @@ RIGHT|Devuelve la parte derecha de una cadena de caracteres con el número de ca
 ROUND|Devuelve un valor numérico, redondeado a la longitud o precisión especificada.
 ROW_NUMBER|Numera la salida de un conjunto de resultados. Más específicamente, devuelve el número secuencial de una fila dentro de una partición de un conjunto de resultados, comenzando en 1 para la primera fila de cada partición.
 ROWCOUNT_BIG|Devuelve el número de filas afectadas por la última instrucción ejecutada. Esta función funciona como [@@ROWCOUNT](../../t-sql/functions/rowcount-transact-sql.md), excepto que el tipo de devolución de ROWCOUNT_BIG es **bigint**.
-@@ROWCOUNT|Devuelve el número de filas afectadas por la última instrucción. Si el número de filas es superior a 2 mil millones, use [ROWCOUNT_BIG](../../t-sql/functions/rowcount-big-transact-sql.md).
+@@ROWCOUNT|Devuelve el número de filas afectadas por la última sentencia. Si el número de filas es superior a 2 mil millones, use [ROWCOUNT_BIG](../../t-sql/functions/rowcount-big-transact-sql.md).
 RTRIM|::: moniker range="<=sql-server-ver15 || <=sql-server-linux-ver15 || = azure-sqldw-latest || = azuresqldb-actual || = azuresqldb-mi-actual"
 SCHEMA_ID|Devuelve el ID de esquema asociado con un nombre de esquema.
 SCHEMA_NAME|Devuelve el nombre de esquema asociado con un ID de esquema.
