@@ -173,7 +173,7 @@ LEFT_SHIFT|LEFT_SHIFT toma dos parámetros y devuelve el primer parámetro despl
 LEFT|Devuelve la parte izquierda de una cadena de caracteres con el número de caracteres especificado.
 LEN|Devuelve el número de caracteres de la expresión de cadena especificada, excluyendo los espacios finales.
 @@LOCK_TIMEOUT|Devuelve la configuración actual del tiempo de espera de bloqueo en milisegundos para la sesión actual.
-LOG|Devuelve el logaritmo natural de la expresión **float** especificada en [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)].
+LOG|Devuelve el logaritmo natural de la expresión **flotante** especificada en [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)].
 LOG10|Devuelve el logaritmo en base 10 de la expresión **flotante** especificada.
 CHOOSE|Devuelve el elemento en el índice especificado de una lista de valores en [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)].
 GREATEST|Esta función devuelve el valor máximo de una lista de una o más expresiones.
