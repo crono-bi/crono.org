@@ -11,4 +11,4 @@ Esta función devuelve el promedio de los valores en un grupo. Ignora los valore
 
 `avg` es una función de SQL estándar. Consulte la documentación completa de la función [`avg`](https://learn.microsoft.com/es-es/sql/t-sql/functions/avg-transact-sql) para mayor información.
 
-Crono SQL proporciona también la función `average` que en lugar de hacer el promedio de una fila de valores hacer el promedio entre distintas columnas o expresiones.
+Crono SQL proporciona también la función `average` que en lugar de hacer el promedio de una fila de valores hace el promedio entre distintas columnas o expresiones.

@@ -9,4 +9,4 @@ Devuelve el rango de cada fila dentro de la partición de un conjunto de resulta
 
 ## Comentarios 
 
-`rank` es una función de SQL estándar. Consulte la documentación completa de la función [`rank`](https://learn.microsoft.com/es-es/sql/t-sql/functions/rank-transact-sql) para mayor información.
+`rank` es una función de SQL estándar. Consulte la documentación de la función [`rank`](https://learn.microsoft.com/es-es/sql/t-sql/functions/rank-transact-sql) para mayor información.
