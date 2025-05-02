@@ -1,0 +1,23 @@
+store_nbr,city,state,type,cluster
+1,Quito,Pichincha,D,13
+4,Quito,Pichincha,D,9
+5,Santo Domingo,Santo Domingo de los Tsachilas,D,4
+6,Quito,Pichincha,D,13
+9,Quito,Pichincha,B,6
+10,Quito,Pichincha,C,15
+11,Cayambe,Pichincha,B,6
+12,Latacunga,Cotopaxi,C,15
+13,Latacunga,Cotopaxi,C,15
+14,Riobamba,Chimborazo,C,7
+18,Quito,Pichincha,B,16
+19,Guaranda,Bolivar,C,15
+20,Quito,Pichincha,B,6
+38,Loja,Loja,D,4
+39,Cuenca,Azuay,B,6
+40,Machala,El Oro,C,3
+41,Machala,El Oro,D,4
+42,Cuenca,Azuay,D,2
+51,Guayaquil,Guayas,A,17
+52,Manta,Manabi,A,11
+53,Manta,Manabi,D,13
+54,El Carmen,Manabi,C,3
