@@ -145,4 +145,4 @@ FROM (
 
 ```
 
-De este modo es posible utiliza **Crono SQL** para trabajar sobre CSV de unos pocos millones de registros sin necesidad de utilizar herramientas adicionales. 
+De este modo es posible utilizar **Crono SQL** para trabajar sobre CSV de unos pocos millones de registros sin necesidad de utilizar herramientas adicionales. 
