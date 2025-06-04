@@ -64,10 +64,10 @@ const config: Config = {
     image: 'img/docusaurus-social-card.jpg',
     navbar: {
       title: 'Manual de usuario',
-      logo: {
+      /* logo: {
         alt: 'Crono Logo',
         src: 'img/logo.svg',
-      },
+      }, */
       items: [
         {
           to: '/docs/analysis',
