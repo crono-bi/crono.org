@@ -1,0 +1,15 @@
+---
+sidebar_position: 2
+---
+
+# Introducción
+
+Crono Metadata es la herramienta que permite definir el catálogo. El "catálogo" es la capa semántica que traduce las tablas, campos y relaciones de la base de datos en el lenguaje de negocio.
+
+Mediante drag & drop, y con un mínimo conocimiento de SQL, se definen las dimensiones e indicadores y se organizan en carpetas. Gracias a este catálogo, el usuario podrá realizar consultas seleccionando la información que necesita en su informe.
+
+![Catálogo](/img/analysis/Catalogo.png)
+
+Al catálogo se le denomina también "capa semántica" o "metadatos", pues incluye información sobre la estructura de la base de datos y representa la traducción de las tablas y relaciones de la base de datos en términos de negocio conocidos por los usuarios. 
+
+Los catálogos de Crono se crean con **Crono Metadata**. En los siguientes aparatos se describe el funcionamiento de la aplicación.
