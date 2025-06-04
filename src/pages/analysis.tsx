@@ -9,12 +9,13 @@ import styles from './index.module.css';
 
 function AnalysisHeader() {
   return (
-    <header className={clsx('hero hero--primary', styles.heroBanner)}>
+    <header className={clsx('hero hero--primary', styles.heroBanner)} style={{backgroundColor: '#2e8555'}}>
       <div className="container">
         <img 
           src="/img/analysis.webp" 
           alt="Crono Analysis Logo" 
           className={styles.heroLogo} 
+          style={{width: '400px', marginBottom: '20px'}} 
         />
         <Heading as="h1" className="hero__title">
           Crono Analysis
@@ -23,7 +24,7 @@ function AnalysisHeader() {
         <div className={styles.buttons}>
           <Link
             className="button button--secondary button--lg"
-            to="/docs/analysis">
+            to="/docs/analysis/intro">
             Acceder al manual →
           </Link>
         </div>
