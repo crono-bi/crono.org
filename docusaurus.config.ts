@@ -52,41 +52,9 @@ const config: Config = {
     [
       '@docusaurus/plugin-content-docs',
       {
-        id: 'analysis',
-        path: 'docs/analysis',
-        routeBasePath: 'docs/analysis',
-        sidebarPath: './sidebars.ts',
-        sidebarCollapsible: true,
-      },
-    ],
-    [
-      '@docusaurus/plugin-content-docs',
-      {
-        id: 'metadata',
-        path: 'docs/metadata',
-        routeBasePath: 'docs/metadata',
-        sidebarPath: './sidebars.ts',
-        sidebarCollapsible: true,
-      },
-    ],
-    [
-      '@docusaurus/plugin-content-docs',
-      {
-        id: 'etl',
-        path: 'docs/etl',
-        routeBasePath: 'docs/etl',
-        sidebarPath: './sidebars.ts',
-        sidebarCollapsible: true,
-      },
-    ],
-    [
-      '@docusaurus/plugin-content-docs',
-      {
-        id: 'sql',
-        path: 'docs/sql',
-        routeBasePath: 'docs/sql',
-        sidebarPath: './sidebars.ts',
-        sidebarCollapsible: true,
+        id: 'default',
+        path: 'docs',
+        routeBasePath: 'docs',
       },
     ],
   ],
