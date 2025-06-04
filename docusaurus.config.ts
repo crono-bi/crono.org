@@ -40,14 +40,7 @@ const config: Config = {
     [
       'classic',
       {
-        docs: {
-          sidebarPath: './sidebars.ts',
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
-        },
-
+        docs: false,
         theme: {
           customCss: './src/css/custom.css',
         },
@@ -55,26 +48,82 @@ const config: Config = {
     ],
   ],
 
+  plugins: [
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'analysis',
+        path: 'docs/analysis',
+        routeBasePath: 'docs/analysis',
+        sidebarPath: './sidebars.ts',
+        sidebarCollapsible: true,
+      },
+    ],
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'metadata',
+        path: 'docs/metadata',
+        routeBasePath: 'docs/metadata',
+        sidebarPath: './sidebars.ts',
+        sidebarCollapsible: true,
+      },
+    ],
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'etl',
+        path: 'docs/etl',
+        routeBasePath: 'docs/etl',
+        sidebarPath: './sidebars.ts',
+        sidebarCollapsible: true,
+      },
+    ],
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'sql',
+        path: 'docs/sql',
+        routeBasePath: 'docs/sql',
+        sidebarPath: './sidebars.ts',
+        sidebarCollapsible: true,
+      },
+    ],
+  ],
+
   themeConfig: {
     // Replace with your project's social card
     image: 'img/docusaurus-social-card.jpg',
     navbar: {
-      title: 'Crono Docs',
+      title: 'Manual de usuario',
       logo: {
-        alt: 'My Site Logo',
+        alt: 'Crono Logo',
         src: 'img/logo.svg',
       },
       items: [
         {
-          type: 'docSidebar',
-          sidebarId: 'tutorialSidebar',
+          to: '/docs/analysis',
+          label: 'Crono Analysis',
           position: 'left',
-          label: 'Documentación',
         },
-
         {
-          href: 'https://github.com/facebook/docusaurus',
-          label: 'GitHub',
+          to: '/docs/metadata',
+          label: 'Crono Metadata',
+          position: 'left',
+        },
+        {
+          to: '/docs/etl',
+          label: 'Crono ETL',
+          position: 'left',
+        },
+        {
+          to: '/docs/sql',
+          label: 'Crono SQL',
+          position: 'left',
+        },
+        {
+          href: 'https://businessintelligence.es',
+          label: 'Empresa 🏛️',
           position: 'right',
         },
       ],
@@ -83,11 +132,23 @@ const config: Config = {
       style: 'dark',
       links: [
         {
-          title: 'Docs',
+          title: 'Documentación',
           items: [
             {
-              label: 'Documentación',
-              to: '/docs/intro',
+              label: 'Crono Analysis',
+              to: '/docs/analysis',
+            },
+            {
+              label: 'Crono Metadata',
+              to: '/docs/metadata',
+            },
+            {
+              label: 'Crono ETL',
+              to: '/docs/etl',
+            },
+            {
+              label: 'Crono SQL',
+              to: '/docs/sql',
             },
           ],
         },
