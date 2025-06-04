@@ -3,40 +3,70 @@ import clsx from 'clsx';
 import Heading from '@theme/Heading';
 import styles from './styles.module.css';
 
-type FeatureItem = {
+export type FeatureItem = {
   title: string;
   Svg: React.ComponentType<React.ComponentProps<'svg'>>;
   description: ReactNode;
 };
 
-const FeatureList: FeatureItem[] = [
+// Características predeterminadas para la página principal
+export const DefaultFeatureList: FeatureItem[] = [
   {
-    title: 'Easy to Use',
+    title: 'Business Intelligence fácil',
     Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        La característica principal de Crono es la facilidad de uso. Así de simple. 💧
       </>
     ),
   },
   {
-    title: 'Focus on What Matters',
+    title: 'Solución completa',
     Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        Cubre las necesidades, desde la extracción de los datos, la construcción del DWH, 
+        y la visualización y análisis de los datos. ⭐
       </>
     ),
   },
   {
-    title: 'Powered by React',
+    title: 'Mejores prácticas',
     Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        Crono sigue y fomenta las buenas prácticas en el proyecto BI. Hacemos las cosas bien. 🥇
+      </>
+    ),
+  },
+];
+
+// Características para la sección de Analysis
+export const AnalysisFeatureList: FeatureItem[] = [
+  {
+    title: 'Business Intelligence fácil',
+    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
+    description: (
+      <>
+        La característica principal de Crono es la facilidad de uso. Así de simple. 💧
+      </>
+    ),
+  },
+  {
+    title: 'Análisis libre',
+    Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
+    description: (
+      <>
+        Es la mejor herramienta para realizar análisis libre. El propio usuario puede construirse sus informes y análisis. 📊
+      </>
+    ),
+  },
+  {
+    title: 'Potente',
+    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
+    description: (
+      <>
+        Con toda la potencia y funcionalidades de las mejores herramientas de BI. 🛠️
       </>
     ),
   },
@@ -56,12 +86,16 @@ function Feature({title, Svg, description}: FeatureItem) {
   );
 }
 
-export default function HomepageFeatures(): ReactNode {
+type HomepageFeaturesProps = {
+  features?: FeatureItem[];
+};
+
+export default function HomepageFeatures({features = DefaultFeatureList}: HomepageFeaturesProps): ReactNode {
   return (
     <section className={styles.features}>
       <div className="container">
         <div className="row">
-          {FeatureList.map((props, idx) => (
+          {features.map((props, idx) => (
             <Feature key={idx} {...props} />
           ))}
         </div>

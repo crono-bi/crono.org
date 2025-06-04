@@ -1,32 +1,30 @@
-import type {ReactNode} from 'react';
+import React from 'react';
+import Layout from '@theme/Layout';
+import HomepageFeatures, { AnalysisFeatureList } from '@site/src/components/HomepageFeatures';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import clsx from 'clsx';
 import Link from '@docusaurus/Link';
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-import Layout from '@theme/Layout';
-import HomepageFeatures from '@site/src/components/HomepageFeatures';
 import Heading from '@theme/Heading';
-
 import styles from './index.module.css';
 
-function HomepageHeader() {
-  const {siteConfig} = useDocusaurusContext();
+function AnalysisHeader() {
   return (
     <header className={clsx('hero hero--primary', styles.heroBanner)}>
       <div className="container">
         <img 
-          src="/img/crono.webp" 
-          alt="Crono Logo" 
+          src="/img/analysis.webp" 
+          alt="Crono Analysis Logo" 
           className={styles.heroLogo} 
         />
         <Heading as="h1" className="hero__title">
-          {siteConfig.title}
+          Crono Analysis
         </Heading>
-        <p className="hero__subtitle">{siteConfig.tagline}</p>
+        <p className="hero__subtitle">Una aplicación de Business Intelligence fácil de usar ❤️</p>
         <div className={styles.buttons}>
           <Link
             className="button button--secondary button--lg"
             to="/docs/analysis">
-            Manual de Crono Analysis →
+            Acceder al manual →
           </Link>
         </div>
       </div>
@@ -34,15 +32,15 @@ function HomepageHeader() {
   );
 }
 
-export default function Home(): ReactNode {
+export default function Analysis(): JSX.Element {
   const {siteConfig} = useDocusaurusContext();
   return (
     <Layout
-      title={siteConfig.title}
-      description="Una solución Business Intelligence fácil de usar">
-      <HomepageHeader />
+      title="Crono Analysis"
+      description="Una aplicación de Business Intelligence fácil de usar">
+      <AnalysisHeader />
       <main>
-        <HomepageFeatures />
+        <HomepageFeatures features={AnalysisFeatureList} />
       </main>
       <footer className={styles.footer}>
         <div className="container">
