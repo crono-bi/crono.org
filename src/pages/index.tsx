@@ -11,21 +11,19 @@ import styles from './index.module.css';
 function HomepageHeader() {
   const {siteConfig} = useDocusaurusContext();
   return (
-    <header className={clsx('hero hero--primary', styles.heroBanner)}>
+    <header className={clsx('hero hero--primary', styles.heroBanner)} style={{backgroundColor: 'white'}}>
       <div className="container">
         <img 
           src="/img/crono.webp" 
           alt="Crono Logo" 
           className={styles.heroLogo} 
         />
-        <Heading as="h1" className="hero__title">
-          {siteConfig.title}
-        </Heading>
-        <p className="hero__subtitle">{siteConfig.tagline}</p>
+        <p className="hero__subtitle" style={{color: '#007bcc'}}>{siteConfig.tagline}</p>
         <div className={styles.buttons}>
           <Link
-            className="button button--secondary button--lg"
-            to="/docs/analysis">
+            className="button button--lg"
+            to="/docs/analysis"
+            style={{backgroundColor: '#007bcc', color: 'white'}}>
             Manual de Crono Analysis →
           </Link>
         </div>
