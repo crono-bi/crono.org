@@ -2,18 +2,15 @@
   "features": [
     {
       "title": "Business Intelligence fácil",
-      "svgPath": "/img/undraw_docusaurus_mountain.svg",
       "description": "La característica principal de Crono es la facilidad de uso. Así de simple. 💧"
     },
     {
-      "title": "Solución completa",
-      "svgPath": "/img/undraw_docusaurus_tree.svg",
-      "description": "Cubre las necesidades, desde la extracción de los datos, la construcción del DWH, y la visualización y análisis de los datos. ⭐"
+      "title": "Análisis libre",
+      "description": "Es la mejor herramienta para realizar análisis libre. El propio usuario puede construirse sus informes y análisis. 📊"
     },
     {
-      "title": "Mejores prácticas",
-      "svgPath": "/img/undraw_docusaurus_react.svg",
-      "description": "Crono sigue y fomenta las buenas prácticas en el proyecto BI. Hacemos las cosas bien. 🥇"
+      "title": "Potente",
+      "description": "Con toda la potencia y funcionalidades de las mejores herramientas de BI. 🛠️"
     }
   ]
 }

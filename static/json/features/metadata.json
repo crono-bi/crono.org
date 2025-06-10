@@ -2,17 +2,14 @@
   "features": [
     {
       "title": "Business Intelligence fácil",
-      "svgPath": "/img/undraw_docusaurus_mountain.svg",
       "description": "La característica principal de Crono es la facilidad de uso. Así de simple. ❤️"
     },
     {
       "title": "Visión de negocio",
-      "svgPath": "/img/undraw_docusaurus_tree.svg",
       "description": "El catálogo muestra los datos con la visión de negocio que los analistas necesitan.🧑‍🦰"
     },
     {
       "title": "Potente",
-      "svgPath": "/img/undraw_docusaurus_react.svg",
       "description": "Con toda la potencia y funcionalidades de las mejores herramientas de BI. 🛠️"
     }
   ]
