@@ -32,15 +32,17 @@ const config: Config = {
   // useful metadata like html lang. For example, if your site is Chinese, you
   // may want to replace "en" with "zh-Hans".
   i18n: {
-    defaultLocale: 'en',
-    locales: ['en'],
+    defaultLocale: 'es',
+    locales: ['es'],
   },
 
   presets: [
     [
       'classic',
       {
-        docs: false,
+        docs: {
+          sidebarPath: './sidebars.ts',
+        },
         theme: {
           customCss: './src/css/custom.css',
         },
@@ -48,16 +50,7 @@ const config: Config = {
     ],
   ],
 
-  plugins: [
-    [
-      '@docusaurus/plugin-content-docs',
-      {
-        id: 'default',
-        path: 'docs',
-        routeBasePath: 'docs',
-      },
-    ],
-  ],
+  plugins: [],  // Removed duplicate docs plugin configuration
 
   themeConfig: {
     // Replace with your project's social card
