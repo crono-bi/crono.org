@@ -1,0 +1,19 @@
+{
+  "features": [
+    {
+      "title": "Gestión de metadatos",
+      "svgPath": "/img/undraw_docusaurus_mountain.svg",
+      "description": "Administra y organiza los metadatos de tu proyecto de forma eficiente. 📋"
+    },
+    {
+      "title": "Documentación automática",
+      "svgPath": "/img/undraw_docusaurus_tree.svg",
+      "description": "Genera documentación automática para tus estructuras de datos y procesos. 📝"
+    },
+    {
+      "title": "Trazabilidad",
+      "svgPath": "/img/undraw_docusaurus_react.svg",
+      "description": "Seguimiento completo del linaje de datos desde el origen hasta el destino. 🔄"
+    }
+  ]
+}

@@ -18,6 +18,7 @@ interface HomeThemeProps {
   hideFooter?: boolean;
   footerBgColor?: string;
   footerTextColor?: string;
+  featuresJsonFile?: string;
 }
 
 // Función para determinar si un color es oscuro o claro
@@ -28,7 +29,6 @@ function isColorDark(color: string): boolean {
   // Convertir color a RGB
   let r, g, b;
   
-  // Formato hex #RRGGBB o #RGB
   if (color.startsWith('#')) {
     const hex = color.substring(1);
     if (hex.length === 3) {
@@ -74,11 +74,8 @@ function isColorDark(color: string): boolean {
     }
   }
   
-  // Calcular luminancia relativa
-  // Fórmula: 0.299*R + 0.587*G + 0.114*B
   const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
   
-  // Si la luminancia es menor a 0.5, el color es oscuro
   return luminance < 0.5;
 }
 
@@ -95,7 +92,8 @@ export default function HomeTheme({
   features = AnalysisFeatureList,
   hideFooter = false,
   footerBgColor = 'transparent',
-  footerTextColor
+  footerTextColor,
+  featuresJsonFile
 }: HomeThemeProps): React.ReactElement {
   return (
     <>
@@ -111,7 +109,7 @@ export default function HomeTheme({
         buttonBgColor={buttonBgColor}
       />
       <main>
-        <HomepageFeatures features={features} />
+        <HomepageFeatures features={features} jsonFile={featuresJsonFile} />
       </main>
       {!hideFooter && (
         <footer className={styles.footer} style={{ backgroundColor: footerBgColor }}>

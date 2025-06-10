@@ -1,0 +1,19 @@
+{
+  "features": [
+    {
+      "title": "Extracción de datos",
+      "svgPath": "/img/undraw_docusaurus_mountain.svg",
+      "description": "Herramientas potentes para extraer datos de múltiples fuentes. 📤"
+    },
+    {
+      "title": "Transformación flexible",
+      "svgPath": "/img/undraw_docusaurus_tree.svg",
+      "description": "Transforma tus datos con operaciones flexibles y personalizables. 🔄"
+    },
+    {
+      "title": "Carga optimizada",
+      "svgPath": "/img/undraw_docusaurus_react.svg",
+      "description": "Carga datos en tus sistemas de destino de manera eficiente y confiable. 📥"
+    }
+  ]
+}

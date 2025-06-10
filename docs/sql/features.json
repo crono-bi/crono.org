@@ -1,0 +1,19 @@
+{
+  "features": [
+    {
+      "title": "SQL avanzado",
+      "svgPath": "/img/undraw_docusaurus_mountain.svg",
+      "description": "Herramientas avanzadas para consultas SQL y gestión de bases de datos. 🔍"
+    },
+    {
+      "title": "Optimización de consultas",
+      "svgPath": "/img/undraw_docusaurus_tree.svg",
+      "description": "Mejora el rendimiento de tus consultas con nuestras herramientas de optimización. ⚡"
+    },
+    {
+      "title": "Integración completa",
+      "svgPath": "/img/undraw_docusaurus_react.svg",
+      "description": "Integración perfecta con el resto de componentes de Crono. 🔄"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "features": [
+    {
+      "title": "Business Intelligence fácilit",
+      "svgPath": "/img/undraw_docusaurus_mountain.svg",
+      "description": "La característica principal de Crono es la facilidad de uso. Así de simple. 💧"
+    },
+    {
+      "title": "Análisis libre",
+      "svgPath": "/img/undraw_docusaurus_tree.svg",
+      "description": "Es la mejor herramienta para realizar análisis libre. El propio usuario puede construirse sus informes y análisis. 📊"
+    },
+    {
+      "title": "Potente",
+      "svgPath": "/img/undraw_docusaurus_react.svg",
+      "description": "Con toda la potencia y funcionalidades de las mejores herramientas de BI. 🛠️"
+    }
+  ]
+}

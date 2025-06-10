@@ -1,0 +1,19 @@
+{
+  "features": [
+    {
+      "title": "Crono SQL",
+      "svgPath": "/img/undraw_docusaurus_mountain.svg",
+      "description": "Crono ETL utiliza el lenguaje Crono SQL para crear los procesos de carga de un DWH.🛠️"
+    },
+    {
+      "title": "SQL con superpoderes",
+      "svgPath": "/img/undraw_docusaurus_tree.svg",
+      "description": "Un lenguaje como el SQL, pero más fácil de escribir, más mantenible y más escalable. ❤️"
+    },
+    {
+      "title": "Generador de SQL",
+      "svgPath": "/img/undraw_docusaurus_react.svg",
+      "description": "No es una BBDD ni una caja negra que ejecuta procesos ETLs. Crono SQL es nada más (y nada menos) un generador de código SQL. 🥇"
+    }
+  ]
+}
