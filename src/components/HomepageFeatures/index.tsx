@@ -20,7 +20,8 @@ export type FeaturesJson = {
 };
 
 
-function Feature({title, Svg, description}: FeatureItem) {
+function Feature({title, description, iconIdx}: FeatureItem & { iconIdx: number }) {
+  const Svg = featureIcons[iconIdx % featureIcons.length];
   return (
     <div className={clsx('col col--4')}>
       <div className="text--center">
@@ -39,22 +40,6 @@ type HomepageFeaturesProps = {
   jsonFile?: string;
 };
 
-// Función para convertir JsonFeatureItem a FeatureItem
-const convertJsonFeatureToFeatureItem = (jsonFeature: JsonFeatureItem): FeatureItem => {
-  let SvgComponent;
-  try {
-    SvgComponent = require(`@site/static${jsonFeature.svgPath}`).default;
-  } catch (error) {
-    // Si no se puede cargar el SVG, usar uno predeterminado
-    console.warn(`No se pudo cargar el SVG: ${jsonFeature.svgPath}`, error);
-  }
-
-  return {
-    title: jsonFeature.title,
-    Svg: SvgComponent,
-    description: jsonFeature.description
-  };
-};
 
 
 

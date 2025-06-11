@@ -33,7 +33,8 @@ function AnalysisHeader() {
   );
 }
 
-export default function Analysis(): JSX.Element {
+
+export default function Analysis(): React.ReactElement {
   const {siteConfig} = useDocusaurusContext();
   return (
     <Layout
