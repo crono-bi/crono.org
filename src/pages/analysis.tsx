@@ -1,6 +1,6 @@
 import React from 'react';
 import Layout from '@theme/Layout';
-import HomepageFeatures, { AnalysisFeatureList } from '@site/src/components/HomepageFeatures';
+import HomepageFeatures from '@site/src/components/HomepageFeatures';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import clsx from 'clsx';
 import Link from '@docusaurus/Link';
@@ -41,7 +41,7 @@ export default function Analysis(): JSX.Element {
       description="Una aplicación de Business Intelligence fácil de usar">
       <AnalysisHeader />
       <main>
-        <HomepageFeatures features={AnalysisFeatureList} />
+        <HomepageFeatures jsonFile="/static/json/features/analysis.json" />
       </main>
       <footer className={styles.footer}>
         <div className="container">

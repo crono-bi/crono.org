@@ -1,7 +1,7 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
 import { Header } from '@site/src/components/UI';
-import HomepageFeatures, { AnalysisFeatureList } from '@site/src/components/HomepageFeatures';
+import HomepageFeatures from '@site/src/components/HomepageFeatures';
 import styles from '@site/src/pages/index.module.css';
 
 interface HomeThemeProps {
@@ -89,7 +89,7 @@ export default function HomeTheme({
   buttonTo = "/docs/analysis/intro",
   buttonColor = "black",
   buttonBgColor = "white",
-  features = AnalysisFeatureList,
+
   hideFooter = false,
   footerBgColor = 'transparent',
   footerTextColor,
@@ -109,7 +109,7 @@ export default function HomeTheme({
         buttonBgColor={buttonBgColor}
       />
       <main>
-        <HomepageFeatures features={features} jsonFile={featuresJsonFile} />
+        <HomepageFeatures jsonFile={featuresJsonFile} />
       </main>
       {!hideFooter && (
         <footer className={styles.footer} style={{ backgroundColor: footerBgColor }}>
