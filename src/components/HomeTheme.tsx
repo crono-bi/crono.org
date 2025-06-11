@@ -70,7 +70,7 @@ function isColorDark(color: string): boolean {
     if (rgb) {
       [r, g, b] = rgb;
     } else {
-      return false; // Color no reconocido, asumimos claro
+      return false;
     }
   }
   
