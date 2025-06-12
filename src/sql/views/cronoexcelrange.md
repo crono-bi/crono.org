@@ -8,7 +8,7 @@ La pseudo vista `Crono$ExcelRange` lee un rango (o varios) de una hoja de Excel.
 - **Range**: Nombre del rango de la hoja a leer. Puede ser una rango con nombre o sus coordenadas.  
 - **ColumnNames**: Nombre de las columnas. Si no se especifica se toman los propios nombres de la tabla de Excel.
 - **RowCode**: Código opcional que se añadirá en cada registro del resultado. 
-- **Data**: Sentencia permite establecer valores variables en las propiedades de esta accíon. Esta propiedad permite leer múltiples rangos a la vez y obtener un único resultado.
+- **Data**: Sentencia permite establecer valores variables en las propiedades de esta acción. Esta propiedad permite leer múltiples rangos a la vez y obtener un único resultado.
 
 
 # Ejemplos
@@ -79,7 +79,7 @@ from Crono$ExcelRange(
 )
 ```
 
-Como cualquier otra pseudovista, `Crono$ExcelRange` se puede combinar con cualquier otro elemento del lenguaje **Crono SQL**. La siguiente sentencia utiza `CREATE OR REPLACE TABLE` para copiar los datos del Excel en una tabla `stg.Ventas`.
+Como cualquier otra pseudovista, `Crono$ExcelRange` se puede combinar con cualquier otro elemento del lenguaje **Crono SQL**. La siguiente sentencia utiliza `CREATE OR REPLACE TABLE` para copiar los datos del Excel en una tabla `stg.Ventas`.
 
 
 ```
