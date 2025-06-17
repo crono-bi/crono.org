@@ -1,4 +1,0 @@
-{
-  "sql": "SELECT CASE WHEN ventas<>0 THEN 1.0*CASE WHEN ventas IS NOT NULL OR coste IS NOT NULL THEN coalesce(ventas,0)-coalesce(coste,0) END/ventas END AS margen",
-  "cronoSql": ""
-}

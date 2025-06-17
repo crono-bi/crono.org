@@ -49,7 +49,8 @@ El siguiente ejemplo muestra todo lo anterior con más detalle. Incluye práctic
 
 Este manual asume que se tienen al menos conocimientos básicos de SQL.
 
-<SqlExample jsonPath="/json/sql/merge-clone-factsalesorderdetails-simple.json" />
+<SqlRender jsonPath="/json/sql/sql-intro-1.json" />
+
 
 Estas 21 líneas de código hacen todo lo siguiente:
 
@@ -72,15 +73,7 @@ Aunque lo anterior ya es una gran ventaja respecto al código **SQL ANSI**, el m
 
 El siguiente código permite comparar la facilidad y legibilidad del código **Crono SQL** frente al código **SQL** estándar.
 
-
-<div class="mt-1 mb-2 row">
-  <div class="col-lg-12">
-
-<SqlExample jsonPath="/json/sql/merge-clone-factsalesorderdetails-intro.json" />
-
-  </div>
-</div>
-
+<SqlRender jsonPath="/json/sql/sql-intro-2.json" />
 
 Además, el código generado es óptimo. Es imposible cargar esta tabla de una manera más rápida o eficiente. Con ninguna otra herramienta es posible cargar estos mismos datos más rápidamente.
 

@@ -10,7 +10,7 @@ export default function SqlCodeBlock({ sqlData, jsonPath }) {
   const [data, setData] = useState(sqlData || null);
   const modalRef = useRef(null);
 
-  // Cargar datos desde el archivo JSON si se proporciona una ruta
+
   useEffect(() => {
     if (jsonPath && !sqlData) {
       setLoading(true);
@@ -27,14 +27,14 @@ export default function SqlCodeBlock({ sqlData, jsonPath }) {
     }
   }, [jsonPath, sqlData]);
 
-  // Aplicar resaltado de sintaxis cuando se carga el componente o cambian los datos
+
   useEffect(() => {
     if (data) {
       Prism.highlightAll();
     }
   }, [data, isModalOpen]);
 
-  // Cerrar modal al hacer clic fuera
+
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (modalRef.current && !modalRef.current.contains(event.target)) {
@@ -61,7 +61,7 @@ export default function SqlCodeBlock({ sqlData, jsonPath }) {
 
   const openModal = () => {
     setIsModalOpen(true);
-    // Aplicar resaltado de sintaxis después de que se abra el modal
+
     setTimeout(() => Prism.highlightAll(), 100);
   };
 
@@ -71,14 +71,14 @@ export default function SqlCodeBlock({ sqlData, jsonPath }) {
 
   return (
     <div className={styles.sqlContainer}>
-      {/* Bloque de código SQL original con resaltado de sintaxis */}
+
       <div className={styles.codeBlock}>
         <pre className={`${styles.pre} language-sql`}>
           <code className="language-sql">{data.cronoSQL}</code>
         </pre>
       </div>
       
-      {/* Botón para ver SQL compilado */}
+
       <div className={styles.buttonContainer}>
         <button 
           onClick={openModal} 
@@ -89,7 +89,7 @@ export default function SqlCodeBlock({ sqlData, jsonPath }) {
         </button>
       </div>
 
-      {/* Modal para mostrar SQL compilado */}
+
       {isModalOpen && (
         <div className={styles.modalOverlay} role="dialog" aria-modal="true">
           <div className={styles.modal} ref={modalRef}>
