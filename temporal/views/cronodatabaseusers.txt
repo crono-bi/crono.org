@@ -1,0 +1,30 @@
+
+# Crono$DatabaseUsers
+
+Devuelve el listado de usuarios de todas las bases de datos del servidor.
+
+```
+SELECT *
+FROM Crono$DatabaseUsers
+```
+
+La consulta incluye estas columnas:
+
+- DatabaseName
+- Username
+- TypeDescription
+- DefaultSchemaName
+- CreationDate
+- ModifiedDate
+- AuthenticationType
+- [Login]
+- LoginType
+- DefaultDatabaseName
+- DefaultLanguage
+- LoginDisabled
+
+
+## Comentarios
+
+- Para cada usuario se informa su "inicio de sesión".
+- Los datos se obtienen de las vistas de sistema `sys.database_principals`y `sys.server_principals`.  
