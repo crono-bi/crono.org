@@ -49,6 +49,12 @@ El siguiente ejemplo muestra todo lo anterior con más detalle. Incluye práctic
 
 Este manual asume que se tienen al menos conocimientos básicos de SQL.
 
+```SQL
+
+SELECT CASE WHEN 11<=26 THEN CHAR(64+11) END AS letra
+
+```
+
 <SqlRender jsonPath="/json/sql/sql-intro-1.json" />
 
 
