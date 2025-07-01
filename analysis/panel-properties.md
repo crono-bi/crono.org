@@ -1,5 +1,5 @@
 ﻿---
-sidebar_position: 11
+Position: 11
 ---
 
 # Propiedades de panel

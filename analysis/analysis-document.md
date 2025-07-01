@@ -1,5 +1,5 @@
----
-sidebar_position: 3
+﻿---
+Position: 3
 ---
 
 # Estructura de un documento de Crono Analysis

@@ -1,5 +1,5 @@
 ﻿---
-sidebar_position: 14
+Position: 14
 ---
 
 # Propiedades de informe

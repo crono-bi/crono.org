@@ -1,5 +1,5 @@
----
-sidebar_position: 16
+﻿---
+Position: 16
 ---
 
 # Tipos de visualización
