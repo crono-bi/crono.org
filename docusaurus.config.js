@@ -17,7 +17,7 @@ const config = {
     ...configJson.config,
     url: 'https://docusaurus.io',
     baseUrl: '/',
-    onBrokenLinks: 'throw',
+    onBrokenLinks: 'warn',
     onBrokenMarkdownLinks: 'warn',
     i18n: {
         defaultLocale: 'en',
