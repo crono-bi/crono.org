@@ -9,10 +9,10 @@ La función `countdistinct` es una *función de agregación* devuelve el número
 
 Se traduce y se comporta igual que el `count` con la cláusula `DISTINCT` del SQL estándard.
 
-```cronosql-with-button
+```sql
 select countdistinct(storeId)
 from dwh.Sales
-```
+```sql
 
 
 ## Ejemplo
@@ -22,14 +22,14 @@ from dwh.Sales
 ```sql
 select countdistinct(storeId)
 from dwh.Sales
-```
+```sql
 
 El código SQL generado es:
 
 ```sql
 SELECT count(DISTINCT storeId) AS expr1
 FROM dwh.Sales
-```
+```sql
 
 
 ## Comentario
