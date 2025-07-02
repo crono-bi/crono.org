@@ -49,7 +49,8 @@ const config = {
             ({
                 docs: {
                     routeBasePath: '/', // Serve the docs at the site's root
-                    sidebarPath: './sidebars.js'
+                    sidebarPath: './sidebars.js',
+                    path: '../crono.org-origin', // Leer documentos desde la carpeta origin
                 },
                 blog: false
             }),
