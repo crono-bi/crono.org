@@ -1,4 +1,0 @@
-﻿{
-  "cronoSQL": "select countdistinct(storeId)\r\nfrom dwh.Sales\r\n",
-  "compiladoSQL": "SELECT count(DISTINCT storeId) AS expr1\r\nFROM dwh.Sales\r\n"
-}
