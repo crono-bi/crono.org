@@ -5,10 +5,9 @@ La función adddays devuelve una nueva fecha que resulta de sumar un número det
 
 **Sintaxis:**  
 
-```sql
+```
 adddays(fecha_base, numero_dias)
-```sql
-
+```
 **Argumentos:**
 
 - fecha_base (DATETIME o DATE): Fecha inicial a la que se le agregarán (o restarán) días. Puede ser una constante, una columna o una función como getdate().
@@ -17,14 +16,11 @@ adddays(fecha_base, numero_dias)
 ## Ejemplo
 
 
-```sql
+```
 SELECt adddayes(getdate(),3);
-```sql
-
+```
 El codigo generado es:
 
-```sql
+```
 SELECT dateadd(d,3,getdate())
-```sql
-
-
+```

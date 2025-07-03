@@ -13,16 +13,14 @@ Si todos los parámetros de entrada son nulos devuelve `NULL`
 
 ## Ejemplo
 
-```sql
+```
 select substraction(10,3,null,2) resta;
-```sql 
-
+```
 El código SQL generado es el siguiente.
 
-```sql
+```
 SELECT CASE WHEN 10 IS NOT NULL OR 3 IS NOT NULL OR NULL IS NOT NULL OR 2 IS NOT NULL THEN coalesce(10,0)-coalesce(3,0)-coalesce(NULL,0)-coalesce(2,0) END AS resta
-```sql
-
+```
 El resultado de la operación es:
 
 > 5 

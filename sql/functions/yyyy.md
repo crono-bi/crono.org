@@ -8,12 +8,11 @@ Es útil para extraer el año de una fecha con formato textual, ideal para etiqu
 ## Ejemplo
 
 
-```sql
+```
 select yyyy('2026-01-01') as result;  -- Devuelve 2026
-```sql
-
+```
 El código SQL generado es:
 
-```sql
+```
 SELECT CONVERT(CHAR(4),'2026-01-01',112) AS result
-```sql
+```

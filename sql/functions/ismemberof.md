@@ -11,16 +11,14 @@ La función `IsMemberOf` devuelve `1` o `0` en función de si el usuario actual 
 
 La siguiente función comprobará si el usuario actual es miembro del grupo *"Administradores*".
 
-```sql
+```
 select IsMemberOf('Administradores') admin;
-```sql
-
+```
 El código generado será similar a:
 
-```sql
+```
 SELECT 1 AS admin
-```sql
-
+```
 El resultado dependerá de si el usuarios actual es miembro o no de dicho grupo.
 
 > 1
@@ -29,10 +27,9 @@ El resultado dependerá de si el usuarios actual es miembro o no de dicho grupo.
 También se pueden comprobar varios grupos al mismo tiempo. La función devolverá `1` si el usuario actual pertenece a alguno de esos grupos.
 
 
-```sql
+```
 select IsMemberOf('Marketing', 'Analistas BI') cronoUser;
-```sql
-
+```
 ## Comentario
 
 Esta función se evalúa mientras se genera el código SQL y no mientras se ejecuta la sentencia. No lo evalúa la base de datos.

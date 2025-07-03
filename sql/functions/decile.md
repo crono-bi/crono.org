@@ -15,7 +15,7 @@ Se puede usar tanto la sintaxis `OVER` del SQL estándar como la sintaxis compac
 
 La siguiente consulta devuelve el decil de ventas en que se encuentra cada libro. Los libros con un percentil de 9 o 10 están en el grupo del 20% de libros más vendidos.
 
-```sql
+```
 select 
   lb_libros.titulo libro,
   sum(unidades) ventas,
@@ -23,11 +23,10 @@ select
 from dbo.lb_ventas
 inner join lb_libros using id_libro
 group by all
-```sql
-
+```
 La consulta SQL generada es:
 
-```sql
+```
 SELECT
   lb_libros.titulo AS libro,
   sum(unidades) AS ventas,
@@ -35,8 +34,7 @@ SELECT
 FROM dbo.lb_ventas
 INNER JOIN lb_libros ON (lb_ventas.id_libro=lb_libros.id_libro)
 GROUP BY lb_libros.titulo
-```sql
-
+```
 ## Comentarios
 
 Esta función es similar a `rank`, `percentile`, `quartile` y `quantile`. La función `rank` devuelve la posición ordinal de cada registro, mientras que las otras funciones clasifican los registros en grupos de distintos tamaños (100, 10, 4 o *n*).

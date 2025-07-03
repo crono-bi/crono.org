@@ -10,11 +10,9 @@ La función `coalesce` evalúa los argumentos en orden y devuelve el valor de la
 
 ## Ejemplo
 
-```sql
+```
 SELECT COALESCE(NULL, NULL, 'third_value', 'fourth_value')
-```sql
-
-
+```
 ## Comentarios
 
 'coalesce' es una función de SQL estándar. Consulte la documentación completa de la función [coalesce](https://learn.microsoft.com/es-es/sql/t-sql/language-elements/coalesce-transact-sql) para mayor información.

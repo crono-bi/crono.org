@@ -9,14 +9,13 @@ La función `zeroifnull` devuelve `0` si la expresión de entrada es un `NULL`. 
 
 ## Ejemplo
 
-```sql
+```
 SELECT min(zeroifnull(myTable.Value)) MinValue
 FROM dbo.myTable
-```sql
-
+```
 El código SQL generado utiliza la función `coalesce`:
 
-```sql
+```
 SELECT min(coalesce(myTable.[Value],0)) AS MinValue
 FROM dbo.myTable
-```sql
+```

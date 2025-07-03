@@ -15,7 +15,7 @@ Se puede usar tanto la sintaxis `OVER` del SQL estándar como la sintaxis compac
 
 La siguiente consulta devuelve las ventas de cada mes y el porcentaje de cada mes respecto el total del año.
 
-```sql
+```
 select 
   year(fecha) anyo, 
   month(fecha) mes, 
@@ -24,11 +24,10 @@ select
 from dbo.lb_ventas
 where anyo=2012
 group by all
-```sql
-
+```
 La consulta SQL generada es:
 
-```sql
+```
 SELECT
   year(fecha) AS anyo,
   month(fecha) AS mes,
@@ -39,12 +38,11 @@ WHERE year(fecha)=2012
 GROUP BY
   year(fecha),
   month(fecha)
-```sql
-
+```
 También se puede incluir la cláusula `PARTITION BY`. La siguiente consulta muestra las ventas de todos los meses de todos los años, incluyendo el porcentaje de cada mes respecto al total anual.
 
 
-```sql
+```
 select 
   year(fecha) anyo, 
   month(fecha) mes, 
@@ -52,11 +50,10 @@ select
   pct(ventas partition by anyo) pct
 from dbo.lb_ventas
 group by all
-```sql
-
+```
 El SQL generado es:
 
-```sql
+```
 SELECT
   year(fecha) AS anyo,
   month(fecha) AS mes,
@@ -66,7 +63,4 @@ FROM dbo.lb_ventas
 GROUP BY
   year(fecha),
   month(fecha)
-```sql
-
-
-
+```

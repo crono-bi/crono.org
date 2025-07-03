@@ -9,12 +9,11 @@ La función `daysago` devuelve el número de días transcurridos desde una fecha
 
 La siguiente sentencia devuelve el número de días transcurridos desde el 1 de enero de 2025.
 
-```sql
+```
 SELECT daysago('20150101') num;
-```sql
-
+```
 El código generado es:
 
-```sql
+```
 SELECT datediff(d,'20250101',CAST(CURRENT_TIMESTAMP AS DATE)) AS num
-```sql
+```

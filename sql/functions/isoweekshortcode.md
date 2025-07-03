@@ -13,16 +13,14 @@ La norma ISO 8601 establece que una semana inicia el día lunes y termina el dí
 
 ## Ejemplo
 
-```sql
+```
 select isoweekshortcode('2022-11-26') as weekCode;
-```sql
-
+```
 El código SQL generado es:
 
-```sql
+```
 SELECT concat('W',format(datepart(isowk,'2022-11-26'),'D2')) AS weekCode
-```sql
-
+```
 El resultado es:
 
 > W47

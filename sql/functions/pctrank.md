@@ -15,7 +15,7 @@ Se puede usar tanto la sintaxis `OVER` del SQL estándar como la sintaxis compac
 
 La siguiente consulta devuelve el 40% de las tiendas con mayor venta.
 
-```sql
+```
 select 
   lb_tiendas.nombre tienda,
   sum(unidades) ventas,
@@ -24,11 +24,10 @@ from dbo.lb_ventas
 inner join lb_tiendas using id_tienda
 group by all
 qualify rank<0.4
-```sql
-
+```
 La consulta SQL generada es:
 
-```sql
+```
 SELECT *
 FROM (
     SELECT
@@ -40,8 +39,7 @@ FROM (
     GROUP BY lb_tiendas.nombre
   ) a
 WHERE rank<0.4
-```sql
-
+```
 ## Comentarios
 
 Esta función es similar a `rank` y `percentile`. La función `rank` devuelve la posición ordinal de cada registro, `percentile` la normaliza entre 0 y 100, y `pctrank`la normaliza entre 0 y 1.

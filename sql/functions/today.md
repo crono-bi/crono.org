@@ -10,13 +10,11 @@ La función `today` devuelve la fecha (tipo **date**) correspondiente al día de
 
 ## Ejemplo
 
-```sql
+```
 select today() as result;
-```sql
-
+```
 El código SQL generado es:
 
-```sql
+```
 SELECT cast(getdate() as date) AS result
-```sql
-
+```

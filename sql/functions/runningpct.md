@@ -15,7 +15,7 @@ Se puede usar tanto la sintaxis `OVER` del SQL estándar como la sintaxis compac
 
 La siguiente consulta devuelve el porcentaje de ventas acumulado (*year to date* ) para cada mes .
 
-```sql
+```
 select 
   year(fecha) anyo,
   month(fecha) mes,
@@ -23,11 +23,10 @@ select
   runningpct(ventas partition by anyo order by mes)
 from dbo.lb_ventas
 group by all
-```sql
-
+```
 La consulta SQL generada es:
 
-```sql
+```
 SELECT
   year(fecha) AS anyo,
   month(fecha) AS mes,
@@ -37,5 +36,4 @@ FROM dbo.lb_ventas
 GROUP BY
   year(fecha),
   month(fecha)
-```sql
-
+```

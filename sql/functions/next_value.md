@@ -15,7 +15,7 @@ Se puede usar tanto la sintaxis `OVER` del SQL estándar como la sintaxis compac
 
 La siguiente consulta devuelve las ventas de cada mes y las ventas en el mes siguiente.
 
-```sql
+```
 select 
   year(fecha) anyo, 
   month(fecha) mes,
@@ -23,11 +23,10 @@ select
   next_value(ventas) over (order by anyo,mes) nextValue,
 from dbo.lb_ventas
 group by all
-```sql
-
+```
 La misma consulta se puede construir con la sintaxis compacta del `OVER`:
 
-```sql
+```
 select 
   year(fecha) anyo, 
   month(fecha) mes,
@@ -35,12 +34,10 @@ select
   next_value(ventas order by anyo,mes) nextValue,
 from dbo.lb_ventas
 group by all
-```sql
-
+```
 La consulta SQL generada en ambos casos es:
 
-```sql
-
+```
 SELECT
   year(fecha) AS anyo,
   month(fecha) AS mes,
@@ -50,7 +47,4 @@ FROM dbo.lb_ventas
 GROUP BY
   year(fecha),
   month(fecha)
-```sql
-
-
-
+```

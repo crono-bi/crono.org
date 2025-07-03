@@ -6,10 +6,9 @@ La función `fromjuliandate` convierte un número de fecha juliana (Julian Date)
 
 **Sintaxis:**
 
-```sql
+```
 fromjuliandate(julian_number)
-```sql
-
+```
 Parámetros:
 
 - julian_number (INT o FLOAT): El número correspondiente a una fecha juliana. Puede incluir parte decimal para representar horas, minutos y segundos.
@@ -20,19 +19,16 @@ Parámetros:
 La siguiente sentencia convierte el número juliano 2460677 a fecha 
 
 
-```sql
+```
 SELECT fromjuliandate(2460677);
 -- Resultado: '2025-01-01'
-```sql
-
-
+```
 El código generado es:
 
 
-```sql
+```
 SELECT dateadd(d,2460677-2451545,CAST('20000101' AS date)) AS expr1
-```sql
-
+```
 ## Comentarios
 
 - El sistema de fecha juliana es un conteo continuo de días desde el 1 de enero del año 4713 a.C.

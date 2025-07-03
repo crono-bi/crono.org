@@ -6,28 +6,23 @@ La función `fromunixdate` convierte un valor de marca de tiempo Unix (Unix time
 
 **Sintaxis:**  
 
-```sql
+```
 fromunixdate(unix_timestamp)
-```sql
-
-
+```
 ## Ejemplo
 
 La siguiente sentencia convierte el timestamp 1704067200 a fecha
 
-```sql
+```
 SELECT fromunixdate(1704067200);
 -- Resultado: '2024-01-01 00:00:00'
-```sql
-
+```
 El código generado es:
 
 
-```sql
+```
 SELECT dateadd(s,1704067200, '1970-01-01') AS expr1
-```sql
-
-
+```
 ## Comentarios
 
 - Si se proporciona un valor decimal o en milisegundos, este debe ser convertido previamente (por ejemplo, dividiendo entre 1000 si está en milisegundos).

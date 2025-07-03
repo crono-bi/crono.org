@@ -9,14 +9,13 @@ La función `nullifempty` devuelve `NULL` si la expresión de entrada es una cad
 
 ## Ejemplo
 
-```sql
+```
 SELECT nullifempty(myTable.Description) Description
 FROM dbo.myTable
-```sql
-
+```
 El código SQL generado utiliza el operador `CASE`:
 
-```sql
+```
 SELECT CASE WHEN myTable.Description<>'' THEN myTable.Description END AS Description
 FROM dbo.myTable
-```sql
+```

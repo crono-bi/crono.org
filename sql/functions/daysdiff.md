@@ -4,24 +4,19 @@ La función `daysdiff` calcula el número de días completos entre dos fechas. E
 
 **Sintaxis:**  
 
-```sql
+```
 daysdiff(startDate, endDate)
-```sql
-
-
+```
 ## Ejemplo
 
 La siguiente sentencia devuelve el número de días entre el 1 de enero del 2025 y el 1 de mayo de 2025.
 
-```sql
+```
 select  daysdiff('20250101','20250401') num;
 -- Devuelve 90
-```sql
-
+```
 El código generado es:
 
-```sql
+```
 SELECT datediff(d,'20250101','20250401') AS num
-```sql
-
-
+```

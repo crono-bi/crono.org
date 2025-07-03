@@ -13,23 +13,19 @@ Si no pertenece a ningún grupo indicado la función devuelve `NULL`.
 
 La siguiente función comprobará si el usuario actual es miembro del grupo *"Administradores*".
 
-```sql
+```
 select MemberOf('Administradores') admin;
-```sql
-
+```
 El código generado será similar a:
 
-```sql
+```
 SELECT 'Administradores' AS admin
-```sql
-
-
+```
 Si se especifican varios grupos, se devuelve el primero al que pertenezca.
 
-```sql
+```
 select MemberOf('Marketing', 'Analistas BI') cronoUser;
-```sql
-
+```
 ## Comentario
 
 Esta función se evalúa mientras se genera el código SQL y no mientras se ejecuta la sentencia. No lo evalúa la base de datos.

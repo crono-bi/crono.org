@@ -7,41 +7,37 @@ Es útil para calcular la fdecha final del periodo en aquellos casos donde la ta
 
 **Sintaxis:**
 
-```sql
+```
 end_datetime(fecha_inicio) OVER (PARTITION BY <columns>)
-```sql
-
+```
 Como en todas las funciones de ventana se puede usar la sintaxis compacta:
 
 
-```sql
+```
 end_datetime(fecha_inicio PARTITION BY <columns>)
-```sql
-
+```
 ## Ejemplo:
 
 El siguiente ejemplo muestra la fecha de inicio y fin de cada escandallo:
 
-```sql
+```
 select 
 	articulo, 
 	coste, 
 	fecha FechaInicio, 
 	end_datetime(fecha partition by articulo) Fechafin
 from stg.escandallos
-```sql
-
+```
 El código generado es:
 
-```sql
+```
 SELECT
   articulo,
   coste,
   fecha AS FechaInicio,
   coalesce(max(fecha) OVER (PARTITION BY articulo ORDER BY fecha ROWS BETWEEN 1 FOLLOWING And 1 FOLLOWING),'21000101') AS Fechafin
 FROM stg.escandallos
-```sql
-
+```
  ## Comentarios
 
  - La fecha de inicio debe ser una fecha `DATE` sin hora.

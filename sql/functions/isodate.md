@@ -12,12 +12,11 @@ Este formato es estándar, ordenable alfabéticamente y ampliamente utilizado pa
 ## Ejemplo
 
 
-```sql
+```
 select ISODATE(cast('20260101' as date)) as result; -- Devuelve 2026-01-01
-```sql
-
+```
 El código SQL generado es:
 
-```sql
+```
 SELECT CONVERT(char(10), CAST('20260101' AS date),126) AS result
-```sql
+```

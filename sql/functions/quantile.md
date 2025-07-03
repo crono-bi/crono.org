@@ -17,7 +17,7 @@ Se puede usar tanto la sintaxis `OVER` del SQL estándar como la sintaxis compac
 
 La siguiente consulta clasifica las tiendas en 3 grupos según sus ventas. Las ventas del grupo 1 incluirá el tercio de tiendas con mayores ventas.
 
-```sql
+```
 select 
   lb_tiendas.nombre tienda,
   sum(unidades) ventas,
@@ -25,11 +25,10 @@ select
 from dbo.lb_ventas
 inner join lb_tiendas using id_tienda
 group by all
-```sql
-
+```
 La consulta SQL generada es:
 
-```sql
+```
 SELECT
   lb_tiendas.nombre AS tienda,
   sum(unidades) AS ventas,
@@ -37,8 +36,7 @@ SELECT
 FROM dbo.lb_ventas
 INNER JOIN lb_tiendas ON (lb_ventas.id_tienda=lb_tiendas.id_tienda)
 GROUP BY lb_tiendas.nombre
-```sql
-
+```
 ## Comentarios
 
 Esta función es similar a `rank`, `percentile`, `decile` y `quartile``. La función `rank` devuelve la posición ordinal de cada registro, mientras que las otras funciones clasifican los registros en grupos de distintos tamaños (100, 10, 4 o *n*).

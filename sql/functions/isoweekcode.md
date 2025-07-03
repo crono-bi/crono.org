@@ -12,16 +12,14 @@ El código tiene la forma `YYYY-WNN`.
 
 ## Ejemplo
 
-```sql
+```
 select isoweekcode('2022-11-26') as isoWeek;
-```sql
-
+```
 El código generado es:
 
-```sql
+```
 SELECT concat(year('2022-11-26')+CASE WHEN month('2022-11-26')=1 AND datepart(isowk,'2022-11-26')>50 THEN -1 WHEN month('2022-11-26')=12 AND datepart(isowk,'2022-11-26')=1 THEN 1 ELSE 0 END,'-',concat('W',format(datepart(isowk,'2022-11-26'),'D2'))) AS [isoWeek]
-```sql
-
+```
 El resultado es:
 
 > 2022-W47

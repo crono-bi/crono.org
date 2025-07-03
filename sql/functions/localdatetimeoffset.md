@@ -11,17 +11,15 @@ El resultado es también de tipo **datetimeoffset**.
 
 ## Ejemplo
 
-```sql
+```
 select localdatetimeoffset('2022-04-12T16:12:00-08:00') result;
-```sql
-
+```
 El código SQL generado es:
 
 
-```sql
+```
 SELECT CAST(SWITCHOFFSET('2022-04-12T16:12:00-08:00',DATENAME(tzoffset,SYSDATETIMEOFFSET())) as datetimeoffset) AS result
-```sql
-
+```
 En España el resultado será:
 
 > 2022-04-12T01:12:00+01:00

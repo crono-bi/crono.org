@@ -10,7 +10,6 @@ Esta función no requiere paréntesis, ya que actúa como una constante de siste
 
 **Sintaxis:**  
 
-```sql
+```
 current_catalog
-```sql
-
+```

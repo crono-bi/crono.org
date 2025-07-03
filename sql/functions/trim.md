@@ -9,15 +9,13 @@ La función `trim` suprime los espacios iniciales y finales de una cadena de tex
 
 ## Ejemplo
 
-```sql
+```
 select trim('   Hello World! ')  as result;
-```sql
-
+```
 El código generado es:
 
-```sql
+```
 SELECT ltrim(rtrim('   Hello World! ')) AS result
-```sql
-
+```
 El resultado es una cadena de texto sin espacios al inicio ni al final del texto: **'Hello World!'**
 
