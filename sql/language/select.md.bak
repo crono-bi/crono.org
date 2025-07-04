@@ -153,6 +153,26 @@ WHERE year(sales.OrderDate)=2012
   
 
    
+``` sql
+SELECT
+  year(sales.OrderDate) AS OrderYear,
+  Customer.CustomerId AS CustomerId,
+  concat(CustomerPerson.FirstName,' ',CustomerPerson.LastName) AS Customer,
+  CustomerPerson.FirstName AS FirstName,
+  CustomerPerson.LastName AS LastName,
+  sum(sales.subtotal) AS Amount
+FROM staging.SalesOrderHeader sales
+INNER JOIN staging.customer ON (Sales.CustomerId=customer.CustomerId)
+LEFT JOIN staging.Person CustomerPerson ON (Customer.PersonID=CustomerPerson.BusinessEntityId)
+WHERE year(sales.OrderDate)=2012
+GROUP BY
+  year(sales.OrderDate),
+  Customer.CustomerId,
+  concat(CustomerPerson.FirstName,' ',CustomerPerson.LastName),
+  CustomerPerson.FirstName,
+  CustomerPerson.LastName
+
+```
   
 
   
@@ -178,6 +198,26 @@ WHERE year(sales.OrderDate)=2012
   
 
    
+``` sql
+SELECT
+  year(sales.OrderDate) AS OrderYear,
+  Customer.CustomerId AS CustomerId,
+  concat(CustomerPerson.FirstName,' ',CustomerPerson.LastName) AS Customer,
+  CustomerPerson.FirstName AS FirstName,
+  CustomerPerson.LastName AS LastName,
+  sum(sales.subtotal) AS Amount
+FROM staging.SalesOrderHeader sales
+INNER JOIN staging.customer ON (Sales.CustomerId=customer.CustomerId)
+LEFT JOIN staging.Person CustomerPerson ON (Customer.PersonID=CustomerPerson.BusinessEntityId)
+WHERE year(sales.OrderDate)=2012
+GROUP BY
+  year(sales.OrderDate),
+  Customer.CustomerId,
+  concat(CustomerPerson.FirstName,' ',CustomerPerson.LastName),
+  CustomerPerson.FirstName,
+  CustomerPerson.LastName
+
+```
   
 
   
@@ -203,6 +243,26 @@ WHERE year(sales.OrderDate)=2012
   
 
    
+``` sql
+SELECT
+  year(sales.OrderDate) AS OrderYear,
+  Customer.CustomerId AS CustomerId,
+  concat(CustomerPerson.FirstName,' ',CustomerPerson.LastName) AS Customer,
+  CustomerPerson.FirstName AS FirstName,
+  CustomerPerson.LastName AS LastName,
+  sum(sales.subtotal) AS Amount
+FROM staging.SalesOrderHeader sales
+INNER JOIN staging.customer ON (sales.CustomerId=customer.CustomerId)
+LEFT JOIN staging.Person CustomerPerson ON (Customer.PersonID=CustomerPerson.BusinessEntityId)
+WHERE year(sales.OrderDate)=2012
+GROUP BY
+  year(sales.OrderDate),
+  Customer.CustomerId,
+  concat(CustomerPerson.FirstName,' ',CustomerPerson.LastName),
+  CustomerPerson.FirstName,
+  CustomerPerson.LastName
+
+```
   
 
   
@@ -222,6 +282,14 @@ WHERE year(sales.OrderDate)=2012
   
 
    
+``` sql
+SELECT count(*) AS expr1
+FROM staging.SalesOrderHeader sales
+INNER JOIN staging.customer ON (sales.CompanyId=customer.CompanyId AND sales.CustomerId=customer.CustomerId)
+LEFT JOIN staging.Person CustomerPerson ON (customer.CompanyId=CustomerPerson.CompanyId AND customer.PersonID=CustomerPerson.BusinessEntityId)
+WHERE year(sales.OrderDate)=2012
+
+```
   
 
   
@@ -250,6 +318,34 @@ WHERE year(sales.OrderDate)=2012
   
 
    
+``` sql
+IF EXISTS (
+  SELECT count(*)
+  FROM staging.SalesOrderHeader sales
+  LEFT JOIN staging.customer ON (sales.CustomerId=customer.CustomerId)
+  LEFT JOIN staging.Person CustomerPerson ON (Customer.PersonID=CustomerPerson.BusinessEntityId)
+  HAVING count(CASE WHEN customer.CustomerId IS NOT NULL AND CustomerPerson.BusinessEntityId IS NOT NULL THEN 1 END) <> (SELECT count(*) FROM staging.SalesOrderHeader sales)
+) THROW 50001,'Las relaciones de esta consulta pierden o duplican registros de sales.',1
+
+SELECT
+  year(sales.OrderDate) AS OrderYear,
+  Customer.CustomerId AS CustomerId,
+  concat(CustomerPerson.FirstName,' ',CustomerPerson.LastName) AS Customer,
+  CustomerPerson.FirstName AS FirstName,
+  CustomerPerson.LastName AS LastName,
+  sum(sales.subtotal) AS Amount
+FROM staging.SalesOrderHeader sales
+INNER JOIN staging.customer ON (sales.CustomerId=customer.CustomerId)
+INNER JOIN staging.Person CustomerPerson ON (Customer.PersonID=CustomerPerson.BusinessEntityId)
+WHERE year(sales.OrderDate)=2012
+GROUP BY
+  year(sales.OrderDate),
+  Customer.CustomerId,
+  concat(CustomerPerson.FirstName,' ',CustomerPerson.LastName),
+  CustomerPerson.FirstName,
+  CustomerPerson.LastName
+
+```
   
 
   
@@ -288,6 +384,27 @@ LEFT JOIN staging.Address ShippingAddress using BEShippingAddress(AddressId)
   
 
    
+``` sql
+SELECT
+  Person.BusinessEntityId AS BusinessEntityId,
+  Person.LastName AS LastName,
+  HomeAddress.AddressLine1 AS HomeAddressLine1,
+  HomeAddress.AddressLine2 AS HomeAddressLine2,
+  HomeAddress.City AS HomeCity,
+  ShippingAddress.AddressLine1 AS ShippingAddressLine1,
+  ShippingAddress.AddressLine2 AS ShippingAddressLine2,
+  ShippingAddress.City AS ShippingCity
+FROM staging.Person
+LEFT JOIN (SELECT *
+           FROM staging.BusinessEntityAddress
+           WHERE AddressTypeId=2) BEHomeAddress ON Person.BusinessEntityId=BEHomeAddress.BusinessEntityId
+LEFT JOIN (SELECT *
+           FROM staging.BusinessEntityAddress
+           WHERE AddressTypeId=5) BEShippingAddress ON Person.BusinessEntityId=BEShippingAddress.BusinessEntityId
+LEFT JOIN staging.Address HomeAddress ON (BEHomeAddress.AddressId=HomeAddress.AddressId)
+LEFT JOIN staging.Address ShippingAddress ON (BEShippingAddress.AddressId=ShippingAddress.AddressId)
+
+```
   
 
   
@@ -319,6 +436,24 @@ LEFT JOIN staging.Address ShippingAddress using BEShippingAddress(AddressId)
   
 
    
+``` sql
+SELECT
+  Person.BusinessEntityId AS BusinessEntityId,
+  Person.PersonType AS PersonType,
+  Person.LastName AS LastName,
+  HomeAddress.AddressLine1 AS HomeAddressLine1,
+  HomeAddress.AddressLine2 AS HomeAddressLine2,
+  HomeAddress.City AS HomeCity,
+  ShippingAddress.AddressLine1 AS ShippingAddressLine1,
+  ShippingAddress.AddressLine2 AS ShippingAddressLine2,
+  ShippingAddress.City AS ShippingCity
+FROM staging.Person
+LEFT JOIN (SELECT * FROM staging.BusinessEntityAddress WHERE AddressTypeId=2) BEHomeAddress ON (Person.BusinessEntityId=BEHomeAddress.BusinessEntityId)
+LEFT JOIN (SELECT * FROM staging.BusinessEntityAddress WHERE AddressTypeId=5) BEShippingAddress ON (Person.BusinessEntityId=BEShippingAddress.BusinessEntityId)
+LEFT JOIN staging.Address HomeAddress ON (BEHomeAddress.AddressId=HomeAddress.AddressId)
+LEFT JOIN staging.Address ShippingAddress ON (BEShippingAddress.AddressId=ShippingAddress.AddressId)
+
+```
   
 
   
@@ -350,6 +485,34 @@ CHECK SNOWFLAKE
   
 
    
+``` sql
+IF EXISTS (
+  SELECT count(*)
+  FROM staging.Person
+  LEFT JOIN (SELECT * FROM staging.BusinessEntityAddress WHERE AddressTypeId=2) BEHomeAddress ON (Person.BusinessEntityId=BEHomeAddress.BusinessEntityId)
+  LEFT JOIN (SELECT * FROM staging.BusinessEntityAddress WHERE AddressTypeId=5) BEShippingAddress ON (Person.BusinessEntityId=BEShippingAddress.BusinessEntityId)
+  LEFT JOIN staging.Address HomeAddress ON (BEHomeAddress.AddressId=HomeAddress.AddressId)
+  LEFT JOIN staging.Address ShippingAddress ON (BEShippingAddress.AddressId=ShippingAddress.AddressId)
+  HAVING count(*) <> (SELECT count(*) FROM staging.Person)
+) THROW 50001,'Las relaciones de esta consulta pierden o duplican registros de Person.',1
+
+SELECT
+  Person.BusinessEntityId AS BusinessEntityId,
+  Person.PersonType AS PersonType,
+  Person.LastName AS LastName,
+  HomeAddress.AddressLine1 AS HomeAddressLine1,
+  HomeAddress.AddressLine2 AS HomeAddressLine2,
+  HomeAddress.City AS HomeCity,
+  ShippingAddress.AddressLine1 AS ShippingAddressLine1,
+  ShippingAddress.AddressLine2 AS ShippingAddressLine2,
+  ShippingAddress.City AS ShippingCity
+FROM staging.Person
+LEFT JOIN (SELECT * FROM staging.BusinessEntityAddress WHERE AddressTypeId=2) BEHomeAddress ON (Person.BusinessEntityId=BEHomeAddress.BusinessEntityId)
+LEFT JOIN (SELECT * FROM staging.BusinessEntityAddress WHERE AddressTypeId=5) BEShippingAddress ON (Person.BusinessEntityId=BEShippingAddress.BusinessEntityId)
+LEFT JOIN staging.Address HomeAddress ON (BEHomeAddress.AddressId=HomeAddress.AddressId)
+LEFT JOIN staging.Address ShippingAddress ON (BEShippingAddress.AddressId=ShippingAddress.AddressId)
+
+```
   
 
   
@@ -380,6 +543,24 @@ LEFT JOIN staging.Address ShippingAddress using BEShippingAddress(AddressId)
   
 
    
+``` sql
+SELECT
+  Person.BusinessEntityId AS BusinessEntityId,
+  Person.PersonType AS PersonType,
+  Person.PersonName AS PersonName,
+  HomeAddress.AddressLine1 AS HomeAddressLine1,
+  HomeAddress.AddressLine2 AS HomeAddressLine2,
+  HomeAddress.City AS HomeCity,
+  ShippingAddress.AddressLine1 AS ShippingAddressLine1,
+  ShippingAddress.AddressLine2 AS ShippingAddressLine2,
+  ShippingAddress.City AS ShippingCity
+FROM (SELECT BusinessEntityId, PersonType, LastName AS PersonName FROM staging.Person WHERE PersonType='IN') Person
+LEFT JOIN (SELECT * FROM staging.BusinessEntityAddress WHERE AddressTypeId=2) BEHomeAddress ON (Person.BusinessEntityId=BEHomeAddress.BusinessEntityId)
+LEFT JOIN (SELECT * FROM staging.BusinessEntityAddress WHERE AddressTypeId=5) BEShippingAddress ON (Person.BusinessEntityId=BEShippingAddress.BusinessEntityId)
+LEFT JOIN staging.Address HomeAddress ON (BEHomeAddress.AddressId=HomeAddress.AddressId)
+LEFT JOIN staging.Address ShippingAddress ON (BEShippingAddress.AddressId=ShippingAddress.AddressId)
+
+```
   
 
   
@@ -410,6 +591,12 @@ ANTI JOIN staging.SalesOrderHeader sales using customerId
   
 
    
+``` sql
+SELECT *
+FROM staging.customer
+WHERE NOT EXISTS (SELECT 1 FROM staging.SalesOrderHeader sales WHERE customer.customerId=sales.customerId)
+
+```
   
 
   
@@ -429,6 +616,12 @@ ANTI JOIN staging.BusinessEntityAddress FILTER (AddressTypeId=2) BEHomeAddress u
   
 
    
+``` sql
+SELECT *
+FROM staging.Person
+WHERE NOT EXISTS (SELECT 1 FROM (SELECT * FROM staging.BusinessEntityAddress WHERE AddressTypeId=2) BEHomeAddress WHERE Person.BusinessEntityId=BEHomeAddress.BusinessEntityId)
+
+```
   
 
   
@@ -451,6 +644,12 @@ SEMI JOIN staging.SalesOrderHeader sales using customerId
   
 
    
+``` sql
+SELECT *
+FROM staging.customer
+WHERE EXISTS (SELECT 1 FROM staging.SalesOrderHeader sales WHERE customer.customerId=sales.customerId)
+
+```
   
 
   
@@ -475,6 +674,15 @@ UNPIVOT (content FOR AddressItem in (AddressLine1,AddressLine2)) as unpvt
   
 
    
+``` sql
+SELECT
+  AddressId,
+  AddressItem,
+  content
+FROM staging.Address
+UNPIVOT (content FOR AddressItem IN (AddressLine1,AddressLine2)) unpvt
+
+```
   
 
   
@@ -498,6 +706,20 @@ ORDER BY OrderYear, OrderMonth
   
 
    
+``` sql
+SELECT
+  year(sales.OrderDate) AS OrderYear,
+  month(sales.OrderDate) AS OrderMonth,
+  sum(sales.subtotal) AS Amount
+FROM staging.SalesOrderHeader sales
+GROUP BY
+  year(sales.OrderDate),
+  month(sales.OrderDate)
+ORDER BY
+  year(sales.OrderDate),
+  month(sales.OrderDate)
+
+```
   
 
   
@@ -520,6 +742,20 @@ ORDER BY 1,2
   
 
    
+``` sql
+SELECT
+  year(sales.OrderDate) AS OrderYear,
+  month(sales.OrderDate) AS OrderMonth,
+  sum(sales.subtotal) AS Amount
+FROM staging.SalesOrderHeader sales
+GROUP BY
+  year(sales.OrderDate),
+  month(sales.OrderDate)
+ORDER BY
+  1,
+  2
+
+```
   
 
   
@@ -539,6 +775,11 @@ FROM staging.Person
   
 
    
+``` sql
+SELECT DISTINCT FirstName
+FROM staging.Person
+
+```
   
 
   
@@ -569,6 +810,25 @@ ORDER BY Amount DESC
   
 
    
+``` sql
+SELECT TOP 5
+  SalesTerritory.Name AS Territory,
+  Customer.CustomerId AS CustomerId,
+  CustomerPerson.FirstName AS FirstName,
+  CustomerPerson.LastName AS LastName,
+  sum(sales.subtotal) AS Amount
+FROM staging.SalesOrderHeader sales
+INNER JOIN staging.customer ON (sales.customerId=customer.customerId)
+INNER JOIN staging.SalesTerritory ON (sales.TerritoryId=SalesTerritory.TerritoryId)
+LEFT JOIN staging.Person CustomerPerson ON (Customer.PersonID=CustomerPerson.BusinessEntityId)
+GROUP BY
+  SalesTerritory.Name,
+  Customer.CustomerId,
+  CustomerPerson.FirstName,
+  CustomerPerson.LastName
+ORDER BY sum(sales.subtotal) DESC
+
+```
   
 
   
@@ -595,6 +855,21 @@ ORDER BY OrderYear, OrderMonth
   
 
    
+``` sql
+SELECT
+  year(sales.OrderDate) AS OrderYear,
+  month(sales.OrderDate) AS OrderMonth,
+  sum(sales.subtotal) AS Amount,
+  sum(sum(sales.subtotal)) OVER (PARTITION BY year(sales.OrderDate) ORDER BY month(sales.OrderDate)) AS AmountYTD
+FROM staging.SalesOrderHeader sales
+GROUP BY
+  year(sales.OrderDate),
+  month(sales.OrderDate)
+ORDER BY
+  year(sales.OrderDate),
+  month(sales.OrderDate)
+
+```
   
 
   
@@ -625,6 +900,42 @@ INNER JOIN staging.Person CustomerPerson USING Customer(PersonID BusinessEntityI
   
 
    
+``` sql
+SELECT
+  Territory,
+  CustomerId,
+  FirstName,
+  LastName,
+  Amount
+FROM (
+    SELECT
+      Territory,
+      CustomerId,
+      FirstName,
+      LastName,
+      Amount,
+      ROW_NUMBER() OVER (PARTITION BY Territory ORDER BY Amount DESC) rownumber
+    FROM (
+        SELECT
+          SalesTerritory.Name AS Territory,
+          Customer.CustomerId AS CustomerId,
+          CustomerPerson.FirstName AS FirstName,
+          CustomerPerson.LastName AS LastName,
+          sum(sales.subtotal) AS Amount
+        FROM staging.SalesOrderHeader sales
+        INNER JOIN staging.customer ON (sales.customerId=customer.customerId)
+        INNER JOIN staging.SalesTerritory ON (sales.TerritoryId=SalesTerritory.TerritoryId)
+        INNER JOIN staging.Person CustomerPerson ON (Customer.PersonID=CustomerPerson.BusinessEntityId)
+        GROUP BY
+          SalesTerritory.Name,
+          Customer.CustomerId,
+          CustomerPerson.FirstName,
+          CustomerPerson.LastName
+      ) allRows
+  ) allRowsNumbered
+WHERE rownumber<=3
+
+```
   
 
   
@@ -649,6 +960,36 @@ INNER JOIN staging.Person CustomerPerson USING Customer(PersonID BusinessEntityI
   
 
    
+``` sql
+SELECT
+  CustomerId,
+  FirstName,
+  LastName,
+  OrderDate,
+  Amount
+FROM (
+    SELECT
+      CustomerId,
+      FirstName,
+      LastName,
+      OrderDate,
+      Amount,
+      ROW_NUMBER() OVER (PARTITION BY CustomerId ORDER BY OrderDate DESC) rownumber
+    FROM (
+        SELECT
+          Customer.CustomerId AS CustomerId,
+          CustomerPerson.FirstName AS FirstName,
+          CustomerPerson.LastName AS LastName,
+          SalesOrderHeader.OrderDate AS OrderDate,
+          SalesOrderHeader.subtotal AS Amount
+        FROM staging.SalesOrderHeader
+        INNER JOIN staging.Customer ON (SalesOrderHeader.customerId=Customer.customerId)
+        INNER JOIN staging.Person CustomerPerson ON (Customer.PersonID=CustomerPerson.BusinessEntityId)
+      ) allRows
+  ) allRowsNumbered
+WHERE rownumber=1
+
+```
   
 
   
@@ -687,6 +1028,34 @@ LEFT JOIN addresses FILTER (AddressTypeId=5) ShippingAddress USING BusinessEntit
   
 
    
+``` sql
+;WITH
+addresses AS (
+  SELECT
+    bia.BusinessEntityID AS BusinessEntityID,
+    bia.AddressTypeId AS AddressTypeId,
+    CountryRegion.Name AS Region,
+    Address.AddressLine1 AS AddressLine1,
+    Address.City AS City
+  FROM staging.BusinessEntityAddress bia
+  INNER JOIN staging.Address ON (bia.AddressId=Address.AddressId)
+  INNER JOIN staging.StateProvince ON (Address.StateProvinceId=StateProvince.StateProvinceId)
+  INNER JOIN staging.CountryRegion ON (StateProvince.CountryRegionCode=CountryRegion.CountryRegionCode)
+)
+SELECT
+  Person.FirstName AS FirstName,
+  Person.LastName AS LastName,
+  HomeAddress.AddressLine1 AS HomeAddressLine1,
+  HomeAddress.City AS HomeCity,
+  HomeAddress.Region AS HomeRegion,
+  ShippingAddress.AddressLine1 AS ShippingAddressLine1,
+  ShippingAddress.City AS ShippingCity,
+  ShippingAddress.Region AS ShippingRegion
+FROM staging.Person
+LEFT JOIN (SELECT * FROM addresses WHERE AddressTypeId=2) HomeAddress ON (Person.BusinessEntityID=HomeAddress.BusinessEntityID)
+LEFT JOIN (SELECT * FROM addresses WHERE AddressTypeId=5) ShippingAddress ON (Person.BusinessEntityID=ShippingAddress.BusinessEntityID)
+
+```
   
 
   
@@ -724,6 +1093,28 @@ UNION
   
 
    
+``` sql
+SELECT
+  CustomerPerson.LastName AS LastName,
+  sum(sales.subtotal) AS Amount2012,
+  NULL AS Amount2013
+FROM staging.SalesOrderHeader sales
+INNER JOIN staging.customer ON (sales.customerId=customer.customerId)
+LEFT JOIN staging.Person CustomerPerson ON (Customer.PersonID=CustomerPerson.BusinessEntityId)
+WHERE year(sales.OrderDate)=2012
+GROUP BY CustomerPerson.LastName
+UNION
+SELECT
+  CustomerPerson.LastName AS LastName,
+  NULL AS Amount2012,
+  sum(sales.subtotal) AS Amount2013
+FROM staging.SalesOrderHeader sales
+INNER JOIN staging.customer ON (sales.customerId=customer.customerId)
+LEFT JOIN staging.Person CustomerPerson ON (Customer.PersonID=CustomerPerson.BusinessEntityId)
+WHERE year(sales.OrderDate)=2013
+GROUP BY CustomerPerson.LastName
+
+```
   
 
   
@@ -761,6 +1152,38 @@ COMBINE BY firstname,LastName
   
 
    
+``` sql
+SELECT
+  coalesce(sales2012.FirstName,sales2013.FirstName) AS FirstName,
+  coalesce(sales2012.LastName,sales2013.LastName) AS LastName,
+  sales2012.Amount2012 AS Amount2012,
+  sales2013.Amount2013 AS Amount2013
+FROM 
+    (SELECT
+      Person.FirstName AS FirstName,
+      Person.LastName AS LastName,
+      sum(sales.subtotal) AS Amount2012
+    FROM staging.SalesOrderHeader sales
+    INNER JOIN staging.customer ON (sales.customerId=customer.customerId)
+    LEFT JOIN staging.Person ON (Customer.PersonID=Person.BusinessEntityId)
+    WHERE year(sales.OrderDate)=2012
+    GROUP BY
+      Person.FirstName,
+      Person.LastName) sales2012
+FULL JOIN 
+    (SELECT
+      Person.FirstName AS FirstName,
+      Person.LastName AS LastName,
+      sum(sales.subtotal) AS Amount2013
+    FROM staging.SalesOrderHeader sales
+    INNER JOIN staging.customer ON (sales.customerId=customer.customerId)
+    LEFT JOIN staging.Person ON (Customer.PersonID=Person.BusinessEntityId)
+    WHERE year(sales.OrderDate)=2013
+    GROUP BY
+      Person.FirstName,
+      Person.LastName) AS sales2013 ON (sales2012.FirstName=sales2013.FirstName AND sales2012.LastName=sales2013.LastName)
+
+```
   
 
   
@@ -792,6 +1215,34 @@ COMBINE BY Product,ProductNumber
   
 
    
+``` sql
+SELECT
+  coalesce(sales.Product,purchases.Product) AS Product,
+  coalesce(sales.ProductNumber,purchases.ProductNumber) AS ProductNumber,
+  sales.Purchases AS Purchases,
+  purchases.Sales AS Sales
+FROM 
+    (SELECT
+      Product.Name AS Product,
+      Product.ProductNumber AS ProductNumber,
+      sum(PurchaseOrderDetail.LineTotal) AS Purchases
+    FROM staging.PurchaseOrderDetail
+    INNER JOIN staging.Product ON (PurchaseOrderDetail.ProductId=Product.ProductId)
+    GROUP BY
+      Product.Name,
+      Product.ProductNumber) sales
+FULL JOIN 
+    (SELECT
+      Product.Name AS Product,
+      Product.ProductNumber AS ProductNumber,
+      sum(SalesOrderDetail.LineTotal) AS Sales
+    FROM staging.SalesOrderDetail
+    INNER JOIN staging.Product ON (SalesOrderDetail.ProductId=Product.ProductId)
+    GROUP BY
+      Product.Name,
+      Product.ProductNumber) AS purchases ON (sales.Product=purchases.Product AND sales.ProductNumber=purchases.ProductNumber)
+
+```
   
 
   
@@ -816,6 +1267,26 @@ INNER JOIN staging.Product USING ProductId
   
 
    
+``` sql
+-- Materialized query: Sales
+SELECT *
+INTO #Sales__39872
+FROM (SELECT * FROM staging.SalesOrderDetail WHERE year(ModifiedDate)=2014) SalesOrderDetail
+
+SELECT
+  SalesOrderHeader.OrderDate AS OrderDate,
+  Product.Name AS Product,
+  Product.ProductNumber AS ProductNumber,
+  sum(Sales.LineTotal) AS Sales
+FROM #Sales__39872 Sales
+INNER JOIN staging.SalesOrderHeader ON (Sales.SalesOrderId=SalesOrderHeader.SalesOrderId)
+INNER JOIN staging.Product ON (Sales.ProductId=Product.ProductId)
+GROUP BY
+  SalesOrderHeader.OrderDate,
+  Product.Name,
+  Product.ProductNumber
+
+```
   
 
   
@@ -849,6 +1320,40 @@ COMBINE bY Product,productNumber
   
 
    
+``` sql
+-- Materialized query: sales
+SELECT
+  Product.Name AS Product,
+  Product.ProductNumber AS ProductNumber,
+  sum(PurchaseOrderDetail.LineTotal) AS Purchases
+INTO #sales__D83E4
+FROM staging.PurchaseOrderDetail
+INNER JOIN staging.Product ON (PurchaseOrderDetail.ProductId=Product.ProductId)
+GROUP BY
+  Product.Name,
+  Product.ProductNumber
+
+-- Materialized query: purchases
+SELECT
+  Product.Name AS Product,
+  Product.ProductNumber AS ProductNumber,
+  sum(SalesOrderDetail.LineTotal) AS Sales
+INTO #purchases__1CD26
+FROM staging.SalesOrderDetail
+INNER JOIN staging.Product ON (SalesOrderDetail.ProductId=Product.ProductId)
+GROUP BY
+  Product.Name,
+  Product.ProductNumber
+
+SELECT
+  coalesce(sales.Product,purchases.Product) AS Product,
+  coalesce(sales.ProductNumber,purchases.ProductNumber) AS ProductNumber,
+  sales.Purchases AS Purchases,
+  purchases.Sales AS Sales
+FROM #sales__D83E4 sales
+FULL JOIN #purchases__1CD26 purchases ON (sales.Product=purchases.Product AND sales.ProductNumber=purchases.ProductNumber)
+
+```
   
 
   
@@ -879,6 +1384,30 @@ WHERE OrderYear=2012
   
 
    
+``` sql
+SELECT
+  cast(year(sales.OrderDate) AS varchar(4)) AS OrderYear,
+  Customer.CustomerId AS CustomerId,
+  concat(CustomerPerson.FirstName,' ',CustomerPerson.LastName) AS Customer,
+  Upper(concat(CustomerPerson.FirstName,' ',CustomerPerson.LastName)) AS UpperCustomer,
+  CustomerPerson.FirstName AS FirstName,
+  CustomerPerson.LastName AS LastName,
+  sum(sales.subtotal) AS Amount,
+  count(*) AS TicketsCount,
+  cast(sum(sales.subtotal)/count(*) AS numeric(12,2)) AS AvgTicket
+FROM staging.SalesOrderHeader sales
+INNER JOIN staging.customer ON (sales.CustomerId=customer.CustomerId)
+LEFT JOIN staging.Person CustomerPerson ON (Customer.PersonID=CustomerPerson.BusinessEntityId)
+WHERE cast(year(sales.OrderDate) AS varchar(4))=2012
+GROUP BY
+  year(sales.OrderDate),
+  Customer.CustomerId,
+  concat(CustomerPerson.FirstName,' ',CustomerPerson.LastName),
+  Upper(concat(CustomerPerson.FirstName,' ',CustomerPerson.LastName)),
+  CustomerPerson.FirstName,
+  CustomerPerson.LastName
+
+```
   
 
   
@@ -910,6 +1439,30 @@ inner join staging.Product  using ProductId
   
 
    
+``` sql
+SELECT
+  Product,
+  ProductNumber,
+  avg(Sales) AS AvgYearSales
+FROM (
+    SELECT
+      Product.Name AS Product,
+      Product.ProductNumber AS ProductNumber,
+      year(OrderDate) AS OrderYear,
+      sum(SalesOrderDetail.LineTotal) AS Sales
+    FROM staging.SalesOrderDetail
+    INNER JOIN staging.SalesOrderHeader ON (SalesOrderDetail.SalesOrderId=SalesOrderHeader.SalesOrderId)
+    INNER JOIN staging.Product ON (SalesOrderDetail.ProductId=Product.ProductId)
+    GROUP BY
+      Product.Name,
+      Product.ProductNumber,
+      year(OrderDate)
+  ) a
+GROUP BY
+  Product,
+  ProductNumber
+
+```
   
 
   
@@ -933,6 +1486,21 @@ INNER JOIN staging.Product USING ProductId
   
 
    
+``` sql
+SELECT count(*) AS expr1
+FROM (
+    SELECT
+      Product.Name AS Product,
+      Product.ProductNumber AS ProductNumber,
+      sum(SalesOrderDetail.LineTotal) AS Sales
+    FROM staging.SalesOrderDetail
+    INNER JOIN staging.Product ON (SalesOrderDetail.ProductId=Product.ProductId)
+    GROUP BY
+      Product.Name,
+      Product.ProductNumber
+  ) a
+
+```
   
 
   
