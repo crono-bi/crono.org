@@ -62,7 +62,7 @@ El propio lenguaje **Crono SQL** permite consultar las palabras reservadas con l
 El anterior listado se puede obtener con esta consulta:
 
 
-``` sql
+```sql
 select
 	maxif(col=0,name) Keyword1,
 	maxif(col=1,name) Keyword2,

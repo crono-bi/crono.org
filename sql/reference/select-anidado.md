@@ -9,11 +9,7 @@ Es posible incluir varios **SELECT** en una misma consulta. Esta sintaxis permit
 
 Este consulta devuelve la media de las ventas anuales de cada producto.
 
-
-<div class="mt-1 mb-2 row">
-  <div class="col-lg-12">
-
-``` sql
+```cronosql-with-button
 select
   Product,
   ProductNumber,
@@ -28,47 +24,10 @@ inner join staging.SalesOrderHeader using SalesOrderId
 inner join staging.Product  using ProductId
 ```
 
-  <b-button class="float-right btn" size="sm" v-b-modal.modal-1 style="background-color: #3eaf7c">Ver SQL compilado</b-button>
-
-  <b-modal id="modal-1" size="lg" title="Ver SQL compilado" :hide-footer="true" > 
-``` sql
-SELECT
-  Product,
-  ProductNumber,
-  avg(Sales) AS AvgYearSales
-FROM (
-    SELECT
-      Product.Name AS Product,
-      Product.ProductNumber AS ProductNumber,
-      year(OrderDate) AS OrderYear,
-      sum(SalesOrderDetail.LineTotal) AS Sales
-    FROM staging.SalesOrderDetail
-    INNER JOIN staging.SalesOrderHeader ON (SalesOrderDetail.SalesOrderId=SalesOrderHeader.SalesOrderId)
-    INNER JOIN staging.Product ON (SalesOrderDetail.ProductId=Product.ProductId)
-    GROUP BY
-      Product.Name,
-      Product.ProductNumber,
-      year(OrderDate)
-  ) a
-GROUP BY
-  Product,
-  ProductNumber
-
-```
-  </b-modal>
-
-  </div>
-</div>
-
-
-
 La cláusulas **SELECT** encadenadas permiten, por ejemplo, contar el número de registros que devuelve una consulta previa. La siguiente consulta ejecuta un **count(\*)** sobre el resultado de la consulta inferior.
 
 
-<div class="mt-1 mb-2 row">
-  <div class="col-lg-12">
-
-``` sql
+```cronosql-with-button
 SELECT count(*)
 SELECT
   Product.Name Product,
@@ -77,26 +36,3 @@ SELECT
 FROM staging.SalesOrderDetail
 INNER JOIN staging.Product USING ProductId
 ```
-
-  <b-button class="float-right btn" size="sm" v-b-modal.modal-2 style="background-color: #3eaf7c">Ver SQL compilado</b-button>
-
-  <b-modal id="modal-2" size="lg" title="Ver SQL compilado" :hide-footer="true" > 
-``` sql
-SELECT count(*) AS expr1
-FROM (
-    SELECT
-      Product.Name AS Product,
-      Product.ProductNumber AS ProductNumber,
-      sum(SalesOrderDetail.LineTotal) AS Sales
-    FROM staging.SalesOrderDetail
-    INNER JOIN staging.Product ON (SalesOrderDetail.ProductId=Product.ProductId)
-    GROUP BY
-      Product.Name,
-      Product.ProductNumber
-  ) a
-
-```
-  </b-modal>
-
-  </div>
-</div>
