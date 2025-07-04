@@ -14,10 +14,7 @@ Devuelve la tabla de caracteres UNICODE.
 La siguiente consulta muestra algunos caracteres UNICODE.
 
 
-<div class="mt-1 mb-2 row">
-  <div class="col-lg-12">
-
-``` sql
+```cronosql-with-button
 select 
 	CodePoint,
 	highSurrogate,
@@ -31,57 +28,6 @@ where
   or codepoint between 0x1F600  and 0x1F607
 order by 1
 ```
-
-  <b-button class="float-right btn" size="sm" v-b-modal.modal-1 style="background-color: #3eaf7c">Ver SQL compilado</b-button>
-
-  <b-modal id="modal-1" size="lg" title="Ver SQL compilado" :hide-footer="true" > 
-``` sql
-SELECT
-  CodePoint,
-  highSurrogate,
-  lowSurrogate,
-  [hex],
-  [char],
-  Unicode
-FROM
-  (SELECT
-     c.num AS CodePoint,
-     CASE WHEN c.num>65535 THEN convert(char(4),cast(0xD7C0+(c.num/1024) as binary(2)),2) END AS highSurrogate,
-     CASE WHEN c.num>65535 THEN convert(char(4),cast(0xDC00+(c.num%1024) as binary(2)),2) END AS lowSurrogate,
-     CONVERT(char(6),CONVERT(binary(3),c.num),2) AS [hex],
-     CASE WHEN c.num>65535 THEN nchar(CAST(0xD7C0+(c.num/1024) AS int))+nchar(CAST(0xDC00+(c.num%1024) AS int)) ELSE nchar(c.num) END AS [char],
-     concat('U+',CONVERT(char(6),CONVERT(binary(3),c.num),2)) AS Unicode,
-     concat('0x',CONVERT(char(6),CONVERT(binary(3),c.num),2)) AS Bin,
-     concat('&#x',CONVERT(char(6),CONVERT(binary(3),c.num),2)) AS HTML,
-     CASE
-         WHEN c.num>65535 THEN concat('nchar(0x',convert(char(4),cast(0xD7C0+(c.num/1024) as binary(2)),2),')+nchar(0x',convert(char(4),cast(0xDC00+(c.num%1024) as binary(2)),2),')')
-         ELSE concat('nchar(',c.num,')')
-     END AS TSQL
-   FROM
-     (SELECT u1.n+u2.n*10+u3.n*100+u4.n*1000+u5.n*10000+u6.n*100000+u7.n*1000000 num
-      FROM
-        (SELECT 0 n UNION SELECT 1 UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9) u1,
-        (SELECT 0 n UNION SELECT 1 UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9) u2,
-        (SELECT 0 n UNION SELECT 1 UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9) u3,
-        (SELECT 0 n UNION SELECT 1 UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9) u4,
-        (SELECT 0 n UNION SELECT 1 UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9) u5,
-        (SELECT 0 n UNION SELECT 1 UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9) u6,
-        (SELECT 0 n UNION SELECT 1) u7
-      WHERE u1.n+u2.n*10+u3.n*100+u4.n*1000+u5.n*10000+u6.n*100000+u7.n*1000000 BETWEEN 0 AND 1114110) c
-   WHERE
-     c.num BETWEEN 0x000000 AND 0x014700
-     OR c.num BETWEEN 0x016800 AND 0x030000
-     OR c.num BETWEEN 0x0E0001 AND 0x0E01EF) [Crono$UnicodeTable]
-WHERE
-  CodePoint BETWEEN 65 AND 69
-  OR CodePoint BETWEEN 0x1F600 AND 0x1F607
-ORDER BY 1
-
-```
-  </b-modal>
-
-  </div>
-</div>
 
 El resultado de esta consulta es:
 
