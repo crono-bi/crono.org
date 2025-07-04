@@ -1,0 +1,4 @@
+﻿{
+  "cronoSQL": "SELECT *\r\nFROM clients \r\nSEMI JOIN sales USING (client_id)\r\n",
+  "compiladoSQL": "SELECT *\r\nFROM clients\r\nWHERE EXISTS (SELECT 1 FROM sales WHERE clients.client_id=sales.client_id)\r\n"
+}

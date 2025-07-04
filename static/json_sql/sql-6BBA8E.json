@@ -1,0 +1,4 @@
+﻿{
+  "cronoSQL": "SELECT\r\n  SalesOrderHeader.OrderDate,\r\n  Product.Name Product,\r\n  Product.ProductNumber,\r\n  sum(Sales.LineTotal) Sales\r\nFROM staging.SalesOrderDetail FILTER (year(ModifiedDate)=2014) MATERIALIZE Sales\r\nINNER JOIN staging.SalesOrderHeader USING SalesOrderId\r\nINNER JOIN staging.Product USING ProductId\r\n",
+  "compiladoSQL": "-- Materialized query: Sales\r\nSELECT *\r\nINTO #Sales__39872\r\nFROM staging.SalesOrderDetail\r\nWHERE year(ModifiedDate)=2014\r\n\r\nSELECT\r\n  SalesOrderHeader.OrderDate AS OrderDate,\r\n  Product.Name AS Product,\r\n  Product.ProductNumber AS ProductNumber,\r\n  sum(Sales.LineTotal) AS Sales\r\nFROM #Sales__39872 Sales\r\nINNER JOIN staging.SalesOrderHeader ON (Sales.SalesOrderId=SalesOrderHeader.SalesOrderId)\r\nINNER JOIN staging.Product ON (Sales.ProductId=Product.ProductId)\r\nGROUP BY\r\n  SalesOrderHeader.OrderDate,\r\n  Product.Name,\r\n  Product.ProductNumber\r\n"
+}

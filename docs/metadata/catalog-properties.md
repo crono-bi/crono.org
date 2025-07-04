@@ -9,11 +9,11 @@ sidebar_position: 14
 
 El botón "Propiedades de catálogo" abre la ventana de propiedades:
 
-![image-20200303131435279](/images/propiedades-catalogo.png)
+![image-20200303131435279](/img/propiedades-catalogo.png)
 
 ## Vista "General"
 
-![image-20200303131526683](/images/propiedades-catalogo2.png)
+![image-20200303131526683](/img/propiedades-catalogo2.png)
 
 
 
@@ -34,7 +34,7 @@ La vista general muestra la siguiente información:
 
 Ver el artículo sobre [Parámetros definidos en el catálogo](#parametros-definidos-en-el-catalogo)
 
-![image-20200303133230646](/images/propiedades-catalogo3.png)
+![image-20200303133230646](/img/propiedades-catalogo3.png)
 
 ## Vista "Autorizaciones"
 

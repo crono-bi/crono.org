@@ -4,14 +4,16 @@ La función `is_first` es una función de ventana que identifica la fila inicial
 
 **Sintaxis:**
 
-```
+```sql
 is_first() over (PARTITION BY ... ORDER BY ...)
 ```
+
 Como todas las funciones de ventana admite la sintaxis compacta:
 
-```
+```sql
 is_first(PARTITION BY ... ORDER BY ...)
 ```
+
 # Ejemplo
 
 La siguiente sentencia usa las funciiones `is_first` y `is_last` para identificar el primer y último escandallo de cada artículo.
@@ -26,6 +28,7 @@ select
 	is_last(partition by articulo order by fecha) EsUltimoEscandallo
 from stg.escandallos
 ```
+
 El código generado es:
 
 ```

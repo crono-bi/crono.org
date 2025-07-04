@@ -17,6 +17,7 @@ Se trata de un modo compacto de utilizar la sintaxis simple de `CASE`.
 select Id,IndexOf(Description, 'High', 'Medium', 'Low') Code
 from MyTable
 ```
+
 La sentencia SQL generada utiliza la expresión `CASE`:
 
 ```

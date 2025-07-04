@@ -12,14 +12,16 @@ Si todos los parámetros de entrada son nulos devuelve `NULL`
 
 ## Ejemplo
 
-```
+```sql
 SELECT addition(1,2,null,4) suma;
 ```
+
 El código SQL generado es el siguiente.
 
-```
+```sql
 SELECT CASE WHEN 1 IS NOT NULL OR 2 IS NOT NULL OR NULL IS NOT NULL OR 4 IS NOT NULL THEN coalesce(1,0)+coalesce(2,0)+coalesce(NULL,0)+coalesce(4,0) END AS suma
 ```
+
 ## Comentario
 
 Esta función es útil porque el operador estándar `+`  devuleve `NULL` cuando cualiquiera de los sumandos es nulo.  La función `addition`, en cambio, se comporta igual que la suma del  Excel.

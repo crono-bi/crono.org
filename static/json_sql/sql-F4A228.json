@@ -1,0 +1,4 @@
+﻿{
+  "cronoSQL": "DELETE FROM dwh.FactSalesOrderDetails WHERE SalesOrderId=43659\r\n",
+  "compiladoSQL": "DELETE FROM dwh.FactSalesOrderDetails WHERE SalesOrderId=43659;"
+}

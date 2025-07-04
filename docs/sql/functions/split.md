@@ -9,11 +9,13 @@ Es útil para extraer componentes específicos de cadenas estructuradas, como no
 ```
 SPLIT(cadena, separador, índice)
 ```
+
 ## Ejemplo
 
 ```
 SELECT SPLIT('hola mundo', ' ', 2);  -- Devuelve 'mundo'
 ```
+
 El código generado es:
 
 ```

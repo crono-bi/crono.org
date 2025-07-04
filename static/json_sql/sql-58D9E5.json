@@ -1,0 +1,4 @@
+﻿{
+  "cronoSQL": "SELECT *\r\nFROM orders \r\nINNER JOIN clients USING (client_id)\r\n",
+  "compiladoSQL": "SELECT *\r\nFROM orders\r\nINNER JOIN clients ON (orders.client_id=clients.client_id)\r\n"
+}

@@ -1,0 +1,4 @@
+﻿{
+  "cronoSQL": "SELECT DISTINCT FirstName\r\nFROM staging.Person\r\n",
+  "compiladoSQL": "SELECT DISTINCT FirstName\r\nFROM staging.Person\r\n"
+}

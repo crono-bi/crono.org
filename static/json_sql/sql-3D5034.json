@@ -1,0 +1,4 @@
+﻿{
+  "cronoSQL": "SELECT *\r\nFROM customers1\r\nFULL JOIN customers2 using(customer_id)\r\n",
+  "compiladoSQL": "SELECT *\r\nFROM customers1\r\nFULL JOIN customers2 ON (customers1.customer_id=customers2.customer_id)\r\n"
+}

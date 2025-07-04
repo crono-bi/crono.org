@@ -17,15 +17,8 @@ A diferencia de `nchar`, al menos en las versiones antiguas de SQL Server, `ucha
 
 La siguiente consulta devuelve varios caracteres unicode a partir de su representación numérica (decimal o hexadecimal).
 
-```
-select 
-	uchar(65) letterA, 
-	uchar(127829) pizza,
-	uchar(0x1F499) blueHeart;
-```
-```
-SELECT CASE WHEN 65>65535 THEN nchar(CAST(0xD7C0+(65/1024) AS int))+nchar(CAST(0xDC00+(65%1024) AS int)) ELSE nchar(65) END AS letterA, CASE WHEN 127829>65535 THEN nchar(CAST(0xD7C0+(127829/1024) AS int))+nchar(CAST(0xDC00+(127829%1024) AS int)) ELSE nchar(127829) END AS pizza, CASE WHEN 0x1F499>65535 THEN nchar(CAST(0xD7C0+(0x1F499/1024) AS int))+nchar(CAST(0xDC00+(0x1F499%1024) AS int)) ELSE nchar(0x1F499) END AS blueHeart
-```
+<SqlCodeBlock jsonPath="/json_sql/sql-938FB6.json" />
+
 El resultado es:
 
 |letterA |pizza |blueHeart |

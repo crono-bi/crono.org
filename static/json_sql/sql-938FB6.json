@@ -1,0 +1,4 @@
+﻿{
+  "cronoSQL": "select \r\n\tuchar(65) letterA, \r\n\tuchar(127829) pizza,\r\n\tuchar(0x1F499) blueHeart;\r\n",
+  "compiladoSQL": "SELECT CASE WHEN 65\u003E65535 THEN nchar(CAST(0xD7C0\u002B(65/1024) AS int))\u002Bnchar(CAST(0xDC00\u002B(65%1024) AS int)) ELSE nchar(65) END AS letterA, CASE WHEN 127829\u003E65535 THEN nchar(CAST(0xD7C0\u002B(127829/1024) AS int))\u002Bnchar(CAST(0xDC00\u002B(127829%1024) AS int)) ELSE nchar(127829) END AS pizza, CASE WHEN 0x1F499\u003E65535 THEN nchar(CAST(0xD7C0\u002B(0x1F499/1024) AS int))\u002Bnchar(CAST(0xDC00\u002B(0x1F499%1024) AS int)) ELSE nchar(0x1F499) END AS blueHeart"
+}

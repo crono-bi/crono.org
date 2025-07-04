@@ -1,0 +1,4 @@
+﻿{
+  "cronoSQL": "select *\r\nFROM staging.Person\r\nANTI JOIN staging.BusinessEntityAddress FILTER (AddressTypeId=2) BEHomeAddress using BusinessEntityId\r\n",
+  "compiladoSQL": "SELECT *\r\nFROM staging.Person\r\nWHERE NOT EXISTS (SELECT 1 FROM (SELECT * FROM staging.BusinessEntityAddress WHERE AddressTypeId=2) BEHomeAddress WHERE Person.BusinessEntityId=BEHomeAddress.BusinessEntityId)\r\n"
+}

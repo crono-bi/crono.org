@@ -9,7 +9,7 @@ sidebar_position: 16
 
 Desde el menú contextual de un elemento de negocio (indicador, dimensión o filtro) se puede acceder a sus propiedades.
 
-![image-20200303173955817](/images/propiedades-elemento1.png)
+![image-20200303173955817](/img/propiedades-elemento1.png)
 
 ## Vista "Definición"
 
@@ -25,7 +25,7 @@ El botón **"Verificar"** comprueba que no exista ningún error de sintaxis. Tam
 
 Desde la vista formato se define el formato predeterminado de cualquier indicador o dimensión. 
 
-![image-20200303175303897](/images/propiedades-elemento2.png)
+![image-20200303175303897](/img/propiedades-elemento2.png)
 
 Además de los formatos habituales (números con decimales, fechas, porcentaje, ...) existen algunos casos particulares:
 
@@ -38,11 +38,11 @@ Permite configurar el color predeterminado de la celda y la fuente.
 
 
 
-![image-20200303180056137](/images/propiedades-elemento3.png)
+![image-20200303180056137](/img/propiedades-elemento3.png)
 
 Desde este panel también se puede definir un formato condicional para el indicador (por ejemplo, que se muestre rojo si es negativo, etc.)
 
-![image-20200303180316954](/images/propiedades-elemento4.png)
+![image-20200303180316954](/img/propiedades-elemento4.png)
 
 
 
@@ -52,13 +52,13 @@ Esta vista también muestra una opción para "mostrar texto en ventana independi
 
 Vea [Listas de valores](#listas-de-valores).
 
-![image-20200303180741817](/images/propiedades-elemento5.png)
+![image-20200303180741817](/img/propiedades-elemento5.png)
 
 ## Vista "Dimensión geográfica"
 
 Vea [Dimensiones geográficas](#dimensiones-geograficas)
 
-![image-20200303180933031](/images/propiedades-elemento6.png)
+![image-20200303180933031](/img/propiedades-elemento6.png)
 
 ## Vista "Información adicional"
 
@@ -71,7 +71,7 @@ Permite configurar la siguiente información:
 - **Modo hipervínculo**: Si el formato del elemento es "hipervínculo", aquí se especifica la acción web que se realizará al hacer clic en el enlace. 
 - **Agregación predeterminada**: Indica la agregación en los subtotales de **Crono Analysis** de este indicador. Se utiliza sobre todo para evitar que se sumen indicadores que no son sumables.
 
-![image-20200303181049398](/images/propiedades-elemento7.png)
+![image-20200303181049398](/img/propiedades-elemento7.png)
 
 ## Vista "Idioma"
 

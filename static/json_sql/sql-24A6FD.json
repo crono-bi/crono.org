@@ -1,0 +1,4 @@
+﻿{
+  "cronoSQL": "EXECUTE dwh.cargar\r\n",
+  "compiladoSQL": "EXECUTE dwh.cargar;"
+}

@@ -25,6 +25,7 @@ select
 from dbo.lb_ventas
 group by all
 ```
+
 La consulta SQL generada es:
 
 ```
@@ -38,10 +39,12 @@ GROUP BY
   year(fecha),
   month(fecha)
 ```
+
 También se puede incluir la cláusula `PARTITION BY`. La siguiente consulta muestra las ventas de todos los meses de todos los años, incluyendo el acumulado desde el inicio de año.
 
 
 ```
+
 select 
   year(fecha) anyo,
   month(fecha) mes,
@@ -50,6 +53,7 @@ select
 from dbo.lb_ventas
 group by all
 ```
+
 El SQL generado es:
 
 ```

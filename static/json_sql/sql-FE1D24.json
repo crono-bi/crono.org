@@ -1,0 +1,4 @@
+﻿{
+  "cronoSQL": "SELECT *\r\nFROM orders \r\nINNER JOIN clients USING (company_id, order_client_id client_id)\r\nINNER JOIN countries USING (country_id)\r\n",
+  "compiladoSQL": "SELECT *\r\nFROM orders\r\nINNER JOIN clients ON (orders.company_id=clients.company_id AND orders.order_client_id=clients.client_id)\r\nINNER JOIN countries ON (orders.country_id=countries.country_id)\r\n"
+}

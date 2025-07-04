@@ -14,6 +14,7 @@ La función `tomorrow` devuelve la fecha (tipo **date**) correspondiente al día
 ```
 select tomorrow() as result;
 ```
+
 El código SQL generado es:
 
 ```

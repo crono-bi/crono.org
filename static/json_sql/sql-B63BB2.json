@@ -1,0 +1,4 @@
+﻿{
+  "cronoSQL": "EXECUTE dbo.[cargar productos]\r\n",
+  "compiladoSQL": "EXECUTE dbo.[cargar productos];"
+}

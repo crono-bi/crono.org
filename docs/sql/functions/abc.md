@@ -15,11 +15,13 @@ Si el valor de entrada es superior al número 26 la función devuelve `NULL`.
 ```
 select abc(11) letra;
 ```
+
 El código SQL generado es:
 
 ```
 SELECT CASE WHEN 11<=26 THEN CHAR(64+11) END AS letra
 ```
+
 El resultado es:
 
 > K

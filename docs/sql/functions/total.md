@@ -26,6 +26,7 @@ from dbo.lb_ventas
 where año=2012
 group by all
 ```
+
 La consulta SQL generada es:
 
 ```
@@ -40,6 +41,7 @@ GROUP BY
   year(fecha),
   month(fecha)
 ```
+
 También se puede incluir la cláusula `PARTITION BY`. En este caso el comportamiento de `total` es exactamente igual que el de `sum`. La siguiente consulta muestra las ventas de todos los meses de todos los años, incluyendo el total de cada año.
 
 ```
@@ -51,6 +53,7 @@ select
 from dbo.lb_ventas
 group by all
 ```
+
 El SQL generado es:
 
 ```
@@ -64,6 +67,8 @@ GROUP BY
   year(fecha),
   month(fecha)
 ```
+
+
 ## Comentarios
 
 La única diferencia entre `sum` y `total` es que `total` tiene la cláusula `OVER` implícita.

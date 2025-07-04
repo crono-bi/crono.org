@@ -26,6 +26,7 @@ inner join lb_tiendas using id_tienda
 group by all
 qualify rank<0.4
 ```
+
 La consulta SQL generada es:
 
 ```
@@ -41,6 +42,7 @@ FROM (
   ) a
 WHERE rank<0.4
 ```
+
 ## Comentarios
 
 Esta función es similar a `rank` y `percentile`. La función `rank` devuelve la posición ordinal de cada registro, `percentile` la normaliza entre 0 y 100, y `pctrank`la normaliza entre 0 y 1.

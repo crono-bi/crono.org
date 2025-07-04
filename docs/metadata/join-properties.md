@@ -8,7 +8,7 @@ sidebar_position: 19
 
 Desde el menú contextual de una relación del diagrama podemos acceder a sus propiedades:
 
-![image-20200303115203654](/images/propiedades-relacion1.png)
+![image-20200303115203654](/img/propiedades-relacion1.png)
 
 
 
@@ -33,7 +33,7 @@ Si el modelo definido en **Crono Metadata** coincide con el modelo físico de la
 
 De todos modos, conviene destacar que **Crono Metadata** no exige la existencia de las restricciones `NULL` o `NOT NULL`. Tampoco exige que las tablas tengan claves primarias y/o claves foráneas. Se trata, simplemente, de recomendaciones y buenas prácticas que deberían seguirse al diseñar el modelo de datos.
 
-![image-20200303122224651](/images/propiedades-relacion2.png)
+![image-20200303122224651](/img/propiedades-relacion2.png)
 
 
 
@@ -53,4 +53,4 @@ El color y la forma de la relaciona del diagrama muestra algunas característica
 
 
 
-![image-20200303123212270](/images/propiedades-relacion3.png)
+![image-20200303123212270](/img/propiedades-relacion3.png)

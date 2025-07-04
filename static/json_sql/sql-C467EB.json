@@ -1,0 +1,4 @@
+﻿{
+  "cronoSQL": "select *\r\nfrom time_table\r\nwhere \r\n   year between 2000 and year(getdate())\r\n",
+  "compiladoSQL": "SELECT *\r\nFROM time_table\r\nWHERE [year] BETWEEN 2000 AND year(getdate())\r\n"
+}

@@ -1,0 +1,4 @@
+﻿{
+  "cronoSQL": "DELETE dwh.FactSalesOrderDetails \t\r\nSELECT #SalesOrderSid \r\nFROM dwh.FactSalesOrderHeader \r\nINNER JOIN dwh.DimCustomers using CustomerSid\r\nWHERE\r\n  DimCustomers.Customer=\u0027Katherine Turner\u0027\r\n",
+  "compiladoSQL": ";WITH\r\nquery AS (\r\n  SELECT SalesOrderSid\r\n  FROM dwh.FactSalesOrderHeader\r\n  INNER JOIN dwh.DimCustomers ON (FactSalesOrderHeader.CustomerSid=DimCustomers.CustomerSid)\r\n  WHERE DimCustomers.Customer=\u0027Katherine Turner\u0027\r\n)\r\nDELETE FROM dwh.FactSalesOrderDetails\r\nWHERE\r\n  EXISTS (SELECT 1 FROM query WHERE FactSalesOrderDetails.SalesOrderSid=query.SalesOrderSid);\r\n"
+}

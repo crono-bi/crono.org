@@ -1,0 +1,4 @@
+﻿{
+  "cronoSQL": "UPDATE dwh.FactSalesOrderHeader\r\nSELECT \r\n  #SalesOrderId,\r\n  Amount-TaxAmt NetAmount\r\nFROM dwh.FactSalesOrderHeader\r\nWHERE year(OrderDate)=2017\r\n",
+  "compiladoSQL": ";WITH\r\nquery AS (\r\n  SELECT\r\n    SalesOrderId,\r\n    Amount-TaxAmt AS NetAmount\r\n  FROM dwh.FactSalesOrderHeader\r\n  WHERE year(OrderDate)=2017\r\n)\r\nMERGE dwh.FactSalesOrderHeader AS FactSalesOrderHeader\r\nUSING query ON query.SalesOrderId=FactSalesOrderHeader.SalesOrderId\r\nWHEN MATCHED AND ((FactSalesOrderHeader.NetAmount\u003C\u003Equery.NetAmount OR (FactSalesOrderHeader.NetAmount IS NULL AND query.NetAmount IS NOT NULL) OR  (FactSalesOrderHeader.NetAmount IS NOT NULL AND query.NetAmount IS NULL))) THEN\r\n  UPDATE SET\r\n    NetAmount=query.NetAmount;\r\n"
+}

@@ -8,6 +8,7 @@ La función `yesterday` devuelve la fecha (tipo **date**) correspondiente al dí
 ```
 select yesterday() as result;
 ```
+
 El código SQL generado es:
 
 ```

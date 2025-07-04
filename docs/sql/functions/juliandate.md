@@ -6,9 +6,11 @@ La función `juliandate` convierte una fecha del calendario gregoriano a su equi
 
 **Sintaxis:**  
 
-```
+```sql
 juliandate(fecha)
 ```
+
+
 ## Ejemplo
 
 La siguiente sentencia convierte '2023-01-01 00:00:00' a número juliano
@@ -17,6 +19,7 @@ La siguiente sentencia convierte '2023-01-01 00:00:00' a número juliano
 SELECT juliandate('2023-01-01');
 -- Resultado: 2459946 (¿2460130.5?)
 ```
+
 ## Comentarios
 
 - Funciona como el inverso de `fromjuliandate`, es decir:

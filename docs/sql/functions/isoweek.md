@@ -15,11 +15,13 @@ La norma ISO 8601 establece que una semana inicia el día lunes y termina el dí
 ```
 select isoweek('2022-11-26') as week;
 ```
+
 El código SQL generado es:
 
 ```
 SELECT datepart(isowk,'2022-11-26') AS week
 ```
+
 ## Comentarios
 
 El año de la semana ISO de una fecha no coincide necesariamente con el año de esa fecha. Por ejemplo, el 1 de enero de 2022 corresponde a la semana 52 del año 2021. Por este motivo es necesario agrupar o filtrar utilizando la función `isoweekyear` para seleccionar sin ambigüedad semanas ISO completas.

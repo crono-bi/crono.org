@@ -14,6 +14,7 @@ La función `today` devuelve la fecha (tipo **date**) correspondiente al día de
 ```
 select today() as result;
 ```
+
 El código SQL generado es:
 
 ```

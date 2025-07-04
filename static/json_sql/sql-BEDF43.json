@@ -1,0 +1,4 @@
+﻿{
+  "cronoSQL": "select *\r\nFROM staging.customer \r\nSEMI JOIN staging.SalesOrderHeader sales using customerId\r\n",
+  "compiladoSQL": "SELECT *\r\nFROM staging.customer\r\nWHERE EXISTS (SELECT 1 FROM staging.SalesOrderHeader sales WHERE customer.customerId=sales.customerId)\r\n"
+}

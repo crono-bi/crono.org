@@ -12,6 +12,7 @@ Es útil para generar claves temporales, agrupar registros por mes, o presentar 
 ```
 select yyyy('2026-01-01') as result;  -- Devuelve 202601
 ```
+
 El código SQL generado es:
 
 ```

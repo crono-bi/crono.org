@@ -12,6 +12,8 @@ La función `ASCII()` devuelve el valor numérico del código ASCII del primer c
 SELECT ascii('A'); -- Devuelve 65
 SELECT ascii('abc'); -- Devuelve 67 (valor ascii de 'a')
 ```
+
+
 ## Comentarios 
 
 `ascii` es una función de SQL estándar. Consulte la documentación completa de la función [`ascii`](https://learn.microsoft.com/es-es/sql/t-sql/functions/ascii-transact-sql) para mayor información.

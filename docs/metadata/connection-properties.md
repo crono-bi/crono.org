@@ -18,13 +18,13 @@ El formulario tiene cuatro tipos de conexión:
 
 El botón "Verificar conexión" permite validar que los datos introducidos son correctos y que **Crono** puede conectarse con la base de datos.
 
-![image-20200305023320405](/images/conexion6.png)
+![image-20200305023320405](/img/conexion6.png)
 
 ## SQL Server
 
 Si la base de datos donde se encuentra tu información es **SQL Server**, simplemente complete la información de conexión (servidor, base de datos y usuario).
 
-![Configurar conexión](/images/configurar-conexion.png)
+![Configurar conexión](/img/configurar-conexion.png)
 
 
 
@@ -32,11 +32,11 @@ Si la base de datos donde se encuentra tu información es **SQL Server**, simple
 
 Si el servidor no es SQL Server, se debe introducir la cadena de conexión propia de cada base de datos. Se puede escribir la cadena directamente o se puede utilizar el asistente.
 
-![image-20200305020249865](/images/conexion2.png)
+![image-20200305020249865](/img/conexion2.png)
 
 Pulsando el boton de edición se abre el asistente de Windows para configurar la cadena de conexión. Seleccione el "data source" adecuado y complete la información.
 
-![image-20200305020702783](/images/conexion3.png)
+![image-20200305020702783](/img/conexion3.png)
 
 Si configura un origen de datos ODBC tenga en cuenta que la arquitectura de **Crono** debe coincidir con la arquitectura del ODBC. 
 
@@ -56,7 +56,7 @@ En este caso, la conexión no está en el fichero `.metadata`, si no que se guar
 
 
 
-![image-20200305021451935](/images/conexion4.png)
+![image-20200305021451935](/img/conexion4.png)
 
 
 
@@ -64,7 +64,7 @@ Pulsando el botón "Nueva conexión" puede añadir conexiones a la lista. El for
 
 
 
-![image-20200305021639871](/images/conexion5.png)
+![image-20200305021639871](/img/conexion5.png)
 
 
 

@@ -9,9 +9,10 @@ Los valores nulos se ignoran a efectos del cálculo promedio.
 
 **Sintaxis:**  
 
-```
+```sql
 average(valor1, valor2, ..., valorN)
 ```
+
 ## Ejemplo
 
 
@@ -20,6 +21,7 @@ average(valor1, valor2, ..., valorN)
 SELECT average(1, 2, 3, 4, 6.5);
 -- Resultado: 3.3
 ```
+
 Los valores nulos se ignoran a efectos del cálculo promedio:
 
 ```

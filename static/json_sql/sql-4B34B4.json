@@ -1,0 +1,4 @@
+﻿{
+  "cronoSQL": "SELECT clients.*, countries.Name\r\nFROM countries  \r\nRIGHT JOIN clients USING (country_id)\r\n",
+  "compiladoSQL": "SELECT\r\n  clients.*,\r\n  countries.Name AS Name\r\nFROM countries\r\nRIGHT JOIN clients ON (countries.country_id=clients.country_id)\r\n"
+}

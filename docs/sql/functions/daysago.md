@@ -11,6 +11,7 @@ La siguiente sentencia devuelve el número de días transcurridos desde el 1 de 
 ```
 SELECT daysago('20150101') num;
 ```
+
 El código generado es:
 
 ```

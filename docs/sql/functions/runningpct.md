@@ -25,6 +25,7 @@ select
 from dbo.lb_ventas
 group by all
 ```
+
 La consulta SQL generada es:
 
 ```

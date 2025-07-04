@@ -1,0 +1,4 @@
+﻿{
+  "cronoSQL": "SELECT\r\n  year(sales.OrderDate) AS OrderYear,\r\n  month(sales.OrderDate) as OrderMonth,\r\n  sum(sales.subtotal) AS Amount,\r\n  sum(Amount) over (partition by OrderYear order by OrderMonth)  AmountYTD\r\nFROM staging.SalesOrderHeader sales\r\nORDER BY OrderYear, OrderMonth\r\n",
+  "compiladoSQL": "SELECT\r\n  year(sales.OrderDate) AS OrderYear,\r\n  month(sales.OrderDate) AS OrderMonth,\r\n  sum(sales.subtotal) AS Amount,\r\n  sum(sum(sales.subtotal)) OVER (PARTITION BY year(sales.OrderDate) ORDER BY month(sales.OrderDate)) AS AmountYTD\r\nFROM staging.SalesOrderHeader sales\r\nGROUP BY\r\n  year(sales.OrderDate),\r\n  month(sales.OrderDate)\r\nORDER BY\r\n  year(sales.OrderDate),\r\n  month(sales.OrderDate)\r\n"
+}
