@@ -14,9 +14,10 @@ Si todos los parámetros de entrada son nulos la función devuelve `NULL`
 ```
 select maximum(1,5,3,2) AS maximumNumber;
 ```
+
 El código SQL generado es el siguiente:
 
-```
+```SELECT
   CASE
     WHEN 1 IS NOT NULL AND (5 IS NULL OR 1>=5) AND (3 IS NULL OR 1>=3) AND (2 IS NULL OR 1>=2) THEN 1
     WHEN 5 IS NOT NULL AND (3 IS NULL OR 5>=3) AND (2 IS NULL OR 5>=2) THEN 5
@@ -24,6 +25,7 @@ El código SQL generado es el siguiente:
     ELSE 2
   END AS maximumNumber
 ```
+
 El resultado es:
 
 > 5

@@ -11,6 +11,7 @@ Es útil para extraer el año de una fecha con formato textual, ideal para etiqu
 ```
 select yyyy('2026-01-01') as result;  -- Devuelve 2026
 ```
+
 El código SQL generado es:
 
 ```

@@ -14,11 +14,13 @@ La siguiente función comprobará si el usuario actual es miembro del grupo *"Ad
 ```
 select IsMemberOf('Administradores') admin;
 ```
+
 El código generado será similar a:
 
 ```
 SELECT 1 AS admin
 ```
+
 El resultado dependerá de si el usuarios actual es miembro o no de dicho grupo.
 
 > 1
@@ -30,6 +32,7 @@ También se pueden comprobar varios grupos al mismo tiempo. La función devolver
 ```
 select IsMemberOf('Marketing', 'Analistas BI') cronoUser;
 ```
+
 ## Comentario
 
 Esta función se evalúa mientras se genera el código SQL y no mientras se ejecuta la sentencia. No lo evalúa la base de datos.

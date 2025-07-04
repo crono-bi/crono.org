@@ -14,6 +14,7 @@ Si todos los parámetros de entrada son nulos la función devuelve `NULL`
 ```
 select minimum(1,5,3,2) AS maximumNumber;
 ```
+
 El código SQL generado es el siguiente:
 
 ```
@@ -25,6 +26,7 @@ SELECT
     ELSE 2
   END AS minNumber
 ```
+
 El resultado es:
 
 > 1

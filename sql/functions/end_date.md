@@ -7,15 +7,17 @@ Es útil para calcular la fdecha final del periodo en aquellos casos donde la ta
 
 **Sintaxis:**
 
-```
+```sql
 end_date(fecha_inicio) OVER (PARTITION BY <columns>)
 ```
+
 Como en todas las funciones de ventana se puede usar la sintaxis compacta:
 
 
-```
+```sql
 end_date(fecha_inicio PARTITION BY <columns>)
 ```
+
 ## Ejemplo:
 
 El siguiente ejemplo muestra la fecha de inicio y fin de cada escandallo:
@@ -28,6 +30,7 @@ select
 	end_date(fecha partition by articulo) FechaFin
 from stg.escandallos
 ```
+
 El código generado es:
 
 ```
@@ -38,6 +41,7 @@ SELECT
   coalesce(max(dateadd(d,-1,fecha)) OVER (PARTITION BY articulo ORDER BY fecha ROWS BETWEEN 1 FOLLOWING And 1 FOLLOWING),'21000101') AS FechaFin
 FROM stg.escandallos
 ```
+
  ## Comentarios
 
  - La fecha de inicio debe ser una fecha `DATE` sin hora.

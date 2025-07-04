@@ -13,6 +13,7 @@ Es útil para realizar comparaciones, cálculos de rangos o filtrado basado en f
 ```
 SELECT PREVIOUSDAY('2025-01-01'); -- Devuelve 2024-12-31
 ```
+
 El código SQL generado es:
 
 ```

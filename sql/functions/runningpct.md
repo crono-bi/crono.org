@@ -24,6 +24,7 @@ select
 from dbo.lb_ventas
 group by all
 ```
+
 La consulta SQL generada es:
 
 ```
@@ -37,3 +38,4 @@ GROUP BY
   year(fecha),
   month(fecha)
 ```
+

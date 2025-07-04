@@ -1,0 +1,142 @@
+﻿[
+  {
+    "Pseudoview": "Crono$ActiveDirectoryGroups",
+    "ViewGroup": "index-ad-views"
+  },
+  {
+    "Pseudoview": "Crono$ActiveDirectoryGroupsOf",
+    "ViewGroup": "index-ad-views"
+  },
+  {
+    "Pseudoview": "Crono$ActiveDirectoryMyGroups",
+    "ViewGroup": "index-ad-views"
+  },
+  {
+    "Pseudoview": "Crono$ActiveDirectoryUsers",
+    "ViewGroup": "index-ad-views"
+  },
+  {
+    "Pseudoview": "Crono$AnsiColumns",
+    "ViewGroup": "index-db-views"
+  },
+  {
+    "Pseudoview": "Crono$AnsiForeignKeys",
+    "ViewGroup": "index-db-views"
+  },
+  {
+    "Pseudoview": "Crono$ColumnExtendedProperties",
+    "ViewGroup": "index-db-views"
+  },
+  {
+    "Pseudoview": "Crono$Columns",
+    "ViewGroup": "index-db-views"
+  },
+  {
+    "Pseudoview": "Crono$Constraints",
+    "ViewGroup": "index-db-views"
+  },
+  {
+    "Pseudoview": "Crono$ConstraintsColumns",
+    "ViewGroup": "index-db-views"
+  },
+  {
+    "Pseudoview": "Crono$Countries",
+    "ViewGroup": "index-misc-views"
+  },
+  {
+    "Pseudoview": "Crono$CronoFunctions",
+    "ViewGroup": "index-metadata-views"
+  },
+  {
+    "Pseudoview": "Crono$CronoViews",
+    "ViewGroup": "index-metadata-views"
+  },
+  {
+    "Pseudoview": "Crono$DatabaseExtendedProperties",
+    "ViewGroup": "index-db-views"
+  },
+  {
+    "Pseudoview": "Crono$Databases",
+    "ViewGroup": "index-db-views"
+  },
+  {
+    "Pseudoview": "Crono$Dates",
+    "ViewGroup": "index-time-views"
+  },
+  {
+    "Pseudoview": "Crono$ForeignKeys",
+    "ViewGroup": "index-db-views"
+  },
+  {
+    "Pseudoview": "Crono$Functions",
+    "ViewGroup": "index-metadata-views"
+  },
+  {
+    "Pseudoview": "Crono$IndexColumns",
+    "ViewGroup": "index-db-views"
+  },
+  {
+    "Pseudoview": "Crono$Indexes",
+    "ViewGroup": "index-db-views"
+  },
+  {
+    "Pseudoview": "Crono$Keywords",
+    "ViewGroup": "index-metadata-views"
+  },
+  {
+    "Pseudoview": "Crono$Months",
+    "ViewGroup": "index-time-views"
+  },
+  {
+    "Pseudoview": "Crono$Parameters",
+    "ViewGroup": "index-db-views"
+  },
+  {
+    "Pseudoview": "Crono$ProcedureExtendedProperties",
+    "ViewGroup": "index-db-views"
+  },
+  {
+    "Pseudoview": "Crono$Procedures",
+    "ViewGroup": "index-db-views"
+  },
+  {
+    "Pseudoview": "Crono$Routines",
+    "ViewGroup": "index-db-views"
+  },
+  {
+    "Pseudoview": "Crono$Schemas",
+    "ViewGroup": "index-db-views"
+  },
+  {
+    "Pseudoview": "Crono$SpanishCities",
+    "ViewGroup": "index-misc-views"
+  },
+  {
+    "Pseudoview": "Crono$SpanishProvinces",
+    "ViewGroup": "index-misc-views"
+  },
+  {
+    "Pseudoview": "Crono$SpanishRegions",
+    "ViewGroup": "index-misc-views"
+  },
+  {
+    "Pseudoview": "Crono$SqlFunctions",
+    "ViewGroup": "index-metadata-views"
+  },
+  {
+    "Pseudoview": "Crono$TableExtendedProperties",
+    "ViewGroup": "index-db-views"
+  },
+  {
+    "Pseudoview": "Crono$Tables",
+    "ViewGroup": "index-db-views"
+  },
+  {
+    "Pseudoview": "Crono$TimeZones",
+    "ViewGroup": "index-misc-views"
+  },
+  {
+    "Pseudoview": "Crono$Weeks",
+    "ViewGroup": "index-time-views"
+  }
+]

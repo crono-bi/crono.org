@@ -12,10 +12,12 @@ La función `trim` suprime los espacios iniciales y finales de una cadena de tex
 ```
 select trim('   Hello World! ')  as result;
 ```
+
 El código generado es:
 
 ```
 SELECT ltrim(rtrim('   Hello World! ')) AS result
 ```
+
 El resultado es una cadena de texto sin espacios al inicio ni al final del texto: **'Hello World!'**
 

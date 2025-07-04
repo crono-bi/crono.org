@@ -14,23 +14,27 @@ La función requiere un parámetro de entrada.
 ```
 select hour(getdate()) as result1;
 ```
+
 El código SQL generado es:
 
 ```
 SELECT DATEPART(hh,getdate()) AS result1
 ```
+
 La función admite tanto valores **datetime** como **datetimeofset**.
 
 ```
 select hour(cast('2022-12-25T21:30:00' as datetime)) as result2;
 select hour(cast('2022-12-25T21:30:00+08:00' as datetimeoffset)) as result3;
 ```
+
 El código SQL generado es:
 
 ```
 SELECT DATEPART(hh,CAST('2022-12-25T21:30:00' AS datetime)) AS result2
 SELECT DATEPART(hh,CAST('2022-12-25T21:30:00+08:00' AS datetimeoffset)) AS result3
 ```
+
 El resultado de las dos consultas es:
 
 > 21

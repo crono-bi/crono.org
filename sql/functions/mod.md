@@ -12,11 +12,13 @@ La función `mod` devuelve el resto al dividir un número entre otro.
 ```
 select mod(10,4) AS modulus;
 ```
+
 El código generado para SQL Server es:
 
 ```
 SELECT (10 % 4) AS modulus
 ```
+
 El resultado es:
 
 > 2

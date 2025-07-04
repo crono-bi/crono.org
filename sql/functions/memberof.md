@@ -16,16 +16,20 @@ La siguiente función comprobará si el usuario actual es miembro del grupo *"Ad
 ```
 select MemberOf('Administradores') admin;
 ```
+
 El código generado será similar a:
 
 ```
 SELECT 'Administradores' AS admin
 ```
+
+
 Si se especifican varios grupos, se devuelve el primero al que pertenezca.
 
 ```
 select MemberOf('Marketing', 'Analistas BI') cronoUser;
 ```
+
 ## Comentario
 
 Esta función se evalúa mientras se genera el código SQL y no mientras se ejecuta la sentencia. No lo evalúa la base de datos.

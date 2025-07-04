@@ -12,11 +12,13 @@ La función `currentusername` devuelve el nombre del usuario de Windows en el mo
 ```
 SELECT currentusername() usuario; 
 ```
+
 El código SQL generado será similar a:
 
 ```
 SELECT 'MOTOMAMI\Rosalia' AS usuario
 ```
+
 El código efectivamente generado dependerá del usuario que ejecute la compilación.
 
 ## Comentarios

@@ -15,6 +15,7 @@ Requiere por lo menos 3 argumentos.
 select Code, switch(Code, 1,'High', 2, 'Medium', 3, 'Low', 'N.A.')
 from MyDimensionTable
 ```
+
 El código SQL generado utiliza el operador `CASE`:
 
 ```
@@ -23,6 +24,8 @@ SELECT
   CASE Code WHEN 1 THEN 'High' WHEN 2 THEN 'Medium' WHEN 3 THEN 'Low' ELSE 'N.A.' END AS expr2
 FROM MyDimensionTable
 ```
+
+
 ## Comentarios
 
 Se recomienda utilizar la expresión `CASE` en lugar de esta función `SWITCH`.

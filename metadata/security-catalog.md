@@ -61,7 +61,7 @@ Para ello han que seguirse estos 3 pasos:
 
 La seguridad a nivel de fila se consigue a través de una "tabla de seguridad". En esta tabla se almacena la información que puede ver cada usuario. Esta es la estructura típica de una "tabla de seguridad":
 
-![image-20200305002131034](/images/seguridad1.png)
+![image-20200305002131034](/img/seguridad1.png)
 
 
 
@@ -73,13 +73,13 @@ Esta tabla debe estar en la base de datos. Habitualmente es un proceso ETL el en
 
 La tabla de seguridad se añade normalmente al diagrama:
 
-![image-20200305003032822](/images/seguridad2.png)
+![image-20200305003032822](/img/seguridad2.png)
 
 
 
 Después, se ha de configurar la "cláusula WHERE" en función del `@user`. Esta variable está siempre disponible y hacer referencia al usuario conectado.
 
-![image-20200305003220335](/images/seguridad3.png)
+![image-20200305003220335](/img/seguridad3.png)
 
 De esta manera, siempre que una consulta incluya la tabla de seguridad se añadirá la restricción `LB_SEGURIDAD_TIENDAS.USUARIO_WINDOWS=@user`, donde `@user`es el nombre del usuario conectado.
 
@@ -89,7 +89,7 @@ Finalmente, hay que indicar que siempre que se haga una consulta de *ventas* -qu
 
 Esto se hace desde las propiedades de la tabla de ventas:
 
-![image-20200305003756485](/images/seguridad4.png)
+![image-20200305003756485](/img/seguridad4.png)
 
 
 
@@ -119,7 +119,7 @@ El usuario de **Crono Analysis** accede a las tablas a través de los elementos 
 
  
 
-![image-20200305010730736](/images/seguridad5.png)
+![image-20200305010730736](/img/seguridad5.png)
 
 Desde esta pantalla se pueden conceder o denegar accesos a usuarios o grupos. Los permisos se evalúan secuenciamente. En caso de asignaciones contradictoria prevalece el último de la lista.
 
@@ -135,6 +135,6 @@ Los permisos también pueden definirse a nivel de carpeta. Si se restringe el ac
 
 En propiedades de catálogo pueden configurarse los permisos de acceso al catálogo. Si alguien no tiene acceso al catálogo, no lo verá en su lista de catálogos, y no podrá acceder a ninguno de sus elementos.
 
- ![image-20200305011715511](/images/seguridad6.png)
+ ![image-20200305011715511](/img/seguridad6.png)
 
 **IMPORTANTE:** Estas restricciones no aplican en una instalación en local o en nube. Solo el **servidor Crono** tiene en cuenta la configuración de permisos.

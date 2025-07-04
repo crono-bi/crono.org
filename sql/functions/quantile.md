@@ -26,6 +26,7 @@ from dbo.lb_ventas
 inner join lb_tiendas using id_tienda
 group by all
 ```
+
 La consulta SQL generada es:
 
 ```
@@ -37,6 +38,7 @@ FROM dbo.lb_ventas
 INNER JOIN lb_tiendas ON (lb_ventas.id_tienda=lb_tiendas.id_tienda)
 GROUP BY lb_tiendas.nombre
 ```
+
 ## Comentarios
 
 Esta función es similar a `rank`, `percentile`, `decile` y `quartile``. La función `rank` devuelve la posición ordinal de cada registro, mientras que las otras funciones clasifican los registros en grupos de distintos tamaños (100, 10, 4 o *n*).

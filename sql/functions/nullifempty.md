@@ -13,6 +13,7 @@ La función `nullifempty` devuelve `NULL` si la expresión de entrada es una cad
 SELECT nullifempty(myTable.Description) Description
 FROM dbo.myTable
 ```
+
 El código SQL generado utiliza el operador `CASE`:
 
 ```

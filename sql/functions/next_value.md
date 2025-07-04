@@ -24,6 +24,7 @@ select
 from dbo.lb_ventas
 group by all
 ```
+
 La misma consulta se puede construir con la sintaxis compacta del `OVER`:
 
 ```
@@ -35,9 +36,11 @@ select
 from dbo.lb_ventas
 group by all
 ```
+
 La consulta SQL generada en ambos casos es:
 
 ```
+
 SELECT
   year(fecha) AS anyo,
   month(fecha) AS mes,
@@ -48,3 +51,6 @@ GROUP BY
   year(fecha),
   month(fecha)
 ```
+
+
+

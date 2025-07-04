@@ -20,23 +20,23 @@ Existen tres herramientas principales para validar la correcta definición del c
 
 Sin salir de **Crono Metadata** podemos validar el catálogo haciendo clic en **"Probar catálogo"**. 
 
-![image-20200302163939334](/images/catalogo11.png)
+![image-20200302163939334](/img/catalogo11.png)
 
 Se nos abrirá el **editor de consultas** y podremos comprobar que el catálogo devuelve información y que genera correctamente las consultas.
 
 Para ello, desde la **vista diseño** podemos arrastrar algunas columnas e incluir algún filtro:
 
-![Probar catálogo](/images/probar.gif)
+![Probar catálogo](/img/probar.gif)
 
-![image-20200302163049724](/images/catalogo8.png)
+![image-20200302163049724](/img/catalogo8.png)
 
 Desde la **vista SQL**  podemos ver el código SQL generado por Crono:
 
-![image-20200302163446400](/images/catalogo9.png)
+![image-20200302163446400](/img/catalogo9.png)
 
 Desde la **vista tabla** podemos ver los datos devueltos por la base de datos:
 
-![image-20200302163734757](/images/catalogo10.png)
+![image-20200302163734757](/img/catalogo10.png)
 
 
 
@@ -44,7 +44,7 @@ Desde la **vista tabla** podemos ver los datos devueltos por la base de datos:
 
 **Crono Metadata** incluye una herramienta para validar la estructura del catálogo.
 
-![image-20200302212259847](/images/catalogo17.png)
+![image-20200302212259847](/img/catalogo17.png)
 
 
 
@@ -52,7 +52,7 @@ Al hacer clic en el botón **Verificaciones** se abre la siguiente ventana:
 
 
 
-![image-20200302223932860](/images/catalogo18.png)
+![image-20200302223932860](/img/catalogo18.png)
 
 
 
@@ -77,15 +77,15 @@ Además de verificar el catálogo desde **Crono Metadata**, podemos probarlo tam
 
 Al seleccionar el catálogo, se abrirá la ventana principal de Crono Analysis con un informe en blanco.
 
-![image-20200302165950154](/images/catalogo12.png)
+![image-20200302165950154](/img/catalogo12.png)
 
 A modo de ejemplo, para probar el correcto funcionamiento del catálogo arrastraremos "Tienda" y "Unidades vendidas" al informe. También arrastraremos el valor "2012" de la lista de valores de "Año" a la zona de filtros.
 
-![image-20200302170643441](/images/catalogo13.png)
+![image-20200302170643441](/img/catalogo13.png)
 
 Ahora podemos crear más consultas, o nuevas hojas, gráficos, o cualquier otra funcionalidad de **Crono Analysis**.
 
 Si modificamos el catálogo desde **Crono Metadata** tendremos que hacer clic en **Actualizar informe** para que se reflejen los cambios.
 
-![image-20200302171056289](/images/catalogo14.png)
+![image-20200302171056289](/img/catalogo14.png)
 

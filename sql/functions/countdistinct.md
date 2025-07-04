@@ -9,18 +9,13 @@ La función `countdistinct` es una *función de agregación* devuelve el número
 
 Se traduce y se comporta igual que el `count` con la cláusula `DISTINCT` del SQL estándard.
 
-```
-select countdistinct(storeId)
-from dwh.Sales
-```
 ## Ejemplo
 
-
-
 ```
 select countdistinct(storeId)
 from dwh.Sales
 ```
+
 El código SQL generado es:
 
 ```
