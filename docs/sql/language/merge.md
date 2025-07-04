@@ -296,6 +296,7 @@ Al igual que en todas las instrucciones **MERGE** de **Crono SQL**, se creará l
 
 Las estrategía **UPSERT** es la predeterminada del **MERGE**. Por este motivo, el siguiente ejemplo es exactamente equivalente a ejecutar **MERGE UPSERT**.
 
+<SqlCodeBlock jsonPath="/json_sql/sql-A4735D.json" />
 
 ## MERGE ALL
 

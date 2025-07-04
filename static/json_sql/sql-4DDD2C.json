@@ -1,4 +1,0 @@
-﻿{
-  "cronoSQL": "CREATE VIEW dwh.ProductsAnnualSales AS\r\nSELECT  \r\n  DimProducts.Product,\r\n  year(FactSalesOrderHeader.OrderDate) OrderYear,\r\n  sum(FactSalesOrderDetails.LineTotal) Sales\r\nFROM dwh.FactSalesOrderDetails\r\nINNER JOIN dwh.FactSalesOrderHeader USING SalesOrderId\r\nINNER JOIN dwh.DimProducts USING ProductSid\r\nGROUP BY\r\n  DimProducts.Product,\r\n  year(FactSalesOrderHeader.OrderDate)\r\n",
-  "compiladoSQL": "CREATE VIEW dwh.ProductsAnnualSales AS\r\nSELECT\r\n  DimProducts.Product AS Product,\r\n  year(FactSalesOrderHeader.OrderDate) AS OrderYear,\r\n  sum(FactSalesOrderDetails.LineTotal) AS Sales\r\nFROM dwh.FactSalesOrderDetails\r\nINNER JOIN dwh.FactSalesOrderHeader ON (FactSalesOrderDetails.SalesOrderId=FactSalesOrderHeader.SalesOrderId)\r\nINNER JOIN dwh.DimProducts ON (FactSalesOrderDetails.ProductSid=DimProducts.ProductSid)\r\nGROUP BY\r\n  DimProducts.Product,\r\n  year(FactSalesOrderHeader.OrderDate)\r\n"
-}

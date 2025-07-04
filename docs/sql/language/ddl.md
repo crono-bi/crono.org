@@ -87,21 +87,6 @@ Se puede utilizar **DROP FUNCTION** o **DROP FUNCTION IF EXISTS** para eliminar 
 
 **Crono SQL** admite la sintaxis estándar para crear vistas:
 
-<SqlCodeBlock jsonPath="/json_sql/sql-4DDD2C.json" />
-
-Se puede utilizar **CREATE OR ALTER VIEW** o **CREATE OR REPLACE VIEW** para actualizar la vista en el  caso de que ya exista.
-
-
-
-Se puede utilizar **DROP VIEW** o **DROP VIEW IF EXISTS** para eliminar una vista. 
-
-<SqlCodeBlock jsonPath="/json_sql/sql-DD1A5B.json" />
-
-
-## CREATE VIEW
-
-**Crono SQL** admite la sintaxis estándar para crear vistas:
-
 
 <SqlCodeBlock jsonPath="/json_sql/sql-139D69.json" />
 

@@ -31,6 +31,8 @@ Por supuesto, para definir el  origen de datos del **INSERT** se pueden utilizar
 También se puede utilizar, por ejemplo, la sentencia **COMBINE** o la funcionalidad de **MATERIALIZE**. En la siguiente consulta se verificará que todas las relaciones sean correctas, se crearán entonces las tablas temporales con la información de *ventas* y *compras*, y finalmente se unirán mediante un **FULL JOIN** en un único resultado a insertar.
 
 
+<SqlCodeBlock jsonPath="/json_sql/sql-F71300.json" />
+
 
 Una necesidad habitual en ETL/DWH es insertar únicamente los registros que no existan en la tabla destino. Para ello, es necesario especificar la "clave de inserción". La clave de inserción se define mediante el *carácter #* delante del  *alias* de cada campo. Como veremos a lo largo de este tutorial, las claves de todas las estrategias de carga se definen con el carácter **#**.
 
