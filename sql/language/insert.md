@@ -103,6 +103,7 @@ CHECK SNOWFLAKE
 
 También se puede utilizar, por ejemplo, la sentencia **COMBINE** o la funcionalidad de **MATERIALIZE**. En la siguiente consulta se verificará que todas las relaciones sean correctas, se crearán entonces las tablas temporales con la información de *ventas* y *compras*, y finalmente se unirán mediante un **FULL JOIN** en un único resultado a insertar.
 
+
 ```cronosql-with-button
 INSERT INTO dwh.VentasVsCompras
 COMBINE BY Product,ProductNumber
@@ -118,6 +119,9 @@ COMBINE BY Product,ProductNumber
     select 
       Product.Name Product,
       Product.ProductNumber ProductNumber,
+      sum(SalesOrderDetail.LineTotal) Sales
+    from staging.SalesOrderDetail
+    inner join staging.Product  using ProductId
     CHECK SNOWFLAKE)
 ```
 

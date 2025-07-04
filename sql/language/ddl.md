@@ -226,38 +226,6 @@ DROP FUNCTION IF EXISTS dbo.ProductSales
 
 **Crono SQL** admite la sintaxis estándar para crear vistas:
 
-```cronosql-with-button
-CREATE VIEW dwh.ProductsAnnualSales AS
-SELECT  
-  DimProducts.Product,
-  year(FactSalesOrderHeader.OrderDate) OrderYear,
-  sum(FactSalesOrderDetails.LineTotal) Sales
-FROM dwh.FactSalesOrderDetails
-INNER JOIN dwh.FactSalesOrderHeader USING SalesOrderId
-INNER JOIN dwh.DimProducts USING ProductSid
-GROUP BY
-  DimProducts.Product,
-  year(FactSalesOrderHeader.OrderDate)
-```
-
-Se puede utilizar **CREATE OR ALTER VIEW** o **CREATE OR REPLACE VIEW** para actualizar la vista en el  caso de que ya exista.
-
-```cronosql-with-button
-CREATE OR REPLACE VIEW dwh.ProductsAnnualSales
-```
-
-
-Se puede utilizar **DROP VIEW** o **DROP VIEW IF EXISTS** para eliminar una vista. 
-
-```cronosql-with-button
-DROP VIEW IF EXISTS dwh.ProductsAnnualSales
-```
-
-
-## CREATE VIEW
-
-**Crono SQL** admite la sintaxis estándar para crear vistas:
-
 
 ```cronosql-with-button
 CREATE VIEW dwh.ProductsAnnualSales AS
