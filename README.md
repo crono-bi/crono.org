@@ -1,3 +1,0 @@
-# Bienvenido
-
- PRUEBAS 10

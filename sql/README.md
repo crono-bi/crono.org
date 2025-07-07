@@ -1,15 +1,9 @@
 ---
-home: true
-heroImage: /sql.webp
-tagline: Crono SQL añade sintaxis y funciones al SQL para facilitar la construcción de data warehouses
-actionText: Acceder al manual →
-actionLink: /sql/intro/
-features:
-- title: SQL con superpoderes
-  details: Un lenguaje como el SQL, pero más fácil de escribir, más mantenible y más escalable. ❤️
-- title: Generador de SQL
-  details: No es una BBDD ni una caja negra que ejecuta procesos ETLs. Crono SQL es nada más (y nada menos) un generador de código SQL. 🥇
-- title: Crono ETL
-  details: Es el lenguaje que utiliza Crono ETL para crear los procesos de carga de un DWH.🛠️
-footer: Made by Crono with ❤️
+title: ''
+sidebar_position: 0
+slug: /sql
+hide_table_of_contents: true
+displayed_sidebar: null
 ---
+
+<a href="/sql/intro" className="button button--primary button--lg" style={{backgroundColor: '#aa4e34', color: 'white', margin: '20px 0'}}>Acceder al manual →</a>
