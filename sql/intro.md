@@ -1,6 +1,6 @@
 ﻿---
 title: Introducción
-sidebar_position: 1
+Position: 1
 ---
 
 # Introducción

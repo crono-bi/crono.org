@@ -1,6 +1,6 @@
 ﻿---
 title: Referencia del lenguaje
-sidebar_position: 3
+Position: 3
 ---
 
 # Referencia del lenguaje

@@ -1,6 +1,6 @@
 ---
 title: Sentencia DELETE
-sidebar_position: 2
+Position: 2
 ---
 
 # Sentencia DELETE

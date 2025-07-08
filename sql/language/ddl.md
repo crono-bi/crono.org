@@ -1,6 +1,6 @@
 ---
 title: Sentencias DDL
-sidebar_position: 1
+Position: 1
 ---
 
 # Sentencias DDL

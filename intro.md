@@ -1,3 +1,3 @@
 ---
-sidebar_position: 1
+Position: 1
 ---

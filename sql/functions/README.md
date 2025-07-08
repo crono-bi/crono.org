@@ -1,6 +1,6 @@
 ﻿---
 title: Funciones
-sidebar_position: 4
+Position: 4
 ---
 
 # Funciones

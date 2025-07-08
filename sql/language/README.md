@@ -1,6 +1,6 @@
 ﻿---
 title: Lenguaje Crono SQL
-sidebar_position: 2
+Position: 2
 ---
 
 # Lenguaje Crono SQL

@@ -1,6 +1,6 @@
 ---
 title: Sentencia UPDATE
-sidebar_position: 7
+Position: 7
 ---
 
 # Sentencia UPDATE
