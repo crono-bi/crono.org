@@ -1,6 +1,6 @@
----
+﻿---
 title: Sentencias DDL
-Position: 1
+Position: 7
 ---
 
 # Sentencias DDL

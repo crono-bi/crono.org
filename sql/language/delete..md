@@ -1,6 +1,6 @@
----
+﻿---
 title: Sentencia DELETE
-Position: 2
+Position: 5
 ---
 
 # Sentencia DELETE
