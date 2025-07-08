@@ -1,6 +1,6 @@
 ﻿---
 sidebar_label: Sentencias DDL
-sidebar_position: 1
+sidebar_position: 7
 ---
 
 
