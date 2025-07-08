@@ -1,0 +1,4 @@
+﻿{
+  "cronoSQL": "select *\r\nfrom staging.Customer\r\n",
+  "compiladoSQL": "SELECT *\r\nFROM staging.Customer\r\n"
+}

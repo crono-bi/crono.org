@@ -19,18 +19,18 @@ Para filtrar el _"año actual"_ utilizaríamos la expresión `[Año]=year(getdat
 
 
 
-![image-20200304210605938](/images/parametros1.png)
+![image-20200304210605938](/img/parametros1.png)
 
 
 
 **Crono Metadata** permite definir también filtros que dependen de un parámetro variable. Podríamos definir el filtro _"Año X"_ como `[Año]=@AñoX`. De este modo, el filtro es variable y **Crono Analysis** preguntará el año que quiere seleccionar cuando utilice este elemento del catálogo.
 
-![Ejemplo uso parámetros](/images/parametros2.gif)
+![Ejemplo uso parámetros](/img/parametros2.gif)
 
 
 Para crear en el catálogo un elemento de negocio que utilice parámetros variables solo es necesario incluir una variable (precedida por el símbolo `@`) en la expresión SQL. Si la variable no se ha definido todavía, **Crono Metadata** nos permitirá crearla en ese mismo momento.
 
-![Definir el filtro Año X](/images/parametros3.gif)
+![Definir el filtro Año X](/img/parametros3.gif)
 
 
 
@@ -46,11 +46,11 @@ Este tipo de parámetros son útiles, por ejemplo, cuando el usuario necesita co
 
 En la vista parámetros de las propiedades del catálogo podemos ver todos los parámetros definidos:
 
-![image-20200304213238967](/images/parametros4.png)
+![image-20200304213238967](/img/parametros4.png)
 
 También podemos modificar los parámetros definidos abriendo sus propiedades:
 
-![image-20200304213347579](/images/parametros5.png)
+![image-20200304213347579](/img/parametros5.png)
 
 Podemos introducir o modificar la siguiente información:
 
@@ -80,19 +80,19 @@ Existen tres tipos de parámetros variables:
 
 Son los más habituales.
 
-![image-20200304213347579](/images/parametros5.png)
+![image-20200304213347579](/img/parametros5.png)
 
 ### Parámetros calculados
 
 En este caso, el usuario no podrá establecer el valor del parámetro, ya que lo calculará la base de datos a partir de una expresión SQL preestablecida.
 
-![image-20200304214619210](/images/parametros6.png)
+![image-20200304214619210](/img/parametros6.png)
 
 ### Elementos de negocio parametrizables
 
 En lugar de establecer un valor el usuario tendrá que escoger un elementos de negocio de una lista. 
 
-![image-20200304215755945](/images/parametros7.png)
+![image-20200304215755945](/img/parametros7.png)
 
 
 
@@ -100,4 +100,4 @@ De este modo, el usuario podrá crear un informe para un indicador genérico, y 
 
 
 
-![image-20200304220024511](/images/parametros8.png)
+![image-20200304220024511](/img/parametros8.png)

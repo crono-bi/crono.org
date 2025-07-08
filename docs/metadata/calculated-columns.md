@@ -12,17 +12,17 @@ Desde las propiedades de un elemento de negocio (dimensión, indicador o filtro)
 
 Por ejemplo, si se quiere que el nombre del *responsable comercial* se muestre siempre en mayúsculas (independientemente de cómo esté guardado en la base de datos) podemos utilizar la función **upper**:
 
-![image-20200302181754134](/images/calculos01.png)
+![image-20200302181754134](/img/calculos01.png)
 
 
 Crono detectará automáticamente el tipo de datos y si la fórmula corresponde a una dimensión, un indicador, o un filtro.
 
-![image-20200302182217992](/images/calculos02.png)
+![image-20200302182217992](/img/calculos02.png)
 
 Se pueden crear indicadores que utilicen distintas columnas (incluso si esas columnas están en diferentes tablas). Por ejemplo, podemos crear el "Importe €" multiplicando el precio unitario por las unidades vendidas:
 
 
-![image-20200302183229972](/images/calculos03.png)
+![image-20200302183229972](/img/calculos03.png)
 
 
 Tal como se muestra en la imagen anterior, hemos de utilizar el identificador completo de la columna: _[nombre de la tabla].[nombre del campo]_. **Crono** utilizará esta información para detectar las tablas necesarias y generar la consulta correspondiente.
@@ -31,7 +31,7 @@ Es posible definir elementos calculados a partir de los elementos existentes en 
 
 
 
-![image-20200302183927161](/images/calculos04.png)
+![image-20200302183927161](/img/calculos04.png)
 
 
 
@@ -39,4 +39,4 @@ En este ejemplo, se ha utilizado la función Crono SQL `divide`. Esta función r
 
 El usuario podrá utilizar todos estos indicadores del mismo modo que utiliza el resto de elementos del catálogo. **Crono** detectará las tablas necesarias y generará la consulta correspondiente.
 
-![image-20200302184402723](/images/calculos05.png)
+![image-20200302184402723](/img/calculos05.png)

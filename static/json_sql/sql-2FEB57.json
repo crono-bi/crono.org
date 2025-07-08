@@ -1,0 +1,4 @@
+﻿{
+  "cronoSQL": "UPDATE table1 \r\nSET CodeDescription =  (\r\n  SELECT table2.CODE\r\n  FROM table2 \r\n  WHERE table1.CodeDescription = table2.description)\r\nWHERE\r\n  EXISTS (\r\n    SELECT table2.CODE\r\n    FROM table2 \r\n    WHERE table1.CodeDescription = table2.description)\r\n",
+  "compiladoSQL": "UPDATE table1 SET\r\n  CodeDescription=(SELECT table2.CODE AS CODE\r\n  FROM table2\r\n  WHERE table1.CodeDescription=table2.description\r\n  )\r\nWHERE\r\n  EXISTS (SELECT table2.CODE AS CODE\r\n  FROM table2\r\n  WHERE table1.CodeDescription=table2.description\r\n  );\r\n"
+}

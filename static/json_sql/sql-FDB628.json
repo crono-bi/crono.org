@@ -1,0 +1,4 @@
+﻿{
+  "cronoSQL": "UPDATE dwh.FactSalesOrderHeader \r\nSET NetAmount=Amount-TaxAmt\r\nWHERE year(OrderDate)=2017\r\n",
+  "compiladoSQL": "UPDATE dwh.FactSalesOrderHeader SET\r\n  NetAmount=Amount-TaxAmt\r\nWHERE\r\n  year(OrderDate)=2017;\r\n"
+}

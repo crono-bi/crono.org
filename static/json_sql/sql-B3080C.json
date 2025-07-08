@@ -1,0 +1,4 @@
+﻿{
+  "cronoSQL": "UPDATE table1 PARTITION (table1.UPDATETYPE=\u0027blah\u0027)\r\nSELECT \r\n  #code,\r\n  description CodeDescription\r\nfrom table2\r\n",
+  "compiladoSQL": ";WITH\r\nquery AS (\r\n  SELECT\r\n    code,\r\n    description AS CodeDescription\r\n  FROM table2\r\n)\r\nMERGE table1\r\nUSING query ON query.code=table1.code\r\nWHEN MATCHED AND (table1.UPDATETYPE=\u0027blah\u0027\r\n                  AND (table1.CodeDescription\u003C\u003Equery.CodeDescription OR (table1.CodeDescription IS NULL AND query.CodeDescription IS NOT NULL) OR  (table1.CodeDescription IS NOT NULL AND query.CodeDescription IS NULL))) THEN\r\n  UPDATE SET\r\n    CodeDescription=query.CodeDescription;\r\n"
+}

@@ -1,0 +1,4 @@
+﻿{
+  "cronoSQL": "select *\r\nFROM staging.customer \r\nANTI JOIN staging.SalesOrderHeader sales using customerId\r\n",
+  "compiladoSQL": "SELECT *\r\nFROM staging.customer\r\nWHERE NOT EXISTS (SELECT 1 FROM staging.SalesOrderHeader sales WHERE customer.customerId=sales.customerId)\r\n"
+}

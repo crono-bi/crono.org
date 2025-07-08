@@ -9,7 +9,7 @@ sidebar_position: 17
 
 Desde el menú contextual de una tabla del diagrama podemos acceder a las **Propiedades de tabla**
 
-![image-20200303102535320](/images/propiedades-tabla1.png)
+![image-20200303102535320](/img/propiedades-tabla1.png)
 
 ## Vista "Propiedades"
 
@@ -21,7 +21,7 @@ En la vista propiedades se puede configurar:
 - **Tabla de detalle** (ver [Uso de tablas agregadas](#tablas-agregadas))
 - **Número de registros** (ver [Uso de tablas agregadas](#tablas-agregadas))
 
-![image-20200303103757808](/images/propiedades-tabla2.png)
+![image-20200303103757808](/img/propiedades-tabla2.png)
 
 ## Vista "Tabla de tiempo"
 
@@ -29,7 +29,7 @@ Prácticamente todos los catálogos de **Crono Metadata** incluyen una tabla de 
 
 Desde esta vista se configuran los campos *Año*, *Trimestre* y *Mes*. Esta información se usa exclusivamente en las consultas que emplean las funciones de tiempo `TD`, `YTD`, `QTD` y `MTD`. 
 
-![image-20200303104015471](/images/propiedades-tabla3.png)
+![image-20200303104015471](/img/propiedades-tabla3.png)
 
 
 
@@ -37,19 +37,19 @@ Desde esta vista se configuran los campos *Año*, *Trimestre* y *Mes*. Esta info
 
 Esta vista es meramente informativa. Muestra los diagramas donde aparece esta tabla y los elementos de negocio que incluyen referencias a la tabla seleccionada.
 
-![image-20200303104757121](/images/propiedades-tabla4.png)
+![image-20200303104757121](/img/propiedades-tabla4.png)
 
 
 
 Esta información también se muestra en el diagrama:
 
-![image-20200303105038466](/images/propiedades-tabla5.png)
+![image-20200303105038466](/img/propiedades-tabla5.png)
 
 ## Vista "Campos"
 
  Muestra los campos y las claves externas de la tabla.
 
-![image-20200303105327814](/images/propiedades-tabla8.png)
+![image-20200303105327814](/img/propiedades-tabla8.png)
 
 En esta vista, los campos que se utilizan en el catálogo se resaltan con color verde.
 
@@ -57,7 +57,7 @@ En esta vista, los campos que se utilizan en el catálogo se resaltan con color 
 
 Esta vista permite ver los valores de la tabla.
 
-![image-20200303105646799](/images/propiedades-tabla6.png)
+![image-20200303105646799](/img/propiedades-tabla6.png)
 
 
 
@@ -65,4 +65,4 @@ Esta vista permite ver los valores de la tabla.
 
 Esta vista es informativa. Muestra el listado de diagramas donde aparece esta tabla.
 
-![image-20200303105843909](/images/propiedades-tabla7.png)
+![image-20200303105843909](/img/propiedades-tabla7.png)

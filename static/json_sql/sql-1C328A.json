@@ -1,0 +1,4 @@
+﻿{
+  "cronoSQL": "DELETE dwh.DimCustomers\r\nSELECT #customerSid\r\nFROM dwh.DimCustomers\r\nANTI JOIN dwh.FactSalesOrderHeader USING CustomerSid\r\n",
+  "compiladoSQL": ";WITH\r\nquery AS (\r\n  SELECT customerSid\r\n  FROM dwh.DimCustomers\r\n  WHERE NOT EXISTS (SELECT 1 FROM dwh.FactSalesOrderHeader WHERE DimCustomers.CustomerSid=FactSalesOrderHeader.CustomerSid)\r\n)\r\nDELETE FROM dwh.DimCustomers\r\nWHERE\r\n  EXISTS (SELECT 1 FROM query WHERE DimCustomers.customerSid=query.customerSid);\r\n"
+}

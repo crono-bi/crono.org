@@ -13,7 +13,7 @@ sidebar_position: 10
 
 Desde la vista general de las propiedades de catálogo se puede definir el idioma principal (y predeterminado) del catálogo y el listado de idiomas secundarios en los que estará disponible.
 
-![image-20200304223013481](/images/multidioma1.png)
+![image-20200304223013481](/img/multidioma1.png)
 
 
 
@@ -21,7 +21,7 @@ Desde la vista general de las propiedades de catálogo se puede definir el idiom
 
 Desde las propiedades de cada elemento de negocio podemos proporcionar cada una de las traducciones.
 
-![image-20200304223222731](/images/multidioma2.png)
+![image-20200304223222731](/img/multidioma2.png)
 
 Actualmente es necesario introducir manualmente cada una de las traducciones para cada uno de los elementos.
 
@@ -29,4 +29,4 @@ Actualmente es necesario introducir manualmente cada una de las traducciones par
 
 El usuario de negocio puede escoger su idioma predilecto desde la barra de estado:
 
-![image-20200304223524522](/images/multidioma3.png)
+![image-20200304223524522](/img/multidioma3.png)

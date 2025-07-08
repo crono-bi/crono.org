@@ -1,0 +1,4 @@
+﻿{
+  "cronoSQL": "CREATE OR REPLACE FUNCTION dbo.MaxValue(@a int,@b int,@c int) RETURNS int\r\nBEGIN\r\n\r\n DECLARE @result int\r\n \r\n IF (@a\u003E=@b AND @a\u003E=@b) \r\n   SET @result=@a\r\n ELSE BEGIN\r\n   IF @b\u003E=@c\r\n     SET @result=@b\r\n   ELSE\r\n     SET @result=@c\r\n END\r\n \r\n RETURN @result\r\n\r\nEND\r\n",
+  "compiladoSQL": "IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.ROUTINES WHERE ROUTINE_SCHEMA=\u0027dbo\u0027 AND ROUTINE_NAME=\u0027MaxValue\u0027 AND ROUTINE_TYPE=\u0027FUNCTION\u0027)\r\nDROP FUNCTION dbo.MaxValue;\r\n\r\nCREATE FUNCTION dbo.MaxValue(@a int,@b int,@c int) RETURNS int AS\r\nBEGIN\r\n\r\n  DECLARE @result int;\r\n  \r\n  IF (@a\u003E=@b AND @a\u003E=@b)\r\n    SET @result=@a;\r\n  ELSE\r\n    BEGIN\r\n      IF @b\u003E=@c\r\n        SET @result=@b;\r\n      ELSE\r\n        SET @result=@c;\r\n    END\r\n  \r\n  \r\n  RETURN @result\r\nEND\r\n"
+}

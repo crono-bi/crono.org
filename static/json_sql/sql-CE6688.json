@@ -1,0 +1,4 @@
+﻿{
+  "cronoSQL": "TRUNCATE TABLE dwh.DimCustomers\r\n",
+  "compiladoSQL": "TRUNCATE TABLE dwh.DimCustomers"
+}

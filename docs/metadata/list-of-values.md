@@ -11,12 +11,12 @@ Las listas de valores son los valores posibles que puede tener una dimensión. L
 En **Crono Analysis** las listas de valores se muestran al seleccionar una dimensión del catálogo:
 
 
-![image-20200302172120282](/images/lov0.png)
+![image-20200302172120282](/img/lov0.png)
 
 
 Desde **Crono Metadata** puedes ver la configuración de la lista de valores desde las propiedades de cada dimensión (se abre desde el menú contextual o mediante doble clic).
 
-![image-20200302172820981](/images/lov1.png)
+![image-20200302172820981](/img/lov1.png)
 
 ## Ordenación de los meses
 
@@ -26,13 +26,13 @@ Para ordenar correctamente los meses se debe especificar el "campo de ordenació
 
 
 
-![image-20200302173308536](/images/lov.gif)
+![image-20200302173308536](/img/lov.gif)
 
 ## Deshabilitar lista de valores
 
 Es posible deshabilitar las lists de valores de algún elemento. Esto es útil cuando la lista de valores es muy grande (superior a varios millones de registros) o donde la lista no es relevante para el usuario (por ejemplo, una lista de PVP de libros es irrelevante).
 
-![image-20200302174105823](/images/lov3.png)
+![image-20200302174105823](/img/lov3.png)
 
 ## Listas de valores filtradas
 
@@ -42,7 +42,7 @@ Esto es útil para mostrar valores relevantes a los usuarios. Por ejemplo, se pu
 
 Para ello, hemos de establecer el filtro desde el panel de propiedades:
 
-![image-20200302174541300](/images/lov4.png)
+![image-20200302174541300](/img/lov4.png)
 
 
 

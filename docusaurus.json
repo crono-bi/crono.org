@@ -1,14 +1,9 @@
 ﻿{
   "config": {
-    "title": "Bienvenido",
-    "favicon": "img/favicon.ico"
+    "title": "Bienvenido"
   },
   "navbar": {
     "title": "CRONO",
-    "logo": {
-      "alt": "Logo",
-      "src": "img/logo.svg"
-    },
     "items": [
       {
         "type": "docSidebar",
@@ -39,6 +34,1566 @@
   "sidebars": {
     "home": [
       {
+        "type": "category",
+        "label": "README",
+        "collapsed": false,
+        "link": null,
+        "items": [
+          {
+            "type": "category",
+            "label": "actions",
+            "collapsed": false,
+            "link": null,
+            "items": [
+              {
+                "type": "doc",
+                "id": "sql/actions/backup-database"
+              }
+            ]
+          },
+          {
+            "type": "category",
+            "label": "Funciones",
+            "collapsed": false,
+            "link": {
+              "type": "doc",
+              "id": "sql/functions/README"
+            },
+            "items": [
+              {
+                "type": "doc",
+                "id": "sql/functions/README"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/index-aggregation-functions"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/index-conversion-functions"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/index-date-functions"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/index-text-functions"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/index-math-functions"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/index-system-functions"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/index-misc-functions"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/abc"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/abs"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/acos"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/adddays"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/addition"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/ascii"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/asin"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/atan"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/atn2"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/average"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/avg"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/bighex"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/bigint"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/binary_checksum"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/bit"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/cast"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/ceiling"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/char"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/charindex"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/checksum"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/checksum_agg"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/choose"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/coalesce"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/col_length"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/col_name"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/collationproperty"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/columnproperty"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/columns_updated"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/compress"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/concat"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/concat_ws"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/convert"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/cos"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/cot"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/count"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/count_big"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/countdistinct"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/countvalues"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/cume_dist"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/current_catalog"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/current_date"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/current_time"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/current_timestamp"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/current_timezone"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/current_timezone_id"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/current_transaction_id"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/current_user"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/current_year"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/currentusername"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/cursor_status"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/database_principal_id"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/databaseproperty"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/databasepropertyex"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/datalength"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/date"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/date_bucket"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/dateadd"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/datediff"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/datediff_big"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/datefromparts"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/datename"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/datepart"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/datetime"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/datetime2"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/datetime2fromparts"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/datetimefromparts"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/datetimeoffsetfromparts"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/datetrunc"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/day"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/daysago"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/daysdiff"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/db_id"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/db_name"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/decile"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/decompress"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/degrees"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/dense_rank"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/difference"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/divide"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/elementat"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/emptyifnull"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/end_date"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/end_datetime"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/eomonth"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/error_line"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/error_message"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/error_number"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/error_procedure"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/error_severity"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/error_state"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/exp"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/file_name"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/filegroup_id"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/filegroup_name"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/filegroupproperty"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/fileproperty"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/first_value"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/float"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/floor"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/format"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/formatmessage"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/fromjuliandate"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/fromunixdate"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/fulltextcatalogproperty"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/fulltextserviceproperty"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/generate_series"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/getansinull"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/getdate"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/getenddate"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/getenddatetime"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/getutcdate"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/greatest"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/has_dbaccess"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/hashbytes"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/hex"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/host_id"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/host_name"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/hour"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/ident_current"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/ident_incr"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/ident_seed"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/identity"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/iif"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/index_col"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/indexof"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/indexproperty"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/int"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/is_first"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/is_last"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/is_member"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/is_srvrolemember"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/isdate"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/ismemberof"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/isnull"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/isnumeric"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/isodate"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/isoweek"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/isoweekcode"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/isoweekshortcode"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/isoweekyear"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/juliandate"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/lag"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/last_value"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/lead"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/least"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/left"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/len"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/localdate"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/localdatetimeoffset"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/log"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/log10"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/lower"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/ltrim"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/margin"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/markup"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/max"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/maximum"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/md5"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/memberof"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/min"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/minimum"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/mod"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/month"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/nameof"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/nchar"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/newid"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/newsequentialid"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/next_value"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/ntile"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/nullif"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/nullifempty"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/nullifzero"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/object_id"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/object_name"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/objectproperty"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/opendatasource"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/openquery"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/openrowset"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/parse"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/parsename"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/patindex"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/pct"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/pctrank"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/pctvariance"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/percent_rank"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/percentile"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/percentile_cont"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/percentile_disc"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/permissions"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/pi"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/power"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/previous_value"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/previousday"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/quantile"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/quartile"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/quotename"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/radians"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/rand"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/rank"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/replace"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/replicate"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/reverse"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/right"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/round"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/row_number"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/rowcount_big"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/rtrim"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/runningpct"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/runningsum"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/schema_id"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/schema_name"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/scope_identity"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/security"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/serverproperty"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/session_user"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/sessionproperty"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/sha1"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/sha256"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/sign"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/sin"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/single"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/smalldatetimefromparts"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/smallhex"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/smallint"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/soundex"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/space"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/split"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/sql_variant_property"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/sqrt"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/square"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/stats_date"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/stdev"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/stdevp"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/str"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/string_agg"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/string_split"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/stuff"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/substraction"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/substring"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/sum"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/suser_id"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/suser_name"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/suser_sid"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/suser_sname"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/switch"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/switchoffset"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/sysdatetime"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/sysdatetimeoffset"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/system_user"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/sysutcdatetime"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/tan"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/time"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/timefromparts"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/tinyhex"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/tinyint"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/todatetimeoffset"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/today"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/tomorrow"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/total"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/trim"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/try_cast"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/try_convert"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/try_parse"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/type_name"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/typeproperty"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/uchar"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/unicode"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/unicodechar"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/upper"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/user_name"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/valueof"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/var"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/varp"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/weekday"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/weekdaynumber"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/year"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/yesterday"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/yyyy"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/yyyymm"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/yyyymmdd"
+              },
+              {
+                "type": "doc",
+                "id": "sql/functions/zeroifnull"
+              }
+            ]
+          },
+          {
+            "type": "doc",
+            "id": "sql/intro"
+          },
+          {
+            "type": "category",
+            "label": "Lenguaje Crono SQL",
+            "collapsed": false,
+            "link": {
+              "type": "doc",
+              "id": "sql/language/README"
+            },
+            "items": [
+              {
+                "type": "doc",
+                "id": "sql/language/README"
+              },
+              {
+                "type": "doc",
+                "id": "sql/language/select"
+              },
+              {
+                "type": "doc",
+                "id": "sql/language/insert"
+              },
+              {
+                "type": "doc",
+                "id": "sql/language/update"
+              },
+              {
+                "type": "doc",
+                "id": "sql/language/merge"
+              },
+              {
+                "type": "doc",
+                "id": "sql/language/delete."
+              },
+              {
+                "type": "doc",
+                "id": "sql/language/truncate"
+              },
+              {
+                "type": "doc",
+                "id": "sql/language/ddl"
+              }
+            ]
+          },
+          {
+            "type": "category",
+            "label": "Referencia del lenguaje",
+            "collapsed": false,
+            "link": {
+              "type": "doc",
+              "id": "sql/reference/README"
+            },
+            "items": [
+              {
+                "type": "doc",
+                "id": "sql/reference/README"
+              },
+              {
+                "type": "doc",
+                "id": "sql/reference/main-sentences"
+              },
+              {
+                "type": "doc",
+                "id": "sql/reference/keywords"
+              },
+              {
+                "type": "doc",
+                "id": "sql/reference/check-snowflake"
+              },
+              {
+                "type": "doc",
+                "id": "sql/reference/integers-between"
+              },
+              {
+                "type": "doc",
+                "id": "sql/reference/join"
+              },
+              {
+                "type": "doc",
+                "id": "sql/reference/materialize"
+              },
+              {
+                "type": "doc",
+                "id": "sql/reference/over"
+              },
+              {
+                "type": "doc",
+                "id": "sql/reference/rows-columns"
+              },
+              {
+                "type": "doc",
+                "id": "sql/reference/select-anidado"
+              },
+              {
+                "type": "doc",
+                "id": "sql/reference/time-table"
+              },
+              {
+                "type": "doc",
+                "id": "sql/reference/unpivot"
+              }
+            ]
+          },
+          {
+            "type": "category",
+            "label": "Vistas",
+            "collapsed": false,
+            "link": {
+              "type": "doc",
+              "id": "sql/views/README"
+            },
+            "items": [
+              {
+                "type": "doc",
+                "id": "sql/views/README"
+              },
+              {
+                "type": "doc",
+                "id": "sql/views/index-db-views"
+              },
+              {
+                "type": "doc",
+                "id": "sql/views/index-metadata-views"
+              },
+              {
+                "type": "doc",
+                "id": "sql/views/index-time-views"
+              },
+              {
+                "type": "doc",
+                "id": "sql/views/index-ad-views"
+              },
+              {
+                "type": "doc",
+                "id": "sql/views/index-misc-views"
+              },
+              {
+                "type": "doc",
+                "id": "sql/views/cronoactionproperties"
+              },
+              {
+                "type": "doc",
+                "id": "sql/views/cronoactions"
+              },
+              {
+                "type": "doc",
+                "id": "sql/views/cronoactivedirectorygroups"
+              },
+              {
+                "type": "doc",
+                "id": "sql/views/cronoactivedirectorygroupsof"
+              },
+              {
+                "type": "doc",
+                "id": "sql/views/cronoactivedirectorymygroups"
+              },
+              {
+                "type": "doc",
+                "id": "sql/views/cronoactivedirectoryusers"
+              },
+              {
+                "type": "doc",
+                "id": "sql/views/cronoansicolumns"
+              },
+              {
+                "type": "doc",
+                "id": "sql/views/cronoansiforeignkeys"
+              },
+              {
+                "type": "doc",
+                "id": "sql/views/cronocolumnextendedproperties"
+              },
+              {
+                "type": "doc",
+                "id": "sql/views/cronocolumns"
+              },
+              {
+                "type": "doc",
+                "id": "sql/views/cronoconstraints"
+              },
+              {
+                "type": "doc",
+                "id": "sql/views/cronoconstraintscolumns"
+              },
+              {
+                "type": "doc",
+                "id": "sql/views/cronocountries"
+              },
+              {
+                "type": "doc",
+                "id": "sql/views/cronocronofunctions"
+              },
+              {
+                "type": "doc",
+                "id": "sql/views/cronocronoviewproperties"
+              },
+              {
+                "type": "doc",
+                "id": "sql/views/cronocronoviews"
+              },
+              {
+                "type": "doc",
+                "id": "sql/views/cronocsv"
+              },
+              {
+                "type": "doc",
+                "id": "sql/views/cronodatabaseextendedproperties"
+              },
+              {
+                "type": "doc",
+                "id": "sql/views/cronodatabases"
+              },
+              {
+                "type": "doc",
+                "id": "sql/views/cronodates"
+              },
+              {
+                "type": "doc",
+                "id": "sql/views/cronoemojis"
+              },
+              {
+                "type": "doc",
+                "id": "sql/views/cronoexcel"
+              },
+              {
+                "type": "doc",
+                "id": "sql/views/cronoexcelrange"
+              },
+              {
+                "type": "doc",
+                "id": "sql/views/cronoforeignkeys"
+              },
+              {
+                "type": "doc",
+                "id": "sql/views/cronofunctions"
+              },
+              {
+                "type": "doc",
+                "id": "sql/views/cronogetdata"
+              },
+              {
+                "type": "doc",
+                "id": "sql/views/cronogetschema"
+              },
+              {
+                "type": "doc",
+                "id": "sql/views/cronohttpstatuscode"
+              },
+              {
+                "type": "doc",
+                "id": "sql/views/cronoindexcolumns"
+              },
+              {
+                "type": "doc",
+                "id": "sql/views/cronoindexes"
+              },
+              {
+                "type": "doc",
+                "id": "sql/views/cronokeywords"
+              },
+              {
+                "type": "doc",
+                "id": "sql/views/cronologs"
+              },
+              {
+                "type": "doc",
+                "id": "sql/views/cronologtable"
+              },
+              {
+                "type": "doc",
+                "id": "sql/views/cronomonths"
+              },
+              {
+                "type": "doc",
+                "id": "sql/views/crononameddirectories"
+              },
+              {
+                "type": "doc",
+                "id": "sql/views/cronoparameters"
+              },
+              {
+                "type": "doc",
+                "id": "sql/views/cronoprocedureextendedproperties"
+              },
+              {
+                "type": "doc",
+                "id": "sql/views/cronoprocedures"
+              },
+              {
+                "type": "doc",
+                "id": "sql/views/cronoreplacements"
+              },
+              {
+                "type": "doc",
+                "id": "sql/views/cronoroutines"
+              },
+              {
+                "type": "doc",
+                "id": "sql/views/cronoschemas"
+              },
+              {
+                "type": "doc",
+                "id": "sql/views/cronoserverproperties"
+              },
+              {
+                "type": "doc",
+                "id": "sql/views/cronospanishcities"
+              },
+              {
+                "type": "doc",
+                "id": "sql/views/cronospanishprovinces"
+              },
+              {
+                "type": "doc",
+                "id": "sql/views/cronospanishregions"
+              },
+              {
+                "type": "doc",
+                "id": "sql/views/cronosqlfunctions"
+              },
+              {
+                "type": "doc",
+                "id": "sql/views/cronostatistics"
+              },
+              {
+                "type": "doc",
+                "id": "sql/views/cronotableextendedproperties"
+              },
+              {
+                "type": "doc",
+                "id": "sql/views/cronotables"
+              },
+              {
+                "type": "doc",
+                "id": "sql/views/cronotablesinfo"
+              },
+              {
+                "type": "doc",
+                "id": "sql/views/cronotablesizes"
+              },
+              {
+                "type": "doc",
+                "id": "sql/views/cronotimezones"
+              },
+              {
+                "type": "doc",
+                "id": "sql/views/cronotransactions"
+              },
+              {
+                "type": "doc",
+                "id": "sql/views/cronounicodechars"
+              },
+              {
+                "type": "doc",
+                "id": "sql/views/cronounicodetable"
+              },
+              {
+                "type": "doc",
+                "id": "sql/views/cronounion"
+              },
+              {
+                "type": "doc",
+                "id": "sql/views/cronounionall"
+              },
+              {
+                "type": "doc",
+                "id": "sql/views/cronoweeks"
+              }
+            ]
+          }
+        ]
+      },
+      {
         "type": "doc",
         "id": "intro"
       },
@@ -68,7 +1623,7 @@
     "sidebar4": [
       {
         "type": "autogenerated",
-        "dirName": "sql"
+        "dirName": "sql-remove"
       }
     ]
   }

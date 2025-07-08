@@ -1,0 +1,4 @@
+﻿{
+  "cronoSQL": "SELECT clients.*\r\nFROM clients \r\nANTI JOIN countries USING (country_id)\r\n",
+  "compiladoSQL": "SELECT clients.*\r\nFROM clients\r\nWHERE NOT EXISTS (SELECT 1 FROM countries WHERE clients.country_id=countries.country_id)\r\n"
+}

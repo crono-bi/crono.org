@@ -1,0 +1,4 @@
+﻿{
+  "cronoSQL": "SELECT clients.*\r\nFROM clients \r\nLEFT JOIN countries USING (country_id)\r\nWHERE countries.country_id IS NULL\r\n",
+  "compiladoSQL": "SELECT clients.*\r\nFROM clients\r\nLEFT JOIN countries ON (clients.country_id=countries.country_id)\r\nWHERE countries.country_id IS NULL\r\n"
+}

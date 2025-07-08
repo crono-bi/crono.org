@@ -1,0 +1,4 @@
+﻿{
+  "cronoSQL": "SELECT stores.name,sales.TotalQuantity\r\nFROM stores\r\nLEFT JOIN (\r\n\tselect \r\n\t\tsales.store_id,\r\n\t\tsum(sales.quantity) TotalQuantity \r\n\tfrom sales\r\n) ventas using store_id\r\n",
+  "compiladoSQL": "SELECT\r\n  stores.name AS name,\r\n  sales.TotalQuantity AS TotalQuantity\r\nFROM stores\r\nLEFT JOIN (SELECT\r\n             sales.store_id AS store_id,\r\n             sum(sales.quantity) AS TotalQuantity\r\n           FROM sales\r\n           GROUP BY sales.store_id) ventas ON stores.store_id=ventas.store_id\r\n"
+}

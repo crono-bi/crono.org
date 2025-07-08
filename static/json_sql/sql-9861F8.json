@@ -1,0 +1,4 @@
+﻿{
+  "cronoSQL": "SELECT clients.*\r\nFROM clients \r\nANTI JOIN  sales FILTER (year(date)=2022) sales2020  USING (client_id)\r\n",
+  "compiladoSQL": "SELECT clients.*\r\nFROM clients\r\nWHERE NOT EXISTS (SELECT 1 FROM (SELECT * FROM sales WHERE year([date])=2022) sales2020 WHERE clients.client_id=sales2020.client_id)\r\n"
+}

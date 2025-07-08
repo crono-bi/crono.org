@@ -1,0 +1,4 @@
+﻿{
+  "cronoSQL": "SELECT count(*)\r\nSELECT\r\n  Product.Name Product,\r\n  Product.ProductNumber,\r\n  sum(SalesOrderDetail.LineTotal) Sales\r\nFROM staging.SalesOrderDetail\r\nINNER JOIN staging.Product USING ProductId\r\n",
+  "compiladoSQL": "SELECT count(*) AS expr1\r\nFROM (\r\n    SELECT\r\n      Product.Name AS Product,\r\n      Product.ProductNumber AS ProductNumber,\r\n      sum(SalesOrderDetail.LineTotal) AS Sales\r\n    FROM staging.SalesOrderDetail\r\n    INNER JOIN staging.Product ON (SalesOrderDetail.ProductId=Product.ProductId)\r\n    GROUP BY\r\n      Product.Name,\r\n      Product.ProductNumber\r\n  ) a\r\n"
+}

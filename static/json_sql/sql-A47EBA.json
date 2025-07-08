@@ -1,0 +1,4 @@
+﻿{
+  "cronoSQL": "EXECUTE LOAD dwh.DimProducts\r\n",
+  "compiladoSQL": "EXECUTE [LOAD dwh.DimProducts];"
+}

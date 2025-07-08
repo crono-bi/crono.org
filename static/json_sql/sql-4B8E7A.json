@@ -1,0 +1,4 @@
+﻿{
+  "cronoSQL": "SELECT \u0027Hola mundo\u0027;\r\n",
+  "compiladoSQL": "SELECT \u0027Hola mundo\u0027 AS expr1"
+}

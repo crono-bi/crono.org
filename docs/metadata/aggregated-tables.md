@@ -26,7 +26,7 @@ El diagrama de la tabla agregada se crea exactamente igual que el diagrama de cu
 
 El ejemplo de *LA BIBLIO* tiene una tabla `dbo.LB_VENTAS_DIARIAS`que contiene un resumen de las ventas día a día de cada tienda (sin el detalle de producto). La siguiente imagen muestra el diagrama de la tabla detallada (`dbo.LB_VENTAS`) y el de la tabla agregada (`dbo.LB_VENTAS_DIARIAS`).
 
-![image-20200303005454326](/images/catalogo19.png)
+![image-20200303005454326](/img/catalogo19.png)
 
 Los dos diagramas comparten las tablas de dimensión, exceptuando la dimensión `dbo.LB_LIBROS` que solo aparece en primer diagrama. **Crono** utilizará esta información para utilizar la tabla detallada solamente cuando se pida información de los libros. En cualquier otro caso, será preferible utilizar la tabla agregada.
 
@@ -34,7 +34,7 @@ Los dos diagramas comparten las tablas de dimensión, exceptuando la dimensión 
 
 Para que **Crono** utilice la tabla agregada se debe indicar cual es su tabla de detalle desde la ventana de propiedades:
 
-![image-20200303010911577](/images/catalogo20.png)
+![image-20200303010911577](/img/catalogo20.png)
 
 Desde _"Propiedades de tabla"_ podemos especificar también el número de registros aproximado de cada tabla. Esta información solo es relevante cuando existen varias tablas agregadas. En ese caso, **Crono** utilizará la tabla más pequeña entre todas las posibles.
 

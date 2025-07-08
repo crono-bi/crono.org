@@ -1,0 +1,4 @@
+﻿{
+  "cronoSQL": "SELECT count(*)\r\nFROM staging.SalesOrderHeader sales\r\nINNER JOIN staging.customer USING (CompanyId,CustomerId)\r\nLEFT JOIN staging.Person CustomerPerson USING customer(CompanyId,PersonID BusinessEntityId)\r\nWHERE year(sales.OrderDate)=2012\r\n",
+  "compiladoSQL": "SELECT count(*) AS expr1\r\nFROM staging.SalesOrderHeader sales\r\nINNER JOIN staging.customer ON (sales.CompanyId=customer.CompanyId AND sales.CustomerId=customer.CustomerId)\r\nLEFT JOIN staging.Person CustomerPerson ON (customer.CompanyId=CustomerPerson.CompanyId AND customer.PersonID=CustomerPerson.BusinessEntityId)\r\nWHERE year(sales.OrderDate)=2012\r\n"
+}
