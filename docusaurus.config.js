@@ -20,8 +20,8 @@ const config = {
     onBrokenLinks: 'warn',
     onBrokenMarkdownLinks: 'warn',
     i18n: {
-        defaultLocale: 'en',
-        locales: ['en'],
+        defaultLocale: 'es',
+        locales: ['es'],
     },
     stylesheets: [
         {
@@ -53,6 +53,19 @@ const config = {
                 },
                 blog: false
             }),
+        ],
+    ],
+    
+    plugins: [
+        [
+            require.resolve('@easyops-cn/docusaurus-search-local'),
+            {
+                hashed: true,
+                language: ['es', 'en'],
+                highlightSearchTermsOnTargetPage: true,
+                explicitSearchResultPath: true,
+                docsRouteBasePath: '/',
+            },
         ],
     ],
 

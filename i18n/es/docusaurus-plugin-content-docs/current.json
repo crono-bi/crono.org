@@ -1,0 +1,22 @@
+{
+  "version.label": {
+    "message": "Next",
+    "description": "The label for version current"
+  },
+  "sidebar.sidebar4.category.Funciones": {
+    "message": "Funciones",
+    "description": "The label for category Funciones in sidebar sidebar4"
+  },
+  "sidebar.sidebar4.category.Lenguaje Crono SQL": {
+    "message": "Lenguaje Crono SQL",
+    "description": "The label for category Lenguaje Crono SQL in sidebar sidebar4"
+  },
+  "sidebar.sidebar4.category.Referencia del lenguaje": {
+    "message": "Referencia del lenguaje",
+    "description": "The label for category Referencia del lenguaje in sidebar sidebar4"
+  },
+  "sidebar.sidebar4.category.Vistas": {
+    "message": "Vistas",
+    "description": "The label for category Vistas in sidebar sidebar4"
+  }
+}

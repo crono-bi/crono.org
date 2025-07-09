@@ -1,0 +1,22 @@
+{
+  "title": {
+    "message": "CRONO",
+    "description": "The title in the navbar"
+  },
+  "item.label.Crono Analysis": {
+    "message": "Crono Analysis",
+    "description": "Navbar item with label Crono Analysis"
+  },
+  "item.label.Crono ETL": {
+    "message": "Crono ETL",
+    "description": "Navbar item with label Crono ETL"
+  },
+  "item.label.Crono Metadata": {
+    "message": "Crono Metadata",
+    "description": "Navbar item with label Crono Metadata"
+  },
+  "item.label.Crono SQL": {
+    "message": "Crono SQL",
+    "description": "Navbar item with label Crono SQL"
+  }
+}
