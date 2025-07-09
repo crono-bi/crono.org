@@ -69,7 +69,7 @@ export default function SqlCodeBlock({ sqlData, jsonPath }) {
           <div className={styles.codeBlock} style={{marginBottom: 0, paddingBottom: 0}}>
             <CodeBlock language="sql" style={{marginBottom: 0, paddingBottom: 0}}>{data.cronoSQL}</CodeBlock>
           </div>
-          <div className={styles.buttonContainer} style={{marginTop: '0.5rem'}}>
+          <div className={styles.buttonContainer} style={{marginTop: '1rem', marginBottom: '2rem'}}>
             <button 
               onClick={openModal} 
               className={styles.viewButton}
