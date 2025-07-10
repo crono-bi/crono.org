@@ -1,7 +1,7 @@
 ﻿---
-sidebar_label: Seguridad y permisos de acceso
+title: Seguridad y permisos de acceso
 sidebarDepth: 2
-sidebar_position: 13
+Position: 13
 ---
 
 

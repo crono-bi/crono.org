@@ -1,7 +1,7 @@
 ﻿---
-sidebar_label: Propiedades de conexión
+title: Propiedades de conexión
 sidebarDepth: 2
-sidebar_position: 15
+Position: 15
 ---
 
 

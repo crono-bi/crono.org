@@ -1,6 +1,6 @@
 ﻿---
-sidebar_label: Introducción
-sidebar_position: 1
+title: Introducción
+Position: 1
 ---
 
 

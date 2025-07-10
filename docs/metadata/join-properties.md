@@ -1,6 +1,6 @@
 ﻿---
-sidebar_label: Propiedades de relación
-sidebar_position: 19
+title: Propiedades de relación
+Position: 19
 ---
 
 

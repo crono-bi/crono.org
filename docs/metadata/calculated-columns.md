@@ -1,6 +1,6 @@
 ﻿---
-sidebar_label: Campos calculados
-sidebar_position: 6
+title: Campos calculados
+Position: 6
 ---
 
 

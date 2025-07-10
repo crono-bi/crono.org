@@ -1,7 +1,7 @@
 ﻿---
-sidebar_label: Catálogos multi-idioma
+title: Catálogos multi-idioma
 sidebarDepth: 2
-sidebar_position: 10
+Position: 10
 ---
 
 

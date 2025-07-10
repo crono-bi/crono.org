@@ -1,6 +1,6 @@
 ﻿---
-sidebar_label: Sentencia TRUNCATE
-sidebar_position: 6
+title: Sentencia TRUNCATE
+Position: 6
 ---
 
 

@@ -1,7 +1,7 @@
 ﻿---
-sidebar_label: Propiedades de elementos de negocio
+title: Propiedades de elementos de negocio
 sidebarDepth: 2
-sidebar_position: 16
+Position: 16
 ---
 
 

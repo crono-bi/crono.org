@@ -1,6 +1,6 @@
 ﻿---
-sidebar_label: Sentencia INSERT
-sidebar_position: 2
+title: Sentencia INSERT
+Position: 2
 ---
 
 

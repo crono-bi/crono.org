@@ -1,8 +1,8 @@
 ﻿---
-navigation_item: Crono Metadata
-sidebar_position: 0
+title: Crono Metadata
+NavigationItem: Crono Metadata
+Position: 3
 ---
 
 
-﻿
-# Crono Metadata
+

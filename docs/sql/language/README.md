@@ -1,6 +1,6 @@
 ﻿---
-sidebar_label: Lenguaje Crono SQL
-sidebar_position: 0
+title: Lenguaje Crono SQL
+Position: 2
 ---
 
 

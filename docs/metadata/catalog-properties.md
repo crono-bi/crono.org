@@ -1,7 +1,7 @@
 ﻿---
-sidebar_label: Propiedades de catálogo
+title: Propiedades de catálogo
 sidebarDepth: 2
-sidebar_position: 14
+Position: 14
 ---
 
 

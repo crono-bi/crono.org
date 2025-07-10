@@ -1,6 +1,6 @@
 ﻿---
-sidebar_label: Vistas
-sidebar_position: 0
+title: Vistas
+Position: 5
 ---
 
 

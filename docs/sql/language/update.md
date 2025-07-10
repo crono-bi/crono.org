@@ -1,6 +1,6 @@
 ﻿---
-sidebar_label: Sentencia UPDATE
-sidebar_position: 3
+title: Sentencia UPDATE
+Position: 3
 ---
 
 

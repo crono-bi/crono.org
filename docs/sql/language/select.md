@@ -1,6 +1,6 @@
 ﻿---
-sidebar_label: Sentencia SELECT ❤️
-sidebar_position: 1
+title: Sentencia SELECT ❤️
+Position: 1
 ---
 
 

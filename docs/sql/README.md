@@ -1,10 +1,10 @@
 ﻿---
-sidebar_label: Crono SQL
-navigation_item: Crono SQL
-slug: /sql
+title: Crono SQL
+NavigationItem: Crono SQL
 hide_table_of_contents: true
+hide_sidebar: true
+Position: 4
 displayed_sidebar: null
-sidebar_position: 0
 ---
 
 

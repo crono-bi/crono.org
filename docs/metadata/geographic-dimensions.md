@@ -1,6 +1,6 @@
 ﻿---
-sidebar_label: Dimensiones geográficas
-sidebar_position: 11
+title: Dimensiones geográficas
+Position: 11
 ---
 
 

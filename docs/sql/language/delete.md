@@ -1,6 +1,6 @@
 ﻿---
-sidebar_label: Sentencia DELETE
-sidebar_position: 5
+title: Sentencia DELETE
+Position: 5
 ---
 
 

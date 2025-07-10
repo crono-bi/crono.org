@@ -1,7 +1,7 @@
 ﻿---
-sidebar_label: Validar catálogo
+title: Validar catálogo
 sidebarDepth: 2
-sidebar_position: 12
+Position: 12
 ---
 
 

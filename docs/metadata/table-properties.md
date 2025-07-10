@@ -1,7 +1,7 @@
 ﻿---
-sidebar_label: Propiedades de tabla
+title: Propiedades de tabla
 sidebarDepth: 2
-sidebar_position: 17
+Position: 17
 ---
 
 

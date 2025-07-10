@@ -1,7 +1,7 @@
 ﻿---
-sidebar_label: Propiedades de columna
+title: Propiedades de columna
 sidebarDepth: 2
-sidebar_position: 18
+Position: 18
 ---
 
 

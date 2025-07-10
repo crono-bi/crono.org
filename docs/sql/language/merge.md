@@ -1,6 +1,6 @@
 ﻿---
-sidebar_label: Sentencias MERGE ❤️
-sidebar_position: 4
+title: Sentencias MERGE ❤️
+Position: 4
 ---
 
 

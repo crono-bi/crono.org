@@ -1,6 +1,6 @@
 ﻿---
-sidebar_label: Listas de valores
-sidebar_position: 5
+title: Listas de valores
+Position: 5
 ---
 
 

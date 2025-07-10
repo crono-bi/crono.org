@@ -1,7 +1,7 @@
 ﻿---
-sidebar_label: Parámetros definidos en el catálogo
+title: Parámetros definidos en el catálogo
 sidebarDepth: 2
-sidebar_position: 9
+Position: 9
 ---
 
 

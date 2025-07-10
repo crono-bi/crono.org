@@ -1,7 +1,7 @@
 ﻿---
-sidebar_label: Tablas agregadas
+title: Tablas agregadas
 sidebarDepth: 2
-sidebar_position: 8
+Position: 8
 ---
 
 
