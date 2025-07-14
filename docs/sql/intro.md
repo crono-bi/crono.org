@@ -3,7 +3,6 @@ title: Introducción
 Position: 1
 ---
 
-
 # Introducción
 
 Crono SQL es un lenguaje de programación para facilitar el desarrollo ágil de proyectos ETL/DWH. En esta página se muestra la sintaxis del lenguaje y todas las funciones admitidas.
@@ -91,3 +90,12 @@ El manual se organiza en estas secciones:
 - [**Referencia lenguaje**](/sql/reference/): Amplia la información de la sección anterior completándola con sintaxis o funcionalidades más avanzadas.
 - [**Funciones**](/sql/functions/): Listado de todas las funciones del lenguaje agrupadas en 6 subsecciones: Funciones de asgregación, de conversión y lógicas, de fecha, de texto, matemáticas y funciones de sistema.
 - [**Vistas**](/sql/views/): Listado de todas las "vistas" predefinidas que incluye el lenguaje.
+
+
+Prueba
+
+
+
+
+
+
