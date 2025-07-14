@@ -1,9 +1,9 @@
-#__docusaurus .crono-hero-red-bg {
+#__docusaurus .crono-hero-bg {
   position: relative;
   margin-top: -3rem;
 }
 
-#__docusaurus .crono-hero-red-bg::before {
+#__docusaurus .crono-hero-bg::before {
   content: "";
   position: absolute;
   top: 0;
@@ -15,7 +15,8 @@
   z-index: -1;
 }
 
-#__docusaurus .crono-hero-red-bg > div {
+#__docusaurus .crono-hero-bg > div {
   position: relative;
   z-index: 1;
 }
+  

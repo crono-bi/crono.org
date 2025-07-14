@@ -6,24 +6,16 @@ displayed_sidebar: null
 ---
 
 import CronoHero from '@site/src/components/CronoHero';
-import '@site/src/css/red-banner.css';
+import NavigationCards from '@site/src/components/NavigationCards';
+import CronoFooter from '@site/src/components/CronoFooter';
+import '@site/src/css/banner-bg-container.css';
 
-<div className="crono-hero-red-bg">
+<div className="crono-hero-bg">
   <CronoHero />
 </div>
 
-## Manuales disponibles
+## Documentación de Crono
 
+<NavigationCards />
 
-## Productos
-
-- [Crono Analysis](analysis)
-- [Crono ETL](etl)
-- [Crono Metadata](metadata)
-- [Crono SQL](sql)
-- [Markpad](markpad)
-
-## Formación
-
-
-[Cómo construir un DWH](dwh)
+<CronoFooter />

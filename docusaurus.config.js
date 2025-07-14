@@ -8,8 +8,6 @@ import { themes as prismThemes } from 'prism-react-renderer';
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
-
-
 import configJson from './docusaurus.json';
 require.resolve('./docusaurus.json');
 
@@ -29,7 +27,10 @@ const config = {
             type: 'text/css',
             id: 'devexpress-theme',
         },
+        '/css/navbar-logo.css',
+        '/css/custom.css',
     ],
+    // El CSS personalizado se configura en el preset
     scripts: [
         {
             src: 'https://cdn3.devexpress.com/jslib/23.2.3/js/dx.all.js',
@@ -51,7 +52,13 @@ const config = {
                     routeBasePath: '/', // Serve the docs at the site's root
                     sidebarPath: './sidebars.js'
                 },
-                blog: false
+                blog: false,
+                theme: {
+                    customCss: [
+                        require.resolve('./src/css/custom-dark.css'),
+                        require.resolve('./src/css/global.css'),
+                    ],
+                }
             }),
         ],
     ],
@@ -74,6 +81,7 @@ const config = {
         ({
             // Replace with your project's social card
             image: 'img/docusaurus-social-card.jpg',
+            favicon: 'images/logo-mini-crono-black.png',
             navbar: configJson.navbar,
             prism: {
                 theme: prismThemes.vsLight,

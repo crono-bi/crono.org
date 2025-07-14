@@ -1,0 +1,73 @@
+/* Estilos para las tarjetas de navegación */
+.navigation-cards-container {
+  margin: 2rem 0;
+}
+
+.navigation-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.navigation-card {
+  display: block;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  text-decoration: none !important;
+  color: inherit;
+  height: 100%;
+  background-color: white;
+  border: 1px solid #e5e7eb;
+}
+
+.navigation-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  text-decoration: none;
+}
+
+.navigation-card-content {
+  padding: 1.5rem;
+}
+
+.navigation-card-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.navigation-card-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  color: #0366d6;
+}
+
+.navigation-card-description {
+  font-size: 0.9rem;
+  color: #57606a;
+  margin-bottom: 0;
+  line-height: 1.5;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+  .navigation-cards-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Estilos para modo oscuro */
+html[data-theme='dark'] .navigation-card {
+  background-color: #1c1e21;
+  border-color: #2d3139;
+}
+
+html[data-theme='dark'] .navigation-card-title {
+  color: #58a6ff;
+}
+
+html[data-theme='dark'] .navigation-card-description {
+  color: #8b949e;
+}

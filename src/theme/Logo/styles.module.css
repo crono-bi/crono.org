@@ -1,0 +1,10 @@
+/* Estilos para el logo en la barra de navegación */
+.logoImage {
+  height: 30px;
+  width: auto;
+}
+
+/* Invertir colores en modo oscuro */
+html[data-theme='dark'] .logoImage {
+  filter: invert(1);
+}

@@ -1,0 +1,15 @@
+.navbar-logo {
+  height: 30px;
+  width: auto;
+}
+
+html[data-theme='dark'] .navbar__logo img,
+html[data-theme='dark'] .navbar-logo {
+  filter: invert(1);
+}
+
+.navbar-logo-link {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
