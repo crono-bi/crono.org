@@ -13,7 +13,7 @@
   left: 0;
   right: 0;
   height: 100%; /* Ocupa toda la altura del contenedor */
-  background-color: red;
+  background-color: #f6f8fa;
   width: 100vw;
   margin-left: calc(-50vw + 50%);
   margin-right: calc(-50vw + 50%);

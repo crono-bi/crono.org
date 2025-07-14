@@ -3,14 +3,14 @@ import React from 'react';
 export default function CronoHero() {
   return (
     <div style={{
-      backgroundColor: '#f6f8fa',
+      backgroundColor: 'transparent',
       width: '100%',
       padding: '3rem 0',
       marginBottom: '1.5rem',
       borderRadius: '8px',
       overflow: 'hidden'
     }}>
-      <div className="container-xl px-xl-6" style={{maxWidth: '1320px', margin: '0 auto'}}>
+      <div className="container-xl px-xl-6" style={{maxWidth: '1320px', margin: '0', paddingLeft: '0'}}>
         <div style={{width: '100%', overflow: 'hidden'}}>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 280" aria-hidden="true" style={{width: '100%', height: 'auto', display: 'block'}}>
             {/* Fondo y elementos decorativos */}
@@ -74,8 +74,8 @@ export default function CronoHero() {
               <path d="M460 150l60 30M460 170l100 50M340 200l-40 30M500 250l100-20M700 220l50-40" stroke="#0366d6" strokeWidth="1" strokeDasharray="5,5"></path>
             </g>
             {/* Texto superpuesto */}
-            <text x="50" y="80" fontFamily="Arial, sans-serif" fontSize="48" fontWeight="bold" fill="#24292f">Crono</text>
-            <text x="50" y="130" fontFamily="Arial, sans-serif" fontSize="32" fill="#57606a">Documentación</text>
+            <text x="0" y="80" fontFamily="Arial, sans-serif" fontSize="48" fontWeight="bold" fill="#24292f">Crono</text>
+            <text x="0" y="130" fontFamily="Arial, sans-serif" fontSize="32" fill="#57606a">Documentación</text>
           </svg>
         </div>
       </div>
