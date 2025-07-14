@@ -6,8 +6,11 @@ displayed_sidebar: null
 ---
 
 import CronoHero from '@site/src/components/CronoHero';
+import '@site/src/css/red-banner.css';
 
-<CronoHero />
+<div className="crono-hero-red-bg">
+  <CronoHero />
+</div>
 
 ## Manuales disponibles
 

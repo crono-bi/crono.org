@@ -1,0 +1,21 @@
+/* Estilos personalizados para el sitio */
+
+/* Contenedor principal para el banner con fondo rojo */
+.red-bg-container {
+  position: relative;
+}
+
+/* Fondo rojo que ocupa todo el ancho de la pantalla y tiene la misma altura que el banner */
+.red-bg-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%; /* Ocupa toda la altura del contenedor */
+  background-color: red;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+  z-index: -1; /* Coloca el fondo detrás del contenido */
+}

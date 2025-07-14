@@ -1,0 +1,24 @@
+/* Estilos para el banner con fondo rojo */
+#__docusaurus .crono-hero-red-bg {
+  position: relative;
+  margin-top: -3rem;
+}
+
+/* Fondo rojo que ocupa todo el ancho de la pantalla */
+#__docusaurus .crono-hero-red-bg::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 100vw;
+  height: 100%;
+  transform: translateX(-50%);
+  background-color: red;
+  z-index: -1;
+}
+
+/* Asegurar que el banner gris quede por encima del fondo rojo */
+#__docusaurus .crono-hero-red-bg > div {
+  position: relative;
+  z-index: 1;
+}
