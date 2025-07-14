@@ -1,6 +1,15 @@
-﻿# Bienvenido 
+---
+title: ''
+hide_table_of_contents: true
+hide_sidebar: false
+displayed_sidebar: null
+---
 
-EStos son los manuales disponibles actualmente:
+import CronoHero from '@site/src/components/CronoHero';
+
+<CronoHero />
+
+## Manuales disponibles
 
 
 ## Productos
@@ -10,7 +19,6 @@ EStos son los manuales disponibles actualmente:
 - [Crono Metadata](metadata)
 - [Crono SQL](sql)
 - [Markpad](markpad)
-
 
 ## Formación
 
