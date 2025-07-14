@@ -3,9 +3,9 @@ import React from 'react';
 export default function CronoHero() {
   return (
     <div className="container-xl px-xl-6">
-      <div className="gutter gutter-xl-spacious d-lg-flex flex-row-reverse flex-items-center">
-        <div className="col-lg-6 col-xl-7 mb-4 mb-lg-0">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 360" aria-hidden="true">
+      <div className="position-relative">
+        <div className="position-relative">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 360" aria-hidden="true" width="100%">
             {/* Fondo y elementos decorativos */}
             <g data-name="Background">
               <ellipse cx="120" cy="346" rx="87" ry="8" fill="rgba(0,0,0,.15)"></ellipse>
@@ -66,11 +66,10 @@ export default function CronoHero() {
             <g data-name="Connections">
               <path d="M460 150l60 30M460 170l100 50M340 200l-40 30M500 250l100-20M700 220l50-40" stroke="#0366d6" strokeWidth="1" strokeDasharray="5,5"></path>
             </g>
+            {/* Texto superpuesto */}
+            <text x="50" y="80" fontFamily="Arial, sans-serif" fontSize="48" fontWeight="bold" fill="#24292f">Crono</text>
+            <text x="50" y="130" fontFamily="Arial, sans-serif" fontSize="32" fill="#57606a">Documentación</text>
           </svg>
-        </div>
-        <div className="col-lg-6 col-xl-5">
-          <h1 id="title-h1">Documentación Crono</h1>
-          <p className="color-fg-muted f2 mb-0">Guías y manuales para todos los productos de la plataforma Crono.</p>
         </div>
       </div>
     </div>
