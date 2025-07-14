@@ -4,15 +4,15 @@ export default function CronoHero() {
   return (
     <div style={{
       backgroundColor: '#f6f8fa',
-      width: '100vw',
-      marginLeft: 'calc(-50vw + 50%)',
-      marginRight: 'calc(-50vw + 50%)',
+      width: '100%',
       padding: '3rem 0',
-      marginBottom: '1.5rem'
+      marginBottom: '1.5rem',
+      borderRadius: '8px',
+      overflow: 'hidden'
     }}>
       <div className="container-xl px-xl-6" style={{maxWidth: '1320px', margin: '0 auto'}}>
         <div style={{width: '100%', overflow: 'hidden'}}>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 360" aria-hidden="true" style={{width: '100%', height: 'auto', display: 'block'}}>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 280" aria-hidden="true" style={{width: '100%', height: 'auto', display: 'block'}}>
             {/* Fondo y elementos decorativos */}
             <g data-name="Background">
               <ellipse cx="120" cy="346" rx="87" ry="8" fill="rgba(0,0,0,.15)"></ellipse>
