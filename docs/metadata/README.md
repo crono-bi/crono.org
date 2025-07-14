@@ -1,8 +1,13 @@
 ﻿---
 title: Crono Metadata
 NavigationItem: Crono Metadata
-Position: 3
+hide_table_of_contents: true
+Position: 1
 ---
+
+# Crono Metadata
+
+<DocCardList />
 
 
 

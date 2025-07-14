@@ -37,7 +37,10 @@
         "type": "category",
         "label": "Manual Crono Analysis",
         "collapsed": true,
-        "link": null,
+        "link": {
+          "type": "doc",
+          "id": "analysis/README"
+        },
         "items": [
           {
             "type": "doc",
@@ -128,7 +131,10 @@
         "type": "category",
         "label": "Crono Metadata",
         "collapsed": true,
-        "link": null,
+        "link": {
+          "type": "doc",
+          "id": "metadata/README"
+        },
         "items": [
           {
             "type": "doc",
