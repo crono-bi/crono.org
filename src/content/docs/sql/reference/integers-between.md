@@ -1,5 +1,7 @@
 ---
 title: "INTEGERS BETWEEN"
+sidebar:
+  order: 5
 ---
 
 

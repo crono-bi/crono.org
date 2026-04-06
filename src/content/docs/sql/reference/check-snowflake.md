@@ -1,5 +1,7 @@
 ---
 title: "CHECK SNOWFLAKE"
+sidebar:
+  order: 3
 ---
 
 

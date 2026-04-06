@@ -1,5 +1,7 @@
 ---
 title: "Palabras reservadas de Crono SQL"
+sidebar:
+  order: 2
 ---
 
 

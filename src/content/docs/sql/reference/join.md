@@ -1,5 +1,7 @@
 ---
 title: "JOIN"
+sidebar:
+  order: 6
 ---
 
 

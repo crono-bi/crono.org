@@ -1,5 +1,7 @@
 ---
 title: "Sentencia INSERT"
+sidebar:
+  order: 2
 ---
 
 

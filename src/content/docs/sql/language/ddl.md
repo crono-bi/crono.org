@@ -1,5 +1,7 @@
 ---
 title: "Sentencias DDL"
+sidebar:
+  order: 7
 ---
 
 

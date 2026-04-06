@@ -1,5 +1,7 @@
 ---
 title: "Sentencia DELETE"
+sidebar:
+  order: 5
 ---
 
 

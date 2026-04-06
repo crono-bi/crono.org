@@ -1,5 +1,7 @@
 ---
 title: "MATERIALIZE"
+sidebar:
+  order: 7
 ---
 
 
