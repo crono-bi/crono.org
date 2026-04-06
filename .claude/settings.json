@@ -7,7 +7,13 @@
       "Bash(NODE_OPTIONS=--openssl-legacy-provider npm run dev)",
       "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:8080/)",
       "Bash(node -e ':*)",
-      "Bash(powershell.exe -Command 'try { Get-Content '\\\\''d:\\\\GitHub\\\\crono.org-master\\\\src\\\\.vuepress\\\\public\\\\sidebar.json'\\\\'' -Raw | ConvertFrom-Json | Out-Null; Write-Host '\\\\''JSON válido'\\\\'' } catch { Write-Host \"Error: $_\" }')"
+      "Bash(powershell.exe -Command 'try { Get-Content '\\\\''d:\\\\GitHub\\\\crono.org-master\\\\src\\\\.vuepress\\\\public\\\\sidebar.json'\\\\'' -Raw | ConvertFrom-Json | Out-Null; Write-Host '\\\\''JSON válido'\\\\'' } catch { Write-Host \"Error: $_\" }')",
+      "Bash(npm outdated:*)",
+      "Bash(npm audit:*)",
+      "Read(//tmp/**)",
+      "Bash(NODE_OPTIONS='--openssl-legacy-provider --max-old-space-size=4096' npm run build)",
+      "Bash(export NODE_OPTIONS='--openssl-legacy-provider --max-old-space-size=4096')",
+      "Bash(npx vuepress:*)"
     ]
   }
 }
