@@ -13,7 +13,17 @@
       "Read(//tmp/**)",
       "Bash(NODE_OPTIONS='--openssl-legacy-provider --max-old-space-size=4096' npm run build)",
       "Bash(export NODE_OPTIONS='--openssl-legacy-provider --max-old-space-size=4096')",
-      "Bash(npx vuepress:*)"
+      "Bash(npx vuepress:*)",
+      "Bash(echo \"analysis: $\\(find ./src/analysis -name \"*.md\" -type f)",
+      "Bash(find ./src -name \"*.md\" -type f -exec head -30 {} \\\\;)",
+      "Bash(find ./src -name \"*.md\" -type f -exec sed -n '2,50p' {} \\\\;)",
+      "Bash(find ./src -name \"*.md\" -type f -exec awk '/^---$/ {flag=!flag; next} flag && NF' {} \\\\;)",
+      "Bash(cat ./pages/components/*.xml)",
+      "Bash(npm create:*)",
+      "Bash(node scripts/convert-sidebar.mjs)",
+      "Bash(node scripts/migrate-content.mjs)",
+      "Bash(node scripts/replace-modals.mjs)",
+      "Bash(ls \"d:\\\\GitHub\\\\crono.org-master\\\\astro\\\\public\\\\\"*.webp \"d:\\\\GitHub\\\\crono.org-master\\\\astro\\\\public\\\\\"*.png)"
     ]
   }
 }
