@@ -12,6 +12,9 @@ export default defineConfig({
 			locales: { root: { label: 'Español', lang: 'es' } },
 			social: [{ icon: 'external', label: 'Crono', href: 'https://businessintelligence.es' }],
 			customCss: ['./src/styles/custom.css'],
+			components: {
+				SiteTitle: './src/components/SiteTitle.astro',
+			},
 			plugins: [
 				starlightSidebarTopics([
 					{
