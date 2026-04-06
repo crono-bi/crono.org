@@ -2,7 +2,13 @@
   "permissions": {
     "allow": [
       "Bash(py --version)",
-      "Bash(grep -n \"^[[:space:]]*{$\" /d/GitHub/crono.org-master/astro.config.mjs)"
+      "Bash(grep -n \"^[[:space:]]*{$\" /d/GitHub/crono.org-master/astro.config.mjs)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:www.npmjs.com)",
+      "WebFetch(domain:starlight-sidebar-topics.netlify.app)",
+      "WebSearch",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(python -c ':*)"
     ]
   }
 }
