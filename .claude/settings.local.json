@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(py --version)",
+      "Bash(grep -n \"^[[:space:]]*{$\" /d/GitHub/crono.org-master/astro.config.mjs)"
+    ]
+  }
+}

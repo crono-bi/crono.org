@@ -13,6 +13,7 @@ export default defineConfig({
 			sidebar: [
 	{
 		label: "Crono Analysis",
+		collapsed: true,
 		items: [
 			{
 				label: "Introducción",
@@ -82,6 +83,7 @@ export default defineConfig({
 	},
 	{
 		label: "Crono Metadata",
+		collapsed: true,
 		items: [
 			{
 				label: "Introducción",
@@ -163,6 +165,7 @@ export default defineConfig({
 	},
 	{
 		label: "Crono SQL",
+		collapsed: true,
 		items: [
 			{
 				label: "Introducción",
@@ -1497,6 +1500,30 @@ export default defineConfig({
 						],
 					},
 				],
+			},
+		],
+	},
+	{
+		label: "Crono ETL",
+		collapsed: true,
+		items: [
+			{
+				label: "Inicio",
+				link: "etl/",
+			},
+		],
+	},
+	{
+		label: "Ejemplos Starlight",
+		collapsed: true,
+		items: [
+			{
+				label: "Guía de ejemplo",
+				link: "guides/example/",
+			},
+			{
+				label: "Referencia de ejemplo",
+				link: "reference/example/",
 			},
 		],
 	},
