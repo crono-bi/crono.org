@@ -1,4 +1,4 @@
-﻿{
+{
   "/analysis/": [
     {
       "title": "Manual Crono Analysis",
@@ -346,11 +346,6 @@
                   "title": "count_big",
                   "collapsable": false,
                   "path": "/sql/functions/count_big.html"
-                },
-                {
-                  "title": "countdistinct \u2747\uFE0F",
-                  "collapsable": false,
-                  "path": "/sql/functions/countdistinct.html"
                 },
                 {
                   "title": "cume_dist",
