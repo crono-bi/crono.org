@@ -2,7 +2,6 @@
 title: "db_name"
 ---
 
-# db_name
 
 Esta función devuelve el nombre de una base de datos especificada.
 

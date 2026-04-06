@@ -2,7 +2,6 @@
 title: "ceiling"
 ---
 
-# ceiling
 
 Esta función devuelve el entero más pequeño mayor o igual que la expresión numérica especificada.
 

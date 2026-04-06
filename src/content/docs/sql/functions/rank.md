@@ -2,7 +2,6 @@
 title: "rank"
 ---
 
-# rank
 
 Devuelve el rango de cada fila dentro de la partición de un conjunto de resultados. El rango de una fila es uno más el número de rangos que preceden a la fila en cuestión.
 

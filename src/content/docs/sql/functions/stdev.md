@@ -2,7 +2,6 @@
 title: "stdev"
 ---
 
-# stdev
 
 Devuelve la desviación estándar estadística de todos los valores de la expresión especificada.
 

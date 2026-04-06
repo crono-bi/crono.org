@@ -2,7 +2,6 @@
 title: "Lenguaje Crono SQL"
 ---
 
-# Lenguaje Crono SQL
 
 En esta sección se explica en detalle la sintaxis del lenguaje Crono SQL.
 

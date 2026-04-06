@@ -2,7 +2,6 @@
 title: "log"
 ---
 
-# log
 
 Devuelve el logaritmo natural de la expresión **float** especificada en SQL Server.
 

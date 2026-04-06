@@ -2,7 +2,6 @@
 title: "Introducción a Crono Analysis"
 ---
 
-# Introducción a Crono Analysis
 
 **Crono Analysis** es una herramientas de Business Intelligence fácil de usar que permite la realización de análisis libre, la construcción de dashboards e informes predefinidos.
 

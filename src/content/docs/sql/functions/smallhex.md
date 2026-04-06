@@ -2,6 +2,5 @@
 title: "smallhex ❇️ 🚧"
 ---
 
-# smallhex ❇️ 🚧
 
 

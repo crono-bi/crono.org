@@ -2,7 +2,6 @@
 title: "asin"
 ---
 
-# asin
 
 Una función que devuelve el ángulo, en radianes, cuyo seno es la expresión **flotante** especificada. Esto también se llama **arcoseno**.
 

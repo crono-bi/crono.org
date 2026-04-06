@@ -2,7 +2,6 @@
 title: "checksum"
 ---
 
-# checksum
 
 La función `CHECKSUM` devuelve el valor de la suma de comprobación calculado sobre una fila de tabla o sobre una lista de expresiones. Use `CHECKSUM` para construir índices hash.
 

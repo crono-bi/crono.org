@@ -2,7 +2,6 @@
 title: "SELECTs anidados"
 ---
 
-# SELECTs anidados
 
 Es posible incluir varios **SELECT** en una misma consulta. Esta sintaxis permite escribir rápidamente una consulta sobre el resultado de otra consulta.  Son consultas encadenadas.
 

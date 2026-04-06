@@ -2,7 +2,6 @@
 title: "fulltextserviceproperty"
 ---
 
-# fulltextserviceproperty
 
 Devuelve información relacionada con las propiedades del motor de texto completo. Estas propiedades se pueden establecer y recuperar mediante **sp_fulltext_service**.
 

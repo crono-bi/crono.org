@@ -2,7 +2,6 @@
 title: "switchoffset"
 ---
 
-# switchoffset
 
 Devuelve un valor de **datetimeoffset** que se cambia del desplazamiento de zona horaria almacenado a un nuevo desplazamiento de zona horaria especificado.
 

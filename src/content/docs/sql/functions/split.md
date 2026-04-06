@@ -3,7 +3,6 @@ title: "split"
 ---
 
 
-# split
 
 La función `split` divide una cadena de texto en partes usando un separador especificado y devuelve el elemento en la posición indicada por el índice (comenzando en 1).
 

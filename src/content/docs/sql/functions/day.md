@@ -2,7 +2,6 @@
 title: "day"
 ---
 
-# day
 
 Esta función devuelve un número entero que representa el día (día del mes) de la *fecha* especificada.
 

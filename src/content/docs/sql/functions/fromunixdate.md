@@ -2,7 +2,6 @@
 title: "fromunixdate"
 ---
 
-# fromunixdate
 
 La función `fromunixdate` convierte un valor de marca de tiempo Unix (Unix timestamp) a una fecha y hora en formato `DATETIME`.
 

@@ -2,7 +2,6 @@
 title: "Sentencia TRUNCATE"
 ---
 
-# Sentencia TRUNCATE
 
 **Crono SQL** soporta la sintaxis estándar del a sentencia **TRUNCATE** de SQL:
 

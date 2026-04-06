@@ -2,7 +2,6 @@
 title: "pi"
 ---
 
-# pi
 
 Devuelve el valor constante de PI.
 

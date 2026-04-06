@@ -2,7 +2,6 @@
 title: "JOIN"
 ---
 
-# JOIN 
 
 **JOIN** es un operador SQL que se utiliza para combinar filas de dos o más tablas en una única tabla resultante. Los JOIN se basan en una relación que existe entre las tablas involucradas. Por ejemplo, si tienes una tabla de clientes y otra tabla de pedidos, puedes usar un JOIN para obtener información sobre los pedidos realizados por cada cliente.
 

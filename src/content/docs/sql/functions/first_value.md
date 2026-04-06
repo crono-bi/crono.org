@@ -2,7 +2,6 @@
 title: "first_value"
 ---
 
-# first_value
 
 Devuelve el primer valor de un conjunto ordenado de valores.
 

@@ -2,7 +2,6 @@
 title: "Crono$Functions"
 ---
 
-# Crono$Functions
 
 
 

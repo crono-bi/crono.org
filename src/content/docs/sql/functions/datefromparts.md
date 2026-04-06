@@ -2,7 +2,6 @@
 title: "datefromparts"
 ---
 
-# datefromparts
 
 Esta función devuelve un valor de **fecha** que se asigna a los valores de año, mes y día especificados.
 

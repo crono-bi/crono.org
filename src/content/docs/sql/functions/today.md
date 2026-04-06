@@ -2,7 +2,6 @@
 title: "today"
 ---
 
-# today ❇️
 
 La función `today` devuelve la fecha (tipo **date**) correspondiente al día de hoy.
 

@@ -2,7 +2,6 @@
 title: "UNPIVOT"
 ---
 
-# UNPIVOT
 
 Se puede utilizar el operador **UNPIVOT** (según la [sintaxis de T-SQL](https://technet.microsoft.com/es-es/library/ms177410(v=sql.105).aspx)) para despivotar las columnas de una tabla.
 

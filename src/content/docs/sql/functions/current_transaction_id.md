@@ -2,7 +2,6 @@
 title: "current_transaction_id"
 ---
 
-# current_transaction_id
 
 Esta función devuelve el ID de transacción de la transacción actual en la sesión actual.
 

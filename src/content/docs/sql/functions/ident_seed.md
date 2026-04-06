@@ -2,7 +2,6 @@
 title: "ident_seed"
 ---
 
-# ident_seed
 
 Devuelve el valor semilla original especificado al crear una columna de identidad en una tabla o vista. Cambiar el valor actual de una columna de identidad mediante DBCC CHECKIDENT no cambia el valor devuelto por esta función.
 

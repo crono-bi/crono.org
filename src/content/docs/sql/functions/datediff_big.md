@@ -2,7 +2,6 @@
 title: "datediff_big"
 ---
 
-# datediff_big
 
 Esta función devuelve el recuento (como un valor entero grande con signo) de los límites *datepart* especificados cruzados entre la *fecha de inicio* y la *fecha de finalización* especificadas.
 

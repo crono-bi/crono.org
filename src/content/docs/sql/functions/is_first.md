@@ -2,7 +2,6 @@
 title: "is_first"
 ---
 
-# is_first
 
 La función `is_first` es una función de ventana que identifica la fila inicial del rango.
 

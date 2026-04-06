@@ -2,7 +2,6 @@
 title: "previous_value"
 ---
 
-# previous_value ❇️
 
 La función `previous_value` es una función de ventana que devuelve el valor del anterior registro del rango.
 

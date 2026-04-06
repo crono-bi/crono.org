@@ -2,7 +2,6 @@
 title: "object_id"
 ---
 
-# object_id
 
 Devuelve el número de identificación del objeto de la base de datos de un objeto del ámbito del esquema.
 

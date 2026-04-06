@@ -2,7 +2,6 @@
 title: "var"
 ---
 
-# var
 
 Devuelve la varianza estadística de todos los valores de la expresión especificada. Puede ir seguido de la [cláusula OVER](../../t-sql/queries/select-over-clause-transact-sql.md).
 

@@ -2,7 +2,6 @@
 title: "pct"
 ---
 
-# pct ❇️
 
 La función `pct` es una función de ventana que devuelve el porcentaje de cada valor respecto la suma de todos los registros del rango.
 

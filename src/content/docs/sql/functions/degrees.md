@@ -2,7 +2,6 @@
 title: "degrees"
 ---
 
-# degrees
 
 Esta función devuelve el ángulo correspondiente, en grados, para un ángulo especificado en radianes.
 

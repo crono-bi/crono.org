@@ -2,7 +2,6 @@
 title: "Crono$Union"
 ---
 
-# Crono$Union
 
 Las vistas `Crono$Union` y `Crono$UnionAll` permiten unir múltiples tablas (o vistas) en un único resultado.
 

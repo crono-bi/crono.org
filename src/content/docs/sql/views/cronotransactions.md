@@ -2,7 +2,6 @@
 title: "Crono$Transactions"
 ---
 
-# Crono$Transactions
 
 Devuelve las transacciones activas en el servidor SQL Server.
 

@@ -2,7 +2,6 @@
 title: "tomorrow"
 ---
 
-# tomorrow ❇️
 
 La función `tomorrow` devuelve la fecha (tipo **date**) correspondiente al día de mañana.
 

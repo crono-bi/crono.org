@@ -2,7 +2,6 @@
 title: "localdatetimeoffset"
 ---
 
-# localdatetimeoffset ❇️
 
 La función `localdatetimeoffset` transforma una fecha con ajuste de zona horaria (tipo **datetimeoffset**) a la misma fecha pero con el ajuste correspondiente a la zona horaria local.
 

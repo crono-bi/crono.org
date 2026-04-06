@@ -2,7 +2,6 @@
 title: "iif"
 ---
 
-# iif
 
 Devuelve uno de dos valores, dependiendo de si la expresión booleana se evalúa como verdadera o falsa en SQL Server.
 

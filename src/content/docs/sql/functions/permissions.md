@@ -2,7 +2,6 @@
 title: "permissions"
 ---
 
-# permissions
 
 Devuelve un valor que contiene un mapa de bits que indica los permisos de declaración, objeto o columna del usuario actual.
 

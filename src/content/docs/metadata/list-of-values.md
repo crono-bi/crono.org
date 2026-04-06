@@ -2,7 +2,6 @@
 title: "Listas de valores"
 ---
 
-# Listas de valores
 
 Las listas de valores son los valores posibles que puede tener una dimensión. Las listas de valores son útiles porque facilitan la creación de filtros a los usuarios y les permite reconocer el significado exacto de cada dimensión.
 

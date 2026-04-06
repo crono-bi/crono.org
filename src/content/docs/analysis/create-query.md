@@ -2,7 +2,6 @@
 title: "Crear una consulta"
 ---
 
-# Crear una consulta
 
 ## Cómo crear un informe
 

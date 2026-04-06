@@ -2,7 +2,6 @@
 title: "suser_name"
 ---
 
-# suser_name
 
 Devuelve el nombre de identificación de inicio de sesión del usuario.
 

@@ -2,7 +2,6 @@
 title: "serverproperty"
 ---
 
-# serverproperty
 
 Devuelve información de propiedad sobre la instancia del servidor.
 

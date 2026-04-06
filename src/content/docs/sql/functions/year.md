@@ -2,7 +2,6 @@
 title: "year"
 ---
 
-# year
 
 Devuelve un entero que representa el año de la *fecha* especificada.
 

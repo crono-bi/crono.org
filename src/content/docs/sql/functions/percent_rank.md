@@ -2,7 +2,6 @@
 title: "percent_rank"
 ---
 
-# percent_rank
 
 Calcula el rango relativo de una fila dentro de un grupo de filas en SQL Server. Utilice PERCENT_RANK para evaluar la posición relativa de un valor dentro de una partición o conjunto de resultados de consulta. PERCENT_RANK es similar a la función CUME_DIST.
 

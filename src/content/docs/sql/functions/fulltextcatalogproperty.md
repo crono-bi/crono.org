@@ -2,7 +2,6 @@
 title: "fulltextcatalogproperty"
 ---
 
-# fulltextcatalogproperty
 
 Devuelve información sobre las propiedades del catálogo de texto completo en SQL Server.
 

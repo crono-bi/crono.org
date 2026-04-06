@@ -2,7 +2,6 @@
 title: "Vistas misceláneas"
 ---
 
-# Vistas misceláneas
 
 
 

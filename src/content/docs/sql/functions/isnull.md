@@ -2,7 +2,6 @@
 title: "isnull"
 ---
 
-# isnull
 
 Reemplaza NULL con el valor de reemplazo especificado.
 

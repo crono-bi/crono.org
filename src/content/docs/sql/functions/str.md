@@ -2,7 +2,6 @@
 title: "str"
 ---
 
-# str
 
 Devuelve datos de caracteres convertidos a partir de datos numéricos. Los datos de caracteres están justificados a la derecha, con una longitud especificada y una precisión decimal.
 

@@ -2,7 +2,6 @@
 title: "addition ❇️"
 ---
 
-# addition ❇️ ❤️ 
 
 La función `addition` devuelve la suma de un conjunto de números, ignorando los valores nulos que pueda haber.
 

@@ -2,7 +2,6 @@
 title: "Propiedades de panel"
 ---
 
-# Propiedades de panel
 
 Haciendo clic con el botón derecho en la parte superior de un panel (en la espacio reservado para el título) aparece el menú contextual del panel, y puede abrirse la ventana de propiedades.
 

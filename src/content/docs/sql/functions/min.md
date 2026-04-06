@@ -2,7 +2,6 @@
 title: "min"
 ---
 
-# min
 
 Devuelve el valor mínimo de la expresión. Puede ir seguido de la [cláusula OVER](../../t-sql/queries/select-over-clause-transact-sql.md).
 

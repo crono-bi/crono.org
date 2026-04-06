@@ -2,7 +2,6 @@
 title: "right"
 ---
 
-# right ❇️
 
 La función `right` devuelve el número especificado de caracteres finales de una cadena de texto.
 

@@ -2,7 +2,6 @@
 title: "datepart"
 ---
 
-# datepart ❇️
 
 Esta función devuelve un número entero que representa el *datepart* especificado de la *fecha* especificada.
 

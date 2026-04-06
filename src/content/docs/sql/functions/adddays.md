@@ -1,7 +1,6 @@
 ---
 title: "adddays"
 ---
-# adddays
 
 La función adddays devuelve una nueva fecha que resulta de sumar un número determinado de días a una fecha base especificada.
 

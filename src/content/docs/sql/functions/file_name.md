@@ -2,7 +2,6 @@
 title: "file_name"
 ---
 
-# file_name
 
 Esta función devuelve el nombre de archivo lógico para un número de identificación (ID) de archivo dado.
 

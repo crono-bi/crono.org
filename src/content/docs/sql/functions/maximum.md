@@ -2,7 +2,6 @@
 title: "maximum"
 ---
 
-# maximum ❇️
 
 La función `maximum` devuelve el valor máximo entre el conjunto de expresiones de entrada.
 

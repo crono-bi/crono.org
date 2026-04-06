@@ -2,7 +2,6 @@
 title: "runningsum"
 ---
 
-# runningsum ❇️
 
 La función `runningsum` es una función de ventana que devuelve el acumulado de un indicador desde el inicio del rango hasta cada fila.
 

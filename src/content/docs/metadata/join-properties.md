@@ -2,7 +2,6 @@
 title: "Propiedades de relación"
 ---
 
-# Propiedades de relación
 
 Desde el menú contextual de una relación del diagrama podemos acceder a sus propiedades:
 

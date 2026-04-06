@@ -2,7 +2,6 @@
 title: "generate_series"
 ---
 
-# generate_series
 
 Genera una serie de números dentro de un intervalo dado. El usuario define el intervalo y el paso entre los valores de la serie.
 

@@ -2,7 +2,6 @@
 title: "datediff"
 ---
 
-# datediff ❇️
 
 Esta función devuelve el recuento (como un valor entero con signo) de los límites de parte de fecha especificados cruzados entre la *fecha de inicio* y la *fecha de finalización* especificadas.
 

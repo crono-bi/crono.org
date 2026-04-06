@@ -2,7 +2,6 @@
 title: "Introducción"
 ---
 
-# Introducción
 
 
 Crono Metadata es la herramienta que permite definir el catálogo. El "catálogo" es la capa semántica que traduce las tablas, campos y relaciones de la base de datos en el lenguaje de negocio.

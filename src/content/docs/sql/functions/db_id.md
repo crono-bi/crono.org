@@ -2,7 +2,6 @@
 title: "db_id"
 ---
 
-# db_id
 
 Esta función devuelve el número de identificación (ID) de la base de datos de una base de datos especificada.
 

@@ -2,7 +2,6 @@
 title: "cursor_status"
 ---
 
-# cursor_status
 
 Para un parámetro dado, `CURSOR_STATUS` muestra si una declaración de cursor ha devuelto o no un cursor y un conjunto de resultados.
 

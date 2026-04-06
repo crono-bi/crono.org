@@ -2,7 +2,6 @@
 title: "Sentencias MERGE"
 ---
 
-# Sentencias MERGE ❤️
 
 
 La sentencia **MERGE** carga los datos en una **tabla destino** a partir del resultado de una **consulta de origen**.

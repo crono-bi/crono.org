@@ -2,7 +2,6 @@
 title: "ismemberof"
 ---
 
-# ismemberof ❇️
 
 La función `IsMemberOf` devuelve `1` o `0` en función de si el usuario actual pertenece a alguno de los grupos especificados del Directorio Activo.
 

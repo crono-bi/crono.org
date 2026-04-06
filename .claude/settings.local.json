@@ -8,7 +8,9 @@
       "WebFetch(domain:starlight-sidebar-topics.netlify.app)",
       "WebSearch",
       "WebFetch(domain:raw.githubusercontent.com)",
-      "Bash(python -c ':*)"
+      "Bash(python -c ':*)",
+      "Bash(python fix_titles.py)",
+      "Bash(python -c \"import os; os.remove\\('fix_titles.py'\\)\")"
     ]
   }
 }

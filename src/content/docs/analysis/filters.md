@@ -2,7 +2,6 @@
 title: "Filtros"
 ---
 
-# Filtros
 
 ## Tipos de filtro
 

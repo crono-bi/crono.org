@@ -2,7 +2,6 @@
 title: "Modo de propagación"
 ---
 
-# Modo de propagación
 
 Al seleccionar un valor en Crono, la selección se arrastra automáticamente al resto de paneles. Esta funcionalidad es esencial en Crono y permite navegar por la información y analizar los datos de manera muy ágil. Gracias a esta funcionalidad es posible navegar por la información a distintos niveles de de agregación a partir de un informe trivial.
 

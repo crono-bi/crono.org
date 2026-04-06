@@ -2,7 +2,6 @@
 title: "varp"
 ---
 
-# varp
 
 Devuelve la varianza estadística de la población para todos los valores de la expresión especificada.
 

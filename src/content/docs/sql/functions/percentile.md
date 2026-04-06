@@ -2,7 +2,6 @@
 title: "percentile"
 ---
 
-# percentile ❇️
 
 La función `percentile` es una función de ventana que devuelve el ranking de cada fila normalizado entre 1 y 100. Es decir, divide el conjunto en 100 grupos con el mismo número de registros cada uno y los numera de 1 a 100
 

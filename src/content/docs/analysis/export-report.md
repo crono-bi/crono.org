@@ -2,7 +2,6 @@
 title: "Exportación"
 ---
 
-# Exportación
 
 ## Copiar y pegar
 

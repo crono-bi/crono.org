@@ -2,7 +2,6 @@
 title: "abc"
 ---
 
-# abc ❇️
 
 La función `abc` traduce los números del 1 al 26 en las letras del abecedeario, de la A la la Z. Es decir, convierte el 1 en una A, el 2, en un B, etc.
 

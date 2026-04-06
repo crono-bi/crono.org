@@ -2,7 +2,6 @@
 title: "col_name"
 ---
 
-# col_name
 
 Esta función devuelve el nombre de una columna de la tabla, en función del número de identificación de la tabla y los valores del número de identificación de la columna de esa columna de la tabla.
 

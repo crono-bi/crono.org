@@ -2,7 +2,6 @@
 title: "filegroupproperty"
 ---
 
-# filegroupproperty
 
 Esta función devuelve el valor de la propiedad del grupo de archivos para un nombre y un valor de grupo de archivos especificados.
 

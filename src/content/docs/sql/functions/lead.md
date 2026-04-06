@@ -2,7 +2,6 @@
 title: "lead"
 ---
 
-# lead
 
 Accede a los datos de una fila posterior en el mismo conjunto de resultados sin el uso de una autocombinación que comience con SQL Server 2012. LEAD proporciona acceso a una fila en un desplazamiento físico determinado que sigue a la fila actual. Utilice esta función analítica en una declaración SELECT para comparar valores en la fila actual con valores en una fila siguiente.
 

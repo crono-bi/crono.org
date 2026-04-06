@@ -2,7 +2,6 @@
 title: "binary_checksum"
 ---
 
-# binary_checksum
 
 Devuelve el valor de la suma de comprobación binaria calculado sobre una fila de una tabla o sobre una lista de expresiones.
 

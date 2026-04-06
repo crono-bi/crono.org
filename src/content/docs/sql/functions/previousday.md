@@ -2,7 +2,6 @@
 title: "previousday"
 ---
 
-# previousday
 
 La función `PREVIOUSDAY()` devuelve la fecha del día anterior a la fecha proporcionada, como un valor de tipo DATE. 
 

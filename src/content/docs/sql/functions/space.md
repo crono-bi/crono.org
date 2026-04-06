@@ -2,7 +2,6 @@
 title: "space"
 ---
 
-# space
 
 Devuelve una cadena de espacios repetidos.
 

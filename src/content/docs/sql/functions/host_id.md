@@ -2,7 +2,6 @@
 title: "host_id"
 ---
 
-# host_id
 
 Devuelve el número de identificación de la estación de trabajo. El número de identificación de la estación de trabajo es el ID de proceso (PID) de la aplicación en la computadora cliente que se conecta a SQL Server.
 

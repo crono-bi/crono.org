@@ -2,7 +2,6 @@
 title: "Campos calculados"
 ---
 
-# Campos calculados
 
 La mayoría de elementos del catálogo serán campos existentes en las tablas de la base de datos, y por lo tanto podremos crearlos arrastrándolos directamente desde el diagrama a la _vista catálogo_. Sin embargo, en ocasiones necesitamos hacer algún cálculo o transformación adicional.
 

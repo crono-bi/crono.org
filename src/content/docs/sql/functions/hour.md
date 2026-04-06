@@ -2,7 +2,6 @@
 title: "hour"
 ---
 
-# hour ❇️
 
 La función `hour` devuelve un entero (tipo **int**) entre 0 y 23 que corresponde con la hora de la fecha del parámetro de entrada.
 

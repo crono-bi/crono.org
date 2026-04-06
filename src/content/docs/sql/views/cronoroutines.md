@@ -2,7 +2,6 @@
 title: "Crono$Routines"
 ---
 
-# Crono$Routines
 
 
 Devuelve información sobre los procedimientos y funciones de la base de datos. 

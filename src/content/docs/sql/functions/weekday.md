@@ -3,7 +3,6 @@ title: "weekday"
 ---
 
 
-# weekday
 
 La función `WEEKDAY` devuelve el nombre del día de la semana correspondiente a una fecha, como un literal de texto (por ejemplo, 'lunes', 'martes', etc.). Es útil para agrupar, filtrar o mostrar información basada en el día de la semana de una fecha dada.
 

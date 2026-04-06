@@ -2,7 +2,6 @@
 title: "suser_sid"
 ---
 
-# suser_sid
 
 Devuelve el número de identificación de seguridad (SID) del nombre de inicio de sesión especificado.
 

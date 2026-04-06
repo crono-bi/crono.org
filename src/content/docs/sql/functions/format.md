@@ -2,7 +2,6 @@
 title: "format"
 ---
 
-# format
 
 Devuelve un valor formateado con el formato especificado y la referencia cultural opcional. Utilice la función FORMAT para dar formato a la configuración regional de los valores numéricos y de fecha/hora como cadenas. Para conversiones generales de tipos de datos, utilice CAST o CONVERT.
 

@@ -2,7 +2,6 @@
 title: "square"
 ---
 
-# square
 
 Devuelve el cuadrado del valor flotante especificado.
 

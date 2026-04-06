@@ -2,7 +2,6 @@
 title: "rtrim"
 ---
 
-# rtrim
 
 ::: moniker range="<=sql-server-ver15 || <=sql-server-linux-ver15 || = azure-sqldw-latest || = azuresqldb-actual || = azuresqldb-mi-actual"
 

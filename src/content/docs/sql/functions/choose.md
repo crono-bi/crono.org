@@ -2,7 +2,6 @@
 title: "choose"
 ---
 
-# choose
 
 Devuelve el elemento en el índice especificado de una lista de valores en SQL Server.
 

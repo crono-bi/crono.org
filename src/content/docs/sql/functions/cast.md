@@ -2,7 +2,6 @@
 title: "cast"
 ---
 
-# cast
 
 Estas funciones convierten una expresión de un tipo de datos a otro.
 

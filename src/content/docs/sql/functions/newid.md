@@ -2,7 +2,6 @@
 title: "newid"
 ---
 
-# newid
 
 Crea un valor único de tipo **identificador único**.
 

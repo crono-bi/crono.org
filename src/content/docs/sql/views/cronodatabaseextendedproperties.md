@@ -2,7 +2,6 @@
 title: "Crono$DatabaseExtendedProperties"
 ---
 
-# Crono$DatabaseExtendedProperties
 
 
 Devuelve información sobre las propiedades extendidas de la base de datos.

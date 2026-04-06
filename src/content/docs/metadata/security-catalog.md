@@ -2,7 +2,6 @@
 title: "Seguridad y permisos de acceso"
 ---
 
-# Seguridad y permisos de acceso
 
 La seguridad y los permisos de acceso son aspectos importantes que deben valorarse en cualquier proyecto *Business Intelligence*.
 

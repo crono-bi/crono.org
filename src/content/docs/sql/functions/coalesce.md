@@ -2,7 +2,6 @@
 title: "coalesce ❇️"
 ---
 
-# coalesce ❇️ ❤️ 
 
 La función `coalesce` evalúa los argumentos en orden y devuelve el valor de la primera expresión que no se evalúa como NULL. Por ejemplo, `SELECT COALESCE(NULL, NULL, 'third_value', 'fourth_value')` devuelve el tercer valor porque el tercer valor es el primer valor que no es `NULL`.
 

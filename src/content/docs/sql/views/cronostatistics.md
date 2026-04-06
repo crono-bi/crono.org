@@ -2,7 +2,6 @@
 title: "Crono$Statistics"
 ---
 
-# Crono$Statistics
 
 La pseudovista `Crono$Statistics` devuelve estadísticas sobre el contenido de cada uno de los campos de una consulta.
 

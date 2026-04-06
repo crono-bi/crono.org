@@ -2,7 +2,6 @@
 title: "error_number"
 ---
 
-# error_number
 
 Esta función devuelve el número de error del error que provocó la ejecución del bloque CATCH de una construcción TRY...CATCH.
 

@@ -2,7 +2,6 @@
 title: "Validar catálogo"
 ---
 
-# Validar catálogo
 
 Existen tres herramientas principales para validar la correcta definición del catálogo:
 

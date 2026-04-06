@@ -2,7 +2,6 @@
 title: "Editor de consultas"
 ---
 
-# Editor de consultas
 
 El botón "Editar consulta" de la cinta de opciones abre la ventana "Editor de consultas". Esta ventana ofrece otra manera visual de crear o modificar consultas, además de otras opciones avanzadas.
 

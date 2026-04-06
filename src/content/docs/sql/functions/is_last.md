@@ -2,7 +2,6 @@
 title: "is_last"
 ---
 
-# is_last
 
 La función `is_last` es una función de ventana que identifica la fila final del rango.
 

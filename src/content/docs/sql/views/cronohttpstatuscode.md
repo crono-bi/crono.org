@@ -2,7 +2,6 @@
 title: "Crono$HttpStatusCode"
 ---
 
-# Crono$HttpStatusCode
 
 La pseudovista `Crono$HttpStatusCode` permite obtener el *StatusCode* de una (o varias) peticiones HTTP.
 

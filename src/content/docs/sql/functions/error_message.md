@@ -2,7 +2,6 @@
 title: "error_message"
 ---
 
-# error_message
 
 Esta función devuelve el texto del mensaje del error que provocó la ejecución del bloque CATCH de una construcción TRY...CATCH.
 

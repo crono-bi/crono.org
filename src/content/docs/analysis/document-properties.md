@@ -2,7 +2,6 @@
 title: "Propiedades de documento"
 ---
 
-# Propiedades de documento
 
 Haciendo clic en el botón "Propiedades" de la cinta de botones se abre la ventana de "Propiedades de documento".
 

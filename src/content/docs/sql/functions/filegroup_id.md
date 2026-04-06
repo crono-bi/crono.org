@@ -2,7 +2,6 @@
 title: "filegroup_id"
 ---
 
-# filegroup_id
 
 Esta función devuelve el número de identificación (ID) del grupo de archivos para un nombre de grupo de archivos especificado.
 

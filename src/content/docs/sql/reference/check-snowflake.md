@@ -2,7 +2,6 @@
 title: "CHECK SNOWFLAKE"
 ---
 
-# CHECK SNOWFLAKE
 
 La cláusula **CHECK SNOWFLAKE**, colocada justo después de todos los **JOINs**, verifica que las relaciones no pierden ni duplican ningún registro de la tabla del **FROM**. Se trata de una comprobación fundamental para validar que no estamos cometiendo ninguna equivocación al escribir la consulta y que los datos de origen son coherentes con lo esperado.
 

@@ -2,7 +2,6 @@
 title: "log10"
 ---
 
-# log10
 
 Devuelve el logaritmo en base 10 de la expresión **flotante** especificada.
 

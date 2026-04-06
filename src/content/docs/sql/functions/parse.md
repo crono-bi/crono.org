@@ -2,7 +2,6 @@
 title: "parse"
 ---
 
-# parse
 
 Devuelve el resultado de una expresión, traducido al tipo de datos solicitado en SQL Server.
 

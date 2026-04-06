@@ -2,7 +2,6 @@
 title: "hashbytes"
 ---
 
-# hashbytes
 
 Devuelve el hash MD2, MD4, MD5, SHA, SHA1 o SHA2 de su entrada en SQL Server.
 

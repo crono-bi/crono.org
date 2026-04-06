@@ -2,7 +2,6 @@
 title: "substring"
 ---
 
-# substring
 
 Devuelve parte de una expresión de carácter, binario, texto o imagen en SQL Server.
 

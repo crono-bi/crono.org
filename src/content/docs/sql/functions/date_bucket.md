@@ -2,7 +2,6 @@
 title: "date_bucket"
 ---
 
-# date_bucket
 
 Esta función devuelve el valor de fecha y hora correspondiente al inicio de cada cubo de fecha y hora desde la marca de tiempo definida por el parámetro `origen`, o el valor de origen predeterminado de `1900-01-01 00:00:00.000` si el origen el parámetro no está especificado.
 

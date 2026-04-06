@@ -2,7 +2,6 @@
 title: "getansinull"
 ---
 
-# getansinull
 
 Devuelve la nulabilidad predeterminada para la base de datos para esta sesión.
 

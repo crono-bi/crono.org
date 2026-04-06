@@ -2,7 +2,6 @@
 title: "host_name"
 ---
 
-# host_name
 
 Devuelve el nombre de la estación de trabajo.
 

@@ -2,7 +2,6 @@
 title: "Parámetros definidos en el catálogo"
 ---
 
-# Parámetros definidos en el catálogo
 
 
 **Crono Metadata** permite definir parámetros variables que el usuario tendrá que establecer antes de utilizarlos.

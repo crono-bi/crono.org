@@ -2,7 +2,6 @@
 title: "Propiedades de tabla"
 ---
 
-# Propiedades de tabla
 
 Desde el menú contextual de una tabla del diagrama podemos acceder a las **Propiedades de tabla**
 

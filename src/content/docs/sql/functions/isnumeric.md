@@ -2,7 +2,6 @@
 title: "isnumeric"
 ---
 
-# isnumeric
 
 Determina si una expresión es un tipo numérico válido.
 

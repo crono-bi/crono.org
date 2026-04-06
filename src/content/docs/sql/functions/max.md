@@ -2,7 +2,6 @@
 title: "max"
 ---
 
-# max
 
 Devuelve el valor máximo de la expresión.
 

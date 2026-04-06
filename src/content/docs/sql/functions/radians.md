@@ -2,7 +2,6 @@
 title: "radians"
 ---
 
-# radians
 
 Devuelve radianes cuando se ingresa una expresión numérica, en grados.
 

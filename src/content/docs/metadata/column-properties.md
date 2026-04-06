@@ -2,7 +2,6 @@
 title: "Propiedades de columna"
 ---
 
-# Propiedades de columna
 
 Desde el menú contextual de una columnase puede acceder a sus propiedades:
 

@@ -2,7 +2,6 @@
 title: "object_name"
 ---
 
-# object_name
 
 Devuelve el nombre del objeto de la base de datos para los objetos del ámbito del esquema. Para obtener una lista de objetos con ámbito de esquema, consulte [sys.objects &#40;Transact-SQL&#41;](../../relational-databases/system-catalog-views/sys-objects-transact-sql. Maryland).
 

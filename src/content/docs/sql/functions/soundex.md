@@ -2,7 +2,6 @@
 title: "soundex"
 ---
 
-# soundex
 
 Devuelve un código de cuatro caracteres (SOUNDEX) para evaluar la similitud de dos cadenas.
 

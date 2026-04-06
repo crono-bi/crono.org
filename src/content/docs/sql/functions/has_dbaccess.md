@@ -2,7 +2,6 @@
 title: "has_dbaccess"
 ---
 
-# has_dbaccess
 
 Devuelve información sobre si el usuario tiene acceso a la base de datos especificada.
 

@@ -2,7 +2,6 @@
 title: "nchar"
 ---
 
-# nchar
 
 Devuelve el carácter Unicode con el código entero especificado, tal como lo define el estándar Unicode.
 

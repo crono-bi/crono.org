@@ -2,7 +2,6 @@
 title: "ntile"
 ---
 
-# ntile
 
 Distribuye las filas de una partición ordenada en un número específico de grupos. Los grupos están numerados, empezando por el uno. Para cada fila, NTILE devuelve el número del grupo al que pertenece la fila.
 

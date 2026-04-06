@@ -2,7 +2,6 @@
 title: "todatetimeoffset"
 ---
 
-# todatetimeoffset
 
 Devuelve un valor de **datetimeoffset** que se traduce de una expresión **datetime2**.
 

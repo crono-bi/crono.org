@@ -2,7 +2,6 @@
 title: "Crono$ActiveDirectoryGroups"
 ---
 
-# Crono$ActiveDirectoryGroups
 
 Devuelve el listado de grupos del Directorio Activo, incluyendo su nombre y su *DistinguishedName*.
 

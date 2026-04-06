@@ -2,7 +2,6 @@
 title: "database_principal_id"
 ---
 
-# database_principal_id
 
 Esta función devuelve el número de identificación de un principal en la base de datos actual. Consulte [Principals &#40;Motor de base de datos&#41;](../../relational-databases/security/authentication-access/principals-database-engine.md) para obtener más información sobre los principales.
 

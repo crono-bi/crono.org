@@ -2,7 +2,6 @@
 title: "abs"
 ---
 
-# abs ❤️ 
 
 Función matemática que devuelve el valor absoluto de una expresión numérica específica. `ABS` cambia los valores negativos a valores positivos. `ABS` no tiene ningún efecto en los valores cero o positivos.
 

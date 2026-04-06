@@ -2,7 +2,6 @@
 title: "charindex"
 ---
 
-# charindex
 
 Esta función busca una expresión de carácter dentro de una segunda expresión de carácter y, si la encuentra, devuelve la posición inicial de la primera expresión.
 

@@ -2,7 +2,6 @@
 title: "currentusername ❇️"
 ---
 
-# currentusername ❇️ ❤️ 
 
 La función `currentusername` devuelve el nombre del usuario de Windows en el momento de la generación del código SQL.
 

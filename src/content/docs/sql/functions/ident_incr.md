@@ -2,7 +2,6 @@
 title: "ident_incr"
 ---
 
-# ident_incr
 
 Devuelve el valor de incremento especificado al crear una columna de identidad de tabla o vista.
 

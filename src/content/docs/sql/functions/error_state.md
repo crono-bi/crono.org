@@ -2,7 +2,6 @@
 title: "error_state"
 ---
 
-# error_state
 
 Devuelve el número de estado del error que provocó la ejecución del bloque CATCH de una construcción TRY...CATCH.
 

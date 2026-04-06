@@ -2,7 +2,6 @@
 title: "current_timezone"
 ---
 
-# current_timezone
 
 Esta función devuelve el nombre de la zona horaria observada por un servidor o una instancia. Para Instancia administrada de SQL, el valor devuelto se basa en la zona horaria de la propia instancia asignada durante la creación de la instancia, no en la zona horaria del sistema operativo subyacente.
 

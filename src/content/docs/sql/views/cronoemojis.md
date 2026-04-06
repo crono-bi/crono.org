@@ -2,7 +2,6 @@
 title: "Crono$Emojis"
 ---
 
-# Crono$Emojis
 
 
 

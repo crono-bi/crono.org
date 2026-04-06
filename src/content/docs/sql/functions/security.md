@@ -2,7 +2,6 @@
 title: "security"
 ---
 
-# security
 
 Las siguientes funciones devuelven información que es útil para administrar la seguridad. Las funciones adicionales se enumeran en [Funciones criptográficas &#40;Transact-SQL&#41;](../../t-sql/functions/cryptographic-functions-transact-sql.md).
 

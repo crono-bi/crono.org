@@ -2,7 +2,6 @@
 title: "El catálogo"
 ---
 
-# El catálogo
 
 El **catálogo** de Crono es el diccionario de atributos e indicadores que se pueden utilizar en los informes. 
 

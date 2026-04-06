@@ -2,7 +2,6 @@
 title: "typeproperty"
 ---
 
-# typeproperty
 
 Devuelve información sobre un tipo de datos.
 

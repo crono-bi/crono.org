@@ -2,7 +2,6 @@
 title: "yyyymm"
 ---
 
-# yyyymm
 
 
 La función `YYYYMM` devuelve la combinación del año y el mes de una fecha como una cadena de texto de 6 caracteres (`CHAR(6)`), en formato 'YYYYMM'. 

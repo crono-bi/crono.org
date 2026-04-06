@@ -2,7 +2,6 @@
 title: "len"
 ---
 
-# len
 
 Devuelve el número de caracteres de la expresión de cadena especificada, sin incluir los espacios finales.
 

@@ -2,7 +2,6 @@
 title: "yyyy"
 ---
 
-# yyyy
 
 La función `yyyy` devuelve el año de una fecha como una cadena de texto de 4 caracteres (CHAR(4)), en formato 'YYYY'. 
 

@@ -2,7 +2,6 @@
 title: "rand"
 ---
 
-# rand
 
 Devuelve un valor **flotante** pseudoaleatorio de 0 a 1, exclusivo.
 

@@ -2,7 +2,6 @@
 title: "Crear elementos de negocio"
 ---
 
-# Crear elementos de negocio
 
 Los objetos de negocio son las dimensiones, indicadores y filtros que forman el catálogo y que podrá utilizar el usuario para generar sus consultas e informes.
 

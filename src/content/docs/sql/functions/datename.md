@@ -2,7 +2,6 @@
 title: "datename"
 ---
 
-# datename ❇️
 
 Esta función devuelve una cadena de caracteres que representa el *datepart* especificado de la *fecha* especificada.
 

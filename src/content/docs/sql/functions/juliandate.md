@@ -2,7 +2,6 @@
 title: "juliandate"
 ---
 
-# juliandate
 
 
 La función `juliandate` convierte una fecha del calendario gregoriano a su equivalente en formato de **fecha juliana** (Julian Date), que representa el número de días (y fracción del día) transcurridos desde el 1 de enero del año 4713 a.C. a las 12:00 UTC.

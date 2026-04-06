@@ -2,7 +2,6 @@
 title: "Sentencia UPDATE"
 ---
 
-# Sentencia UPDATE
 
 **Crono SQL** soporta la sintaxis estándar de la sentencia **UPDATE**:
 

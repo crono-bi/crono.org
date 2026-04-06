@@ -2,7 +2,6 @@
 title: "Sentencias DDL"
 ---
 
-# Sentencias DDL
 
 En artículos anteriores hemos descritos la sintaxis de la sentecia **SELECT** de **Crono SQL** y el resto de sentencias de manipulación de datos (DML):
 

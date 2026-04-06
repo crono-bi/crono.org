@@ -2,7 +2,6 @@
 title: "Sentencia DELETE"
 ---
 
-# Sentencia DELETE
 
 **Crono SQL** soporta la sintaxis estándar de la sentencia **DELETE** de SQL:
 

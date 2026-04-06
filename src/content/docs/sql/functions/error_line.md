@@ -2,7 +2,6 @@
 title: "error_line"
 ---
 
-# error_line
 
 Esta función devuelve el número de línea de ocurrencia de un error que provocó la ejecución del bloque CATCH de una construcción TRY...CATCH.
 

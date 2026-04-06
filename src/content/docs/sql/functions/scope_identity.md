@@ -2,7 +2,6 @@
 title: "scope_identity"
 ---
 
-# scope_identity
 
 Devuelve el último valor de identidad insertado en una columna de identidad en el mismo ámbito. Un ámbito es un módulo: un procedimiento almacenado, desencadenador, función o lote. Por lo tanto, si dos declaraciones están en el mismo procedimiento almacenado, función o lote, están en el mismo ámbito.
 

@@ -2,7 +2,6 @@
 title: "parsename"
 ---
 
-# parsename
 
 Devuelve la parte especificada de un nombre de objeto. Las partes de un objeto que se pueden recuperar son el nombre del objeto, el nombre del esquema, el nombre de la base de datos y el nombre del servidor.
 

@@ -3,7 +3,6 @@ title: "Crono$CronoViewProperties"
 ---
 
 
-# Crono$CronoViewProperties
 
 La pseudovista `Crono$CronoViewProperties` devuelve las propiedades que admiten las pseudovistas con parámetros.
 

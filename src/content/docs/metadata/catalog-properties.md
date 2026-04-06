@@ -2,7 +2,6 @@
 title: "Propiedades de catálogo"
 ---
 
-# Propiedades de catálogo
 
 El botón "Propiedades de catálogo" abre la ventana de propiedades:
 

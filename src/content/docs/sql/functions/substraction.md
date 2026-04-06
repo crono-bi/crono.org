@@ -2,7 +2,6 @@
 title: "substraction"
 ---
 
-# substraction ❇️
 
 La función `substraction` resta del primer argumento el resto de argumentos de entrada. Esta función considera que los valores nulos equivalen a cero.
 

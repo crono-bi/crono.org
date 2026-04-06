@@ -2,7 +2,6 @@
 title: "Crono$ExcelRange"
 ---
 
-# Crono$ExcelRange
 
 La pseudo vista `Crono$ExcelRange` lee un rango (o varios) de una hoja de Excel.
 

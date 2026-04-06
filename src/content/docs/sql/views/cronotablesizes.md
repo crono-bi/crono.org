@@ -2,7 +2,6 @@
 title: "Crono$TableSizes"
 ---
 
-# Crono$TableSizes
 
 Devuelve información sobre el temaño ocupado por las tablas de la base de datos actual.
 

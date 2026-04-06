@@ -2,7 +2,6 @@
 title: "Crono$Constraints"
 ---
 
-# Crono$Constraints
 
 
 Devuelve información sobre las restricciones de todas las tablas de la base de datos. Incluye información sobre todas las `FOREIGN KEY`, `PRIMARY KEY` y  `UNIQUE INDEXES` de las tablas.

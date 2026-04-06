@@ -2,7 +2,6 @@
 title: "avg"
 ---
 
-# avg
 
 Esta función devuelve el promedio de los valores en un grupo. Ignora los valores nulos.
 

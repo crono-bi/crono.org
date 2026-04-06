@@ -2,7 +2,6 @@
 title: "cot"
 ---
 
-# cot
 
 Una función matemática que devuelve la cotangente trigonométrica del ángulo especificado, en radianes, en la expresión **float** especificada.
 

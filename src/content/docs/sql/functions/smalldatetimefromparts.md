@@ -2,7 +2,6 @@
 title: "smalldatetimefromparts"
 ---
 
-# smalldatetimefromparts
 
 Devuelve un valor **smalldatetime** para la fecha y hora especificadas.
 

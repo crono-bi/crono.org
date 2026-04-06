@@ -2,7 +2,6 @@
 title: "sum"
 ---
 
-# sum ❤️ 
 
 Devuelve la suma de todos los valores, o solo los valores DISTINCT, en la expresión. SUM solo se puede usar con columnas numéricas. Los valores nulos se ignoran.
 

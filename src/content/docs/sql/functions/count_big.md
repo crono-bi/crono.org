@@ -2,7 +2,6 @@
 title: "count_big"
 ---
 
-# count_big
 
 Esta función devuelve el número de elementos encontrados en un grupo. `COUNT_BIG` funciona como la función [COUNT](../../t-sql/functions/count-transact-sql.md). Estas funciones difieren solo en los tipos de datos de sus valores de retorno. `COUNT_BIG` siempre devuelve un valor de tipo de datos **bigint**. `COUNT` siempre devuelve un valor de tipo de datos **int**.
 

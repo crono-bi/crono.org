@@ -2,7 +2,6 @@
 title: "char"
 ---
 
-# char
 
 Devuelve el carácter de un solo byte con el código entero especificado, según lo definido por el juego de caracteres y la codificación de la intercalación predeterminada de la base de datos actual.
 

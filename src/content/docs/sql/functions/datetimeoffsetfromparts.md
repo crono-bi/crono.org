@@ -2,7 +2,6 @@
 title: "datetimeoffsetfromparts"
 ---
 
-# datetimeoffsetfromparts
 
 Devuelve un valor **datetimeoffset** para los argumentos de fecha y hora especificados. El valor devuelto tiene una precisión especificada por el argumento de precisión y un desplazamiento según lo especificado por los argumentos de desplazamiento.
 

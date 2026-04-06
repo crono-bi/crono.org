@@ -2,7 +2,6 @@
 title: "isdate"
 ---
 
-# isdate
 
 Devuelve 1 si la *expresión* es un valor de **fechahora** válido; de lo contrario, 0.
 

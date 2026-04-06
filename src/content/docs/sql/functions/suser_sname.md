@@ -2,7 +2,6 @@
 title: "suser_sname"
 ---
 
-# suser_sname
 
 Devuelve el nombre de inicio de sesión asociado con un número de identificación de seguridad (SID).
 

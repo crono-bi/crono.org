@@ -2,7 +2,6 @@
 title: "row_number"
 ---
 
-# row_number
 
 Numera la salida de un conjunto de resultados. Más específicamente, devuelve el número secuencial de una fila dentro de una partición de un conjunto de resultados, comenzando en 1 para la primera fila de cada partición.
 

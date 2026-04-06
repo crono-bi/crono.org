@@ -2,7 +2,6 @@
 title: "markup"
 ---
 
-# markup ❇️
 
 
 Esta función calcula el *markup* de venta a partir del *coste de venta* y el *importe de venta*. 

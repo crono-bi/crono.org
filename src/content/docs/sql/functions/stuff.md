@@ -2,7 +2,6 @@
 title: "stuff"
 ---
 
-# stuff
 
 La función STUFF inserta una cadena dentro de otra cadena. Elimina una longitud específica de caracteres en la primera cadena en la posición de inicio y luego inserta la segunda cadena en la primera cadena en la posición de inicio.
 

@@ -2,7 +2,6 @@
 title: "Crono$Excel"
 ---
 
-# Crono$Excel
 
 `Crono$Excel` lee el contenido de una tabla de un libro de Excel.
 

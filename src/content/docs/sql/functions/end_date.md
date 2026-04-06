@@ -2,7 +2,6 @@
 title: "end_date"
 ---
 
-# end_date
 
 La función `end_date` en una función de ventana que calcula la fecha final de un periodo *inicio-fin* a partir de la fecha inicial.
 

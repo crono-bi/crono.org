@@ -2,7 +2,6 @@
 title: "sign"
 ---
 
-# sign
 
 Devuelve el signo positivo (+1), cero (0) o negativo (-1) de la expresión especificada.
 

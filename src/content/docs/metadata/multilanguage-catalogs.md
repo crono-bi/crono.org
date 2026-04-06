@@ -2,7 +2,6 @@
 title: "Catálogos multi-idioma"
 ---
 
-# Catálogos multi-idioma
 
 **Crono Metadata** permite traducir los elementos de negocio a distintos idiomas. De este modo el usuario podrá realizar o consultar los informes en su propio idioma, y todas las delegaciones del mundo pueden compartir un mismo catálogo y una misma terminología.
 

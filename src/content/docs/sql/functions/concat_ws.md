@@ -2,7 +2,6 @@
 title: "concat_ws"
 ---
 
-# concat_ws
 
 Esta función devuelve una cadena que resulta de la concatenación o unión de dos o más valores de cadena de un extremo a otro. Separa esos valores de cadena concatenados con el delimitador especificado en el primer argumento de la función. (`CONCAT_WS` indica *concatenar con separador*.)
 

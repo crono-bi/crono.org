@@ -2,7 +2,6 @@
 title: "type_name"
 ---
 
-# type_name
 
 Devuelve el nombre de tipo no calificado de un ID de tipo especificado.
 

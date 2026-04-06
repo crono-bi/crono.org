@@ -2,7 +2,6 @@
 title: "difference"
 ---
 
-# difference
 
 Esta función devuelve un valor entero que mide la diferencia entre los valores [SOUNDEX()](./soundex-transact-sql.md) de dos expresiones de caracteres diferentes.
 

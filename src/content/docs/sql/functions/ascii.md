@@ -2,7 +2,6 @@
 title: "ascii"
 ---
 
-# ascii
 
 La función `ASCII()` devuelve el valor numérico del código ASCII del primer carácter de una cadena de texto. Si la cadena está vacía, el resultado puede variar según el motor de base de datos (generalmente devuelve NULL o 0).
 

@@ -2,7 +2,6 @@
 title: "Crono$Databases"
 ---
 
-# Crono$Databases
 
 Devuelve información sobre las bases de datos de la instancia.
 

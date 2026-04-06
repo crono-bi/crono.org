@@ -2,7 +2,6 @@
 title: "Estructura de un documento de Crono Analysis"
 ---
 
-# Estructura de un documento de Crono Analysis
 
 **Crono Analysis** es la herramienta de usuario para realizar consultas, informes y análisis libre. 
 

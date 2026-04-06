@@ -2,7 +2,6 @@
 title: "percentile_cont"
 ---
 
-# percentile_cont
 
 Calcula un percentil basado en una distribución continua del valor de la columna en SQL Server. El resultado se interpola y puede no ser igual a ninguno de los valores específicos de la columna.
 

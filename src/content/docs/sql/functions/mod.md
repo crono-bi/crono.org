@@ -2,7 +2,6 @@
 title: "mod"
 ---
 
-# mod ❇️
 
 La función `mod` devuelve el resto al dividir un número entre otro.
 

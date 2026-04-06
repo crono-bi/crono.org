@@ -2,7 +2,6 @@
 title: "stats_date"
 ---
 
-# stats_date
 
 Devuelve la fecha de la actualización más reciente de las estadísticas de una tabla o vista indexada.
 

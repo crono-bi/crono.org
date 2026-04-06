@@ -2,7 +2,6 @@
 title: "sysdatetime"
 ---
 
-# sysdatetime
 
 Devuelve un valor **datetime2(7)** que contiene la fecha y la hora del equipo en el que se ejecuta la instancia de SQL Server.
 

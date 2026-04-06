@@ -2,7 +2,6 @@
 title: "isoweek"
 ---
 
-# isoweek ❇️
 
 La función  `isoweek` devuelve el número de semana ISO de una fecha determinada.
 

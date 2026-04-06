@@ -2,7 +2,6 @@
 title: "daysago"
 ---
 
-# daysago
 
 
 La función `daysago` devuelve el número de días transcurridos desde una fecha determinada hasta la fecha actual del sistema.

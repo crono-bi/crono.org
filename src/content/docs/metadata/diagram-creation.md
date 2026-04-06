@@ -2,7 +2,6 @@
 title: "Cómo crear un diagrama"
 ---
 
-# Cómo crear un diagrama
 
 Para crear un diagrama siga los siguientes pasos:
 

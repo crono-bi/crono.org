@@ -2,7 +2,6 @@
 title: "lag"
 ---
 
-# lag
 
 Accede a los datos de una fila anterior en el mismo conjunto de resultados. LAG proporciona acceso a una fila en un desplazamiento físico dado que viene antes de la fila actual. Utilice esta función analítica en una declaración SELECT para comparar valores en la fila actual con valores en una fila anterior.
 

@@ -2,7 +2,6 @@
 title: "average"
 ---
 
-# average
 
 **Descripción:**  
 

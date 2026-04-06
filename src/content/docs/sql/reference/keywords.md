@@ -2,7 +2,6 @@
 title: "Palabras reservadas de Crono SQL"
 ---
 
-# Palabras reservadas de Crono SQL
 
 En la lista siguiente se incluyen todas las palabras reservadas por el generador de consultas de **Crono SQL**. 
 

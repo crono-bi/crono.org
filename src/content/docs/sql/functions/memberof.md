@@ -2,7 +2,6 @@
 title: "memberof"
 ---
 
-# memberof ❇️
 
 La función `MemberOf` comprueba si el usuario actual pertenece a alguno de los grupos indicados del Directorio Activo y devuelve el primero al que pertenece.
 

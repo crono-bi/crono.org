@@ -2,7 +2,6 @@
 title: "dateadd"
 ---
 
-# dateadd
 
 Esta función agrega un *número* (un entero con signo) a una *parte de fecha* de una *fecha* de entrada y devuelve un valor de fecha/hora modificado. Por ejemplo, puede usar esta función para encontrar la fecha que es 7000 minutos a partir de hoy: *número* = 7000, *datepart* = minuto, *fecha* = hoy.
 

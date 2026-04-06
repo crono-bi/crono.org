@@ -2,7 +2,6 @@
 title: "runningpct"
 ---
 
-# runningpct ❇️
 
 La función `runningpct` es una función de ventana que devuelve el porcentaje acumulado de un indicador desde el inicio del rango respecto el total.
 

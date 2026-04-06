@@ -2,7 +2,6 @@
 title: "databasepropertyex"
 ---
 
-# databasepropertyex
 
 Para una base de datos especificada en SQL Server, esta función devuelve la configuración actual de la propiedad o opción de base de datos especificada.
 

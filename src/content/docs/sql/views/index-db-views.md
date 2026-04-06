@@ -2,7 +2,6 @@
 title: "Vistas de base de datos"
 ---
 
-# Vistas de base de datos
 
 
 **Crono SQL** incluye algunas vistas predefinidas que muestran metadatos de la base de datos.

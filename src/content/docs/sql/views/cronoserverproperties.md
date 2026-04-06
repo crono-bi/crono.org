@@ -2,7 +2,6 @@
 title: "Crono$ServerProperties"
 ---
 
-# Crono$ServerProperties
 
 Devuelve las propiedades del servidor de base de datos.
 

@@ -2,7 +2,6 @@
 title: "Introducción"
 ---
 
-# Introducción
 
 Crono SQL es un lenguaje de programación para facilitar el desarrollo ágil de proyectos ETL/DWH. En esta página se muestra la sintaxis del lenguaje y todas las funciones admitidas.
 

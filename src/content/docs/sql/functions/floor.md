@@ -2,7 +2,6 @@
 title: "floor"
 ---
 
-# floor
 
 Devuelve el entero más grande menor o igual que la expresión numérica especificada.
 

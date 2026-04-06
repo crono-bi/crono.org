@@ -2,7 +2,6 @@
 title: "last_value"
 ---
 
-# last_value
 
 Devuelve el último valor de un conjunto ordenado de valores.
 

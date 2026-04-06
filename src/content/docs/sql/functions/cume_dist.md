@@ -2,7 +2,6 @@
 title: "cume_dist"
 ---
 
-# cume_dist
 
 Para SQL Server, esta función calcula la distribución acumulativa de un valor dentro de un grupo de valores. En otras palabras, `CUME_DIST` calcula la posición relativa de un valor específico en un grupo de valores. Asumiendo un orden ascendente, el `CUME_DIST` de un valor en la fila _r_ se define como el número de filas con valores menores o iguales a ese valor en la fila _r_, dividido por el número de filas evaluadas en el conjunto de resultados de partición o consulta. `CUME_DIST` es similar a la función `PERCENT_RANK`.
 

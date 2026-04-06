@@ -2,7 +2,6 @@
 title: "tan"
 ---
 
-# tan
 
 Devuelve la tangente de la expresión de entrada.
 

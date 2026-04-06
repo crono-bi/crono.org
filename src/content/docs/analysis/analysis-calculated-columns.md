@@ -2,7 +2,6 @@
 title: "Columnas calculadas"
 ---
 
-# Columnas calculadas
 
 Además de las dimensiones e indicadores definidos en el catálogo se pueden crear **columnas calculadas**. Las columnas calculadas son expresiones a partir del resto de columnas de la consulta o la información del catálogo. Por ejemplo, se puede definir el "Precio" como el cociente entre el "Importe" y las "Unidades vendidas".
 

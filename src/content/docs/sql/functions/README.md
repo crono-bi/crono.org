@@ -2,7 +2,6 @@
 title: "Funciones"
 ---
 
-# Funciones
 
 
 

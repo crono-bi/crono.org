@@ -2,7 +2,6 @@
 title: "Crono$AnsiForeignKeys"
 ---
 
-# Crono$AnsiForeignKeys
 
 
 Devuelve información sobre todas las claves externas de la base de datos. 

@@ -2,7 +2,6 @@
 title: "isoweekyear"
 ---
 
-# isoweekyear ❇️
 
 La función  `isoweekyear` devuelve el año de la semana ISO de una fecha determinada.
 

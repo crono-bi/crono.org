@@ -2,7 +2,6 @@
 title: "lower"
 ---
 
-# lower
 
 Devuelve una expresión de carácter después de convertir los datos de caracteres en mayúsculas a minúsculas.
 

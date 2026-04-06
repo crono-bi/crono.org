@@ -2,7 +2,6 @@
 title: "Tabla de tiempo"
 ---
 
-# Tabla de tiempo
 
 La subconsulta predefinida **TIME_TABLE** permite obtener algunos de los campos habituales de una tabla de tiempo.
 

@@ -2,7 +2,6 @@
 title: "Filtros predefinidos"
 ---
 
-# Filtros predefinidos
 
 Además de dimensiones e indicadores en el catálogo se pueden definir **filtros predefinidos**. Se trata de filtros habituales que el usuario puede reutilizar fácilmente. Por ejemplo, se pueden crear filtros para el _"Año actual"_, _"Tiendas de España"_, o _"Clientes morosos"_. Cualquier predicado SQL puede ser un **filtro predefinido**.
 

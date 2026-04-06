@@ -2,7 +2,6 @@
 title: "localdate"
 ---
 
-# localdate ❇️
 
 La función `localdate` transforma una fecha con ajuste de zona horaria (tipo **datetimeoffset**) a la misma fecha pero con la hora equivalente en la zona horaria local.
 

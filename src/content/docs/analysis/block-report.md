@@ -2,7 +2,6 @@
 title: "Bloquear el documento"
 ---
 
-# Bloquear el documento
 
 El botón "Bloquear informe" de la cinta de opciones permite desactivar todas las opciones de edición.
 

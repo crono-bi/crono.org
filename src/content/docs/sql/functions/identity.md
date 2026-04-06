@@ -2,7 +2,6 @@
 title: "identity"
 ---
 
-# identity
 
 Se usa solo en una instrucción SELECT con una cláusula INTO *table* para insertar una columna de identidad en una nueva tabla. Aunque es similar, la función IDENTITY no es la propiedad IDENTITY que se usa con CREATE TABLE y ALTER TABLE.
 

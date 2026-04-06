@@ -2,7 +2,6 @@
 title: "decile"
 ---
 
-# decile ❇️
 
 La función `decile` es una función de ventana que devuelve el ranking de cada fila normalizado entre 1 y 10. Es decir, divide el conjunto de registros en 10 grupos con el mismo número de registros cada uno y los numera de 1 a 10.
 

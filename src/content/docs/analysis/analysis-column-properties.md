@@ -2,7 +2,6 @@
 title: "Propiedades de columna"
 ---
 
-# Propiedades de columna
 
 Desde el menú contextual de una columna se puede abrir la ventana de "Propiedades de columna". Tiene tres pestañas o vistas.
 

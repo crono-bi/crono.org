@@ -2,7 +2,6 @@
 title: "Vistas"
 ---
 
-# Vistas 
 
 **Crono SQL** incluye algunas vistas predefinidas que muestran información propia de Crono, metadatos de la base de datos o del sistema, y otra información que resulta útil en determinadas ocasiones.
 

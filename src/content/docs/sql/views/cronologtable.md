@@ -2,7 +2,6 @@
 title: "Crono$LogTable"
 ---
 
-# Crono$LogTable
 
 La pseudovista `Crono$LogTable` devuelve información sobre la configuración de la tabla de logs.
 

@@ -3,7 +3,6 @@ title: "Crono$NamedDirectories"
 ---
 
 
-# Crono$NamedDirectories
 
 Devuelve las "carpetas con nombre" definidas en las opciones generales de Crono.
 

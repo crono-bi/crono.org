@@ -2,7 +2,6 @@
 title: "unicode"
 ---
 
-# unicode
 
 Devuelve el valor entero, tal como lo define el estándar Unicode, para el primer carácter de la expresión de entrada.
 

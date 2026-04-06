@@ -2,7 +2,6 @@
 title: "rowcount_big"
 ---
 
-# rowcount_big
 
 Devuelve el número de filas afectadas por la última instrucción ejecutada. Esta función funciona como [@@ROWCOUNT](../../t-sql/functions/rowcount-transact-sql.md), excepto que el tipo de devolución de ROWCOUNT_BIG es **bigint**.
 

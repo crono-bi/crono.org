@@ -2,7 +2,6 @@
 title: "Propiedades de informe"
 ---
 
-# Propiedades de informe
 
 Desde el menú contextual de un informe se puede acceder a su ventana de propiedades:
 

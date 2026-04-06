@@ -2,7 +2,6 @@
 title: "Crono$IndexColumns"
 ---
 
-# Crono$IndexColumns
 
 
 Devuelve información sobre las columnas que forman parte de todos los índices de la base de datos. 

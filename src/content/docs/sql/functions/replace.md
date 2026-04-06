@@ -2,7 +2,6 @@
 title: "replace"
 ---
 
-# replace ❤️ 
 
 Reemplaza todas las apariciones de un valor de cadena especificado con otro valor de cadena.
 

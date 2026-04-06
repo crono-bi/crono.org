@@ -2,7 +2,6 @@
 title: "Tablas agregadas"
 ---
 
-# Tablas agregadas
 
 Ejecutar una consulta contra una tabla de hechos con decenas de millones de registros puede ser costoso. Para resolver esta problemática es habitual crear **tablas agregadas** que contengan la misma información pero más agrupada (por ejemplo, además de tener las ventas tickets a ticket, podemos tener una tabla con las ventas diarias o por producto...).
 

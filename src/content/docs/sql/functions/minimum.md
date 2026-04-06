@@ -2,7 +2,6 @@
 title: "minimum"
 ---
 
-# minimum ❇️
 
 La función `minimum` devuelve el valor mínimo entre el un conjunto de expresiones de entrada.
 

@@ -2,7 +2,6 @@
 title: "Tipos de visualización"
 ---
 
-# Tipos de visualización
 
 **Crono Analysis** permite represetar la información en tablas, gráficos y en distintos tipos de visualización. En concreto, los tipos de visualización soportados actualmente son:
 

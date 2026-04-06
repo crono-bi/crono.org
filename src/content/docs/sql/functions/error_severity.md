@@ -2,7 +2,6 @@
 title: "error_severity"
 ---
 
-# error_severity
 
 Esta función devuelve el valor de gravedad del error cuando se produce un error, si ese error hizo que se ejecutara el bloque CATCH de una construcción TRY...CATCH.
 

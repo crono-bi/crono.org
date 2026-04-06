@@ -2,7 +2,6 @@
 title: "fromjuliandate"
 ---
 
-# fromjuliandate
 
 
 La función `fromjuliandate` convierte un número de fecha juliana (Julian Date) a una fecha del calendario gregoriano en formato `DATE` o `DATETIME`.

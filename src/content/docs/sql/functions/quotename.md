@@ -2,7 +2,6 @@
 title: "quotename"
 ---
 
-# quotename
 
 Devuelve una cadena Unicode con los delimitadores agregados para convertir la cadena de entrada en un identificador delimitado SQL Server válido.
 

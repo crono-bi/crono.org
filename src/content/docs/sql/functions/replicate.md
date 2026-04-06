@@ -2,7 +2,6 @@
 title: "replicate"
 ---
 
-# replicate
 
 Repite un valor de cadena un número específico de veces.
 

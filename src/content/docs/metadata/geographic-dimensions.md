@@ -2,7 +2,6 @@
 title: "Dimensiones geográficas"
 ---
 
-# Dimensiones geográficas 
 
 **Crono** puede representar sobre un mapa la información del catálogo. Por ejemplo, es posible representar un mapa con un círculo en cada una de las _"Tiendas"_, y el tamaño de ese círculo dependerá del indicador que se está analizando. 
 

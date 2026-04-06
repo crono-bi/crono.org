@@ -2,7 +2,6 @@
 title: "divide"
 ---
 
-# divide ❇️
 
 La función `divide` devuelve el cociente de dos números.
 

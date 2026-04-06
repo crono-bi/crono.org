@@ -2,7 +2,6 @@
 title: "sysdatetimeoffset"
 ---
 
-# sysdatetimeoffset
 
 Devuelve un valor **datetimeoffset(7)** que contiene la fecha y la hora del equipo en el que se ejecuta la instancia de SQL Server. Se incluye el desplazamiento de la zona horaria.
 

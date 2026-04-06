@@ -2,7 +2,6 @@
 title: "Crono$UnicodeChars"
 ---
 
-# Crono$UnicodeChars
 
 
 

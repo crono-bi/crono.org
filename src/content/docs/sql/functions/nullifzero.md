@@ -2,7 +2,6 @@
 title: "nullifzero"
 ---
 
-# nullifzero ❇️
 
 La función `nullifzero` devuelve `NULL` si la expresión de entrada es un `0`. En cualquier otro caso devuelve la propia expresión de entrada.
 

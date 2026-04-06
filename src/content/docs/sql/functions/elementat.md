@@ -2,7 +2,6 @@
 title: "elementat"
 ---
 
-# elementat ❇️
 
 La función `ElementAt` convierte un entero en una expresión seleccionándola de una lista en función de su posición.
 

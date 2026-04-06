@@ -2,7 +2,6 @@
 title: "is_member"
 ---
 
-# is_member
 
 Indica si el usuario actual es miembro del grupo de Microsoft Windows especificado o del rol de base de datos. La función IS_MEMBER no es compatible con los grupos de Azure Active Directory.
 

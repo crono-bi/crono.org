@@ -2,7 +2,6 @@
 title: "collationproperty"
 ---
 
-# collationproperty
 
 Esta función devuelve la propiedad solicitada de una colación especificada.
 

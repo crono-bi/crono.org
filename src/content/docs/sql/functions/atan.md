@@ -2,7 +2,6 @@
 title: "atan"
 ---
 
-# atan
 
 Una función que devuelve el ángulo, en radianes, cuya tangente es una expresión **flotante** especificada. Esto también se llama arcotangente.
 

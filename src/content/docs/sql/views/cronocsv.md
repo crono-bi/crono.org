@@ -2,7 +2,6 @@
 title: "Crono$Csv"
 ---
 
-# Crono$Csv
 
 `Crono$Csv` es una pseudovista con parámetros que permite leer un archivo CSV.
 

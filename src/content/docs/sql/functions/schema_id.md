@@ -2,7 +2,6 @@
 title: "schema_id"
 ---
 
-# schema_id
 
 Devuelve el ID de esquema asociado con un nombre de esquema.
 

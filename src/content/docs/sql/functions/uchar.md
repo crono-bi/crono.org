@@ -2,7 +2,6 @@
 title: "uchar"
 ---
 
-# uchar ❇️
 
 Devuelve el carácter Unicode correspondiente al código numérico dado, tal como se define en el estándar Unicode.
 

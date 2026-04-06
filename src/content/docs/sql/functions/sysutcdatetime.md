@@ -2,7 +2,6 @@
 title: "sysutcdatetime"
 ---
 
-# sysutcdatetime
 
 Devuelve un valor **datetime2** que contiene la fecha y la hora del equipo en el que se ejecuta la instancia de SQL Server. La fecha y la hora se devuelven como hora UTC (hora universal coordinada). La especificación de precisión de fracciones de segundo tiene un rango de 1 a 7 dígitos. La precisión predeterminada es de 7 dígitos.
 

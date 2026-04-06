@@ -2,7 +2,6 @@
 title: "datetrunc"
 ---
 
-# datetrunc
 
 La función DATETRUNC devuelve una fecha de entrada truncada a un datepart especificado.
 

@@ -1,7 +1,6 @@
 ---
 title: "daysdiff"
 ---
-# daysdiff
 
 La función `daysdiff` calcula el número de días completos entre dos fechas. El resultado es un valor entero que representa la diferencia en días, y puede ser positivo, negativo o cero.
 

@@ -2,7 +2,6 @@
 title: "reverse"
 ---
 
-# reverse
 
 Devuelve el orden inverso de un valor de cadena.
 

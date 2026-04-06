@@ -2,7 +2,6 @@
 title: "try_parse"
 ---
 
-# try_parse
 
 Devuelve el resultado de una expresión, traducido al tipo de datos solicitado o nulo si la conversión falla en SQL Server. Use TRY_PARSE solo para convertir de cadena a tipo de fecha/hora y número.
 

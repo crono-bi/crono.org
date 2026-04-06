@@ -2,7 +2,6 @@
 title: "string_agg"
 ---
 
-# string_agg
 
 Concatena los valores de expresiones de cadena y coloca valores de separador entre ellos. El separador no se agrega al final de la cadena.
 

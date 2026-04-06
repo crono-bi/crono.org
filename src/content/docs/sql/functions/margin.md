@@ -2,7 +2,6 @@
 title: "margin"
 ---
 
-# margin ❇️ 
 
 Esta función calcula el margen de venta a partir del *coste de venta* y el *importe de venta*. El margen de venta es una medida de la rentabilidad de una empresa. Es un valor porcentual que se calcula dividiendo el margen absoluto entre las ventas totales.
 

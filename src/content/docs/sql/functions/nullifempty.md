@@ -2,7 +2,6 @@
 title: "nullifempty"
 ---
 
-# nullifempty ❇️
 
 La función `nullifempty` devuelve `NULL` si la expresión de entrada es una cadena vacia. En cualquier otro caso devuelve la propia cadena  de entrada.
 

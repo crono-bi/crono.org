@@ -2,7 +2,6 @@
 title: "Propiedades de conexión"
 ---
 
-# Propiedades de conexión
 
 Desde las propiedades de conexión se configura la cadena de conexión para conectarse a la base de datos.
 

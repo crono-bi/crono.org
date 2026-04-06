@@ -2,7 +2,6 @@
 title: "Crono$UnicodeTable"
 ---
 
-# Crono$UnicodeTable
 
 
 

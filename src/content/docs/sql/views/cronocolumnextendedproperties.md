@@ -2,7 +2,6 @@
 title: "Crono$ColumnExtendedProperties"
 ---
 
-# Crono$ColumnExtendedProperties
 
 
 Devuelve información sobre las propiedades extendidas de todas las columnas la base de datos. 

@@ -2,7 +2,6 @@
 title: "string_split"
 ---
 
-# string_split
 
 Una función con valores de tabla que divide una cadena en filas de subcadenas, en función de un carácter separador especificado.
 

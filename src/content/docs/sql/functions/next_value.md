@@ -2,7 +2,6 @@
 title: "next_value"
 ---
 
-# next_value ❇️
 
 La función `next_value` es una función de ventana que devuelve el valor del siguiente registro del rango.
 

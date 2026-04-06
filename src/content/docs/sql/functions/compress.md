@@ -2,7 +2,6 @@
 title: "compress"
 ---
 
-# compress
 
 Esta función comprime la expresión de entrada, utilizando el algoritmo GZIP. La función devuelve una matriz de bytes de tipo **varbinary(max)**.
 

@@ -2,7 +2,6 @@
 title: "datetime2fromparts"
 ---
 
-# datetime2fromparts
 
 Esta función devuelve un valor **datetime2** para los argumentos de fecha y hora especificados. El valor devuelto tiene una precisión especificada por el argumento de precisión.
 

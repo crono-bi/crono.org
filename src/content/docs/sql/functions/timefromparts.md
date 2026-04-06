@@ -2,7 +2,6 @@
 title: "timefromparts"
 ---
 
-# timefromparts
 
 Devuelve un valor de **hora** para la hora especificada y con la precisión especificada.
 

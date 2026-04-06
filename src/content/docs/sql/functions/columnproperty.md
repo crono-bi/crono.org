@@ -2,7 +2,6 @@
 title: "columnproperty"
 ---
 
-# columnproperty
 
 Esta función devuelve información de columna o parámetro.
 

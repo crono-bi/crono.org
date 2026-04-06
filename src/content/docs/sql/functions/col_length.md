@@ -2,7 +2,6 @@
 title: "col_length"
 ---
 
-# col_length
 
 Esta función devuelve la longitud definida de una columna, en bytes.
 

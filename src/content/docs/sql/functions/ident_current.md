@@ -2,7 +2,6 @@
 title: "ident_current"
 ---
 
-# ident_current
 
 Devuelve el último valor de identidad generado para una tabla o vista especificada. El último valor de identidad generado puede ser para cualquier sesión y cualquier ámbito.
 

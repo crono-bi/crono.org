@@ -2,7 +2,6 @@
 title: "emptyifnull"
 ---
 
-# emptyifnull ❇️
 
 La función `emptyifnull` devuelve una cadena vacía si la expresión de entrada es `NULL`. En cualquier otro caso devuelve la propia cadena  de entrada.
 

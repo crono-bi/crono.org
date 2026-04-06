@@ -2,7 +2,6 @@
 title: "Crono$GetData"
 ---
 
-# Crono$GetData
 
 La pseudovista `Crono$GetData` permite ejecutar una consulta en una base de datos distinta de la actual. 
 

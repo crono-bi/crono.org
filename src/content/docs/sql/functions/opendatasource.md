@@ -2,7 +2,6 @@
 title: "opendatasource"
 ---
 
-# opendatasource
 
 Proporciona información de conexión ad hoc como parte de un nombre de objeto de cuatro partes sin usar un nombre de servidor vinculado.
 

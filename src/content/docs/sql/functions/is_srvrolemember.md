@@ -2,7 +2,6 @@
 title: "is_srvrolemember"
 ---
 
-# is_srvrolemember
 
 Indica si un inicio de sesión SQL Server es miembro del rol de servidor especificado.
 

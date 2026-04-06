@@ -2,7 +2,6 @@
 title: "index_col"
 ---
 
-# index_col
 
 Devuelve el nombre de la columna indexada. Devuelve NULL para índices XML.
 

@@ -2,7 +2,6 @@
 title: "Crono$AnsiColumns"
 ---
 
-# Crono$AnsiColumns
 
 Devuelve información sobre todas las columnas de todas las vistas y tablas de la base de datos.
 

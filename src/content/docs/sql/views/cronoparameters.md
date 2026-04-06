@@ -2,7 +2,6 @@
 title: "Crono$Parameters"
 ---
 
-# Crono$Parameters
 
 
 

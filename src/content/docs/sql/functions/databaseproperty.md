@@ -2,6 +2,5 @@
 title: "databaseproperty 🚧"
 ---
 
-# databaseproperty 🚧
 
 

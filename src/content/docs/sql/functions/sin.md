@@ -2,7 +2,6 @@
 title: "sin"
 ---
 
-# sin
 
 Devuelve el seno trigonométrico del ángulo especificado, en radianes y en una expresión numérica aproximada, **flotante**.
 

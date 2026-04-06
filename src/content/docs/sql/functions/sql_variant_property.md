@@ -2,7 +2,6 @@
 title: "sql_variant_property"
 ---
 
-# sql_variant_property
 
 Devuelve el tipo de datos base y otra información sobre un valor de **sql_variant**.
 

@@ -2,7 +2,6 @@
 title: "error_procedure"
 ---
 
-# error_procedure
 
 Esta función devuelve el nombre del procedimiento almacenado o activador donde se produce un error, si ese error hizo que se ejecutara el bloque CATCH de una construcción TRY...CATCH.
 

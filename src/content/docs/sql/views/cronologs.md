@@ -2,7 +2,6 @@
 title: "Crono$Logs"
 ---
 
-# Crono$Logs
 
 La pseudovista `Crono$Logs` ofrece una vista unificada de los registros en la tabla de logs.
 

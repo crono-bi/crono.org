@@ -2,7 +2,6 @@
 title: "Crono$ActionProperties"
 ---
 
-# Crono$ActionProperties
 
 La función `Crono$ActionProperties` devuelve las propiedades que admiten las acciones propias de Crono.
 

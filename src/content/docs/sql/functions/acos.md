@@ -2,7 +2,6 @@
 title: "acos"
 ---
 
-# acos
 
 La función `ACOS()` devuelve el arcocoseno (o coseno inverso) de un número, expresado en radianes. El valor de entrada debe estar en el rango de -1 a 1, y el resultado estará entre 0 y π (pi). Es útil en cálculos trigonométricos, como funciones relacionadas con distancias angulares.
 

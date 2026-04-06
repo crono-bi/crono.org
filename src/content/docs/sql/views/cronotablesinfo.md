@@ -2,7 +2,6 @@
 title: "Crono$TablesInfo"
 ---
 
-# Crono$TablesInfo
 
 Devuelve información sobre las tablas de la base de datos
 

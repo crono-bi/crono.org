@@ -2,7 +2,6 @@
 title: "total"
 ---
 
-# total ❇️
 
 La función `total` es una función de ventana que devuelve la suma de todos los registros del rango.
 

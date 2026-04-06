@@ -2,7 +2,6 @@
 title: "indexof"
 ---
 
-# indexof ❇️
 
 La función `IndexOf` devuelve la posición de una expresión dentro de la lista.
 

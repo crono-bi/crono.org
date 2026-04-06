@@ -2,6 +2,5 @@
 title: "yyyymmdd ❇️ 🚧"
 ---
 
-# yyyymmdd ❇️ 🚧
 
 

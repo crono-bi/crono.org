@@ -2,7 +2,6 @@
 title: "zeroifnull"
 ---
 
-# zeroifnull ❇️
 
 La función `zeroifnull` devuelve `0` si la expresión de entrada es un `NULL`. En cualquier otro caso devuelve la propia expresión de entrada.
 

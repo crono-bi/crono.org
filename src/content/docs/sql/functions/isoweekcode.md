@@ -2,7 +2,6 @@
 title: "isoweekcode"
 ---
 
-# isoweekcode ❇️
 
 La función `isoweekcode` devuelve un código alfanumérico que incluye el año ISO y la semana ISO de una fecha determinada.
 

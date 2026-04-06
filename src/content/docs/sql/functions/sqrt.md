@@ -2,7 +2,6 @@
 title: "sqrt"
 ---
 
-# sqrt
 
 Devuelve la raíz cuadrada del valor flotante especificado.
 

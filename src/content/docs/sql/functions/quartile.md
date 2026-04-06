@@ -2,7 +2,6 @@
 title: "quartile"
 ---
 
-# quartile ❇️
 
 La función `quartile` es una función de ventana que devuelve el ranking de cada fila normalizado entre 1 y 4. Es decir, divide el conjunto de registros en 4 grupos con el mismo número de registros cada uno y los numera de 1 a 10.
 

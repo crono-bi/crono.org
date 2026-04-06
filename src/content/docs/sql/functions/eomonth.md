@@ -2,7 +2,6 @@
 title: "eomonth"
 ---
 
-# eomonth
 
 Esta función devuelve el último día del mes que contiene una fecha específica, con un desplazamiento opcional.
 

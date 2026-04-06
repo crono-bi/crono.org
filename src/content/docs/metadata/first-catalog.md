@@ -2,7 +2,6 @@
 title: "Cómo crear tu primer catálogo"
 ---
 
-# Cómo crear tu primer catálogo
 
 ## Crear un catálogo
 

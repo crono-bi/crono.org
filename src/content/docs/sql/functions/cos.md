@@ -2,7 +2,6 @@
 title: "cos"
 ---
 
-# cos
 
 Una función matemática que devuelve el coseno trigonométrico del ángulo especificado, medido en radianes, en la expresión especificada.
 

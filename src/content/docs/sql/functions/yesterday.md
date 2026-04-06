@@ -3,7 +3,6 @@ title: "yesterday"
 ---
 
 
-# yesterday
 
 La función `yesterday` devuelve la fecha (tipo **date**) correspondiente al día de ayer.
 

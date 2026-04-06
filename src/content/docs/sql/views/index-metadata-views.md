@@ -2,7 +2,6 @@
 title: "Vistas de metadata de Crono"
 ---
 
-# Vistas de metadata de Crono
 
 **Crono SQL** incluye algunas vistas predefinidas que muestran metadatos del lenguaje **Crono SQL**.
 

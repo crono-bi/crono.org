@@ -2,7 +2,6 @@
 title: "Crono$Schemas"
 ---
 
-# Crono$Schemas
 
 Devuelve información sobre los esquemas de la base de datos. 
 

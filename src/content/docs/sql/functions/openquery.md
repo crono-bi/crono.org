@@ -2,7 +2,6 @@
 title: "openquery"
 ---
 
-# openquery
 
 Ejecuta la consulta de paso a través especificada en el servidor vinculado especificado. Este servidor es una fuente de datos OLE DB. Se puede hacer referencia a OPENQUERY en la cláusula FROM de una consulta como si fuera un nombre de tabla. También se puede hacer referencia a OPENQUERY como la tabla de destino de una instrucción INSERT, UPDATE o DELETE. Esto está sujeto a las capacidades del proveedor OLE DB. Aunque la consulta puede devolver varios conjuntos de resultados, OPENQUERY solo devuelve el primero.
 

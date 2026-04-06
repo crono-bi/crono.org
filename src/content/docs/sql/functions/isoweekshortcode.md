@@ -2,7 +2,6 @@
 title: "isoweekshortcode"
 ---
 
-# isoweekshortcode ❇️
 
 La función `isoweekshortcode` devuelve un código alfanumérico identificativo de la semana ISO de una fecha determinada.
 

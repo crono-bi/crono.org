@@ -2,7 +2,6 @@
 title: "datalength"
 ---
 
-# datalength
 
 Esta función devuelve el número de bytes utilizados para representar cualquier expresión.
 

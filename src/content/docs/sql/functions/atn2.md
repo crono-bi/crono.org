@@ -2,7 +2,6 @@
 title: "atn2"
 ---
 
-# atn2
 
 Devuelve el ángulo, en radianes, entre el eje x positivo y el rayo desde el origen hasta el punto (y, x), donde x e y son los valores de las dos expresiones flotantes especificadas.
 

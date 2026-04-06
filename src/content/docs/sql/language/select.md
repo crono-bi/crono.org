@@ -2,7 +2,6 @@
 title: "Sentencia SELECT"
 ---
 
-# Sentencia SELECT ❤️
 
 En esta sección se documenta el funcionamiento de la sentencia **SELECT** del lenguaje. La sintaxis **SELECT** de **Crono SQL** aporta algunas ventajas (algunas importantes) frente al SQL ISO. Sin embargo, el mayor beneficio del lenguaje se manifiesta en el resto de instrucciones DML (**INSERT**, **UPDATE**, **MERGE**, …), donde Crono SQL automatiza toda la lógica de carga. Por eso la sentencia **SELECT** es tan importante… ¡Es prácticamente lo único que tendrá que codificar el desarrollador de un proyecto  ETL/DWH!
 

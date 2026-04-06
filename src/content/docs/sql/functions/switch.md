@@ -2,7 +2,6 @@
 title: "switch"
 ---
 
-# switch ❇️
 
 La función `switch` es una manera compacta de utilizar el la sintaxis simple de `CASE`. Esta función evalúa una expresión y devuelve una de las posibles salidas en función de su valor.
 

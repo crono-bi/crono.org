@@ -2,7 +2,6 @@
 title: "decompress"
 ---
 
-# decompress
 
 Esta función descomprimirá un valor de expresión de entrada, usando el algoritmo GZIP. `DECOMPRESS` devolverá una matriz de bytes (tipo VARBINARY(MAX)).
 

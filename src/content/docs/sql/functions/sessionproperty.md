@@ -2,7 +2,6 @@
 title: "sessionproperty"
 ---
 
-# sessionproperty
 
 Devuelve la configuración de opciones SET de una sesión.
 

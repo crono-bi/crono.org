@@ -2,7 +2,6 @@
 title: "power"
 ---
 
-# power
 
 Devuelve el valor de la expresión especificada a la potencia especificada.
 

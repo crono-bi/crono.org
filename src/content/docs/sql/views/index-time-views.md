@@ -2,7 +2,6 @@
 title: "Vistas de tiempo"
 ---
 
-# Vistas de tiempo
 
 
 **Crono SQL** incluye algunas vistas predefinidas que muestran información sobre las fechas, los meses y las semanas.

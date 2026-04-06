@@ -2,7 +2,6 @@
 title: "exp"
 ---
 
-# exp
 
 Devuelve el valor exponencial de la expresión **flotante** especificada.
 

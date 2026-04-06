@@ -2,7 +2,6 @@
 title: "datetimefromparts"
 ---
 
-# datetimefromparts
 
 Esta función devuelve un valor **datetime** para los argumentos de fecha y hora especificados.
 

@@ -2,7 +2,6 @@
 title: "left ❇️"
 ---
 
-# left ❇️ ❤️ 
 
 La función `left` devuelve el número especificado de caracteres iniciales de una cadena de texto.
 

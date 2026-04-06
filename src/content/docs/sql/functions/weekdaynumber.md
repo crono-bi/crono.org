@@ -3,7 +3,6 @@ title: "weekdaynumber"
 ---
 
 
-# weekdaynumber
 
 La función `WEEKDAY` devuelve devuelve el día de la semana de una fecha, como un número. El valor devuelto depende del primer día de la semana configurado mediante la opción SET DATEFIRST. Es comúnmente utilizada para clasificar o filtrar registros según el día de la semana.
 

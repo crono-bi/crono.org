@@ -2,7 +2,6 @@
 title: "upper"
 ---
 
-# upper
 
 Devuelve una expresión de caracteres con datos de caracteres en minúsculas convertidos a mayúsculas.
 

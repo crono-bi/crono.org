@@ -2,7 +2,6 @@
 title: "patindex"
 ---
 
-# patindex
 
 Devuelve la posición inicial de la primera aparición de un patrón en una expresión especificada, o cero si no se encuentra el patrón, en todos los tipos de datos de texto y caracteres válidos.
 

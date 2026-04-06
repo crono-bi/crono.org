@@ -3,7 +3,6 @@ title: "Crono$GetSchema"
 ---
 
 
-# Crono$GetSchema
 
 La pseudovista `Crono$GetSchema` permite obtener la estructura del resultado de una consulta, incluso si se trata de una consulta en una base de datos distinta de la actual. 
 

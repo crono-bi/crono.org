@@ -2,7 +2,6 @@
 title: "greatest"
 ---
 
-# greatest
 
 Esta función devuelve el valor máximo de una lista de una o más expresiones.
 

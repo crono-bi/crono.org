@@ -2,7 +2,6 @@
 title: "pctrank"
 ---
 
-# pctrank ❇️
 
 La función `pctrank` es una función de ventana que devuelve el ranking de cada fila normalizado entre 0 y 1.
 

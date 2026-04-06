@@ -2,7 +2,6 @@
 title: "Sentencia INSERT"
 ---
 
-# Sentencia INSERT
 
 **Crono SQL** soporta la sintaxis estándar de la sentencia **INSERT**:
 

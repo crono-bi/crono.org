@@ -2,7 +2,6 @@
 title: "Crono$Indexes"
 ---
 
-# Crono$Indexes
 
 
 Devuelve información sobre todos los índices de la base de datos. 

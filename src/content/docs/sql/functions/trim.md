@@ -2,7 +2,6 @@
 title: "trim"
 ---
 
-# trim ❇️
 
 La función `trim` suprime los espacios iniciales y finales de una cadena de texto.
 

@@ -2,7 +2,6 @@
 title: "Propiedades de hoja"
 ---
 
-# Propiedades de hoja
 
 Desde el menú contextual de una hoja se puede acceder a su ventana de propiedades:
 

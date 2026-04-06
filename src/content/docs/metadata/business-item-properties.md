@@ -2,7 +2,6 @@
 title: "Propiedades de elemento de negocio"
 ---
 
-# Propiedades de elemento de negocio
 
 Desde el menú contextual de un elemento de negocio (indicador, dimensión o filtro) se puede acceder a sus propiedades.
 

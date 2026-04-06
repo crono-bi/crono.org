@@ -2,7 +2,6 @@
 title: "current_year"
 ---
 
-# current_year
 
 La función `current_year` devuelve el año actual del sistema como un valor numérico de cuatro dígitos.
 

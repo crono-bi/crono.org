@@ -2,7 +2,6 @@
 title: "least"
 ---
 
-# least
 
 Esta función devuelve el valor mínimo de una lista de una o más expresiones.
 

@@ -2,7 +2,6 @@
 title: "user_name"
 ---
 
-# user_name
 
 Devuelve un nombre de usuario de la base de datos a partir de un número de identificación especificado.
 
