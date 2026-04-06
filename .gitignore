@@ -8,3 +8,4 @@ run
 .nyc_output
 .basement
 config.local.js
+src/.vuepress/dist
