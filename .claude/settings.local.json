@@ -14,7 +14,9 @@
       "Bash(python add_order.py)",
       "Bash(python -c \"import os; os.remove\\('add_order.py'\\)\")",
       "Bash(python fix_asides.py)",
-      "Bash(python -c \"import os; os.remove\\('fix_asides.py'\\)\")"
+      "Bash(python -c \"import os; os.remove\\('fix_asides.py'\\)\")",
+      "Bash(python split_config.py)",
+      "Bash(python -c \"import os; os.remove\\('split_config.py'\\)\")"
     ]
   }
 }
