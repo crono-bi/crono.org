@@ -4,6 +4,9 @@ sidebar:
   order: 4
 ---
 
+import { Aside } from '@astrojs/starlight/components';
+
+
 
 
 La sentencia **MERGE** carga los datos en una **tabla destino** a partir del resultado de una **consulta de origen**.
@@ -1149,9 +1152,9 @@ También en este caso, **Crono SQL** genera automáticamente al código repetiti
 - Creación y carga de los campos de auditoria
 - Comprobación de la corrección de los **JOIN** (ya que aparece la cláusula **CHECK SNOWFLAKE**).
 
-::: tip RECUERDA
+<Aside type="tip" title="RECUERDA">
 Es interesante observar que la elección entre **MERGE CLONE**, **MERGE UPSERT** y **MERGE HISTORY** depende únicamente de las necesidades de negocio. Con **Crono SQL** cuesta exactamente lo mismo programar una carga SCD de tipo 1 o de tipo 2.
-:::
+</Aside>
 
 
 ## Sintaxis MERGE estándar

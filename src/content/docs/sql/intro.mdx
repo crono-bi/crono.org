@@ -2,6 +2,9 @@
 title: "Introducción"
 ---
 
+import { Aside } from '@astrojs/starlight/components';
+
+
 
 Crono SQL es un lenguaje de programación para facilitar el desarrollo ágil de proyectos ETL/DWH. En esta página se muestra la sintaxis del lenguaje y todas las funciones admitidas.
 
@@ -37,11 +40,11 @@ Este manual tiene más de 300 páginas, por lo que probablemente querrás saber 
 
 En menos de 100 palabras:
 
-::: tip RESUMEN
+<Aside type="tip" title="RESUMEN">
 Con **Crono SQL** puedes escribir un código sencillo que crea una tabla y crea el procedimiento que se encarga de su aprovisionamiento. 
 Con unas pocas líneas de código se consigue al mismo tiempo crear el modelo de datos y construir la ETL. 
 Además, el código generado es óptimo y el rendimiento es inigualable. Todo ello redunda en un código más mantenible, más escalable y con menos errores.
-:::
+</Aside>
 
 
 El siguiente ejemplo muestra todo lo anterior con más detalle. Incluye prácticamente todo lo que vas a necesitar para construir un DWH y cargar prácticamente todas las dimensiones y el 90% o más de las tablas de hechos.

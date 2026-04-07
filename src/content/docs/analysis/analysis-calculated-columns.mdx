@@ -2,6 +2,9 @@
 title: "Columnas calculadas"
 ---
 
+import { Aside } from '@astrojs/starlight/components';
+
+
 
 Además de las dimensiones e indicadores definidos en el catálogo se pueden crear **columnas calculadas**. Las columnas calculadas son expresiones a partir del resto de columnas de la consulta o la información del catálogo. Por ejemplo, se puede definir el "Precio" como el cociente entre el "Importe" y las "Unidades vendidas".
 
@@ -21,8 +24,8 @@ Desde el menú contextual de la columna calculada podemos acceder a sus propieda
 
 La expresión puede incluir todos los operadores habituales (`+`, `-`, `*`, `/`, ...). Tambien se pueden utilizar las funciones propias de **Crono SQL** (`addition`, `divide`, ...) y las de la base de datos (`substr`, `upper`, ...).
 
-:::tip RECUERDA
+<Aside type="tip" title="RECUERDA">
 El uso excesivo de columnas calculadas en el informe suele ser indicador de un diseño del catálogo deficiente. 
 
 Las cálculos habituales deben estar definidos en el catálogo para facilitar su reutilización.
-:::
+</Aside>

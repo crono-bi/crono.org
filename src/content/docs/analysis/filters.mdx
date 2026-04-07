@@ -2,6 +2,9 @@
 title: "Filtros"
 ---
 
+import { Aside } from '@astrojs/starlight/components';
+
+
 
 ## Tipos de filtro
 
@@ -71,9 +74,9 @@ Existen cuatro modos o vistas para crear filtros:
 - **Fórmula avanzada**: Permite definir el filtro mediante una expresión Crono SQL (se pueden utilizar cualquier función y operador soportado por el lenguaje o la base de datos)
 
 
-::: tip RECUERDA
+<Aside type="tip" title="RECUERDA">
 Aunque la ventana de filtros permite muchas opciones raramente se utilizan. Prácticamente siempre se debe utilizar el filtro simple o el filtro múltiple. El uso excesivo de filtros avanzados suele ser indicador de un diseño del catálogo deficiente.
-:::
+</Aside>
 
 
 
@@ -98,6 +101,6 @@ el predicado mediante una expresión **Crono SQL** (utilizando funciones de base
 
 ![Filtro mediante fórmula](/images/analysis/FormulaAvanzada.png)
 
-::: tip RECUERDA
+<Aside type="tip" title="RECUERDA">
 El uso excesivo de filtros avanzados suele ser indicador de un diseño del catálogo deficiente.
-:::
+</Aside>
