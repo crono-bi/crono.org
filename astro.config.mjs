@@ -23,7 +23,7 @@ export default defineConfig({
 			plugins: [
 				starlightSidebarTopics(
 					[analysisTopics, metadataTopics, etlTopics, sqlTopics, examplesTopics],
-					{ exclude: ['index.md', 'analysis', 'metadata', 'sql', 'sql/language', 'sql/reference', 'sql/functions', 'sql/views'] }
+					{ exclude: ['index.md', 'sql/language', 'sql/reference', 'sql/functions', 'sql/views'] }
 				),
 			],
 		}),

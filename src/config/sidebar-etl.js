@@ -3,6 +3,6 @@ export const etlTopics = {
 						link: '/etl/',
 						icon: 'random',
 						items: [
-							{ label: 'Inicio', link: 'etl/' },
+							{ label: 'Crono ETL', link: 'etl/' },
 						],
 					};

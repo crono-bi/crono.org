@@ -3,6 +3,7 @@ export const metadataTopics = {
 						link: '/metadata/intro/',
 						icon: 'list-format',
 						items: [
+			{ label: "Crono Metadata", link: "metadata/" },
 			{
 				label: "Introducción",
 				link: "metadata/intro",

@@ -3,6 +3,7 @@ export const analysisTopics = {
 						link: '/analysis/intro/',
 						icon: 'chart',
 						items: [
+			{ label: "Crono Analysis", link: "analysis/" },
 			{
 				label: "Introducción",
 				link: "analysis/intro",
