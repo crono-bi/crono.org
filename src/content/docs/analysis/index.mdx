@@ -3,21 +3,16 @@ title: "Manual Crono Analysis"
 tableOfContents: false
 ---
 
+import IntroFeatures from '../../../components/IntroFeatures.astro'
+
 ![Crono Analysis](/analysis.webp)
 
-<span class="manual-tagline">Crono Analysis es una aplicación de Business Intelligence fácil de usar ❤️</span>
+<span class="manual-tagline">Crono Analysis es una aplicación de Business Intelligence fácil de usar</span>
 
-<div class="manual-cards">
-  <div class="manual-card">
-    <p class="manual-card-title">Business intelligence fácil</p>
-    <p class="manual-card-body">La característica principal de Crono es la facilidad de uso. Así de simple. 💧</p>
-  </div>
-  <div class="manual-card">
-    <p class="manual-card-title">Análisis libre</p>
-    <p class="manual-card-body">Es la mejor herramienta para realizar análisis libre. El propio usuario puede construirse sus informes y análisis. 📊</p>
-  </div>
-  <div class="manual-card">
-    <p class="manual-card-title">Potente</p>
-    <p class="manual-card-body">Con toda la potencia y funcionalidades de las mejores herramientas de BI. 🔧</p>
-  </div>
-</div>
+<IntroFeatures
+  cards={[
+    { icon: 'Heart',     title: 'Business Intelligence fácil', desc: 'La característica principal de Crono es la facilidad de uso. Así de simple.' },
+    { icon: 'BarChart2', title: 'Análisis libre',               desc: 'Es la mejor herramienta para realizar análisis libre. El propio usuario puede construirse sus informes y análisis.' },
+    { icon: 'Wrench',    title: 'Potente',                      desc: 'Con toda la potencia y funcionalidades de las mejores herramientas de BI.' },
+  ]}
+/>

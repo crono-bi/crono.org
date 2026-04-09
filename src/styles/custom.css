@@ -4,10 +4,6 @@
   display: none;
 }
 
-/* Widen content area on manual presentation pages */
-:has(.manual-cards) .sl-markdown-content {
-  max-width: 60rem;
-}
 
 /* Tagline on manual presentation pages */
 .manual-tagline {
@@ -19,31 +15,6 @@
   margin: 1.5rem 0;
 }
 
-/* 3 columns for manual presentation cards */
-.manual-cards {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-  margin-top: 2rem !important;
-  border-top: 1px solid var(--sl-color-hairline-light);
-  padding-top: 1.5rem;
-  align-items: start;
-}
-.manual-card {
-  margin-top: 0 !important;
-}
-.manual-card-title {
-  font-weight: 700;
-  font-size: var(--sl-text-lg);
-  color: var(--sl-color-accent-high);
-  margin: 0 0 0.5rem 0 !important;
-}
-.manual-card-body {
-  font-size: var(--sl-text-sm);
-  color: var(--sl-color-gray-2);
-  margin: 0 !important;
-  line-height: 1.6;
-}
 
 /* ===== SECTION INDEX ===== */
 .section-index {
