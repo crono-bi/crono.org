@@ -1,6 +1,8 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
+import vue from '@astrojs/vue';
+import tailwindcss from '@tailwindcss/vite';
 import starlightSidebarTopics from 'starlight-sidebar-topics';
 import { analysisTopics } from './src/config/sidebar-analysis.js';
 import { metadataTopics } from './src/config/sidebar-metadata.js';
@@ -10,7 +12,11 @@ import { examplesTopics } from './src/config/sidebar-examples.js';
 
 // https://astro.build/config
 export default defineConfig({
+	vite: {
+		plugins: [tailwindcss()],
+	},
 	integrations: [
+		vue(),
 		starlight({
 			title: 'Manual de usuario',
 			defaultLocale: 'es',

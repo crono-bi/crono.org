@@ -3,21 +3,17 @@ title: "Manual Crono SQL"
 tableOfContents: false
 ---
 
+import IntroFeatures from '../../../components/IntroFeatures.astro'
+
 ![Crono SQL](/sql.webp)
 
 <span class="manual-tagline">Crono SQL añade sintaxis y funciones al SQL para facilitar la construcción de data warehouses</span>
 
-<div class="manual-cards">
-  <div class="manual-card">
-    <p class="manual-card-title">SQL extendido</p>
-    <p class="manual-card-body">Sintaxis adicional sobre SQL estándar para simplificar la construcción de data warehouses. 🏗️</p>
-  </div>
-  <div class="manual-card">
-    <p class="manual-card-title">Funciones propias</p>
-    <p class="manual-card-body">Cientos de funciones especializadas para transformación y análisis de datos. 🔢</p>
-  </div>
-  <div class="manual-card">
-    <p class="manual-card-title">Compatible</p>
-    <p class="manual-card-body">Compatible con los principales motores de base de datos del mercado. 🗄️</p>
-  </div>
-</div>
+<IntroFeatures
+  title="¿Qué es Crono SQL?"
+  cards={[
+    { icon: 'Zap',      title: 'SQL con superpoderes',  desc: 'Un lenguaje como SQL, pero más fácil de escribir, más mantenible y más escalable.' },
+    { icon: 'Code',     title: 'Generador de SQL',       desc: 'No es una base de datos ni una caja negra. Crono SQL genera código SQL nativo para tu motor.' },
+    { icon: 'Database', title: 'Crono ETL',              desc: 'El lenguaje utilizado por Crono ETL para crear procesos de carga de Data Warehouse.' },
+  ]}
+/>
