@@ -17,6 +17,17 @@ if (pathname.startsWith('/analysis/')) {
 }
 ---
 
+<script is:inline define:vars={{ section: pathname.split('/')[1] }}>
+  (function() {
+    const brandClasses = ['brand-analysis', 'brand-metadata', 'brand-etl', 'brand-sql'];
+    const html = document.documentElement;
+    brandClasses.forEach(c => html.classList.remove(c));
+    if (['analysis', 'metadata', 'etl', 'sql'].includes(section)) {
+      html.classList.add('brand-' + section);
+    }
+  })();
+</script>
+
 <a href={siteTitleHref} class="site-title sl-flex">
 	{
 		config.logo && logos.dark && (

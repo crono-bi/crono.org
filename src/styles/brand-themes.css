@@ -1,0 +1,14 @@
+/* Brand themes per manual section - JS will apply these dynamically */
+
+:root {
+  --crono-analysis: #C85A47;
+  --crono-metadata: #5B2C7D;
+  --crono-etl: #1B8AC7;
+  --crono-sql: #1B5F8C;
+}
+
+/* Applied via JS - fallback classes */
+.brand-analysis { --sl-color-accent: #C85A47 !important; --sl-color-accent-low: #C85A47 !important; --sl-color-accent-high: #D97A6A !important; --sl-color-text-accent: #C85A47 !important; }
+.brand-metadata { --sl-color-accent: #5B2C7D !important; --sl-color-accent-low: #5B2C7D !important; --sl-color-accent-high: #7B4F9D !important; --sl-color-text-accent: #5B2C7D !important; }
+.brand-etl { --sl-color-accent: #1B8AC7 !important; --sl-color-accent-low: #1B8AC7 !important; --sl-color-accent-high: #3BAAD7 !important; --sl-color-text-accent: #1B8AC7 !important; }
+.brand-sql { --sl-color-accent: #1B5F8C !important; --sl-color-accent-low: #1B5F8C !important; --sl-color-accent-high: #3B7FAC !important; --sl-color-text-accent: #1B5F8C !important; }

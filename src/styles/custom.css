@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "./brand-themes.css";
 
 .starlight-sidebar-topics {
   display: none;

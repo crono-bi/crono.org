@@ -1,0 +1,22 @@
+---
+// Component to inject brand color variables based on current page
+const brandColors: Record<string, string> = {
+  'analysis': '#C85A47',
+  'metadata': '#5B2C7D',
+  'etl': '#1B8AC7',
+  'sql': '#1B5F8C',
+};
+
+const path = Astro.url.pathname;
+const section = path.split('/')[1];
+const color = brandColors[section] || '#C85A47';
+---
+
+<style is:inline define:vars={{ brandColor: color }}>
+  :root {
+    --sl-color-accent-low: var(--brandColor);
+    --sl-color-accent: var(--brandColor);
+    --sl-color-accent-high: color-mix(in srgb, var(--brandColor) 80%, white);
+    --sl-color-text-accent: var(--brandColor);
+  }
+</style>
