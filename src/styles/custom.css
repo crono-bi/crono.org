@@ -4,6 +4,30 @@
   display: none;
 }
 
+/* Hide Starlight's auto-rendered hero on the home splash page */
+[data-page-id='index'] .hero,
+[data-page-id='index'] .sl-hero {
+  display: none !important;
+}
+
+/* Override Starlight's content container on home page */
+[data-page-id='index'] .sl-container {
+  max-width: 100% !important;
+  width: 100% !important;
+}
+
+[data-page-id='index'] .content-panel {
+  padding-inline: 1.5rem !important;
+}
+
+[data-page-id='index'] .sl-markdown-content {
+  max-width: 100% !important;
+}
+
+[data-page-id='index'] .hero {
+  display: none !important;
+}
+
 
 /* Tagline on manual presentation pages */
 .manual-tagline {

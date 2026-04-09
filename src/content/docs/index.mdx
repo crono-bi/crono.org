@@ -2,33 +2,14 @@
 title: Documentación Crono
 description: Manuales de usuario de los productos Crono
 template: splash
+head:
+  - tag: style
+    content: '.sl-markdown-content ~ * { display: none } .hero { display: none !important }'
 hero:
-  tagline: Selecciona el manual que necesitas
-  image:
-    file: ../../assets/houston.webp
+  tagline: ''
+  title: ''
 ---
 
-import { CardGrid, LinkCard } from '@astrojs/starlight/components';
+import HomeHero from '../../components/HomeHero.astro'
 
-<CardGrid>
-	<LinkCard
-		title="Crono Analysis"
-		description="Herramienta de análisis y reporting de Business Intelligence"
-		href="/analysis/"
-	/>
-	<LinkCard
-		title="Crono Metadata"
-		description="Aplicación para construir la capa semántica de Crono"
-		href="/metadata/"
-	/>
-	<LinkCard
-		title="Crono ETL"
-		description="Herramienta ETL especializada en proyectos DWH"
-		href="/etl/"
-	/>
-	<LinkCard
-		title="Crono SQL"
-		description="Extensiones SQL para facilitar la construcción de data warehouses"
-		href="/sql/"
-	/>
-</CardGrid>
+<HomeHero />
