@@ -7,9 +7,9 @@
   <!-- HERO: Clean and centered -->
   <section class="hero">
     <h1 class="hero-title">Crono SQL</h1>
-    <p class="hero-subtitle">SQL with superpowers for building Data Warehouses</p>
+    <p class="hero-subtitle">SQL con superpoderes para construir Data Warehouses</p>
     <div class="hero-cta">
-      <a href="/sql/language/" class="btn-primary">
+      <a href="/sql/intro/" class="btn-primary">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
         Explorar documentación
       </a>
@@ -22,35 +22,35 @@
 
   <!-- WHAT IS CRONO SQL: 3 Feature Cards -->
   <section class="section">
-    <h2 class="section-title">What is Crono SQL?</h2>
+    <h2 class="section-title">¿Qué es Crono SQL?</h2>
     <div class="features-grid">
       <div class="feature-card">
         <div class="feature-icon">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
         </div>
-        <h3>SQL with superpowers</h3>
-        <p>A language like SQL, but easier to write, more maintainable, and more scalable.</p>
+        <h3>SQL con superpoderes</h3>
+        <p>Un lenguaje como SQL, pero más fácil de escribir, más mantenible y más escalable.</p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg>
         </div>
-        <h3>SQL Generator</h3>
-        <p>Not a database or a black box. Crono SQL generates native SQL code for your engine.</p>
+        <h3>Generador de SQL</h3>
+        <p>No es una base de datos ni una caja negra. Crono SQL genera código SQL nativo para tu motor.</p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5V19A9 3 0 0 0 21 19V5"/><path d="M3 12A9 3 0 0 0 21 12"/></svg>
         </div>
         <h3>Crono ETL</h3>
-        <p>The language used by Crono ETL to create Data Warehouse loading processes.</p>
+        <p>El lenguaje utilizado por Crono ETL para crear procesos de carga de Data Warehouse.</p>
       </div>
     </div>
   </section>
 
   <!-- COMPATIBLE ENGINES -->
   <section class="section">
-    <h2 class="section-title">Compatible engines</h2>
+    <h2 class="section-title">Motores compatibles</h2>
     <div class="engines-list">
       <span class="engine-chip">SQL Server</span>
       <span class="engine-chip">Snowflake</span>
@@ -62,9 +62,9 @@
 
   <!-- SIMPLIFIED SYNTAX -->
   <section class="section">
-    <h2 class="section-title">Simplified syntax</h2>
+    <h2 class="section-title">Sintaxis simplificada</h2>
     <p class="section-desc">
-      Crono SQL simplifies JOINs with the <code>USING</code> clause, automatically resolves table references for each column, and adds statements like <code>MERGE UPSERT</code>, <code>MERGE HISTORY</code>, <code>CHECK SNOWFLAKE</code> and many more.
+      Crono SQL simplifica los JOINs con la cláusula <code>USING</code>, resuelve automáticamente las referencias de tabla para cada columna, y añade sentencias como <code>MERGE UPSERT</code>, <code>MERGE HISTORY</code>, <code>CHECK SNOWFLAKE</code> y muchas más.
     </p>
     <div class="code-example">
       <div class="code-label">Crono SQL</div>
@@ -81,65 +81,65 @@
 
   <!-- MAIN STATEMENTS -->
   <section class="section">
-    <h2 class="section-title">Main statements</h2>
+    <h2 class="section-title">Sentencias principales</h2>
     <div class="statements-list">
       <div class="statement-item">
         <strong>SELECT</strong>
-        <span>Queries with simplified JOINs using USING</span>
+        <span>Consultas con JOINs simplificados usando USING</span>
       </div>
       <div class="statement-item">
         <strong>MERGE UPSERT</strong>
-        <span>Inserts new records and updates existing ones</span>
+        <span>Inserta nuevos registros y actualiza los existentes</span>
       </div>
       <div class="statement-item">
         <strong>MERGE HISTORY</strong>
-        <span>Maintains change history (SCD Type 2)</span>
+        <span>Mantiene historial de cambios (SCD Tipo 2)</span>
       </div>
       <div class="statement-item">
         <strong>MERGE CLONE</strong>
-        <span>Fully synchronizes the target table</span>
+        <span>Sincroniza completamente la tabla destino</span>
       </div>
       <div class="statement-item">
         <strong>DELETE AND INSERT</strong>
-        <span>Partial reload: deletes and re-inserts</span>
+        <span>Recarga parcial: elimina y vuelve a insertar</span>
       </div>
       <div class="statement-item">
         <strong>CHECK SNOWFLAKE</strong>
-        <span>Verifies JOINs don't lose or duplicate records</span>
+        <span>Verifica que los JOINs no pierdan ni dupliquen registros</span>
       </div>
       <div class="statement-item">
         <strong>CALCULATE</strong>
-        <span>Aggregations over total result with grouped columns</span>
+        <span>Agregaciones sobre el resultado total con columnas agrupadas</span>
       </div>
       <div class="statement-item">
         <strong>MATERIALIZE</strong>
-        <span>Temporary tables to improve performance</span>
+        <span>Tablas temporales para mejorar el rendimiento</span>
       </div>
     </div>
   </section>
 
   <!-- BUILT-IN FUNCTIONS -->
   <section class="section">
-    <h2 class="section-title">Built-in functions</h2>
+    <h2 class="section-title">Funciones integradas</h2>
     <p class="section-desc">
-      Crono SQL supports all native functions from each engine and adds its own functions such as:
+      Crono SQL soporta todas las funciones nativas de cada motor y añade sus propias funciones como:
     </p>
     <div class="functions-grid">
       <div class="func-chip">
         <code>margin(a, b)</code>
-        <span>Safe sales margin</span>
+        <span>Margen de ventas seguro</span>
       </div>
       <div class="func-chip">
         <code>markup(a, b)</code>
-        <span>Safe markup</span>
+        <span>Márkup seguro</span>
       </div>
       <div class="func-chip">
         <code>divide(a, b)</code>
-        <span>Safe division (no /0 error)</span>
+        <span>División segura (sin error /0)</span>
       </div>
       <div class="func-chip">
         <code>substraction(a, b)</code>
-        <span>Safe subtraction</span>
+        <span>Resta segura</span>
       </div>
     </div>
   </section>
@@ -150,7 +150,7 @@
     <p class="section-desc">
       Explora la documentación completa y empieza a construir tu Data Warehouse.
     </p>
-    <a href="/sql/language/" class="btn-primary btn-lg">
+    <a href="/sql/intro/" class="btn-primary btn-lg">
       <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
       Empezar ahora
     </a>
@@ -326,7 +326,8 @@
     font-size: 13px;
     font-weight: 600;
     letter-spacing: 0.3px;
-    background: var(--sl-color-accent-low);
+    background: rgba(27, 95, 140, 0.15);
+    border: 1px solid rgba(27, 95, 140, 0.3);
     color: var(--sl-color-accent);
   }
 
