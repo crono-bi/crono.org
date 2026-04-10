@@ -1,0 +1,254 @@
+---
+// Modern SQL Landing Page - Premium Design
+---
+
+<!-- HERO SECTION: Immersive with animated mesh gradient -->
+<section class="not-content -mx-6 relative overflow-hidden">
+  <!-- Animated background mesh -->
+  <div class="absolute inset-0 bg-gradient-to-br from-[#1B5F8C] via-[#0d3a5c] to-[#0a2540]">
+    <div class="absolute inset-0 opacity-30">
+      <div class="absolute top-0 left-1/4 w-96 h-96 bg-cyan-400 rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
+      <div class="absolute top-0 right-1/4 w-96 h-96 bg-blue-400 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000"></div>
+      <div class="absolute -bottom-32 left-1/3 w-96 h-96 bg-indigo-400 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000"></div>
+    </div>
+    <!-- Grid pattern overlay -->
+    <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'0.03\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-20"></div>
+  </div>
+  
+  <div class="relative px-6 py-20 text-center">
+    <!-- Animated code brackets icon -->
+    <div class="mb-8 inline-flex">
+      <div class="relative">
+        <div class="absolute -inset-4 rounded-2xl bg-white/10 blur-xl"></div>
+        <div class="relative rounded-2xl bg-white/10 p-5 backdrop-blur-sm border border-white/20">
+          <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-white">
+            <path d="m18 16 4-4-4-4" class="animate-pulse"/>
+            <path d="m6 8-4 4 4 4" class="animate-pulse" style="animation-delay: 0.2s"/>
+            <path d="m14.5 4-5 16" class="text-cyan-300"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main headline with gradient text -->
+    <h1 class="mx-auto max-w-4xl text-4xl font-extrabold tracking-tight text-white sm:text-5xl md:text-6xl" style="margin:0 auto 1.5rem !important">
+      Escribe menos.
+      <span class="bg-gradient-to-r from-cyan-300 via-blue-200 to-white bg-clip-text text-transparent">Haz más.</span>
+    </h1>
+    
+    <p class="mx-auto max-w-2xl text-xl text-blue-100/90" style="margin:0 auto 2rem !important">
+      Crono SQL es el lenguaje que transforma 20 líneas de código en 200 líneas de SQL optimizado. 
+      Diseñado para equipos que construyen Data Warehouses sin perder tiempo.
+    </p>
+
+    <!-- CTA Buttons -->
+    <div class="flex flex-wrap items-center justify-center gap-4">
+      <a href="/sql/language/" class="group inline-flex items-center gap-2 rounded-xl bg-white px-6 py-3 text-sm font-semibold text-[#1B5F8C] shadow-lg shadow-white/10 transition-all duration-200 hover:scale-105 hover:shadow-xl">
+        Empezar ahora
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform group-hover:translate-x-1"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </a>
+      <a href="#comparacion" class="inline-flex items-center gap-2 rounded-xl border border-white/30 bg-white/10 px-6 py-3 text-sm font-medium text-white backdrop-blur-sm transition-all duration-200 hover:bg-white/20">
+        Ver comparación
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR: Key numbers that impress -->
+<div class="not-content -mx-6 mb-16 border-y border-[var(--sl-color-hairline-light)] bg-[var(--sl-color-bg-nav)]">
+  <div class="grid grid-cols-2 gap-px divide-x divide-[var(--sl-color-hairline-light)] md:grid-cols-4">
+    <div class="px-4 py-6 text-center">
+      <div class="text-3xl font-bold text-[var(--sl-color-accent)]">10x</div>
+      <div class="mt-1 text-xs text-[var(--sl-color-gray-3)]">Menos código</div>
+    </div>
+    <div class="px-4 py-6 text-center">
+      <div class="text-3xl font-bold text-[var(--sl-color-accent)]">282</div>
+      <div class="mt-1 text-xs text-[var(--sl-color-gray-3)]">Líneas generadas</div>
+    </div>
+    <div class="px-4 py-6 text-center">
+      <div class="text-3xl font-bold text-[var(--sl-color-accent)]">21</div>
+      <div class="mt-1 text-xs text-[var(--sl-color-gray-3)]">Líneas escritas</div>
+    </div>
+    <div class="px-4 py-6 text-center">
+      <div class="text-3xl font-bold text-[var(--sl-color-accent)]">0</div>
+      <div class="mt-1 text-xs text-[var(--sl-color-gray-3)]">Errores de carga</div>
+    </div>
+  </div>
+</div>
+
+<!-- CODE COMPARISON: The wow factor -->
+<div id="comparacion" class="not-content mb-16">
+  <div class="mb-8 text-center">
+    <span class="mb-2 inline-block rounded-full bg-[var(--sl-color-accent)]/10 px-3 py-1 text-xs font-medium text-[var(--sl-color-accent)]">COMPARACIÓN</span>
+    <h2 class="text-2xl font-bold text-[var(--sl-color-white)]" style="margin:0.5rem 0 !important">
+      La misma tabla. Dos realidades.
+    </h2>
+    <p class="text-[var(--sl-color-gray-2)]" style="margin:0 !important">
+      Carga una tabla de hechos con MERGE y todas las relaciones.
+    </p>
+  </div>
+
+  <!-- Side by side code comparison -->
+  <div class="grid gap-6 lg:grid-cols-2">
+    <!-- Crono SQL side -->
+    <div class="rounded-2xl border border-[#1B5F8C]/30 bg-gradient-to-b from-[#1B5F8C]/10 to-transparent p-1">
+      <div class="rounded-xl bg-[var(--sl-color-bg-nav)] p-4">
+        <div class="mb-4 flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <span class="flex h-2 w-2 rounded-full bg-green-500"></span>
+            <span class="text-xs font-medium text-[var(--sl-color-gray-3)]">Crono SQL</span>
+            <span class="ml-2 rounded bg-green-500/20 px-2 py-0.5 text-[10px] font-semibold text-green-400">21 líneas</span>
+          </div>
+        </div>
+        <pre class="m-0 overflow-x-auto text-xs leading-relaxed"><code class="language-sql text-green-400">MERGE CLONE dwh.FactSalesOrderDetails(SalesOrderDetailID)
+SELECT
+  SalesOrderDetailID,
+  DimProducts.ProductSid    NONUNIQUE REFERENCES dwh.DimProducts,
+  FactHeader.SalesOrderSid  NONUNIQUE REFERENCES dwh.FactSalesOrderHeader,
+  OrderQty,
+  UnitPrice,
+  LineTotal
+FROM @@erp.SalesOrderDetail
+INNER JOIN @@erp.SalesOrderHeader USING (SalesOrderID)
+INNER JOIN dwh.DimProducts USING Product(ProductID)
+INNER JOIN dwh.FactSalesOrderHeader FactHeader USING (SalesOrderID)
+CHECK SNOWFLAKE</code></pre>
+      </div>
+      <!-- Benefits list -->
+      <div class="mt-4 space-y-2 px-3">
+        <div class="flex items-center gap-2 text-xs text-green-400">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          Crea tabla automáticamente
+        </div>
+        <div class="flex items-center gap-2 text-xs text-green-400">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          Valida relaciones (SNOWFLAKE)
+        </div>
+        <div class="flex items-center gap-2 text-xs text-green-400">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          Auditoría incluida
+        </div>
+      </div>
+    </div>
+
+    <!-- Standard SQL side -->
+    <div class="rounded-2xl border border-[var(--sl-color-hairline-light)] bg-[var(--sl-color-bg-nav)] p-4 opacity-70">
+      <div class="mb-4 flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <span class="flex h-2 w-2 rounded-full bg-gray-500"></span>
+          <span class="text-xs font-medium text-[var(--sl-color-gray-3)]">SQL Estándar</span>
+          <span class="ml-2 rounded bg-gray-500/20 px-2 py-0.5 text-[10px] font-semibold text-gray-400">282 líneas</span>
+        </div>
+      </div>
+      <pre class="m-0 overflow-hidden text-xs leading-relaxed text-gray-500" style="max-height: 200px;"><code class="language-sql">-- CREATE TABLE manual
+-- Índices manuales
+-- Claves foráneas manuales
+-- Procedimiento de carga manual
+-- MERGE statement de 200+ líneas
+-- Validaciones manuales
+-- Auditoría manual
+-- ... y mucho más código repetitivo</code></pre>
+      <div class="mt-4 text-center text-xs text-gray-500">
+        + Todo el código que ya no tienes que mantener
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FEATURES GRID: Modern cards with hover effects -->
+<div class="not-content mb-16">
+  <div class="mb-8 text-center">
+    <span class="mb-2 inline-block rounded-full bg-[var(--sl-color-accent)]/10 px-3 py-1 text-xs font-medium text-[var(--sl-color-accent)]">CARACTERÍSTICAS</span>
+    <h2 class="text-2xl font-bold text-[var(--sl-color-white)]" style="margin:0.5rem 0 !important">
+      Todo lo que necesitas. Nada que no necesites.
+    </h2>
+  </div>
+
+  <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    <!-- Feature 1 -->
+    <div class="group relative rounded-2xl border border-[var(--sl-color-hairline-light)] bg-[var(--sl-color-bg-nav)] p-6 transition-all duration-300 hover:-translate-y-1 hover:border-[#1B5F8C]/50 hover:shadow-lg hover:shadow-[#1B5F8C]/10">
+      <div class="mb-4 inline-flex rounded-xl bg-gradient-to-br from-[#1B5F8C]/20 to-[#1B5F8C]/5 p-3 text-[#1B5F8C]">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg>
+      </div>
+      <h3 class="mb-2 text-lg font-semibold text-[var(--sl-color-white)]" style="margin:0 0 0.5rem !important">Sintaxis familiar</h3>
+      <p class="text-sm text-[var(--sl-color-gray-2)]" style="margin:0 !important">Si sabes SQL, ya sabes Crono SQL. Solo eliminamos lo innecesario.</p>
+    </div>
+
+    <!-- Feature 2 -->
+    <div class="group relative rounded-2xl border border-[var(--sl-color-hairline-light)] bg-[var(--sl-color-bg-nav)] p-6 transition-all duration-300 hover:-translate-y-1 hover:border-[#1B5F8C]/50 hover:shadow-lg hover:shadow-[#1B5F8C]/10">
+      <div class="mb-4 inline-flex rounded-xl bg-gradient-to-br from-[#1B5F8C]/20 to-[#1B5F8C]/5 p-3 text-[#1B5F8C]">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+      </div>
+      <h3 class="mb-2 text-lg font-semibold text-[var(--sl-color-white)]" style="margin:0 0 0.5rem !important">MERGE simplificado</h3>
+      <p class="text-sm text-[var(--sl-color-gray-2)]" style="margin:0 !important">La sentencia más farragosa del SQL, ahora en una línea. CLONE, UPDATE, INSERT.</p>
+    </div>
+
+    <!-- Feature 3 -->
+    <div class="group relative rounded-2xl border border-[var(--sl-color-hairline-light)] bg-[var(--sl-color-bg-nav)] p-6 transition-all duration-300 hover:-translate-y-1 hover:border-[#1B5F8C]/50 hover:shadow-lg hover:shadow-[#1B5F8C]/10">
+      <div class="mb-4 inline-flex rounded-xl bg-gradient-to-br from-[#1B5F8C]/20 to-[#1B5F8C]/5 p-3 text-[#1B5F8C]">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5V19A9 3 0 0 0 21 19V5"/><path d="M3 12A9 3 0 0 0 21 12"/></svg>
+      </div>
+      <h3 class="mb-2 text-lg font-semibold text-[var(--sl-color-white)]" style="margin:0 0 0.5rem !important">Data Warehouse nativo</h3>
+      <p class="text-sm text-[var(--sl-color-gray-2)]" style="margin:0 !important">Diseñado para cargas incrementales, dimensiones y tablas de hechos.</p>
+    </div>
+
+    <!-- Feature 4 -->
+    <div class="group relative rounded-2xl border border-[var(--sl-color-hairline-light)] bg-[var(--sl-color-bg-nav)] p-6 transition-all duration-300 hover:-translate-y-1 hover:border-[#1B5F8C]/50 hover:shadow-lg hover:shadow-[#1B5F8C]/10">
+      <div class="mb-4 inline-flex rounded-xl bg-gradient-to-br from-[#1B5F8C]/20 to-[#1B5F8C]/5 p-3 text-[#1B5F8C]">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <h3 class="mb-2 text-lg font-semibold text-[var(--sl-color-white)]" style="margin:0 0 0.5rem !important">Validación automática</h3>
+      <p class="text-sm text-[var(--sl-color-gray-2)]" style="margin:0 !important">CHECK SNOWFLAKE garantiza que no pierdas ni dupliques registros.</p>
+    </div>
+
+    <!-- Feature 5 -->
+    <div class="group relative rounded-2xl border border-[var(--sl-color-hairline-light)] bg-[var(--sl-color-bg-nav)] p-6 transition-all duration-300 hover:-translate-y-1 hover:border-[#1B5F8C]/50 hover:shadow-lg hover:shadow-[#1B5F8C]/10">
+      <div class="mb-4 inline-flex rounded-xl bg-gradient-to-br from-[#1B5F8C]/20 to-[#1B5F8C]/5 p-3 text-[#1B5F8C]">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+      </div>
+      <h3 class="mb-2 text-lg font-semibold text-[var(--sl-color-white)]" style="margin:0 0 0.5rem !important">Auditoría integrada</h3>
+      <p class="text-sm text-[var(--sl-color-gray-2)]" style="margin:0 !important">Cada ejecución queda registrada. Sabes quién, cuándo y cuánto.</p>
+    </div>
+
+    <!-- Feature 6 -->
+    <div class="group relative rounded-2xl border border-[var(--sl-color-hairline-light)] bg-[var(--sl-color-bg-nav)] p-6 transition-all duration-300 hover:-translate-y-1 hover:border-[#1B5F8C]/50 hover:shadow-lg hover:shadow-[#1B5F8C]/10">
+      <div class="mb-4 inline-flex rounded-xl bg-gradient-to-br from-[#1B5F8C]/20 to-[#1B5F8C]/5 p-3 text-[#1B5F8C]">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+      </div>
+      <h3 class="mb-2 text-lg font-semibold text-[var(--sl-color-white)]" style="margin:0 0 0.5rem !important">Rendimiento óptimo</h3>
+      <p class="text-sm text-[var(--sl-color-gray-2)]" style="margin:0 !important">El SQL generado es imposible de mejorar. Carga datos a máxima velocidad.</p>
+    </div>
+  </div>
+</div>
+
+<!-- CTA SECTION -->
+<div class="not-content rounded-2xl border border-[#1B5F8C]/30 bg-gradient-to-br from-[#1B5F8C]/10 to-transparent p-8 text-center">
+  <h2 class="mb-4 text-2xl font-bold text-[var(--sl-color-white)]" style="margin:0 0 1rem !important">
+    ¿Listo para dejar de escribir SQL repetitivo?
+  </h2>
+  <p class="mb-6 text-[var(--sl-color-gray-2)]" style="margin:0 0 1.5rem !important">
+    Explora la documentación completa y empieza a construir tu Data Warehouse hoy.
+  </p>
+  <a href="/sql/language/" class="inline-flex items-center gap-2 rounded-xl bg-[#1B5F8C] px-8 py-4 text-sm font-semibold text-white shadow-lg shadow-[#1B5F8C]/30 transition-all duration-200 hover:scale-105 hover:bg-[#2d7ab3]">
+    Explorar documentación
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+  </a>
+</div>
+
+<style>
+  @keyframes blob {
+    0% { transform: translate(0px, 0px) scale(1); }
+    33% { transform: translate(30px, -50px) scale(1.1); }
+    66% { transform: translate(-20px, 20px) scale(0.9); }
+    100% { transform: translate(0px, 0px) scale(1); }
+  }
+  .animate-blob {
+    animation: blob 7s infinite;
+  }
+  .animation-delay-2000 {
+    animation-delay: 2s;
+  }
+  .animation-delay-4000 {
+    animation-delay: 4s;
+  }
+</style>
