@@ -7,7 +7,7 @@ import SqlCategorySelector from './SqlCategorySelector.astro'
 <div class="sql-landing not-content">
   <!-- HERO: Clean and centered -->
   <section class="hero">
-    <h1 class="hero-title">Crono SQL</h1>
+    <img src="/CronoETL.png" alt="Crono SQL" class="hero-logo" />
     <p class="hero-subtitle">SQL con superpoderes para construir Data Warehouses</p>
     <div class="hero-cta">
       <a href="/sql/intro/" class="btn-primary btn-lg">
@@ -174,12 +174,12 @@ import SqlCategorySelector from './SqlCategorySelector.astro'
     margin-bottom: 56px;
   }
 
-  .hero-title {
-    font-size: 40px;
-    font-weight: 800;
-    margin: 0 0 12px;
-    letter-spacing: -0.5px;
-    color: var(--sl-color-white);
+  .hero-logo {
+    height: 60px;
+    width: auto;
+    margin: 0 auto 16px;
+    object-fit: contain;
+    display: block;
   }
 
   .hero-subtitle {
