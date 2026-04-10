@@ -10,6 +10,9 @@ import { etlTopics } from './src/config/sidebar-etl.js';
 import { sqlTopics } from './src/config/sidebar-sql.js';
 import { examplesTopics } from './src/config/sidebar-examples.js';
 
+// Import SQL grammar for syntax highlighting
+import sqlLang from 'shiki/langs/sql.mjs';
+
 // https://astro.build/config
 export default defineConfig({
 	vite: {
@@ -25,6 +28,11 @@ export default defineConfig({
 			customCss: ['./src/styles/custom.css'],
 			components: {
 				SiteTitle: './src/components/SiteTitle.astro',
+			},
+			// Configure syntax highlighting with SQL support - uses StarlightUserConfig
+			expressiveCode: {
+				// @ts-ignore - langs property is supported but not fully typed
+				langs: [sqlLang],
 			},
 			plugins: [
 				starlightSidebarTopics(
