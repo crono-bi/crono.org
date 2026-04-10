@@ -130,3 +130,18 @@
   transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
+/* ===== SIDEBAR ACTIVE ITEM FIX ===== */
+/* Ensure text is always readable on active sidebar items */
+:root[data-theme='dark'] [aria-current='page'],
+:root[data-theme='dark'] [aria-current='page']:hover,
+:root[data-theme='dark'] [aria-current='page']:focus {
+  color: #ffffff !important;
+}
+
+:root[data-theme='light'] [aria-current='page'],
+:root[data-theme='light'] [aria-current='page']:hover,
+:root[data-theme='light'] [aria-current='page']:focus {
+  color: #ffffff !important;
+}
+
+
