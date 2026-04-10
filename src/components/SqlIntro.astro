@@ -1,0 +1,99 @@
+---
+// SQL Landing Intro Component - Visual presentation similar to IntroPage.vue
+---
+
+<section class="not-content -mx-6 mb-10 overflow-hidden rounded-2xl bg-gradient-to-br from-[#1B5F8C] to-[#0d3a5c] px-6 py-12 text-center">
+  <!-- Logo y título -->
+  <div class="mb-8">
+    <div class="mx-auto mb-6 inline-flex items-center justify-center rounded-2xl bg-white/10 p-4 backdrop-blur-sm">
+      <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-white">
+        <path d="m18 16 4-4-4-4"/>
+        <path d="m6 8-4 4 4 4"/>
+        <path d="m14.5 4-5 16"/>
+      </svg>
+    </div>
+    <h1 class="text-3xl font-bold text-white sm:text-4xl" style="margin:0 0 0.5rem !important">
+      Crono SQL
+    </h1>
+    <p class="text-lg text-blue-100" style="margin:0 !important">
+      SQL con superpoderes para proyectos ETL/DWH
+    </p>
+  </div>
+
+  <!-- Tagline -->
+  <p class="mx-auto max-w-2xl text-base text-blue-50" style="margin:0 auto 2rem !important">
+    Un lenguaje de programación que compila en SQL y simplifica la sintaxis,
+    evitando repeticiones y automatizando el código más farragoso.
+  </p>
+</section>
+
+<!-- Features Grid -->
+<div class="not-content mb-12 grid grid-cols-1 gap-4 sm:grid-cols-3">
+  <div class="rounded-xl border border-[var(--sl-color-hairline-light)] bg-[var(--sl-color-bg-nav)] p-6 transition-all duration-200 hover:border-[var(--sl-color-accent)]">
+    <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-[#1B5F8C]/20 text-[#1B5F8C]">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m18 16 4-4-4-4"/>
+        <path d="m6 8-4 4 4 4"/>
+        <path d="m14.5 4-5 16"/>
+      </svg>
+    </div>
+    <h3 class="mb-2 text-lg font-semibold text-[var(--sl-color-white)]" style="margin:0 0 0.5rem !important">
+      Sintaxis Extendida
+    </h3>
+    <p class="text-sm text-[var(--sl-color-gray-2)]" style="margin:0 !important">
+      Compatible con SQL estándar pero más conciso. Menos código, mismo resultado.
+    </p>
+  </div>
+
+  <div class="rounded-xl border border-[var(--sl-color-hairline-light)] bg-[var(--sl-color-bg-nav)] p-6 transition-all duration-200 hover:border-[var(--sl-color-accent)]">
+    <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-[#1B5F8C]/20 text-[#1B5F8C]">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 20h9"/>
+        <path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/>
+      </svg>
+    </div>
+    <h3 class="mb-2 text-lg font-semibold text-[var(--sl-color-white)]" style="margin:0 0 0.5rem !important">
+      Generador de SQL
+    </h3>
+    <p class="text-sm text-[var(--sl-color-gray-2)]" style="margin:0 !important">
+      Escribe 20 líneas de Crono SQL y genera 200 líneas de SQL óptimo.
+    </p>
+  </div>
+
+  <div class="rounded-xl border border-[var(--sl-color-hairline-light)] bg-[var(--sl-color-bg-nav)] p-6 transition-all duration-200 hover:border-[var(--sl-color-accent)]">
+    <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-[#1B5F8C]/20 text-[#1B5F8C]">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <ellipse cx="12" cy="5" rx="9" ry="3"/>
+        <path d="M3 5V19A9 3 0 0 0 21 19V5"/>
+        <path d="M3 12A9 3 0 0 0 21 12"/>
+      </svg>
+    </div>
+    <h3 class="mb-2 text-lg font-semibold text-[var(--sl-color-white)]" style="margin:0 0 0.5rem !important">
+      Integración ETL
+    </h3>
+    <p class="text-sm text-[var(--sl-color-gray-2)]" style="margin:0 !important">
+      Diseñado específicamente para cargas de Data Warehouse y procesos ETL.
+    </p>
+  </div>
+</div>
+
+<!-- Code Example Preview -->
+<div class="not-content mb-10 rounded-xl border border-[var(--sl-color-hairline-light)] bg-[var(--sl-color-bg-nav)] overflow-hidden">
+  <div class="flex items-center gap-2 border-b border-[var(--sl-color-hairline-light)] bg-[var(--sl-color-bg-sidebar)] px-4 py-3">
+    <div class="flex gap-1.5">
+      <div class="h-3 w-3 rounded-full bg-red-400/80"></div>
+      <div class="h-3 w-3 rounded-full bg-yellow-400/80"></div>
+      <div class="h-3 w-3 rounded-full bg-green-400/80"></div>
+    </div>
+    <span class="ml-3 text-xs font-medium text-[var(--sl-color-gray-3)]">example.crono.sql</span>
+  </div>
+  <div class="p-4">
+    <pre class="m-0 text-sm"><code class="language-sql">MERGE CLONE dwh.FactSales(SalesOrderID)
+SELECT
+  SalesOrderID,
+  CustomerID    NONUNIQUE REFERENCES dwh.DimCustomers,
+  OrderDate,
+  TotalDue
+FROM @@erp.SalesOrderHeader</code></pre>
+  </div>
+</div>

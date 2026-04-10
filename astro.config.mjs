@@ -24,10 +24,11 @@ export default defineConfig({
 			title: 'Manual de usuario',
 			defaultLocale: 'es',
 			locales: { root: { label: 'Español', lang: 'es' } },
-			social: [{ icon: 'external', label: 'Crono', href: 'https://businessintelligence.es' }],
+			// Social links removed per client request
 			customCss: ['./src/styles/custom.css'],
 			components: {
 				SiteTitle: './src/components/SiteTitle.astro',
+				ThemeSelect: './src/components/ThemeToggle.astro',
 			},
 			// Configure syntax highlighting with SQL support - uses StarlightUserConfig
 			expressiveCode: {

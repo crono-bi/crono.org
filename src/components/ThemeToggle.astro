@@ -1,0 +1,103 @@
+---
+// Simple theme toggle button instead of dropdown
+---
+
+<button
+	id="theme-toggle"
+	class="theme-toggle"
+	aria-label="Cambiar tema"
+	type="button"
+>
+	<!-- Sun icon for dark mode (click to switch to light) -->
+	<svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+		<circle cx="12" cy="12" r="4"/>
+		<path d="M12 2v2"/>
+		<path d="M12 20v2"/>
+		<path d="m4.93 4.93 1.41 1.41"/>
+		<path d="m17.66 17.66 1.41 1.41"/>
+		<path d="M2 12h2"/>
+		<path d="M20 12h2"/>
+		<path d="m6.34 17.66-1.41 1.41"/>
+		<path d="m19.07 4.93-1.41 1.41"/>
+	</svg>
+	<!-- Moon icon for light mode (click to switch to dark) -->
+	<svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+		<path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
+	</svg>
+</button>
+
+<script is:inline>
+	(function() {
+		const toggle = document.getElementById('theme-toggle');
+		const html = document.documentElement;
+
+		function updateIcons() {
+			const isDark = html.dataset.theme === 'dark' || (!html.dataset.theme && window.matchMedia('(prefers-color-scheme: dark)').matches);
+			toggle.classList.toggle('is-dark', isDark);
+		}
+
+		toggle.addEventListener('click', () => {
+			const currentTheme = html.dataset.theme;
+			let newTheme;
+
+			if (currentTheme === 'dark') {
+				newTheme = 'light';
+			} else if (currentTheme === 'light') {
+				newTheme = 'dark';
+			} else {
+				// No theme set, check preference
+				newTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'light' : 'dark';
+			}
+
+			html.dataset.theme = newTheme;
+			localStorage.setItem('starlight-theme', newTheme);
+			updateIcons();
+		});
+
+		// Initial state
+		updateIcons();
+
+		// Listen for theme changes from other sources
+		const observer = new MutationObserver(updateIcons);
+		observer.observe(html, { attributes: true, attributeFilter: ['data-theme'] });
+	})();
+</script>
+
+<style>
+	.theme-toggle {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 2.5rem;
+		height: 2.5rem;
+		border-radius: 0.5rem;
+		border: 1px solid var(--sl-color-hairline-light);
+		background: var(--sl-color-bg-nav);
+		color: var(--sl-color-text);
+		cursor: pointer;
+		transition: all 0.2s ease;
+	}
+
+	.theme-toggle:hover {
+		border-color: var(--sl-color-accent);
+		color: var(--sl-color-accent);
+	}
+
+	/* Show/hide icons based on theme */
+	.sun-icon,
+	.moon-icon {
+		display: none;
+	}
+
+	/* Default (dark) - show sun to switch to light */
+	:is(:root:not([data-theme='light'])) .theme-toggle:not(.is-dark) .sun-icon,
+	:is(:root[data-theme='dark']) .theme-toggle .sun-icon {
+		display: block;
+	}
+
+	/* Light mode - show moon to switch to dark */
+	:is(:root[data-theme='light']) .theme-toggle .moon-icon,
+	.theme-toggle.is-dark .moon-icon {
+		display: block;
+	}
+</style>
