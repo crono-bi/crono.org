@@ -1,0 +1,274 @@
+---
+import SectionIndex from './SectionIndex.astro'
+import type { Category } from './ManualLanding.astro'
+
+interface Props {
+  categories: Category[]
+}
+
+const { categories } = Astro.props
+
+// Generate unique ID for this instance to avoid conflicts
+const instanceId = Math.random().toString(36).substring(2, 9)
+---
+
+<div class="category-selector not-content" data-instance={instanceId}>
+  <!-- Category Cards -->
+  <div class="categories-grid">
+    {categories.map((cat) => (
+      <button 
+        class="category-card" 
+        data-category={cat.id}
+        data-instance={instanceId}
+        onclick={`showCategory${instanceId}('${cat.id}', '${cat.title}')`}
+      >
+        <div class="category-header">
+          <div class="category-icon" set:html={cat.icon} />
+          <span class="category-count">{cat.count} artículos</span>
+        </div>
+        <h3 class="category-title">{cat.title}</h3>
+        <p class="category-desc">{cat.description}</p>
+        <div class="category-arrow">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+          </svg>
+        </div>
+      </button>
+    ))}
+  </div>
+
+  <!-- Category Content Areas -->
+  <div id={`category-content-${instanceId}`} class="category-content" style="display: none;">
+    <div class="category-content-header">
+      <h3 id={`selected-title-${instanceId}`} class="selected-title"></h3>
+      <button class="close-btn" onclick={`closeCategory${instanceId}()`}>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 6 6 18"/><path d="m6 6 12 12"/>
+        </svg>
+        Cerrar
+      </button>
+    </div>
+    
+    <!-- Pre-rendered SectionIndex for each category -->
+    {categories.map((cat) => (
+      <div id={`section-${instanceId}-${cat.id}`} class="section-panel" style="display: none;">
+        <SectionIndex src={cat.path} />
+      </div>
+    ))}
+  </div>
+</div>
+
+<script is:inline define:vars={{ instanceId }}>
+  window[`showCategory${instanceId}`] = function(categoryId, title) {
+    const instance = document.querySelector(`[data-instance="${instanceId}"]`);
+    if (!instance) return;
+    
+    // Update active card state
+    instance.querySelectorAll('.category-card').forEach(card => {
+      card.classList.remove('active');
+    });
+    instance.querySelector(`[data-category="${categoryId}"]`).classList.add('active');
+    
+    // Show content area
+    const contentDiv = document.getElementById(`category-content-${instanceId}`);
+    contentDiv.style.display = 'block';
+    
+    // Update title
+    document.getElementById(`selected-title-${instanceId}`).textContent = title;
+    
+    // Hide all panels, show selected
+    instance.querySelectorAll('.section-panel').forEach(panel => {
+      panel.style.display = 'none';
+    });
+    document.getElementById(`section-${instanceId}-${categoryId}`).style.display = 'block';
+    
+    // Scroll to content
+    contentDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+  
+  window[`closeCategory${instanceId}`] = function() {
+    const instance = document.querySelector(`[data-instance="${instanceId}"]`);
+    if (!instance) return;
+    
+    document.getElementById(`category-content-${instanceId}`).style.display = 'none';
+    instance.querySelectorAll('.category-card').forEach(card => {
+      card.classList.remove('active');
+    });
+    instance.querySelectorAll('.section-panel').forEach(panel => {
+      panel.style.display = 'none';
+    });
+  }
+</script>
+
+<style>
+  .category-selector {
+    margin: 32px 0;
+  }
+
+  .categories-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  /* For 5 items, last row centered */
+  .categories-grid > *:nth-child(4) {
+    grid-column: 1;
+  }
+  .categories-grid > *:nth-child(5) {
+    grid-column: 2;
+  }
+
+  @media (max-width: 768px) {
+    .categories-grid {
+      grid-template-columns: 1fr;
+    }
+    .categories-grid > *:nth-child(4),
+    .categories-grid > *:nth-child(5) {
+      grid-column: auto;
+    }
+  }
+
+  .category-card {
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    border-radius: 12px;
+    background: var(--sl-color-bg-nav);
+    border: 1px solid var(--sl-color-hairline-light);
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    width: 100%;
+  }
+
+  .category-card:hover,
+  .category-card.active {
+    transform: translateY(-2px);
+    border-color: var(--brand-color, var(--sl-color-accent));
+    box-shadow: 0 4px 20px rgba(var(--brand-rgb-value, 27, 95, 140), 0.15);
+  }
+
+  .category-card.active {
+    background: rgba(var(--brand-rgb-value, 27, 95, 140), 0.1);
+  }
+
+  .category-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+  }
+
+  .category-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: rgba(var(--brand-rgb-value, 27, 95, 140), 0.15);
+    color: var(--brand-color, var(--sl-color-accent));
+  }
+
+  .category-icon :global(svg) {
+    width: 20px;
+    height: 20px;
+  }
+
+  .category-count {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--sl-color-gray-3);
+    background: var(--sl-color-bg-inline-code);
+    padding: 4px 10px;
+    border-radius: 20px;
+  }
+
+  .category-title {
+    font-size: 17px;
+    font-weight: 700;
+    margin: 0 0 8px;
+    color: var(--sl-color-white);
+  }
+
+  .category-desc {
+    font-size: 13px;
+    line-height: 1.5;
+    margin: 0 0 16px;
+    color: var(--sl-color-gray-2);
+    flex: 1;
+  }
+
+  .category-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: var(--sl-color-bg-sidebar);
+    color: var(--sl-color-gray-3);
+    transition: all 0.2s ease;
+    margin-top: auto;
+  }
+
+  .category-card:hover .category-arrow,
+  .category-card.active .category-arrow {
+    background: var(--brand-color, var(--sl-color-accent));
+    color: white;
+  }
+
+  /* Content Area */
+  .category-content {
+    margin-top: 32px;
+    padding: 24px;
+    border-radius: 12px;
+    background: var(--sl-color-bg-nav);
+    border: 1px solid var(--brand-color, var(--sl-color-accent));
+  }
+
+  .category-content-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--sl-color-hairline-light);
+  }
+
+  .selected-title {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0;
+    color: var(--sl-color-white);
+  }
+
+  .close-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    border-radius: 8px;
+    background: var(--sl-color-bg-sidebar);
+    color: var(--sl-color-gray-2);
+    border: 1px solid var(--sl-color-hairline-light);
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+
+  .close-btn:hover {
+    border-color: var(--brand-color, var(--sl-color-accent));
+    color: var(--brand-color, var(--sl-color-accent));
+  }
+
+  .section-panel {
+    animation: fadeIn 0.3s ease;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>

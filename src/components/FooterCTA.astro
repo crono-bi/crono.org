@@ -1,0 +1,68 @@
+---
+interface Props {
+  title: string
+  description: string
+  ctaText: string
+  ctaHref: string
+}
+
+const { title, description, ctaText, ctaHref } = Astro.props
+---
+
+<section class="footer-cta">
+  <h2 class="section-title">{title}</h2>
+  <p class="section-desc">{description}</p>
+  <a href={ctaHref} class="btn-primary btn-lg">
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+    {ctaText}
+  </a>
+</section>
+
+<style>
+  .footer-cta {
+    text-align: center;
+    padding-top: 24px;
+    border-top: 1px solid var(--sl-color-hairline-light);
+  }
+
+  .section-title {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0 0 16px;
+    color: var(--sl-color-white);
+  }
+
+  .section-desc {
+    font-size: 15px;
+    line-height: 1.6;
+    margin: 0 0 20px;
+    color: var(--sl-color-gray-2);
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 28px;
+    background: var(--brand-color, var(--sl-color-accent));
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    text-decoration: none;
+  }
+
+  .btn-primary:hover {
+    filter: brightness(1.1);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  .btn-lg {
+    padding: 14px 36px;
+    font-size: 16px;
+  }
+</style>

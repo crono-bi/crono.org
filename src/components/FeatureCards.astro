@@ -1,0 +1,65 @@
+---
+import type { Feature } from './ManualLanding.astro'
+
+interface Props {
+  features: Feature[]
+}
+
+const { features } = Astro.props
+---
+
+<div class="features-grid">
+  {features.map((feature) => (
+    <div class="feature-card">
+      <div class="feature-icon" set:html={feature.icon} />
+      <h3>{feature.title}</h3>
+      <p>{feature.description}</p>
+    </div>
+  ))}
+</div>
+
+<style>
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  @media (max-width: 768px) {
+    .features-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .feature-card {
+    padding: 24px;
+    border-radius: 10px;
+    background: var(--sl-color-bg-nav);
+    border: 1px solid var(--sl-color-hairline-light);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .feature-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  .feature-icon {
+    margin-bottom: 12px;
+    color: var(--brand-color, var(--sl-color-accent));
+  }
+
+  .feature-card h3 {
+    font-size: 15px;
+    font-weight: 700;
+    margin: 0 0 8px;
+    color: var(--sl-color-white);
+  }
+
+  .feature-card p {
+    font-size: 13px;
+    line-height: 1.5;
+    margin: 0;
+    color: var(--sl-color-gray-2);
+  }
+</style>

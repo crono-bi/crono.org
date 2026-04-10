@@ -1,0 +1,32 @@
+---
+interface Props {
+  engines: string[]
+}
+
+const { engines } = Astro.props
+---
+
+<div class="engines-list">
+  {engines.map((engine) => (
+    <span class="engine-chip">{engine}</span>
+  ))}
+</div>
+
+<style>
+  .engines-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .engine-chip {
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    background: rgba(var(--brand-rgb-value, 27, 95, 140), 0.15);
+    border: 1px solid rgba(var(--brand-rgb-value, 27, 95, 140), 0.3);
+    color: var(--brand-color, var(--sl-color-accent));
+  }
+</style>
