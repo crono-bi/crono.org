@@ -102,9 +102,19 @@ const {
 
 // Generate unique ID for this instance
 const instanceId = Math.random().toString(36).substring(2, 9)
+
+// Convert hex color to RGB for CSS variables
+function hexToRgb(hex: string): string {
+  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  return result 
+    ? `${parseInt(result[1], 16)}, ${parseInt(result[2], 16)}, ${parseInt(result[3], 16)}`
+    : '27, 95, 140';
+}
+
+const brandRgb = brandColor.startsWith('#') ? hexToRgb(brandColor) : '27, 95, 140'
 ---
 
-<div class="manual-landing not-content" data-instance={instanceId} style={`--brand-color: ${brandColor}; --brand-rgb: ${brandColor.includes('#') ? hexToRgb(brandColor) : '27, 95, 140'}`}>
+<div class="manual-landing not-content" data-instance={instanceId} style={`--brand-color: ${brandColor}; --brand-rgb: ${brandRgb}`}>
   <!-- HERO -->
   <section class="hero">
     <img src={logo} alt={logoAlt} class="hero-logo" />
@@ -178,15 +188,6 @@ const instanceId = Math.random().toString(36).substring(2, 9)
     ctaHref={ctaHref}
   />
 </div>
-
-<script>
-  function hexToRgb(hex: string): string {
-    const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-    return result 
-      ? `${parseInt(result[1], 16)}, ${parseInt(result[2], 16)}, ${parseInt(result[3], 16)}`
-      : '27, 95, 140';
-  }
-</script>
 
 <style>
   .manual-landing {
