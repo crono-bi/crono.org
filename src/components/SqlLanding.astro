@@ -1,461 +1,121 @@
 ---
-// Clean SQL Landing Page - Based on Playground Intro Design
-// Minimal, professional, enterprise style
-import SqlCategorySelector from './SqlCategorySelector.astro'
----
+// SQL Landing Page - Using the generic ManualLanding component
+import ManualLanding from './ManualLanding.astro'
+import type { Feature, Category, Statement, FuncExample } from './ManualLanding.astro'
 
-<div class="sql-landing not-content">
-  <!-- HERO: Clean and centered -->
-  <section class="hero">
-    <img src="/CronoETL.png" alt="Crono SQL" class="hero-logo" />
-    <p class="hero-subtitle">SQL con superpoderes para construir Data Warehouses</p>
-    <div class="hero-cta">
-      <a href="/sql/intro/" class="btn-primary btn-lg">
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
-        Acceder al manual
-      </a>
-    </div>
-  </section>
+const features: Feature[] = [
+  {
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>',
+    title: 'SQL con superpoderes',
+    description: 'Un lenguaje como SQL, pero más fácil de escribir, más mantenible y más escalable.'
+  },
+  {
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg>',
+    title: 'Generador de SQL',
+    description: 'No es una base de datos ni una caja negra. Crono SQL genera código SQL nativo para tu motor.'
+  },
+  {
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5V19A9 3 0 0 0 21 19V5"/><path d="M3 12A9 3 0 0 0 21 12"/></svg>',
+    title: 'Crono ETL',
+    description: 'El lenguaje utilizado por Crono ETL para crear procesos de carga de Data Warehouse.'
+  }
+]
 
-  <!-- WHAT IS CRONO SQL: 3 Feature Cards -->
-  <section class="section">
-    <h2 class="section-title">¿Qué es Crono SQL?</h2>
-    <div class="features-grid">
-      <div class="feature-card">
-        <div class="feature-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-        </div>
-        <h3>SQL con superpoderes</h3>
-        <p>Un lenguaje como SQL, pero más fácil de escribir, más mantenible y más escalable.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg>
-        </div>
-        <h3>Generador de SQL</h3>
-        <p>No es una base de datos ni una caja negra. Crono SQL genera código SQL nativo para tu motor.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5V19A9 3 0 0 0 21 19V5"/><path d="M3 12A9 3 0 0 0 21 12"/></svg>
-        </div>
-        <h3>Crono ETL</h3>
-        <p>El lenguaje utilizado por Crono ETL para crear procesos de carga de Data Warehouse.</p>
-      </div>
-    </div>
-  </section>
+const categories: Category[] = [
+  {
+    id: 'language',
+    title: 'Lenguaje Crono SQL',
+    description: 'Guía completa de la sintaxis con ejemplos prácticos de cada sentencia.',
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg>',
+    count: 24,
+    path: '/sql/language/'
+  },
+  {
+    id: 'reference',
+    title: 'Referencia del lenguaje',
+    description: 'Documentación técnica detallada de sintaxis y funcionalidades avanzadas.',
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/><path d="M12 11h5"/><path d="M12 7h5"/></svg>',
+    count: 15,
+    path: '/sql/reference/'
+  },
+  {
+    id: 'functions',
+    title: 'Funciones',
+    description: 'Listado completo de funciones integradas agrupadas por categoría.',
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5h-2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="2"/><path d="m9 14 2 2 4-4"/></svg>',
+    count: 40,
+    path: '/sql/functions/'
+  },
+  {
+    id: 'actions',
+    title: 'Sentencias',
+    description: 'Documentación de sentencias DML: MERGE, INSERT, UPDATE, DELETE.',
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>',
+    count: 8,
+    path: '/sql/actions/'
+  },
+  {
+    id: 'views',
+    title: 'Vistas',
+    description: 'Vistas predefinidas del sistema para consultar metadatos.',
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/><path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>',
+    count: 12,
+    path: '/sql/views/'
+  }
+]
 
-  <!-- COMPATIBLE ENGINES -->
-  <section class="section">
-    <h2 class="section-title">Motores compatibles</h2>
-    <div class="engines-list">
-      <span class="engine-chip">SQL Server</span>
-      <span class="engine-chip">Snowflake</span>
-      <span class="engine-chip">PostgreSQL</span>
-      <span class="engine-chip">Redshift</span>
-      <span class="engine-chip">BigQuery</span>
-    </div>
-  </section>
+const engines = ['SQL Server', 'Snowflake', 'PostgreSQL', 'Redshift', 'BigQuery']
 
-  <!-- SIMPLIFIED SYNTAX -->
-  <section class="section">
-    <h2 class="section-title">Sintaxis simplificada</h2>
-    <p class="section-desc">
-      Crono SQL simplifica los JOINs con la cláusula <code>USING</code>, resuelve automáticamente las referencias de tabla para cada columna, y añade sentencias como <code>MERGE UPSERT</code>, <code>MERGE HISTORY</code>, <code>CHECK SNOWFLAKE</code> y muchas más.
-    </p>
-    <div class="code-example">
-      <div class="code-label">Crono SQL</div>
-      <pre><code><span class="sql-kw">SELECT</span>
+const statements: Statement[] = [
+  { name: 'SELECT', description: 'Consultas con JOINs simplificados usando USING' },
+  { name: 'MERGE UPSERT', description: 'Inserta nuevos registros y actualiza los existentes' },
+  { name: 'MERGE HISTORY', description: 'Mantiene historial de cambios (SCD Tipo 2)' },
+  { name: 'MERGE CLONE', description: 'Sincroniza completamente la tabla destino' },
+  { name: 'DELETE AND INSERT', description: 'Recarga parcial: elimina y vuelve a insertar' },
+  { name: 'CHECK SNOWFLAKE', description: 'Verifica que los JOINs no pierdan ni dupliquen registros' },
+  { name: 'CALCULATE', description: 'Agregaciones sobre el resultado total con columnas agrupadas' },
+  { name: 'MATERIALIZE', description: 'Tablas temporales para mejorar el rendimiento' }
+]
+
+const functions: FuncExample[] = [
+  { code: 'margin(a, b)', description: 'Margen de ventas seguro' },
+  { code: 'markup(a, b)', description: 'Márkup seguro' },
+  { code: 'divide(a, b)', description: 'División segura (sin error /0)' },
+  { code: 'substraction(a, b)', description: 'Resta segura' }
+]
+
+const codeExample = `SELECT
   Product.Name Product,
   ProductCategory.name ProductCategory,
-  <span class="sql-fn">sum</span>(SalesOrderDetail.LineTotal) Sales
-<span class="sql-kw">FROM</span> staging.SalesOrderDetail
-<span class="sql-kw">INNER JOIN</span> staging.Product <span class="sql-kw">USING</span> ProductId
-<span class="sql-kw">LEFT JOIN</span> staging.ProductSubCategory <span class="sql-kw">USING</span> ProductSubcategoryID
-<span class="sql-kw">LEFT JOIN</span> staging.ProductCategory <span class="sql-kw">USING</span> ProductSubCategory(ProductCategoryId)</code></pre>
-    </div>
-  </section>
+  sum(SalesOrderDetail.LineTotal) Sales
+FROM staging.SalesOrderDetail
+INNER JOIN staging.Product USING ProductId
+LEFT JOIN staging.ProductSubCategory USING ProductSubcategoryID
+LEFT JOIN staging.ProductCategory USING ProductSubCategory(ProductCategoryId)`
+---
 
-  <!-- MAIN STATEMENTS -->
-  <section class="section">
-    <h2 class="section-title">Sentencias principales</h2>
-    <div class="statements-list">
-      <div class="statement-item">
-        <strong>SELECT</strong>
-        <span>Consultas con JOINs simplificados usando USING</span>
-      </div>
-      <div class="statement-item">
-        <strong>MERGE UPSERT</strong>
-        <span>Inserta nuevos registros y actualiza los existentes</span>
-      </div>
-      <div class="statement-item">
-        <strong>MERGE HISTORY</strong>
-        <span>Mantiene historial de cambios (SCD Tipo 2)</span>
-      </div>
-      <div class="statement-item">
-        <strong>MERGE CLONE</strong>
-        <span>Sincroniza completamente la tabla destino</span>
-      </div>
-      <div class="statement-item">
-        <strong>DELETE AND INSERT</strong>
-        <span>Recarga parcial: elimina y vuelve a insertar</span>
-      </div>
-      <div class="statement-item">
-        <strong>CHECK SNOWFLAKE</strong>
-        <span>Verifica que los JOINs no pierdan ni dupliquen registros</span>
-      </div>
-      <div class="statement-item">
-        <strong>CALCULATE</strong>
-        <span>Agregaciones sobre el resultado total con columnas agrupadas</span>
-      </div>
-      <div class="statement-item">
-        <strong>MATERIALIZE</strong>
-        <span>Tablas temporales para mejorar el rendimiento</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- BUILT-IN FUNCTIONS -->
-  <section class="section">
-    <h2 class="section-title">Funciones integradas</h2>
-    <p class="section-desc">
-      Crono SQL soporta todas las funciones nativas de cada motor y añade sus propias funciones como:
-    </p>
-    <div class="functions-grid">
-      <div class="func-chip">
-        <code>margin(a, b)</code>
-        <span>Margen de ventas seguro</span>
-      </div>
-      <div class="func-chip">
-        <code>markup(a, b)</code>
-        <span>Márkup seguro</span>
-      </div>
-      <div class="func-chip">
-        <code>divide(a, b)</code>
-        <span>División segura (sin error /0)</span>
-      </div>
-      <div class="func-chip">
-        <code>substraction(a, b)</code>
-        <span>Resta segura</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- CATEGORIES SELECTOR -->
-  <section class="section">
-    <h2 class="section-title">Explorar por categoría</h2>
-    <p class="section-desc">Selecciona una categoría para ver todos los artículos disponibles.</p>
-    <SqlCategorySelector />
-  </section>
-
-  <!-- FOOTER CTA -->
-  <section class="section footer-cta">
-    <h2 class="section-title">¿Listo para probar Crono SQL?</h2>
-    <p class="section-desc">
-      Explora la documentación completa y empieza a construir tu Data Warehouse.
-    </p>
-    <a href="/sql/intro/" class="btn-primary btn-lg">
-      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
-      Empezar ahora
-    </a>
-  </section>
-</div>
-
-<style>
-  .sql-landing {
-    max-width: 860px;
-    margin: 0 auto;
-    padding: 48px 24px 64px;
-  }
-
-  /* Hero */
-  .hero {
-    text-align: center;
-    margin-bottom: 56px;
-  }
-
-  .hero-logo {
-    height: 60px;
-    width: auto;
-    margin: 0 auto 16px;
-    object-fit: contain;
-    display: block;
-  }
-
-  .hero-subtitle {
-    font-size: 18px;
-    font-weight: 400;
-    margin: 0 0 32px;
-    color: var(--sl-color-gray-2);
-  }
-
-  .hero-cta {
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-    flex-wrap: wrap;
-  }
-
-  .btn-primary {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 12px 28px;
-    background: var(--sl-color-accent);
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 15px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.15s ease;
-    text-decoration: none;
-  }
-
-  .btn-primary:hover {
-    filter: brightness(1.1);
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  }
-
-  .btn-secondary {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 12px 28px;
-    background: transparent;
-    color: var(--sl-color-gray-2);
-    border: 1px solid var(--sl-color-hairline-light);
-    border-radius: 8px;
-    font-size: 15px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.15s ease;
-    text-decoration: none;
-  }
-
-  .btn-secondary:hover {
-    border-color: var(--sl-color-accent);
-    color: var(--sl-color-accent);
-  }
-
-  .btn-lg {
-    padding: 14px 36px;
-    font-size: 16px;
-  }
-
-  /* Sections */
-  .section {
-    margin-bottom: 48px;
-  }
-
-  .section-title {
-    font-size: 24px;
-    font-weight: 700;
-    margin: 0 0 16px;
-    color: var(--sl-color-white);
-  }
-
-  .section-desc {
-    font-size: 15px;
-    line-height: 1.6;
-    margin: 0 0 20px;
-    color: var(--sl-color-gray-2);
-  }
-
-  .section-desc code {
-    background: var(--sl-color-bg-inline-code);
-    color: var(--sl-color-accent);
-    padding: 2px 6px;
-    border-radius: 4px;
-    font-family: 'JetBrains Mono', 'Fira Code', monospace;
-    font-size: 13px;
-  }
-
-  /* Features Grid */
-  .features-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-  }
-
-  @media (max-width: 768px) {
-    .features-grid {
-      grid-template-columns: 1fr;
-    }
-  }
-
-  .feature-card {
-    padding: 24px;
-    border-radius: 10px;
-    background: var(--sl-color-bg-nav);
-    border: 1px solid var(--sl-color-hairline-light);
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
-  }
-
-  .feature-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  }
-
-  .feature-icon {
-    margin-bottom: 12px;
-    color: var(--sl-color-accent);
-  }
-
-  .feature-card h3 {
-    font-size: 15px;
-    font-weight: 700;
-    margin: 0 0 8px;
-    color: var(--sl-color-white);
-  }
-
-  .feature-card p {
-    font-size: 13px;
-    line-height: 1.5;
-    margin: 0;
-    color: var(--sl-color-gray-2);
-  }
-
-  /* Engines */
-  .engines-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-
-  .engine-chip {
-    padding: 8px 20px;
-    border-radius: 20px;
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 0.3px;
-    background: rgba(27, 95, 140, 0.15);
-    border: 1px solid rgba(27, 95, 140, 0.3);
-    color: var(--sl-color-accent);
-  }
-
-  /* Code Example */
-  .code-example {
-    border-radius: 8px;
-    overflow: hidden;
-    background: var(--sl-color-bg-nav);
-    border: 1px solid var(--sl-color-hairline-light);
-  }
-
-  .code-label {
-    padding: 8px 16px;
-    font-size: 11px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    background: var(--sl-color-bg-sidebar);
-    color: var(--sl-color-accent);
-    border-bottom: 1px solid var(--sl-color-hairline-light);
-  }
-
-  .code-example pre {
-    margin: 0;
-    padding: 16px;
-    overflow-x: auto;
-    font-size: 13px;
-    line-height: 1.6;
-    font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
-    color: var(--sl-color-white);
-  }
-
-  .sql-kw {
-    color: var(--sl-color-accent);
-    font-weight: 600;
-  }
-
-  .sql-fn {
-    color: var(--sl-color-accent-high);
-  }
-
-  /* Statements List */
-  .statements-list {
-    display: grid;
-    gap: 0;
-  }
-
-  .statement-item {
-    display: flex;
-    gap: 16px;
-    padding: 12px 0;
-    font-size: 14px;
-    line-height: 1.5;
-    border-bottom: 1px solid var(--sl-color-hairline-light);
-  }
-
-  .statement-item:last-child {
-    border-bottom: none;
-  }
-
-  .statement-item strong {
-    min-width: 170px;
-    font-size: 13px;
-    font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
-    color: var(--sl-color-accent);
-    font-weight: 600;
-  }
-
-  .statement-item span {
-    color: var(--sl-color-gray-2);
-  }
-
-  @media (max-width: 768px) {
-    .statement-item {
-      flex-direction: column;
-      gap: 4px;
-    }
-    .statement-item strong {
-      min-width: auto;
-    }
-  }
-
-  /* Functions Grid */
-  .functions-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-  }
-
-  @media (max-width: 768px) {
-    .functions-grid {
-      grid-template-columns: 1fr;
-    }
-  }
-
-  .func-chip {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 12px 16px;
-    border-radius: 8px;
-    font-size: 13px;
-    background: var(--sl-color-bg-nav);
-    border: 1px solid var(--sl-color-hairline-light);
-  }
-
-  .func-chip code {
-    font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
-    font-size: 12px;
-    padding: 2px 8px;
-    border-radius: 4px;
-    font-weight: 600;
-    background: var(--sl-color-bg-inline-code);
-    color: var(--sl-color-accent);
-  }
-
-  .func-chip span {
-    color: var(--sl-color-gray-2);
-  }
-
-  /* Footer CTA */
-  .footer-cta {
-    text-align: center;
-    padding-top: 24px;
-    border-top: 1px solid var(--sl-color-hairline-light);
-  }
-</style>
+<ManualLanding
+  logo="/CronoSQL.png"
+  logoAlt="Crono SQL"
+  subtitle="SQL con superpoderes para construir Data Warehouses"
+  ctaText="Acceder al manual"
+  ctaHref="/sql/intro/"
+  brandColor="#1B5F8C"
+  features={features}
+  featuresTitle="¿Qué es Crono SQL?"
+  engines={engines}
+  codeExample={{
+    label: 'Crono SQL',
+    code: codeExample
+  }}
+  statements={statements}
+  statementsTitle="Sentencias principales"
+  functions={functions}
+  functionsTitle="Funciones integradas"
+  functionsDesc="Crono SQL soporta todas las funciones nativas de cada motor y añade sus propias funciones como:"
+  categories={categories}
+  categoriesTitle="Explorar por categoría"
+  footerTitle="¿Listo para probar Crono SQL?"
+  footerDesc="Explora la documentación completa y empieza a construir tu Data Warehouse."
+  footerCta="Empezar ahora"
+/>
