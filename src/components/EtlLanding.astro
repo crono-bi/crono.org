@@ -1,0 +1,37 @@
+---
+// ETL Landing Page - Minimal (content under construction)
+import ManualLanding from './ManualLanding.astro'
+import type { Feature } from './ManualLanding.astro'
+
+const features: Feature[] = [
+  {
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M17 18h1"/><path d="M12 18h1"/><path d="M7 18h1"/></svg>',
+    title: 'ETL especializado',
+    description: 'Diseñado específicamente para proyectos de data warehouse y carga de datos.'
+  },
+  {
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>',
+    title: 'Integración nativa',
+    description: 'Integración nativa con Crono Metadata y Crono SQL para flujos de trabajo completos.'
+  },
+  {
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4"/><path d="m16 6-4-4-4 4"/><path d="M12 10v12"/><path d="m18 18-6 6-6-6"/></svg>',
+    title: 'Carga eficiente',
+    description: 'Procesos optimizados para cargar grandes volúmenes de datos de forma incremental.'
+  }
+]
+---
+
+<ManualLanding
+  logo="/CronoETL.png"
+  logoAlt="Crono ETL"
+  subtitle="Una herramienta ETL especializada en proyectos DWH/ETL"
+  ctaText="Acceder al manual"
+  ctaHref="/etl/intro/"
+  brandColor="#1B8AC7"
+  features={features}
+  featuresTitle="¿Qué es Crono ETL?"
+  footerTitle="Documentación en construcción"
+  footerDesc="Estamos trabajando en la documentación completa de Crono ETL. ¡Muy pronto disponible!"
+  footerCta="Ver introducción"
+/>

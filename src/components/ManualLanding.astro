@@ -8,6 +8,7 @@ import CodeExample from './CodeExample.astro'
 import StatementList from './StatementList.astro'
 import FunctionGrid from './FunctionGrid.astro'
 import FooterCTA from './FooterCTA.astro'
+import SectionIndex from './SectionIndex.astro'
 
 export interface Feature {
   icon: string
@@ -65,10 +66,14 @@ interface Props {
   functionsTitle?: string
   functionsDesc?: string
   
-  // Categories selector
+  // Categories selector (or auto SectionIndex if no categories)
   categories?: Category[]
   categoriesTitle?: string
   categoriesDesc?: string
+  
+  // If no categories, show SectionIndex directly for this path
+  basePath?: string
+  basePathTitle?: string
   
   // Footer
   footerTitle?: string
@@ -95,6 +100,8 @@ const {
   categories,
   categoriesTitle = 'Explorar por categoría',
   categoriesDesc = 'Selecciona una categoría para ver todos los artículos disponibles.',
+  basePath,
+  basePathTitle = 'Documentación',
   footerTitle = '¿Listo para empezar?',
   footerDesc = 'Explora la documentación completa.',
   footerCta = 'Empezar ahora'
@@ -171,14 +178,19 @@ const brandRgb = brandColor.startsWith('#') ? hexToRgb(brandColor) : '27, 95, 14
     </section>
   )}
 
-  <!-- CATEGORIES (optional) -->
-  {categories && categories.length > 0 && (
+  <!-- CATEGORIES or SECTION INDEX -->
+  {categories && categories.length > 0 ? (
     <section class="section">
       <h2 class="section-title">{categoriesTitle}</h2>
       <p class="section-desc">{categoriesDesc}</p>
       <CategorySelector categories={categories} />
     </section>
-  )}
+  ) : basePath ? (
+    <section class="section">
+      <h2 class="section-title">{basePathTitle}</h2>
+      <SectionIndex src={basePath} />
+    </section>
+  ) : null}
 
   <!-- FOOTER CTA -->
   <FooterCTA 

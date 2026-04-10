@@ -1,0 +1,39 @@
+---
+// Analysis Landing Page - With SectionIndex for all pages
+import ManualLanding from './ManualLanding.astro'
+import type { Feature } from './ManualLanding.astro'
+
+const features: Feature[] = [
+  {
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.78 4.78 4 4 0 0 1-6.74 0 4 4 0 0 1-4.78-4.78 4 4 0 0 1 0-6.74Z"/><path d="M9 12h.01"/><path d="M15 12h.01"/><path d="M10 16c.5.3 1.2.5 2 .5s1.5-.2 2-.5"/></svg>',
+    title: 'Business Intelligence fácil',
+    description: 'La característica principal de Crono es la facilidad de uso. Diseñado para usuarios de negocio.'
+  },
+  {
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>',
+    title: 'Análisis libre',
+    description: 'El usuario puede explorar datos de manera autónoma, sin depender de informes predefinidos.'
+  },
+  {
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></svg>',
+    title: 'Dashboards y reporting',
+    description: 'Construye dashboards interactivos e informes tradicionales con la misma herramienta.'
+  }
+]
+---
+
+<ManualLanding
+  logo="/CronoANALISYS.png"
+  logoAlt="Crono Analysis"
+  subtitle="Aplicación de Business Intelligence fácil de usar"
+  ctaText="Acceder al manual"
+  ctaHref="/analysis/intro/"
+  brandColor="#C85A47"
+  features={features}
+  featuresTitle="¿Qué es Crono Analysis?"
+  basePath="/analysis/"
+  basePathTitle="Artículos del manual"
+  footerTitle="¿Listo para analizar tus datos?"
+  footerDesc="Explora la documentación completa y empieza a crear informes y dashboards."
+  footerCta="Empezar ahora"
+/>
