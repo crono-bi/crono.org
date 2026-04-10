@@ -1,254 +1,456 @@
 ---
-// Modern SQL Landing Page - Premium Design
+// Clean SQL Landing Page - Based on Playground Intro Design
+// Minimal, professional, enterprise style
 ---
 
-<!-- HERO SECTION: Immersive with animated mesh gradient -->
-<section class="not-content -mx-6 relative overflow-hidden">
-  <!-- Animated background mesh -->
-  <div class="absolute inset-0 bg-gradient-to-br from-[#1B5F8C] via-[#0d3a5c] to-[#0a2540]">
-    <div class="absolute inset-0 opacity-30">
-      <div class="absolute top-0 left-1/4 w-96 h-96 bg-cyan-400 rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
-      <div class="absolute top-0 right-1/4 w-96 h-96 bg-blue-400 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000"></div>
-      <div class="absolute -bottom-32 left-1/3 w-96 h-96 bg-indigo-400 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000"></div>
-    </div>
-    <!-- Grid pattern overlay -->
-    <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'0.03\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-20"></div>
-  </div>
-  
-  <div class="relative px-6 py-20 text-center">
-    <!-- Animated code brackets icon -->
-    <div class="mb-8 inline-flex">
-      <div class="relative">
-        <div class="absolute -inset-4 rounded-2xl bg-white/10 blur-xl"></div>
-        <div class="relative rounded-2xl bg-white/10 p-5 backdrop-blur-sm border border-white/20">
-          <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-white">
-            <path d="m18 16 4-4-4-4" class="animate-pulse"/>
-            <path d="m6 8-4 4 4 4" class="animate-pulse" style="animation-delay: 0.2s"/>
-            <path d="m14.5 4-5 16" class="text-cyan-300"/>
-          </svg>
-        </div>
-      </div>
-    </div>
-
-    <!-- Main headline with gradient text -->
-    <h1 class="mx-auto max-w-4xl text-4xl font-extrabold tracking-tight text-white sm:text-5xl md:text-6xl" style="margin:0 auto 1.5rem !important">
-      Escribe menos.
-      <span class="bg-gradient-to-r from-cyan-300 via-blue-200 to-white bg-clip-text text-transparent">Haz más.</span>
-    </h1>
-    
-    <p class="mx-auto max-w-2xl text-xl text-blue-100/90" style="margin:0 auto 2rem !important">
-      Crono SQL es el lenguaje que transforma 20 líneas de código en 200 líneas de SQL optimizado. 
-      Diseñado para equipos que construyen Data Warehouses sin perder tiempo.
-    </p>
-
-    <!-- CTA Buttons -->
-    <div class="flex flex-wrap items-center justify-center gap-4">
-      <a href="/sql/language/" class="group inline-flex items-center gap-2 rounded-xl bg-white px-6 py-3 text-sm font-semibold text-[#1B5F8C] shadow-lg shadow-white/10 transition-all duration-200 hover:scale-105 hover:shadow-xl">
-        Empezar ahora
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform group-hover:translate-x-1"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+<div class="sql-landing not-content">
+  <!-- HERO: Clean and centered -->
+  <section class="hero">
+    <h1 class="hero-title">Crono SQL</h1>
+    <p class="hero-subtitle">SQL with superpowers for building Data Warehouses</p>
+    <div class="hero-cta">
+      <a href="/sql/language/" class="btn-primary">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+        Explorar documentación
       </a>
-      <a href="#comparacion" class="inline-flex items-center gap-2 rounded-xl border border-white/30 bg-white/10 px-6 py-3 text-sm font-medium text-white backdrop-blur-sm transition-all duration-200 hover:bg-white/20">
-        Ver comparación
+      <a href="/sql/intro/" class="btn-secondary">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
+        Leer introducción
       </a>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- STATS BAR: Key numbers that impress -->
-<div class="not-content -mx-6 mb-16 border-y border-[var(--sl-color-hairline-light)] bg-[var(--sl-color-bg-nav)]">
-  <div class="grid grid-cols-2 gap-px divide-x divide-[var(--sl-color-hairline-light)] md:grid-cols-4">
-    <div class="px-4 py-6 text-center">
-      <div class="text-3xl font-bold text-[var(--sl-color-accent)]">10x</div>
-      <div class="mt-1 text-xs text-[var(--sl-color-gray-3)]">Menos código</div>
+  <!-- WHAT IS CRONO SQL: 3 Feature Cards -->
+  <section class="section">
+    <h2 class="section-title">What is Crono SQL?</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        </div>
+        <h3>SQL with superpowers</h3>
+        <p>A language like SQL, but easier to write, more maintainable, and more scalable.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg>
+        </div>
+        <h3>SQL Generator</h3>
+        <p>Not a database or a black box. Crono SQL generates native SQL code for your engine.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5V19A9 3 0 0 0 21 19V5"/><path d="M3 12A9 3 0 0 0 21 12"/></svg>
+        </div>
+        <h3>Crono ETL</h3>
+        <p>The language used by Crono ETL to create Data Warehouse loading processes.</p>
+      </div>
     </div>
-    <div class="px-4 py-6 text-center">
-      <div class="text-3xl font-bold text-[var(--sl-color-accent)]">282</div>
-      <div class="mt-1 text-xs text-[var(--sl-color-gray-3)]">Líneas generadas</div>
-    </div>
-    <div class="px-4 py-6 text-center">
-      <div class="text-3xl font-bold text-[var(--sl-color-accent)]">21</div>
-      <div class="mt-1 text-xs text-[var(--sl-color-gray-3)]">Líneas escritas</div>
-    </div>
-    <div class="px-4 py-6 text-center">
-      <div class="text-3xl font-bold text-[var(--sl-color-accent)]">0</div>
-      <div class="mt-1 text-xs text-[var(--sl-color-gray-3)]">Errores de carga</div>
-    </div>
-  </div>
-</div>
+  </section>
 
-<!-- CODE COMPARISON: The wow factor -->
-<div id="comparacion" class="not-content mb-16">
-  <div class="mb-8 text-center">
-    <span class="mb-2 inline-block rounded-full bg-[var(--sl-color-accent)]/10 px-3 py-1 text-xs font-medium text-[var(--sl-color-accent)]">COMPARACIÓN</span>
-    <h2 class="text-2xl font-bold text-[var(--sl-color-white)]" style="margin:0.5rem 0 !important">
-      La misma tabla. Dos realidades.
-    </h2>
-    <p class="text-[var(--sl-color-gray-2)]" style="margin:0 !important">
-      Carga una tabla de hechos con MERGE y todas las relaciones.
+  <!-- COMPATIBLE ENGINES -->
+  <section class="section">
+    <h2 class="section-title">Compatible engines</h2>
+    <div class="engines-list">
+      <span class="engine-chip">SQL Server</span>
+      <span class="engine-chip">Snowflake</span>
+      <span class="engine-chip">PostgreSQL</span>
+      <span class="engine-chip">Redshift</span>
+      <span class="engine-chip">BigQuery</span>
+    </div>
+  </section>
+
+  <!-- SIMPLIFIED SYNTAX -->
+  <section class="section">
+    <h2 class="section-title">Simplified syntax</h2>
+    <p class="section-desc">
+      Crono SQL simplifies JOINs with the <code>USING</code> clause, automatically resolves table references for each column, and adds statements like <code>MERGE UPSERT</code>, <code>MERGE HISTORY</code>, <code>CHECK SNOWFLAKE</code> and many more.
     </p>
-  </div>
+    <div class="code-example">
+      <div class="code-label">Crono SQL</div>
+      <pre><code><span class="sql-kw">SELECT</span>
+  Product.Name Product,
+  ProductCategory.name ProductCategory,
+  <span class="sql-fn">sum</span>(SalesOrderDetail.LineTotal) Sales
+<span class="sql-kw">FROM</span> staging.SalesOrderDetail
+<span class="sql-kw">INNER JOIN</span> staging.Product <span class="sql-kw">USING</span> ProductId
+<span class="sql-kw">LEFT JOIN</span> staging.ProductSubCategory <span class="sql-kw">USING</span> ProductSubcategoryID
+<span class="sql-kw">LEFT JOIN</span> staging.ProductCategory <span class="sql-kw">USING</span> ProductSubCategory(ProductCategoryId)</code></pre>
+    </div>
+  </section>
 
-  <!-- Side by side code comparison -->
-  <div class="grid gap-6 lg:grid-cols-2">
-    <!-- Crono SQL side -->
-    <div class="rounded-2xl border border-[#1B5F8C]/30 bg-gradient-to-b from-[#1B5F8C]/10 to-transparent p-1">
-      <div class="rounded-xl bg-[var(--sl-color-bg-nav)] p-4">
-        <div class="mb-4 flex items-center justify-between">
-          <div class="flex items-center gap-2">
-            <span class="flex h-2 w-2 rounded-full bg-green-500"></span>
-            <span class="text-xs font-medium text-[var(--sl-color-gray-3)]">Crono SQL</span>
-            <span class="ml-2 rounded bg-green-500/20 px-2 py-0.5 text-[10px] font-semibold text-green-400">21 líneas</span>
-          </div>
-        </div>
-        <pre class="m-0 overflow-x-auto text-xs leading-relaxed"><code class="language-sql text-green-400">MERGE CLONE dwh.FactSalesOrderDetails(SalesOrderDetailID)
-SELECT
-  SalesOrderDetailID,
-  DimProducts.ProductSid    NONUNIQUE REFERENCES dwh.DimProducts,
-  FactHeader.SalesOrderSid  NONUNIQUE REFERENCES dwh.FactSalesOrderHeader,
-  OrderQty,
-  UnitPrice,
-  LineTotal
-FROM @@erp.SalesOrderDetail
-INNER JOIN @@erp.SalesOrderHeader USING (SalesOrderID)
-INNER JOIN dwh.DimProducts USING Product(ProductID)
-INNER JOIN dwh.FactSalesOrderHeader FactHeader USING (SalesOrderID)
-CHECK SNOWFLAKE</code></pre>
+  <!-- MAIN STATEMENTS -->
+  <section class="section">
+    <h2 class="section-title">Main statements</h2>
+    <div class="statements-list">
+      <div class="statement-item">
+        <strong>SELECT</strong>
+        <span>Queries with simplified JOINs using USING</span>
       </div>
-      <!-- Benefits list -->
-      <div class="mt-4 space-y-2 px-3">
-        <div class="flex items-center gap-2 text-xs text-green-400">
-          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-          Crea tabla automáticamente
-        </div>
-        <div class="flex items-center gap-2 text-xs text-green-400">
-          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-          Valida relaciones (SNOWFLAKE)
-        </div>
-        <div class="flex items-center gap-2 text-xs text-green-400">
-          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-          Auditoría incluida
-        </div>
+      <div class="statement-item">
+        <strong>MERGE UPSERT</strong>
+        <span>Inserts new records and updates existing ones</span>
+      </div>
+      <div class="statement-item">
+        <strong>MERGE HISTORY</strong>
+        <span>Maintains change history (SCD Type 2)</span>
+      </div>
+      <div class="statement-item">
+        <strong>MERGE CLONE</strong>
+        <span>Fully synchronizes the target table</span>
+      </div>
+      <div class="statement-item">
+        <strong>DELETE AND INSERT</strong>
+        <span>Partial reload: deletes and re-inserts</span>
+      </div>
+      <div class="statement-item">
+        <strong>CHECK SNOWFLAKE</strong>
+        <span>Verifies JOINs don't lose or duplicate records</span>
+      </div>
+      <div class="statement-item">
+        <strong>CALCULATE</strong>
+        <span>Aggregations over total result with grouped columns</span>
+      </div>
+      <div class="statement-item">
+        <strong>MATERIALIZE</strong>
+        <span>Temporary tables to improve performance</span>
       </div>
     </div>
+  </section>
 
-    <!-- Standard SQL side -->
-    <div class="rounded-2xl border border-[var(--sl-color-hairline-light)] bg-[var(--sl-color-bg-nav)] p-4 opacity-70">
-      <div class="mb-4 flex items-center justify-between">
-        <div class="flex items-center gap-2">
-          <span class="flex h-2 w-2 rounded-full bg-gray-500"></span>
-          <span class="text-xs font-medium text-[var(--sl-color-gray-3)]">SQL Estándar</span>
-          <span class="ml-2 rounded bg-gray-500/20 px-2 py-0.5 text-[10px] font-semibold text-gray-400">282 líneas</span>
-        </div>
+  <!-- BUILT-IN FUNCTIONS -->
+  <section class="section">
+    <h2 class="section-title">Built-in functions</h2>
+    <p class="section-desc">
+      Crono SQL supports all native functions from each engine and adds its own functions such as:
+    </p>
+    <div class="functions-grid">
+      <div class="func-chip">
+        <code>margin(a, b)</code>
+        <span>Safe sales margin</span>
       </div>
-      <pre class="m-0 overflow-hidden text-xs leading-relaxed text-gray-500" style="max-height: 200px;"><code class="language-sql">-- CREATE TABLE manual
--- Índices manuales
--- Claves foráneas manuales
--- Procedimiento de carga manual
--- MERGE statement de 200+ líneas
--- Validaciones manuales
--- Auditoría manual
--- ... y mucho más código repetitivo</code></pre>
-      <div class="mt-4 text-center text-xs text-gray-500">
-        + Todo el código que ya no tienes que mantener
+      <div class="func-chip">
+        <code>markup(a, b)</code>
+        <span>Safe markup</span>
+      </div>
+      <div class="func-chip">
+        <code>divide(a, b)</code>
+        <span>Safe division (no /0 error)</span>
+      </div>
+      <div class="func-chip">
+        <code>substraction(a, b)</code>
+        <span>Safe subtraction</span>
       </div>
     </div>
-  </div>
-</div>
+  </section>
 
-<!-- FEATURES GRID: Modern cards with hover effects -->
-<div class="not-content mb-16">
-  <div class="mb-8 text-center">
-    <span class="mb-2 inline-block rounded-full bg-[var(--sl-color-accent)]/10 px-3 py-1 text-xs font-medium text-[var(--sl-color-accent)]">CARACTERÍSTICAS</span>
-    <h2 class="text-2xl font-bold text-[var(--sl-color-white)]" style="margin:0.5rem 0 !important">
-      Todo lo que necesitas. Nada que no necesites.
-    </h2>
-  </div>
-
-  <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-    <!-- Feature 1 -->
-    <div class="group relative rounded-2xl border border-[var(--sl-color-hairline-light)] bg-[var(--sl-color-bg-nav)] p-6 transition-all duration-300 hover:-translate-y-1 hover:border-[#1B5F8C]/50 hover:shadow-lg hover:shadow-[#1B5F8C]/10">
-      <div class="mb-4 inline-flex rounded-xl bg-gradient-to-br from-[#1B5F8C]/20 to-[#1B5F8C]/5 p-3 text-[#1B5F8C]">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg>
-      </div>
-      <h3 class="mb-2 text-lg font-semibold text-[var(--sl-color-white)]" style="margin:0 0 0.5rem !important">Sintaxis familiar</h3>
-      <p class="text-sm text-[var(--sl-color-gray-2)]" style="margin:0 !important">Si sabes SQL, ya sabes Crono SQL. Solo eliminamos lo innecesario.</p>
-    </div>
-
-    <!-- Feature 2 -->
-    <div class="group relative rounded-2xl border border-[var(--sl-color-hairline-light)] bg-[var(--sl-color-bg-nav)] p-6 transition-all duration-300 hover:-translate-y-1 hover:border-[#1B5F8C]/50 hover:shadow-lg hover:shadow-[#1B5F8C]/10">
-      <div class="mb-4 inline-flex rounded-xl bg-gradient-to-br from-[#1B5F8C]/20 to-[#1B5F8C]/5 p-3 text-[#1B5F8C]">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
-      </div>
-      <h3 class="mb-2 text-lg font-semibold text-[var(--sl-color-white)]" style="margin:0 0 0.5rem !important">MERGE simplificado</h3>
-      <p class="text-sm text-[var(--sl-color-gray-2)]" style="margin:0 !important">La sentencia más farragosa del SQL, ahora en una línea. CLONE, UPDATE, INSERT.</p>
-    </div>
-
-    <!-- Feature 3 -->
-    <div class="group relative rounded-2xl border border-[var(--sl-color-hairline-light)] bg-[var(--sl-color-bg-nav)] p-6 transition-all duration-300 hover:-translate-y-1 hover:border-[#1B5F8C]/50 hover:shadow-lg hover:shadow-[#1B5F8C]/10">
-      <div class="mb-4 inline-flex rounded-xl bg-gradient-to-br from-[#1B5F8C]/20 to-[#1B5F8C]/5 p-3 text-[#1B5F8C]">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5V19A9 3 0 0 0 21 19V5"/><path d="M3 12A9 3 0 0 0 21 12"/></svg>
-      </div>
-      <h3 class="mb-2 text-lg font-semibold text-[var(--sl-color-white)]" style="margin:0 0 0.5rem !important">Data Warehouse nativo</h3>
-      <p class="text-sm text-[var(--sl-color-gray-2)]" style="margin:0 !important">Diseñado para cargas incrementales, dimensiones y tablas de hechos.</p>
-    </div>
-
-    <!-- Feature 4 -->
-    <div class="group relative rounded-2xl border border-[var(--sl-color-hairline-light)] bg-[var(--sl-color-bg-nav)] p-6 transition-all duration-300 hover:-translate-y-1 hover:border-[#1B5F8C]/50 hover:shadow-lg hover:shadow-[#1B5F8C]/10">
-      <div class="mb-4 inline-flex rounded-xl bg-gradient-to-br from-[#1B5F8C]/20 to-[#1B5F8C]/5 p-3 text-[#1B5F8C]">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-      </div>
-      <h3 class="mb-2 text-lg font-semibold text-[var(--sl-color-white)]" style="margin:0 0 0.5rem !important">Validación automática</h3>
-      <p class="text-sm text-[var(--sl-color-gray-2)]" style="margin:0 !important">CHECK SNOWFLAKE garantiza que no pierdas ni dupliques registros.</p>
-    </div>
-
-    <!-- Feature 5 -->
-    <div class="group relative rounded-2xl border border-[var(--sl-color-hairline-light)] bg-[var(--sl-color-bg-nav)] p-6 transition-all duration-300 hover:-translate-y-1 hover:border-[#1B5F8C]/50 hover:shadow-lg hover:shadow-[#1B5F8C]/10">
-      <div class="mb-4 inline-flex rounded-xl bg-gradient-to-br from-[#1B5F8C]/20 to-[#1B5F8C]/5 p-3 text-[#1B5F8C]">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-      </div>
-      <h3 class="mb-2 text-lg font-semibold text-[var(--sl-color-white)]" style="margin:0 0 0.5rem !important">Auditoría integrada</h3>
-      <p class="text-sm text-[var(--sl-color-gray-2)]" style="margin:0 !important">Cada ejecución queda registrada. Sabes quién, cuándo y cuánto.</p>
-    </div>
-
-    <!-- Feature 6 -->
-    <div class="group relative rounded-2xl border border-[var(--sl-color-hairline-light)] bg-[var(--sl-color-bg-nav)] p-6 transition-all duration-300 hover:-translate-y-1 hover:border-[#1B5F8C]/50 hover:shadow-lg hover:shadow-[#1B5F8C]/10">
-      <div class="mb-4 inline-flex rounded-xl bg-gradient-to-br from-[#1B5F8C]/20 to-[#1B5F8C]/5 p-3 text-[#1B5F8C]">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-      </div>
-      <h3 class="mb-2 text-lg font-semibold text-[var(--sl-color-white)]" style="margin:0 0 0.5rem !important">Rendimiento óptimo</h3>
-      <p class="text-sm text-[var(--sl-color-gray-2)]" style="margin:0 !important">El SQL generado es imposible de mejorar. Carga datos a máxima velocidad.</p>
-    </div>
-  </div>
-</div>
-
-<!-- CTA SECTION -->
-<div class="not-content rounded-2xl border border-[#1B5F8C]/30 bg-gradient-to-br from-[#1B5F8C]/10 to-transparent p-8 text-center">
-  <h2 class="mb-4 text-2xl font-bold text-[var(--sl-color-white)]" style="margin:0 0 1rem !important">
-    ¿Listo para dejar de escribir SQL repetitivo?
-  </h2>
-  <p class="mb-6 text-[var(--sl-color-gray-2)]" style="margin:0 0 1.5rem !important">
-    Explora la documentación completa y empieza a construir tu Data Warehouse hoy.
-  </p>
-  <a href="/sql/language/" class="inline-flex items-center gap-2 rounded-xl bg-[#1B5F8C] px-8 py-4 text-sm font-semibold text-white shadow-lg shadow-[#1B5F8C]/30 transition-all duration-200 hover:scale-105 hover:bg-[#2d7ab3]">
-    Explorar documentación
-    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-  </a>
+  <!-- FOOTER CTA -->
+  <section class="section footer-cta">
+    <h2 class="section-title">¿Listo para probar Crono SQL?</h2>
+    <p class="section-desc">
+      Explora la documentación completa y empieza a construir tu Data Warehouse.
+    </p>
+    <a href="/sql/language/" class="btn-primary btn-lg">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+      Empezar ahora
+    </a>
+  </section>
 </div>
 
 <style>
-  @keyframes blob {
-    0% { transform: translate(0px, 0px) scale(1); }
-    33% { transform: translate(30px, -50px) scale(1.1); }
-    66% { transform: translate(-20px, 20px) scale(0.9); }
-    100% { transform: translate(0px, 0px) scale(1); }
+  .sql-landing {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 48px 24px 64px;
   }
-  .animate-blob {
-    animation: blob 7s infinite;
+
+  /* Hero */
+  .hero {
+    text-align: center;
+    margin-bottom: 56px;
   }
-  .animation-delay-2000 {
-    animation-delay: 2s;
+
+  .hero-title {
+    font-size: 40px;
+    font-weight: 800;
+    margin: 0 0 12px;
+    letter-spacing: -0.5px;
+    color: var(--sl-color-white);
   }
-  .animation-delay-4000 {
-    animation-delay: 4s;
+
+  .hero-subtitle {
+    font-size: 18px;
+    font-weight: 400;
+    margin: 0 0 32px;
+    color: var(--sl-color-gray-2);
+  }
+
+  .hero-cta {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 28px;
+    background: var(--sl-color-accent);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    text-decoration: none;
+  }
+
+  .btn-primary:hover {
+    filter: brightness(1.1);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 28px;
+    background: transparent;
+    color: var(--sl-color-gray-2);
+    border: 1px solid var(--sl-color-hairline-light);
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    text-decoration: none;
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--sl-color-accent);
+    color: var(--sl-color-accent);
+  }
+
+  .btn-lg {
+    padding: 14px 36px;
+    font-size: 16px;
+  }
+
+  /* Sections */
+  .section {
+    margin-bottom: 48px;
+  }
+
+  .section-title {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0 0 16px;
+    color: var(--sl-color-white);
+  }
+
+  .section-desc {
+    font-size: 15px;
+    line-height: 1.6;
+    margin: 0 0 20px;
+    color: var(--sl-color-gray-2);
+  }
+
+  .section-desc code {
+    background: var(--sl-color-bg-inline-code);
+    color: var(--sl-color-accent);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+    font-size: 13px;
+  }
+
+  /* Features Grid */
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  @media (max-width: 768px) {
+    .features-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .feature-card {
+    padding: 24px;
+    border-radius: 10px;
+    background: var(--sl-color-bg-nav);
+    border: 1px solid var(--sl-color-hairline-light);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .feature-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  .feature-icon {
+    margin-bottom: 12px;
+    color: var(--sl-color-accent);
+  }
+
+  .feature-card h3 {
+    font-size: 15px;
+    font-weight: 700;
+    margin: 0 0 8px;
+    color: var(--sl-color-white);
+  }
+
+  .feature-card p {
+    font-size: 13px;
+    line-height: 1.5;
+    margin: 0;
+    color: var(--sl-color-gray-2);
+  }
+
+  /* Engines */
+  .engines-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .engine-chip {
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    background: var(--sl-color-accent-low);
+    color: var(--sl-color-accent);
+  }
+
+  /* Code Example */
+  .code-example {
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--sl-color-bg-nav);
+    border: 1px solid var(--sl-color-hairline-light);
+  }
+
+  .code-label {
+    padding: 8px 16px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    background: var(--sl-color-bg-sidebar);
+    color: var(--sl-color-accent);
+    border-bottom: 1px solid var(--sl-color-hairline-light);
+  }
+
+  .code-example pre {
+    margin: 0;
+    padding: 16px;
+    overflow-x: auto;
+    font-size: 13px;
+    line-height: 1.6;
+    font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+    color: var(--sl-color-white);
+  }
+
+  .sql-kw {
+    color: var(--sl-color-accent);
+    font-weight: 600;
+  }
+
+  .sql-fn {
+    color: var(--sl-color-accent-high);
+  }
+
+  /* Statements List */
+  .statements-list {
+    display: grid;
+    gap: 0;
+  }
+
+  .statement-item {
+    display: flex;
+    gap: 16px;
+    padding: 12px 0;
+    font-size: 14px;
+    line-height: 1.5;
+    border-bottom: 1px solid var(--sl-color-hairline-light);
+  }
+
+  .statement-item:last-child {
+    border-bottom: none;
+  }
+
+  .statement-item strong {
+    min-width: 170px;
+    font-size: 13px;
+    font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+    color: var(--sl-color-accent);
+    font-weight: 600;
+  }
+
+  .statement-item span {
+    color: var(--sl-color-gray-2);
+  }
+
+  @media (max-width: 768px) {
+    .statement-item {
+      flex-direction: column;
+      gap: 4px;
+    }
+    .statement-item strong {
+      min-width: auto;
+    }
+  }
+
+  /* Functions Grid */
+  .functions-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  @media (max-width: 768px) {
+    .functions-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .func-chip {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 13px;
+    background: var(--sl-color-bg-nav);
+    border: 1px solid var(--sl-color-hairline-light);
+  }
+
+  .func-chip code {
+    font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+    font-size: 12px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    background: var(--sl-color-bg-inline-code);
+    color: var(--sl-color-accent);
+  }
+
+  .func-chip span {
+    color: var(--sl-color-gray-2);
+  }
+
+  /* Footer CTA */
+  .footer-cta {
+    text-align: center;
+    padding-top: 24px;
+    border-top: 1px solid var(--sl-color-hairline-light);
   }
 </style>
