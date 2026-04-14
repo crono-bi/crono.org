@@ -3,10 +3,20 @@ import { Code } from 'astro-expressive-code/components'
 
 const products = [
   {
+    id: 'etl',
+    name: 'Crono ETL',
+    tagline: 'Data Warehouse',
+    desc: 'Cargas diarias automatizadas que nunca fallan. Ahorra 10 horas semanales de trabajo manual repetitivo.',
+    href: '/etl/',
+    color: '#1B8AC7',
+    stats: 'En desarrollo',
+    icon: '<circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M6 21V9a9 9 0 0 0 9 9"/>',
+  },
+  {
     id: 'sql',
     name: 'Crono SQL',
     tagline: 'Lenguaje SQL extendido',
-    desc: '288 funciones, 50+ sentencias y sintaxis simplificada para construir data warehouses más rápido.',
+    desc: 'Reduce el tiempo de desarrollo un 40%. Escribe 5 líneas de Crono SQL, genera 200 de SQL estándar automáticamente.',
     href: '/sql/',
     color: '#1B5F8C',
     stats: '376 docs',
@@ -16,7 +26,7 @@ const products = [
     id: 'metadata',
     name: 'Crono Metadata',
     tagline: 'Capa Semántica',
-    desc: 'Crea el catálogo que traduce tu base de datos al lenguaje de negocio.',
+    desc: 'Los usuarios de negocio crean sus propios informes sin depender del equipo IT. Auto-servicio de verdad.',
     href: '/metadata/',
     color: '#5B2C7D',
     stats: '20 artículos',
@@ -26,29 +36,12 @@ const products = [
     id: 'analysis',
     name: 'Crono Analysis',
     tagline: 'Business Intelligence',
-    desc: 'Análisis libre, dashboards e informes predefinidos para toda la organización.',
+    desc: 'Toma decisiones basadas en datos en minutos, no en días. Dashboards que se actualizan solos.',
     href: '/analysis/',
     color: '#C85A47',
     stats: '17 artículos',
     icon: '<path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/>',
   },
-  {
-    id: 'etl',
-    name: 'Crono ETL',
-    tagline: 'Data Warehouse',
-    desc: 'Herramienta ETL diseñada para proyectos de carga de Data Warehouse.',
-    href: '/etl/',
-    color: '#1B8AC7',
-    stats: 'En desarrollo',
-    icon: '<circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M6 21V9a9 9 0 0 0 9 9"/>',
-  },
-]
-
-const popularLinks = [
-  { name: 'SELECT', href: '/sql/language/select/', desc: 'Consulta datos' },
-  { name: 'MERGE', href: '/sql/language/merge/', desc: 'Sincroniza tablas' },
-  { name: 'Funciones de fecha', href: '/sql/functions/', desc: '288 funciones disponibles' },
-  { name: 'Vistas de metadatos', href: '/sql/views/', desc: 'Catálogo del sistema' },
 ]
 
 const codeDemo = `SELECT 
@@ -63,91 +56,269 @@ ORDER BY TotalSales DESC`
 <!-- ═══════════════════════════════════════════════════════════════ -->
 <!-- HERO SECTION -->
 <!-- ═══════════════════════════════════════════════════════════════ -->
-<section class="not-content relative overflow-hidden">
-  <!-- Background with subtle gradient -->
-  <div class="absolute inset-0 bg-[var(--sl-color-bg-nav)]"></div>
-  <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[var(--sl-color-bg)]"></div>
-  
-  <!-- Decorative orbs -->
-  <div class="pointer-events-none absolute inset-0 overflow-hidden">
-    <div class="orb orb-1"></div>
-    <div class="orb orb-2"></div>
-  </div>
+<section class="not-content hero-wrapper">
+  <div class="mx-auto max-w-6xl px-6 lg:px-8">
+    <div class="grid lg:grid-cols-12 gap-6 lg:gap-10 items-center pt-6 pb-8 lg:pt-8 lg:pb-10">
+      
+      <!-- Left Column (7/12) -->
+      <div class="lg:col-span-7">
+        <div class="hero-label">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+          </svg>
+          <span>Documentación técnica</span>
+        </div>
 
-  <div class="relative mx-auto max-w-6xl px-6 py-20 lg:py-28">
-    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-      <!-- Left: Copy -->
-      <div class="text-center lg:text-left">
-        <!-- Logo -->
-        <div class="mb-8 flex justify-center lg:justify-start">
-          <img src="/crono-logo-h-white.png" alt="Crono" class="h-16 w-auto dark-logo" />
-          <img src="/crono-logo-h.png" alt="Crono" class="h-16 w-auto light-logo" />
-        </div>
-        
         <h1 class="hero-headline">
-          La plataforma BI<br/>
-          <span class="text-gradient">completa en español</span>
+          De los datos al
         </h1>
-        
-        <p class="hero-subhead mt-6">
-          Documentación técnica oficial de Crono. Desde ETL hasta reporting, 
-          una suite integrada para todo tu proyecto de datos.
+        <h1 class="hero-headline hero-headline-accent">
+          <span class="text-gradient">dashboard</span>
+        </h1>
+
+        <div class="hero-separator"></div>
+
+        <p class="hero-desc">
+          De los datos crudos a las decisiones inteligentes. Una plataforma única que elimina la complejidad técnica y acelera tus proyectos BI hasta un 40%.
         </p>
-        
-        <!-- CTA Buttons -->
-        <div class="hero-ctas mt-8">
-          <a href="/sql/" class="btn-primary">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/>
-            </svg>
-            Explorar Crono SQL
-          </a>
-          <a href="#productos" class="btn-secondary">
-            Ver todos los manuales
-          </a>
+
+        <!-- Stats row -->
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <div class="hero-stat-icon" style="--si-color: #1B8AC7;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+            </div>
+            <span class="hero-stat-value">400+</span>
+            <span class="hero-stat-label">páginas</span>
+          </div>
+          <div class="hero-stat-divider"></div>
+          <div class="hero-stat">
+            <div class="hero-stat-icon" style="--si-color: #5B2C7D;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/><path d="m12 8 4 4-4 4"/></svg>
+            </div>
+            <span class="hero-stat-value">4</span>
+            <span class="hero-stat-label">productos</span>
+          </div>
+          <div class="hero-stat-divider"></div>
+          <div class="hero-stat">
+            <div class="hero-stat-icon" style="--si-color: #C85A47;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            </div>
+            <span class="hero-stat-value">40%</span>
+            <span class="hero-stat-label">más rápido</span>
+          </div>
         </div>
-        
-        <!-- Stats -->
-        <div class="hero-stats mt-10">
-          <div class="stat">
-            <span class="stat-value">400+</span>
-            <span class="stat-label">páginas de docs</span>
+
+        <a href="#manuales-crono" class="hero-btn-primary">
+          Explorar documentación
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <!-- Right Column (5/12) — Pipeline mockup -->
+      <div class="lg:col-span-5">
+        <div class="mock-window">
+          <div class="mock-bar">
+            <div class="mock-dots"><span></span><span></span><span></span></div>
           </div>
-          <div class="stat-divider"></div>
-          <div class="stat">
-            <span class="stat-value">4</span>
-            <span class="stat-label">productos</span>
-          </div>
-          <div class="stat-divider"></div>
-          <div class="stat">
-            <span class="stat-value">ES</span>
-            <span class="stat-label">en español</span>
+          <div class="mock-body">
+            <div class="mock-row" style="--row-color: #1B8AC7;">
+              <div class="mock-indicator"></div>
+              <div class="mock-col">
+                <span class="mock-name">Crono ETL</span>
+                <span class="mock-sub">Extracción y carga</span>
+              </div>
+              <span class="mock-status ok">Activo</span>
+            </div>
+            <div class="mock-row" style="--row-color: #1B5F8C;">
+              <div class="mock-indicator"></div>
+              <div class="mock-col">
+                <span class="mock-name">Crono SQL</span>
+                <span class="mock-sub">Transformación</span>
+              </div>
+              <span class="mock-status ok">376 docs</span>
+            </div>
+            <div class="mock-row" style="--row-color: #5B2C7D;">
+              <div class="mock-indicator"></div>
+              <div class="mock-col">
+                <span class="mock-name">Crono Metadata</span>
+                <span class="mock-sub">Capa semántica</span>
+              </div>
+              <span class="mock-status ok">No-code</span>
+            </div>
+            <div class="mock-row" style="--row-color: #C85A47;">
+              <div class="mock-indicator"></div>
+              <div class="mock-col">
+                <span class="mock-name">Crono Analysis</span>
+                <span class="mock-sub">Dashboards</span>
+              </div>
+              <span class="mock-status ok">BI</span>
+            </div>
           </div>
         </div>
       </div>
-      
-      <!-- Right: Code Demo -->
-      <div class="code-window-wrapper">
-        <div class="code-window">
-          <div class="code-header">
-            <div class="code-dots">
-              <span></span><span></span><span></span>
-            </div>
-            <span class="code-title">ejemplo.cronosql</span>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- PRODUCT SECTIONS -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+
+<!-- CRONO ETL: Demo LEFT, Content RIGHT -->
+<section id="crono-etl" class="not-content product-section scroll-reveal" style="--section-color: #1B8AC7;">
+  <div class="section-bg" style="background: radial-gradient(ellipse 80% 60% at 30% 50%, color-mix(in srgb, #1B8AC7 8%, transparent), transparent);"></div>
+  <div class="mx-auto max-w-6xl px-6 py-16 lg:py-20">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <!-- Left: Demo (Pipeline Visual) -->
+      <div class="product-demo order-2 lg:order-1">
+        <div class="pipeline-window">
+          <div class="pipeline-header">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M6 21V9a9 9 0 0 0 9 9"/></svg>
+            <span>Pipeline: Carga Diaria DWH</span>
           </div>
-          <div class="code-body">
-            <Code code={codeDemo} lang="sql" theme="starlight-dark" />
+          <div class="pipeline-body">
+            <div class="pipeline-step done">
+              <div class="step-icon">✓</div>
+              <div class="step-info">
+                <span class="step-name">Extracción ERP</span>
+                <span class="step-time">02:30 AM · 4m 12s</span>
+              </div>
+            </div>
+            <div class="pipeline-connector done"></div>
+            <div class="pipeline-step done">
+              <div class="step-icon">✓</div>
+              <div class="step-info">
+                <span class="step-name">Transformación</span>
+                <span class="step-time">02:35 AM · 8m 45s</span>
+              </div>
+            </div>
+            <div class="pipeline-connector done"></div>
+            <div class="pipeline-step running">
+              <div class="step-icon">◐</div>
+              <div class="step-info">
+                <span class="step-name">Carga DWH</span>
+                <span class="step-time">En progreso...</span>
+              </div>
+            </div>
+            <div class="pipeline-connector"></div>
+            <div class="pipeline-step pending">
+              <div class="step-icon">○</div>
+              <div class="step-info">
+                <span class="step-name">Validación</span>
+                <span class="step-time">Pendiente</span>
+              </div>
+            </div>
           </div>
         </div>
-        
+        <div class="demo-badge" style="left: -15px; bottom: 30%;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2"><path d="M12 8v4l3 3"/><circle cx="12" cy="12" r="10"/></svg>
+          <span>Scheduling automático</span>
+        </div>
+        <!-- Badge Calendas connection -->
+        <a href="https://calendas.net" target="_blank" rel="noopener" class="demo-badge calendas-badge" style="right: -10px; top: 10%; text-decoration: none;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          <span>Ver Calendas</span>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="opacity: 0.7;"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
+        </a>
+        <!-- Mini heatmap preview -->
+        <div class="calendas-preview">
+          <div class="heatmap-mini">
+            <div class="heatmap-title">Dashboard Calendas</div>
+            <div class="heatmap-grid">
+              <div class="h-cell success"></div>
+              <div class="h-cell success"></div>
+              <div class="h-cell warning"></div>
+              <div class="h-cell success"></div>
+              <div class="h-cell error"></div>
+              <div class="h-cell success"></div>
+              <div class="h-cell success"></div>
+              <div class="h-cell success"></div>
+              <div class="h-cell success"></div>
+              <div class="h-cell running"></div>
+              <div class="h-cell empty"></div>
+              <div class="h-cell empty"></div>
+            </div>
+            <div class="heatmap-stats">9/10 éxitos · 1 en progreso</div>
+          </div>
+        </div>
+      </div>
+      <!-- Right: Content -->
+      <div class="product-content order-1 lg:order-2">
+        <div class="product-label" style="color: #1B8AC7;">Orquestación ETL</div>
+        <h2 class="product-title">Crono ETL</h2>
+        <p class="product-desc">
+          Olvídate de revisar logs a las 3 AM. Cargas automatizadas que se ejecutan 
+          solas, avisan si fallan y se recuperan automáticamente.
+        </p>
+        <ul class="product-features">
+          <li><span style="color: #1B8AC7;">✓</span> Ahorra 10 horas semanales de trabajo manual</li>
+          <li><span style="color: #1B8AC7;">✓</span> Detecta y corrige errores solo</li>
+          <li><span style="color: #1B8AC7;">✓</span> Notificaciones instantáneas de fallos</li>
+          <li><span style="color: #1B8AC7;">✓</span> Incluye Calendas, nuestro dashboard de monitorización: calendario visual de cargas, gestión de proyectos, logs detallados y reportes de dedicación — todo en una sola herramienta</li>
+        </ul>
+        <a href="/etl/" class="btn-product" style="background: #1B8AC7; box-shadow: 0 4px 20px -4px #1B8AC7;">
+          Explorar documentación
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CRONO SQL: Content LEFT, Demo RIGHT -->
+<section id="crono-sql" class="not-content product-section scroll-reveal" style="--section-color: #1B5F8C;">
+  <div class="section-bg" style="background: radial-gradient(ellipse 80% 60% at 70% 50%, color-mix(in srgb, #1B5F8C 8%, transparent), transparent);"></div>
+  <div class="mx-auto max-w-6xl px-6 py-16 lg:py-20">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <!-- Left: Content -->
+      <div class="product-content">
+        <div class="product-label" style="color: #1B5F8C;">Manual Principal · 376 artículos</div>
+        <h2 class="product-title">Crono SQL</h2>
+        <p class="product-desc">
+          Desarrolla tu Data Warehouse en la mitad de tiempo. Crono SQL genera 
+          automáticamente el código complejo que antes tardabas horas en escribir.
+        </p>
+        <ul class="product-features">
+          <li><span style="color: #1B5F8C;">✓</span> Reduce el código manual un 70%</li>
+          <li><span style="color: #1B5F8C;">✓</span> Auditoría automática en cada operación</li>
+          <li><span style="color: #1B5F8C;">✓</span> Funciona con cualquier motor de base de datos</li>
+          <li><span style="color: #1B5F8C;">✓</span> Detecta errores antes de ejecutar</li>
+        </ul>
+        <a href="/sql/" class="btn-product" style="background: #1B5F8C; box-shadow: 0 4px 20px -4px #1B5F8C;">
+          Explorar documentación
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+      </div>
+      <!-- Right: Code Demo -->
+      <div class="product-demo">
+        <div class="code-window">
+          <div class="code-header">
+            <div class="code-dots"><span></span><span></span><span></span></div>
+            <span class="code-title">ventas.cronosql</span>
+          </div>
+          <div class="code-body">
+            <Code code={`MERGE CLONE dwh.FactVentas(#VentaSid)
+SELECT
+  v.VentaID          #VentaID,
+  c.ClienteSid       REFERENCES dwh.DimClientes,
+  p.ProductoSid      REFERENCES dwh.DimProductos,
+  v.Fecha, v.Cantidad, v.Importe
+FROM @@erp.Ventas v
+INNER JOIN @@erp.Clientes  USING (ClienteID)
+INNER JOIN @@erp.Productos USING (ProductoID)
+CHECK SNOWFLAKE`} lang="sql" theme="starlight-dark" />
+          </div>
+        </div>
         <!-- Floating badges -->
-        <div class="floating-badge badge-1">
+        <div class="demo-badge demo-badge-1" style="right: -20px; top: 15%;">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2">
             <polyline points="20 6 9 17 4 12"/>
           </svg>
           <span>Sintaxis simplificada</span>
         </div>
-        <div class="floating-badge badge-2">
+        <div class="demo-badge demo-badge-2" style="left: -30px; bottom: 20%;">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2">
             <path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/>
           </svg>
@@ -158,122 +329,184 @@ ORDER BY TotalSales DESC`
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════════════ -->
-<!-- SEARCH SECTION -->
-<!-- ═══════════════════════════════════════════════════════════════ -->
-<section class="not-content relative border-y border-[var(--sl-color-hairline)] bg-[var(--sl-color-bg)]">
-  <div class="mx-auto max-w-4xl px-6 py-8">
-    <div class="flex flex-wrap items-center justify-center gap-4 text-sm text-[var(--sl-color-gray-2)]">
-      <span class="font-medium text-[var(--sl-color-white)]">Popular:</span>
-      {popularLinks.map((link, i) => (
-        <>
-          <a href={link.href} class="popular-link">
-            <span class="popular-name">{link.name}</span>
-            <span class="popular-desc">{link.desc}</span>
-          </a>
-          {i < popularLinks.length - 1 && <span class="text-[var(--sl-color-gray-5)]">·</span>}
-        </>
-      ))}
+<!-- CRONO METADATA: Demo LEFT, Content RIGHT -->
+<section id="crono-metadata" class="not-content product-section scroll-reveal" style="--section-color: #5B2C7D;">
+  <div class="section-bg" style="background: radial-gradient(ellipse 80% 60% at 30% 50%, color-mix(in srgb, #5B2C7D 8%, transparent), transparent);"></div>
+  <div class="mx-auto max-w-6xl px-6 py-16 lg:py-20">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <!-- Left: Demo (Catalog Visual) -->
+      <div class="product-demo order-2 lg:order-1">
+        <div class="catalog-window">
+          <div class="catalog-header">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/></svg>
+            <span>Catálogo: Ventas Retail</span>
+          </div>
+          <div class="catalog-body">
+            <div class="catalog-item">
+              <span class="catalog-icon dim">❖</span>
+              <span class="catalog-name">Clientes</span>
+              <span class="catalog-type">Dimensión</span>
+            </div>
+            <div class="catalog-item">
+              <span class="catalog-icon dim">❖</span>
+              <span class="catalog-name">Productos</span>
+              <span class="catalog-type">Dimensión</span>
+            </div>
+            <div class="catalog-item">
+              <span class="catalog-icon dim">❖</span>
+              <span class="catalog-name">Tiempo</span>
+              <span class="catalog-type">Dimensión</span>
+            </div>
+            <div class="catalog-item active">
+              <span class="catalog-icon fact">◆</span>
+              <span class="catalog-name">Ventas</span>
+              <span class="catalog-type">Hechos</span>
+            </div>
+            <div class="catalog-item">
+              <span class="catalog-icon ind">●</span>
+              <span class="catalog-name">Importe Total</span>
+              <span class="catalog-type">Indicador</span>
+            </div>
+          </div>
+        </div>
+        <div class="demo-badge" style="left: -20px; bottom: 25%;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          <span>Drag & drop al informe</span>
+        </div>
+      </div>
+      <!-- Right: Content -->
+      <div class="product-content order-1 lg:order-2">
+        <div class="product-label" style="color: #5B2C7D;">Capa Semántica · 20 artículos</div>
+        <h2 class="product-title">Crono Metadata</h2>
+        <p class="product-desc">
+          Libera a tu equipo de las peticiones de informes repetitivas. 
+          Los usuarios de negocio crean sus propios análisis sin tocar código.
+        </p>
+        <ul class="product-features">
+          <li><span style="color: #5B2C7D;">✓</span> Reduce las peticiones de IT un 60%</li>
+          <li><span style="color: #5B2C7D;">✓</span> Crea informes con arrastrar y soltar</li>
+          <li><span style="color: #5B2C7D;">✓</span> Control de acceso por usuario y rol</li>
+          <li><span style="color: #5B2C7D;">✓</span> Cálculos automáticos sin fórmulas</li>
+        </ul>
+        <a href="/metadata/" class="btn-product" style="background: #5B2C7D; box-shadow: 0 4px 20px -4px #5B2C7D;">
+          Explorar documentación
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CRONO ANALYSIS: Content LEFT, Demo RIGHT -->
+<section id="crono-analysis" class="not-content product-section scroll-reveal" style="--section-color: #C85A47;">
+  <div class="section-bg" style="background: radial-gradient(ellipse 80% 60% at 70% 50%, color-mix(in srgb, #C85A47 8%, transparent), transparent);"></div>
+  <div class="mx-auto max-w-6xl px-6 py-16 lg:py-20">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <!-- Left: Content -->
+      <div class="product-content">
+        <div class="product-label" style="color: #C85A47;">Business Intelligence · 17 artículos</div>
+        <h2 class="product-title">Crono Analysis</h2>
+        <p class="product-desc">
+          Toma decisiones de negocio en minutos, no en días. Dashboards que se 
+          actualizan automáticamente con los últimos datos disponibles.
+        </p>
+        <ul class="product-features">
+          <li><span style="color: #C85A47;">✓</span> Respuestas en minutos sin esperar a IT</li>
+          <li><span style="color: #C85A47;">✓</span> Datos siempre actualizados en tiempo real</li>
+          <li><span style="color: #C85A47;">✓</span> Informes automáticos por email</li>
+          <li><span style="color: #C85A47;">✓</span> Exporta a Excel con un clic</li>
+        </ul>
+        <a href="/analysis/" class="btn-product" style="background: #C85A47; box-shadow: 0 4px 20px -4px #C85A47;">
+          Explorar documentación
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+      </div>
+      <!-- Right: Demo (Dashboard Visual) -->
+      <div class="product-demo">
+        <div class="dashboard-window">
+          <div class="dashboard-header">
+            <div class="dashboard-tabs">
+              <span class="tab active">Ventas por Región</span>
+              <span class="tab">Tendencias</span>
+            </div>
+          </div>
+          <div class="dashboard-body">
+            <div class="chart-container">
+              <div class="chart-title">Ventas Q1-Q4 2025</div>
+              <div class="chart-bars">
+                <div class="bar" style="height: 45%;"><label>Q1</label></div>
+                <div class="bar" style="height: 62%;"><label>Q2</label></div>
+                <div class="bar active" style="height: 85%;"><label>Q3</label></div>
+                <div class="bar" style="height: 70%;"><label>Q4</label></div>
+              </div>
+            </div>
+            <div class="kpi-row">
+              <div class="kpi">
+                <span class="kpi-value">€2.4M</span>
+                <span class="kpi-label">Total Ventas</span>
+              </div>
+              <div class="kpi">
+                <span class="kpi-value">+18%</span>
+                <span class="kpi-label">vs Año Anterior</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="demo-badge" style="right: -15px; top: 15%;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
+          <span>Actualización en tiempo real</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════════ -->
-<!-- BENTO GRID PRODUCTS -->
+<!-- MANUALS INFO SECTION -->
 <!-- ═══════════════════════════════════════════════════════════════ -->
-<section id="productos" class="not-content relative py-20 lg:py-28">
-  <div class="mx-auto max-w-6xl px-6">
-    <!-- Section Header -->
-    <div class="text-center mb-16">
-      <h2 class="text-3xl lg:text-4xl font-bold text-[var(--sl-color-white)]">
-        Elige tu manual
-      </h2>
-      <p class="mt-4 text-lg text-[var(--sl-color-gray-2)]">
-        Cada producto tiene su documentación completa y ejemplos prácticos.
-      </p>
+<section id="manuales-crono" class="not-content border-t border-[var(--sl-color-hairline)] py-16">
+  <div class="mx-auto max-w-6xl px-6 lg:px-8">
+    <!-- Section Label with Divider -->
+    <div class="hero-section-label mb-8">
+      <div class="label-line"></div>
+      <span class="label-text">Manuales de Crono</span>
+      <div class="label-line"></div>
     </div>
-    
-    <!-- Bento Grid -->
-    <div class="bento-grid">
-      <!-- SQL: Large card spanning 2 columns -->
-      <a href="/sql/" class="bento-card bento-card-large group" style="--card-color: #1B5F8C;">
-        <div class="card-glow"></div>
-        <div class="card-content">
-          <div class="card-header">
-            <div class="card-icon" style="background: #1B5F8C20; color: #1B5F8C;">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/>
-              </svg>
+
+    <!-- Tagline -->
+    <p class="text-center text-[var(--sl-color-gray-3)] mb-20">
+      Documentación técnica oficial · 400+ páginas · En español
+    </p>
+
+    <!-- Product Cards Grid -->
+    <div class="hero-products-grid" style="padding-top: 3rem;">
+      {products.map((product, i) => (
+        <a href={product.href} class="hero-product-card" style={`--product-color: ${product.color}; --index: ${i}`}>
+          <div class="hero-card-glow"></div>
+          <div class="hero-card-content">
+            <div class="hero-card-top">
+              <div class="hero-card-icon" style={`background: ${product.color}20; color: ${product.color};`}>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" set:html={product.icon} />
+              </div>
+              <span class="hero-card-badge" style={`background: ${product.color}20; color: ${product.color};`}>
+                {product.stats}
+              </span>
             </div>
-            <span class="card-badge" style="background: #1B5F8C20; color: #1B5F8C;">376 docs</span>
-          </div>
-          <h3 class="card-title">Crono SQL</h3>
-          <p class="card-desc">SQL con superpoderes. Sintaxis simplificada, 288 funciones integradas y compatibilidad con múltiples motores.</p>
-          <div class="card-footer">
-            <span class="card-cta">
-              Explorar documentación
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
-              </svg>
-            </span>
-          </div>
-        </div>
-        <div class="card-accent" style="background: linear-gradient(135deg, #1B5F8C, #2d7db5);"></div>
-      </a>
-      
-      <!-- Metadata -->
-      <a href="/metadata/" class="bento-card group" style="--card-color: #5B2C7D;">
-        <div class="card-glow"></div>
-        <div class="card-content">
-          <div class="card-header">
-            <div class="card-icon" style="background: #5B2C7D20; color: #5B2C7D;">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/>
-              </svg>
+            <h3 class="hero-card-title">{product.name}</h3>
+            <p class="hero-card-tagline">{product.tagline}</p>
+            <p class="hero-card-desc">{product.desc}</p>
+            <div class="hero-card-footer">
+              <span class="hero-card-link">Ver documentación</span>
+              <div class="hero-card-arrow">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+                </svg>
+              </div>
             </div>
-            <span class="card-badge" style="background: #5B2C7D20; color: #5B2C7D;">20 docs</span>
           </div>
-          <h3 class="card-title">Crono Metadata</h3>
-          <p class="card-desc">Capa semántica para traducir tu base de datos al lenguaje de negocio.</p>
-        </div>
-        <div class="card-accent" style="background: linear-gradient(135deg, #5B2C7D, #7B4F9D);"></div>
-      </a>
-      
-      <!-- Analysis -->
-      <a href="/analysis/" class="bento-card group" style="--card-color: #C85A47;">
-        <div class="card-glow"></div>
-        <div class="card-content">
-          <div class="card-header">
-            <div class="card-icon" style="background: #C85A4720; color: #C85A47;">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/>
-              </svg>
-            </div>
-            <span class="card-badge" style="background: #C85A4720; color: #C85A47;">17 docs</span>
-          </div>
-          <h3 class="card-title">Crono Analysis</h3>
-          <p class="card-desc">Dashboards, informes y análisis para toda la organización.</p>
-        </div>
-        <div class="card-accent" style="background: linear-gradient(135deg, #C85A47, #D97A6A);"></div>
-      </a>
-      
-      <!-- ETL -->
-      <a href="/etl/" class="bento-card group" style="--card-color: #1B8AC7;">
-        <div class="card-glow"></div>
-        <div class="card-content">
-          <div class="card-header">
-            <div class="card-icon" style="background: #1B8AC720; color: #1B8AC7;">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M6 21V9a9 9 0 0 0 9 9"/>
-              </svg>
-            </div>
-            <span class="card-badge" style="background: #1B8AC720; color: #1B8AC7;">En desarrollo</span>
-          </div>
-          <h3 class="card-title">Crono ETL</h3>
-          <p class="card-desc">Herramienta ETL especializada para proyectos de Data Warehouse.</p>
-        </div>
-        <div class="card-accent" style="background: linear-gradient(135deg, #1B8AC7, #3BAAD7);"></div>
-      </a>
+          <div class="hero-card-border" style={`background: ${product.color};`}></div>
+        </a>
+      ))}
     </div>
   </div>
 </section>
@@ -284,160 +517,403 @@ ORDER BY TotalSales DESC`
 <section class="not-content border-t border-[var(--sl-color-hairline)] py-12">
   <div class="mx-auto max-w-6xl px-6 flex flex-col items-center gap-4">
     <p class="text-sm text-[var(--sl-color-gray-3)]">
-      Documentación oficial de Crono · Hecho con ❤️ en España
+      Made by Crono with ❤️
     </p>
   </div>
 </section>
 
 <style>
   /* ═══════════════════════════════════════════════════════════════
-     HERO STYLES
+     TEXT GRADIENT
      ═══════════════════════════════════════════════════════════════ */
-  
-  .hero-headline {
-    font-size: clamp(2.5rem, 5vw, 4rem);
-    font-weight: 800;
-    line-height: 1.1;
-    letter-spacing: -0.02em;
-    color: var(--sl-color-white);
-  }
-  
+
   .text-gradient {
-    background: linear-gradient(135deg, var(--sl-color-accent), #22d3ee);
+    background: linear-gradient(135deg, #1B8AC7 0%, #1B5F8C 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
-  
-  .hero-subhead {
-    font-size: 1.125rem;
-    line-height: 1.7;
-    color: var(--sl-color-gray-2);
-    max-width: 480px;
-  }
-  
-  .hero-ctas {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    justify-content: center;
-  }
-  
-  @media (min-width: 1024px) {
-    .hero-ctas {
-      justify-content: flex-start;
-    }
-    .hero-subhead {
-      margin-left: 0;
-      margin-right: 0;
-    }
-  }
-  
-  .btn-primary {
+
+  .btn-hero-minimal {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 0.875rem 1.75rem;
+    padding: 0.75rem 1.5rem;
     background: var(--sl-color-accent);
-    color: white;
-    font-weight: 600;
-    border-radius: 0.75rem;
-    text-decoration: none;
-    transition: all 0.2s ease;
-    box-shadow: 0 4px 20px -4px var(--sl-color-accent);
-  }
-  
-  .btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 30px -6px var(--sl-color-accent);
-    filter: brightness(1.1);
-  }
-  
-  .btn-secondary {
-    display: inline-flex;
-    align-items: center;
-    padding: 0.875rem 1.75rem;
-    background: transparent;
-    color: var(--sl-color-gray-1);
+    color: var(--sl-color-white);
+    border-radius: 0.5rem;
+    font-size: 0.9375rem;
     font-weight: 500;
-    border-radius: 0.75rem;
     text-decoration: none;
-    border: 1px solid var(--sl-color-hairline-light);
     transition: all 0.2s ease;
   }
-  
-  .btn-secondary:hover {
-    background: var(--sl-color-bg-nav);
-    border-color: var(--sl-color-gray-3);
+
+  .btn-hero-minimal:hover {
+    background: color-mix(in srgb, var(--sl-color-accent) 90%, white);
+    transform: translateY(-1px);
   }
-  
-  /* Stats */
+
+  .hero-content-modern {
+    position: relative;
+  }
+
+  /* HERO — Fullbleed BG via pseudo-element */
+  .hero-wrapper {
+    position: relative;
+    isolation: isolate;
+    margin-top: -1.5rem !important;
+    padding-top: 0 !important;
+  }
+
+  .hero-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 100vw;
+    transform: translateX(-50%);
+    background: linear-gradient(160deg, color-mix(in srgb, #1B8AC7 6%, var(--sl-color-bg-nav)) 0%, var(--sl-color-bg-nav) 40%, color-mix(in srgb, #5B2C7D 4%, var(--sl-color-bg-nav)) 100%);
+    z-index: -1;
+  }
+
+  .hero-label { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.375rem 0.875rem; background: color-mix(in srgb, var(--sl-color-accent) 10%, transparent); border: 1px solid color-mix(in srgb, var(--sl-color-accent) 20%, transparent); border-radius: 2rem; font-size: 0.8125rem; font-weight: 600; color: var(--sl-color-accent); margin-bottom: 1.25rem; }
+  .hero-label svg { opacity: 0.8; }
+
+  .hero-headline { font-size: clamp(2rem, 4.5vw, 2.75rem); font-weight: 800; line-height: 1.1; color: var(--sl-color-white); letter-spacing: -0.03em; margin-bottom: 0.25rem; }
+  .hero-headline-accent { font-size: clamp(2.5rem, 5.5vw, 3.5rem); margin-bottom: 1.25rem; }
+  .hero-separator { width: 48px; height: 3px; border-radius: 2px; background: linear-gradient(90deg, #1B8AC7, #5B2C7D); margin-bottom: 1.25rem; }
+  .hero-desc { font-size: 1rem; line-height: 1.75; color: var(--sl-color-gray-3); max-width: 460px; margin-bottom: 1.5rem; }
+
+  .hero-btn-primary { position: relative; display: inline-flex; align-items: center; gap: 0.625rem; padding: 0.875rem 1.75rem; background: linear-gradient(135deg, #1B8AC7 0%, #1B5F8C 100%); color: white; border: 1px solid rgba(255,255,255,0.15); border-radius: 0.75rem; font-size: 0.9375rem; font-weight: 600; text-decoration: none; transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 4px 14px -4px rgba(27, 138, 199, 0.4), 0 1px 2px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.15); overflow: hidden; }
+  .hero-btn-primary::before { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent); transform: translateX(-100%); transition: transform 0.6s ease; }
+  .hero-btn-primary::after { content: ''; position: absolute; inset: -1px; border-radius: 0.75rem; padding: 1px; background: linear-gradient(135deg, rgba(255,255,255,0.3), transparent 50%); -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask-composite: exclude; opacity: 0.6; }
+  .hero-btn-primary:hover { transform: translateY(-2px) scale(1.02); box-shadow: 0 8px 24px -6px rgba(27, 138, 199, 0.5), 0 2px 4px rgba(0,0,0,0.1); }
+  .hero-btn-primary:hover::before { transform: translateX(100%); }
+  .hero-btn-primary:active { transform: translateY(0) scale(0.98); }
+
+  .hero-btn-secondary { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.5rem; background: transparent; color: var(--sl-color-gray-2); border: 1px solid var(--sl-color-hairline-light); border-radius: 0.5rem; font-size: 0.9375rem; font-weight: 500; text-decoration: none; transition: all 0.2s ease; }
+  .hero-btn-secondary:hover { background: var(--sl-color-bg-nav); border-color: var(--sl-color-accent); color: var(--sl-color-white); }
+
+  /* Stats row */
   .hero-stats {
     display: flex;
     align-items: center;
-    gap: 1.5rem;
-    flex-wrap: wrap;
-    justify-content: center;
+    gap: 1.25rem;
+    margin-bottom: 1.75rem;
   }
-  
-  @media (min-width: 1024px) {
-    .hero-stats {
-      justify-content: flex-start;
+
+  .hero-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .hero-stat-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 6px;
+    background: color-mix(in srgb, var(--si-color) 12%, transparent);
+    color: var(--si-color);
+    margin-bottom: 4px;
+  }
+
+  .hero-stat-value {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--sl-color-white);
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+
+  .hero-stat-label {
+    font-size: 0.6875rem;
+    color: var(--sl-color-gray-3);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 500;
+  }
+
+  .hero-stat-divider {
+    width: 1px;
+    height: 28px;
+    background: var(--sl-color-hairline);
+    opacity: 0.6;
+  }
+
+  /* Mock Window */
+  .mock-window {
+    background: var(--sl-color-bg);
+    border: 1px solid var(--sl-color-hairline-light);
+    border-radius: 0.75rem;
+    overflow: hidden;
+    box-shadow: 0 8px 30px -8px rgba(0, 0, 0, 0.2);
+  }
+
+  .mock-bar {
+    padding: 0.625rem 0.875rem;
+    border-bottom: 1px solid var(--sl-color-hairline-light);
+    background: color-mix(in srgb, var(--sl-color-bg-nav) 50%, var(--sl-color-bg));
+  }
+
+  .mock-dots { display: flex; gap: 5px; }
+  .mock-dots span { width: 7px; height: 7px; border-radius: 50%; }
+  .mock-dots span:nth-child(1) { background: #ef4444; }
+  .mock-dots span:nth-child(2) { background: #f59e0b; }
+  .mock-dots span:nth-child(3) { background: #22c55e; }
+
+  .mock-body { padding: 0.25rem; }
+
+  .mock-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    transition: background 0.15s ease;
+  }
+
+  .mock-row:hover {
+    background: color-mix(in srgb, var(--row-color) 5%, transparent);
+  }
+
+  .mock-indicator {
+    width: 3px;
+    height: 28px;
+    border-radius: 2px;
+    background: var(--row-color);
+    flex-shrink: 0;
+    opacity: 0.7;
+  }
+
+  .mock-col { flex: 1; display: flex; flex-direction: column; gap: 1px; }
+  .mock-name { font-size: 0.8125rem; font-weight: 600; color: var(--sl-color-white); }
+  .mock-sub { font-size: 0.6875rem; color: var(--sl-color-gray-3); }
+
+  .mock-status {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    padding: 0.2rem 0.5rem;
+    border-radius: 1rem;
+    background: color-mix(in srgb, var(--row-color) 10%, transparent);
+    color: var(--row-color);
+    white-space: nowrap;
+  }
+
+  /* Section label with divider lines */
+  .hero-section-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .label-line {
+    flex: 1;
+    max-width: 80px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--sl-color-hairline-light), transparent);
+  }
+
+  .label-text {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--sl-color-gray-3);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* Tagline text */
+  .hero-tagline {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--sl-color-gray-3);
+    letter-spacing: 0.02em;
+    margin: 0;
+  }
+
+  /* Product Cards */
+  .hero-products-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  @media (min-width: 640px) {
+    .hero-products-grid {
+      grid-template-columns: repeat(2, 1fr);
     }
   }
-  
-  .stat {
+
+  @media (min-width: 1024px) {
+    .hero-products-grid {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+  }
+
+  .hero-product-card {
+    position: relative;
     display: flex;
-    align-items: baseline;
-    gap: 0.375rem;
+    flex-direction: column;
+    background: var(--sl-color-bg);
+    border: 1px solid var(--sl-color-hairline-light);
+    border-radius: 1.25rem;
+    overflow: hidden;
+    text-decoration: none;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: card-enter 0.6s ease-out backwards;
+    animation-delay: calc(var(--index) * 0.1s);
   }
-  
-  .stat-value {
-    font-size: 1.125rem;
-    font-weight: 700;
-    color: var(--sl-color-white);
+
+  @keyframes card-enter {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
-  
-  .stat-label {
-    font-size: 0.875rem;
-    color: var(--sl-color-gray-3);
+
+  .hero-product-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--product-color);
+    box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.4), 0 0 0 1px var(--product-color);
   }
-  
-  .stat-divider {
-    width: 1px;
-    height: 1rem;
-    background: var(--sl-color-hairline);
-  }
-  
-  /* Orbs */
-  .orb {
+
+  .hero-card-glow {
     position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    background: radial-gradient(400px circle at 50% 0%,
+      color-mix(in srgb, var(--product-color) 15%, transparent),
+      transparent 50%);
+    pointer-events: none;
+  }
+
+  .hero-product-card:hover .hero-card-glow {
+    opacity: 1;
+  }
+
+  .hero-card-content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 2rem;
+  }
+
+  .hero-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-card-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 1rem;
+    transition: transform 0.3s ease;
+  }
+
+  .hero-product-card:hover .hero-card-icon {
+    transform: scale(1.08);
+  }
+
+  .hero-card-badge {
+    padding: 0.5rem 1rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+
+  .hero-card-title {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--sl-color-white);
+    margin: 0 0 0.5rem;
+    letter-spacing: -0.02em;
+  }
+
+  .hero-card-tagline {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--product-color);
+    margin: 0 0 1rem;
+  }
+
+  .hero-card-desc {
+    font-size: 0.9375rem;
+    line-height: 1.65;
+    color: var(--sl-color-gray-2);
+    margin: 0;
+    flex: 1;
+  }
+
+  .hero-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1.5rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--sl-color-hairline-light);
+  }
+
+  .hero-card-link {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--sl-color-gray-3);
+    transition: color 0.3s ease;
+  }
+
+  .hero-product-card:hover .hero-card-link {
+    color: var(--product-color);
+  }
+
+  .hero-card-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.25rem;
+    height: 2.25rem;
     border-radius: 50%;
-    filter: blur(80px);
-    opacity: 0.08;
-    animation: orb-float 20s ease-in-out infinite;
+    background: var(--sl-color-bg-nav);
+    color: var(--sl-color-gray-3);
+    transition: all 0.3s ease;
   }
-  
-  .orb-1 {
-    width: 600px;
-    height: 600px;
-    background: var(--sl-color-accent);
-    top: -20%;
-    left: -10%;
+
+  .hero-product-card:hover .hero-card-arrow {
+    background: var(--product-color);
+    color: white;
+    transform: translateX(3px);
   }
-  
-  .orb-2 {
-    width: 400px;
-    height: 400px;
-    background: #22d3ee;
-    bottom: -10%;
-    right: 10%;
-    animation-delay: -10s;
+
+  .hero-card-border {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    transform: scaleX(0);
+    transition: transform 0.4s ease;
   }
-  
-  @keyframes orb-float {
-    0%, 100% { transform: translate(0, 0) scale(1); }
-    50% { transform: translate(30px, -30px) scale(1.1); }
+
+  .hero-product-card:hover .hero-card-border {
+    transform: scaleX(1);
   }
   
   /* ═══════════════════════════════════════════════════════════════
@@ -531,31 +1007,6 @@ ORDER BY TotalSales DESC`
   @keyframes badge-float {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-10px); }
-  }
-  
-  /* ═══════════════════════════════════════════════════════════════
-     POPULAR LINKS
-     ═══════════════════════════════════════════════════════════════ */
-  
-  .popular-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    text-decoration: none;
-    transition: opacity 0.2s;
-  }
-  
-  .popular-link:hover {
-    opacity: 0.8;
-  }
-  
-  .popular-name {
-    font-weight: 500;
-    color: var(--sl-color-accent);
-  }
-  
-  .popular-desc {
-    color: var(--sl-color-gray-3);
   }
   
   /* ═══════════════════════════════════════════════════════════════
@@ -714,12 +1165,580 @@ ORDER BY TotalSales DESC`
   }
   
   /* ═══════════════════════════════════════════════════════════════
+     PRODUCT SECTIONS
+     ═══════════════════════════════════════════════════════════════ */
+  
+  .product-section {
+    position: relative;
+    overflow: hidden;
+    border-top: 1px solid var(--sl-color-hairline);
+  }
+
+  /* ═══════════════════════════════════════════════════════════════
+     SCROLL REVEAL ANIMATIONS
+     ═══════════════════════════════════════════════════════════════ */
+
+  .scroll-reveal {
+    opacity: 0;
+    transform: translateY(60px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .scroll-reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Stagger children animation */
+  .scroll-reveal .product-content {
+    opacity: 0;
+    transform: translateX(-30px);
+    transition: all 0.6s ease-out 0.2s;
+  }
+
+  .scroll-reveal .product-demo {
+    opacity: 0;
+    transform: translateX(30px);
+    transition: all 0.6s ease-out 0.3s;
+  }
+
+  .scroll-reveal.is-visible .product-content,
+  .scroll-reveal.is-visible .product-demo {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  /* Alternating sides */
+  .scroll-reveal:nth-child(even) .product-content {
+    transform: translateX(30px);
+    transition-delay: 0.3s;
+  }
+
+  .scroll-reveal:nth-child(even) .product-demo {
+    transform: translateX(-30px);
+    transition-delay: 0.2s;
+  }
+
+  .scroll-reveal:nth-child(even).is-visible .product-content,
+  .scroll-reveal:nth-child(even).is-visible .product-demo {
+    transform: translateX(0);
+  }
+
+  .section-bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+  
+  .product-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .product-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+    background: color-mix(in srgb, currentColor 12%, transparent);
+    width: fit-content;
+  }
+  
+  .product-title {
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: var(--sl-color-white);
+    margin: 0;
+  }
+  
+  .product-desc {
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    color: var(--sl-color-gray-2);
+    margin: 0;
+    max-width: 480px;
+  }
+  
+  .product-features {
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+  }
+  
+  .product-features li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.9375rem;
+    color: var(--sl-color-gray-2);
+  }
+  
+  .btn-product {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.875rem 1.5rem;
+    color: white;
+    font-weight: 600;
+    font-size: 0.9375rem;
+    border-radius: 0.625rem;
+    text-decoration: none;
+    margin-top: 0.5rem;
+    transition: all 0.2s ease;
+    width: fit-content;
+  }
+  
+  .btn-product:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.1);
+  }
+  
+  /* Product Demo */
+  .product-demo {
+    position: relative;
+  }
+  
+  .demo-badge {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: var(--sl-color-bg-nav);
+    border: 1px solid var(--sl-color-hairline-light);
+    border-radius: 2rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--sl-color-gray-1);
+    box-shadow: 0 4px 20px -4px rgba(0, 0, 0, 0.3);
+    animation: demo-float 5s ease-in-out infinite;
+  }
+  
+  @keyframes demo-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+  
+  .demo-badge-1 {
+    animation-delay: 0s;
+  }
+  
+  .demo-badge-2 {
+    animation-delay: -2.5s;
+  }
+  
+  /* ═══════════════════════════════════════════════════════════════
+     CATALOG WINDOW (Metadata)
+     ═══════════════════════════════════════════════════════════════ */
+  
+  .catalog-window {
+    background: var(--sl-color-bg-nav);
+    border: 1px solid var(--sl-color-hairline-light);
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 20px 50px -20px rgba(0, 0, 0, 0.4);
+  }
+  
+  .catalog-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.875rem 1.25rem;
+    background: color-mix(in srgb, #5B2C7D 15%, var(--sl-color-bg-nav));
+    border-bottom: 1px solid var(--sl-color-hairline-light);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--sl-color-white);
+  }
+  
+  .catalog-header svg {
+    color: #5B2C7D;
+  }
+  
+  .catalog-body {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .catalog-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.625rem 0.875rem;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    transition: background 0.2s;
+  }
+  
+  .catalog-item:hover,
+  .catalog-item.active {
+    background: color-mix(in srgb, #5B2C7D 10%, transparent);
+  }
+  
+  .catalog-icon {
+    font-size: 1rem;
+    opacity: 0.7;
+  }
+  
+  .catalog-icon.dim { color: #5B2C7D; }
+  .catalog-icon.fact { color: #C85A47; }
+  .catalog-icon.ind { color: #1B5F8C; }
+  
+  .catalog-name {
+    flex: 1;
+    font-weight: 500;
+    color: var(--sl-color-white);
+  }
+  
+  .catalog-type {
+    font-size: 0.75rem;
+    color: var(--sl-color-gray-3);
+    background: var(--sl-color-bg);
+    padding: 0.25rem 0.625rem;
+    border-radius: 0.25rem;
+  }
+  
+  /* ═══════════════════════════════════════════════════════════════
+     DASHBOARD WINDOW (Analysis)
+     ═══════════════════════════════════════════════════════════════ */
+  
+  .dashboard-window {
+    background: var(--sl-color-bg-nav);
+    border: 1px solid var(--sl-color-hairline-light);
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 20px 50px -20px rgba(0, 0, 0, 0.4);
+  }
+  
+  .dashboard-header {
+    padding: 0.875rem 1.25rem;
+    background: color-mix(in srgb, #C85A47 15%, var(--sl-color-bg-nav));
+    border-bottom: 1px solid var(--sl-color-hairline-light);
+  }
+  
+  .dashboard-tabs {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .dashboard-tabs .tab {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--sl-color-gray-3);
+    padding: 0.375rem 0;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+  }
+  
+  .dashboard-tabs .tab.active {
+    color: var(--sl-color-white);
+    border-bottom-color: #C85A47;
+  }
+  
+  .dashboard-body {
+    padding: 1.5rem;
+  }
+  
+  .chart-container {
+    margin-bottom: 1.5rem;
+  }
+  
+  .chart-title {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--sl-color-gray-3);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+  }
+  
+  .chart-bars {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    gap: 0.75rem;
+    height: 120px;
+    padding: 0 0.5rem;
+  }
+  
+  .chart-bars .bar {
+    flex: 1;
+    max-width: 40px;
+    background: color-mix(in srgb, #C85A47 30%, var(--sl-color-gray-5));
+    border-radius: 0.25rem 0.25rem 0 0;
+    position: relative;
+    transition: all 0.3s ease;
+  }
+  
+  .chart-bars .bar.active {
+    background: #C85A47;
+  }
+  
+  .chart-bars .bar label {
+    position: absolute;
+    bottom: -1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.6875rem;
+    color: var(--sl-color-gray-3);
+  }
+  
+  .kpi-row {
+    display: flex;
+    gap: 1rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--sl-color-hairline-light);
+  }
+  
+  .kpi {
+    flex: 1;
+  }
+  
+  .kpi-value {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--sl-color-white);
+  }
+  
+  .kpi-label {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--sl-color-gray-3);
+    margin-top: 0.25rem;
+  }
+  
+  /* ═══════════════════════════════════════════════════════════════
+     PIPELINE WINDOW (ETL)
+     ═══════════════════════════════════════════════════════════════ */
+  
+  .pipeline-window {
+    background: var(--sl-color-bg-nav);
+    border: 1px solid var(--sl-color-hairline-light);
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 20px 50px -20px rgba(0, 0, 0, 0.4);
+  }
+  
+  .pipeline-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.875rem 1.25rem;
+    background: color-mix(in srgb, #1B8AC7 15%, var(--sl-color-bg-nav));
+    border-bottom: 1px solid var(--sl-color-hairline-light);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--sl-color-white);
+  }
+  
+  .pipeline-header svg {
+    color: #1B8AC7;
+  }
+  
+  .pipeline-body {
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .pipeline-step {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.875rem;
+    border-radius: 0.625rem;
+    background: var(--sl-color-bg);
+  }
+  
+  .pipeline-step.done {
+    background: color-mix(in srgb, #22c55e 10%, var(--sl-color-bg));
+  }
+  
+  .pipeline-step.running {
+    background: color-mix(in srgb, #1B8AC7 15%, var(--sl-color-bg));
+    border: 1px solid color-mix(in srgb, #1B8AC7 30%, transparent);
+  }
+  
+  .step-icon {
+    width: 1.75rem;
+    height: 1.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 0.75rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  
+  .pipeline-step.done .step-icon {
+    background: #22c55e;
+    color: white;
+  }
+  
+  .pipeline-step.running .step-icon {
+    background: #1B8AC7;
+    color: white;
+    animation: pulse 2s infinite;
+  }
+  
+  .pipeline-step.pending .step-icon {
+    background: var(--sl-color-gray-5);
+    color: var(--sl-color-gray-3);
+  }
+  
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.6; }
+  }
+  
+  .step-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+  }
+  
+  .step-name {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--sl-color-white);
+  }
+  
+  .step-time {
+    font-size: 0.75rem;
+    color: var(--sl-color-gray-3);
+  }
+  
+  .pipeline-connector {
+    width: 2px;
+    height: 1.25rem;
+    background: var(--sl-color-hairline-light);
+    margin-left: 1.75rem;
+  }
+  
+  .pipeline-connector.done {
+    background: #22c55e;
+    opacity: 0.3;
+  }
+
+  /* ═══════════════════════════════════════════════════════════════
+     CALENDAS PREVIEW (ETL Integration)
+     ═══════════════════════════════════════════════════════════════ */
+
+  .calendas-preview {
+    position: absolute;
+    right: -40px;
+    bottom: -20px;
+    z-index: 10;
+  }
+
+  .heatmap-mini {
+    background: var(--sl-color-bg-nav);
+    border: 1px solid var(--sl-color-hairline-light);
+    border-radius: 0.75rem;
+    padding: 0.75rem;
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+    width: 140px;
+  }
+
+  .heatmap-title {
+    font-size: 0.625rem;
+    font-weight: 700;
+    color: var(--sl-color-gray-3);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+    text-align: center;
+  }
+
+  .heatmap-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 3px;
+    margin-bottom: 0.5rem;
+  }
+
+  .h-cell {
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 2px;
+  }
+
+  .h-cell.success {
+    background: #22c55e;
+    opacity: 0.8;
+  }
+
+  .h-cell.warning {
+    background: #f59e0b;
+    opacity: 0.8;
+  }
+
+  .h-cell.error {
+    background: #ef4444;
+    opacity: 0.8;
+  }
+
+  .h-cell.running {
+    background: #3b82f6;
+    animation: pulse-heatmap 2s infinite;
+  }
+
+  .h-cell.empty {
+    background: var(--sl-color-gray-6);
+    opacity: 0.3;
+  }
+
+  @keyframes pulse-heatmap {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+  }
+
+  .heatmap-stats {
+    font-size: 0.5625rem;
+    color: var(--sl-color-gray-3);
+    text-align: center;
+    font-weight: 500;
+  }
+
+  .calendas-badge {
+    background: color-mix(in srgb, #10b981 15%, var(--sl-color-bg-nav)) !important;
+    border-color: color-mix(in srgb, #10b981 30%, transparent) !important;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .calendas-badge:hover {
+    background: color-mix(in srgb, #10b981 25%, var(--sl-color-bg-nav)) !important;
+    border-color: color-mix(in srgb, #10b981 50%, transparent) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px -4px rgba(16, 185, 129, 0.3);
+  }
+
+  /* ═══════════════════════════════════════════════════════════════
      DARK/LIGHT LOGO TOGGLE
      ═══════════════════════════════════════════════════════════════ */
   
   :root[data-theme='light'] .dark-logo { display: none; }
   :root[data-theme='dark'] .light-logo { display: none; }
   :root:not([data-theme='light']) .light-logo { display: none; }
+
+  /* Make product labels brighter in dark mode */
+  :root[data-theme='dark'] .product-label,
+  html[data-theme='dark'] .product-label {
+    filter: brightness(1.4);
+    opacity: 1;
+  }
 </style>
 
 <script>
@@ -732,5 +1751,25 @@ ORDER BY TotalSales DESC`
       card.style.setProperty('--mouse-x', `${x}px`);
       card.style.setProperty('--mouse-y', `${y}px`);
     });
+  });
+
+  // Scroll reveal animations using Intersection Observer
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px 0px -100px 0px',
+    threshold: 0.15
+  };
+
+  const scrollObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        scrollObserver.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll('.scroll-reveal').forEach(el => {
+    scrollObserver.observe(el);
   });
 </script>
