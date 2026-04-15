@@ -3,16 +3,6 @@ import { Code } from 'astro-expressive-code/components'
 
 const products = [
   {
-    id: 'etl',
-    name: 'Crono ETL',
-    tagline: 'Data Warehouse',
-    desc: 'Cargas diarias automatizadas que nunca fallan. Ahorra 10 horas semanales de trabajo manual repetitivo.',
-    href: '/etl/',
-    color: '#1B8AC7',
-    stats: 'En desarrollo',
-    icon: '<circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M6 21V9a9 9 0 0 0 9 9"/>',
-  },
-  {
     id: 'sql',
     name: 'Crono SQL',
     tagline: 'Lenguaje SQL extendido',
@@ -21,6 +11,16 @@ const products = [
     color: '#1B5F8C',
     stats: '376 docs',
     icon: '<path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/>',
+  },
+  {
+    id: 'etl',
+    name: 'Crono ETL',
+    tagline: 'Data Warehouse',
+    desc: 'Cargas diarias automatizadas que nunca fallan. Ahorra 10 horas semanales de trabajo manual repetitivo.',
+    href: '/etl/',
+    color: '#1B8AC7',
+    stats: 'En desarrollo',
+    icon: '<circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M6 21V9a9 9 0 0 0 9 9"/>',
   },
   {
     id: 'metadata',
@@ -119,7 +119,7 @@ ORDER BY TotalSales DESC`
       <div class="lg:col-span-5">
         <div class="mock-window">
           <div class="mock-bar">
-            <div class="mock-dots"><span></span><span></span><span></span></div>
+            <span></span>
           </div>
           <div class="mock-body">
             <div class="mock-row" style="--row-color: #1B8AC7;">
@@ -166,13 +166,98 @@ ORDER BY TotalSales DESC`
 <!-- PRODUCT SECTIONS -->
 <!-- ═══════════════════════════════════════════════════════════════ -->
 
+<!-- CRONO SQL: Content LEFT, Demo RIGHT -->
+<section id="crono-sql" class="not-content product-section scroll-reveal" style="--section-color: #1B5F8C;">
+  <div class="section-bg" style="background: radial-gradient(ellipse 80% 60% at 70% 50%, color-mix(in srgb, #1B5F8C 8%, transparent), transparent);"></div>
+  <div class="mx-auto max-w-6xl px-6 py-16 lg:py-20">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <!-- Left: Content -->
+      <div class="product-demo">
+        <div class="code-window">
+          <div class="code-header">
+            <span class="code-title">ventas.cronosql</span>
+          </div>
+          <div class="code-body">
+            <pre class="code-block"><code><span class="sql-keyword">MERGE</span> <span class="crono-keyword">CLONE</span> <span class="sql-identifier">dwh.DimProducts</span>(<span class="sql-identifier">ProductSid</span>)
+<span class="sql-keyword">SELECT</span>
+  <span class="crono-special">#ProductID</span>,
+  <span class="sql-identifier">Product.Name</span>        <span class="sql-identifier">Product</span>,
+  <span class="sql-identifier">ProductCategory.name</span> <span class="sql-identifier">ProductCategory</span>,
+  <span class="sql-identifier">ProductNumber</span>,
+  <span class="sql-identifier">Color</span>,
+  <span class="sql-identifier">StandardCost</span>,
+  <span class="sql-identifier">ListPrice</span>
+<span class="sql-keyword">FROM</span> <span class="sql-identifier">staging.Product</span>
+<span class="sql-keyword">LEFT JOIN</span> <span class="sql-identifier">staging.ProductSubCategory</span>
+  <span class="crono-keyword">USING</span> <span class="sql-identifier">Product</span>(<span class="sql-identifier">ProductSubcategoryID</span>)
+<span class="sql-keyword">LEFT JOIN</span> <span class="sql-identifier">staging.ProductCategory</span>
+  <span class="crono-keyword">USING</span> <span class="sql-identifier">ProductSubCategory</span>(<span class="sql-identifier">ProductCategoryId</span>)
+<span class="crono-keyword">CHECK SNOWFLAKE</span></code></pre>
+          </div>
+        </div>
+        <!-- Floating badges -->
+        <div class="demo-badge demo-badge-1" style="right: -20px; top: 15%;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2">
+            <polyline points="20 6 9 17 4 12"/>
+          </svg>
+          <span>Sintaxis simplificada</span>
+        </div>
+        <div class="demo-badge demo-badge-2" style="left: -20px; bottom: 20%;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2">
+            <path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/>
+          </svg>
+          <span>288 funciones</span>
+        </div>
+      </div>
+      <!-- Right: Code Demo -->
+      <div class="product-content">
+        <div class="product-label" style="color: #1B5F8C;">Manual Principal · 376 artículos</div>
+        <h2 class="product-title">Crono SQL</h2>
+        <p class="product-desc">
+          Desarrolla tu Data Warehouse en la mitad de tiempo. Crono SQL genera 
+          automáticamente el código complejo que antes tardabas horas en escribir.
+        </p>
+        <ul class="product-features">
+          <li><span style="color: #1B5F8C;">✓</span> Reduce el código manual un 70%</li>
+          <li><span style="color: #1B5F8C;">✓</span> Auditoría automática en cada operación</li>
+          <li><span style="color: #1B5F8C;">✓</span> Funciona con cualquier motor de base de datos</li>
+          <li><span style="color: #1B5F8C;">✓</span> Detecta errores antes de ejecutar</li>
+        </ul>
+        <a href="/sql/" class="btn-product" style="background: #1B5F8C; box-shadow: 0 4px 20px -4px #1B5F8C;">
+          Explorar documentación
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- CRONO ETL: Demo LEFT, Content RIGHT -->
 <section id="crono-etl" class="not-content product-section scroll-reveal" style="--section-color: #1B8AC7;">
   <div class="section-bg" style="background: radial-gradient(ellipse 80% 60% at 30% 50%, color-mix(in srgb, #1B8AC7 8%, transparent), transparent);"></div>
   <div class="mx-auto max-w-6xl px-6 py-16 lg:py-20">
     <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-      <!-- Left: Demo (Pipeline Visual) -->
-      <div class="product-demo order-2 lg:order-1">
+      <!-- Left: Content -->
+      <div class="product-content order-1 lg:order-1">
+        <div class="product-label" style="color: #1B8AC7;">Orquestación ETL</div>
+        <h2 class="product-title">Crono ETL</h2>
+        <p class="product-desc">
+          Olvídate de revisar logs a las 3 AM. Cargas automatizadas que se ejecutan 
+          solas, avisan si fallan y se recuperan automáticamente.
+        </p>
+        <ul class="product-features">
+          <li><span style="color: #1B8AC7;">✓</span> Ahorra 10 horas semanales de trabajo manual</li>
+          <li><span style="color: #1B8AC7;">✓</span> Detecta y corrige errores solo</li>
+          <li><span style="color: #1B8AC7;">✓</span> Notificaciones instantáneas de fallos</li>
+          <li><span style="color: #1B8AC7;">✓</span> Incluye Calendas, nuestro dashboard de monitorización: calendario visual de cargas, gestión de proyectos, logs detallados y reportes de dedicación — todo en una sola herramienta</li>
+        </ul>
+        <a href="/etl/" class="btn-product" style="background: #1B8AC7; box-shadow: 0 4px 20px -4px #1B8AC7;">
+          Explorar documentación
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+      </div>
+      <!-- Right: Demo (Pipeline Visual) -->
+      <div class="product-demo order-2 lg:order-2">
         <div class="pipeline-window">
           <div class="pipeline-header">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M6 21V9a9 9 0 0 0 9 9"/></svg>
@@ -242,87 +327,6 @@ ORDER BY TotalSales DESC`
             </div>
             <div class="heatmap-stats">9/10 éxitos · 1 en progreso</div>
           </div>
-        </div>
-      </div>
-      <!-- Right: Content -->
-      <div class="product-content order-1 lg:order-2">
-        <div class="product-label" style="color: #1B8AC7;">Orquestación ETL</div>
-        <h2 class="product-title">Crono ETL</h2>
-        <p class="product-desc">
-          Olvídate de revisar logs a las 3 AM. Cargas automatizadas que se ejecutan 
-          solas, avisan si fallan y se recuperan automáticamente.
-        </p>
-        <ul class="product-features">
-          <li><span style="color: #1B8AC7;">✓</span> Ahorra 10 horas semanales de trabajo manual</li>
-          <li><span style="color: #1B8AC7;">✓</span> Detecta y corrige errores solo</li>
-          <li><span style="color: #1B8AC7;">✓</span> Notificaciones instantáneas de fallos</li>
-          <li><span style="color: #1B8AC7;">✓</span> Incluye Calendas, nuestro dashboard de monitorización: calendario visual de cargas, gestión de proyectos, logs detallados y reportes de dedicación — todo en una sola herramienta</li>
-        </ul>
-        <a href="/etl/" class="btn-product" style="background: #1B8AC7; box-shadow: 0 4px 20px -4px #1B8AC7;">
-          Explorar documentación
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CRONO SQL: Content LEFT, Demo RIGHT -->
-<section id="crono-sql" class="not-content product-section scroll-reveal" style="--section-color: #1B5F8C;">
-  <div class="section-bg" style="background: radial-gradient(ellipse 80% 60% at 70% 50%, color-mix(in srgb, #1B5F8C 8%, transparent), transparent);"></div>
-  <div class="mx-auto max-w-6xl px-6 py-16 lg:py-20">
-    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-      <!-- Left: Content -->
-      <div class="product-content">
-        <div class="product-label" style="color: #1B5F8C;">Manual Principal · 376 artículos</div>
-        <h2 class="product-title">Crono SQL</h2>
-        <p class="product-desc">
-          Desarrolla tu Data Warehouse en la mitad de tiempo. Crono SQL genera 
-          automáticamente el código complejo que antes tardabas horas en escribir.
-        </p>
-        <ul class="product-features">
-          <li><span style="color: #1B5F8C;">✓</span> Reduce el código manual un 70%</li>
-          <li><span style="color: #1B5F8C;">✓</span> Auditoría automática en cada operación</li>
-          <li><span style="color: #1B5F8C;">✓</span> Funciona con cualquier motor de base de datos</li>
-          <li><span style="color: #1B5F8C;">✓</span> Detecta errores antes de ejecutar</li>
-        </ul>
-        <a href="/sql/" class="btn-product" style="background: #1B5F8C; box-shadow: 0 4px 20px -4px #1B5F8C;">
-          Explorar documentación
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-        </a>
-      </div>
-      <!-- Right: Code Demo -->
-      <div class="product-demo">
-        <div class="code-window">
-          <div class="code-header">
-            <div class="code-dots"><span></span><span></span><span></span></div>
-            <span class="code-title">ventas.cronosql</span>
-          </div>
-          <div class="code-body">
-            <Code code={`MERGE CLONE dwh.FactVentas(#VentaSid)
-SELECT
-  v.VentaID          #VentaID,
-  c.ClienteSid       REFERENCES dwh.DimClientes,
-  p.ProductoSid      REFERENCES dwh.DimProductos,
-  v.Fecha, v.Cantidad, v.Importe
-FROM @@erp.Ventas v
-INNER JOIN @@erp.Clientes  USING (ClienteID)
-INNER JOIN @@erp.Productos USING (ProductoID)
-CHECK SNOWFLAKE`} lang="sql" theme="starlight-dark" />
-          </div>
-        </div>
-        <!-- Floating badges -->
-        <div class="demo-badge demo-badge-1" style="right: -20px; top: 15%;">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2">
-            <polyline points="20 6 9 17 4 12"/>
-          </svg>
-          <span>Sintaxis simplificada</span>
-        </div>
-        <div class="demo-badge demo-badge-2" style="left: -30px; bottom: 20%;">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2">
-            <path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/>
-          </svg>
-          <span>288 funciones</span>
         </div>
       </div>
     </div>
@@ -666,16 +670,21 @@ CHECK SNOWFLAKE`} lang="sql" theme="starlight-dark" />
   }
 
   .mock-bar {
-    padding: 0.625rem 0.875rem;
+    padding: 0.5rem 1rem;
     border-bottom: 1px solid var(--sl-color-hairline-light);
     background: color-mix(in srgb, var(--sl-color-bg-nav) 50%, var(--sl-color-bg));
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
   }
 
-  .mock-dots { display: flex; gap: 5px; }
-  .mock-dots span { width: 7px; height: 7px; border-radius: 50%; }
-  .mock-dots span:nth-child(1) { background: #ef4444; }
-  .mock-dots span:nth-child(2) { background: #f59e0b; }
-  .mock-dots span:nth-child(3) { background: #22c55e; }
+  .mock-bar span::before {
+    content: '— □ ×';
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: var(--sl-color-gray-3);
+    font-weight: 400;
+  }
 
   .mock-body { padding: 0.25rem; }
 
@@ -949,27 +958,21 @@ CHECK SNOWFLAKE`} lang="sql" theme="starlight-dark" />
   .code-header {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: 1rem;
-    padding: 0.875rem 1.25rem;
+    padding: 0.5rem 1rem;
     background: #161b22;
     border-bottom: 1px solid #30363d;
   }
-  
-  .code-dots {
-    display: flex;
-    gap: 0.5rem;
+
+  .code-header::after {
+    content: '— □ ×';
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: #8b949e;
+    font-weight: 400;
   }
-  
-  .code-dots span {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: #ff5f56;
-  }
-  
-  .code-dots span:nth-child(2) { background: #ffbd2e; }
-  .code-dots span:nth-child(3) { background: #27c93f; }
-  
+
   .code-title {
     font-size: 0.75rem;
     font-family: ui-monospace, monospace;
@@ -1361,17 +1364,28 @@ CHECK SNOWFLAKE`} lang="sql" theme="starlight-dark" />
   .catalog-header {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: 0.75rem;
-    padding: 0.875rem 1.25rem;
+    padding: 0.5rem 1rem;
     background: color-mix(in srgb, #5B2C7D 15%, var(--sl-color-bg-nav));
     border-bottom: 1px solid var(--sl-color-hairline-light);
     font-size: 0.8125rem;
     font-weight: 600;
     color: var(--sl-color-white);
   }
-  
+
   .catalog-header svg {
     color: #5B2C7D;
+    order: 1;
+  }
+
+  .catalog-header::after {
+    content: '— □ ×';
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: var(--sl-color-gray-3);
+    font-weight: 400;
+    order: 2;
   }
   
   .catalog-body {
@@ -1432,11 +1446,22 @@ CHECK SNOWFLAKE`} lang="sql" theme="starlight-dark" />
   }
   
   .dashboard-header {
-    padding: 0.875rem 1.25rem;
+    padding: 0.5rem 1rem;
     background: color-mix(in srgb, #C85A47 15%, var(--sl-color-bg-nav));
     border-bottom: 1px solid var(--sl-color-hairline-light);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
-  
+
+  .dashboard-header::after {
+    content: '— □ ×';
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: var(--sl-color-gray-3);
+    font-weight: 400;
+  }
+
   .dashboard-tabs {
     display: flex;
     gap: 1rem;
@@ -1544,17 +1569,32 @@ CHECK SNOWFLAKE`} lang="sql" theme="starlight-dark" />
   .pipeline-header {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: 0.75rem;
-    padding: 0.875rem 1.25rem;
+    padding: 0.5rem 1rem;
     background: color-mix(in srgb, #1B8AC7 15%, var(--sl-color-bg-nav));
     border-bottom: 1px solid var(--sl-color-hairline-light);
     font-size: 0.8125rem;
     font-weight: 600;
     color: var(--sl-color-white);
   }
-  
+
   .pipeline-header svg {
     color: #1B8AC7;
+    order: 1;
+  }
+
+  .pipeline-header span {
+    order: 1;
+  }
+
+  .pipeline-header::after {
+    content: '— □ ×';
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: var(--sl-color-gray-3);
+    font-weight: 400;
+    order: 2;
   }
   
   .pipeline-body {
@@ -1649,7 +1689,7 @@ CHECK SNOWFLAKE`} lang="sql" theme="starlight-dark" />
 
   .calendas-preview {
     position: absolute;
-    right: -40px;
+    right: -20px;
     bottom: -20px;
     z-index: 10;
   }
@@ -1738,9 +1778,24 @@ CHECK SNOWFLAKE`} lang="sql" theme="starlight-dark" />
   }
 
   /* ═══════════════════════════════════════════════════════════════
+     SYNTAX HIGHLIGHTING - Single color for all reserved words
+     ═══════════════════════════════════════════════════════════════ */
+
+  .sql-keyword,
+  .crono-keyword,
+  .crono-special {
+    color: #79c0ff;
+    font-weight: 600;
+  }
+
+  .sql-identifier {
+    color: #e6edf3;
+  }
+
+  /* ═══════════════════════════════════════════════════════════════
      DARK/LIGHT LOGO TOGGLE
      ═══════════════════════════════════════════════════════════════ */
-  
+
   :root[data-theme='light'] .dark-logo { display: none; }
   :root[data-theme='dark'] .light-logo { display: none; }
   :root:not([data-theme='light']) .light-logo { display: none; }
