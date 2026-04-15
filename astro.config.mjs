@@ -29,6 +29,7 @@ export default defineConfig({
 			components: {
 				SiteTitle: './src/components/SiteTitle.astro',
 				ThemeSelect: './src/components/ThemeToggle.astro',
+				Sidebar: './src/components/Sidebar.astro',
 			},
 			// Configure syntax highlighting with SQL support - uses StarlightUserConfig
 			expressiveCode: {
