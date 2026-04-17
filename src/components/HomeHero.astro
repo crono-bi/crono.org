@@ -176,6 +176,10 @@ ORDER BY TotalSales DESC`
         <div class="code-window">
           <div class="code-header">
             <span class="code-title">ventas.cronosql</span>
+            <a href="/playground" class="code-playground-link" title="Abrir en Playground">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 17l6-6-6-6"/><path d="M12 19h8"/></svg>
+              <span>Abrir en Playground</span>
+            </a>
           </div>
           <div class="code-body">
             <pre class="code-block"><code><span class="sql-keyword">MERGE</span> <span class="crono-keyword">CLONE</span> <span class="sql-identifier">dwh.DimProducts</span>(<span class="sql-identifier">ProductSid</span>)
@@ -223,10 +227,16 @@ ORDER BY TotalSales DESC`
           <li><span style="color: #1B5F8C;">✓</span> Funciona con cualquier motor de base de datos</li>
           <li><span style="color: #1B5F8C;">✓</span> Detecta errores antes de ejecutar</li>
         </ul>
-        <a href="/sql/" class="btn-product" style="background: #1B5F8C; box-shadow: 0 4px 20px -4px #1B5F8C;">
-          Explorar documentación
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-        </a>
+        <div class="product-actions">
+          <a href="/sql/" class="btn-product" style="background: #1B5F8C; box-shadow: 0 4px 20px -4px #1B5F8C;">
+            Explorar documentación
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+          <a href="#playground" class="btn-product-secondary" style="color: #D4A84B;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            Playground
+          </a>
+        </div>
       </div>
     </div>
   </div>
@@ -516,6 +526,177 @@ ORDER BY TotalSales DESC`
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- PLAYGROUND SECTION -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<section id="playground" class="not-content playground-section">
+  <div class="playground-bg"></div>
+
+  <div class="mx-auto max-w-6xl px-6 py-16 lg:py-20">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <!-- Left: Content -->
+      <div class="playground-content">
+        <div class="playground-label">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="m6 9 6 6 6-6"/>
+            <path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-2.5a2 2 0 0 1-1.6-.8l-1-1.33A2 2 0 0 0 12.3 4h-.6a2 2 0 0 0-1.6.8l-1 1.33a2 2 0 0 1-1.6.8H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2Z"/>
+          </svg>
+          <span>Prueba Crono SQL en vivo</span>
+        </div>
+        <h2 class="playground-title">
+          Crono <span class="playground-title-accent">Playground</span>
+        </h2>
+        <p class="playground-desc">
+          Escribe código Crono SQL y compílalo en tiempo real. Compara la salida 
+          en diferentes dialectos: Snowflake, PostgreSQL, SQL Server, BigQuery y más.
+        </p>
+
+        <!-- Inline stats -->
+        <div class="playground-stats">
+          <div class="playground-stat">
+            <span class="playground-stat-number">5</span>
+            <span class="playground-stat-label">dialectos SQL</span>
+          </div>
+          <div class="playground-stat-sep"></div>
+          <div class="playground-stat">
+            <span class="playground-stat-number">50+</span>
+            <span class="playground-stat-label">funciones</span>
+          </div>
+          <div class="playground-stat-sep"></div>
+          <div class="playground-stat">
+            <span class="playground-stat-number">0</span>
+            <span class="playground-stat-label">instalación</span>
+          </div>
+        </div>
+
+        <ul class="playground-features">
+          <li>
+            <span class="playground-check">✓</span>
+            Editor con autocompletado inteligente
+          </li>
+          <li>
+            <span class="playground-check">✓</span>
+            Visualización side-by-side del SQL generado
+          </li>
+          <li>
+            <span class="playground-check">✓</span>
+            Ejemplos interactivos pre-cargados
+          </li>
+          <li>
+            <span class="playground-check">✓</span>
+            Sin instalación, funciona en tu navegador
+          </li>
+        </ul>
+        <a href="/playground/" class="playground-btn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="5 3 19 12 5 21 5 3"/>
+          </svg>
+          Probar ahora
+        </a>
+      </div>
+
+      <!-- Right: Mockup Window -->
+      <div class="playground-demo">
+        <div class="playground-window">
+          <div class="playground-window-header">
+            <div class="playground-window-tabs">
+              <span class="tab active">editor.cronosql</span>
+              <span class="tab">output.sql</span>
+            </div>
+            <span class="playground-window-btns">— □ ×</span>
+          </div>
+          <div class="playground-window-body">
+            <div class="playground-editor-pane">
+              <div class="playground-code-line">
+                <span class="line-num">1</span>
+                <span><span class="kw">MERGE</span> <span class="cr">CLONE</span> <span class="id">dwh.DimProduct</span></span>
+              </div>
+              <div class="playground-code-line">
+                <span class="line-num">2</span>
+                <span><span class="kw">SELECT</span></span>
+              </div>
+              <div class="playground-code-line">
+                <span class="line-num">3</span>
+                <span>  <span class="cs">#ProductID</span>,</span>
+              </div>
+              <div class="playground-code-line">
+                <span class="line-num">4</span>
+                <span>  <span class="id">Product.Name</span>,</span>
+              </div>
+              <div class="playground-code-line">
+                <span class="line-num">5</span>
+                <span>  <span class="id">Product.Category</span></span>
+              </div>
+              <div class="playground-code-line">
+                <span class="line-num">6</span>
+                <span><span class="kw">FROM</span> <span class="id">staging.Product</span></span>
+              </div>
+              <div class="playground-code-line">
+                <span class="line-num">7</span>
+                <span><span class="kw">CHECK</span> <span class="cr">SNOWFLAKE</span></span>
+              </div>
+            </div>
+            <div class="playground-gutter"></div>
+            <div class="playground-output-pane">
+              <div class="playground-code-line dim">
+                <span class="line-num">1</span>
+                <span><span class="kw">MERGE INTO</span> <span class="id">dwh.DimProduct</span> <span class="kw">AS T</span></span>
+              </div>
+              <div class="playground-code-line dim">
+                <span class="line-num">2</span>
+                <span><span class="kw">USING</span> (<span class="kw">SELECT</span> <span class="id">ProductID</span>...</span>
+              </div>
+              <div class="playground-code-line dim">
+                <span class="line-num">3</span>
+                <span>  <span class="kw">FROM</span> <span class="id">staging.Product</span>) <span class="kw">AS S</span></span>
+              </div>
+              <div class="playground-code-line dim">
+                <span class="line-num">4</span>
+                <span><span class="kw">ON</span> <span class="id">T.ProductSid</span> = <span class="id">S.ProductID</span></span>
+              </div>
+            </div>
+          </div>
+          <div class="playground-window-footer">
+            <div class="playground-dialect-selector">
+              <span class="dialect active">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 3v18"/>
+                  <path d="M3 12h18"/>
+                </svg>
+                Snowflake
+              </span>
+              <span class="dialect">PostgreSQL</span>
+              <span class="dialect">BigQuery</span>
+              <span class="dialect">T-SQL</span>
+            </div>
+            <div class="playground-status">
+              <span class="status-dot success"></span>
+              <span>Compilado</span>
+            </div>
+          </div>
+        </div>
+        <!-- Floating badges -->
+        <div class="demo-badge" style="left: -20px; top: 20%;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2">
+            <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/>
+            <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/>
+            <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/>
+            <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/>
+          </svg>
+          <span>100% online</span>
+        </div>
+        <div class="demo-badge" style="right: -15px; bottom: 25%;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="m9 12 2 2 4-4"/>
+          </svg>
+          <span>Sin registro</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
 <!-- FOOTER -->
 <!-- ═══════════════════════════════════════════════════════════════ -->
 <section class="not-content border-t border-[var(--sl-color-hairline)] py-12">
@@ -601,10 +782,10 @@ ORDER BY TotalSales DESC`
   .hero-separator { width: 48px; height: 3px; border-radius: 2px; background: linear-gradient(90deg, #1B8AC7, #5B2C7D); margin-bottom: 1.25rem; }
   .hero-desc { font-size: 1rem; line-height: 1.75; color: var(--sl-color-gray-3); max-width: 460px; margin-bottom: 1.5rem; }
 
-  .hero-btn-primary { position: relative; display: inline-flex; align-items: center; gap: 0.625rem; padding: 0.875rem 1.75rem; background: linear-gradient(135deg, #1B8AC7 0%, #1B5F8C 100%); color: white; border: 1px solid rgba(255,255,255,0.15); border-radius: 0.75rem; font-size: 0.9375rem; font-weight: 600; text-decoration: none; transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 4px 14px -4px rgba(27, 138, 199, 0.4), 0 1px 2px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.15); overflow: hidden; }
+  .hero-btn-primary { position: relative; display: inline-flex; align-items: center; gap: 0.625rem; padding: 0.875rem 1.75rem; background: linear-gradient(135deg, #9ca3af 0%, #6b7280 100%); color: white; border: 1px solid rgba(255,255,255,0.15); border-radius: 0.75rem; font-size: 0.9375rem; font-weight: 600; text-decoration: none; transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 4px 14px -4px rgba(156, 163, 175, 0.4), 0 1px 2px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.15); overflow: hidden; }
   .hero-btn-primary::before { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent); transform: translateX(-100%); transition: transform 0.6s ease; }
   .hero-btn-primary::after { content: ''; position: absolute; inset: -1px; border-radius: 0.75rem; padding: 1px; background: linear-gradient(135deg, rgba(255,255,255,0.3), transparent 50%); -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask-composite: exclude; opacity: 0.6; }
-  .hero-btn-primary:hover { transform: translateY(-2px) scale(1.02); box-shadow: 0 8px 24px -6px rgba(27, 138, 199, 0.5), 0 2px 4px rgba(0,0,0,0.1); }
+  .hero-btn-primary:hover { transform: translateY(-2px) scale(1.02); box-shadow: 0 8px 24px -6px rgba(156, 163, 175, 0.5), 0 2px 4px rgba(0,0,0,0.1); }
   .hero-btn-primary:hover::before { transform: translateX(100%); }
   .hero-btn-primary:active { transform: translateY(0) scale(0.98); }
 
@@ -965,14 +1146,6 @@ ORDER BY TotalSales DESC`
     border-bottom: 1px solid #30363d;
   }
 
-  .code-header::after {
-    content: '— □ ×';
-    font-size: 10px;
-    letter-spacing: 4px;
-    color: #8b949e;
-    font-weight: 400;
-  }
-
   .code-title {
     font-size: 0.75rem;
     font-family: ui-monospace, monospace;
@@ -1298,21 +1471,189 @@ ORDER BY TotalSales DESC`
   .btn-product {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    padding: 0.875rem 1.5rem;
+    justify-content: center;
+    gap: 0.625rem;
+    padding: 1rem 1.75rem;
     color: white;
+    font-weight: 600;
+    font-size: 0.9375rem;
+    border-radius: 0.75rem;
+    text-decoration: none;
+    margin-top: 0.5rem;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    width: fit-content;
+    border: none;
+    box-sizing: border-box;
+    box-shadow:
+      0 1px 2px rgba(0, 0, 0, 0.1),
+      0 4px 8px -2px rgba(0, 0, 0, 0.15),
+      inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  }
+
+  .btn-product:hover {
+    transform: translateY(-1px);
+    filter: brightness(1.05);
+    box-shadow:
+      0 1px 2px rgba(0, 0, 0, 0.1),
+      0 8px 16px -4px rgba(0, 0, 0, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  }
+
+  .btn-product:active {
+    transform: translateY(0);
+    box-shadow:
+      0 1px 2px rgba(0, 0, 0, 0.1),
+      inset 0 1px 2px rgba(0, 0, 0, 0.1);
+  }
+
+  .btn-product-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.625rem;
+    padding: 1rem 1.75rem;
+    font-weight: 600;
+    font-size: 0.9375rem;
+    border-radius: 0.75rem;
+    text-decoration: none;
+    margin-top: 0.5rem;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    width: fit-content;
+    border: 1.5px solid currentColor;
+    background: transparent;
+    box-sizing: border-box;
+    box-shadow: inset 0 0 0 transparent;
+  }
+
+  .btn-product-secondary:hover {
+    transform: translateY(-1px);
+    background: color-mix(in srgb, currentColor 8%, transparent);
+    box-shadow:
+      0 1px 2px rgba(0, 0, 0, 0.05),
+      0 4px 8px -2px color-mix(in srgb, currentColor 15%, transparent);
+  }
+
+  .btn-product-secondary:active {
+    transform: translateY(0);
+    background: color-mix(in srgb, currentColor 12%, transparent);
+  }
+
+  /* Product Actions - Multiple buttons */
+  .product-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+  }
+
+  .product-actions .btn-product,
+  .product-actions .btn-product-secondary {
+    margin-top: 0;
+  }
+
+  /* ═══════════════════════════════════════════════════════════════
+     PLAYGROUND BRAND - Yellow Ochre (#D4A84B)
+     ═══════════════════════════════════════════════════════════════ */
+  .btn-playground-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.625rem;
+    padding: 0.875rem 1.5rem;
+    color: #D4A84B;
     font-weight: 600;
     font-size: 0.9375rem;
     border-radius: 0.625rem;
     text-decoration: none;
-    margin-top: 0.5rem;
-    transition: all 0.2s ease;
+    border: 2px solid #D4A84B;
+    background: rgba(212, 168, 75, 0.08);
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     width: fit-content;
+    position: relative;
+    overflow: hidden;
+    box-sizing: border-box;
   }
-  
-  .btn-product:hover {
-    transform: translateY(-2px);
-    filter: brightness(1.1);
+
+  .btn-playground-secondary::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(212, 168, 75, 0.15) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .btn-playground-secondary:hover {
+    transform: translateY(-2px) scale(1.02);
+    background: #D4A84B;
+    color: #000;
+    box-shadow: 
+      0 4px 20px -4px rgba(212, 168, 75, 0.5),
+      0 0 0 1px rgba(212, 168, 75, 0.3) inset;
+  }
+
+  .btn-playground-secondary:hover::before {
+    opacity: 1;
+  }
+
+  .btn-playground-secondary svg {
+    stroke: currentColor;
+    transition: transform 0.2s ease;
+  }
+
+  .btn-playground-secondary:hover svg {
+    transform: translateX(2px);
+  }
+
+  /* Code Window Playground Link - Yellow Ochre */
+  .code-playground-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.875rem;
+    color: #000;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 0.5rem;
+    background: #D4A84B;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 
+      0 2px 8px -2px rgba(212, 168, 75, 0.4),
+      0 0 0 1px rgba(0, 0, 0, 0.1) inset;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .code-playground-link::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .code-playground-link:hover {
+    transform: translateY(-1px) scale(1.02);
+    background: #E4C86A;
+    box-shadow: 
+      0 4px 16px -2px rgba(212, 168, 75, 0.5),
+      0 0 0 1px rgba(0, 0, 0, 0.05) inset;
+  }
+
+  .code-playground-link:hover::before {
+    opacity: 1;
+  }
+
+  .code-playground-link svg {
+    stroke: #000;
+    stroke-width: 2.5;
+    transition: transform 0.2s ease;
+  }
+
+  .code-playground-link:hover svg {
+    transform: translateX(1px);
   }
   
   /* Product Demo */
@@ -1775,6 +2116,357 @@ ORDER BY TotalSales DESC`
     border-color: color-mix(in srgb, #10b981 50%, transparent) !important;
     transform: translateY(-2px);
     box-shadow: 0 6px 24px -4px rgba(16, 185, 129, 0.3);
+  }
+
+  /* ═══════════════════════════════════════════════════════════════
+     SECTION TRANSITION
+     ═══════════════════════════════════════════════════════════════ */
+
+  .section-transition {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 2rem 3rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .section-transition-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      color-mix(in srgb, #D4A84B 30%, var(--sl-color-hairline)) 50%,
+      transparent
+    );
+  }
+
+  .section-transition-label {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: color-mix(in srgb, #D4A84B 80%, var(--sl-color-gray-3));
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  /* ═══════════════════════════════════════════════════════════════
+     PLAYGROUND INLINE STATS
+     ═══════════════════════════════════════════════════════════════ */
+
+  .playground-stats {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    padding: 1rem 1.25rem;
+    background: color-mix(in srgb, #D4A84B 6%, var(--sl-color-bg-nav));
+    border: 1px solid color-mix(in srgb, #D4A84B 20%, var(--sl-color-hairline));
+    border-radius: 0.75rem;
+    width: fit-content;
+  }
+
+  .playground-stat {
+    display: flex;
+    align-items: baseline;
+    gap: 0.4rem;
+    padding: 0 1.25rem;
+  }
+
+  .playground-stat:first-child { padding-left: 0; }
+  .playground-stat:last-child  { padding-right: 0; }
+
+  .playground-stat-number {
+    font-size: 1.375rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: #D4A84B;
+    line-height: 1;
+  }
+
+  .playground-stat-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--sl-color-gray-3);
+    white-space: nowrap;
+  }
+
+  .playground-stat-sep {
+    width: 1px;
+    height: 1.5rem;
+    background: color-mix(in srgb, #D4A84B 25%, var(--sl-color-hairline));
+    flex-shrink: 0;
+  }
+
+  /* ═══════════════════════════════════════════════════════════════
+     PLAYGROUND SECTION
+     ═══════════════════════════════════════════════════════════════ */
+
+  .playground-section {
+    position: relative;
+    overflow: hidden;
+    background: color-mix(in srgb, #D4A84B 4%, var(--sl-color-bg-nav));
+    border-top: 2px solid color-mix(in srgb, #D4A84B 25%, var(--sl-color-hairline));
+  }
+
+  .playground-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 70% 50% at 80% 50%,
+        color-mix(in srgb, #D4A84B 8%, transparent) 0%,
+        transparent 70%);
+    pointer-events: none;
+  }
+
+  .playground-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .playground-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.375rem 0.875rem;
+    background: color-mix(in srgb, #D4A84B 12%, transparent);
+    border: 1px solid color-mix(in srgb, #D4A84B 25%, transparent);
+    border-radius: 2rem;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: #D4A84B;
+    width: fit-content;
+  }
+
+  .playground-label svg { opacity: 0.8; }
+
+  .playground-title {
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: var(--sl-color-white);
+    margin: 0;
+  }
+
+  .playground-title-accent {
+    background: linear-gradient(135deg, #D4A84B 0%, #e8c05c 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .playground-desc {
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    color: var(--sl-color-gray-2);
+    margin: 0;
+    max-width: 480px;
+  }
+
+  .playground-features {
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+  }
+
+  .playground-features li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.9375rem;
+    color: var(--sl-color-gray-2);
+  }
+
+  .playground-check {
+    color: #D4A84B;
+    font-weight: 600;
+  }
+
+  .playground-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.875rem 1.5rem;
+    background: linear-gradient(135deg, #D4A84B 0%, #b8923a 100%);
+    color: white;
+    font-weight: 600;
+    font-size: 0.9375rem;
+    border-radius: 0.625rem;
+    text-decoration: none;
+    margin-top: 0.5rem;
+    transition: all 0.2s ease;
+    width: fit-content;
+    box-shadow: 0 4px 14px -4px rgba(212, 168, 75, 0.4);
+  }
+
+  .playground-btn:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.1);
+    box-shadow: 0 8px 24px -6px rgba(212, 168, 75, 0.5);
+  }
+
+  /* Playground Demo Window */
+  .playground-demo {
+    position: relative;
+  }
+
+  .playground-demo::before {
+    content: '';
+    position: absolute;
+    inset: -20px;
+    background: radial-gradient(ellipse 80% 60% at 50% 50%, color-mix(in srgb, #D4A84B 12%, transparent), transparent);
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  .playground-window {
+    background: var(--sl-color-bg-nav);
+    border: 1px solid color-mix(in srgb, #D4A84B 20%, var(--sl-color-hairline-light));
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow:
+      0 0 0 1px color-mix(in srgb, #D4A84B 8%, transparent),
+      0 25px 70px -15px rgba(0, 0, 0, 0.6),
+      0 0 80px -20px color-mix(in srgb, #D4A84B 20%, transparent);
+  }
+
+  .playground-window-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 1rem;
+    background: color-mix(in srgb, #D4A84B 15%, var(--sl-color-bg-nav));
+    border-bottom: 1px solid var(--sl-color-hairline-light);
+  }
+
+  .playground-window-tabs {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .playground-window-tabs .tab {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--sl-color-gray-3);
+    padding: 0.25rem 0.625rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+  }
+
+  .playground-window-tabs .tab.active {
+    background: var(--sl-color-bg);
+    color: var(--sl-color-white);
+  }
+
+  .playground-window-btns {
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: var(--sl-color-gray-3);
+    font-weight: 400;
+  }
+
+  .playground-window-body {
+    display: flex;
+    min-height: 220px;
+  }
+
+  .playground-editor-pane {
+    flex: 1;
+    padding: 1rem;
+    font-family: ui-monospace, monospace;
+    font-size: 0.8125rem;
+    line-height: 1.6;
+  }
+
+  .playground-gutter {
+    width: 8px;
+    background: var(--sl-color-bg);
+    border-left: 1px solid var(--sl-color-hairline-light);
+    border-right: 1px solid var(--sl-color-hairline-light);
+    cursor: col-resize;
+  }
+
+  .playground-output-pane {
+    flex: 1;
+    padding: 1rem;
+    font-family: ui-monospace, monospace;
+    font-size: 0.8125rem;
+    line-height: 1.6;
+    background: color-mix(in srgb, var(--sl-color-bg) 50%, var(--sl-color-bg-nav));
+  }
+
+  .playground-code-line {
+    display: flex;
+    gap: 0.75rem;
+    white-space: nowrap;
+  }
+
+  .playground-code-line.dim {
+    opacity: 0.6;
+  }
+
+  .line-num {
+    color: var(--sl-color-gray-4);
+    font-size: 0.75rem;
+    min-width: 1.5rem;
+    text-align: right;
+  }
+
+  .playground-code-line .kw { color: #ff7b72; }
+  .playground-code-line .cr { color: #79c0ff; font-weight: 600; }
+  .playground-code-line .cs { color: #d2a8ff; }
+  .playground-code-line .id { color: #e6edf3; }
+
+  .playground-window-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 1rem;
+    background: var(--sl-color-bg);
+    border-top: 1px solid var(--sl-color-hairline-light);
+    font-size: 0.75rem;
+  }
+
+  .playground-dialect-selector {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .playground-dialect-selector .dialect {
+    color: var(--sl-color-gray-3);
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .playground-dialect-selector .dialect.active {
+    color: #D4A84B;
+    font-weight: 500;
+  }
+
+  .playground-status {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    color: var(--sl-color-gray-3);
+  }
+
+  .status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+  }
+
+  .status-dot.success {
+    background: #D4A84B;
   }
 
   /* ═══════════════════════════════════════════════════════════════

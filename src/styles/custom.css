@@ -130,6 +130,8 @@
   transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
+/* Playground page overrides are in src/components/PlaygroundWrapper.astro */
+
 /* ===== SIDEBAR ACTIVE ITEM FIX ===== */
 /* Ensure text is always readable on active sidebar items */
 :root[data-theme='dark'] [aria-current='page'],

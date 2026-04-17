@@ -1,5 +1,8 @@
 ---
 import Default from '@astrojs/starlight/components/Sidebar.astro';
+import PlaygroundSidebar from '../playground/components/PlaygroundSidebar.vue';
+
+const isPlayground = Astro.url.pathname.startsWith('/playground');
 ---
 
 <!-- CTA al Inicio -->
@@ -13,8 +16,13 @@ import Default from '@astrojs/starlight/components/Sidebar.astro';
 	</a>
 </div>
 
-<!-- Sidebar por defecto de Starlight -->
-<Default><slot /></Default>
+{isPlayground ? (
+	<div class="sidebar-playground-container">
+		<PlaygroundSidebar client:only="vue" />
+	</div>
+) : (
+	<Default><slot /></Default>
+)}
 
 <style>
 	.sidebar-cta-container {

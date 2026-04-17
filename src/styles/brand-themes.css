@@ -5,6 +5,7 @@
   --crono-metadata: #5B2C7D;
   --crono-etl: #1B8AC7;
   --crono-sql: #1B5F8C;
+  --crono-playground: #D4A84B;
 }
 
 /* Applied via JS - fallback classes */
@@ -12,3 +13,4 @@
 .brand-metadata { --sl-color-accent: #5B2C7D !important; --sl-color-accent-low: #5B2C7D !important; --sl-color-accent-high: #7B4F9D !important; --sl-color-text-accent: #5B2C7D !important; }
 .brand-etl { --sl-color-accent: #1B8AC7 !important; --sl-color-accent-low: #1B8AC7 !important; --sl-color-accent-high: #3BAAD7 !important; --sl-color-text-accent: #1B8AC7 !important; }
 .brand-sql { --sl-color-accent: #1B5F8C !important; --sl-color-accent-low: #1B5F8C !important; --sl-color-accent-high: #3B7FAC !important; --sl-color-text-accent: #1B5F8C !important; }
+.brand-playground { --sl-color-accent: #D4A84B !important; --sl-color-accent-low: #D4A84B !important; --sl-color-accent-high: #E4C86B !important; --sl-color-text-accent: #D4A84B !important; }

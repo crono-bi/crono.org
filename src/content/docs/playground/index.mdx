@@ -1,0 +1,14 @@
+---
+title: Playground
+description: Prueba Crono SQL en tiempo real
+pagefind: false
+tableOfContents: false
+topic: playground
+---
+
+import PlaygroundWrapper from '../../../components/PlaygroundWrapper.astro';
+import PlaygroundEditor from '../../../playground/components/PlaygroundEditor.vue';
+
+<PlaygroundWrapper>
+  <PlaygroundEditor client:only="vue" />
+</PlaygroundWrapper>

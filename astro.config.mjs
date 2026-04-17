@@ -9,6 +9,7 @@ import { metadataTopics } from './src/config/sidebar-metadata.js';
 import { etlTopics } from './src/config/sidebar-etl.js';
 import { sqlTopics } from './src/config/sidebar-sql.js';
 import { examplesTopics } from './src/config/sidebar-examples.js';
+import { playgroundTopics } from './src/config/sidebar-playground.js';
 
 // Import SQL grammar for syntax highlighting
 import sqlLang from 'shiki/langs/sql.mjs';
@@ -30,6 +31,7 @@ export default defineConfig({
 				SiteTitle: './src/components/SiteTitle.astro',
 				ThemeSelect: './src/components/ThemeToggle.astro',
 				Sidebar: './src/components/Sidebar.astro',
+				PageTitle: './src/components/PageTitle.astro',
 			},
 			// Configure syntax highlighting with SQL support - uses StarlightUserConfig
 			expressiveCode: {
@@ -38,7 +40,14 @@ export default defineConfig({
 			},
 			plugins: [
 				starlightSidebarTopics(
-					[analysisTopics, metadataTopics, etlTopics, sqlTopics, examplesTopics],
+					[
+						analysisTopics,
+						metadataTopics,
+						etlTopics,
+						sqlTopics,
+						examplesTopics,
+						...playgroundTopics,
+					],
 					{ exclude: ['index.md', 'sql/language', 'sql/reference', 'sql/functions', 'sql/views'] }
 				),
 			],
