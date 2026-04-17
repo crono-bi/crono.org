@@ -118,6 +118,7 @@ onUnmounted(() => {
 .pg-editor {
   display: flex;
   flex-direction: row;
+  flex-wrap: nowrap;
   height: 100%;
   min-height: 0;
   overflow: hidden;
@@ -132,6 +133,7 @@ onUnmounted(() => {
   min-width: 0;
   padding: 0 !important;
   margin: 0 !important;
+  flex: 1 1 0;
 }
 
 /* ===== PANEL HEADER - COMPACT 24px ===== */
@@ -332,6 +334,34 @@ onUnmounted(() => {
 /* ===== DARK THEME ===== */
 .pg-theme-dark {
   background: var(--sl-color-bg);
+}
+
+/* ===== DESKTOP - Force horizontal layout ===== */
+@media (min-width: 1025px) {
+  .pg-editor {
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    width: 100% !important;
+  }
+
+  .pg-panel {
+    flex: 1 1 50% !important;
+    min-width: 0;
+    width: 50% !important;
+    max-width: 50% !important;
+  }
+
+  .pg-panel-left,
+  .pg-panel-right {
+    flex: 1 1 50% !important;
+    width: 50% !important;
+  }
+
+  .pg-splitter {
+    width: 5px !important;
+    min-width: 5px !important;
+    flex-shrink: 0 !important;
+  }
 }
 
 /* ===== RESPONSIVE ===== */
