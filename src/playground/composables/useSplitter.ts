@@ -2,8 +2,8 @@ import { ref } from 'vue'
 import type { Ref } from 'vue'
 
 export function useSplitter() {
-  const leftPanelFlex: Ref<string> = ref('1')
-  const rightPanelFlex: Ref<string> = ref('1')
+  const leftPanelFlex: Ref<string> = ref('1 1 50%')
+  const rightPanelFlex: Ref<string> = ref('1 1 50%')
   let isDragging = false
   let panelsEl: HTMLElement | null = null
   let isVertical = false
@@ -25,8 +25,8 @@ export function useSplitter() {
       const offset = clientX - rect.left
       pct = Math.max(0.15, Math.min(0.85, offset / rect.width))
     }
-    leftPanelFlex.value = `${pct}`
-    rightPanelFlex.value = `${1 - pct}`
+    leftPanelFlex.value = `${pct} ${pct} 0%`
+    rightPanelFlex.value = `${1 - pct} ${1 - pct} 0%`
   }
 
   function startDrag(e: MouseEvent): void {

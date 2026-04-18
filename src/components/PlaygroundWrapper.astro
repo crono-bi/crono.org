@@ -20,12 +20,15 @@
   body:has(.pg-content) .content-panel {
     padding: 0 !important;
     margin: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
   }
 
   /* ── Remove Starlight max-width constraints ── */
   body:has(.pg-content) .sl-container,
   body:has(.pg-content) .sl-markdown-content {
     max-width: 100% !important;
+    width: 100% !important;
     padding-inline: 0 !important;
   }
 
@@ -33,15 +36,28 @@
   body:has(.pg-content) main,
   body:has(.pg-content) .main-frame,
   body:has(.pg-content) .main-pane,
-  body:has(.pg-content) article {
+  body:has(.pg-content) article,
+  body:has(.pg-content) .lg\\:sl-flex {
     max-width: 100% !important;
     width: 100% !important;
+    flex: 1 1 auto !important;
+  }
+
+  /* ── Override Starlight's two-column layout flex constraints ── */
+  body:has(.pg-content) .page {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  body:has(.pg-content) .sidebar {
+    flex-shrink: 0 !important;
   }
 
   /* ── Ensure the content panel doesn't constrain width ── */
   body:has(.pg-content) .content {
     width: 100% !important;
     max-width: 100% !important;
+    min-width: 0 !important;
   }
 
   /* ── pg-content fills available height ── */

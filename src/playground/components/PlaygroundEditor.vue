@@ -136,7 +136,30 @@ onUnmounted(() => {
   min-width: 0;
   padding: 0 !important;
   margin: 0 !important;
-  flex: 1 1 0;
+  flex: 1 1 50%;
+}
+
+.pg-panel-left,
+.pg-panel-right {
+  flex: 1 1 50%;
+  min-width: 300px;
+}
+
+.pg-splitter {
+  width: 5px;
+  min-width: 5px;
+  max-width: 5px;
+  flex: 0 0 5px;
+  background: var(--sl-color-gray-5);
+  cursor: col-resize;
+  align-self: stretch;
+  margin: 0;
+  padding: 0;
+  transition: background 0.15s ease;
+}
+
+.pg-splitter:hover {
+  background: var(--sl-color-accent);
 }
 
 /* ===== PANEL HEADER - COMPACT 24px ===== */
@@ -306,22 +329,6 @@ onUnmounted(() => {
 
 .pg-run-fab:active {
   transform: translateY(0);
-}
-
-/* ===== SPLITTER ===== */
-.pg-splitter {
-  width: 5px;
-  cursor: col-resize;
-  flex-shrink: 0;
-  align-self: stretch;
-  margin: 0;
-  padding: 0;
-  background: var(--sl-color-gray-5);
-  transition: background 0.15s ease;
-}
-
-.pg-splitter:hover {
-  background: var(--sl-color-accent);
 }
 
 @keyframes pulse {
