@@ -121,9 +121,12 @@ onUnmounted(() => {
   flex-wrap: nowrap;
   height: 100%;
   min-height: 0;
+  min-width: 0;
+  width: 100%;
   overflow: hidden;
   border-radius: 8px;
   border: 1px solid var(--sl-color-gray-5);
+  box-sizing: border-box;
 }
 
 .pg-panel {
@@ -342,25 +345,31 @@ onUnmounted(() => {
     flex-direction: row !important;
     flex-wrap: nowrap !important;
     width: 100% !important;
+    min-width: 800px !important;
   }
 
   .pg-panel {
     flex: 1 1 50% !important;
-    min-width: 0;
-    width: 50% !important;
-    max-width: 50% !important;
+    min-width: 300px !important;
+    width: auto !important;
+    max-width: none !important;
   }
 
-  .pg-panel-left,
+  .pg-panel-left {
+    flex: 1 1 50% !important;
+    min-width: 300px !important;
+  }
+
   .pg-panel-right {
     flex: 1 1 50% !important;
-    width: 50% !important;
+    min-width: 300px !important;
   }
 
   .pg-splitter {
     width: 5px !important;
     min-width: 5px !important;
-    flex-shrink: 0 !important;
+    max-width: 5px !important;
+    flex: 0 0 5px !important;
   }
 }
 

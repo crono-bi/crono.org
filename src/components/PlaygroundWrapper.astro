@@ -29,6 +29,21 @@
     padding-inline: 0 !important;
   }
 
+  /* ── Force full width on main content area ── */
+  body:has(.pg-content) main,
+  body:has(.pg-content) .main-frame,
+  body:has(.pg-content) .main-pane,
+  body:has(.pg-content) article {
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+
+  /* ── Ensure the content panel doesn't constrain width ── */
+  body:has(.pg-content) .content {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
   /* ── pg-content fills available height ── */
   .pg-content {
     height: calc(100vh - var(--sl-nav-height, 3.5rem) - 1.5rem);
