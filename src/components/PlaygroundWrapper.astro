@@ -8,6 +8,10 @@
 </div>
 
 <style is:global>
+  /* ── Import Playground CSS (global, not scoped) ── */
+  @import '../styles/playground-codemirror.css';
+  @import '../styles/playground-editor.css';
+
   /* ── Apply playground brand color (yellow/ochre) ── */
   body:has(.pg-content) {
     --sl-color-accent: #D4A84B;

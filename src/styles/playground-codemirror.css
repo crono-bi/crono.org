@@ -1,0 +1,232 @@
+/**
+ * Playground CodeMirror Global Styles
+ * 
+ * Estos estilos deben ser globales porque:
+ * 1. CodeMirror renderiza elementos dinámicamente (.cm-*)
+ * 2. Usamos client:only="vue" que no permite SSR de estos elementos
+ * 3. Astro purga CSS scoped con :deep() en producción
+ * 
+ * Este archivo se importa en PlaygroundWrapper.astro con is:global
+ */
+
+/* ===== BASE EDITOR ===== */
+.code-editor {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.code-editor .cm-editor {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  padding: 0;
+}
+
+.code-editor .cm-editor .cm-scroller {
+  flex: 1;
+  overflow: auto;
+  height: 100%;
+}
+
+/* ===== SCROLLBAR ===== */
+.code-editor .cm-scroller::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+.code-editor .cm-scroller::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.code-editor .cm-scroller::-webkit-scrollbar-thumb {
+  background: var(--sl-color-gray-5);
+  border-radius: 5px;
+}
+
+.code-editor .cm-scroller::-webkit-scrollbar-thumb:hover {
+  background: var(--sl-color-gray-4);
+}
+
+/* ===== ANNOUNCED ELEMENT ===== */
+.code-editor .cm-announced {
+  position: absolute;
+  height: 0;
+  overflow: hidden;
+}
+
+/* ===== SCROLLER MARGINS ===== */
+.code-editor .cm-editor > .cm-scroller {
+  margin-top: 0;
+}
+
+/* ===== LINE STYLES ===== */
+.code-editor .cm-line:first-child {
+  padding-top: 0;
+}
+
+/* ===== GUTTERS ===== */
+.code-editor .cm-gutters {
+  background: transparent;
+  border-right: 1px solid var(--sl-color-gray-6, #333);
+}
+
+/* ===== TOP PANEL ===== */
+.code-editor .cm-top-panel {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start;
+  gap: 10px;
+  padding: 10px 16px !important;
+  min-height: 44px !important;
+  background: var(--sl-color-bg);
+  border-bottom: 1px solid var(--sl-color-gray-5);
+  box-sizing: border-box !important;
+  flex-shrink: 0;
+}
+
+.code-editor .cm-top-panel > * {
+  align-self: center !important;
+}
+
+.code-editor .cm-panel-title {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--sl-color-accent);
+  flex-shrink: 0;
+  line-height: 1;
+  padding: 0;
+  background: none;
+  border-radius: 0;
+  box-shadow: none;
+  border-left: 3px solid var(--sl-color-accent);
+  padding-left: 10px;
+}
+
+.code-editor .cm-panel-spacer {
+  flex: 1;
+  align-self: stretch;
+}
+
+.code-editor .cm-panel-right-group {
+  display: flex !important;
+  align-items: center !important;
+  align-self: center !important;
+  flex-shrink: 0;
+  gap: 8px;
+  margin: 0 !important;
+  padding: 0 !important;
+  height: auto !important;
+}
+
+/* Right panel (no title): group fills width, clipboard pushed right */
+.code-editor .cm-panel-right-full {
+  flex: 1 !important;
+  min-width: 0;
+}
+
+.code-editor .cm-panel-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 1;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.code-editor .cm-panel-right-full .cm-panel-copy-btn {
+  margin-left: auto !important;
+}
+
+.code-editor .cm-panel-copy-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  background: var(--sl-color-gray-6);
+  border: 1px solid var(--sl-color-gray-5);
+  border-radius: 5px;
+  cursor: pointer;
+  color: var(--sl-color-gray-2);
+  flex-shrink: 0;
+  transition: all 0.15s ease;
+}
+
+.code-editor .cm-panel-copy-btn:hover {
+  color: #fff;
+  background: var(--sl-color-accent);
+  border-color: var(--sl-color-accent);
+  box-shadow: 0 1px 3px rgba(212, 168, 75, 0.3);
+}
+
+.code-editor .cm-panel-copy-btn svg {
+  display: block;
+}
+
+/* ===== CRONO KEYWORD & FUNCTION COLORS ===== */
+.code-editor .cm-crono-kw-light,
+.code-editor .cm-crono-kw-light span {
+  color: #0000ff !important;
+}
+
+.code-editor .cm-crono-kw-dark,
+.code-editor .cm-crono-kw-dark span {
+  color: #569cd6 !important;
+}
+
+.code-editor .cm-crono-fn-light,
+.code-editor .cm-crono-fn-light span {
+  color: #FF00FF !important;
+}
+
+.code-editor .cm-crono-fn-dark,
+.code-editor .cm-crono-fn-dark span {
+  color: #dcdcaa !important;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .code-editor .cm-top-panel {
+    min-height: 40px !important;
+    padding: 8px 14px !important;
+    gap: 8px;
+  }
+
+  .code-editor .cm-panel-title {
+    font-size: 12px;
+    padding-left: 9px;
+  }
+}
+
+@media (max-width: 600px) {
+  .code-editor .cm-top-panel {
+    min-height: 38px !important;
+    padding: 6px 12px !important;
+    gap: 6px;
+  }
+
+  .code-editor .cm-panel-title {
+    font-size: 11px;
+    padding-left: 8px;
+    border-left-width: 2px;
+  }
+
+  .code-editor .cm-panel-right-group {
+    gap: 5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .code-editor .cm-top-panel {
+    min-height: 36px !important;
+    padding: 6px 10px !important;
+    gap: 4px;
+  }
+}
