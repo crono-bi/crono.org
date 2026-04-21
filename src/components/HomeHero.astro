@@ -119,41 +119,80 @@ ORDER BY TotalSales DESC`
       <div class="lg:col-span-5">
         <div class="mock-window">
           <div class="mock-bar">
-            <span></span>
+            <span class="mock-bar-title">Plataforma Crono</span>
+            <div class="mock-win-controls">
+              <span class="mock-win-btn minimize">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              </span>
+              <span class="mock-win-btn maximize">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+              </span>
+              <span class="mock-win-btn close">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+              </span>
+            </div>
           </div>
           <div class="mock-body">
-            <div class="mock-row" style="--row-color: #1B8AC7;">
-              <div class="mock-indicator"></div>
+            <a href="#crono-etl" class="mock-row" style="--row-color: #1B8AC7;">
+              <div class="mock-icon-wrap">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+              </div>
               <div class="mock-col">
                 <span class="mock-name">Crono ETL</span>
                 <span class="mock-sub">Extracción y carga</span>
               </div>
-              <span class="mock-status ok">Activo</span>
-            </div>
-            <div class="mock-row" style="--row-color: #1B5F8C;">
-              <div class="mock-indicator"></div>
+              <svg class="mock-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+            </a>
+            <a href="#crono-sql" class="mock-row" style="--row-color: #1B5F8C;">
+              <div class="mock-icon-wrap">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+              </div>
               <div class="mock-col">
                 <span class="mock-name">Crono SQL</span>
                 <span class="mock-sub">Transformación</span>
               </div>
-              <span class="mock-status ok">376 docs</span>
-            </div>
-            <div class="mock-row" style="--row-color: #5B2C7D;">
-              <div class="mock-indicator"></div>
+              <svg class="mock-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+            </a>
+            <a href="#crono-metadata" class="mock-row" style="--row-color: #5B2C7D;">
+              <div class="mock-icon-wrap">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+              </div>
               <div class="mock-col">
                 <span class="mock-name">Crono Metadata</span>
                 <span class="mock-sub">Capa semántica</span>
               </div>
-              <span class="mock-status ok">No-code</span>
-            </div>
-            <div class="mock-row" style="--row-color: #C85A47;">
-              <div class="mock-indicator"></div>
+              <svg class="mock-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+            </a>
+            <a href="#crono-analysis" class="mock-row" style="--row-color: #C85A47;">
+              <div class="mock-icon-wrap">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+              </div>
               <div class="mock-col">
                 <span class="mock-name">Crono Analysis</span>
-                <span class="mock-sub">Dashboards</span>
+                <span class="mock-sub">Autoservicio</span>
               </div>
-              <span class="mock-status ok">BI</span>
-            </div>
+              <svg class="mock-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+            </a>
+            <a href="#crono-api" class="mock-row" style="--row-color: #0EA5E9;">
+              <div class="mock-icon-wrap">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/><path d="M2 20h20"/></svg>
+              </div>
+              <div class="mock-col">
+                <span class="mock-name">Crono API</span>
+                <span class="mock-sub">Dashboards web</span>
+              </div>
+              <svg class="mock-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+            </a>
+            <a href="#crono-ai" class="mock-row" style="--row-color: #8B5CF6;">
+              <div class="mock-icon-wrap">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.38-1 1.72V8h1a7 7 0 0 1 7 7h1a1 1 0 0 1 0 2h-1v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1H2a1 1 0 0 1 0-2h1a7 7 0 0 1 7-7h1V5.72A2 2 0 0 1 10 4a2 2 0 0 1 2-2z"/></svg>
+              </div>
+              <div class="mock-col">
+                <span class="mock-name">Crono AI</span>
+                <span class="mock-sub">Asistente de datos</span>
+              </div>
+              <svg class="mock-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+            </a>
           </div>
         </div>
       </div>
@@ -201,7 +240,7 @@ ORDER BY TotalSales DESC`
         </div>
         <!-- Floating badges -->
         <div class="demo-badge demo-badge-1" style="right: -20px; top: 15%;">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2">
             <polyline points="20 6 9 17 4 12"/>
           </svg>
           <span>Sintaxis simplificada</span>
@@ -232,7 +271,7 @@ ORDER BY TotalSales DESC`
             Explorar documentación
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
           </a>
-          <a href="#playground" class="btn-product-secondary" style="color: #D4A84B;">
+          <a href="#playground" class="btn-product-secondary" style="color: #3B82F6;">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
             Playground
           </a>
@@ -476,6 +515,210 @@ ORDER BY TotalSales DESC`
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- CRONO API -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<section id="crono-api" class="not-content product-section scroll-reveal" style="--section-color: #0EA5E9;">
+  <div class="section-bg" style="background: radial-gradient(ellipse 80% 60% at 70% 50%, color-mix(in srgb, #0EA5E9 8%, transparent), transparent);"></div>
+  <div class="mx-auto max-w-6xl px-6 py-16 lg:py-20">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <div>
+        <div class="product-label" style="color: #0EA5E9;">Dashboards web</div>
+        <h2 class="product-title">Crono API</h2>
+        <p class="product-desc">
+          Publica tus datos como APIs REST en segundos. Conecta cualquier aplicación web o móvil con tus modelos de datos sin escribir código de servidor.
+        </p>
+        <ul class="product-features">
+          <li><span style="color: #0EA5E9;">✓</span> APIs REST autogeneradas desde tu catálogo</li>
+          <li><span style="color: #0EA5E9;">✓</span> Autenticación y control de acceso integrado</li>
+          <li><span style="color: #0EA5E9;">✓</span> Dashboards web conectados en tiempo real</li>
+        </ul>
+      </div>
+      <div class="product-demo api-demo-wrap">
+
+        <!-- Main Swagger window -->
+        <div class="swagger-window">
+          <div class="swagger-header">
+            <span class="swagger-title">Crono API</span>
+            <span class="swagger-version">v1.0</span>
+            <span class="swagger-oas">OAS 3.0</span>
+          </div>
+          <div class="swagger-body">
+            <div class="swagger-endpoint get">
+              <span class="swagger-method get">GET</span>
+              <span class="swagger-path">/api/ventas</span>
+              <span class="swagger-desc">Ventas por período</span>
+              <span class="swagger-status s200">200</span>
+            </div>
+            <div class="swagger-endpoint post swagger-endpoint-active">
+              <span class="swagger-method post">POST</span>
+              <span class="swagger-path">/api/ventas/filter</span>
+              <span class="swagger-desc">Filtrar por región</span>
+              <span class="swagger-status s200">200</span>
+            </div>
+            <div class="swagger-endpoint get">
+              <span class="swagger-method get">GET</span>
+              <span class="swagger-path">/api/productos</span>
+              <span class="swagger-desc">Catálogo de productos</span>
+              <span class="swagger-status s200">200</span>
+            </div>
+            <div class="swagger-endpoint delete">
+              <span class="swagger-method delete">DEL</span>
+              <span class="swagger-path">/api/cache</span>
+              <span class="swagger-desc">Limpiar caché</span>
+              <span class="swagger-status s204">204</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Floating JSON response -->
+        <div class="api-float-response">
+          <div class="api-float-header">
+            <span class="api-float-label">Response</span>
+            <span class="api-float-latency">⚡ 12ms</span>
+            <span class="api-float-code s200">200 OK</span>
+          </div>
+          <pre class="api-float-body"><code><span class="json-bracket">[</span>
+  <span class="json-brace">&#123;</span> <span class="json-key">"region"</span>: <span class="json-str">"Norte"</span>, <span class="json-key">"ventas"</span>: <span class="json-num">12400</span> <span class="json-brace">&#125;</span>,
+  <span class="json-brace">&#123;</span> <span class="json-key">"region"</span>: <span class="json-str">"Sur"</span>, <span class="json-key">"ventas"</span>: <span class="json-num">8200</span> <span class="json-brace">&#125;</span>
+<span class="json-bracket">]</span></code></pre>
+        </div>
+
+        <!-- Floating sparkline chart -->
+        <div class="api-float-chart">
+          <div class="api-chart-label">Requests / seg</div>
+          <div class="api-sparkline">
+            <span style="height:30%"></span>
+            <span style="height:50%"></span>
+            <span style="height:40%"></span>
+            <span style="height:70%"></span>
+            <span style="height:60%"></span>
+            <span style="height:85%"></span>
+            <span style="height:75%"></span>
+            <span style="height:100%"></span>
+            <span style="height:80%"></span>
+            <span style="height:90%"></span>
+          </div>
+          <div class="api-chart-value">2.4k<span>/s</span></div>
+        </div>
+
+        <!-- Metric pills -->
+        <div class="api-pills">
+          <span class="api-pill green">● 99.9% uptime</span>
+          <span class="api-pill blue">⚡ 12ms avg</span>
+          <span class="api-pill purple">↑ 2.4k req/s</span>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- CRONO AI -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<section id="crono-ai" class="not-content product-section scroll-reveal" style="--section-color: #8B5CF6;">
+  <div class="section-bg" style="background: radial-gradient(ellipse 80% 60% at 30% 50%, color-mix(in srgb, #8B5CF6 8%, transparent), transparent);"></div>
+  <div class="mx-auto max-w-6xl px-6 py-16 lg:py-20">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <!-- Left: AI Demo -->
+      <div class="product-demo order-2 lg:order-1">
+        <div class="ai-window">
+          <div class="ai-header">
+            <div class="ai-avatar">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.38-1 1.72v2.03c1.44.44 2.64 1.47 3.24 2.76h.06a2 2 0 1 1 0 4h-.06a4.002 4.002 0 0 1-3.24 2.76v1.72h1.5a2.5 2.5 0 0 1 0 5h-5a2.5 2.5 0 0 1 0-5H11v-1.72A4.002 4.002 0 0 1 7.76 13.5h-.06a2 2 0 1 1 0-4h.06c.6-1.29 1.8-2.32 3.24-2.76V5.72A2 2 0 1 1 12 2Z"/>
+              </svg>
+            </div>
+            <span class="ai-title">Análisis de Ventas AI</span>
+            <span class="ai-provider">OpenAI</span>
+          </div>
+          <div class="ai-body">
+            <!-- User message -->
+            <div class="ai-message user">
+              <div class="ai-message-content">¿Cuáles fueron las ventas del último trimestre por región?</div>
+            </div>
+            <!-- AI response -->
+            <div class="ai-message assistant">
+              <div class="ai-avatar-small">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.38-1 1.72v2.03c1.44.44 2.64 1.47 3.24 2.76h.06a2 2 0 1 1 0 4h-.06a4.002 4.002 0 0 1-3.24 2.76v1.72h1.5a2.5 2.5 0 0 1 0 5h-5a2.5 2.5 0 0 1 0-5H11v-1.72A4.002 4.002 0 0 1 7.76 13.5h-.06a2 2 0 1 1 0-4h.06c.6-1.29 1.8-2.32 3.24-2.76V5.72A2 2 0 1 1 12 2Z"/>
+                </svg>
+              </div>
+              <div class="ai-message-card">
+                <div class="ai-message-header">Análisis de ventas Q4 2025</div>
+                <div class="ai-table">
+                  <div class="ai-table-header">
+                    <span>Región</span>
+                    <span>Ventas</span>
+                    <span>Variación</span>
+                  </div>
+                  <div class="ai-table-row">
+                    <span>Norte</span>
+                    <span class="ai-num">€1.2M</span>
+                    <span class="ai-up">+15%</span>
+                  </div>
+                  <div class="ai-table-row">
+                    <span>Sur</span>
+                    <span class="ai-num">€980K</span>
+                    <span class="ai-up">+8%</span>
+                  </div>
+                  <div class="ai-table-row">
+                    <span>Este</span>
+                    <span class="ai-num">€1.5M</span>
+                    <span class="ai-up">+22%</span>
+                  </div>
+                </div>
+                <div class="ai-actions">
+                  <span class="ai-action"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg> Excel</span>
+                  <span class="ai-action"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg> Ver SQL</span>
+                </div>
+              </div>
+            </div>
+            <!-- Input area -->
+            <div class="ai-input-area">
+              <div class="ai-input">
+                <span class="ai-input-placeholder">Pregunta sobre tus datos...</span>
+                <button class="ai-send">Enviar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Feature badges -->
+        <div class="demo-badge" style="right: -20px; top: 10%;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8B5CF6" stroke-width="2">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+          <span>Exporta a Excel</span>
+        </div>
+        <div class="demo-badge" style="left: -15px; bottom: 25%;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8B5CF6" stroke-width="2">
+            <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
+          </svg>
+          <span>Ver SQL generado</span>
+        </div>
+      </div>
+      <!-- Right: Content -->
+      <div class="product-content order-1 lg:order-2">
+        <div class="product-label" style="color: #8B5CF6;">Inteligencia Artificial · Asistente de datos</div>
+        <h2 class="product-title">Crono AI</h2>
+        <p class="product-desc">
+          Tu asistente inteligente para analizar datos. Haz preguntas en lenguaje natural,
+          obtén respuestas con tablas, gráficos y análisis al instante. Conecta con tu catálogo
+          Crono Metadata para respuestas contextualizadas.
+        </p>
+        <ul class="product-features">
+          <li><span style="color: #8B5CF6;">✓</span> Múltiples asistentes especializados por área</li>
+          <li><span style="color: #8B5CF6;">✓</span> Respuestas con tablas y análisis automáticos</li>
+          <li><span style="color: #8B5CF6;">✓</span> Exporta resultados directamente a Excel</li>
+          <li><span style="color: #8B5CF6;">✓</span> Revisa el SQL generado para transparencia total</li>
+          <li><span style="color: #8B5CF6;">✓</span> Conectado con OpenAI, Claude y otros proveedores</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
 <!-- MANUALS INFO SECTION -->
 <!-- ═══════════════════════════════════════════════════════════════ -->
 <section id="manuales-crono" class="not-content border-t border-[var(--sl-color-hairline)] py-16">
@@ -676,7 +919,7 @@ ORDER BY TotalSales DESC`
         </div>
         <!-- Floating badges -->
         <div class="demo-badge" style="left: -20px; top: 20%;">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2">
             <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/>
             <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/>
             <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/>
@@ -845,64 +1088,112 @@ ORDER BY TotalSales DESC`
   .mock-window {
     background: var(--sl-color-bg);
     border: 1px solid var(--sl-color-hairline-light);
-    border-radius: 0.75rem;
+    border-radius: 1rem;
     overflow: hidden;
-    box-shadow: 0 8px 30px -8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 20px 50px -15px rgba(0,0,0,0.35), 0 0 0 1px rgba(255,255,255,0.04);
   }
 
   .mock-bar {
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 0.75rem;
     border-bottom: 1px solid var(--sl-color-hairline-light);
-    background: color-mix(in srgb, var(--sl-color-bg-nav) 50%, var(--sl-color-bg));
+    background: color-mix(in srgb, var(--sl-color-bg-nav) 80%, var(--sl-color-bg));
     display: flex;
-    justify-content: flex-end;
     align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
   }
 
-  .mock-bar span::before {
-    content: '— □ ×';
-    font-size: 10px;
-    letter-spacing: 4px;
+  .mock-bar-title {
+    font-size: 0.75rem;
+    font-weight: 600;
     color: var(--sl-color-gray-3);
-    font-weight: 400;
+    letter-spacing: 0.02em;
   }
 
-  .mock-body { padding: 0.25rem; }
+  .mock-win-controls {
+    display: flex;
+    gap: 0;
+    flex-shrink: 0;
+  }
+
+  .mock-win-btn {
+    width: 34px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--sl-color-gray-3);
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+
+  .mock-win-btn:hover {
+    background: color-mix(in srgb, var(--sl-color-gray-4) 15%, transparent);
+    color: var(--sl-color-white);
+  }
+
+  .mock-win-btn.close:hover {
+    background: #e81123;
+    color: #ffffff;
+  }
+
+  .mock-body { padding: 0.375rem; }
 
   .mock-row {
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    padding: 0.75rem;
+    padding: 0.625rem 0.75rem;
+    border-radius: 0.625rem;
+    transition: background 0.15s ease, transform 0.15s ease;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+  }
+
+  .mock-row + .mock-row {
+    border-top: 1px solid var(--sl-color-hairline-light);
+    border-radius: 0;
+  }
+
+  .mock-row:first-child { border-radius: 0.5rem 0.5rem 0 0; }
+  .mock-row:last-child  { border-radius: 0 0 0.5rem 0.5rem; }
+
+  .mock-row:hover {
+    background: color-mix(in srgb, var(--row-color) 10%, var(--sl-color-bg-nav));
+    transform: translateX(2px);
+  }
+
+  .mock-icon-wrap {
+    width: 32px;
+    height: 32px;
     border-radius: 0.5rem;
+    background: color-mix(in srgb, var(--row-color) 15%, transparent);
+    border: 1px solid color-mix(in srgb, var(--row-color) 25%, transparent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--row-color);
+    flex-shrink: 0;
     transition: background 0.15s ease;
   }
 
-  .mock-row:hover {
-    background: color-mix(in srgb, var(--row-color) 5%, transparent);
+  .mock-row:hover .mock-icon-wrap {
+    background: color-mix(in srgb, var(--row-color) 25%, transparent);
   }
 
-  .mock-indicator {
-    width: 3px;
-    height: 28px;
-    border-radius: 2px;
-    background: var(--row-color);
-    flex-shrink: 0;
-    opacity: 0.7;
-  }
-
-  .mock-col { flex: 1; display: flex; flex-direction: column; gap: 1px; }
+  .mock-col { flex: 1; display: flex; flex-direction: column; gap: 2px; }
   .mock-name { font-size: 0.8125rem; font-weight: 600; color: var(--sl-color-white); }
   .mock-sub { font-size: 0.6875rem; color: var(--sl-color-gray-3); }
 
-  .mock-status {
-    font-size: 0.6875rem;
-    font-weight: 600;
-    padding: 0.2rem 0.5rem;
-    border-radius: 1rem;
-    background: color-mix(in srgb, var(--row-color) 10%, transparent);
+  .mock-chevron {
+    color: var(--sl-color-gray-4);
+    flex-shrink: 0;
+    transition: color 0.15s ease, transform 0.15s ease;
+  }
+
+  .mock-row:hover .mock-chevron {
     color: var(--row-color);
-    white-space: nowrap;
+    transform: translateX(2px);
   }
 
   /* Section label with divider lines */
@@ -1553,20 +1844,20 @@ ORDER BY TotalSales DESC`
   }
 
   /* ═══════════════════════════════════════════════════════════════
-     PLAYGROUND BRAND - Yellow Ochre (#D4A84B)
+     PLAYGROUND BRAND - Blue (#3B82F6)
      ═══════════════════════════════════════════════════════════════ */
   .btn-playground-secondary {
     display: inline-flex;
     align-items: center;
     gap: 0.625rem;
     padding: 0.875rem 1.5rem;
-    color: #D4A84B;
+    color: #3B82F6;
     font-weight: 600;
     font-size: 0.9375rem;
     border-radius: 0.625rem;
     text-decoration: none;
-    border: 2px solid #D4A84B;
-    background: rgba(212, 168, 75, 0.08);
+    border: 2px solid #3B82F6;
+    background: rgba(59, 130, 246, 0.08);
     transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     width: fit-content;
     position: relative;
@@ -1578,18 +1869,18 @@ ORDER BY TotalSales DESC`
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, rgba(212, 168, 75, 0.15) 0%, transparent 50%);
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, transparent 50%);
     opacity: 0;
     transition: opacity 0.3s ease;
   }
 
   .btn-playground-secondary:hover {
     transform: translateY(-2px) scale(1.02);
-    background: #D4A84B;
-    color: #000;
+    background: #3B82F6;
+    color: #fff;
     box-shadow: 
-      0 4px 20px -4px rgba(212, 168, 75, 0.5),
-      0 0 0 1px rgba(212, 168, 75, 0.3) inset;
+      0 4px 20px -4px rgba(59, 130, 246, 0.5),
+      0 0 0 1px rgba(59, 130, 246, 0.3) inset;
   }
 
   .btn-playground-secondary:hover::before {
@@ -1616,10 +1907,10 @@ ORDER BY TotalSales DESC`
     font-weight: 600;
     text-decoration: none;
     border-radius: 0.5rem;
-    background: #D4A84B;
+    background: #3B82F6;
     transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: 
-      0 2px 8px -2px rgba(212, 168, 75, 0.4),
+      0 2px 8px -2px rgba(59, 130, 246, 0.4),
       0 0 0 1px rgba(0, 0, 0, 0.1) inset;
     position: relative;
     overflow: hidden;
@@ -1636,9 +1927,9 @@ ORDER BY TotalSales DESC`
 
   .code-playground-link:hover {
     transform: translateY(-1px) scale(1.02);
-    background: #E4C86A;
+    background: #60A5FA;
     box-shadow: 
-      0 4px 16px -2px rgba(212, 168, 75, 0.5),
+      0 4px 16px -2px rgba(59, 130, 246, 0.5),
       0 0 0 1px rgba(0, 0, 0, 0.05) inset;
   }
 
@@ -1774,6 +2065,263 @@ ORDER BY TotalSales DESC`
     border-radius: 0.25rem;
   }
   
+  /* ═══════════════════════════════════════════════════════════════
+     SWAGGER WINDOW (API)
+     ═══════════════════════════════════════════════════════════════ */
+
+  .swagger-window {
+    background: var(--sl-color-bg-nav);
+    border: 1px solid color-mix(in srgb, #0EA5E9 25%, var(--sl-color-hairline-light));
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow:
+      0 0 0 1px color-mix(in srgb, #0EA5E9 8%, transparent),
+      0 20px 50px -15px rgba(0,0,0,0.5);
+  }
+
+  .swagger-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    background: color-mix(in srgb, #0EA5E9 12%, var(--sl-color-bg-nav));
+    border-bottom: 1px solid var(--sl-color-hairline-light);
+  }
+
+  .swagger-title {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--sl-color-white);
+  }
+
+  .swagger-version {
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 0.15rem 0.5rem;
+    border-radius: 999px;
+    background: color-mix(in srgb, #0EA5E9 20%, transparent);
+    color: #0EA5E9;
+    border: 1px solid color-mix(in srgb, #0EA5E9 30%, transparent);
+  }
+
+  .swagger-oas {
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 0.15rem 0.5rem;
+    border-radius: 999px;
+    background: color-mix(in srgb, #22c55e 15%, transparent);
+    color: #22c55e;
+    border: 1px solid color-mix(in srgb, #22c55e 30%, transparent);
+    margin-left: auto;
+  }
+
+  .swagger-body {
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .swagger-endpoint {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.5rem;
+    border: 1px solid transparent;
+    transition: background 0.15s ease;
+    cursor: default;
+  }
+
+  .swagger-endpoint.get { border-color: color-mix(in srgb, #0EA5E9 20%, transparent); background: color-mix(in srgb, #0EA5E9 5%, transparent); }
+  .swagger-endpoint.post { border-color: color-mix(in srgb, #22c55e 20%, transparent); background: color-mix(in srgb, #22c55e 5%, transparent); }
+  .swagger-endpoint.delete { border-color: color-mix(in srgb, #ef4444 20%, transparent); background: color-mix(in srgb, #ef4444 5%, transparent); }
+
+  .swagger-method {
+    font-size: 0.65rem;
+    font-weight: 800;
+    font-family: monospace;
+    padding: 0.2rem 0.45rem;
+    border-radius: 4px;
+    min-width: 36px;
+    text-align: center;
+    flex-shrink: 0;
+  }
+
+  .swagger-method.get { background: #0EA5E9; color: #fff; }
+  .swagger-method.post { background: #22c55e; color: #fff; }
+  .swagger-method.delete { background: #ef4444; color: #fff; }
+
+  .swagger-path {
+    font-family: monospace;
+    font-size: 0.8rem;
+    color: var(--sl-color-white);
+    font-weight: 500;
+    flex-shrink: 0;
+  }
+
+  .swagger-desc {
+    font-size: 0.75rem;
+    color: var(--sl-color-gray-3);
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .swagger-status {
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 0.15rem 0.4rem;
+    border-radius: 4px;
+    flex-shrink: 0;
+  }
+
+  .swagger-status.s200 { background: color-mix(in srgb, #22c55e 20%, transparent); color: #22c55e; }
+  .swagger-status.s204 { background: color-mix(in srgb, #0EA5E9 20%, transparent); color: #0EA5E9; }
+
+  .swagger-endpoint-active {
+    box-shadow: 0 0 0 1px color-mix(in srgb, #22c55e 40%, transparent);
+  }
+
+  /* ── API demo wrapper ── */
+  .api-demo-wrap {
+    position: relative;
+    padding-bottom: 3rem;
+  }
+
+  /* ── Floating JSON response ── */
+  .api-float-response {
+    position: absolute;
+    bottom: -0.5rem;
+    right: -1rem;
+    width: 230px;
+    background: var(--sl-color-bg);
+    border: 1px solid color-mix(in srgb, #22c55e 30%, var(--sl-color-hairline-light));
+    border-radius: 0.625rem;
+    overflow: hidden;
+    box-shadow: 0 8px 24px -6px rgba(0,0,0,0.45);
+    z-index: 2;
+  }
+
+  .api-float-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem 0.625rem;
+    background: color-mix(in srgb, #22c55e 10%, var(--sl-color-bg-nav));
+    border-bottom: 1px solid var(--sl-color-hairline-light);
+    font-size: 0.7rem;
+  }
+
+  .api-float-label {
+    font-weight: 700;
+    color: var(--sl-color-white);
+  }
+
+  .api-float-latency {
+    color: #facc15;
+    margin-left: auto;
+  }
+
+  .api-float-code.s200 {
+    font-weight: 700;
+    color: #22c55e;
+    font-size: 0.65rem;
+  }
+
+  .api-float-body {
+    margin: 0;
+    padding: 0.5rem 0.625rem;
+    font-size: 0.7rem;
+    line-height: 1.6;
+    font-family: monospace;
+    background: transparent;
+    white-space: pre;
+    overflow: hidden;
+  }
+
+  .json-bracket { color: var(--sl-color-gray-2); }
+  .json-brace   { color: var(--sl-color-gray-2); }
+  .json-key     { color: #93c5fd; }
+  .json-str     { color: #86efac; }
+  .json-num     { color: #fda4af; }
+
+  /* ── Floating sparkline chart ── */
+  .api-float-chart {
+    position: absolute;
+    top: -1rem;
+    right: -1rem;
+    background: var(--sl-color-bg-nav);
+    border: 1px solid color-mix(in srgb, #0EA5E9 25%, var(--sl-color-hairline-light));
+    border-radius: 0.625rem;
+    padding: 0.5rem 0.75rem;
+    box-shadow: 0 4px 16px -4px rgba(0,0,0,0.4);
+    z-index: 3;
+    min-width: 110px;
+  }
+
+  .api-chart-label {
+    font-size: 0.65rem;
+    color: var(--sl-color-gray-3);
+    margin-bottom: 0.35rem;
+    white-space: nowrap;
+  }
+
+  .api-sparkline {
+    display: flex;
+    align-items: flex-end;
+    gap: 2px;
+    height: 28px;
+    margin-bottom: 0.35rem;
+  }
+
+  .api-sparkline span {
+    flex: 1;
+    background: #0EA5E9;
+    border-radius: 2px 2px 0 0;
+    opacity: 0.85;
+    min-height: 3px;
+  }
+
+  .api-sparkline span:last-child {
+    opacity: 1;
+    background: #38bdf8;
+  }
+
+  .api-chart-value {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--sl-color-white);
+    line-height: 1;
+  }
+
+  .api-chart-value span {
+    font-size: 0.65rem;
+    font-weight: 400;
+    color: var(--sl-color-gray-3);
+  }
+
+  /* ── Metric pills ── */
+  .api-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+
+  .api-pill {
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 0.25rem 0.625rem;
+    border-radius: 999px;
+    border: 1px solid transparent;
+  }
+
+  .api-pill.green { background: color-mix(in srgb, #22c55e 12%, transparent); color: #22c55e; border-color: color-mix(in srgb, #22c55e 25%, transparent); }
+  .api-pill.blue  { background: color-mix(in srgb, #0EA5E9 12%, transparent); color: #0EA5E9; border-color: color-mix(in srgb, #0EA5E9 25%, transparent); }
+  .api-pill.purple{ background: color-mix(in srgb, #8B5CF6 12%, transparent); color: #8B5CF6; border-color: color-mix(in srgb, #8B5CF6 25%, transparent); }
+
   /* ═══════════════════════════════════════════════════════════════
      DASHBOARD WINDOW (Analysis)
      ═══════════════════════════════════════════════════════════════ */
@@ -2137,7 +2685,7 @@ ORDER BY TotalSales DESC`
     background: linear-gradient(
       90deg,
       transparent,
-      color-mix(in srgb, #D4A84B 30%, var(--sl-color-hairline)) 50%,
+      color-mix(in srgb, #3B82F6 30%, var(--sl-color-hairline)) 50%,
       transparent
     );
   }
@@ -2150,7 +2698,7 @@ ORDER BY TotalSales DESC`
     font-weight: 600;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: color-mix(in srgb, #D4A84B 80%, var(--sl-color-gray-3));
+    color: color-mix(in srgb, #3B82F6 80%, var(--sl-color-gray-3));
     white-space: nowrap;
     flex-shrink: 0;
   }
@@ -2164,8 +2712,8 @@ ORDER BY TotalSales DESC`
     align-items: center;
     gap: 0;
     padding: 1rem 1.25rem;
-    background: color-mix(in srgb, #D4A84B 6%, var(--sl-color-bg-nav));
-    border: 1px solid color-mix(in srgb, #D4A84B 20%, var(--sl-color-hairline));
+    background: color-mix(in srgb, #3B82F6 6%, var(--sl-color-bg-nav));
+    border: 1px solid color-mix(in srgb, #3B82F6 20%, var(--sl-color-hairline));
     border-radius: 0.75rem;
     width: fit-content;
   }
@@ -2184,7 +2732,7 @@ ORDER BY TotalSales DESC`
     font-size: 1.375rem;
     font-weight: 800;
     letter-spacing: -0.03em;
-    color: #D4A84B;
+    color: #3B82F6;
     line-height: 1;
   }
 
@@ -2198,7 +2746,7 @@ ORDER BY TotalSales DESC`
   .playground-stat-sep {
     width: 1px;
     height: 1.5rem;
-    background: color-mix(in srgb, #D4A84B 25%, var(--sl-color-hairline));
+    background: color-mix(in srgb, #3B82F6 25%, var(--sl-color-hairline));
     flex-shrink: 0;
   }
 
@@ -2209,8 +2757,8 @@ ORDER BY TotalSales DESC`
   .playground-section {
     position: relative;
     overflow: hidden;
-    background: color-mix(in srgb, #D4A84B 4%, var(--sl-color-bg-nav));
-    border-top: 2px solid color-mix(in srgb, #D4A84B 25%, var(--sl-color-hairline));
+    background: color-mix(in srgb, #3B82F6 4%, var(--sl-color-bg-nav));
+    border-top: 2px solid color-mix(in srgb, #3B82F6 25%, var(--sl-color-hairline));
   }
 
   .playground-bg {
@@ -2218,7 +2766,7 @@ ORDER BY TotalSales DESC`
     inset: 0;
     background:
       radial-gradient(ellipse 70% 50% at 80% 50%,
-        color-mix(in srgb, #D4A84B 8%, transparent) 0%,
+        color-mix(in srgb, #3B82F6 8%, transparent) 0%,
         transparent 70%);
     pointer-events: none;
   }
@@ -2234,12 +2782,12 @@ ORDER BY TotalSales DESC`
     align-items: center;
     gap: 0.5rem;
     padding: 0.375rem 0.875rem;
-    background: color-mix(in srgb, #D4A84B 12%, transparent);
-    border: 1px solid color-mix(in srgb, #D4A84B 25%, transparent);
+    background: color-mix(in srgb, #3B82F6 12%, transparent);
+    border: 1px solid color-mix(in srgb, #3B82F6 25%, transparent);
     border-radius: 2rem;
     font-size: 0.8125rem;
     font-weight: 600;
-    color: #D4A84B;
+    color: #3B82F6;
     width: fit-content;
   }
 
@@ -2254,7 +2802,7 @@ ORDER BY TotalSales DESC`
   }
 
   .playground-title-accent {
-    background: linear-gradient(135deg, #D4A84B 0%, #e8c05c 100%);
+    background: linear-gradient(135deg, #3B82F6 0%, #60A5FA 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -2286,7 +2834,7 @@ ORDER BY TotalSales DESC`
   }
 
   .playground-check {
-    color: #D4A84B;
+    color: #3B82F6;
     font-weight: 600;
   }
 
@@ -2295,7 +2843,7 @@ ORDER BY TotalSales DESC`
     align-items: center;
     gap: 0.5rem;
     padding: 0.875rem 1.5rem;
-    background: linear-gradient(135deg, #D4A84B 0%, #b8923a 100%);
+    background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%);
     color: white;
     font-weight: 600;
     font-size: 0.9375rem;
@@ -2304,13 +2852,13 @@ ORDER BY TotalSales DESC`
     margin-top: 0.5rem;
     transition: all 0.2s ease;
     width: fit-content;
-    box-shadow: 0 4px 14px -4px rgba(212, 168, 75, 0.4);
+    box-shadow: 0 4px 14px -4px rgba(59, 130, 246, 0.4);
   }
 
   .playground-btn:hover {
     transform: translateY(-2px);
     filter: brightness(1.1);
-    box-shadow: 0 8px 24px -6px rgba(212, 168, 75, 0.5);
+    box-shadow: 0 8px 24px -6px rgba(59, 130, 246, 0.5);
   }
 
   /* Playground Demo Window */
@@ -2322,20 +2870,20 @@ ORDER BY TotalSales DESC`
     content: '';
     position: absolute;
     inset: -20px;
-    background: radial-gradient(ellipse 80% 60% at 50% 50%, color-mix(in srgb, #D4A84B 12%, transparent), transparent);
+    background: radial-gradient(ellipse 80% 60% at 50% 50%, color-mix(in srgb, #3B82F6 12%, transparent), transparent);
     pointer-events: none;
     z-index: -1;
   }
 
   .playground-window {
     background: var(--sl-color-bg-nav);
-    border: 1px solid color-mix(in srgb, #D4A84B 20%, var(--sl-color-hairline-light));
+    border: 1px solid color-mix(in srgb, #3B82F6 20%, var(--sl-color-hairline-light));
     border-radius: 1rem;
     overflow: hidden;
     box-shadow:
-      0 0 0 1px color-mix(in srgb, #D4A84B 8%, transparent),
+      0 0 0 1px color-mix(in srgb, #3B82F6 8%, transparent),
       0 25px 70px -15px rgba(0, 0, 0, 0.6),
-      0 0 80px -20px color-mix(in srgb, #D4A84B 20%, transparent);
+      0 0 80px -20px color-mix(in srgb, #3B82F6 20%, transparent);
   }
 
   .playground-window-header {
@@ -2343,7 +2891,7 @@ ORDER BY TotalSales DESC`
     align-items: center;
     justify-content: space-between;
     padding: 0.5rem 1rem;
-    background: color-mix(in srgb, #D4A84B 15%, var(--sl-color-bg-nav));
+    background: color-mix(in srgb, #3B82F6 15%, var(--sl-color-bg-nav));
     border-bottom: 1px solid var(--sl-color-hairline-light);
   }
 
@@ -2448,7 +2996,7 @@ ORDER BY TotalSales DESC`
   }
 
   .playground-dialect-selector .dialect.active {
-    color: #D4A84B;
+    color: #3B82F6;
     font-weight: 500;
   }
 
@@ -2466,7 +3014,207 @@ ORDER BY TotalSales DESC`
   }
 
   .status-dot.success {
-    background: #D4A84B;
+    background: #3B82F6;
+  }
+
+  /* ═══════════════════════════════════════════════════════════════
+     AI WINDOW (Crono AI)
+     ═══════════════════════════════════════════════════════════════ */
+
+  .ai-window {
+    background: var(--sl-color-bg-nav);
+    border: 1px solid var(--sl-color-hairline-light);
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 20px 50px -20px rgba(0, 0, 0, 0.4);
+    max-width: 420px;
+    margin: 0 auto;
+  }
+
+  .ai-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    background: color-mix(in srgb, #8B5CF6 12%, var(--sl-color-bg-nav));
+    border-bottom: 1px solid var(--sl-color-hairline-light);
+  }
+
+  .ai-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #8B5CF6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    flex-shrink: 0;
+  }
+
+  .ai-title {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--sl-color-white);
+    flex: 1;
+  }
+
+  .ai-provider {
+    font-size: 0.6875rem;
+    font-weight: 500;
+    color: var(--sl-color-gray-3);
+    padding: 0.25rem 0.5rem;
+    background: color-mix(in srgb, #8B5CF6 15%, transparent);
+    border-radius: 999px;
+  }
+
+  .ai-body {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    min-height: 280px;
+  }
+
+  .ai-message {
+    display: flex;
+    gap: 0.625rem;
+  }
+
+  .ai-message.user {
+    justify-content: flex-start;
+  }
+
+  .ai-message.user .ai-message-content {
+    background: color-mix(in srgb, #8B5CF6 15%, transparent);
+    border-radius: 0.75rem 0.75rem 0.75rem 0.25rem;
+    padding: 0.625rem 0.875rem;
+    font-size: 0.8125rem;
+    color: var(--sl-color-white);
+    max-width: 85%;
+  }
+
+  .ai-message.assistant {
+    align-items: flex-start;
+  }
+
+  .ai-avatar-small {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #8B5CF6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .ai-message-card {
+    flex: 1;
+    background: var(--sl-color-bg);
+    border: 1px solid var(--sl-color-hairline-light);
+    border-radius: 0.75rem;
+    padding: 0.75rem;
+    font-size: 0.8125rem;
+  }
+
+  .ai-message-header {
+    font-weight: 600;
+    color: var(--sl-color-white);
+    margin-bottom: 0.5rem;
+    font-size: 0.8125rem;
+  }
+
+  .ai-table {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    margin-bottom: 0.625rem;
+  }
+
+  .ai-table-header,
+  .ai-table-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 0.7fr;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    padding: 0.375rem 0.5rem;
+    border-radius: 0.375rem;
+  }
+
+  .ai-table-header {
+    font-weight: 600;
+    color: var(--sl-color-gray-2);
+    background: color-mix(in srgb, var(--sl-color-hairline-light) 50%, transparent);
+  }
+
+  .ai-table-row {
+    color: var(--sl-color-gray-1);
+    background: color-mix(in srgb, var(--sl-color-bg-nav) 50%, transparent);
+  }
+
+  .ai-num {
+    font-family: ui-monospace, monospace;
+    color: var(--sl-color-white);
+  }
+
+  .ai-up {
+    color: #22c55e;
+    font-weight: 500;
+  }
+
+  .ai-actions {
+    display: flex;
+    gap: 0.75rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--sl-color-hairline-light);
+  }
+
+  .ai-action {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    font-size: 0.6875rem;
+    color: var(--sl-color-gray-3);
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+
+  .ai-action:hover {
+    color: #8B5CF6;
+  }
+
+  .ai-input-area {
+    margin-top: auto;
+    padding-top: 0.5rem;
+  }
+
+  .ai-input {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.625rem 0.75rem;
+    background: var(--sl-color-bg);
+    border: 1px solid var(--sl-color-hairline-light);
+    border-radius: 999px;
+  }
+
+  .ai-input-placeholder {
+    font-size: 0.8125rem;
+    color: var(--sl-color-gray-4);
+  }
+
+  .ai-send {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: white;
+    background: #8B5CF6;
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.375rem 0.75rem;
+    cursor: pointer;
   }
 
   /* ═══════════════════════════════════════════════════════════════

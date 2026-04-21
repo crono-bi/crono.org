@@ -106,7 +106,7 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.04em;
-  color: var(--sl-color-white);
+  color: #fff !important;
   white-space: nowrap;
   padding: 0 10px;
   margin: 0 !important;

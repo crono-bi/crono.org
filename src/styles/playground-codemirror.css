@@ -208,7 +208,7 @@
   color: #fff;
   background: var(--sl-color-accent);
   border-color: var(--sl-color-accent);
-  box-shadow: 0 1px 3px rgba(212, 168, 75, 0.3);
+  box-shadow: 0 1px 3px rgba(59, 130, 246, 0.3);
 }
 
 .code-editor .cm-panel-copy-btn svg {

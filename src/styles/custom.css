@@ -1,6 +1,10 @@
 @import "tailwindcss";
 @import "./brand-themes.css";
 
+html {
+  scroll-behavior: smooth;
+}
+
 .starlight-sidebar-topics {
   display: none;
 }
@@ -144,6 +148,16 @@
 :root[data-theme='light'] [aria-current='page']:hover,
 :root[data-theme='light'] [aria-current='page']:focus {
   color: #ffffff !important;
+}
+
+/* ===== PLAYGROUND SIDEBAR LINK COLOR OVERRIDE ===== */
+/* Force Playground link in sidebar to be blue, not cached yellow */
+/* Only target sidebar links, not buttons */
+.starlight-sidebar a[href*="playground"],
+#starlight__sidebar a[href*="playground"],
+[role="navigation"] a[href*="playground"],
+a[data-playground-link] {
+  color: #3B82F6 !important;
 }
 
 

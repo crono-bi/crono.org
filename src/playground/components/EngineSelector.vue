@@ -127,17 +127,17 @@ const engines: Engine[] = [
 }
 
 .theme-light .engine-tab:hover:not(.disabled):not(.active) {
-  border-color: #D4A84B;
+  border-color: #3B82F6;
   color: #333;
-  background: rgba(212, 168, 75, 0.06);
+  background: rgba(59, 130, 246, 0.06);
 }
 
 .theme-light .engine-tab.active {
-  border-color: #D4A84B;
-  background: rgba(212, 168, 75, 0.12);
-  color: #b8882a;
+  border-color: #3B82F6;
+  background: rgba(59, 130, 246, 0.12);
+  color: #2563EB;
   font-weight: 700;
-  box-shadow: 0 0 0 1px #D4A84B inset;
+  box-shadow: 0 0 0 1px #3B82F6 inset;
 }
 
 .theme-light .engine-tab.disabled {
@@ -154,17 +154,17 @@ const engines: Engine[] = [
 }
 
 .theme-dark .engine-tab:hover:not(.disabled):not(.active) {
-  border-color: #D4A84B;
+  border-color: #3B82F6;
   color: #ccc;
-  background: rgba(212, 168, 75, 0.08);
+  background: rgba(59, 130, 246, 0.08);
 }
 
 .theme-dark .engine-tab.active {
-  border-color: #D4A84B;
-  background: rgba(212, 168, 75, 0.15);
-  color: #e8c06a;
+  border-color: #3B82F6;
+  background: rgba(59, 130, 246, 0.15);
+  color: #60A5FA;
   font-weight: 700;
-  box-shadow: 0 0 0 1px #D4A84B inset;
+  box-shadow: 0 0 0 1px #3B82F6 inset;
 }
 
 .theme-dark .engine-tab.disabled {

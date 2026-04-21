@@ -1,19 +1,42 @@
 ---
 import { logos } from 'virtual:starlight/user-images';
 import config from 'virtual:starlight/user-config';
+import { Image } from 'astro:assets';
+
+import logoAnalysis from '../assets/logos/Crono Analysis.webp';
+import logoMetadata from '../assets/logos/Crono Metadata.webp';
+import logoETL from '../assets/logos/Crono ETL.webp';
+import logoSQL from '../assets/logos/Crono SQL.webp';
+import logoPlayground from '../assets/logos/Crono Playground.webp';
+
 const { siteTitleHref } = Astro.locals.starlightRoute;
 
 const pathname = Astro.url.pathname;
 
 let siteTitle = 'Manual de usuario';
+let productLogo: ImageMetadata | null = null;
+let productName = '';
+
 if (pathname.startsWith('/analysis/')) {
 	siteTitle = 'Manual Crono Analysis';
+	productLogo = logoAnalysis;
+	productName = 'Crono Analysis';
 } else if (pathname.startsWith('/metadata/')) {
 	siteTitle = 'Manual Crono Metadata';
+	productLogo = logoMetadata;
+	productName = 'Crono Metadata';
 } else if (pathname.startsWith('/etl/')) {
 	siteTitle = 'Manual Crono ETL';
+	productLogo = logoETL;
+	productName = 'Crono ETL';
 } else if (pathname.startsWith('/sql/')) {
 	siteTitle = 'Manual Crono SQL';
+	productLogo = logoSQL;
+	productName = 'Crono SQL';
+} else if (pathname.startsWith('/playground')) {
+	siteTitle = 'Crono Playground';
+	productLogo = logoPlayground;
+	productName = 'Crono Playground';
 }
 ---
 
@@ -29,17 +52,14 @@ if (pathname.startsWith('/analysis/')) {
 </script>
 
 <a href={siteTitleHref} class="site-title sl-flex">
-	<!-- Crono Logo -->
-	<img
-		src="/crono-logo-h-white.png"
-		alt="Crono"
-		class="h-8 w-auto dark-logo"
-	/>
-	<img
-		src="/crono-logo-h.png"
-		alt="Crono"
-		class="h-8 w-auto light-logo"
-	/>
+	{productLogo ? (
+		<Image src={productLogo} alt={productName} class="product-logo" height={28} inferSize />
+	) : (
+		<>
+			<img src="/crono-logo-h-white.png" alt="Crono" class="dark-logo" />
+			<img src="/crono-logo-h.png" alt="Crono" class="light-logo" />
+		</>
+	)}
 	<span class="sr-only" translate="no">
 		{siteTitle}
 	</span>
@@ -75,5 +95,14 @@ if (pathname.startsWith('/analysis/')) {
 		:root[data-theme='light'] .dark-logo { display: none; }
 		:root[data-theme='dark'] .light-logo { display: none; }
 		:root:not([data-theme='light']) .light-logo { display: none; }
+
+		/* Product logo */
+		.product-logo {
+			height: 28px;
+			width: auto;
+			max-width: none;
+			object-fit: contain;
+			object-position: left center;
+		}
 	}
 </style>
