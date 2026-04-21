@@ -1,0 +1,58 @@
+---
+title: "Introducción"
+sidebar:
+  order: 0
+---
+
+import CategorySelector from '../../../../components/CategorySelector.astro'
+
+**Crono SQL** incluye algunas vistas predefinidas que muestran información propia de Crono, metadatos de la base de datos o del sistema, y otra información que resulta útil en determinadas ocasiones.
+
+Aunque se denominan "vistas", y se usan como vistas, y emplean la sintaxis de vistas, en realidad **Crono SQL** genera subconsultas al transformar el código en **SQL**. Es decir, no son verdaderas vistas en la base de datos, aunque podamos invocarlas como si lo fueran.
+
+Las vistas propias de **Crono SQL** se han agrupado de esta manera:
+
+<CategorySelector categories={[
+  {
+    id: 'active-directory',
+    title: 'Active Directory',
+    description: 'Vistas para consultar información del Directorio Activo.',
+    count: 5,
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/><path d="M3 15h18"/></svg>',
+    path: '/sql/views/active-directory/'
+  },
+  {
+    id: 'base-datos',
+    title: 'Base de datos',
+    description: 'Metadatos y esquema de las bases de datos.',
+    count: 20,
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>',
+    path: '/sql/views/base-datos/'
+  },
+  {
+    id: 'metadata-crono',
+    title: 'Metadata Crono',
+    description: 'Vistas propias del lenguaje Crono SQL.',
+    count: 8,
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/><path d="M12 11h5"/><path d="M12 7h5"/></svg>',
+    path: '/sql/views/metadata-crono/'
+  },
+  {
+    id: 'tiempo',
+    title: 'Tiempo',
+    description: 'Vistas de fechas, semanas, meses y zonas horarias.',
+    count: 4,
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>',
+    path: '/sql/views/tiempo/'
+  },
+  {
+    id: 'misc',
+    title: 'Misceláneos',
+    description: 'Vistas auxiliares y de propósito general.',
+    count: 15,
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16"/><path d="M4 12h16"/><path d="M4 17h16"/></svg>',
+    path: '/sql/views/misc/'
+  }
+]} />
+
+
