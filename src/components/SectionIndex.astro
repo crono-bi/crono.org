@@ -1,9 +1,10 @@
 ---
 interface Props {
   src: string
+  groupBySubfolder?: boolean
 }
 
-const { src } = Astro.props
+const { src, groupBySubfolder = false } = Astro.props
 
 const allFiles = import.meta.glob('../content/docs/**/*.{md,mdx}', { eager: true })
 
@@ -17,31 +18,115 @@ const pages = Object.entries(allFiles)
     const frontmatter = (mod as { frontmatter?: { title?: string; description?: string } }).frontmatter
     if (!frontmatter?.title) return null
     if (!slug.startsWith(section + '/') || slug === section) return null
+    // Extraer subcarpeta (ej: "sql/functions/agregacion/count" -> "agregacion")
+    const remainingPath = slug.slice(section.length + 1)
+    const subfolder = remainingPath.includes('/') ? remainingPath.split('/')[0] : null
     return {
       title: frontmatter.title,
       description: frontmatter.description ?? '',
       url: '/' + slug + '/',
+      subfolder: subfolder,
     }
   })
   .filter(Boolean)
-  .sort((a, b) => a!.title.localeCompare(b!.title))
+
+// Agrupar por subcarpeta si está habilitado
+const groupedPages = groupBySubfolder
+  ? pages.reduce((acc, page) => {
+      const key = page!.subfolder || 'General'
+      if (!acc[key]) acc[key] = []
+      acc[key].push(page!)
+      return acc
+    }, {} as Record<string, typeof pages>)
+  : { '': pages }
+
+// Ordenar páginas dentro de cada grupo
+for (const key in groupedPages) {
+  groupedPages[key].sort((a, b) => a.title.localeCompare(b.title))
+}
+
+// Definir orden de categorías para funciones
+const categoryOrder: Record<string, number> = {
+  'agregacion': 1,
+  'conversion': 2,
+  'numericas': 3,
+  'fecha': 4,
+  'nulos': 5,
+  'texto': 6,
+  'informacional': 7,
+}
+
+const sortedGroups = Object.entries(groupedPages).sort((a, b) => {
+  const orderA = categoryOrder[a[0]] || 999
+  const orderB = categoryOrder[b[0]] || 999
+  return orderA - orderB
+})
+
+// Función para formatear nombre de categoría
+function formatCategoryName(name: string): string {
+  const names: Record<string, string> = {
+    'agregacion': 'Agregación',
+    'conversion': 'Conversión de tipos',
+    'numericas': 'Numéricas',
+    'fecha': 'Fecha',
+    'nulos': 'Nulos y condiciones',
+    'texto': 'Texto',
+    'informacional': 'Informacional',
+  }
+  return names[name] || name.charAt(0).toUpperCase() + name.slice(1)
+}
 ---
 
 <div class="not-content section-index">
-  {pages.map((page) => (
-    <a href={page.url} class="section-index-card">
-      <svg class="section-index-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/>
-      </svg>
-      <span class="section-index-body">
-        <span class="section-index-title">{page.title}</span>
-        {page.description && (
-          <span class="section-index-desc">{page.description}</span>
-        )}
-      </span>
-      <svg class="section-index-arrow" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
-      </svg>
-    </a>
+  {sortedGroups.map(([groupName, groupPages]) => (
+    <div class="section-group">
+      {groupBySubfolder && groupName !== 'General' && (
+        <h3 class="section-group-title">{formatCategoryName(groupName)}</h3>
+      )}
+      <div class="section-group-items">
+        {groupPages.map((page) => (
+          <a href={page.url} class="section-index-card">
+            <svg class="section-index-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/>
+            </svg>
+            <span class="section-index-body">
+              <span class="section-index-title">{page.title}</span>
+              {page.description && (
+                <span class="section-index-desc">{page.description}</span>
+              )}
+            </span>
+            <svg class="section-index-arrow" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+            </svg>
+          </a>
+        ))}
+      </div>
+    </div>
   ))}
 </div>
+
+<style>
+  .section-group {
+    margin-bottom: 2rem;
+  }
+  .section-group-title {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--sl-color-gray-2);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    margin: 0 0 1rem 0;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--sl-color-hairline-light);
+  }
+  .section-group-items {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+  @media (max-width: 640px) {
+    .section-group-items {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
