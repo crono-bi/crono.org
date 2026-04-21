@@ -18,6 +18,20 @@ import sqlLang from 'shiki/langs/sql.mjs';
 export default defineConfig({
 	vite: {
 		plugins: [tailwindcss()],
+		optimizeDeps: {
+			include: [
+				'codemirror',
+				'@codemirror/state',
+				'@codemirror/view',
+				'@codemirror/language',
+				'@codemirror/lang-sql',
+				'@codemirror/theme-one-dark',
+				'@codemirror/commands',
+				'@codemirror/search',
+				'@codemirror/autocomplete',
+				'@lezer/highlight',
+			],
+		},
 	},
 	integrations: [
 		vue(),

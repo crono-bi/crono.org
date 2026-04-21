@@ -1,43 +1,42 @@
 <template>
   <div ref="editorRef" class="code-editor"></div>
-  <Teleport v-if="panelRef" :to="panelRef" defer>
-    <slot name="panel-actions" />
-  </Teleport>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, watch, h, render } from 'vue'
-import { basicSetup } from 'codemirror'
-import { EditorView, ViewPlugin, Decoration, showPanel, keymap } from '@codemirror/view'
+import { ref, onMounted, onUnmounted, watch } from 'vue'
+import {
+  EditorView, ViewPlugin, Decoration, keymap,
+  lineNumbers, highlightActiveLineGutter, highlightSpecialChars,
+  drawSelection, dropCursor, rectangularSelection, crosshairCursor,
+  highlightActiveLine
+} from '@codemirror/view'
 import type { DecorationSet } from '@codemirror/view'
-import { EditorState, Prec, RangeSetBuilder, Compartment } from '@codemirror/state'
-import { syntaxHighlighting, syntaxTree } from '@codemirror/language'
+import { EditorState, Prec, RangeSetBuilder } from '@codemirror/state'
+import {
+  syntaxHighlighting, syntaxTree, HighlightStyle, defaultHighlightStyle,
+  foldGutter, indentOnInput, bracketMatching,
+  foldKeymap
+} from '@codemirror/language'
+import { history, defaultKeymap, historyKeymap, indentWithTab } from '@codemirror/commands'
+import { highlightSelectionMatches, searchKeymap } from '@codemirror/search'
+import { closeBrackets, autocompletion, closeBracketsKeymap, completionKeymap } from '@codemirror/autocomplete'
 import { sql, MSSQL } from '@codemirror/lang-sql'
 import { oneDark } from '@codemirror/theme-one-dark'
-import { HighlightStyle } from '@codemirror/language'
 import { tags } from '@lezer/highlight'
 
 import { Theme } from '../types/enums'
-
-// Compartment for dynamic theme swapping (preserves undo history, cursor, selection)
-const themeCompartment = new Compartment()
 
 const props = defineProps<{
   modelValue: string
   readonly?: boolean
   theme: Theme
-  panelTitle?: string
-  showPanel?: boolean
-  showCopy?: boolean
 }>()
 
 const emit = defineEmits<{
   (e: 'update:modelValue', value: string): void
-  (e: 'copy'): void
 }>()
 
 const editorRef = ref<HTMLElement | null>(null)
-const panelRef = ref<HTMLElement | null>(null)
 let editorView: EditorView | null = null
 
 // ══════════════════════════════════════════════════════════════════
@@ -270,8 +269,10 @@ const lightTheme = EditorView.theme({
 function getThemeExtensions(): ReturnType<typeof EditorView.theme>[] {
   const baseTheme = EditorView.theme({
     '&': { height: '100%', fontSize: '14px' },
-    '.cm-content': { fontFamily: "'JetBrains Mono', 'Fira Code', 'Consolas', monospace" },
+    '.cm-scroller': { overflow: 'auto' },
+    '.cm-content': { fontFamily: "'JetBrains Mono', 'Fira Code', 'Consolas', monospace", lineHeight: '1.4' },
     '.cm-gutters': { fontFamily: "'JetBrains Mono', 'Fira Code', 'Consolas', monospace" },
+    '.cm-gutterElement': { lineHeight: '1.4' },
     '.cm-crono-kw-light':        { color: '#0000ff !important' },
     '.cm-crono-kw-light span':   { color: '#0000ff !important' },
     '.cm-crono-kw-dark':         { color: '#569cd6 !important' },
@@ -289,67 +290,40 @@ function getThemeExtensions(): ReturnType<typeof EditorView.theme>[] {
   }
 }
 
-// Create top panel using showPanel - native CodeMirror API
-function createTopPanel(): any[] {
-  if (!props.showPanel) return []
-  
-  const panel = showPanel.of(() => {
-    const dom = document.createElement('div')
-    dom.className = 'cm-top-panel'
-    
-    // Title
-    if (props.panelTitle) {
-      const titleEl = document.createElement('span')
-      titleEl.className = 'cm-panel-title'
-      titleEl.textContent = props.panelTitle
-      dom.appendChild(titleEl)
-    }
-
-    // Spacer — only when there's a title, pushes right group to the right
-    if (props.panelTitle) {
-      const spacer = document.createElement('div')
-      spacer.className = 'cm-panel-spacer'
-      dom.appendChild(spacer)
-    }
-
-    // Right group — actions + copy in one flex row (guarantees same vertical center)
-    const rightGroup = document.createElement('div')
-    rightGroup.className = props.panelTitle
-      ? 'cm-panel-right-group'
-      : 'cm-panel-right-group cm-panel-right-full'
-
-    // Actions slot container (for Teleport)
-    const actionsEl = document.createElement('div')
-    actionsEl.className = 'cm-panel-actions'
-    rightGroup.appendChild(actionsEl)
-    panelRef.value = actionsEl
-
-    // Copy button
-    if (props.showCopy) {
-      const copyBtn = document.createElement('button')
-      copyBtn.className = 'cm-panel-copy-btn'
-      copyBtn.title = 'Copy'
-      copyBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>`
-      copyBtn.addEventListener('click', () => emit('copy'))
-      rightGroup.appendChild(copyBtn)
-    }
-
-    dom.appendChild(rightGroup)
-    
-    return { dom, top: true }
-  })
-  
-  return [panel]
-}
-
-// Use basicSetup from codemirror which includes proper foldGutter configuration
+const editorSetup = [
+  lineNumbers(),
+  highlightActiveLineGutter(),
+  highlightSpecialChars(),
+  history(),
+  foldGutter(),
+  drawSelection(),
+  dropCursor(),
+  EditorState.allowMultipleSelections.of(true),
+  indentOnInput(),
+  syntaxHighlighting(defaultHighlightStyle, { fallback: true }),
+  bracketMatching(),
+  closeBrackets(),
+  autocompletion(),
+  rectangularSelection(),
+  crosshairCursor(),
+  highlightActiveLine(),
+  highlightSelectionMatches(),
+  keymap.of([
+    ...closeBracketsKeymap,
+    ...defaultKeymap,
+    ...searchKeymap,
+    ...historyKeymap,
+    ...foldKeymap,
+    ...completionKeymap,
+    indentWithTab,
+  ]),
+]
 
 function buildExtensions() {
   const extensions = [
-    basicSetup,
+    ...editorSetup,
     sql({ dialect: MSSQL }),
-    themeCompartment.of(getThemeExtensions()),
-    ...createTopPanel()
+    ...getThemeExtensions(),
   ]
 
   if (props.readonly) {
@@ -376,6 +350,25 @@ onMounted(() => {
     }),
     parent: editorRef.value ?? undefined
   })
+
+  const el = editorRef.value
+  if (el) {
+    const ro = new ResizeObserver(() => {
+      if (el.offsetHeight > 0) {
+        ro.disconnect()
+        const doc = editorView?.state.doc.toString() ?? props.modelValue
+        editorView?.destroy()
+        editorView = new EditorView({
+          state: EditorState.create({
+            doc,
+            extensions: buildExtensions()
+          }),
+          parent: el
+        })
+      }
+    })
+    ro.observe(el)
+  }
 })
 
 watch(() => props.modelValue, (newVal) => {
@@ -387,14 +380,21 @@ watch(() => props.modelValue, (newVal) => {
         insert: newVal
       }
     })
+    editorView.requestMeasure()
+    setTimeout(() => editorView?.requestMeasure(), 100)
   }
 })
 
-// Theme swap via compartment — preserves cursor, scroll, undo history
 watch(() => props.theme, () => {
   if (editorView) {
-    editorView.dispatch({
-      effects: themeCompartment.reconfigure(getThemeExtensions())
+    const currentDoc = editorView.state.doc.toString()
+    editorView.destroy()
+    editorView = new EditorView({
+      state: EditorState.create({
+        doc: currentDoc,
+        extensions: buildExtensions()
+      }),
+      parent: editorRef.value ?? undefined
     })
   }
 })

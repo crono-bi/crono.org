@@ -74,7 +74,7 @@ LEFT JOIN staging.ProductCategory USING ProductSubCategory(ProductCategoryId)`)
       }
 
       output += result.sql
-      sqlOutput.value = output
+      sqlOutput.value = output.replace(/\r\n/g, '\n').replace(/\r/g, '\n')
     } catch (error: unknown) {
       if (currentRunId !== runId) return
 

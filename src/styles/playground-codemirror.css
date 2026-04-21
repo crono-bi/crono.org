@@ -28,7 +28,7 @@
 .code-editor .cm-editor .cm-scroller {
   flex: 1;
   overflow: auto;
-  height: 100%;
+  min-height: 0;
 }
 
 /* ===== SCROLLBAR ===== */
@@ -57,12 +57,37 @@
   overflow: hidden;
 }
 
-/* ===== SCROLLER MARGINS ===== */
-.code-editor .cm-editor > .cm-scroller {
-  margin-top: 0;
+/* ===== STARLIGHT PROSE MARGIN RESET ===== */
+/* Starlight's "lobotomized owl" selector (.sl-markdown-content :not() + :not())
+ * adds margin-top: 1rem to every sibling element, including CodeMirror internals.
+ * This causes gutter/content misalignment that breaks fold click coordinates.
+ * Reset ALL internal CM elements with !important to override the layered Starlight rule.
+ */
+.code-editor .cm-editor > *,
+.code-editor .cm-scroller > *,
+.code-editor .cm-gutters > *,
+.code-editor .cm-gutter > *,
+.code-editor .cm-gutterElement,
+.code-editor .cm-content,
+.code-editor .cm-line,
+.code-editor .cm-panels,
+.code-editor .cm-announced {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
 }
 
 /* ===== LINE STYLES ===== */
+.code-editor .cm-line {
+  white-space: pre !important;
+  word-break: normal !important;
+  overflow-wrap: normal !important;
+}
+
+.code-editor .cm-content {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
 .code-editor .cm-line:first-child {
   padding-top: 0;
 }
@@ -71,6 +96,26 @@
 .code-editor .cm-gutters {
   background: transparent;
   border-right: 1px solid var(--sl-color-gray-6, #333);
+}
+
+/* ===== FOLD GUTTER (default from basicSetup) ===== */
+/* basicSetup already includes foldGutter with default styling */
+/* These overrides ensure visibility and interaction in our theme */
+
+.code-editor .cm-foldGutter .cm-gutterElement {
+  cursor: pointer;
+  color: var(--sl-color-gray-4);
+}
+
+.code-editor .cm-foldGutter .cm-gutterElement:hover {
+  color: var(--sl-color-accent);
+}
+
+/* Folded code styling */
+.code-editor .cm-folded {
+  background: color-mix(in srgb, var(--sl-color-accent) 10%, transparent);
+  border-radius: 3px;
+  border-left: 2px solid var(--sl-color-accent);
 }
 
 /* ===== TOP PANEL ===== */

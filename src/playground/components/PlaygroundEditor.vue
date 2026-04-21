@@ -2,17 +2,16 @@
   <div id="playground-editor" class="pg-editor" :class="themeClass">
     <!-- Left panel: Crono SQL input -->
     <div class="pg-panel pg-panel-left" :style="{ flex: leftPanelFlex }">
-      <div class="pg-panel-body pg-panel-body-left">
-        <CodeEditor 
-          v-model="cronoCode" 
-          :theme="theme" 
-          show-panel 
-          panel-title="Crono SQL"
-        >
-          <template #panel-actions>
-            <EtlOptionsPanel v-model="etlOptions" :theme="theme" @apply="handleRun" />
-          </template>
-        </CodeEditor>
+      <!-- Panel Header -->
+      <div class="pg-panel-header">
+        <span class="pg-panel-label">Crono SQL</span>
+        <div class="pg-panel-header-actions">
+          <EtlOptionsPanel v-model="etlOptions" :theme="theme" @apply="handleRun" />
+        </div>
+      </div>
+      <!-- Panel Body -->
+      <div class="pg-panel-body">
+        <CodeEditor v-model="cronoCode" :theme="theme" />
         <button class="pg-run-fab" @click="handleRun" title="Run (Ctrl+Enter)">
           <Play :size="16" />
           <span class="pg-run-label">Run</span>
@@ -25,20 +24,17 @@
 
     <!-- Right panel: SQL output -->
     <div class="pg-panel pg-panel-right" :style="{ flex: rightPanelFlex }">
-      <div class="pg-panel-body pg-panel-body-right">
-        <CodeEditor 
-          :modelValue="sqlOutput" 
-          :readonly="true" 
-          :theme="theme" 
-          show-panel 
-          panel-title=""
-        >
-          <template #panel-actions>
-            <EngineSelector v-model="selectedEngine" :theme="theme" />
-            <span v-if="isCompiling" class="pg-status pg-compiling">Compiling...</span>
-            <span v-else-if="compilationError" class="pg-status pg-error">Error</span>
-          </template>
-        </CodeEditor>
+      <!-- Panel Header -->
+      <div class="pg-panel-header">
+        <div class="pg-panel-header-actions">
+          <EngineSelector v-model="selectedEngine" :theme="theme" />
+          <span v-if="isCompiling" class="pg-status pg-compiling">Compiling...</span>
+          <span v-else-if="compilationError" class="pg-status pg-error">Error</span>
+        </div>
+      </div>
+      <!-- Panel Body -->
+      <div class="pg-panel-body">
+        <CodeEditor :modelValue="sqlOutput" :readonly="true" :theme="theme" />
       </div>
     </div>
 
