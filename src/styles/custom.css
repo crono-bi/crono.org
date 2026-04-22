@@ -155,6 +155,70 @@ html {
   color: #ffffff !important;
 }
 
+/* ===== MODERN TABLE STYLING ===== */
+.sl-markdown-content table {
+  display: table !important;
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid var(--sl-color-hairline-light);
+  border-radius: 10px;
+  overflow: hidden;
+  font-size: 13px;
+  margin: 1.5rem 0;
+}
+
+.sl-markdown-content table thead {
+  display: table-header-group !important;
+}
+
+.sl-markdown-content table tbody {
+  display: table-row-group !important;
+}
+
+.sl-markdown-content table tr {
+  display: table-row !important;
+}
+
+.sl-markdown-content table th,
+.sl-markdown-content table td {
+  display: table-cell !important;
+}
+
+.sl-markdown-content table thead th {
+  padding: 8px 14px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--sl-color-accent);
+  background: rgba(var(--brand-rgb-value, 27, 95, 140), 0.06);
+  border-bottom: 2px solid rgba(var(--brand-rgb-value, 27, 95, 140), 0.15);
+}
+
+.sl-markdown-content table td {
+  padding: 6px 14px;
+  border: none;
+  border-bottom: 1px solid var(--sl-color-hairline-light);
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--sl-color-white);
+}
+
+.sl-markdown-content table tr:last-child td {
+  border-bottom: none;
+}
+
+.sl-markdown-content table tbody tr:nth-child(even) td {
+  background: rgba(var(--brand-rgb-value, 27, 95, 140), 0.03);
+}
+
+.sl-markdown-content table tbody tr:hover td {
+  background: rgba(var(--brand-rgb-value, 27, 95, 140), 0.08);
+}
+
 /* ===== PAGINATION PREV/NEXT REDESIGN ===== */
 .pagination-links {
   gap: 12px !important;
