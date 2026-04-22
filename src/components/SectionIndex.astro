@@ -15,7 +15,7 @@ const pages = Object.entries(allFiles)
     const match = filePath.match(/content\/docs\/(.+)\.(md|mdx)$/)
     if (!match) return null
     const slug = match[1].replace(/\/index$/, '').replace(/\/README$/, '')
-    const frontmatter = (mod as { frontmatter?: { title?: string; description?: string } }).frontmatter
+    const frontmatter = (mod as { frontmatter?: { title?: string; description?: string; sidebar?: { order?: number } } }).frontmatter
     if (!frontmatter?.title) return null
     if (!slug.startsWith(section + '/') || slug === section) return null
     // Extraer subcarpeta (ej: "sql/functions/agregacion/count" -> "agregacion")
@@ -26,6 +26,7 @@ const pages = Object.entries(allFiles)
       description: frontmatter.description ?? '',
       url: '/' + slug + '/',
       subfolder: subfolder,
+      order: frontmatter.sidebar?.order ?? 999,
     }
   })
   .filter(Boolean)
@@ -40,9 +41,9 @@ const groupedPages = groupBySubfolder
     }, {} as Record<string, typeof pages>)
   : { '': pages }
 
-// Ordenar páginas dentro de cada grupo
+// Ordenar páginas dentro de cada grupo por sidebar.order, luego por título
 for (const key in groupedPages) {
-  groupedPages[key].sort((a, b) => a.title.localeCompare(b.title))
+  groupedPages[key].sort((a, b) => a.order - b.order || a.title.localeCompare(b.title))
 }
 
 // Definir orden de categorías para funciones
