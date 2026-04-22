@@ -155,6 +155,53 @@ html {
   color: #ffffff !important;
 }
 
+/* ===== PAGINATION PREV/NEXT REDESIGN ===== */
+.pagination-links {
+  gap: 12px !important;
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--sl-color-hairline-light);
+}
+
+.pagination-links a {
+  border: 1px solid var(--sl-color-hairline-light) !important;
+  border-radius: 10px !important;
+  padding: 12px 16px !important;
+  box-shadow: none !important;
+  background: var(--sl-color-bg-nav);
+  transition: border-color 0.2s ease, background 0.2s ease, transform 0.15s ease;
+}
+
+.pagination-links a:hover {
+  border-color: var(--sl-color-accent) !important;
+  background: var(--sl-color-bg-sidebar);
+  transform: translateY(-1px);
+}
+
+.pagination-links a svg {
+  width: 14px !important;
+  height: 14px !important;
+  color: var(--sl-color-gray-3);
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.pagination-links a:hover svg {
+  color: var(--sl-color-accent);
+}
+
+.pagination-links a[rel="prev"]:hover svg {
+  transform: translateX(-2px);
+}
+
+.pagination-links a[rel="next"]:hover svg {
+  transform: translateX(2px);
+}
+
+.pagination-links .link-title {
+  font-size: var(--sl-text-base) !important;
+  font-weight: 600 !important;
+}
+
 /* ===== PLAYGROUND SIDEBAR LINK COLOR OVERRIDE ===== */
 /* Force Playground link in sidebar to be blue, not cached yellow */
 /* Only target sidebar links, not buttons */
