@@ -343,32 +343,25 @@ function buildExtensions() {
 }
 
 onMounted(() => {
-  editorView = new EditorView({
-    state: EditorState.create({
-      doc: props.modelValue,
-      extensions: buildExtensions()
-    }),
-    parent: editorRef.value ?? undefined
-  })
-
   const el = editorRef.value
-  if (el) {
-    const ro = new ResizeObserver(() => {
-      if (el.offsetHeight > 0) {
-        ro.disconnect()
-        const doc = editorView?.state.doc.toString() ?? props.modelValue
-        editorView?.destroy()
-        editorView = new EditorView({
-          state: EditorState.create({
-            doc,
-            extensions: buildExtensions()
-          }),
-          parent: el
-        })
-      }
-    })
-    ro.observe(el)
-  }
+  if (!el) return
+
+  // FIX: Initialize editor ONLY when container has height > 0
+  // This prevents the "double viewport virtualization" bug where CodeMirror
+  // calculates incorrect gutter positions when initialized in a 0-height container
+  const ro = new ResizeObserver(() => {
+    if (el.offsetHeight > 0 && !editorView) {
+      ro.disconnect()
+      editorView = new EditorView({
+        state: EditorState.create({
+          doc: props.modelValue,
+          extensions: buildExtensions()
+        }),
+        parent: el
+      })
+    }
+  })
+  ro.observe(el)
 })
 
 watch(() => props.modelValue, (newVal) => {

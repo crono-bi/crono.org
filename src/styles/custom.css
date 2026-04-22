@@ -47,18 +47,21 @@ html {
 
 /* ===== SECTION INDEX ===== */
 .section-index {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 10px;
+  display: block;
   margin-top: 1.5rem;
+}
+/* Reset grid when inside category content - use parent's 2-col grid */
+.category-content .section-index {
+  margin-top: 0;
 }
 
 .section-index-card {
   display: flex;
   align-items: center;
-  gap: 14px;
-  padding: 14px 16px;
+  gap: 12px;
+  padding: 12px 14px;
   border-radius: 10px;
+  min-width: 0;
   border: 1px solid var(--sl-color-hairline-light);
   background: var(--sl-color-bg-nav);
   text-decoration: none !important;
@@ -107,6 +110,7 @@ html {
   gap: 2px;
   flex: 1;
   min-width: 0;
+  overflow: hidden;
 }
 
 .section-index-title {
@@ -116,6 +120,7 @@ html {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  max-width: 100%;
 }
 
 .section-index-desc {

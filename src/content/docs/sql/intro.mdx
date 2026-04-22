@@ -4,6 +4,7 @@ title: "Introducción"
 
 import { Aside } from '@astrojs/starlight/components';
 import SectionIndex from '../../../components/SectionIndex.astro'
+import CategorySelector from '../../../components/CategorySelector.astro'
 
 
 
@@ -42,11 +43,10 @@ Este manual tiene más de 300 páginas, por lo que probablemente querrás saber 
 En menos de 100 palabras:
 
 <Aside type="tip" title="RESUMEN">
-Con **Crono SQL** puedes escribir un código sencillo que crea una tabla y crea el procedimiento que se encarga de su aprovisionamiento. 
-Con unas pocas líneas de código se consigue al mismo tiempo crear el modelo de datos y construir la ETL. 
+Con **Crono SQL** puedes escribir un código sencillo que crea una tabla y crea el procedimiento que se encarga de su aprovisionamiento.
+Con unas pocas líneas de código se consigue al mismo tiempo crear el modelo de datos y construir la ETL.
 Además, el código generado es óptimo y el rendimiento es inigualable. Todo ello redunda en un código más mantenible, más escalable y con menos errores.
 </Aside>
-
 
 El siguiente ejemplo muestra todo lo anterior con más detalle. Incluye prácticamente todo lo que vas a necesitar para construir un DWH y cargar prácticamente todas las dimensiones y el 90% o más de las tablas de hechos.
 
@@ -306,15 +306,47 @@ Además, el código generado es óptimo. Es imposible cargar esta tabla de una m
 
 ## Estructura del manual
 
+Este manual documenta el funcionamiento de la sentencia **SELECT** del lenguaje y el resto de instrucciones. La sintaxis **SELECT** de **Crono SQL** aporta algunas ventajas (algunas importantes) frente al SQL ISO. Sin embargo, el mayor beneficio del lenguaje se manifiesta en el resto de instrucciones DML (**INSERT**, **UPDATE**, **MERGE**, …), donde Crono SQL automatiza toda la lógica de carga.
 
-
-Este manual documenta el funcionamiento de la sentencia **SELECT** del lenguaje y el resto de instrucciones. La sintaxis **SELECT** de **Crono SQL** aporta algunas ventajas (algunas importantes) frente al SQL ISO. Sin embargo, el mayor beneficio del lenguaje se manifiesta en el resto de instrucciones DML (**INSERT**, **UPDATE**, **MERGE**, …), donde Crono SQL automatiza toda la lógica de carga. 
-
-El manual se organiza en estas secciones:
-
-- [**Lenguaje SQL**](/sql/language/): Describe mediante ejemplos las instrucciones principales del lenguaje (**SELECT**, **MERGE**, y todas las demás).
-- [**Referencia lenguaje**](/sql/reference/): Amplia la información de la sección anterior completándola con sintaxis o funcionalidades más avanzadas.
-- [**Funciones**](/sql/functions/): Listado de todas las funciones del lenguaje agrupadas en 6 subsecciones: Funciones de asgregación, de conversión y lógicas, de fecha, de texto, matemáticas y funciones de sistema.
-- [**Vistas**](/sql/views/): Listado de todas las "vistas" predefinidas que incluye el lenguaje.
-
-<SectionIndex src="/sql/" />
+<CategorySelector categories={[
+  {
+    id: 'language',
+    title: 'Lenguaje Crono SQL',
+    description: 'Guía completa de la sintaxis con ejemplos prácticos de cada sentencia.',
+    count: 8,
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg>',
+    path: '/sql/language/'
+  },
+  {
+    id: 'reference',
+    title: 'Referencia del lenguaje',
+    description: 'Documentación técnica detallada de sintaxis y funcionalidades avanzadas.',
+    count: 12,
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/><path d="M12 11h5"/><path d="M12 7h5"/></svg>',
+    path: '/sql/reference/'
+  },
+  {
+    id: 'functions',
+    title: 'Funciones',
+    description: 'Listado completo de funciones integradas agrupadas por categoría.',
+    count: 87,
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5h-2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="2"/><path d="m9 14 2 2 4-4"/></svg>',
+    path: '/sql/functions/'
+  },
+  {
+    id: 'actions',
+    title: 'Sentencias',
+    description: 'Documentación de sentencias DML: MERGE, INSERT, UPDATE, DELETE.',
+    count: 1,
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>',
+    path: '/sql/actions/'
+  },
+  {
+    id: 'views',
+    title: 'Vistas',
+    description: 'Vistas predefinidas del sistema para consultar metadatos.',
+    count: 52,
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/><path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>',
+    path: '/sql/views/'
+  }
+]} />

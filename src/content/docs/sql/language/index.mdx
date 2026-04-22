@@ -1,0 +1,83 @@
+---
+title: "Introducción"
+sidebar:
+  order: 0
+---
+
+import CategorySelector from '../../../../components/CategorySelector.astro'
+
+En esta sección se explica en detalle la sintaxis del lenguaje Crono SQL.
+
+En primer lugar se introduce la sentencia `SELECT`, y en los siguientes apartados se describen el resto de sentencias principales de **Crono SQL** (`INSERT`, `UPDATE`, `MERGE`,...). La sintaxis de todas estas sentencias es similar y comparte los principios fundamentales descritos en la introducción de este manual.
+
+
+Las páginas de `SELECT` y `MERGE` son especialmente importantes para entender y aprovechar las características del lenguaje **Crono SQL**. Prácticamente, son las dos únicas sentencias que se necesitan en un proyecto DWH habitual.
+
+Este apartado está escrito para leerse secuencialmente, desde el primer al último al artículo. De todos modos, también puede leerse en cualquier orden o usarse como referencia.
+
+La funcionalidad de todas las instrucciones se explica mediante ejemplos y se incluye siempre el código **Crono SQL** original y el código resultante en lenguaje **SQL**.
+
+Este manual asume que se tienen al menos conocimientos básicos de SQL.
+
+## Sentencias del lenguaje
+
+<CategorySelector categories={[
+  {
+    id: 'select',
+    title: 'SELECT',
+    description: 'La sentencia principal del lenguaje. Consulta y transformación de datos.',
+    count: 1,
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/><path d="M12 8v8"/></svg>',
+    path: '/sql/language/select/'
+  },
+  {
+    id: 'merge',
+    title: 'MERGE',
+    description: 'Fusión de datos con lógica de carga completa para DWH.',
+    count: 1,
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg>',
+    path: '/sql/language/merge/'
+  },
+  {
+    id: 'insert',
+    title: 'INSERT',
+    description: 'Inserción de registros en tablas con sintaxis simplificada.',
+    count: 1,
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>',
+    path: '/sql/language/insert/'
+  },
+  {
+    id: 'update',
+    title: 'UPDATE',
+    description: 'Actualización de registros con joins y condiciones.',
+    count: 1,
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4L18.5 2.5z"/></svg>',
+    path: '/sql/language/update/'
+  },
+  {
+    id: 'delete',
+    title: 'DELETE',
+    description: 'Eliminación de registros con sintaxis mejorada.',
+    count: 1,
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/></svg>',
+    path: '/sql/language/delete/'
+  },
+  {
+    id: 'truncate',
+    title: 'TRUNCATE',
+    description: 'Vaciado rápido de tablas con opciones avanzadas.',
+    count: 1,
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><rect width="12" height="12" x="6" y="10" rx="2"/></svg>',
+    path: '/sql/language/truncate/'
+  },
+  {
+    id: 'ddl',
+    title: 'DDL',
+    description: 'Data Definition Language: CREATE, ALTER, DROP.',
+    count: 1,
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/><path d="M12 11h5"/><path d="M12 7h5"/></svg>',
+    path: '/sql/language/ddl/'
+  }
+]} />
+
+En la sección "Referencia lenguaje" se completa la documentación del lenguaje con algunas funcionalidades o sintaxis avanzadas.
