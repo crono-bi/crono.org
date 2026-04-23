@@ -62,7 +62,7 @@ export default defineConfig({
 						examplesTopics,
 						...playgroundTopics,
 					],
-					{ exclude: ['index.md', 'sql/language', 'sql/reference', 'sql/functions', 'sql/views'] }
+					{ exclude: ['index.md', 'sql/language', 'sql/reference', 'sql/functions', 'sql/views', 'playground'] }
 				),
 			],
 		}),
