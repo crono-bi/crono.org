@@ -199,6 +199,13 @@ ORDER BY TotalSales DESC`
 
     </div>
   </div>
+
+  <!-- Scroll indicator -->
+  <div class="scroll-indicator" id="scroll-indicator" aria-hidden="true">
+    <svg class="scroll-chevrons" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m6 9 6 6 6-6"/></svg>
+    <svg class="scroll-chevrons scroll-chevrons-2" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m6 9 6 6 6-6"/></svg>
+  </div>
+
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════════ -->
@@ -521,19 +528,7 @@ ORDER BY TotalSales DESC`
   <div class="section-bg" style="background: radial-gradient(ellipse 80% 60% at 70% 50%, color-mix(in srgb, #0EA5E9 8%, transparent), transparent);"></div>
   <div class="mx-auto max-w-6xl px-6 py-16 lg:py-20">
     <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-      <div>
-        <div class="product-label" style="color: #0EA5E9;">Dashboards web</div>
-        <h2 class="product-title">Crono API</h2>
-        <p class="product-desc">
-          Publica tus datos como APIs REST en segundos. Conecta cualquier aplicación web o móvil con tus modelos de datos sin escribir código de servidor.
-        </p>
-        <ul class="product-features">
-          <li><span style="color: #0EA5E9;">✓</span> APIs REST autogeneradas desde tu catálogo</li>
-          <li><span style="color: #0EA5E9;">✓</span> Autenticación y control de acceso integrado</li>
-          <li><span style="color: #0EA5E9;">✓</span> Dashboards web conectados en tiempo real</li>
-        </ul>
-      </div>
-      <div class="product-demo api-demo-wrap">
+      <div class="product-demo api-demo-wrap order-2 lg:order-1">
 
         <!-- Main Swagger window -->
         <div class="swagger-window">
@@ -609,6 +604,18 @@ ORDER BY TotalSales DESC`
         </div>
 
       </div>
+      <div class="order-1 lg:order-2">
+        <div class="product-label" style="color: #0EA5E9;">Dashboards web</div>
+        <h2 class="product-title">Crono API</h2>
+        <p class="product-desc">
+          Publica tus datos como APIs REST en segundos. Conecta cualquier aplicación web o móvil con tus modelos de datos sin escribir código de servidor.
+        </p>
+        <ul class="product-features">
+          <li><span style="color: #0EA5E9;">✓</span> APIs REST autogeneradas desde tu catálogo</li>
+          <li><span style="color: #0EA5E9;">✓</span> Autenticación y control de acceso integrado</li>
+          <li><span style="color: #0EA5E9;">✓</span> Dashboards web conectados en tiempo real</li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
@@ -620,8 +627,8 @@ ORDER BY TotalSales DESC`
   <div class="section-bg" style="background: radial-gradient(ellipse 80% 60% at 30% 50%, color-mix(in srgb, #8B5CF6 8%, transparent), transparent);"></div>
   <div class="mx-auto max-w-6xl px-6 py-16 lg:py-20">
     <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-      <!-- Left: AI Demo -->
-      <div class="product-demo order-2 lg:order-1">
+      <!-- Right: AI Demo -->
+      <div class="product-demo order-2 lg:order-2">
         <div class="ai-window">
           <div class="ai-header">
             <div class="ai-avatar">
@@ -697,8 +704,8 @@ ORDER BY TotalSales DESC`
           <span>Ver SQL generado</span>
         </div>
       </div>
-      <!-- Right: Content -->
-      <div class="product-content order-1 lg:order-2">
+      <!-- Left: Content -->
+      <div class="product-content order-1 lg:order-1">
         <div class="product-label" style="color: #8B5CF6;">Inteligencia Artificial · Asistente de datos</div>
         <h2 class="product-title">Crono AI</h2>
         <p class="product-desc">
@@ -998,6 +1005,42 @@ ORDER BY TotalSales DESC`
   }
 
   /* HERO — Fullbleed BG via pseudo-element */
+  /* ── Scroll indicator ── */
+  .scroll-indicator {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    opacity: 1;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  .scroll-indicator.hidden {
+    opacity: 0;
+  }
+
+  .scroll-chevrons {
+    color: var(--sl-color-gray-3);
+    display: block;
+    margin-bottom: -12px;
+    animation: chevron-bounce 1.6s ease-in-out infinite;
+  }
+
+  .scroll-chevrons-2 {
+    animation-delay: 0.25s;
+  }
+
+  @keyframes chevron-bounce {
+    0%, 100% { opacity: 0.3; transform: translateY(0); }
+    50%       { opacity: 1; transform: translateY(5px); }
+  }
+
   .hero-wrapper {
     position: relative;
     isolation: isolate;
@@ -3249,6 +3292,18 @@ ORDER BY TotalSales DESC`
 </style>
 
 <script>
+  // Hide scroll indicator on scroll
+  const scrollIndicator = document.getElementById('scroll-indicator');
+  if (scrollIndicator) {
+    const hideIndicator = () => {
+      if (window.scrollY > 60) {
+        scrollIndicator.classList.add('hidden');
+        window.removeEventListener('scroll', hideIndicator);
+      }
+    };
+    window.addEventListener('scroll', hideIndicator, { passive: true });
+  }
+
   // Mouse tracking for card glow effect
   document.querySelectorAll('.bento-card').forEach(card => {
     card.addEventListener('mousemove', (e) => {
