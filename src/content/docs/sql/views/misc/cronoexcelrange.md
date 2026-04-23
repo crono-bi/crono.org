@@ -19,7 +19,7 @@ El libro Excel *sample.xlsx* contiene las ventas de 4 locales a lo largo de un a
 
 Los datos de Enero se pueden leer con esta sentencia:
 
-```
+```sql
 SELECT *
 from Crono$ExcelRange(
 	Location='https://github.com/crono-bi/crono.org/tree/master/src/.vuepress/public/sample.xlsx',
@@ -33,7 +33,7 @@ En el ejemplo anterior, se ha utilizado la propiedad `RowCode` para identificar 
 
 La **propiedad Data** permite leer las 12 tablas del libro Excel en una sola sentencia. Para ello, se ha de construir un sentencia con 12 filas correspondientes al nombre de las 12 hojas. En ese ejemplo, se utiliza la función `Crono$Dates` para obtener el nombre de las hojas a cargar.
 
-```
+```sql
 select 
 	MonthNumber RowCode varchar(2),
 	Month	WorksheetName
@@ -65,7 +65,7 @@ De este modo, utilizando las **propiedad Data**, se pueden leer todas las ventas
 
 
 
-```
+```sql
 SELECT *
 from Crono$ExcelRange(
 	Location='https://github.com/crono-bi/crono.org/tree/master/src/.vuepress/public/sample.xlsx',
@@ -84,7 +84,7 @@ from Crono$ExcelRange(
 Como cualquier otra pseudovista, `Crono$ExcelRange` se puede combinar con cualquier otro elemento del lenguaje **Crono SQL**. La siguiente sentencia utiliza `CREATE OR REPLACE TABLE` para copiar los datos del Excel en una tabla `stg.Ventas`.
 
 
-```
+```sql
 CREATE OR REPLACE TABLE stg.Ventas
 SELECT 
 	date(cast(2024*10000+int(RowCode)*100+Dia as varchar(8))) Fecha,

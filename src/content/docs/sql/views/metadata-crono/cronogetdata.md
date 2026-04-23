@@ -15,7 +15,7 @@ Si no se establece `Connection` se usa la conexión actual.
 
 **Sintaxis:**
 
-```
+```sql
 Crono$GetData(
     [Connection]='nombre de la conexión',
     [Query]=(SELECT ...)
@@ -27,7 +27,7 @@ Crono$GetData(
 
 Es posible usar el resto de funcionalidades de **Crono SQL** para operar con el resultado o unirno con tablas "locales".
 
-```
+```sql
 SELECT 
     Tiendas.CodTienda,
     Tiendas.NombreTienda,

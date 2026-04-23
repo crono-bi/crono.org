@@ -11,7 +11,7 @@ Devuelve información sobre los parámetros de entrada o salida de todos los pro
 Es similar a la vista ANSI `INFORMATION_SCHEMA.PARAMETERS`
 
 
-```
+```sql
 select *
 from Crono$Parameters
 ```

@@ -22,7 +22,7 @@ Parámetros:
 La siguiente sentencia convierte el número juliano 2460677 a fecha 
 
 
-```
+```sql
 SELECT fromjuliandate(2460677);
 -- Resultado: '2025-01-01'
 ```
@@ -31,7 +31,7 @@ SELECT fromjuliandate(2460677);
 El código generado es:
 
 
-```
+```sql
 SELECT dateadd(d,2460677-2451545,CAST('20000101' AS date)) AS expr1
 ```
 

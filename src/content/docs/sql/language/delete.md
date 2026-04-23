@@ -7,7 +7,7 @@ sidebar:
 
 **Crono SQL** soporta la sintaxis estándar de la sentencia **DELETE** de SQL:
 
-``` sql
+```sql
 DELETE FROM dwh.FactSalesOrderDetails WHERE SalesOrderId=43659
 ```
 
@@ -16,7 +16,7 @@ DELETE FROM dwh.FactSalesOrderDetails WHERE SalesOrderId=43659
   <details>
 <summary>Ver SQL compilado</summary>
 
-``` sql
+```sql
 DELETE FROM dwh.FactSalesOrderDetails WHERE SalesOrderId=43659;
 ```
 
@@ -25,7 +25,7 @@ DELETE FROM dwh.FactSalesOrderDetails WHERE SalesOrderId=43659;
 
 Si intervienen otras tablas, se puede definir el predicado utilizando las expresiones **IN()** o **EXISTS ()**. La siguiente sentencia elimina las líneas de venta de un cliente en concreto:
 
-``` sql
+```sql
 DELETE 
 FROM dwh.FactSalesOrderDetails
 WHERE SalesOrderSid in (
@@ -40,7 +40,7 @@ WHERE SalesOrderSid in (
   <details>
 <summary>Ver SQL compilado</summary>
 
-``` sql
+```sql
 DELETE FROM dwh.FactSalesOrderDetails WHERE EXISTS (SELECT 1 FROM (
     SELECT SalesOrderSid
     FROM dwh.FactSalesOrderHeader
@@ -55,7 +55,7 @@ DELETE FROM dwh.FactSalesOrderDetails WHERE EXISTS (SELECT 1 FROM (
 
 De modo similar, la siguiente sentencia elimina las líneas de venta de otro cliente:
 
-``` sql
+```sql
 DELETE 
 FROM dwh.FactSalesOrderDetails 
 WHERE EXISTS (
@@ -72,7 +72,7 @@ WHERE EXISTS (
   <details>
 <summary>Ver SQL compilado</summary>
 
-``` sql
+```sql
 DELETE FROM dwh.FactSalesOrderDetails WHERE EXISTS (SELECT *
 FROM dwh.FactSalesOrderHeader cab
 INNER JOIN dwh.DimCustomers ON (cab.CustomerSid=DimCustomers.CustomerSid)
@@ -88,7 +88,7 @@ WHERE
 
 **Crono SQL** propone otra sintaxis de la sentencia **DELETE** (idéntica a la sintaxis de **INSERT**, **UPDATE**, y **MERGE**). La idea subyacente es que se ha  de construir el **SELECT** de los datos que se quieren borrar. Solo el **SELECT**. Y **Crono SQL** eliminará precisamente esos registros:
 
-``` sql
+```sql
 DELETE dwh.FactSalesOrderDetails
 select det.SalesOrderDetailSid #SalesOrderDetailSid, det.SalesOrderId, det.SalesOrderDetailsId
 from dwh.FactSalesOrderDetails det
@@ -102,7 +102,7 @@ WHERE DimCustomers.Customer='Jada Morris'
   <details>
 <summary>Ver SQL compilado</summary>
 
-``` sql
+```sql
 ;WITH
 query AS (
   SELECT
@@ -125,7 +125,7 @@ WHERE
 
 De hecho, no es necesario que la consulta tenga ninguna referencia a la tabla de la que se quieren eliminar registros. El ejemplo anterior se puede simplificar de la siguiente manera:
 
-``` sql
+```sql
 DELETE dwh.FactSalesOrderDetails 	
 SELECT #SalesOrderSid 
 FROM dwh.FactSalesOrderHeader 
@@ -139,7 +139,7 @@ WHERE
   <details>
 <summary>Ver SQL compilado</summary>
 
-``` sql
+```sql
 ;WITH
 query AS (
   SELECT SalesOrderSid
@@ -160,7 +160,7 @@ En todos los casos, lo que marca los registros que se deben eliminar es la *"cla
 
 La consulta del **DELETE** también puede utilizar todas las características del **SELECT** de **Crono SQL**. La siguiente sentencia elimina los clientes sin ninguna venta:
 
-``` sql
+```sql
 DELETE dwh.DimCustomers
 SELECT #customerSid
 FROM dwh.DimCustomers
@@ -172,7 +172,7 @@ ANTI JOIN dwh.FactSalesOrderHeader USING CustomerSid
   <details>
 <summary>Ver SQL compilado</summary>
 
-``` sql
+```sql
 ;WITH
 query AS (
   SELECT customerSid

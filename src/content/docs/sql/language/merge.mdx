@@ -41,7 +41,7 @@ Se utiliza en tablas de hechos pequeñas o en aquellas tablas de dimensión en q
 
 La sintaxis es idéntica a la utilizada en la sintaxis **Crono SQL** de **UPDATE** o **INSERT**, tal y como muestra este ejemplo.
 
-``` sql
+```sql
 MERGE CLONE dwh.DimProducts(ProductSid)
 select 
   #ProductID,
@@ -67,7 +67,7 @@ LEFT JOIN staging.ProductModel using Product(ProductModelID)
   <details>
 <summary>Ver SQL compilado</summary>
 
-``` sql
+```sql
 ;WITH
 query AS (
   SELECT
@@ -149,7 +149,7 @@ En este ejemplo, después de los **JOIN**, se ha incluido la clausula **CHECK SN
 
 El código generado es óptimo y presenta un gran rendimiento, por lo que esta estrategia es adecuada también en tablas de hechos no excesivamente grandes:
 
-``` sql
+```sql
 MERGE CLONE dwh.FactSalesOrderDetails(SalesOrderDetailSid)
 SELECT
 	SalesOrderDetail.SalesOrderDetailID #SalesOrderDetailID,
@@ -177,7 +177,7 @@ check snowflake
   <details>
 <summary>Ver SQL compilado</summary>
 
-``` sql
+```sql
 IF EXISTS (
   SELECT count(*)
   FROM @@erp.SalesOrderDetail
@@ -267,7 +267,7 @@ La instrucción **MERGE UPSERT** es una carga de **dimensión lentamente cambian
 
 Se utiliza habitualmente para cargar tablas de dimensión, ya que se requiere mantener los registros antiguos para respetar la integridad (no queremos borrar un producto o un cliente que tal vez tiene ventas u otras transacciones asociadas).
 
-``` sql
+```sql
 MERGE UPSERT dwh.DimProducts(ProductSid)
 SELECT 
   #ProductID,
@@ -294,7 +294,7 @@ CHECK SNOWFLAKE
   <details>
 <summary>Ver SQL compilado</summary>
 
-``` sql
+```sql
 IF EXISTS (
   SELECT count(*)
   FROM staging.Product
@@ -377,7 +377,7 @@ Al igual que en todas las instrucciones **MERGE** de **Crono SQL**, se creará l
 
 Las estrategía **UPSERT** es la predeterminada del **MERGE**. Por este motivo, el siguiente ejemplo es exactamente equivalente a ejecutar **MERGE UPSERT**.
 
-``` sql
+```sql
 MERGE dwh.DimProducts(ProductSid)
 select 
   #ProductID,
@@ -404,7 +404,7 @@ CHECK SNOWFLAKE
   <details>
 <summary>Ver SQL compilado</summary>
 
-``` sql
+```sql
 IF EXISTS (
   SELECT count(*)
   FROM staging.Product
@@ -483,7 +483,7 @@ WHEN NOT MATCHED THEN
 
 La instrucción **MERGE ALL** se comparta igual que **MERGE UPSERT**. La única diferencia es que **MERGE ALL** actualiza todos los registros (hayan cambiado o no). Esta diferencia raramente aportará ningún beneficio (¡Al contrario... penalizará el rendimiento por actualizar registros que no lo necesitan!), por lo que se prefiere usar **MERGE UPSERT**.
 
-``` sql
+```sql
 MERGE ALL dwh.DimProducts(ProductSid)
 SELECT 
   #ProductID,
@@ -510,7 +510,7 @@ CHECK SNOWFLAKE
   <details>
 <summary>Ver SQL compilado</summary>
 
-``` sql
+```sql
 IF EXISTS (
   SELECT count(*)
   FROM staging.Product
@@ -580,7 +580,7 @@ WHEN NOT MATCHED THEN
 
 La instrucción **MERGE UPDATE** actualiza los registros que aparecen en la consulta de origen y ya existen en la tabla de destino. No elimina ni inserta ningún registro.
 
-``` sql
+```sql
 MERGE UPDATE dwh.DimProducts(ProductSid)
 SELECT 
   #ProductID,
@@ -607,7 +607,7 @@ CHECK SNOWFLAKE
   <details>
 <summary>Ver SQL compilado</summary>
 
-``` sql
+```sql
 IF EXISTS (
   SELECT count(*)
   FROM staging.Product
@@ -676,7 +676,7 @@ La instrucción **MERGE SOFT DELETE** actualiza los registros que se han modific
 
 Se utiliza habitualmente para cargar tablas de dimensión, ya que se requiere mantener los registros antiguos para respetar la integridad (no queremos borrar un producto o un cliente que tal vez tiene ventas u otras transacciones asociadas).
 
-``` sql
+```sql
 MERGE SOFT DELETE dwh.DimProducts(ProductSid)
 select 
   #ProductID,
@@ -702,7 +702,7 @@ LEFT JOIN staging.ProductModel using Product(ProductModelID)
   <details>
 <summary>Ver SQL compilado</summary>
 
-``` sql
+```sql
 ;WITH
 query AS (
   SELECT
@@ -784,7 +784,7 @@ Frecuentemente las cargas incrementales son problemáticas:
 Por estos motivos, si el tiempo de ejecución es aceptable, es preferible utilizar **MERGE CLONE** siempre que sea posible, aunque el tiempo de ejecución sea algo mayor.
 
 
-``` sql
+```sql
 MERGE INCREMENTAL dwh.FactSalesOrderHeader(SalesOrderSid)
 SELECT 
   SalesOrderHeader.SalesOrderId,
@@ -810,7 +810,7 @@ where cast(OrderDate as date)=today()
   <details>
 <summary>Ver SQL compilado</summary>
 
-``` sql
+```sql
 ;WITH
 query AS (
   SELECT
@@ -857,7 +857,7 @@ La anterior sentencia cargará las ventas del día anterior (y solo las del día
 
 La siguiente estrategia resuelve parcialmente el problema: 
 
- ``` sql
+ ```sql
 MERGE INCREMENTAL dwh.FactSalesOrderHeader(SalesOrderSid)
 SELECT 
   SalesOrderHeader.SalesOrderId #SalesOrderId,
@@ -883,7 +883,7 @@ where OrderDate<=getdate()-30
   <details>
 <summary>Ver SQL compilado</summary>
 
-``` sql
+```sql
 ;WITH
 query AS (
   SELECT
@@ -935,7 +935,7 @@ En el caso anterior se cargarían las ventas de los últimos 30 días que no se 
 
 Otra opción sería añadir incrementalmente aquellos registros añadidos en el ERP desde la última carga (requiere un campo "*timestamp*" en el origen).
 
-``` sql
+```sql
 DECLARE @last timestamp=(select max(InsertTimestamp) from FactSalesOrderHeader)
 MERGE INCREMENTAL dwh.FactSalesOrderHeader(SalesOrderSid)
 SELECT 
@@ -963,7 +963,7 @@ where SalesOrderHeader.InsertTimestamp>@last
   <details>
 <summary>Ver SQL compilado</summary>
 
-``` sql
+```sql
 DECLARE @last timestamp=(SELECT max(InsertTimestamp) AS expr1
 FROM FactSalesOrderHeader
 );
@@ -1028,7 +1028,7 @@ Se utiliza para cargar tablas de dimensión en las que es necesario guardar la h
 
 La sintaxis es la misma que en los casos anteriores (y la mismas que la del **INSERT** o **UPDATE**....).Únicamente es necesario cambiar el nombre de la estrategia a utilizar: **MERGE HISTORY** 
 
-``` sql
+```sql
 MERGE HISTORY dwh.DimProducts(ProductSid) 
 select 
   #ProductID,
@@ -1055,7 +1055,7 @@ CHECK SNOWFLAKE
   <details>
 <summary>Ver SQL compilado</summary>
 
-``` sql
+```sql
 IF EXISTS (
   SELECT count(*)
   FROM staging.Product
@@ -1162,7 +1162,7 @@ Es interesante observar que la elección entre **MERGE CLONE**, **MERGE UPSERT**
 
 El lenguaje **Crono SQL** admite también la sintaxis SQL estándar de la sentencia **MERGE**:
 
-``` sql
+```sql
 WITH
 query AS (
   SELECT
@@ -1215,7 +1215,7 @@ WHEN NOT MATCHED THEN
   <details>
 <summary>Ver SQL compilado</summary>
 
-``` sql
+```sql
 WITH
 query AS (
   SELECT

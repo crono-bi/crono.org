@@ -8,7 +8,7 @@ Devuelve información sobre todas las columnas de todas las vistas y tablas de l
 Es similar a la vista ANSI `INFORMATION_SCHEMA.[COLUMNS]`
 
 
-```
+```sql
 select *
 from Crono$Columns
 ```

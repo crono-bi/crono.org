@@ -10,18 +10,18 @@ Es útil para extraer componentes específicos de cadenas estructuradas, como no
 
 **Sintaxis:**
 
-```
+```sql
 SPLIT(cadena, separador, índice)
 ```
 
 ## Ejemplo
 
-```
+```sql
 SELECT SPLIT('hola mundo', ' ', 2);  -- Devuelve 'mundo'
 ```
 
 El código generado es:
 
-```
+```sql
 SELECT SUBSTRING('hola mundo',CHARINDEX(' ','hola mundo'+' ')+1,CHARINDEX(' ','hola mundo'+' ',CHARINDEX(' ','hola mundo'+' ')+1)-CHARINDEX(' ','hola mundo'+' ')-1) AS expr1
 ```

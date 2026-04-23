@@ -19,13 +19,13 @@ adddays(fecha_base, numero_dias)
 ## Ejemplo
 
 
-```
+```sql
 SELECt adddayes(getdate(),3);
 ```
 
 El codigo generado es:
 
-```
+```sql
 SELECT dateadd(d,3,getdate())
 ```
 

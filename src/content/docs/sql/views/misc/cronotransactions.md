@@ -5,7 +5,7 @@ title: "Crono$Transactions"
 
 Devuelve las transacciones activas en el servidor SQL Server.
 
-```
+```sql
 SELECT *
 FROM Crono$Transactions
 ```
@@ -28,7 +28,7 @@ La pseudovista devuelve estas columnas:
 
 La consulta generada es:
 
-```
+```sql
 SELECT *
 FROM
   (SELECT

@@ -13,7 +13,7 @@ Se puede usar tanto la sintaxis `OVER` del SQL estándar como la sintaxis compac
 
 La siguiente consulta devuelve las ventas de cada mes y el acumulado desde el inicio de la historia.
 
-```
+```sql
 select 
   year(fecha) anyo,
   month(fecha) mes,
@@ -25,7 +25,7 @@ group by all
 
 La consulta SQL generada es:
 
-```
+```sql
 SELECT
   year(fecha) AS anyo,
   month(fecha) AS mes,
@@ -40,7 +40,7 @@ GROUP BY
 También se puede incluir la cláusula `PARTITION BY`. La siguiente consulta muestra las ventas de todos los meses de todos los años, incluyendo el acumulado desde el inicio de año.
 
 
-```
+```sql
 
 select 
   year(fecha) anyo,
@@ -53,7 +53,7 @@ group by all
 
 El SQL generado es:
 
-```
+```sql
 SELECT
   year(fecha) AS anyo,
   month(fecha) AS mes,

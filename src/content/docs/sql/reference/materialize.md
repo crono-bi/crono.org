@@ -7,7 +7,7 @@ sidebar:
 
 La cláusula **MATERIALIZE** permite crear una tabla temporal con el contenido de una subconsulta. Es decir, antes de la ejecución de la consulta, se crean las tablas temporales necesarias y finalmente se ejecuta la consulta utilizando dichas tablas. Esta estrategia de carga simplifica el plan de ejecución del motor de base de datos y se pueden obtener mejoras de rendimiento muy significativas, sin penalizar o dificultar la escritura de la consulta.
 
-``` sql
+```sql
 SELECT
   SalesOrderHeader.OrderDate,
   Product.Name Product,
@@ -23,7 +23,7 @@ INNER JOIN staging.Product USING ProductId
   <details>
 <summary>Ver SQL compilado</summary>
 
-``` sql
+```sql
 -- Materialized query: Sales
 SELECT *
 INTO #Sales__39872
@@ -51,7 +51,7 @@ GROUP BY
 Con la cláusula **MATERIALIZE**, también se pueden materializar las consultas de una sentencia **COMBINE**. En este ejemplo, primero se ejecutará la consulta con las ventas, luego se ejecutará una consulta con las compras, y finalmente se combinarán en un único resultado.
 
 
-``` sql
+```sql
 COMBINE bY Product,productNumber
   MATERIALIZE sales (
 	select 
@@ -76,7 +76,7 @@ COMBINE bY Product,productNumber
   <details>
 <summary>Ver SQL compilado</summary>
 
-``` sql
+```sql
 -- Materialized query: sales
 SELECT
   Product.Name AS Product,

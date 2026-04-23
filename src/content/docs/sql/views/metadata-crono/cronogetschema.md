@@ -17,7 +17,7 @@ Si no se establece `Connection` se usa la conexión actual.
 
 **Sintaxis:**
 
-```
+```sql
 Crono$GetSchema(
     [Connection]='nombre de la conexión',
     [Query]=(SELECT ...)
@@ -26,7 +26,7 @@ Crono$GetSchema(
 
 
 
-```
+```sql
 Crono$GetSchema(
     [Connection]='nombre de la conexión',
     [Name]='collectionName' -- TABLE o COLUMNS
@@ -37,7 +37,7 @@ Crono$GetSchema(
 
 La siguiente sentencia informará sobre las 2 columnas de esta consulta:
 
-```
+```sql
 SELECT *
 FROM Crono$GetSchema(
     [Connection]='PostgeDB',
@@ -47,7 +47,7 @@ FROM Crono$GetSchema(
 
 La siguiente consulta devuelve un listado de las tablas disponibles, según el conector ODBC. 
 
-```
+```sql
 SELECT *
 FROM Crono$GetSchema(Name='TABLES')
 ```
@@ -55,7 +55,7 @@ FROM Crono$GetSchema(Name='TABLES')
 
 La siguiente consulta devuelve un listado de los campos disponibles en todas tablas existentes, según el conector ODBC. 
 
-```
+```sql
 SELECT *
 FROM Crono$GetSchema(Name='COLUMNS')
 ```
@@ -63,14 +63,14 @@ FROM Crono$GetSchema(Name='COLUMNS')
 Lo mismo se puede hacer de una base de datos distinta de la actual.
 
 
-```
+```sql
 SELECT *
 FROM Crono$GetSchema([Connection]='PostgeDB',Name='COLUMNS')
 ```
 
 Si no se establece ninguna propiedad, se obtiene el listado de las tablas disponibles.
 
-```
+```sql
 SELECT *
 FROM Crono$GetSchema()
 ```

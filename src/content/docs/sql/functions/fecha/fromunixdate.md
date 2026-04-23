@@ -17,7 +17,7 @@ fromunixdate(unix_timestamp)
 
 La siguiente sentencia convierte el timestamp 1704067200 a fecha
 
-```
+```sql
 SELECT fromunixdate(1704067200);
 -- Resultado: '2024-01-01 00:00:00'
 ```
@@ -25,7 +25,7 @@ SELECT fromunixdate(1704067200);
 El código generado es:
 
 
-```
+```sql
 SELECT dateadd(s,1704067200, '1970-01-01') AS expr1
 ```
 

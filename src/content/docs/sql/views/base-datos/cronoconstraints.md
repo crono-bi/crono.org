@@ -9,7 +9,7 @@ Devuelve información sobre las restricciones de todas las tablas de la base de 
 Es similar a la vista ANSI `INFORMATION_SCHEMA.TABLE_CONSTRAINTS`
 
 
-```
+```sql
 select *
 from Crono$Constraints
 ```

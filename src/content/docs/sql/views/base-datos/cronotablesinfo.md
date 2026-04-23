@@ -27,14 +27,14 @@ La vista `Crono$TablesInfo` amplia la información ofrecida por `Crono$Tables`
 
 ## Ejemplo
 
-```
+```sql
 SELECT *
 FROM Crono$TablesInfo
 ```
 
 La consulta generada es:
 
-```
+```sql
 SELECT *
 FROM
   (SELECT

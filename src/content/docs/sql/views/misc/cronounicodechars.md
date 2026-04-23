@@ -12,7 +12,7 @@ Esta información está generada a partir del fichero [UnicodeData.txt](http://w
 La siguiente consulta muestra 100 caracteres UNICODE.
 
 
-``` 
+```sql
 select top 100 *
 from Crono$UnicodeChars
 where codepoint between 65 and 90 or [Group]='Emoji' 

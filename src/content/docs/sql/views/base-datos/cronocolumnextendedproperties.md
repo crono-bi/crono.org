@@ -8,7 +8,7 @@ Devuelve información sobre las propiedades extendidas de todas las columnas la 
 
 Toma la información de la vista de sistema `sys.extended_properties` de **SQL Server**
 
-```
+```sql
 select *
 from Crono$ColumnExtendedProperties
 ```

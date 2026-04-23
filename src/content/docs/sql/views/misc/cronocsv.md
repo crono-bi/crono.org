@@ -24,7 +24,7 @@ El generador de **Crono** analizar el contenido del arcihvo para tratar de deter
 
 Esta pseudovista permite leer un CSV de este modo:
 
-```
+```sql
 select *
 from crono$Csv(
     Filename='https://github.com/crono-bi/crono.org/blob/master/src/.vuepress/public/stores.csv',
@@ -35,7 +35,7 @@ from crono$Csv(
 **Crono SQL** lee el CSv y los convierte múltiples `SELECTs`individuales concatenadas mediante `UNION ALL`. El código resultante será similar a:
 
 
-```
+```sql
 SELECT *
 FROM (
     SELECT *
@@ -57,7 +57,7 @@ FROM (
 
 El mismo resultado se obtener con esta sentencia, pues `[Separator]` es opcional y `[filename]` es la propiedad predeterminada. 
 
-```
+```sql
 select *
 from crono$Csv(
     Filename='https://github.com/crono-bi/crono.org/blob/master/src/.vuepress/public/stores.csv',
@@ -68,7 +68,7 @@ from crono$Csv(
 Como en cualquier otra es compatible con el resto de elementos del lenguaje **Crono SQL**. Es posible filtrar, agrupar, o unir con otras tablas el CSV.
 
 
-```
+```sql
 select city Ciudad,count(*) NumTiendas
 from crono$Csv('https://github.com/crono-bi/crono.org/blob/master/src/.vuepress/public/stores.csv')
 where state='Pichincha'
@@ -76,7 +76,7 @@ where state='Pichincha'
 
 Es posible ejecutar una consulta sobre un literal CSV, tal y como muestra el siguiente ejemplo:
 
-```
+```sql
 select *
 from Crono$Csv(
 	IndexColumnName='IdTienda',
@@ -93,7 +93,7 @@ from Crono$Csv(
 
 Como se ha informado el paràmetro `IndexColumnName`, el código resultante ha añadido una columna autonumérica que se puede usar como identificador del registro:
 
-```
+```sql
 SELECT *
 FROM
   (SELECT 0 AS IdTienda, 1 AS store_nbr, 'Quito' AS city, 'Pichincha' AS state, 'D' AS type, 13 AS cluster
@@ -115,7 +115,7 @@ En estos casos, es preciso materializar la tabla en base de datos antes de prepa
 
 La sintaxis para conseguir este comportamiento es la siguiente:
 
-```
+```sql
 select city Ciudad,count(*) NumTiendas
 from crono$Csv('https://github.com/crono-bi/crono.org/blob/master/src/.vuepress/public/stores.csv') materialize into tmp stores
 where state='Pichincha'
@@ -123,7 +123,7 @@ where state='Pichincha'
 
 En este caso, la consulta generada es la siguiente:
 
-```
+```sql
 IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA='dbo' AND TABLE_NAME='tmp')
 CREATE TABLE dbo.tmp(
   store_nbr float,

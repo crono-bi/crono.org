@@ -9,7 +9,7 @@ Devuelve el listado de funciones SQL soportadas por Crono. Incluye las funciones
 
 Este listado es meramente informativo, pues Crono permite usar cualquier función que soporte la base de datos (esté incluido en este listado o no)
 
-```
+```sql
 select *
 from Crono$Functions
 ```

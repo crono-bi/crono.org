@@ -17,7 +17,7 @@ COUNTVALUES(valor1, valor2, ..., valorN)
 ## Ejemplo
 
 
-```
+```sql
 -- Cuenta el número de valores no nulos
 SELECT COUNTVALUES(1, 2, 3, 4, 6.5);
 -- Resultado: 5
@@ -25,7 +25,7 @@ SELECT COUNTVALUES(1, 2, 3, 4, 6.5);
 
 Los valores nulos se ignoran a efectos del cálculo promedio:
 
-```
+```sql
 select COUNTVALUES(1,null,3); -- El resultado es 2
 ```
 

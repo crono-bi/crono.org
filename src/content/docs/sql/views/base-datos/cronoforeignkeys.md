@@ -9,7 +9,7 @@ Devuelve información sobre todas las claves externas de la base de datos.
 
 Es similar a la vista `INFORMATION_SCHEMA.REFERENTIAL_CONSTRAINTS`
 
-```
+```sql
 select *
 from Crono$ForeignKeys
 ```

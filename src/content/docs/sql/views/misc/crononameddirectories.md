@@ -8,7 +8,7 @@ Devuelve las "carpetas con nombre" definidas en las opciones generales de Crono.
 
 Estas propiedades pueden definirse desde cualquiera de las aplicaciones Crono desde "Ayuda/Opciones generales/Propiedades comunes/Carpetas con nombre"
 
-```
+```sql
 SELECT *
 FROM Crono$NamedDirectories
 ```

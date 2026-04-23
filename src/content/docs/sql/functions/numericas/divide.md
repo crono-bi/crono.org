@@ -11,14 +11,14 @@ El resultado es un valor `decimal` incluso si los dos parámetros de entrada son
 
 ## Ejemplo
 
-```
+```sql
 select divide(3,2) division1;
 select divide(3,0) division2;
-```` 
+```
 
 El código SQL generado es el siguiente.
 
-```
+```sql
 SELECT CASE WHEN 2<>0 THEN 1.0*3/2 END AS division1
 SELECT CASE WHEN 0<>0 THEN 1.0*3/0 END AS division2
 ```

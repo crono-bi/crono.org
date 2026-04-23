@@ -9,13 +9,13 @@ Si todos los parámetros de entrada son nulos la función devuelve `NULL`
 
 ## Ejemplo
 
-```
+```sql
 select minimum(1,5,3,2) AS maximumNumber;
 ```
 
 El código SQL generado es el siguiente:
 
-```
+```sql
 SELECT
   CASE
     WHEN 1 IS NOT NULL AND (5 IS NULL OR 1<=5) AND (3 IS NULL OR 1<=3) AND (2 IS NULL OR 1<=2) THEN 1

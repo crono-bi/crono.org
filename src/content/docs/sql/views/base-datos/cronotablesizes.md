@@ -19,7 +19,7 @@ La psuedovista tiene estas colunnas:
 - **UnusedSpaceKB**: Espacio reservado en disco, pero no utilizado por datos o índices
 
 
-```
+```sql
 SELECT *
 FROM Crono$TableSizes
 ```
@@ -28,7 +28,7 @@ FROM Crono$TableSizes
 La consulta SQL que se genera es:
 
 
-```
+```sql
 SELECT *
 FROM
   (SELECT

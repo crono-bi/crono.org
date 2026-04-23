@@ -8,7 +8,7 @@ sidebar:
 Con el operador **FILE**, se puede leer un fichero plano (CSV) del sistema de archivos (o desde una URL) para generar una subconsulta. Se puede utilizar, por ejemplo, para generar un maestro que no existe en la base de datos. El fichero solo se lee en tiempo de compilación. El SQL generado es estático. 
 
 
-``` sql
+```sql
 SELECT 
   Person.BusinessEntityID, 
   Person.PersonType,
@@ -24,7 +24,7 @@ LEFT JOIN FILE WITH COLUMN NAMES 'http://bit.ly/2pcuiEe' PersonType USING Person
   <details>
 <summary>Ver SQL compilado</summary>
 
-``` sql
+```sql
 SELECT
   Person.BusinessEntityID AS BusinessEntityID,
   Person.PersonType AS PersonType,

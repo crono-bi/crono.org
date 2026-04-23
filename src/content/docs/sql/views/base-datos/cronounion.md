@@ -10,7 +10,7 @@ Se compartan igual que las funciones de Crono `Union()` y `UnionAll()`, pero las
 
 **Sintaxis:**
 
-```
+```sql
 Crono$Union(
     [Tables]=(SELECT... )
 )
@@ -22,14 +22,14 @@ La vista `Crono$Union` usa el operador `UNION` para unir las tablas.
 
 Imaginemos que tenemos 3 bases de datos con las mismas tablas. el lenguaje **Crono SQL** permite unir una de las tablas de esas bases de datos con las de este modo:
 
-```
+```sql
 SELECT *
 FROM Union(empresa1.TIENDAS,empresa2.TIENDAS,empresa3.TIENDAS)
 ```
 
 Este método podría resultar farragoso si hay muchas "bases de datos" o estas varian con el tiempo. Para estos casos, existe la vista `Crono$Union` que permite determinar las tablas a unir a partir de una sentencia.
 
-```
+```sql
 SELECT *
 FROM Crono$Union(
     Tables=(

@@ -7,7 +7,7 @@ title: "Crono$ActiveDirectoryGroupsOf"
 
 Devuelve el listado de grupos del Directorio Activo a los que pertenece un usuario determinado.
 
-```
+```sql
 select *
 from Crono$ActiveDirectoryGroupsOf('MOTOMAMI\Rosalia')
 ```

@@ -16,7 +16,7 @@ La pseudovista tiene estas propiedades:
 
 La siguiente sentencia permite ver la respuesta que se obtiene al hacer una petición a https://crono.org/sql/functions/
 
-```
+```sql
 select *
 from Crono$HttpStatusCode(Location='https://crono.org/sql/functions/')
 ```
@@ -30,7 +30,7 @@ La respuesta tiene un resultado similar a:
 
 La **propiedad Data** permite comprobar muchas URL al mismo tiempo:
 
-```
+```sql
 select Location, StatusCode, Status
 from Crono$HttpStatusCode(
 	Data=(

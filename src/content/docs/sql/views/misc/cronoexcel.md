@@ -14,7 +14,7 @@ Tiene 2 propiedades:
 
 La siguiente sentencia lee la tabla `TablaEjemplo` del fichero `Sample2.xlsx':
 
-```
+```sql
 select *
 from crono$Excel(
 	Filename='https://github.com/crono-bi/crono.org/tree/master/src/.vuepress/public/Sample2.xlsx', 
@@ -26,7 +26,7 @@ from crono$Excel(
 
 Como cualquier otra pseudovista, `Crono$Excel` se puede combinar con cualquier otro elemento del lenguaje **Crono SQL**. La siguiente sentencia utiliza `CREATE OR REPLACE TABLE` para copiar los datos del Excel en una tabla `stg.Ventas`
 
-```
+```sql
 CREATE OR REPLACE TABLE stg.Ventas
 select *
 from crono$Excel(

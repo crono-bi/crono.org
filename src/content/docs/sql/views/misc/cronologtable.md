@@ -29,7 +29,7 @@ Esta información está guardada en las propiedades extendidas de la base de dat
 
 Esta es la configuración predeterminada:
 
-```
+```sql
 CREATE OR ALTER TABLE audit.Logs (
   IdLog 			int IDENTITY(1,1) PRIMARY KEY,
   IdLogPadre 		int,

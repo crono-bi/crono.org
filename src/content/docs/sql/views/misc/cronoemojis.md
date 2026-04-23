@@ -10,7 +10,7 @@ Devuelve el listado completos de Emojis reconocidos por el estándar UNICODE.
 Esta información está generada a partir del fichero [emoji-test.txt](https://unicode.org/Public/emoji/13.0/emoji-test.txt) proporcionado por Unicode Consortium.
 
 
-``` sql
+```sql
 select 
 	GroupName,
 	SubgroupName,
@@ -26,7 +26,7 @@ order by emoji
   <details>
 <summary>Ver SQL compilado</summary>
 
-``` sql
+```sql
 SELECT
   GroupName,
   SubgroupName,

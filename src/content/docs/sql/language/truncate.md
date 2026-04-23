@@ -7,7 +7,7 @@ sidebar:
 
 **Crono SQL** soporta la sintaxis estándar del a sentencia **TRUNCATE** de SQL:
 
-``` sql
+```sql
 TRUNCATE TABLE dwh.DimCustomers
 ```
 
@@ -16,7 +16,7 @@ TRUNCATE TABLE dwh.DimCustomers
   <details>
 <summary>Ver SQL compilado</summary>
 
-``` sql
+```sql
 TRUNCATE TABLE dwh.DimCustomers
 ```
 

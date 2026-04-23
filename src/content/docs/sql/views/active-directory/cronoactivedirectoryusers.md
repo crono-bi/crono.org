@@ -7,7 +7,7 @@ title: "Crono$ActiveDirectoryUsers"
 
 Devuelve el listado de usuarios del Directorio Activo.
 
-```
+```sql
 select *
 from Crono$ActiveDirectoryUsers
 ```
@@ -15,7 +15,7 @@ from Crono$ActiveDirectoryUsers
 Si se incluye un argumento con el nombre de un grupo, devuelve los usuarios de dicho grupo.
 
 
-```
+```sql
 select *
 from Crono$ActiveDirectoryUsers('Administradores')
 ```

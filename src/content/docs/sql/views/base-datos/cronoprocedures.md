@@ -11,7 +11,7 @@ Devuelve información sobre los procedimientos y funciones de la base de datos.
 Es similar a la vista ANSI `INFORMATION_SCHEMA.[ROUTINES]`
 
 
-```
+```sql
 select *
 from Crono$Procedures
 ```

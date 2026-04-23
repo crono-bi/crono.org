@@ -13,7 +13,7 @@ Se puede usar tanto la sintaxis `OVER` del SQL estándar como la sintaxis compac
 
 La siguiente consulta devuelve las ventas de cada mes y las ventas en el mes sigu**anterior**.
 
-```
+```sql
 select 
   year(fecha) anyo, 
   month(fecha) mes,
@@ -25,7 +25,7 @@ group by all
 
 La misma consulta se puede construir con la sintaxis compacta del `OVER`:
 
-```
+```sql
 select 
   year(fecha) anyo, 
   month(fecha) mes,
@@ -37,7 +37,7 @@ group by all
 
 La consulta SQL generada en ambos casos es:
 
-```
+```sql
 SELECT
   year(fecha) AS anyo,
   month(fecha) AS mes,
