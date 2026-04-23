@@ -1,6 +1,17 @@
 @import "tailwindcss";
 @import "./brand-themes.css";
 
+/* Hide right sidebar (table of contents) when it has 0 or 1 items */
+.right-sidebar-container:has(.right-sidebar nav ul li:only-child),
+.right-sidebar-container:has(.right-sidebar nav ul:empty) {
+  display: none;
+}
+
+/* Alternative: hide when there's only one section link */
+.right-sidebar:has(.toc-items li:first-child:last-child) {
+  display: none;
+}
+
 html {
   scroll-behavior: smooth;
 }

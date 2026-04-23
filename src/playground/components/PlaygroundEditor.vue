@@ -4,7 +4,14 @@
     <div class="pg-panel pg-panel-left" :style="{ flex: leftPanelFlex }">
       <!-- Panel Header -->
       <div class="pg-panel-header">
-        <span class="pg-panel-label">Crono SQL</span>
+        <div class="pg-lang-wrapper">
+          <button class="pg-lang-btn" :class="theme === Theme.Light ? 'pg-lang-btn-light' : 'pg-lang-btn-dark'">
+            <span class="pg-lang-btn-icon">
+              <img :src="cronoIcon" alt="Crono" />
+            </span>
+            <span>Crono SQL</span>
+          </button>
+        </div>
         <div class="pg-panel-header-actions">
           <EtlOptionsPanel v-model="etlOptions" :theme="theme" @apply="handleRun" />
         </div>
@@ -51,6 +58,7 @@ import CodeEditor from './CodeEditor.vue'
 import EngineSelector from './EngineSelector.vue'
 import Toast from './Toast.vue'
 import EtlOptionsPanel from './EtlOptionsPanel.vue'
+import cronoIcon from '../assets/datawarehouse-logos/crono.svg?url'
 import { useSplitter } from '../composables/useSplitter'
 import { useCompilation } from '../composables/useCompilation'
 import { useClipboard } from '../composables/useClipboard'

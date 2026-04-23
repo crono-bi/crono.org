@@ -121,6 +121,74 @@
   flex-shrink: 0;
 }
 
+/* Lang wrapper - identical to etl-wrapper for correct vertical centering */
+.pg-lang-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  margin: 0 !important;
+  padding: 0 !important;
+  height: 45px;
+  line-height: 1;
+}
+
+/* Lang button (left header) - matches engine-tab active style exactly */
+.pg-lang-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 14px;
+  height: 45px;
+  min-height: 45px;
+  max-height: 45px;
+  font-size: 13.5px;
+  font-weight: 500;
+  line-height: 1;
+  border: 1px solid #3B82F6;
+  border-radius: 6px;
+  cursor: default;
+  white-space: nowrap;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  margin: 0 !important;
+}
+
+.pg-lang-btn-light {
+  background: rgba(59, 130, 246, 0.12);
+  color: #2563EB;
+  box-shadow: 0 0 0 1px #3B82F6 inset;
+}
+
+.pg-lang-btn-dark {
+  background: rgba(59, 130, 246, 0.15);
+  color: #60A5FA;
+  box-shadow: 0 0 0 1px #3B82F6 inset;
+}
+
+.pg-lang-btn-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+}
+
+.pg-lang-btn-icon img {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+}
+
+/* Colorear el SVG de Crono para que tome el color del texto */
+.pg-lang-btn-light .pg-lang-btn-icon img {
+  filter: invert(26%) sepia(89%) saturate(1200%) hue-rotate(210deg) brightness(90%);
+}
+
+.pg-lang-btn-dark .pg-lang-btn-icon img {
+  filter: invert(65%) sepia(60%) saturate(800%) hue-rotate(195deg) brightness(105%);
+}
+
 /* Right side: Actions */
 .pg-panel-header-actions {
   display: flex;
