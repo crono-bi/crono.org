@@ -2,6 +2,7 @@
 // Metadata Landing Page - With SectionIndex for all pages
 import ManualLanding from './ManualLanding.astro'
 import type { Feature } from './ManualLanding.astro'
+import logoMetadata from '../assets/logos/Crono Metadata.webp'
 
 const features: Feature[] = [
   {
@@ -23,7 +24,7 @@ const features: Feature[] = [
 ---
 
 <ManualLanding
-  logo="/CronoMETADATA.png"
+  logo={logoMetadata}
   logoAlt="Crono Metadata"
   subtitle="Aplicación para construir la capa semántica de Crono"
   ctaText="Acceder al manual"

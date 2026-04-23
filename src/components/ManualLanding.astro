@@ -1,6 +1,7 @@
 ---
 // Generic Manual Landing Page - Reusable for all Crono products
 // Supports: SQL, ETL, Metadata, Analysis
+import { Image } from 'astro:assets'
 import CategorySelector from './CategorySelector.astro'
 import FeatureCards from './FeatureCards.astro'
 import EngineChips from './EngineChips.astro'
@@ -37,7 +38,7 @@ export interface FuncExample {
 
 interface Props {
   // Hero
-  logo: string
+  logo: ImageMetadata | string
   logoAlt: string
   subtitle: string
   ctaText: string
@@ -133,7 +134,10 @@ const brandRgb = brandColor.startsWith('#') ? hexToRgb(brandColor) : '27, 95, 14
 <div class="manual-landing not-content" data-instance={instanceId} style={`--brand-color: ${brandColor}; --brand-rgb: ${brandRgb}`}>
   <!-- HERO -->
   <section class="hero">
-    <img src={logo} alt={logoAlt} class="hero-logo" />
+    {typeof logo === 'string'
+      ? <img src={logo} alt={logoAlt} class="hero-logo" />
+      : <Image src={logo} alt={logoAlt} class="hero-logo" height={60} inferSize />
+    }
     <p class="hero-subtitle">{subtitle}</p>
     <div class="hero-cta">
       <a href={ctaHref} class="btn-primary btn-lg">
@@ -253,6 +257,13 @@ const brandRgb = brandColor.startsWith('#') ? hexToRgb(brandColor) : '27, 95, 14
     margin: 0 auto 16px;
     object-fit: contain;
     display: block;
+    filter: invert(0);
+    transition: filter 0.2s;
+  }
+
+  :root[data-theme='dark'] .hero-logo,
+  :root:not([data-theme='light']) .hero-logo {
+    filter: invert(1);
   }
 
   .hero-subtitle {

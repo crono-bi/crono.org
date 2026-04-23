@@ -103,6 +103,13 @@ if (pathname.startsWith('/analysis/')) {
 			max-width: none;
 			object-fit: contain;
 			object-position: left center;
+			filter: invert(0);
+			transition: filter 0.2s;
+		}
+
+		:root[data-theme='dark'] .product-logo,
+		:root:not([data-theme='light']) .product-logo {
+			filter: invert(1);
 		}
 	}
 </style>
