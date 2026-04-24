@@ -13,29 +13,9 @@ export const sqlTopics = {
 							items: [
 								{ label: 'Introducción', link: 'sql/functions/' },
 								{
-									label: 'Agregación',
+									label: 'Texto',
 									collapsed: true,
-									autogenerate: { directory: 'sql/functions/agregacion' }
-								},
-								{
-									label: 'Conversión',
-									collapsed: true,
-									autogenerate: { directory: 'sql/functions/conversion' }
-								},
-								{
-									label: 'Fecha',
-									collapsed: true,
-									autogenerate: { directory: 'sql/functions/fecha' }
-								},
-								{
-									label: 'Informacional',
-									collapsed: true,
-									autogenerate: { directory: 'sql/functions/informacional' }
-								},
-								{
-									label: 'Nulos',
-									collapsed: true,
-									autogenerate: { directory: 'sql/functions/nulos' }
+									autogenerate: { directory: 'sql/functions/texto' }
 								},
 								{
 									label: 'Numéricas',
@@ -43,14 +23,33 @@ export const sqlTopics = {
 									autogenerate: { directory: 'sql/functions/numericas' }
 								},
 								{
-									label: 'Texto',
+									label: 'Fecha',
 									collapsed: true,
-									autogenerate: { directory: 'sql/functions/texto' }
+									autogenerate: { directory: 'sql/functions/fecha' }
+								},
+								{
+									label: 'Nulos',
+									collapsed: true,
+									autogenerate: { directory: 'sql/functions/nulos' }
+								},
+								{
+									label: 'Conversión',
+									collapsed: true,
+									autogenerate: { directory: 'sql/functions/conversion' }
+								},
+								{
+									label: 'Agregación',
+									collapsed: true,
+									autogenerate: { directory: 'sql/functions/agregacion' }
+								},
+								{
+									label: 'Informacional',
+									collapsed: true,
+									autogenerate: { directory: 'sql/functions/informacional' }
 								},
 							]
 						},
-						{ label: 'Sentencias', collapsed: true, autogenerate: { directory: 'sql/actions' } },
-						{
+							{
 							label: 'Vistas',
 							collapsed: true,
 							items: [

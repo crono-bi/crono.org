@@ -152,6 +152,26 @@ html {
 
 /* Playground page overrides are in src/components/PlaygroundWrapper.astro */
 
+/* ===== SIDEBAR SCROLL JUMP FIX ===== */
+#starlight__sidebar details {
+  overflow-anchor: none;
+}
+#starlight__sidebar {
+  scroll-behavior: auto !important;
+}
+#starlight__sidebar * {
+  scroll-behavior: auto !important;
+}
+
+/* ===== SIDEBAR NESTED GROUP HIERARCHY ===== */
+/* Subgrupos hijos (nivel 2+): menor tamaño y peso que el padre */
+#starlight__sidebar details ul li details summary span.large {
+  font-size: 0.8rem;
+  font-weight: 400;
+  opacity: 0.8;
+}
+
+
 /* ===== SIDEBAR ACTIVE ITEM FIX ===== */
 /* Ensure text is always readable on active sidebar items */
 :root[data-theme='dark'] [aria-current='page'],
@@ -275,6 +295,24 @@ html {
 .pagination-links .link-title {
   font-size: var(--sl-text-base) !important;
   font-weight: 600 !important;
+}
+
+/* ===== FIX ORDERED LIST NUMBERS ===== */
+.sl-markdown-content ol {
+  list-style-type: decimal !important;
+  padding-left: 1.5rem !important;
+  margin: 1rem 0 !important;
+}
+
+.sl-markdown-content ol li {
+  display: list-item !important;
+  list-style-position: outside !important;
+  margin: 0.5rem 0 !important;
+}
+
+.sl-markdown-content ul {
+  list-style-type: disc !important;
+  padding-left: 1.5rem !important;
 }
 
 /* ===== PLAYGROUND SIDEBAR LINK COLOR OVERRIDE ===== */

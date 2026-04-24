@@ -9,7 +9,7 @@ Es sencillo crear un catálogo siguiendo estos pasos:
 
 1. Crear la conexión
 2. Crear los diagramas (uno o varios)
-3. Crear la objetos de negocio
+3. Crear los objetos de negocio
 4. Validar el funcionamiento del catálogo
 
 ## Crear la conexión
