@@ -13,37 +13,37 @@ export const sqlTopics = {
 							items: [
 								{ label: 'Introducción', link: 'sql/functions/' },
 								{
-									label: 'Texto',
+									label: 'Funciones de texto',
 									collapsed: true,
 									autogenerate: { directory: 'sql/functions/texto' }
 								},
 								{
-									label: 'Numéricas',
+									label: 'Funciones numéricas',
 									collapsed: true,
 									autogenerate: { directory: 'sql/functions/numericas' }
 								},
 								{
-									label: 'Fecha',
+									label: 'Funciones de fechas',
 									collapsed: true,
 									autogenerate: { directory: 'sql/functions/fecha' }
 								},
 								{
-									label: 'Nulos',
+									label: 'Funciones de nulos',
 									collapsed: true,
 									autogenerate: { directory: 'sql/functions/nulos' }
 								},
 								{
-									label: 'Conversión',
+									label: 'Funciones de conversión',
 									collapsed: true,
 									autogenerate: { directory: 'sql/functions/conversion' }
 								},
 								{
-									label: 'Agregación',
+									label: 'Funciones de agregación',
 									collapsed: true,
 									autogenerate: { directory: 'sql/functions/agregacion' }
 								},
 								{
-									label: 'Informacional',
+									label: 'Funciones informacionales',
 									collapsed: true,
 									autogenerate: { directory: 'sql/functions/informacional' }
 								},
@@ -55,27 +55,27 @@ export const sqlTopics = {
 							items: [
 								{ label: 'Introducción', link: 'sql/views/' },
 								{
-									label: 'Active Directory',
+									label: 'Vistas de Active Directory',
 									collapsed: true,
 									autogenerate: { directory: 'sql/views/active-directory' }
 								},
 								{
-									label: 'Base de datos',
+									label: 'Vistas de base de datos',
 									collapsed: true,
 									autogenerate: { directory: 'sql/views/base-datos' }
 								},
 								{
-									label: 'Metadata Crono',
+									label: 'Vistas de metadata Crono',
 									collapsed: true,
 									autogenerate: { directory: 'sql/views/metadata-crono' }
 								},
 								{
-									label: 'Tiempo',
+									label: 'Vistas de tiempo',
 									collapsed: true,
 									autogenerate: { directory: 'sql/views/tiempo' }
 								},
 								{
-									label: 'Misceláneos',
+									label: 'Vistas misceláneas',
 									collapsed: true,
 									autogenerate: { directory: 'sql/views/misc' }
 								},

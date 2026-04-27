@@ -171,6 +171,28 @@ html {
   opacity: 0.8;
 }
 
+/* Categorias de SQL > Funciones en negrita */
+#starlight__sidebar details ul li details:has(> ul a[href*='/sql/functions/texto/']) > summary span.large,
+#starlight__sidebar details ul li details:has(> ul a[href*='/sql/functions/numericas/']) > summary span.large,
+#starlight__sidebar details ul li details:has(> ul a[href*='/sql/functions/fecha/']) > summary span.large,
+#starlight__sidebar details ul li details:has(> ul a[href*='/sql/functions/nulos/']) > summary span.large,
+#starlight__sidebar details ul li details:has(> ul a[href*='/sql/functions/conversion/']) > summary span.large,
+#starlight__sidebar details ul li details:has(> ul a[href*='/sql/functions/agregacion/']) > summary span.large,
+#starlight__sidebar details ul li details:has(> ul a[href*='/sql/functions/informacional/']) > summary span.large {
+  font-weight: 700;
+  opacity: 1;
+}
+
+/* Categorias de SQL > Vistas en negrita */
+#starlight__sidebar details ul li details:has(> ul a[href*='/sql/views/active-directory/']) > summary span.large,
+#starlight__sidebar details ul li details:has(> ul a[href*='/sql/views/base-datos/']) > summary span.large,
+#starlight__sidebar details ul li details:has(> ul a[href*='/sql/views/metadata-crono/']) > summary span.large,
+#starlight__sidebar details ul li details:has(> ul a[href*='/sql/views/tiempo/']) > summary span.large,
+#starlight__sidebar details ul li details:has(> ul a[href*='/sql/views/misc/']) > summary span.large {
+  font-weight: 700;
+  opacity: 1;
+}
+
 
 /* ===== SIDEBAR ACTIVE ITEM FIX ===== */
 /* Ensure text is always readable on active sidebar items */
@@ -310,7 +332,7 @@ html {
   margin: 0.5rem 0 !important;
 }
 
-.sl-markdown-content ul {
+.sl-markdown-content ul:not(.hero-bullets) {
   list-style-type: disc !important;
   padding-left: 1.5rem !important;
 }
