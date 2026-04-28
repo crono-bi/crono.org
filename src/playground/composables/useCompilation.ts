@@ -1,8 +1,9 @@
-import { ref, computed, watch } from 'vue'
+import { ref, computed, watch, onMounted } from 'vue'
 import type { Ref } from 'vue'
 import { CronoSqlService } from '../services/cronosql.service'
 import { EngineId, EtlColumnDefault } from '../types/enums'
 import type { EtlOptions } from '../types/interfaces'
+import { playgroundBus } from '../event-bus'
 
 const ENGINE_LABELS: Record<EngineId, string> = {
   [EngineId.SQLServer]: 'SQL Server',
@@ -61,6 +62,17 @@ export function useCompilation() {
     StartDateColumnName:    EtlColumnDefault.StartDate,
     EndDateColumnName:      EtlColumnDefault.EndDate,
     DefaultEndDate:         EtlColumnDefault.DefaultEndDate
+  })
+
+  // Store code in localStorage so sidebar can select matching example
+  onMounted(() => {
+    if (urlParams?.get('code') && cronoCode.value !== defaultCode) {
+      localStorage.setItem('pg-url-code', cronoCode.value)
+      // Also emit for immediate response if sidebar is ready
+      playgroundBus.emit('url-code-loaded', cronoCode.value)
+    } else {
+      localStorage.removeItem('pg-url-code')
+    }
   })
 
   // Update URL when code or engine changes (base64 encoded)

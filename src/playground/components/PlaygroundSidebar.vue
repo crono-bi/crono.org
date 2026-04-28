@@ -55,6 +55,7 @@ const { examples, activeExample, loadExamples } = useExamples()
 
 const isLoading = ref(true)
 const expandedGroups = ref<Set<string>>(new Set([ExampleGroupId.Select]))
+const pendingCodeFromUrl = ref<string | null>(null)
 
 function toggleGroup(group: string): void {
   if (expandedGroups.value.has(group)) {
@@ -87,13 +88,90 @@ function closeMobileSidebar(): void {
   }
 }
 
+function normalizeForCompare(str: string): string {
+  // Very aggressive normalization: remove all whitespace, lowercase
+  return str.toLowerCase().replace(/\s+/g, '').trim()
+}
+
+function findAndSelectExampleByCode(code: string): void {
+  // If examples not loaded yet, store for later
+  if (isLoading.value || examples.value.length === 0) {
+    pendingCodeFromUrl.value = code
+    return
+  }
+  
+  const normalizedCode = normalizeForCompare(code)
+  
+  // First pass: look for exact code match (most reliable)
+  for (const group of examples.value) {
+    for (const item of group.items) {
+      const itemNormalized = normalizeForCompare(item.code)
+      if (itemNormalized === normalizedCode) {
+        selectExample(group.group, item.name)
+        return
+      }
+    }
+  }
+  
+  // Second pass: look for "Merge Clone" specifically by name
+  const targetName = 'Merge Clone'.toLowerCase().replace(/\s+/g, '')
+  for (const group of examples.value) {
+    for (const item of group.items) {
+      const itemNameNormalized = item.name.toLowerCase().replace(/\s+/g, '')
+      if (itemNameNormalized === targetName) {
+        selectExample(group.group, item.name)
+        return
+      }
+    }
+  }
+  
+  // Third pass: fallback to partial name match in code
+  for (const group of examples.value) {
+    for (const item of group.items) {
+      if (normalizedCode.includes(item.name.toLowerCase().replace(/\s+/g, ''))) {
+        selectExample(group.group, item.name)
+        return
+      }
+    }
+  }
+  
+  // If no match found, clear pending
+  pendingCodeFromUrl.value = null
+}
+
+function selectExample(groupName: string, itemName: string): void {
+  expandedGroups.value = new Set([groupName])
+  activeExample.value = itemName
+  pendingCodeFromUrl.value = null
+  
+  // Scroll the selected item into view after render
+  setTimeout(() => {
+    const activeBtn = document.querySelector('.pg-sl-item.active')
+    activeBtn?.scrollIntoView({ block: 'center', behavior: 'smooth' })
+  }, 100)
+}
+
 onMounted(async () => {
+  // Listen for URL-loaded code
+  playgroundBus.on('url-code-loaded', findAndSelectExampleByCode)
+  
   try {
     await loadExamples()
   } catch (e) {
     console.error('Failed to load examples:', e)
   } finally {
     isLoading.value = false
+  }
+  
+  // Check for code from URL (from localStorage fallback)
+  const urlCode = localStorage.getItem('pg-url-code')
+  if (urlCode) {
+    findAndSelectExampleByCode(urlCode)
+    localStorage.removeItem('pg-url-code')
+  }
+  // Also check pending from event bus
+  else if (pendingCodeFromUrl.value) {
+    findAndSelectExampleByCode(pendingCodeFromUrl.value)
   }
 })
 </script>
@@ -168,7 +246,7 @@ onMounted(async () => {
 }
 
 .pg-sl-item.active {
-  color: var(--sl-color-white);
+  color: #ffffff;
   background: var(--sl-color-accent);
   font-weight: 500;
 }

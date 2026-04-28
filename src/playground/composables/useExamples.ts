@@ -50,7 +50,21 @@ const GROUP_MAP: Record<string, ExampleGroupId> = {
 
 const ITEM_ORDER: string[] = Object.keys(GROUP_MAP)
 
+// Crono SQL instructions that should be displayed in uppercase
+const CRONO_SQL_INSTRUCTIONS = new Set([
+  'merge-clone', 'merge-history', 'merge-update', 'merge-upsert', 
+  'merge-soft-delete', 'merge-all', 'select', 'filter', 'materialize',
+  'check-snowflake', 'assert', 'calculate', 'semi-join', 'anti-join',
+  'nested-selects', 'string-interpolation', 'pseudo-views',
+  'delete-and-insert', 'truncate-and-insert', 'update-all', 'partition'
+])
+
 function fileNameToLabel(fileName: string): string {
+  // Crono SQL instructions in uppercase
+  if (CRONO_SQL_INSTRUCTIONS.has(fileName)) {
+    return fileName.replace(/-/g, ' ').toUpperCase()
+  }
+  // Standard SQL in Title Case
   return fileName.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())
 }
 
