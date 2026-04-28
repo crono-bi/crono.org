@@ -85,38 +85,42 @@ ORDER BY TotalSales DESC`
         <div class="hero-bullets-label">Ventajas clave</div>
         <ul class="hero-bullets" aria-label="Beneficios principales de la plataforma">
           <li>
-            <span class="hero-bullet-icon" aria-hidden="true">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <span class="hero-stat-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M20 6 9 17l-5-5"/>
               </svg>
             </span>
-            <span>Business Intelligence fácil de verdad</span>
+            <span class="hero-stat-label">Business Intelligence</span>
+            <span class="hero-stat-number">Fácil de verdad</span>
           </li>
           <li>
-            <span class="hero-bullet-icon" aria-hidden="true">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <span class="hero-stat-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M12 3a4 4 0 0 1 4 4v2h2a3 3 0 1 1 0 6h-2v2a4 4 0 1 1-8 0v-2H6a3 3 0 0 1 0-6h2V7a4 4 0 0 1 4-4z"/>
               </svg>
             </span>
-            <span>Una única plataforma</span>
+            <span class="hero-stat-label">Una única</span>
+            <span class="hero-stat-number">Plataforma</span>
           </li>
           <li>
-            <span class="hero-bullet-icon" aria-hidden="true">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <span class="hero-stat-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <polyline points="16 18 22 12 16 6"/>
                 <polyline points="8 6 2 12 8 18"/>
               </svg>
             </span>
-            <span>Un único lenguaje SQL</span>
+            <span class="hero-stat-label">Un único</span>
+            <span class="hero-stat-number">Lenguaje SQL</span>
           </li>
           <li>
-            <span class="hero-bullet-icon" aria-hidden="true">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <span class="hero-stat-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M12 19V5"/>
                 <path d="m5 12 7-7 7 7"/>
               </svg>
             </span>
-            <span>Desarrollo 60% más rápido</span>
+            <span class="hero-stat-label">Desarrollo</span>
+            <span class="hero-stat-number">60% más rápido</span>
           </li>
         </ul>
 
@@ -1173,62 +1177,80 @@ ORDER BY TotalSales DESC`
     padding: 0 !important;
     margin: 0 0 1.75rem 0;
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 0.75rem;
     max-width: 560px;
   }
   .hero-bullets li {
     --bullet-accent: #3B82F6;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 0.75rem;
-    padding: 0.675rem 0.75rem;
-    min-height: 4rem;
+    justify-content: flex-start;
+    gap: 0.35rem;
+    padding: 1.25rem 0.75rem 1rem;
+    min-height: 6.5rem;
     border-radius: 0.75rem;
     border: 1px solid color-mix(in srgb, var(--bullet-accent) 35%, var(--sl-color-hairline-light));
     background:
       linear-gradient(180deg, color-mix(in srgb, var(--bullet-accent) 10%, var(--sl-color-bg-nav)) 0%, color-mix(in srgb, var(--sl-color-bg-nav) 96%, transparent) 100%);
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.07), 0 8px 18px -14px rgba(0, 0, 0, 0.5);
-    font-size: 0.95rem;
-    line-height: 1.35;
-    font-weight: 520;
     color: var(--sl-color-white);
     position: relative;
     overflow: hidden;
     isolation: isolate;
+    text-align: center;
   }
   .hero-bullets li:nth-child(1) { --bullet-accent: #3B82F6; }
   .hero-bullets li:nth-child(2) { --bullet-accent: #8B5CF6; }
   .hero-bullets li:nth-child(3) { --bullet-accent: #06B6D4; }
   .hero-bullets li:nth-child(4) { --bullet-accent: #10B981; }
-  .hero-bullets li > span:last-child {
-    text-wrap: pretty;
-    flex: 1;
-  }
-  .hero-bullet-icon {
+  .hero-stat-icon {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 1.625rem;
-    height: 1.625rem;
+    width: 2.25rem;
+    height: 2.25rem;
     flex-shrink: 0;
-    border-radius: 999px;
+    border-radius: 0.5rem;
     color: color-mix(in srgb, var(--bullet-accent) 86%, white);
-    background: color-mix(in srgb, var(--bullet-accent) 22%, transparent);
-    border: 1px solid color-mix(in srgb, var(--bullet-accent) 50%, transparent);
-    box-shadow: 0 0 0 3px color-mix(in srgb, var(--bullet-accent) 12%, transparent);
+    background: color-mix(in srgb, var(--bullet-accent) 15%, var(--sl-color-bg-nav));
+    border: 1px solid color-mix(in srgb, var(--bullet-accent) 40%, transparent);
+    margin-bottom: 0.5rem;
   }
-  .hero-bullet-icon svg { width: 0.95rem; height: 0.95rem; }
+  .hero-stat-icon svg { width: 1.125rem; height: 1.125rem; }
+  .hero-stat-number {
+    font-size: 1.1rem;
+    font-weight: 700;
+    line-height: 1.25;
+    color: var(--sl-color-white);
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+  .hero-stat-label {
+    font-size: 0.7rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--sl-color-gray-3);
+    line-height: 1.2;
+  }
   @media (max-width: 640px) {
     .hero-bullets-label { margin-bottom: 0.5rem; }
     .hero-bullets {
-      grid-template-columns: 1fr;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 0.625rem;
       max-width: 100%;
     }
     .hero-bullets li {
-      padding: 0.625rem 0.6875rem;
-      min-height: 3.75rem;
+      padding: 1rem 0.5rem 0.875rem;
+      min-height: 5.5rem;
+    }
+    .hero-stat-number {
+      font-size: 1rem;
+    }
+    .hero-stat-label {
+      font-size: 0.65rem;
     }
   }
 
