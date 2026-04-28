@@ -12,21 +12,7 @@ const ENGINE_LABELS: Record<EngineId, string> = {
   [EngineId.BigQuery]:  'BigQuery'
 }
 
-export function useCompilation() {
-  const selectedEngine: Ref<EngineId> = ref(EngineId.SQLServer)
-  const isCompiling: Ref<boolean> = ref(false)
-  const compilationError: Ref<string> = ref('')
-
-  const etlOptions: Ref<EtlOptions> = ref({
-    InsertedDateColumnName: EtlColumnDefault.InsertedDate,
-    UpdatedDateColumnName:  EtlColumnDefault.UpdatedDate,
-    DeletedDateColumnName:  EtlColumnDefault.DeletedDate,
-    StartDateColumnName:    EtlColumnDefault.StartDate,
-    EndDateColumnName:      EtlColumnDefault.EndDate,
-    DefaultEndDate:         EtlColumnDefault.DefaultEndDate
-  })
-
-  const cronoCode: Ref<string> = ref(`/*
+const defaultCode = `/*
   Welcome to Crono Playground!
   Write your Crono SQL code here or select an example
   from the sidebar. Click the ▶ Run button to compile.
@@ -39,7 +25,65 @@ SELECT
 FROM staging.SalesOrderDetail
 INNER JOIN staging.Product USING ProductId
 LEFT JOIN staging.ProductSubCategory USING ProductSubcategoryID
-LEFT JOIN staging.ProductCategory USING ProductSubCategory(ProductCategoryId)`)
+LEFT JOIN staging.ProductCategory USING ProductSubCategory(ProductCategoryId)`
+
+export function useCompilation() {
+  // Load from URL query params or use defaults (base64 encoded for compatibility)
+  const urlParams = typeof window !== 'undefined' 
+    ? new URLSearchParams(window.location.search) 
+    : null
+  
+  let initialCode = defaultCode
+  try {
+    const encodedCode = urlParams?.get('code')
+    if (encodedCode) {
+      initialCode = decodeURIComponent(atob(encodedCode))
+    }
+  } catch {
+    // Invalid encoding, use default
+    initialCode = defaultCode
+  }
+    
+  const initialEngine = urlParams?.get('engine') as EngineId
+  const validEngine = Object.values(EngineId).includes(initialEngine) 
+    ? initialEngine 
+    : EngineId.SQLServer
+
+  const selectedEngine: Ref<EngineId> = ref(validEngine)
+  const isCompiling: Ref<boolean> = ref(false)
+  const compilationError: Ref<string> = ref('')
+  const cronoCode: Ref<string> = ref(initialCode)
+
+  const etlOptions: Ref<EtlOptions> = ref({
+    InsertedDateColumnName: EtlColumnDefault.InsertedDate,
+    UpdatedDateColumnName:  EtlColumnDefault.UpdatedDate,
+    DeletedDateColumnName:  EtlColumnDefault.DeletedDate,
+    StartDateColumnName:    EtlColumnDefault.StartDate,
+    EndDateColumnName:      EtlColumnDefault.EndDate,
+    DefaultEndDate:         EtlColumnDefault.DefaultEndDate
+  })
+
+  // Update URL when code or engine changes (base64 encoded)
+  function updateUrl() {
+    if (typeof window === 'undefined') return
+    
+    const params = new URLSearchParams()
+    if (cronoCode.value !== defaultCode) {
+      params.set('code', btoa(encodeURIComponent(cronoCode.value)))
+    }
+    if (selectedEngine.value !== EngineId.SQLServer) {
+      params.set('engine', selectedEngine.value)
+    }
+    
+    const newUrl = params.toString() 
+      ? `${window.location.pathname}?${params.toString()}` 
+      : window.location.pathname
+    
+    window.history.replaceState({}, '', newUrl)
+  }
+
+  watch(cronoCode, updateUrl)
+  watch(selectedEngine, updateUrl)
 
   const sqlOutput: Ref<string> = ref('')
   const engineLabel = computed(() => ENGINE_LABELS[selectedEngine.value] || selectedEngine.value)

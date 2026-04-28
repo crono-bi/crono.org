@@ -98,7 +98,8 @@ onMounted(() => {
     attributeFilter: ['data-theme']
   })
 
-  loadCodeFromUrl(cronoCode)
+  // URL loading now handled by useCompilation composable
+  // loadCodeFromUrl(cronoCode)
 
   playgroundBus.on('load-example', onLoadExample)
 
