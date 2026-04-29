@@ -7,7 +7,7 @@ sidebar:
 
 **Crono SQL** soporta la sintaxis estándar de la sentencia **INSERT**:
 
-```sql
+```crono-sql
 INSERT INTO dwh.DimProducts(
   ProductID,
   Product,
@@ -47,7 +47,7 @@ LEFT JOIN staging.ProductModel using Product(ProductModelID)
   <details>
 <summary>Ver SQL compilado</summary>
 
-```sql
+```crono-sql
 INSERT dwh.DimProducts(ProductID,Product,ProductCategory,ProductSubCategory,ProductNumber,ProductModel,Color,StandardCost,ListPrice,ProductSize,SizeUnitMeasureCode,Weight,WeightUnitMeasureCode)
 SELECT
   ProductID,
@@ -75,7 +75,7 @@ LEFT JOIN staging.ProductModel ON (Product.ProductModelID=ProductModel.ProductMo
 
 Sin embargo, especialmente cuando la tabla tiene muchas columnas, esta sintaxis es repetitiva e incómoda de mantener.  Por ello, **Crono SQL** prescinde de la cláusula **VALUES** y asume que el nombre de los campos coincide con el *alias* de las columnas de la consulta de origen:
 
-```sql
+```crono-sql
 INSERT INTO dwh.DimProducts
 select 
   ProductID,
@@ -102,7 +102,7 @@ LEFT JOIN staging.ProductModel using Product(ProductModelID)
   <details>
 <summary>Ver SQL compilado</summary>
 
-```sql
+```crono-sql
 ;WITH
 query AS (
   SELECT
@@ -149,7 +149,7 @@ FROM query;
 
 Por supuesto, para definir el  origen de datos del **INSERT** se pueden utilizar [todas las características de la sentencia **SELECT**](#sentencia-select) de **Crono SQL**. En la siguiente consulta, por ejemplo, se verifica que las relaciones sean correctas antes de realizar la inserción. Es decir, si las relaciones pierden o duplican registros,  no se ejecutará el **INSERT**.    
 
-```sql
+```crono-sql
 INSERT INTO dwh.DimProducts
 select 
   ProductID,
@@ -177,7 +177,7 @@ CHECK SNOWFLAKE
   <details>
 <summary>Ver SQL compilado</summary>
 
-```sql
+```crono-sql
 IF EXISTS (
   SELECT count(*)
   FROM staging.Product
@@ -233,7 +233,7 @@ FROM query;
 
 También se puede utilizar, por ejemplo, la sentencia **COMBINE** o la funcionalidad de **MATERIALIZE**. En la siguiente consulta se verificará que todas las relaciones sean correctas, se crearán entonces las tablas temporales con la información de *ventas* y *compras*, y finalmente se unirán mediante un **FULL JOIN** en un único resultado a insertar.
 
-```sql
+```crono-sql
 INSERT INTO dwh.VentasVsCompras
 COMBINE BY Product,ProductNumber
   MATERIALIZE sales (
@@ -259,7 +259,7 @@ COMBINE BY Product,ProductNumber
   <details>
 <summary>Ver SQL compilado</summary>
 
-```sql
+```crono-sql
 -- Materialized query: sales
 SELECT
   Product.Name AS Product,
@@ -325,7 +325,7 @@ Una necesidad habitual en ETL/DWH es insertar únicamente los registros que no e
 
 La siguiente consulta inserta los productos que no existan aún en la tabla *dwh.DimProducts*
 
-```sql
+```crono-sql
 INSERT INTO dwh.DimProducts
 select 
   ProductID #ProductID,
@@ -352,7 +352,7 @@ LEFT JOIN staging.ProductModel using Product(ProductModelID)
   <details>
 <summary>Ver SQL compilado</summary>
 
-```sql
+```crono-sql
 ;WITH
 query AS (
   SELECT
@@ -402,7 +402,7 @@ WHERE DimProducts.ProductID IS NULL;
 Es es posible realizar una recarga completa mediante la sentencia **DELETE AND INSERT**. Esta sentencia elimina el contenido de la tabla y la recarga con los datos de la consulta de origen. 
 
 
-```sql
+```crono-sql
 DELETE AND INSERT INTO dwh.DimProducts 
 select 
   ProductID,
@@ -423,7 +423,7 @@ LEFT JOIN staging.ProductModel using Product(ProductModelID)
   <details>
 <summary>Ver SQL compilado</summary>
 
-```sql
+```crono-sql
 DELETE FROM dwh.DimProducts;
 
 ;WITH
@@ -460,7 +460,7 @@ FROM query;
 
 También es posible realizar un **TRUNCATE AND INSERT**
 
-```sql
+```crono-sql
 TRUNCATE AND INSERT INTO dwh.DimProducts 
 select 
   ProductID,
@@ -481,7 +481,7 @@ LEFT JOIN staging.ProductModel using Product(ProductModelID)
   <details>
 <summary>Ver SQL compilado</summary>
 
-```sql
+```crono-sql
 TRUNCATE TABLE dwh.DimProducts;
 
 ;WITH
@@ -518,7 +518,7 @@ FROM query;
 
 La opción **PARTITION** permite recargar solo una parte de la tabla. Por ejemplo, es habitual cargar solo los movimientos del mes en curso (si sabemos que los demás no han sido modificados). La siguiente sentencia recarga las ventas de los últimos 30 días:
 
-```sql
+```crono-sql
 DELETE AND INSERT INTO dwh.FactSalesOrderHeader PARTITION (OrderDate>=getdate()-30)
 SELECT 
   SalesOrderHeader.SalesOrderId,
@@ -544,7 +544,7 @@ where OrderDate>=getdate()-30
   <details>
 <summary>Ver SQL compilado</summary>
 
-```sql
+```crono-sql
 DELETE FROM dwh.FactSalesOrderHeader
 WHERE
   FactSalesOrderHeader.OrderDate>=getdate()-30;

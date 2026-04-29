@@ -8,7 +8,7 @@ La función `coalesce` evalúa los argumentos en orden y devuelve el valor de la
 
 ## Ejemplo
 
-```sql
+```crono-sql
 SELECT COALESCE(NULL, NULL, 'third_value', 'fourth_value')
 ```
 

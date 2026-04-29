@@ -20,11 +20,13 @@ import {
 import { history, defaultKeymap, historyKeymap, indentWithTab } from '@codemirror/commands'
 import { highlightSelectionMatches, searchKeymap } from '@codemirror/search'
 import { closeBrackets, autocompletion, closeBracketsKeymap, completionKeymap } from '@codemirror/autocomplete'
+import type { CompletionSource } from '@codemirror/autocomplete'
 import { sql, MSSQL } from '@codemirror/lang-sql'
 import { oneDark } from '@codemirror/theme-one-dark'
 import { tags } from '@lezer/highlight'
 
 import { Theme } from '../types/enums'
+import { CRONO_FUNCTIONS, CRONO_KEYWORDS } from '../crono-language'
 
 const props = defineProps<{
   modelValue: string
@@ -40,59 +42,21 @@ const editorRef = ref<HTMLElement | null>(null)
 let editorView: EditorView | null = null
 
 // ══════════════════════════════════════════════════════════════════
-// DATA-DRIVEN LISTS — add new keywords / functions here
+// DATA-DRIVEN LISTS — sourced from crono-language.ts
 // ══════════════════════════════════════════════════════════════════
 
-// Crono SQL compound keywords & non-standard reserved words → keyword color
-const CRONO_KEYWORDS = [
-  'CHECK SNOWFLAKE',
-  'SEMI JOIN', 'ANTI JOIN',
-  'MATERIALIZE', 'ASSERT', 'CALCULATE', 'FILTER',
-  'DELETE AND INSERT', 'TRUNCATE AND INSERT',
-  'INSERT ALL', 'UPDATE ALL',
-  'MERGE CLONE', 'MERGE HISTORY', 'MERGE SOFT DELETE',
-  'MERGE UPSERT', 'MERGE UPDATE', 'MERGE ALL',
-]
-
-// SQL & Crono functions → function color (applied ONLY when followed by '(')
-// This resolves ambiguity: LEFT JOIN → keyword, LEFT(...) → function
+// Extract all functions from categorized object into a flat array
 const SQL_FUNCTIONS = [
-  // Aggregate
-  'sum', 'avg', 'count', 'min', 'max', 'count_big',
-  'stdev', 'stdevp', 'var', 'varp', 'string_agg', 'grouping',
-  // Date / Time
-  'year', 'month', 'day', 'hour', 'minute', 'second',
-  'getdate', 'getutcdate', 'sysdatetime', 'dateadd', 'datediff',
-  'datediff_big', 'datename', 'datepart', 'datefromparts',
-  'datetime2fromparts', 'datetimefromparts', 'datetimeoffsetfromparts',
-  'smalldatetimefromparts', 'timefromparts',
-  'eomonth', 'switchoffset', 'todatetimeoffset', 'isdate', 'datetrunc',
-  // String
-  'concat', 'concat_ws', 'substring', 'replace', 'trim', 'ltrim', 'rtrim',
-  'upper', 'lower', 'len', 'length', 'left', 'right',
-  'charindex', 'patindex', 'stuff', 'reverse', 'replicate',
-  'space', 'format', 'translate', 'char', 'ascii', 'unicode', 'nchar',
-  'string_split', 'string_escape', 'soundex', 'difference', 'quotename',
-  // Conversion / Null handling
-  'cast', 'convert', 'try_cast', 'try_convert', 'parse', 'try_parse',
-  'coalesce', 'nullif', 'isnull', 'iif', 'choose',
-  // Math
-  'abs', 'ceiling', 'ceil', 'floor', 'round', 'power', 'sqrt', 'sign',
-  'log', 'log10', 'exp', 'rand', 'pi', 'square', 'greatest', 'least',
-  'acos', 'asin', 'atan', 'atn2', 'cos', 'cot', 'sin', 'tan',
-  'degrees', 'radians',
-  // Window / Ranking
-  'row_number', 'rank', 'dense_rank', 'ntile',
-  'lag', 'lead', 'first_value', 'last_value',
-  'percent_rank', 'cume_dist',
-  // System / Meta
-  'newid', 'checksum', 'hashbytes', 'isnumeric',
-  'scope_identity', 'object_id', 'db_name', 'schema_name',
-  'error_message', 'error_number', 'error_line', 'error_severity',
-  // JSON
-  'json_value', 'json_query', 'json_modify', 'isjson', 'json_array', 'json_object',
-  // Crono-specific
-  'divide', 'margin', 'markup', 'substraction',
+  ...CRONO_FUNCTIONS.aggregation,
+  ...CRONO_FUNCTIONS.conversion,
+  ...CRONO_FUNCTIONS.dates,
+  ...CRONO_FUNCTIONS.informational,
+  ...CRONO_FUNCTIONS.nullsAndConditions,
+  ...CRONO_FUNCTIONS.numeric,
+  ...CRONO_FUNCTIONS.text,
+  ...CRONO_FUNCTIONS.obsolete,
+  ...CRONO_FUNCTIONS.obsoleteUncertain,
+  ...CRONO_FUNCTIONS.obsoleteAD
 ]
 
 // ══════════════════════════════════════════════════════════════════
@@ -114,8 +78,41 @@ function buildFunctionRegex(functions: string[]): RegExp {
   return new RegExp(`\\b(${pattern})\\s*(?=\\()`, 'gi')
 }
 
-const CRONO_KW_RE  = buildKeywordRegex(CRONO_KEYWORDS)
+const CRONO_KW_RE  = buildKeywordRegex([...CRONO_KEYWORDS])
 const SQL_FUNC_RE  = buildFunctionRegex(SQL_FUNCTIONS)
+
+// ══════════════════════════════════════════════════════════════════
+// CRONO SQL AUTOCOMPLETION
+// ══════════════════════════════════════════════════════════════════
+
+const cronoSQLCompletion: CompletionSource = (context) => {
+  const word = context.matchBefore(/\w*/)
+  if (!word || (word.from === word.to && !context.explicit)) return null
+
+  const options = [
+    // Functions with ( suffix
+    ...SQL_FUNCTIONS.map(func => ({
+      label: func,
+      type: 'function',
+      info: `Crono SQL function: ${func}`,
+      apply: func + '('
+    })),
+    // Keywords
+    ...CRONO_KEYWORDS.map(kw => ({
+      label: kw,
+      type: 'keyword',
+      info: `Crono SQL keyword: ${kw}`
+    }))
+  ]
+
+  return {
+    from: word.from,
+    options: options.filter(option => 
+      option.label.toLowerCase().startsWith(word.text.toLowerCase())
+    ),
+    validFor: /^\w*$/
+  }
+}
 
 // ══════════════════════════════════════════════════════════════════
 // SYNTAX TREE HELPERS
@@ -303,7 +300,7 @@ const editorSetup = [
   syntaxHighlighting(defaultHighlightStyle, { fallback: true }),
   bracketMatching(),
   closeBrackets(),
-  autocompletion(),
+  autocompletion({ override: [cronoSQLCompletion] }),
   rectangularSelection(),
   crosshairCursor(),
   highlightActiveLine(),

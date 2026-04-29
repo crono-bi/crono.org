@@ -6,7 +6,7 @@ title: "Crono$Replacements"
 
 Devuelve las "sustituciones" definidas en las propiedades del proyecto Crono ETL.
 
-```sql
+```crono-sql
 SELECT *
 FROM Crono$Replacements
 ```

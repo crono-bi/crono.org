@@ -17,7 +17,7 @@ A continuación se describen sistemáticamente todas las características soport
 **Proposición:** Cuualquier sentencia **SELECT** válida en SQL es válida también en **Crono SQL**
 
 
-```sql
+```crono-sql
 SELECT 'Hola mundo';
 ```
 
@@ -26,7 +26,7 @@ SELECT 'Hola mundo';
   <details>
 <summary>Ver SQL compilado</summary>
 
-```sql
+```crono-sql
 SELECT 'Hola mundo' AS expr1
 ```
 
@@ -35,7 +35,7 @@ SELECT 'Hola mundo' AS expr1
 
 Si ninguna tabla participa en la consulta, se debe terminar la sentencia con el carácter punto y coma ";". En cualquier otro caso, el punto y coma es opcional.
 
-```sql
+```crono-sql
 select *
 from staging.Customer
 ```
@@ -45,7 +45,7 @@ from staging.Customer
   <details>
 <summary>Ver SQL compilado</summary>
 
-```sql
+```crono-sql
 SELECT *
 FROM staging.Customer
 
@@ -57,7 +57,7 @@ FROM staging.Customer
 
 Se pueden incluir las cláusulas **JOIN**, **WHERE**, **GROUP BY**, **HAVING** y/o **ORDER BY**
 
-```sql
+```crono-sql
 SELECT
   Customer.CustomerId AS CustomerId,
   Person.FirstName AS FirstName,
@@ -80,7 +80,7 @@ ORDER BY sum(Sales.subtotal) DESC
   <details>
 <summary>Ver SQL compilado</summary>
 
-```sql
+```crono-sql
 SELECT
   Customer.CustomerId AS CustomerId,
   Person.FirstName AS FirstName,
@@ -106,7 +106,7 @@ ORDER BY sum(Sales.subtotal) DESC
 Se pueden utilizar las funciones propias del motor de base de datos o funciones definidas por el usuario.
 
 
-```sql
+```crono-sql
 SELECT
   year(sales.OrderDate) AS OrderYear,
   Customer.CustomerId AS CustomerId,
@@ -131,7 +131,7 @@ GROUP BY
   <details>
 <summary>Ver SQL compilado</summary>
 
-```sql
+```crono-sql
 SELECT
   year(sales.OrderDate) AS OrderYear,
   Customer.CustomerId AS CustomerId,
@@ -161,7 +161,7 @@ A diferencia del SQL ISO, en **Crono SQL** se puede hacer referencia a otra colu
 
 
 
-```sql
+```crono-sql
 SELECT
   year(sales.OrderDate) AS OrderYear,
   Customer.CustomerId AS CustomerId,
@@ -181,7 +181,7 @@ WHERE OrderYear=2012
   <details>
 <summary>Ver SQL compilado</summary>
 
-```sql
+```crono-sql
 SELECT
   year(sales.OrderDate) AS OrderYear,
   Customer.CustomerId AS CustomerId,
@@ -211,7 +211,7 @@ GROUP BY
 
 Se puede utilizar la cláusula **GROUP BY ALL** para indicar que se agrupe por todas las columnas que no sean funciones de agregación. 
 
-```sql
+```crono-sql
 SELECT
   year(sales.OrderDate) AS OrderYear,
   Customer.CustomerId AS CustomerId,
@@ -231,7 +231,7 @@ GROUP BY ALL
   <details>
 <summary>Ver SQL compilado</summary>
 
-```sql
+```crono-sql
 SELECT
   year(sales.OrderDate) AS OrderYear,
   Customer.CustomerId AS CustomerId,
@@ -257,7 +257,7 @@ GROUP BY
 
 Siempre se puede prescindir totalmente de la cláusula **GROUP BY**. **Crono SQL** incluirá las columnas necesarias en el SQL generado.
 
-```sql
+```crono-sql
 SELECT
   year(sales.OrderDate) AS OrderYear,
   Customer.CustomerId AS CustomerId,
@@ -276,7 +276,7 @@ WHERE year(sales.OrderDate)=2012
   <details>
 <summary>Ver SQL compilado</summary>
 
-```sql
+```crono-sql
 SELECT
   year(sales.OrderDate) AS OrderYear,
   Customer.CustomerId AS CustomerId,
@@ -304,7 +304,7 @@ GROUP BY
 
 Se puede utilizar la cláusula **USING**  para simplificar la sintaxis de los JOIN equi-join.
 
-```sql
+```crono-sql
 SELECT
   year(sales.OrderDate) AS OrderYear,
   Customer.CustomerId AS CustomerId,
@@ -323,7 +323,7 @@ WHERE year(sales.OrderDate)=2012
   <details>
 <summary>Ver SQL compilado</summary>
 
-```sql
+```crono-sql
 SELECT
   year(sales.OrderDate) AS OrderYear,
   Customer.CustomerId AS CustomerId,
@@ -349,7 +349,7 @@ GROUP BY
 
 La cláusula **USING** también puede utilizarse cuando los campos de la equi-join tienen distinto nombre.
 
-```sql
+```crono-sql
 SELECT
   year(sales.OrderDate) AS OrderYear,
   Customer.CustomerId AS CustomerId,
@@ -368,7 +368,7 @@ WHERE year(sales.OrderDate)=2012
   <details>
 <summary>Ver SQL compilado</summary>
 
-```sql
+```crono-sql
 SELECT
   year(sales.OrderDate) AS OrderYear,
   Customer.CustomerId AS CustomerId,
@@ -394,7 +394,7 @@ GROUP BY
 
 Si no se especifica el nombre de la tabla izquierda en la cláusula **USING**, se asume que es la tabla del **FROM** es la que participa en la relación. 
 
-```sql
+```crono-sql
 SELECT
   year(sales.OrderDate) AS OrderYear,
   Customer.CustomerId AS CustomerId,
@@ -413,7 +413,7 @@ WHERE year(sales.OrderDate)=2012
   <details>
 <summary>Ver SQL compilado</summary>
 
-```sql
+```crono-sql
 SELECT
   year(sales.OrderDate) AS OrderYear,
   Customer.CustomerId AS CustomerId,
@@ -439,7 +439,7 @@ GROUP BY
 
 Si la relación equi-join está formada por distintos campos, se pueden especificar en la cláusula **USING** separados por comas.
 
-```sql
+```crono-sql
 SELECT count(*)
 FROM staging.SalesOrderHeader sales
 INNER JOIN staging.customer USING (CompanyId,CustomerId)
@@ -452,7 +452,7 @@ WHERE year(sales.OrderDate)=2012
   <details>
 <summary>Ver SQL compilado</summary>
 
-```sql
+```crono-sql
 SELECT count(*) AS expr1
 FROM staging.SalesOrderHeader sales
 INNER JOIN staging.customer ON (sales.CompanyId=customer.CompanyId AND sales.CustomerId=customer.CustomerId)
@@ -468,7 +468,7 @@ WHERE year(sales.OrderDate)=2012
 
 La cláusula **CHECK SNOWFLAKE**, colocada justo después de todos los **JOINs**, verifica que las relaciones no pierden ni duplican ningún registro de la tabla del **FROM**. Se trata de una comprobación fundamental para validar que no estamos cometiendo ninguna equivocación al escribir la consulta y que los datos de origen son coherentes con lo esperado.
 
-```sql
+```crono-sql
 SELECT
   year(sales.OrderDate) AS OrderYear,
   Customer.CustomerId AS CustomerId,
@@ -488,7 +488,7 @@ WHERE year(sales.OrderDate)=2012
   <details>
 <summary>Ver SQL compilado</summary>
 
-```sql
+```crono-sql
 IF EXISTS (
   SELECT count(*)
   FROM staging.SalesOrderHeader sales
@@ -528,7 +528,7 @@ La cláusula **CHECK SNOWFLAKE** verifica que todas las ventas correspondan a un
 
 Se pueden incluir subconsultas.
 
-```sql
+```crono-sql
 SELECT 
   Person.BusinessEntityId,
   Person.LastName,
@@ -554,7 +554,7 @@ LEFT JOIN staging.Address ShippingAddress using BEShippingAddress(AddressId)
   <details>
 <summary>Ver SQL compilado</summary>
 
-```sql
+```crono-sql
 SELECT
   Person.BusinessEntityId AS BusinessEntityId,
   Person.LastName AS LastName,
@@ -583,7 +583,7 @@ LEFT JOIN staging.Address ShippingAddress ON (BEShippingAddress.AddressId=Shippi
 
 Después del nombre de la tabla, se puede incluir la cláusula **FILTER** para seleccionar solo una parte de los registros de la tabla. El código SQL generado incluirá una subconsulta similar a la del Ejemplo anterior.
 
-```sql
+```crono-sql
 SELECT 
   Person.BusinessEntityId,
   Person.PersonType,
@@ -606,7 +606,7 @@ LEFT JOIN staging.Address ShippingAddress using BEShippingAddress(AddressId)
   <details>
 <summary>Ver SQL compilado</summary>
 
-```sql
+```crono-sql
 SELECT
   Person.BusinessEntityId AS BusinessEntityId,
   Person.PersonType AS PersonType,
@@ -631,7 +631,7 @@ LEFT JOIN staging.Address ShippingAddress ON (BEShippingAddress.AddressId=Shippi
 
 La cláusula **FILTER** es muy útil en combinación con la cláusula **CHECK SNOWFLAKE**. En el siguiente ejemplo, se verifica que cada persona tenga una única *HomeAddress* (o ninguna) y una única *ShippingAddress* (o ninguna). Si no fuera así, la consulta no duplicaría los registros  porque devolvería previamente un error. 
 
-```sql
+```crono-sql
 SELECT 
   Person.BusinessEntityId,
   Person.PersonType,
@@ -655,7 +655,7 @@ CHECK SNOWFLAKE
   <details>
 <summary>Ver SQL compilado</summary>
 
-```sql
+```crono-sql
 IF EXISTS (
   SELECT count(*)
   FROM staging.Person
@@ -690,7 +690,7 @@ LEFT JOIN staging.Address ShippingAddress ON (BEShippingAddress.AddressId=Shippi
 
 Se puede utilizar la cláusula **COLUMNS** para seleccionar, renombrar, u operar sobre las columnas físicas de la tabla. El código SQL generado incluirá una subconsulta con esas columnas.
     
-```sql
+```crono-sql
 SELECT 
   Person.BusinessEntityId,
   Person.PersonType,
@@ -713,7 +713,7 @@ LEFT JOIN staging.Address ShippingAddress using BEShippingAddress(AddressId)
   <details>
 <summary>Ver SQL compilado</summary>
 
-```sql
+```crono-sql
 SELECT
   Person.BusinessEntityId AS BusinessEntityId,
   Person.PersonType AS PersonType,
@@ -750,7 +750,7 @@ Además, implementa el **ANTI JOIN**. Un **ANTI JOIN** devuelve todos los regist
 
 La  siguiente consulta devuelve todos los clientes que no tienen ninguna venta.  Puede ampliar la información sobre los **ANTI JOIN** en [el blog de SQL Server de Dale Burnett](http://daleburnett.com/2011/10/semi-joins-and-anti-joins/).
 
-```sql
+```crono-sql
 select *
 FROM staging.customer 
 ANTI JOIN staging.SalesOrderHeader sales using customerId
@@ -761,7 +761,7 @@ ANTI JOIN staging.SalesOrderHeader sales using customerId
   <details>
 <summary>Ver SQL compilado</summary>
 
-```sql
+```crono-sql
 SELECT *
 FROM staging.customer
 WHERE NOT EXISTS (SELECT 1 FROM staging.SalesOrderHeader sales WHERE customer.customerId=sales.customerId)
@@ -775,7 +775,7 @@ El **ANTI JOIN** se puede combinar con el resto de características del lenguaje
 
 Esta consulta devuelve todos las personas que no tienen Home Address.
 
-```sql
+```crono-sql
 select *
 FROM staging.Person
 ANTI JOIN staging.BusinessEntityAddress FILTER (AddressTypeId=2) BEHomeAddress using BusinessEntityId
@@ -786,7 +786,7 @@ ANTI JOIN staging.BusinessEntityAddress FILTER (AddressTypeId=2) BEHomeAddress u
   <details>
 <summary>Ver SQL compilado</summary>
 
-```sql
+```crono-sql
 SELECT *
 FROM staging.Person
 WHERE NOT EXISTS (SELECT 1 FROM (SELECT * FROM staging.BusinessEntityAddress WHERE AddressTypeId=2) BEHomeAddress WHERE Person.BusinessEntityId=BEHomeAddress.BusinessEntityId)
@@ -803,7 +803,7 @@ El lenguaje **Crono SQL** implementa también la relación **SEMI JOIN**. Un **S
 Esta consulta devuelve todos los clientes que tienen alguna venta (sin duplicados). Puede ampliar la información sobre los **SEMI JOIN** en [el blog de SQL Server de Dale Burnett](http://daleburnett.com/2011/10/semi-joins-and-anti-joins/).
      
 
-```sql
+```crono-sql
 select *
 FROM staging.customer 
 SEMI JOIN staging.SalesOrderHeader sales using customerId
@@ -814,7 +814,7 @@ SEMI JOIN staging.SalesOrderHeader sales using customerId
   <details>
 <summary>Ver SQL compilado</summary>
 
-```sql
+```crono-sql
 SELECT *
 FROM staging.customer
 WHERE EXISTS (SELECT 1 FROM staging.SalesOrderHeader sales WHERE customer.customerId=sales.customerId)
@@ -830,7 +830,7 @@ Se puede utilizar el operador **UNPIVOT** (según la [sintaxis de T-SQL](https:/
 
 En este ejemplo, las columna *“AddressLine1”*  y *“AddressLine2”* se han convertido en filas diferenciadas, duplicándose los registros.
 
-```sql
+```crono-sql
 SELECT
   AddressId,
   AddressItem,
@@ -844,7 +844,7 @@ UNPIVOT (content FOR AddressItem in (AddressLine1,AddressLine2)) as unpvt
   <details>
 <summary>Ver SQL compilado</summary>
 
-```sql
+```crono-sql
 SELECT
   AddressId,
   AddressItem,
@@ -862,7 +862,7 @@ UNPIVOT (content FOR AddressItem IN (AddressLine1,AddressLine2)) unpvt
 Se puede utilizar la cláusula **ORDER BY** para forzar la ordenación del resultado.
 
 
-```sql
+```crono-sql
 SELECT
   year(sales.OrderDate) AS OrderYear,
   month(sales.OrderDate) as OrderMonth,
@@ -876,7 +876,7 @@ ORDER BY OrderYear, OrderMonth
   <details>
 <summary>Ver SQL compilado</summary>
 
-```sql
+```crono-sql
 SELECT
   year(sales.OrderDate) AS OrderYear,
   month(sales.OrderDate) AS OrderMonth,
@@ -898,7 +898,7 @@ ORDER BY
 El **ORDER BY** se puede escribir haciendo referencia a la posición de las columnas. 
     
 
-```sql
+```crono-sql
 SELECT
   year(sales.OrderDate) AS OrderYear,
   month(sales.OrderDate) as OrderMonth,
@@ -912,7 +912,7 @@ ORDER BY 1,2
   <details>
 <summary>Ver SQL compilado</summary>
 
-```sql
+```crono-sql
 SELECT
   year(sales.OrderDate) AS OrderYear,
   month(sales.OrderDate) AS OrderMonth,
@@ -935,7 +935,7 @@ ORDER BY
 Se puede utilizar la palabra clave **DISTINCT** para obtener los valores distintos
     
     
-```sql
+```crono-sql
 SELECT DISTINCT FirstName
 FROM staging.Person
 ```
@@ -945,7 +945,7 @@ FROM staging.Person
   <details>
 <summary>Ver SQL compilado</summary>
 
-```sql
+```crono-sql
 SELECT DISTINCT FirstName
 FROM staging.Person
 
@@ -961,7 +961,7 @@ Se puede utilizar la palabra clave **TOP** para limitar el número de registros 
 
 Esta consulta devuelve los 5 clientes con mayores ventas. 
 
-```sql
+```crono-sql
 SELECT TOP 5
   SalesTerritory.Name Territory,
   Customer.CustomerId,
@@ -980,7 +980,7 @@ ORDER BY Amount DESC
   <details>
 <summary>Ver SQL compilado</summary>
 
-```sql
+```crono-sql
 SELECT TOP 5
   SalesTerritory.Name AS Territory,
   Customer.CustomerId AS CustomerId,
@@ -1010,7 +1010,7 @@ Las funciones de ventana **OVER (…)** también están soportadas.
 
 Esta consulta devuelve las ventas acumuladas desde el principio de cada año. La funciones de ventana, también llamadas funciones analíticas, tienen mucha utilidad en entornos ETL/DWH y permiten simplificar el desarrollo de muchos escenarios ETL comunes.  Puede ampliar la información sobre las funciones de ventana en la documentación de la [cláusula **OVER** en T-SQL](https://msdn.microsoft.com/es-es/library/ms189461.aspx).
 
-```sql
+```crono-sql
 SELECT
   year(sales.OrderDate) AS OrderYear,
   month(sales.OrderDate) as OrderMonth,
@@ -1025,7 +1025,7 @@ ORDER BY OrderYear, OrderMonth
   <details>
 <summary>Ver SQL compilado</summary>
 
-```sql
+```crono-sql
 SELECT
   year(sales.OrderDate) AS OrderYear,
   month(sales.OrderDate) AS OrderMonth,
@@ -1052,7 +1052,7 @@ Se puede incluir la cláusula **OVER** junto a la palabra clave **TOP** para lim
 Esta consulta devuelve los tres clientes con más ventas en cada territorio.
 
 
-```sql
+```crono-sql
 SELECT TOP 3 OVER (PARTITION BY Territory ORDER BY Amount DESC)  
   SalesTerritory.Name Territory,
   Customer.CustomerId,
@@ -1070,7 +1070,7 @@ INNER JOIN staging.Person CustomerPerson USING Customer(PersonID BusinessEntityI
   <details>
 <summary>Ver SQL compilado</summary>
 
-```sql
+```crono-sql
 SELECT
   Territory,
   CustomerId,
@@ -1113,7 +1113,7 @@ WHERE rownumber<=3
 La combinación **TOP n OVER ()** tiene muchos usos en procesos ETL/DWH. La sentencia SQL generada es un consulta sobre una subconsulta de una subconsulta. La siguiente consulta devuelve la última venta de cada cliente.
 
 
-```sql
+```crono-sql
 SELECT TOP 1 OVER (PARTITION BY customerId ORDER BY orderDate desc)
   Customer.CustomerId,
   CustomerPerson.FirstName,
@@ -1130,7 +1130,7 @@ INNER JOIN staging.Person CustomerPerson USING Customer(PersonID BusinessEntityI
   <details>
 <summary>Ver SQL compilado</summary>
 
-```sql
+```crono-sql
 SELECT
   CustomerId,
   FirstName,
@@ -1171,7 +1171,7 @@ WHERE rownumber=1
 
 Las [sentencias CTE](https://msdn.microsoft.com/es-es/library/ms175972.aspx) con cláusula **WITH** están soportadas.
 
-```sql
+```crono-sql
 WITH addresses AS (
   SELECT bia.BusinessEntityID,bia.AddressTypeId,CountryRegion.Name Region,Address.AddressLine1,Address.City
   FROM staging.BusinessEntityAddress bia
@@ -1198,7 +1198,7 @@ LEFT JOIN addresses FILTER (AddressTypeId=5) ShippingAddress USING BusinessEntit
   <details>
 <summary>Ver SQL compilado</summary>
 
-```sql
+```crono-sql
 ;WITH
 addresses AS (
   SELECT
@@ -1238,7 +1238,7 @@ Se pueden utilizar los operadores **UNION** y **UNION ALL**
 Este ejemplo tiene únicamente fines didácticos. Para combinar de este modo dos o más consultas es preferible el operador **COMBINE** que se muestra continuación.
 
 
-```sql
+```crono-sql
 SELECT
   CustomerPerson.LastName AS LastName,
   sum(sales.subtotal) AS Amount2012,
@@ -1263,7 +1263,7 @@ UNION
   <details>
 <summary>Ver SQL compilado</summary>
 
-```sql
+```crono-sql
 SELECT
   CustomerPerson.LastName AS LastName,
   sum(sales.subtotal) AS Amount2012,
@@ -1295,7 +1295,7 @@ GROUP BY CustomerPerson.LastName
 El operador **COMBINE BY** permite combinar dos o más consultas en un único resultado.
 
     
-```sql
+```crono-sql
 COMBINE BY firstname,LastName
   sales2012 AS (
     SELECT
@@ -1322,7 +1322,7 @@ COMBINE BY firstname,LastName
   <details>
 <summary>Ver SQL compilado</summary>
 
-```sql
+```crono-sql
 SELECT
   coalesce(sales2012.FirstName,sales2013.FirstName) AS FirstName,
   coalesce(sales2012.LastName,sales2013.LastName) AS LastName,
@@ -1360,7 +1360,7 @@ FULL JOIN
 
 Se pueden utilizar tablas distintas en cada consulta del **COMBINE**. En este ejemplo, se comparan las ventas y las compras por producto. El SQL generado combinará los resultados utilizando un **FULL JOIN**.
 
-```sql
+```crono-sql
 COMBINE BY Product,ProductNumber
   sales (
 	select 
@@ -1385,7 +1385,7 @@ COMBINE BY Product,ProductNumber
   <details>
 <summary>Ver SQL compilado</summary>
 
-```sql
+```crono-sql
 SELECT
   coalesce(sales.Product,purchases.Product) AS Product,
   coalesce(sales.ProductNumber,purchases.ProductNumber) AS ProductNumber,
@@ -1421,7 +1421,7 @@ FULL JOIN
 
 La cláusula **MATERIALIZE** permite crear una tabla temporal con el contenido de una subconsulta. Es decir, antes de la ejecución de la consulta, se crean las tablas temporales necesarias y finalmente se ejecuta la consulta utilizando dichas tablas. Esta estrategia de carga simplifica el plan de ejecución del motor de base de datos y se pueden obtener mejoras de rendimiento muy significativas, sin penalizar o dificultar la escritura de la consulta.
 
-```sql
+```crono-sql
 SELECT
   SalesOrderHeader.OrderDate,
   Product.Name Product,
@@ -1437,7 +1437,7 @@ INNER JOIN staging.Product USING ProductId
   <details>
 <summary>Ver SQL compilado</summary>
 
-```sql
+```crono-sql
 -- Materialized query: Sales
 SELECT *
 INTO #Sales__39872
@@ -1465,7 +1465,7 @@ GROUP BY
 Con la cláusula **MATERIALIZE**, también se pueden materializar las consultas de una sentencia **COMBINE**. En este ejemplo, primero se ejecutará la consulta con las ventas, luego se ejecutará una consulta con las compras, y finalmente se combinarán en un único resultado.
 
 
-```sql
+```crono-sql
 COMBINE bY Product,productNumber
   MATERIALIZE sales (
 	select 
@@ -1490,7 +1490,7 @@ COMBINE bY Product,productNumber
   <details>
 <summary>Ver SQL compilado</summary>
 
-```sql
+```crono-sql
 -- Materialized query: sales
 SELECT
   Product.Name AS Product,
@@ -1532,7 +1532,7 @@ FULL JOIN #purchases__1CD26 purchases ON (sales.Product=purchases.Product AND sa
 
 Se puede forzar el tipo de datos resultante de una columna especificándolo justo después del alias de la columna. El SQL generado incluirá una llamada a la función **CAST**.
 
-```sql
+```crono-sql
 SELECT
    year(sales.OrderDate)	OrderYear varchar(4),
   Customer.CustomerId,
@@ -1554,7 +1554,7 @@ WHERE OrderYear=2012
   <details>
 <summary>Ver SQL compilado</summary>
 
-```sql
+```crono-sql
 SELECT
   cast(year(sales.OrderDate) AS varchar(4)) AS OrderYear,
   Customer.CustomerId AS CustomerId,
@@ -1589,7 +1589,7 @@ Es posible incluir varios **SELECT** en una misma consulta. Esta sintaxis permit
 Este consulta devuelve la media de las ventas anuales de cada producto.
 
 
-```sql
+```crono-sql
 select
   Product,
   ProductNumber,
@@ -1609,7 +1609,7 @@ inner join staging.Product  using ProductId
   <details>
 <summary>Ver SQL compilado</summary>
 
-```sql
+```crono-sql
 SELECT
   Product,
   ProductNumber,
@@ -1641,7 +1641,7 @@ GROUP BY
 La cláusulas **SELECT** encadenadas permiten, por ejemplo, contar el número de registros que devuelve una consulta previa. La siguiente consulta ejecuta un **count(\*)** sobre el resultado de la consulta inferior.
 
 
-```sql
+```crono-sql
 SELECT count(*)
 SELECT
   Product.Name Product,
@@ -1656,7 +1656,7 @@ INNER JOIN staging.Product USING ProductId
   <details>
 <summary>Ver SQL compilado</summary>
 
-```sql
+```crono-sql
 SELECT count(*) AS expr1
 FROM (
     SELECT

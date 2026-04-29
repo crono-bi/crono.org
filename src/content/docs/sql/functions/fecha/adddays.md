@@ -7,7 +7,7 @@ La función adddays devuelve una nueva fecha que resulta de sumar un número det
 
 **Sintaxis:**  
 
-```sql
+```crono-sql
 adddays(fecha_base, numero_dias)
 ```
 
@@ -19,13 +19,13 @@ adddays(fecha_base, numero_dias)
 ## Ejemplo
 
 
-```sql
+```crono-sql
 SELECt adddayes(getdate(),3);
 ```
 
 El codigo generado es:
 
-```sql
+```crono-sql
 SELECT dateadd(d,3,getdate())
 ```
 

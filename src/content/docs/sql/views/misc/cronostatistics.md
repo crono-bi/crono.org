@@ -11,7 +11,7 @@ La psuedovistas tiene un único argumento:
 
 **Sintaxis:**
 
-```sql
+```crono-sql
 Crono$Statistics(
     query=(SELECT...)
 )
@@ -35,7 +35,7 @@ La vista devuelve tantos registros como columnas tenga la consulta. Sobre cada c
 
 La siugiente consulta devuelve estadísticas sobre el contenido de la tabla `Articulos`
 
-```sql
+```crono-sql
 select *
 from Crono$Statistics(Query=(SELECT * FROM dwh.Articulos))
 ```

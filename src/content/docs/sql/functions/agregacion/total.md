@@ -13,7 +13,7 @@ Se puede usar tanto la sintaxis `OVER` del SQL estándar como la sintaxis compac
 
 La siguiente consulta devuelve las ventas de cada mes y el total del año filtrado.
 
-```sql
+```crono-sql
 select 
   year(fecha) año,
   month(fecha) mes,
@@ -26,7 +26,7 @@ group by all
 
 La consulta SQL generada es:
 
-```sql
+```crono-sql
 SELECT
   year(fecha) AS [año],
   month(fecha) AS mes,
@@ -41,7 +41,7 @@ GROUP BY
 
 También se puede incluir la cláusula `PARTITION BY`. En este caso el comportamiento de `total` es exactamente igual que el de `sum`. La siguiente consulta muestra las ventas de todos los meses de todos los años, incluyendo el total de cada año.
 
-```sql
+```crono-sql
 select 
   year(fecha) anyo, 
   month(fecha) mes, 
@@ -53,7 +53,7 @@ group by all
 
 El SQL generado es:
 
-```sql
+```crono-sql
 SELECT
   year(fecha) AS [año],
   month(fecha) AS mes,

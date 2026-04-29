@@ -12,12 +12,12 @@ Es útil para generar claves temporales, agrupar registros por mes, o presentar 
 ## Ejemplo
 
 
-```sql
+```crono-sql
 select yyyy('2026-01-01') as result;  -- Devuelve 202601
 ```
 
 El código SQL generado es:
 
-```sql
+```crono-sql
 SELECT CONVERT(CHAR(6),'2026-01-01',112) AS result
 ```

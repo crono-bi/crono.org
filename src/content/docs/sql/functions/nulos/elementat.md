@@ -9,14 +9,14 @@ Se trata de una manera compacta de utilizar el la sintaxis simple de CASE para t
 
 ## Ejemplo
 
-```sql
+```crono-sql
 select Id, ElementAt(Code, 'High', 'Medium', 'Low') Description
 FROM MyTable
 ```
 
 El código SQL generado utiliza la expresión `CASE`:
 
-```sql
+```crono-sql
 SELECT
   Id,
   CASE Code WHEN 1 THEN 'High' WHEN 2 THEN 'Medium' WHEN 3 THEN 'Low' END AS Description

@@ -9,7 +9,7 @@ Se puede utilizar el operador **UNPIVOT** (según la [sintaxis de T-SQL](https:/
 
 En este ejemplo, las columna *“AddressLine1”*  y *“AddressLine2”* se han convertido en filas diferenciadas, duplicándose los registros.
 
-```sql
+```crono-sql
 SELECT
   AddressId,
   AddressItem,
@@ -23,7 +23,7 @@ UNPIVOT (content FOR AddressItem in (AddressLine1,AddressLine2)) as unpvt
   <details>
 <summary>Ver SQL compilado</summary>
 
-```sql
+```crono-sql
 SELECT
   AddressId,
   AddressItem,

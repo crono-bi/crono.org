@@ -9,7 +9,7 @@ Devuelve información sobre las propiedades extendidas de todos los procedimient
 Toma información de la vista de sistema `sys.all_objects` de **SQL Server**.
 
 
-```sql
+```crono-sql
 select *
 from Crono$ProcedureExtendedProperties
 ```

@@ -7,13 +7,13 @@ La función `trim` suprime los espacios iniciales y finales de una cadena de tex
 
 ## Ejemplo
 
-```sql
+```crono-sql
 select trim('   Hello World! ')  as result;
 ```
 
 El código generado es:
 
-```sql
+```crono-sql
 SELECT ltrim(rtrim('   Hello World! ')) AS result
 ```
 

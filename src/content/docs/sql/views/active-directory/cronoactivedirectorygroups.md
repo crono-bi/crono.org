@@ -5,7 +5,7 @@ title: "Crono$ActiveDirectoryGroups"
 
 Devuelve el listado de grupos del Directorio Activo, incluyendo su nombre y su *DistinguishedName*.
 
-```sql
+```crono-sql
 select *
 from Crono$ActiveDirectoryGroups
 ```

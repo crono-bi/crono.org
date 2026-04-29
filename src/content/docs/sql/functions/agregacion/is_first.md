@@ -7,13 +7,13 @@ La función `is_first` es una función de ventana que identifica la fila inicial
 
 **Sintaxis:**
 
-```sql
+```crono-sql
 is_first() over (PARTITION BY ... ORDER BY ...)
 ```
 
 Como todas las funciones de ventana admite la sintaxis compacta:
 
-```sql
+```crono-sql
 is_first(PARTITION BY ... ORDER BY ...)
 ```
 
@@ -21,7 +21,7 @@ is_first(PARTITION BY ... ORDER BY ...)
 
 La siguiente sentencia usa las funciiones `is_first` y `is_last` para identificar el primer y último escandallo de cada artículo.
 
-```sql
+```crono-sql
 select 
 	articulo, 
 	coste, 
@@ -34,7 +34,7 @@ from stg.escandallos
 
 El código generado es:
 
-```sql
+```crono-sql
 SELECT
   articulo,
   coste,

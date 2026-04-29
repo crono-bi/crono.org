@@ -9,26 +9,26 @@ La función requiere un parámetro de entrada.
 
 ## Ejemplo
 
-```sql
+```crono-sql
 select hour(getdate()) as result1;
 ```
 
 El código SQL generado es:
 
-```sql
+```crono-sql
 SELECT DATEPART(hh,getdate()) AS result1
 ```
 
 La función admite tanto valores **datetime** como **datetimeofset**.
 
-```sql
+```crono-sql
 select hour(cast('2022-12-25T21:30:00' as datetime)) as result2;
 select hour(cast('2022-12-25T21:30:00+08:00' as datetimeoffset)) as result3;
 ```
 
 El código SQL generado es:
 
-```sql
+```crono-sql
 SELECT DATEPART(hh,CAST('2022-12-25T21:30:00' AS datetime)) AS result2
 SELECT DATEPART(hh,CAST('2022-12-25T21:30:00+08:00' AS datetimeoffset)) AS result3
 ```
@@ -41,6 +41,6 @@ El resultado de las dos consultas es:
 
 En el caso de las fechas `datetimeoffset` la función ignora el `offset`y devuelve la hora en la zona horaria en que está expresada la fecha. Por lo tanto, si necesita la hora en la zona horaria local debe usar además la función `localdate`.
 
-```sql
+```crono-sql
 select hour(localdate(cast('2022-12-25T21:30:00+08:00' as datetimeoffset))) as result3;
 ```

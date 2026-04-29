@@ -8,7 +8,7 @@ Devuelve información sobre las columnas que forman parte de todos los índices 
 
 Toma información de la vista de sistema `sys.index_columns` de **SQL Server**.
 
-```sql
+```crono-sql
 select *
 from Crono$IndexColumns
 ```

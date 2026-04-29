@@ -9,7 +9,7 @@ sidebar:
 
 **Crono SQL** soporta todos los JOIN con la sintaxis estándar de SQL:
 
-```sql
+```crono-sql
 SELECT *
 FROM clients
 INNER JOIN orders ON clients.client_id = orders.client_id
@@ -19,7 +19,7 @@ INNER JOIN orders ON clients.client_id = orders.client_id
 
 EL estándar ANSI también define la cláusula **USING** para relacionar dos tablas, aunque los motores actuales de BBDD aún no la incorporan plenamente. **Crono SQL** permite usar esta sintaxis ANSI:
 
-```sql
+```crono-sql
 SELECT *
 FROM orders 
 INNER JOIN clients USING (client_id)
@@ -30,7 +30,7 @@ INNER JOIN clients USING (client_id)
   <details>
 <summary>Ver SQL compilado</summary>
 
-```sql
+```crono-sql
 SELECT *
 FROM orders
 INNER JOIN clients ON (orders.client_id=clients.client_id)
@@ -41,7 +41,7 @@ INNER JOIN clients ON (orders.client_id=clients.client_id)
 
 La cláusla **USING** permite relacionar dos tablas cuando su relación es un equi-join, es decir, cuando la relación se basa en la igualdad de dos o más campos. Se puede usar **USING** cuando la relación la forman más 2 o más campos, incluso cuando no se llaman igual.
 
-```sql
+```crono-sql
 SELECT *
 FROM orders 
 INNER JOIN clients USING (company_id, order_client_id client_id)
@@ -53,7 +53,7 @@ INNER JOIN countries USING clients(country_id)
   <details>
 <summary>Ver SQL compilado</summary>
 
-```sql
+```crono-sql
 SELECT *
 FROM orders
 INNER JOIN clients ON (orders.company_id=clients.company_id AND orders.order_client_id=clients.client_id)
@@ -65,7 +65,7 @@ INNER JOIN countries ON (clients.country_id=countries.country_id)
 
 En el ejemplo anterior la tabla `countries` se relaciona con la tabla `clients`. Si se omite el nombre de la tabla de la izquierda se asume que la relación se realiza contra la tabla del **FROM** (`orders` en este caso), generando un SQL diferente.
 
-```sql
+```crono-sql
 SELECT *
 FROM orders 
 INNER JOIN clients USING (company_id, order_client_id client_id)
@@ -77,7 +77,7 @@ INNER JOIN countries USING (country_id)
   <details>
 <summary>Ver SQL compilado</summary>
 
-```sql
+```crono-sql
 SELECT *
 FROM orders
 INNER JOIN clients ON (orders.company_id=clients.company_id AND orders.order_client_id=clients.client_id)
@@ -94,7 +94,7 @@ Existen diferentes tipos de JOINs, que se diferencian en función de la forma en
 
 Un **INNER JOIN** es un tipo de JOIN en SQL que devuelve solo las filas que cumplen la condición del JOIN en ambas tablas. 
 
-```sql
+```crono-sql
 SELECT *
 FROM clients 
 INNER JOIN countries USING (country_id)
@@ -105,7 +105,7 @@ INNER JOIN countries USING (country_id)
   <details>
 <summary>Ver SQL compilado</summary>
 
-```sql
+```crono-sql
 SELECT *
 FROM clients
 INNER JOIN countries ON (clients.country_id=countries.country_id)
@@ -126,7 +126,7 @@ Un **LEFT JOIN** es un tipo de JOIN en SQL que devuelve todas las filas de la ta
 
 Un **LEFT JOIN** se realiza de la siguiente manera:
 
-```sql
+```crono-sql
 SELECT *
 FROM clients 
 LEFT JOIN countries USING (country_id)
@@ -137,7 +137,7 @@ LEFT JOIN countries USING (country_id)
   <details>
 <summary>Ver SQL compilado</summary>
 
-```sql
+```crono-sql
 SELECT *
 FROM clients
 LEFT JOIN countries ON (clients.country_id=countries.country_id)
@@ -151,7 +151,7 @@ En este ejemplo se devolverán todos los clientes, tengan o no informado el *pa�
 
 La siguiente consulta permite obtener el listado de clientes que no tienen el *país* informado:
 
-```sql
+```crono-sql
 SELECT clients.*
 FROM clients 
 LEFT JOIN countries USING (country_id)
@@ -163,7 +163,7 @@ WHERE countries.country_id IS NULL
   <details>
 <summary>Ver SQL compilado</summary>
 
-```sql
+```crono-sql
 SELECT clients.*
 FROM clients
 LEFT JOIN countries ON (clients.country_id=countries.country_id)
@@ -182,7 +182,7 @@ El **RIGHT JOIN** es similar al **LEFT JOIN**, pero intercambia las tablas a la 
 
 Prácticamente en todos los casos se puede usar un **LEFT JOIN** y el código resulta más natural y comprensible. Se recomienda evitar el uso del **RIGHT JOIN** siempre que sea posible.
 
-```sql
+```crono-sql
 SELECT clients.*, countries.Name
 FROM countries  
 RIGHT JOIN clients USING (country_id)
@@ -193,7 +193,7 @@ RIGHT JOIN clients USING (country_id)
   <details>
 <summary>Ver SQL compilado</summary>
 
-```sql
+```crono-sql
 SELECT
   clients.*,
   countries.Name AS Name
@@ -212,7 +212,7 @@ Un **FULL JOIN** es un tipo de JOIN en SQL que devuelve todas las filas de ambas
 
 Un FULL JOIN se realiza de la siguiente manera:
 
-```sql
+```crono-sql
 SELECT *
 FROM customers1
 FULL JOIN customers2 using(customer_id)
@@ -223,7 +223,7 @@ FULL JOIN customers2 using(customer_id)
   <details>
 <summary>Ver SQL compilado</summary>
 
-```sql
+```crono-sql
 SELECT *
 FROM customers1
 FULL JOIN customers2 ON (customers1.customer_id=customers2.customer_id)
@@ -240,7 +240,7 @@ Este tipo de JOIN tampoco es habitual en proyectos ETL/DWH, aunque puede ser nec
 
 Que no se use mucho en proyectos ETL no implica que no haya otros escenarios donde el **FULL JOIN** resulte muy conveniente y útil. **Crono Analysis** utiliza **FULL JOINs** cuando necesita mezclar información de dos tablas de hecho o comparar indicadores de periodos distintos.
 
-```sql
+```crono-sql
 SELECT
   coalesce(LB_VENTAS1.Tienda,LB_VENTAS3.Tienda) AS Tienda,
   LB_VENTAS1.auxcol_2_ AS [Unidades 2011],
@@ -274,7 +274,7 @@ La consulta anterior es una consulta típica generada por **Crono SQL** que util
 
 Un **CROSS JOIN** es un tipo de JOIN en SQL que devuelve todas las combinaciones posibles de filas entre dos tablas. Se le llama CROSS JOIN porque cruza todos los registros de la primera tabla con todos los registros de la segunda tabla.
 
-```sql
+```crono-sql
 SELECT 
   dates.date,
   stores.store
@@ -293,7 +293,7 @@ En función del número de registros de las tablas involucradas el resultado pue
 
 **CROSS APPLY** es una cláusula de SQL que se utiliza para unir dos tablas mediante una función que devuelve un conjunto de filas como resultado.
 
-```sql
+```crono-sql
 SELECT *
 FROM tabla1
 CROSS APPLY función_de_tabla_valor(tabla1.columna)
@@ -302,7 +302,7 @@ CROSS APPLY función_de_tabla_valor(tabla1.columna)
 Un **CROSS APPLY** es similar a un **CROSS JOIN** pero permite referenciar a las columnas de la tabla izquierda desde la subconsulta derecha.
 
 
-```sql
+```crono-sql
 SELECT *
 FROM stores
 CROSS APPLY (
@@ -317,7 +317,7 @@ CROSS APPLY (
 
 Normalmente no es necesario usar `CROSS APPLY` y existen forman alternativas para formular la misma consulta. La consulta anterior se puede escribir de la siguiente manera:
 
-```sql
+```crono-sql
 SELECT stores.name,sales.TotalQuantity
 FROM stores
 LEFT JOIN (
@@ -333,7 +333,7 @@ LEFT JOIN (
   <details>
 <summary>Ver SQL compilado</summary>
 
-```sql
+```crono-sql
 SELECT
   stores.name AS name,
   sales.TotalQuantity AS TotalQuantity
@@ -354,7 +354,7 @@ Un ANTI JOIN es un tipo de JOIN en SQL que devuelve las filas de una tabla que n
 
 **Crono SQL** tiene una sintaxis propia para realizar este tipo de consultas:
 
-```sql
+```crono-sql
 SELECT clients.*
 FROM clients 
 ANTI JOIN countries USING (country_id)
@@ -365,7 +365,7 @@ ANTI JOIN countries USING (country_id)
   <details>
 <summary>Ver SQL compilado</summary>
 
-```sql
+```crono-sql
 SELECT clients.*
 FROM clients
 WHERE NOT EXISTS (SELECT 1 FROM countries WHERE clients.country_id=countries.country_id)
@@ -380,7 +380,7 @@ EL **ANTI JOIN** se usa mucho durante la construcción de la ETL para detectar l
 
 El código SQL resultante añade un predicado **NOT EXISTS**, por lo que no hay riesgo de duplicar registros. La siguiente consulta devuelve todos los clientes sin ventas en un periodo especificado:
 
-```sql
+```crono-sql
 SELECT clients.*
 FROM clients 
 ANTI JOIN (select * from sales where year(date)=2022) sales2020  USING (client_id)
@@ -391,7 +391,7 @@ ANTI JOIN (select * from sales where year(date)=2022) sales2020  USING (client_i
   <details>
 <summary>Ver SQL compilado</summary>
 
-```sql
+```crono-sql
 SELECT clients.*
 FROM clients
 WHERE
@@ -406,7 +406,7 @@ WHERE
 
 La consulta anterior es equivalente a esta otra que usa la clausula **FILTER**
 
-```sql
+```crono-sql
 SELECT clients.*
 FROM clients 
 ANTI JOIN  sales FILTER (year(date)=2022) sales2020  USING (client_id)
@@ -417,7 +417,7 @@ ANTI JOIN  sales FILTER (year(date)=2022) sales2020  USING (client_id)
   <details>
 <summary>Ver SQL compilado</summary>
 
-```sql
+```crono-sql
 SELECT clients.*
 FROM clients
 WHERE NOT EXISTS (SELECT 1 FROM (SELECT * FROM sales WHERE year([date])=2022) sales2020 WHERE clients.client_id=sales2020.client_id)
@@ -432,7 +432,7 @@ Un **SEMI JOIN** es un tipo de JOIN en SQL que devuelve las filas de una tabla q
 
 La siguiente consulta devuelve los clientes que tienen ventas.
 
-```sql
+```crono-sql
 SELECT *
 FROM clients 
 SEMI JOIN sales USING (client_id)
@@ -443,7 +443,7 @@ SEMI JOIN sales USING (client_id)
   <details>
 <summary>Ver SQL compilado</summary>
 
-```sql
+```crono-sql
 SELECT *
 FROM clients
 WHERE EXISTS (SELECT 1 FROM sales WHERE clients.client_id=sales.client_id)

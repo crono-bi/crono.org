@@ -23,13 +23,13 @@ La siguiente consulta calcula el markup a partir del coste y el importe de venta
 
 <div>
 
-```sql
+```crono-sql
 select markup(ventas, coste) [markup];
 ```
 
 El código SQL generado es:
 
-```sql
+```crono-sql
 SELECT CASE WHEN coste<>0 THEN 1.0*CASE WHEN ventas IS NOT NULL OR coste IS NOT NULL THEN coalesce(ventas,0)-coalesce(coste,0) END/coste END AS [markup]
 ```
 </div>
@@ -37,7 +37,7 @@ SELECT CASE WHEN coste<>0 THEN 1.0*CASE WHEN ventas IS NOT NULL OR coste IS NOT 
 
 La siguiente consulta calcula el *margen* y el *markup* de cada producto durante un periodo determinado:
 
-```sql
+```crono-sql
 SELECT
   LB_LIBROS.TITULO AS [Título],
   sum(LB_VENTAS.PVP) AS Importe,
@@ -57,7 +57,7 @@ GROUP BY LB_LIBROS.TITULO
   <details>
 <summary>Ver SQL compilado</summary>
 
-```sql
+```crono-sql
 SELECT
   LB_LIBROS.TITULO AS [Título],
   sum(LB_VENTAS.PVP) AS Importe,

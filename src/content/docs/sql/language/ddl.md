@@ -21,7 +21,7 @@ En este artículo se describe, mediante ejemplos, la sintaxis de:
 
 **Crono SQL** admite la sintaxis estándar de SQL para crear procedimientos almacenados:
 
-```sql
+```crono-sql
 CREATE PROCEDURE dbo.[cargar productos]
 BEGIN
   
@@ -56,7 +56,7 @@ END
   <details>
 <summary>Ver SQL compilado</summary>
 
-```sql
+```crono-sql
 CREATE PROCEDURE dbo.[cargar productos] AS
 BEGIN
 
@@ -164,7 +164,7 @@ El código SQL generado, y sin que el programador tenga que escribir ni configur
 
 Por lo tanto, en el ejemplo anterior, la sentencia **PRINT** es innecesaria. De hecho, si el procedimiento tiene una sola instrucción, no es necesario tampoco crear el bloque **BEGIN ... END**. El siguiente código es equivalente    
 
-```sql
+```crono-sql
 CREATE PROCEDURE dbo.[cargar productos]
 MERGE CLONE dwh.DimProducts(ProductSid)
 SELECT
@@ -192,7 +192,7 @@ CHECK SNOWFLAKE
   <details>
 <summary>Ver SQL compilado</summary>
 
-```sql
+```crono-sql
 CREATE PROCEDURE dbo.[cargar productos] AS
 BEGIN
 
@@ -296,7 +296,7 @@ EXEC sys.sp_addextendedproperty @level0type = 'SCHEMA',  @level0name = 'dbo',   
 
 Se puede utilizar la instrucción **CREATE OR REPLACE** (también se admite **CREATE OR ALTER**) para que el mismo código sirva para crear inicialmente el procedimiento o modificarlo si ya existe:
 
-```sql
+```crono-sql
 CREATE OR ALTER PROCEDURE dbo.[cargar productos]
 MERGE CLONE dwh.DimProducts(ProductSid) 
 SELECT
@@ -324,7 +324,7 @@ CHECK SNOWFLAKE
   <details>
 <summary>Ver SQL compilado</summary>
 
-```sql
+```crono-sql
 IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.ROUTINES WHERE ROUTINE_SCHEMA='dbo' AND ROUTINE_NAME='cargar productos' AND ROUTINE_TYPE='PROCEDURE')
 DROP PROCEDURE dbo.[cargar productos];
 
@@ -431,7 +431,7 @@ EXEC sys.sp_addextendedproperty @level0type = 'SCHEMA',  @level0name = 'dbo',   
 
 Finalmente, si el procedimiento carga una única tabla (lo que recomendamos), se puede prescindir del nombre del procedimiento. **Crono SQL** escogerá un nombre apropiado sin que el desarrollador tenga que elegir y memorizar uno.  
 
-```sql
+```crono-sql
 CREATE OR REPLACE PROCEDURE
 MERGE CLONE dwh.DimProducts(ProductSid)
 SELECT
@@ -459,7 +459,7 @@ CHECK SNOWFLAKE
   <details>
 <summary>Ver SQL compilado</summary>
 
-```sql
+```crono-sql
 IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.ROUTINES WHERE ROUTINE_NAME='LOAD dwh.DimProducts' AND ROUTINE_TYPE='PROCEDURE')
 DROP PROCEDURE [LOAD dwh.DimProducts];
 
@@ -572,7 +572,7 @@ La sintaxis utilizada en el último ejemplo no es excepcional. De hecho, es el c
 
 Para ejecutar un procedimiento, se puede utilizar la sentencia **EXECUTE** (o el sinónimo **EXEC**):
 
-```sql
+```crono-sql
 EXECUTE dbo.[cargar productos]
 ```
 
@@ -581,7 +581,7 @@ EXECUTE dbo.[cargar productos]
   <details>
 <summary>Ver SQL compilado</summary>
 
-```sql
+```crono-sql
 EXECUTE dbo.[cargar productos];
 ```
 
@@ -590,7 +590,7 @@ EXECUTE dbo.[cargar productos];
 
 En el caso de los procedimientos "anónimos" se debe utilizar **EXECUTE LOAD** (o **EXEC LOAD**):
 
-```sql
+```crono-sql
 EXECUTE LOAD dwh.DimProducts
 ```
 
@@ -599,7 +599,7 @@ EXECUTE LOAD dwh.DimProducts
   <details>
 <summary>Ver SQL compilado</summary>
 
-```sql
+```crono-sql
 EXECUTE [LOAD dwh.DimProducts];
 ```
 
@@ -608,7 +608,7 @@ EXECUTE [LOAD dwh.DimProducts];
 
 El flujo normal de ejecución de la carga del DWH, se puede crear mediante un procedimiento que llame secuencialmente a la carga de todas las tablas:
 
-```sql
+```crono-sql
 CREATE OR REPLACE PROCEDURE dwh.cargar
 BEGIN
 
@@ -627,7 +627,7 @@ END
   <details>
 <summary>Ver SQL compilado</summary>
 
-```sql
+```crono-sql
 IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.ROUTINES WHERE ROUTINE_SCHEMA='dwh' AND ROUTINE_NAME='cargar' AND ROUTINE_TYPE='PROCEDURE')
 DROP PROCEDURE dwh.cargar;
 
@@ -669,7 +669,7 @@ EXEC sys.sp_addextendedproperty @level0type = 'SCHEMA',  @level0name = 'dwh',   
 
 Y, de este modo, la carga del DWH se ejecutaría llamando a este procedimiento desde el programador de tareas de Windows o mediante el programador propio de la base de datos:
 
-```sql
+```crono-sql
 EXECUTE dwh.cargar
 ```
 
@@ -678,7 +678,7 @@ EXECUTE dwh.cargar
   <details>
 <summary>Ver SQL compilado</summary>
 
-```sql
+```crono-sql
 EXECUTE dwh.cargar;
 ```
 
@@ -687,7 +687,7 @@ EXECUTE dwh.cargar;
 
 Se puede utilizar **DROP PROCEDURE** para eliminar un procedimiento existente. También se puede utilizar **DROP PROCEDURE IF EXISTS** para eliminar un procedimiento en el caso de que efectivamente exista.
 
-```sql
+```crono-sql
 DROP PROCEDURE IF EXISTS dwh.cargar
 ```
 
@@ -696,7 +696,7 @@ DROP PROCEDURE IF EXISTS dwh.cargar
   <details>
 <summary>Ver SQL compilado</summary>
 
-```sql
+```crono-sql
 IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.ROUTINES WHERE ROUTINE_SCHEMA='dwh' AND ROUTINE_NAME='cargar' AND ROUTINE_TYPE='PROCEDURE')
 DROP PROCEDURE dwh.cargar;
 
@@ -709,7 +709,7 @@ DROP PROCEDURE dwh.cargar;
 
 La sintaxis para crear una función escalar es la siguiente:
 
-```sql
+```crono-sql
 CREATE OR REPLACE FUNCTION dbo.MaxValue(@a int,@b int,@c int) RETURNS int
 BEGIN
 
@@ -734,7 +734,7 @@ END
   <details>
 <summary>Ver SQL compilado</summary>
 
-```sql
+```crono-sql
 IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.ROUTINES WHERE ROUTINE_SCHEMA='dbo' AND ROUTINE_NAME='MaxValue' AND ROUTINE_TYPE='FUNCTION')
 DROP FUNCTION dbo.MaxValue;
 
@@ -764,7 +764,7 @@ END
 
 También pueden crearse funciones que devuelven tablas de este modo simplificado:
 
-```sql
+```crono-sql
 CREATE OR REPLACE FUNCTION dbo.ProductSales(@ProductId int) RETURNS TABLE
 SELECT 
   year(FactSalesOrderHeader.OrderDate) OrderYear,
@@ -780,7 +780,7 @@ WHERE DimProducts.ProductId=@ProductId
   <details>
 <summary>Ver SQL compilado</summary>
 
-```sql
+```crono-sql
 IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.ROUTINES WHERE ROUTINE_SCHEMA='dbo' AND ROUTINE_NAME='ProductSales' AND ROUTINE_TYPE='FUNCTION')
 DROP FUNCTION dbo.ProductSales;
 
@@ -803,7 +803,7 @@ RETURN (
 
 Se puede utilizar **DROP FUNCTION** o **DROP FUNCTION IF EXISTS** para eliminar una función. 
 
-```sql
+```crono-sql
 DROP FUNCTION IF EXISTS dbo.ProductSales
 ```
 
@@ -812,7 +812,7 @@ DROP FUNCTION IF EXISTS dbo.ProductSales
   <details>
 <summary>Ver SQL compilado</summary>
 
-```sql
+```crono-sql
 IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.ROUTINES WHERE ROUTINE_SCHEMA='dbo' AND ROUTINE_NAME='ProductSales' AND ROUTINE_TYPE='FUNCTION')
 DROP FUNCTION dbo.ProductSales;
 
@@ -825,7 +825,7 @@ DROP FUNCTION dbo.ProductSales;
 
 **Crono SQL** admite la sintaxis estándar para crear vistas:
 
-```sql
+```crono-sql
 CREATE VIEW dwh.ProductsAnnualSales AS
 SELECT  
   DimProducts.Product,
@@ -841,7 +841,7 @@ INNER JOIN dwh.DimProducts USING ProductSid
   <details>
 <summary>Ver SQL compilado</summary>
 
-```sql
+```crono-sql
 CREATE VIEW dwh.ProductsAnnualSales AS
 SELECT
   DimProducts.Product AS Product,
@@ -862,7 +862,7 @@ GROUP BY
 Se puede utilizar **CREATE OR ALTER VIEW** o **CREATE OR REPLACE VIEW** para actualizar la vista en el  caso de que ya exista.
 
 
-```sql
+```crono-sql
 CREATE OR REPLACE VIEW dwh.ProductsAnnualSales
 SELECT  
   DimProducts.Product,
@@ -878,7 +878,7 @@ INNER JOIN dwh.DimProducts USING ProductSid
   <details>
 <summary>Ver SQL compilado</summary>
 
-```sql
+```crono-sql
 IF EXISTS (SELECT TABLE_NAME FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA='dwh' AND TABLE_NAME='ProductsAnnualSales') DROP VIEW dwh.ProductsAnnualSales
 
 CREATE VIEW dwh.ProductsAnnualSales AS
@@ -900,7 +900,7 @@ GROUP BY
 
 Para eliminar una vista existente se puede utilizar **DROP VIEW** o **DROP VIEW IF EXISTS**
 
-```sql
+```crono-sql
 DROP VIEW IF EXISTS dbo.ProductSales
 ```
 
@@ -909,7 +909,7 @@ DROP VIEW IF EXISTS dbo.ProductSales
   <details>
 <summary>Ver SQL compilado</summary>
 
-```sql
+```crono-sql
 IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA='dbo' AND TABLE_NAME='ProductSales' AND TABLE_TYPE='VIEW')
 DROP VIEW dbo.ProductSales;
 
@@ -924,7 +924,7 @@ En general, <u>no es necesario</u> escribir explícitamente el **CREATE TABLE** 
 
 De todos modos, si se prefiere, pueden crearse las tablas utilizando la sintaxis habitual de **CREATE TABLE**.
 
-```sql
+```crono-sql
 CREATE TABLE dwh.DimCustomers(
   CustomerSid int IDENTITY(1,1),
   CustomerId int NOT NULL,
@@ -948,7 +948,7 @@ CREATE TABLE dwh.DimCustomers(
   <details>
 <summary>Ver SQL compilado</summary>
 
-```sql
+```crono-sql
 CREATE TABLE dwh.DimCustomers(
   CustomerSid int IDENTITY(1,1) NOT NULL,
   CustomerId int NOT NULL,
@@ -976,7 +976,7 @@ Se puede utilizar **CREATE TABLE IF NOT EXISTS** para crearla únicamente si no 
 La sentencia **CREATE OR REPLACE TABLE** elimina la tabla si ya existe (**DROP TABLE**) y posteriormente la recrea.
 
 
-```sql
+```crono-sql
 CREATE OR REPLACE TABLE dwh.DimCustomers(
   CustomerSid int IDENTITY(1,1),
   CustomerId int NOT NULL,
@@ -1000,7 +1000,7 @@ CREATE OR REPLACE TABLE dwh.DimCustomers(
   <details>
 <summary>Ver SQL compilado</summary>
 
-```sql
+```crono-sql
 IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA='dwh' AND TABLE_NAME='DimCustomers' AND TABLE_TYPE='BASE TABLE')
 DROP TABLE dwh.DimCustomers
 
@@ -1028,7 +1028,7 @@ CREATE TABLE dwh.DimCustomers(
 
 También puede utilizarse **CREATE OR ALTER TABLE** para añadir nuevos campos, restricciones o índices a una tabla existente.
 
-```sql
+```crono-sql
 CREATE OR ALTER TABLE dwh.DimCustomers(
   CustomerSid int IDENTITY(1,1),
   CustomerId int NOT NULL,
@@ -1052,7 +1052,7 @@ CREATE OR ALTER TABLE dwh.DimCustomers(
   <details>
 <summary>Ver SQL compilado</summary>
 
-```sql
+```crono-sql
 IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA='dwh' AND TABLE_NAME='DimCustomers')
 CREATE TABLE dwh.DimCustomers(
   CustomerSid int IDENTITY(1,1) NOT NULL,
@@ -1199,7 +1199,7 @@ Además de los campos de la tabla, la sintaxis de **Crono SQL** admite las sigui
 - Restricciones **DEFAULT**
 - Indices **UNIQUE** y **NONUNIQUE** (que pueden ser **CLUSTERED** o **NONCLUSTERED**, y con la opción **INCLUDE**)
 
-```sql
+```crono-sql
 CREATE OR REPLACE TABLE dwh.DimCustomer2(
   #CustomerSid int IDENTITY(1,1),
   ##CustomerId int,
@@ -1232,7 +1232,7 @@ CREATE OR REPLACE TABLE dwh.DimCustomer2(
   <details>
 <summary>Ver SQL compilado</summary>
 
-```sql
+```crono-sql
 IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA='dwh' AND TABLE_NAME='DimCustomer2' AND TABLE_TYPE='BASE TABLE')
 DROP TABLE dwh.DimCustomer2
 
@@ -1287,7 +1287,7 @@ Algunas características de esta sintaxis:
 
 Si se requiere alguna funcionalidad de la base de datos que no está soportada por la sintaxis de **Crono SQL**, se pueden utilizar los literales SQL. Por ejemplo, puede utilizarse un literal SQL para especificar el *file group* donde debe crearse un indice, o para definir el particionado, o crear indices columnares (**Crono SQL** no parseará ni traducirá el literal SQL).
 
-```sql
+```crono-sql
 SQL `
 CREATE TABLE [dwh].[DimCustomer](
   [CustomerSid] [int] IDENTITY(1,1) NOT NULL,
@@ -1309,7 +1309,7 @@ CREATE TABLE [dwh].[DimCustomer](
   <details>
 <summary>Ver SQL compilado</summary>
 
-```sql
+```crono-sql
 
 CREATE TABLE [dwh].[DimCustomer](
   [CustomerSid] [int] IDENTITY(1,1) NOT NULL,
@@ -1331,7 +1331,7 @@ CREATE TABLE [dwh].[DimCustomer](
 
 También se puede crear una tabla directamente a partir del resultado de una consulta.
 
-```sql
+```crono-sql
 CREATE OR REPLACE TABLE dwh.CopiaDeCustomers
 SELECT 
   Customer.CustomerId				#CustomerId,
@@ -1358,7 +1358,7 @@ LEFT JOIN staging.CountryRegion CustomerCountry using CustomerProvince(CountryRe
   <details>
 <summary>Ver SQL compilado</summary>
 
-```sql
+```crono-sql
 IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA='dwh' AND TABLE_NAME='CopiaDeCustomers' AND TABLE_TYPE='BASE TABLE')
 DROP TABLE dwh.CopiaDeCustomers
 
@@ -1389,7 +1389,7 @@ LEFT JOIN staging.CountryRegion CustomerCountry ON (CustomerProvince.CountryRegi
 
 Para eliminar una tabla, **Crono SQL** proporciona las sentencias **DROP TABLE** y **DROP TABLE IF EXISTS**.
 
-```sql
+```crono-sql
 DROP TABLE IF EXISTS dwh.DimCustomer
 ```
 
@@ -1398,7 +1398,7 @@ DROP TABLE IF EXISTS dwh.DimCustomer
   <details>
 <summary>Ver SQL compilado</summary>
 
-```sql
+```crono-sql
 IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA='dwh' AND TABLE_NAME='DimCustomer' AND TABLE_TYPE='BASE TABLE')
 DROP TABLE dwh.DimCustomer
 
@@ -1411,7 +1411,7 @@ DROP TABLE dwh.DimCustomer
 
 Los índices se pueden crear desde la misma sentencia **CREATE TABLE** pero también pueden definirse a postereri mediante las sentencias **CREATE INDEX**.
 
-```sql
+```crono-sql
 CREATE INDEX IDX_Customer1 ON dwh.DimCustomers(LastName)
 ```
 
@@ -1420,7 +1420,7 @@ CREATE INDEX IDX_Customer1 ON dwh.DimCustomers(LastName)
   <details>
 <summary>Ver SQL compilado</summary>
 
-```sql
+```crono-sql
 CREATE INDEX IDX_Customer1 ON dwh.DimCustomers(LastName)
 ```
 
@@ -1429,7 +1429,7 @@ CREATE INDEX IDX_Customer1 ON dwh.DimCustomers(LastName)
 
 Se puede utilizar la instrucción **CREATE INDEX IF NOT EXISTS** para crear un índice si aún no existe.
 
-```sql
+```crono-sql
 CREATE INDEX IF NOT EXISTS IDX_SalesHeader_CustomerSid ON dwh.FactSalesOrderHeader(CustomerSid)
 ```
 
@@ -1438,7 +1438,7 @@ CREATE INDEX IF NOT EXISTS IDX_SalesHeader_CustomerSid ON dwh.FactSalesOrderHead
   <details>
 <summary>Ver SQL compilado</summary>
 
-```sql
+```crono-sql
 IF EXISTS (select name from sys.indexes where upper(name)='IDX_SALESHEADER_CUSTOMERSID' and is_unique=1)
 DROP INDEX IDX_SalesHeader_CustomerSid ON dwh.FactSalesOrderHeader
 
@@ -1452,7 +1452,7 @@ CREATE INDEX IDX_SalesHeader_CustomerSid ON dwh.FactSalesOrderHeader(CustomerSid
 
 También se puede utilizar **CREATE OR REPLACE INDEX** para crear un índice o recrearlo si ya existe. El siguiente ejemplo muestra, además, la posibilidad de utilizar la cláusula **INCLUDE** para añadir columnas adicionales al indice:
 
-```sql
+```crono-sql
 CREATE OR REPLACE INDEX IDX_SalesHeader_CustomerSid2 ON dwh.FactSalesOrderHeader(CustomerSid) INCLUDE  (SalesOrderId)
 ```
 
@@ -1461,7 +1461,7 @@ CREATE OR REPLACE INDEX IDX_SalesHeader_CustomerSid2 ON dwh.FactSalesOrderHeader
   <details>
 <summary>Ver SQL compilado</summary>
 
-```sql
+```crono-sql
 IF EXISTS (select name from sysindexes where upper(name)='IDX_SALESHEADER_CUSTOMERSID2')
 DROP INDEX IDX_SalesHeader_CustomerSid2 ON dwh.FactSalesOrderHeader
 
@@ -1474,7 +1474,7 @@ CREATE INDEX IDX_SalesHeader_CustomerSid2 ON dwh.FactSalesOrderHeader(CustomerSi
 
 Se puede crear índices **UNIQUE**, **CLUSTERED** y **NONCLUSTERED**.
 
-```sql
+```crono-sql
 CREATE UNIQUE NONCLUSTERED INDEX IDX_Customer1 ON dwh.DimCustomers(Customer)
 ```
 
@@ -1483,7 +1483,7 @@ CREATE UNIQUE NONCLUSTERED INDEX IDX_Customer1 ON dwh.DimCustomers(Customer)
   <details>
 <summary>Ver SQL compilado</summary>
 
-```sql
+```crono-sql
 CREATE UNIQUE NONCLUSTERED INDEX IDX_Customer1 ON dwh.DimCustomers(Customer)
 ```
 
@@ -1492,7 +1492,7 @@ CREATE UNIQUE NONCLUSTERED INDEX IDX_Customer1 ON dwh.DimCustomers(Customer)
 
 Mediante **literales SQL** se puede crear cualquier otro índice que admita la base de datos.
 
-```sql
+```crono-sql
 SQL `CREATE CLUSTERED COLUMNSTORE INDEX MyCCI ON MyFactTable;  `
 ```
 
@@ -1501,7 +1501,7 @@ SQL `CREATE CLUSTERED COLUMNSTORE INDEX MyCCI ON MyFactTable;  `
   <details>
 <summary>Ver SQL compilado</summary>
 
-```sql
+```crono-sql
 CREATE CLUSTERED COLUMNSTORE INDEX MyCCI ON MyFactTable;
 ```
 
@@ -1510,7 +1510,7 @@ CREATE CLUSTERED COLUMNSTORE INDEX MyCCI ON MyFactTable;
 
 La instrucción **DROP INDEX** permite eliminar un índice.
 
-```sql
+```crono-sql
 DROP INDEX IF EXISTS IDX_SalesHeader_CustomerSid ON dwh.FactSalesOrderHeader
 ```
 
@@ -1519,7 +1519,7 @@ DROP INDEX IF EXISTS IDX_SalesHeader_CustomerSid ON dwh.FactSalesOrderHeader
   <details>
 <summary>Ver SQL compilado</summary>
 
-```sql
+```crono-sql
 IF EXISTS (select name from sysindexes where upper(name)='IDX_SALESHEADER_CUSTOMERSID')
 DROP INDEX IDX_SalesHeader_CustomerSid ON dwh.FactSalesOrderHeader
 
@@ -1535,7 +1535,7 @@ DROP INDEX IDX_SalesHeader_CustomerSid ON dwh.FactSalesOrderHeader
 
 La sentencia **CREATE DATABASE** permite crear una base de datos con las opciones predeterminadas.
 
-```sql
+```crono-sql
 CREATE DATABASE IF NOT EXISTS CRONO_EJEMPLO
 ```
 
@@ -1544,7 +1544,7 @@ CREATE DATABASE IF NOT EXISTS CRONO_EJEMPLO
   <details>
 <summary>Ver SQL compilado</summary>
 
-```sql
+```crono-sql
 IF DB_ID('CRONO_EJEMPLO') IS NULL
 CREATE DATABASE CRONO_EJEMPLO
 
@@ -1555,7 +1555,7 @@ CREATE DATABASE CRONO_EJEMPLO
 
 También se puede especificar la intercalación:
 
-```sql
+```crono-sql
 CREATE DATABASE IF NOT EXISTS CRONO_EJEMPLO COLLATE Traditional_Spanish_ci_ai
 ```
 
@@ -1564,7 +1564,7 @@ CREATE DATABASE IF NOT EXISTS CRONO_EJEMPLO COLLATE Traditional_Spanish_ci_ai
   <details>
 <summary>Ver SQL compilado</summary>
 
-```sql
+```crono-sql
 IF DB_ID('CRONO_EJEMPLO') IS NULL
 CREATE DATABASE CRONO_EJEMPLO COLLATE Traditional_Spanish_ci_ai
 
@@ -1577,7 +1577,7 @@ CREATE DATABASE CRONO_EJEMPLO COLLATE Traditional_Spanish_ci_ai
 
 Se puede crear un esquema con las instrucciones **CREATE SCHEMA** y **CREATE SCHEMA IF NOT EXISTS**
 
-```sql
+```crono-sql
 CREATE SCHEMA IF NOT EXISTS dwh
 ```
 
@@ -1586,7 +1586,7 @@ CREATE SCHEMA IF NOT EXISTS dwh
   <details>
 <summary>Ver SQL compilado</summary>
 
-```sql
+```crono-sql
 IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME='dwh') 
 EXECUTE('CREATE SCHEMA dwh AUTHORIZATION dbo')
 
@@ -1598,7 +1598,7 @@ EXECUTE('CREATE SCHEMA dwh AUTHORIZATION dbo')
 Es posible establecer el propietario del esquema.
 
 
-```sql
+```crono-sql
 CREATE SCHEMA IF NOT EXISTS dwh AUTHORIZATION crono
 ```
 
@@ -1607,7 +1607,7 @@ CREATE SCHEMA IF NOT EXISTS dwh AUTHORIZATION crono
   <details>
 <summary>Ver SQL compilado</summary>
 
-```sql
+```crono-sql
 IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME='dwh') 
 EXECUTE('CREATE SCHEMA dwh AUTHORIZATION crono')
 

@@ -8,7 +8,7 @@ La función `fromjuliandate` convierte un número de fecha juliana (Julian Date)
 
 **Sintaxis:**
 
-```sql
+```crono-sql
 fromjuliandate(julian_number)
 ```
 
@@ -22,7 +22,7 @@ Parámetros:
 La siguiente sentencia convierte el número juliano 2460677 a fecha 
 
 
-```sql
+```crono-sql
 SELECT fromjuliandate(2460677);
 -- Resultado: '2025-01-01'
 ```
@@ -31,7 +31,7 @@ SELECT fromjuliandate(2460677);
 El código generado es:
 
 
-```sql
+```crono-sql
 SELECT dateadd(d,2460677-2451545,CAST('20000101' AS date)) AS expr1
 ```
 

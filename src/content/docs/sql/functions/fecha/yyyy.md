@@ -10,12 +10,12 @@ Es útil para extraer el año de una fecha con formato textual, ideal para etiqu
 ## Ejemplo
 
 
-```sql
+```crono-sql
 select yyyy('2026-01-01') as result;  -- Devuelve 2026
 ```
 
 El código SQL generado es:
 
-```sql
+```crono-sql
 SELECT CONVERT(CHAR(4),'2026-01-01',112) AS result
 ```

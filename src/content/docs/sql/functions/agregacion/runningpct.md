@@ -13,7 +13,7 @@ Se puede usar tanto la sintaxis `OVER` del SQL estándar como la sintaxis compac
 
 La siguiente consulta devuelve el porcentaje de ventas acumulado (*year to date* ) para cada mes .
 
-```sql
+```crono-sql
 select 
   year(fecha) anyo,
   month(fecha) mes,
@@ -25,7 +25,7 @@ group by all
 
 La consulta SQL generada es:
 
-```sql
+```crono-sql
 SELECT
   year(fecha) AS anyo,
   month(fecha) AS mes,

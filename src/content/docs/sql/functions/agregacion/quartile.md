@@ -13,7 +13,7 @@ Se puede usar tanto la sintaxis `OVER` del SQL estándar como la sintaxis compac
 
 La siguiente consulta devuelve el cuartil de ventas en que se encuentra cada libro. Los libros con un percentil de 4 están en el grupo del 25% de libros más vendidos.
 
-```sql
+```crono-sql
 select 
   lb_libros.titulo libro,
   sum(unidades) ventas,
@@ -25,7 +25,7 @@ group by all
 
 La consulta SQL generada es:
 
-```sql
+```crono-sql
 SELECT
   lb_libros.titulo AS libro,
   sum(unidades) AS ventas,

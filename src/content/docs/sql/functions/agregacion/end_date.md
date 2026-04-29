@@ -9,14 +9,14 @@ Es útil para calcular la fdecha final del periodo en aquellos casos donde la ta
 
 **Sintaxis:**
 
-```sql
+```crono-sql
 end_date(fecha_inicio) OVER (PARTITION BY <columns>)
 ```
 
 Como en todas las funciones de ventana se puede usar la sintaxis compacta:
 
 
-```sql
+```crono-sql
 end_date(fecha_inicio PARTITION BY <columns>)
 ```
 
@@ -24,7 +24,7 @@ end_date(fecha_inicio PARTITION BY <columns>)
 
 El siguiente ejemplo muestra la fecha de inicio y fin de cada escandallo:
 
-```sql
+```crono-sql
 select 
 	articulo, 
 	coste, 
@@ -35,7 +35,7 @@ from stg.escandallos
 
 El código generado es:
 
-```sql
+```crono-sql
 SELECT
   articulo,
   coste,

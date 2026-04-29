@@ -9,13 +9,13 @@ La función `yesterday` devuelve la fecha (tipo **date**) correspondiente al dí
 
 ## Ejemplo
 
-```sql
+```crono-sql
 select yesterday() as result;
 ```
 
 El código SQL generado es:
 
-```sql
+```crono-sql
 SELECT cast(getdate()-1 as date) AS result
 ```
 

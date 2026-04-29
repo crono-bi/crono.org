@@ -7,7 +7,7 @@ title: "Crono$ActiveDirectoryMyGroups"
 
 Devuelve el listado de grupos del Directorio Activo a los que pertenece el usuario actual.
 
-```sql
+```crono-sql
 select *
 from Crono$ActiveDirectoryMyGroups
 ```

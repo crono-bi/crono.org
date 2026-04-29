@@ -5,7 +5,7 @@ title: "Crono$ServerProperties"
 
 Devuelve las propiedades del servidor de base de datos.
 
-```sql
+```crono-sql
 SELECT *
 FROM Crono$ServerProperties
 ```

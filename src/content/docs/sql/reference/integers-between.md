@@ -8,7 +8,7 @@ sidebar:
 La subconsulta predefinida **INTEGERS BETWEEN a AND b** permite generar fácilmente una tabla de enteros consecutivos. 
 
 
-```sql
+```crono-sql
 select *
 from integers between 100 and 1500000
 ```
@@ -18,7 +18,7 @@ from integers between 100 and 1500000
   <details>
 <summary>Ver SQL compilado</summary>
 
-```sql
+```crono-sql
 SELECT *
 FROM
   (SELECT 100+u1.n+u2.n*10+u3.n*100+u4.n*1000+u5.n*10000+u6.n*100000+u7.n*1000000 num

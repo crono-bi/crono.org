@@ -6,7 +6,7 @@ title: "Crono$CronoViewProperties"
 
 La pseudovista `Crono$CronoViewProperties` devuelve las propiedades que admiten las pseudovistas con parámetros.
 
-```sql
+```crono-sql
 SELECT *
 FROM Crono$CronoViewProperties
 ```

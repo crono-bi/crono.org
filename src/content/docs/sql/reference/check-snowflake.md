@@ -7,7 +7,7 @@ sidebar:
 
 La cláusula **CHECK SNOWFLAKE**, colocada justo después de todos los **JOINs**, verifica que las relaciones no pierden ni duplican ningún registro de la tabla del **FROM**. Se trata de una comprobación fundamental para validar que no estamos cometiendo ninguna equivocación al escribir la consulta y que los datos de origen son coherentes con lo esperado.
 
-```sql
+```crono-sql
 SELECT
   year(sales.OrderDate) AS OrderYear,
   Customer.CustomerId AS CustomerId,
@@ -27,7 +27,7 @@ WHERE year(sales.OrderDate)=2012
   <details>
 <summary>Ver SQL compilado</summary>
 
-```sql
+```crono-sql
 IF EXISTS (
   SELECT count(*)
   FROM staging.SalesOrderHeader sales

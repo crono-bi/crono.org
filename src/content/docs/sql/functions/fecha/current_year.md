@@ -10,6 +10,6 @@ Esta función se comporta como una constante del sistema y no requiere paréntes
 
 # Ejemplo
 
-```sql
+```crono-sql
 SELECT current_year; -- Devuelve el año actual
 ```

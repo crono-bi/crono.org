@@ -46,7 +46,7 @@ Por ejemplo, si no existiese la tabla agregada, y el usuario pidiese las ventas 
 
 
 
-```sql
+```crono-sql
 SELECT
   LB_MESES.ANYO AS [Año],
   LB_MESES.NOMBRE_MES AS Mes,
@@ -62,7 +62,7 @@ GROUP BY
 
 En cambio, con la tabla agregada correctamente definida la misma consulta del usuario generará este código SQL:
 
-```sql
+```crono-sql
 SELECT
   LB_MESES.NOMBRE_MES AS Mes,
   sum(LB_VENTAS_DIARIAS.UNIDADES) AS [Unidades vendidas]

@@ -6,7 +6,7 @@ title: "Crono$ActionProperties"
 La función `Crono$ActionProperties` devuelve las propiedades que admiten las acciones propias de Crono.
 
 
-```sql
+```crono-sql
 select *
 from Crono$ActionProperties
 ```

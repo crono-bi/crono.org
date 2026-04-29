@@ -10,7 +10,7 @@ Devuelve la tabla de caracteres UNICODE.
 La siguiente consulta muestra algunos caracteres UNICODE.
 
 
-```sql
+```crono-sql
 select 
 	CodePoint,
 	highSurrogate,
@@ -30,7 +30,7 @@ order by 1
   <details>
 <summary>Ver SQL compilado</summary>
 
-```sql
+```crono-sql
 SELECT
   CodePoint,
   highSurrogate,

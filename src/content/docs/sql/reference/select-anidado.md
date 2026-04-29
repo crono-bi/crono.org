@@ -10,7 +10,7 @@ Es posible incluir varios **SELECT** en una misma consulta. Esta sintaxis permit
 Este consulta devuelve la media de las ventas anuales de cada producto.
 
 
-```sql
+```crono-sql
 select
   Product,
   ProductNumber,
@@ -30,7 +30,7 @@ inner join staging.Product  using ProductId
   <details>
 <summary>Ver SQL compilado</summary>
 
-```sql
+```crono-sql
 SELECT
   Product,
   ProductNumber,
@@ -62,7 +62,7 @@ GROUP BY
 La cláusulas **SELECT** encadenadas permiten, por ejemplo, contar el número de registros que devuelve una consulta previa. La siguiente consulta ejecuta un **count(\*)** sobre el resultado de la consulta inferior.
 
 
-```sql
+```crono-sql
 SELECT count(*)
 SELECT
   Product.Name Product,
@@ -77,7 +77,7 @@ INNER JOIN staging.Product USING ProductId
   <details>
 <summary>Ver SQL compilado</summary>
 
-```sql
+```crono-sql
 SELECT count(*) AS expr1
 FROM (
     SELECT

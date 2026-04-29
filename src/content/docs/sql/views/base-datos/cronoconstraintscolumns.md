@@ -10,7 +10,7 @@ Devuelve información sobre las columnas que participan en las restricciones de 
 Es similar a la vista ANSI `INFORMATION_SCHEMA.CONSTRAINT_COLUMN_USAGE`
 
 
-```sql
+```crono-sql
 select *
 from Crono$ConstraintsColumns
 ```

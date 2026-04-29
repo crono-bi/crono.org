@@ -13,7 +13,7 @@ Se puede usar tanto la sintaxis `OVER` del SQL estándar como la sintaxis compac
 
 La siguiente consulta devuelve el 40% de las tiendas con mayor venta.
 
-```sql
+```crono-sql
 select 
   lb_tiendas.nombre tienda,
   sum(unidades) ventas,
@@ -26,7 +26,7 @@ qualify rank<0.4
 
 La consulta SQL generada es:
 
-```sql
+```crono-sql
 SELECT *
 FROM (
     SELECT

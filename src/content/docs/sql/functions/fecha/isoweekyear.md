@@ -9,14 +9,14 @@ La norma ISO 8601 establece que una semana inicia el día lunes y termina el dí
 
 ## Ejemplo
 
-```sql
+```crono-sql
 select isoweekyear('2022-11-26') as isoyear,isoweek('2022-11-26') as week;
 select isoweekyear('2022-01-01') as isoyear,isoweek('2022-01-01') as week;
 ```
 
 El código SQL generado es:
 
-```sql
+```crono-sql
 SELECT year('2022-11-26')+CASE WHEN month('2022-11-26')=1 AND datepart(isowk,'2022-11-26')>50 THEN -1 WHEN month('2022-11-26')=12 AND datepart(isowk,'2022-11-26')=1 THEN 1 ELSE 0 END AS isoyear, datepart(isowk,'2022-11-26') AS week
 SELECT year('2022-01-01')+CASE WHEN month('2022-01-01')=1 AND datepart(isowk,'2022-01-01')>50 THEN -1 WHEN month('2022-01-01')=12 AND datepart(isowk,'2022-01-01')=1 THEN 1 ELSE 0 END AS isoyear, datepart(isowk,'2022-01-01') AS week
 ```

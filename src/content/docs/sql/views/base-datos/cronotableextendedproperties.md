@@ -9,7 +9,7 @@ Devuelve información sobre las propiedades extendidas de todas las tablas la ba
 
 Toma la información de la vista de sistema `sys.extended_properties` de **SQL Server**
 
-```sql
+```crono-sql
 select *
 from Crono$TableExtendedProperties
 ```

@@ -9,20 +9,20 @@ La función `WEEKDAY` devuelve devuelve el día de la semana de una fecha, como 
 
 ## Ejemplo
 
-```sql
+```crono-sql
 select WEEKDAY('2025-01-01') as result;
 ```
 
 El código SQL generado es:
 
-```sql
+```crono-sql
 SELECT DATENAME([WEEKDAY],'2025-01-01') AS result --Devuelve 3 (miércoles)
 ```
 
 La siguiente consulta devuelve la configuración de `DATEFIRST` (el lunes será 1, martes 2, ..., domingo 7), el nombre del día de la semana y el número del número de la semana, según la configuración de `DATEFIRST`.
 
 
-```sql
+```crono-sql
 select @@DATEFIRST,weekday('2024-12-30'),weekdaynumber('2024-12-30') as result;
 ```
 

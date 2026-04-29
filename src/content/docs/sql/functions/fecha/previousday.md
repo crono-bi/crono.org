@@ -12,12 +12,12 @@ Es útil para realizar comparaciones, cálculos de rangos o filtrado basado en f
 ## Ejemplo
 
 
-```sql
+```crono-sql
 SELECT PREVIOUSDAY('2025-01-01'); -- Devuelve 2024-12-31
 ```
 
 El código SQL generado es:
 
-```sql
+```crono-sql
 SELECT dateadd(d,-1,'2025-01-01') AS expr1
 ```

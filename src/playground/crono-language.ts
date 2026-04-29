@@ -9,7 +9,7 @@ export const CRONO_KEYWORDS = [
   'DELETE', 'INSERT', 'UPDATE', 'MERGE', 'TRUNCATE',
   'CLONE', 'HISTORY', 'UPSERT',
   // Modifiers
-  'ALL', 'AND', 'INSERT',
+  'ALL', 'AND',
   // DDL
   'CREATE', 'ALTER', 'DROP', 'TABLE', 'VIEW', 'FUNCTION', 'PROCEDURE',
   'COLUMN', 'REPLACE', 'VIRTUAL',

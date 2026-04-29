@@ -91,7 +91,7 @@ Esto se hace desde las propiedades de la tabla de ventas:
 
 De este modo, por ejemplo, si el usuario **MyORG\Juan** consulta las ventas por año, **Crono** generará esta consulta, y la base de datos solo devolverá la información de las tiendas de **MyORG\Juan**.
 
-```sql
+```crono-sql
 SELECT
   LB_MESES.ANYO AS [Año],
   sum(LB_VENTAS.UNIDADES) AS [Unidades vendidas]

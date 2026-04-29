@@ -8,13 +8,13 @@ La función `tomorrow` devuelve la fecha (tipo **date**) correspondiente al día
 
 ## Ejemplo
 
-```sql
+```crono-sql
 select tomorrow() as result;
 ```
 
 El código SQL generado es:
 
-```sql
+```crono-sql
 SELECT cast(getdate()+1 as date) AS result
 ```
 

@@ -7,13 +7,13 @@ La función `currentusername` devuelve el nombre del usuario de Windows en el mo
 
 ## Ejemplo
 
-```sql
+```crono-sql
 SELECT currentusername() usuario; 
 ```
 
 El código SQL generado será similar a:
 
-```sql
+```crono-sql
 SELECT 'MOTOMAMI\Rosalia' AS usuario
 ```
 

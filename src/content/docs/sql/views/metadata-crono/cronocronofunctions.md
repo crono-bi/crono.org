@@ -5,7 +5,7 @@ title: "Crono$CronoFunctions"
 
 Devuelve el listado de funciones SQL propias de Crono.
 
-```sql
+```crono-sql
 select *
 from Crono$CronoFunctions
 ```

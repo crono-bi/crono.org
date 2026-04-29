@@ -11,8 +11,7 @@ import { sqlTopics } from './src/config/sidebar-sql.js';
 import { examplesTopics } from './src/config/sidebar-examples.js';
 import { playgroundTopics } from './src/config/sidebar-playground.js';
 
-// Import SQL grammar for syntax highlighting
-import sqlLang from 'shiki/langs/sql.mjs';
+import cronoSqlLang from './src/config/crono-sql-grammar.mjs';
 
 // https://astro.build/config
 export default defineConfig({
@@ -47,10 +46,10 @@ export default defineConfig({
 				Sidebar: './src/components/Sidebar.astro',
 				PageTitle: './src/components/PageTitle.astro',
 			},
-			// Configure syntax highlighting with SQL support - uses StarlightUserConfig
 			expressiveCode: {
-				// @ts-ignore - langs property is supported but not fully typed
-				langs: [sqlLang],
+				shiki: {
+					langs: [cronoSqlLang],
+				},
 			},
 			plugins: [
 				starlightSidebarTopics(

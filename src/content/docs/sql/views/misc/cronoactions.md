@@ -6,7 +6,7 @@ title: "Crono$Actions"
 
 La función `Crono$Actions` devuelve el listado de acciones propias de Crono.
 
-```sql
+```crono-sql
 select *
 from Crono$Actions
 ```
