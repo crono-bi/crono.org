@@ -55,27 +55,43 @@ export function useCompilation() {
   const compilationError: Ref<string> = ref('')
   const cronoCode: Ref<string> = ref(initialCode)
 
-  const etlOptions: Ref<EtlOptions> = ref({
+  // ETL options: load from URL params, fallback to defaults
+  const defaultEtlOptions: EtlOptions = {
     InsertedDateColumnName: EtlColumnDefault.InsertedDate,
     UpdatedDateColumnName:  EtlColumnDefault.UpdatedDate,
     DeletedDateColumnName:  EtlColumnDefault.DeletedDate,
     StartDateColumnName:    EtlColumnDefault.StartDate,
     EndDateColumnName:      EtlColumnDefault.EndDate,
     DefaultEndDate:         EtlColumnDefault.DefaultEndDate
-  })
+  }
+
+  function etlFromUrl(params: URLSearchParams | null): EtlOptions {
+    if (!params) return { ...defaultEtlOptions }
+    return {
+      InsertedDateColumnName: params.get('etl_ins')  ?? defaultEtlOptions.InsertedDateColumnName,
+      UpdatedDateColumnName:  params.get('etl_upd')  ?? defaultEtlOptions.UpdatedDateColumnName,
+      DeletedDateColumnName:  params.get('etl_del')  ?? defaultEtlOptions.DeletedDateColumnName,
+      StartDateColumnName:    params.get('etl_start') ?? defaultEtlOptions.StartDateColumnName,
+      EndDateColumnName:      params.get('etl_end')  ?? defaultEtlOptions.EndDateColumnName,
+      DefaultEndDate:         params.get('etl_dend') ?? defaultEtlOptions.DefaultEndDate,
+    }
+  }
+
+  const etlOptions: Ref<EtlOptions> = ref(etlFromUrl(urlParams))
+
+  const hasCodeInUrl = !!(urlParams?.get('code'))
 
   // Store code in localStorage so sidebar can select matching example
   onMounted(() => {
-    if (urlParams?.get('code') && cronoCode.value !== defaultCode) {
+    if (hasCodeInUrl && cronoCode.value !== defaultCode) {
       localStorage.setItem('pg-url-code', cronoCode.value)
-      // Also emit for immediate response if sidebar is ready
       playgroundBus.emit('url-code-loaded', cronoCode.value)
     } else {
       localStorage.removeItem('pg-url-code')
     }
   })
 
-  // Update URL when code or engine changes (base64 encoded)
+  // Update URL when code, engine, or ETL options change
   function updateUrl() {
     if (typeof window === 'undefined') return
     
@@ -86,6 +102,14 @@ export function useCompilation() {
     if (selectedEngine.value !== EngineId.SQLServer) {
       params.set('engine', selectedEngine.value)
     }
+    // Only serialize ETL fields that differ from defaults
+    const etl = etlOptions.value
+    if (etl.InsertedDateColumnName !== defaultEtlOptions.InsertedDateColumnName) params.set('etl_ins',   etl.InsertedDateColumnName)
+    if (etl.UpdatedDateColumnName  !== defaultEtlOptions.UpdatedDateColumnName)  params.set('etl_upd',   etl.UpdatedDateColumnName)
+    if (etl.DeletedDateColumnName  !== defaultEtlOptions.DeletedDateColumnName)  params.set('etl_del',   etl.DeletedDateColumnName)
+    if (etl.StartDateColumnName    !== defaultEtlOptions.StartDateColumnName)    params.set('etl_start', etl.StartDateColumnName)
+    if (etl.EndDateColumnName      !== defaultEtlOptions.EndDateColumnName)      params.set('etl_end',   etl.EndDateColumnName)
+    if (etl.DefaultEndDate         !== defaultEtlOptions.DefaultEndDate)         params.set('etl_dend',  etl.DefaultEndDate)
     
     const newUrl = params.toString() 
       ? `${window.location.pathname}?${params.toString()}` 
@@ -96,6 +120,7 @@ export function useCompilation() {
 
   watch(cronoCode, updateUrl)
   watch(selectedEngine, updateUrl)
+  watch(etlOptions, updateUrl, { deep: true })
 
   const sqlOutput: Ref<string> = ref('')
   const engineLabel = computed(() => ENGINE_LABELS[selectedEngine.value] || selectedEngine.value)
@@ -150,6 +175,13 @@ export function useCompilation() {
   }
 
   const hasCompiledOnce: Ref<boolean> = ref(false)
+
+  // Auto-run when playground loads with ?code= in URL
+  onMounted(() => {
+    if (hasCodeInUrl) {
+      handleRun().then(() => { hasCompiledOnce.value = true })
+    }
+  })
 
   watch(selectedEngine, () => {
     if (hasCompiledOnce.value && !isCompiling.value) {
