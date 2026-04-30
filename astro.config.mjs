@@ -38,7 +38,7 @@ export default defineConfig({
 			title: 'Manual de usuario',
 			defaultLocale: 'es',
 			locales: { root: { label: 'Español', lang: 'es' } },
-			// Social links removed per client request
+			social: [],
 			customCss: ['./src/styles/custom.css'],
 			components: {
 				SiteTitle: './src/components/SiteTitle.astro',
