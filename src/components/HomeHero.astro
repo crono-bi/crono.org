@@ -84,43 +84,43 @@ ORDER BY TotalSales DESC`
 
         <div class="hero-bullets-label">Ventajas clave</div>
         <ul class="hero-bullets" aria-label="Beneficios principales de la plataforma">
-          <li>
+          <li style="--bullet-accent: #3B82F6">
             <span class="hero-stat-icon" aria-hidden="true">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2.5">
                 <path d="M20 6 9 17l-5-5"/>
               </svg>
             </span>
+            <span class="hero-stat-number">MÁS FÁCIL</span>
             <span class="hero-stat-label">Business Intelligence</span>
-            <span class="hero-stat-number">Fácil de verdad</span>
           </li>
-          <li>
+          <li style="--bullet-accent: #8B5CF6">
             <span class="hero-stat-icon" aria-hidden="true">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8B5CF6" stroke-width="2.5">
                 <path d="M12 3a4 4 0 0 1 4 4v2h2a3 3 0 1 1 0 6h-2v2a4 4 0 1 1-8 0v-2H6a3 3 0 0 1 0-6h2V7a4 4 0 0 1 4-4z"/>
               </svg>
             </span>
-            <span class="hero-stat-label">Una única</span>
-            <span class="hero-stat-number">Plataforma</span>
+            <span class="hero-stat-number">1</span>
+            <span class="hero-stat-label">Plataforma</span>
           </li>
-          <li>
+          <li style="--bullet-accent: #1B8AC7">
             <span class="hero-stat-icon" aria-hidden="true">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1B8AC7" stroke-width="2.5">
                 <polyline points="16 18 22 12 16 6"/>
                 <polyline points="8 6 2 12 8 18"/>
               </svg>
             </span>
-            <span class="hero-stat-label">Un único</span>
-            <span class="hero-stat-number">Lenguaje SQL</span>
+            <span class="hero-stat-number">1</span>
+            <span class="hero-stat-label">Lenguaje SQL</span>
           </li>
-          <li>
+          <li style="--bullet-accent: #1E7B47">
             <span class="hero-stat-icon" aria-hidden="true">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1E7B47" stroke-width="2.5">
                 <path d="M12 19V5"/>
                 <path d="m5 12 7-7 7 7"/>
               </svg>
             </span>
+            <span class="hero-stat-number"><strong style="color: var(--bullet-accent)">60%</strong> más rápido</span>
             <span class="hero-stat-label">Desarrollo</span>
-            <span class="hero-stat-number">60% más rápido</span>
           </li>
         </ul>
 
@@ -212,6 +212,16 @@ ORDER BY TotalSales DESC`
               </div>
               <svg class="mock-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
             </a>
+            <a href="#crono-excel" class="mock-row" style="--row-color: #1E7B47;">
+              <div class="mock-icon-wrap">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/></svg>
+              </div>
+              <div class="mock-col">
+                <span class="mock-name">Crono Excel</span>
+                <span class="mock-sub">Informes en Excel</span>
+              </div>
+              <svg class="mock-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+            </a>
           </div>
         </div>
       </div>
@@ -239,9 +249,9 @@ ORDER BY TotalSales DESC`
         <span class="ecosystem-header-icon">◆</span>
         Ecosistema Integrado
       </div>
-      <h2 class="ecosystem-header-title">Una plataforma, <span class="ecosystem-header-accent">múltiples soluciones</span></h2>
+      <h2 class="ecosystem-header-title">Una plataforma. <span class="ecosystem-header-accent">Todo el BI.</span></h2>
       <p class="ecosystem-header-desc">
-        Desde la ingesta hasta el análisis avanzado, todas las herramientas comparten <strong>el mismo modelo semántico</strong>.
+        ETL, modelo semántico, análisis, reporting, dashboards e IA.
       </p>
     </div>
 
@@ -331,6 +341,12 @@ ORDER BY TotalSales DESC`
             <circle cx="32" cy="4" r="3" fill="#3CA8B5"/>
           </symbol>
 
+          <!-- Crono logo mark -->
+          <symbol id="i-crono" viewBox="0 0 128 128">
+            <path d="M84.25,15.44c-4.92,6.75-9.52,13.33-14.51,19.61-.83,1.04-3.41,1.24-5.06,1-16.4-2.37-31.31,6.13-36.18,20.8-4.27,12.85-.25,26.4,10.29,34.69,10.63,8.36,25.66,9.31,37.03,2.03,9.44-6.04,14.46-14.74,14.86-26.08.05-1.45,1-3.66,2.14-4.16,7.16-3.2,14.5-6.02,21.79-8.97,6.26,19.88-2.73,46.97-24.58,60.68-23.82,14.94-55.76,10.61-74.29-10.06C-3,84.09-4.05,53.49,13.22,31.56,29.41,11.01,62.27,3.39,84.25,15.44z"/>
+            <path d="M61.05,63.5c2.8-3.84,5.58-7.68,8.4-11.5,10.6-14.36,21.2-28.72,31.83-43.06,4.34-5.86,5.59-5.83,9.72.3,5.23,7.78,10.3,15.68,15.61,23.4,2.15,3.13,2,4.97-1.76,6.52-19.85,8.15-39.64,16.45-59.48,24.64-1.12.46-2.43.49-3.65.72-.22-.34-.45-.68-.67-1.01z"/>
+          </symbol>
+
           <!-- API icon - Gear with API text -->
           <symbol id="i-api" viewBox="0 0 64 64">
             <!-- Gear teeth -->
@@ -364,42 +380,38 @@ ORDER BY TotalSales DESC`
         <circle class="link-dot" cx="245" cy="360" r="4"/>
         <circle class="link-dot" cx="505" cy="360" r="4"/>
 
-        <!-- ETL Pipeline steps (Extract → Transform → Load) -->
+        <!-- ELT Pipeline steps (Extract → Load → Transform) -->
         <g class="etl-steps">
-          <!-- EXTRACT -->
+          <!-- EXTRACT (flecha arriba) -->
           <g transform="translate(295,360)">
             <circle r="17" fill="#fff" stroke="#3672C9" stroke-width="1.5"/>
-            <ellipse cx="0" cy="-3" rx="7" ry="2.5" fill="#EBF3FF" stroke="#3672C9" stroke-width="1.2"/>
-            <rect x="-7" y="-3" width="14" height="6" fill="#EBF3FF" stroke="none"/>
-            <ellipse cx="0" cy="3" rx="7" ry="2.5" fill="#EBF3FF" stroke="#3672C9" stroke-width="1.2"/>
-            <line x1="-7" y1="-3" x2="-7" y2="3" stroke="#3672C9" stroke-width="1.2"/>
-            <line x1="7" y1="-3" x2="7" y2="3" stroke="#3672C9" stroke-width="1.2"/>
+            <line x1="0" y1="7" x2="0" y2="-3" stroke="#3672C9" stroke-width="1.8" stroke-linecap="round"/>
+            <polyline points="-4,1 0,-5 4,1" fill="none" stroke="#3672C9" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
             <text x="0" y="-26" text-anchor="middle" fill="#3672C9" font-size="10" font-weight="700" letter-spacing="0.05em">EXTRACT</text>
           </g>
           <!-- flow arrow -->
           <path d="M317,356 L324,360 L317,364" fill="none" stroke="#c4c9d4" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
 
-          <!-- TRANSFORM -->
+          <!-- LOAD (flecha abajo) -->
           <g transform="translate(375,360)">
-            <circle r="17" fill="#fff" stroke="#7E3FA8" stroke-width="1.5"/>
-            <circle cx="0" cy="0" r="5" fill="#F3E8FF" stroke="#7E3FA8" stroke-width="1.2"/>
-            <circle cx="0" cy="0" r="2" fill="#7E3FA8"/>
-            <line x1="0" y1="-8.5" x2="0" y2="-5" stroke="#7E3FA8" stroke-width="2.2" stroke-linecap="round"/>
-            <line x1="0" y1="5" x2="0" y2="8.5" stroke="#7E3FA8" stroke-width="2.2" stroke-linecap="round"/>
-            <line x1="-8.5" y1="0" x2="-5" y2="0" stroke="#7E3FA8" stroke-width="2.2" stroke-linecap="round"/>
-            <line x1="5" y1="0" x2="8.5" y2="0" stroke="#7E3FA8" stroke-width="2.2" stroke-linecap="round"/>
-            <text x="0" y="-26" text-anchor="middle" fill="#7E3FA8" font-size="10" font-weight="700" letter-spacing="0.05em">TRANSFORM</text>
+            <circle r="17" fill="#fff" stroke="#3672C9" stroke-width="1.5"/>
+            <line x1="0" y1="-7" x2="0" y2="3" stroke="#3672C9" stroke-width="1.8" stroke-linecap="round"/>
+            <polyline points="-4,-1 0,5 4,-1" fill="none" stroke="#3672C9" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <text x="0" y="-26" text-anchor="middle" fill="#3672C9" font-size="10" font-weight="700" letter-spacing="0.05em">LOAD</text>
           </g>
           <!-- flow arrow -->
           <path d="M397,356 L404,360 L397,364" fill="none" stroke="#c4c9d4" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
 
-          <!-- LOAD -->
+          <!-- TRANSFORM -->
           <g transform="translate(455,360)">
             <circle r="17" fill="#fff" stroke="#3672C9" stroke-width="1.5"/>
-            <line x1="0" y1="-7" x2="0" y2="1" stroke="#3672C9" stroke-width="1.5" stroke-linecap="round"/>
-            <polyline points="-4,-1 0,4 4,-1" fill="none" stroke="#3672C9" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <rect x="-7" y="4" width="14" height="5" rx="1" fill="#EBF3FF" stroke="#3672C9" stroke-width="1.2"/>
-            <text x="0" y="-26" text-anchor="middle" fill="#3672C9" font-size="10" font-weight="700" letter-spacing="0.05em">LOAD</text>
+            <circle cx="0" cy="0" r="5" fill="#EBF3FF" stroke="#3672C9" stroke-width="1.2"/>
+            <circle cx="0" cy="0" r="2" fill="#3672C9"/>
+            <line x1="0" y1="-8.5" x2="0" y2="-5" stroke="#3672C9" stroke-width="2.2" stroke-linecap="round"/>
+            <line x1="0" y1="5" x2="0" y2="8.5" stroke="#3672C9" stroke-width="2.2" stroke-linecap="round"/>
+            <line x1="-8.5" y1="0" x2="-5" y2="0" stroke="#3672C9" stroke-width="2.2" stroke-linecap="round"/>
+            <line x1="5" y1="0" x2="8.5" y2="0" stroke="#3672C9" stroke-width="2.2" stroke-linecap="round"/>
+            <text x="0" y="-26" text-anchor="middle" fill="#3672C9" font-size="10" font-weight="700" letter-spacing="0.05em">TRANSFORM</text>
           </g>
         </g>
 
@@ -459,7 +471,7 @@ ORDER BY TotalSales DESC`
           </g>
         </g>
 
-        <!-- Petal 1 — CRONO EXCEL (α1=-52°, α2=-22°) -->
+        <!-- Petal 1 — conecta a CRONO API (α1=-52°, α2=-22°) -->
         <g class="petal" data-key="excel">
           <path class="shape" d="
             M693.5,240.3
@@ -468,11 +480,11 @@ ORDER BY TotalSales DESC`
             L740.9,303.1 Q720.5,311.3 710.6,291.7
             A130,130 0 0 0 696.1,272.4 Q680.0,257.6 693.5,240.3 Z"/>
           <g class="icon-bg">
-            <use href="#i-excel" x="736" y="209" width="56" height="56"/>
+            <use href="#i-api" x="736" y="209" width="56" height="56"/>
           </g>
         </g>
 
-        <!-- Petal 2 — CRONO AI (α1=-16°, α2=+16°) -->
+        <!-- Petal 2 — conecta a CRONO AI (α1=-16°, α2=+16°) -->
         <g class="petal" data-key="ai">
           <path class="shape" d="
             M746.0,318.1
@@ -485,7 +497,7 @@ ORDER BY TotalSales DESC`
           </g>
         </g>
 
-        <!-- Petal 3 — CRONO API (α1=+22°, α2=+52°) -->
+        <!-- Petal 3 — conecta a CRONO EXCEL (α1=+22°, α2=+52°) -->
         <g class="petal" data-key="api">
           <path class="shape" d="
             M740.9,416.9
@@ -494,7 +506,7 @@ ORDER BY TotalSales DESC`
             L693.6,479.7 Q680.0,462.4 696.1,447.5
             A130,130 0 0 0 710.6,428.3 Q720.5,408.7 740.9,416.9 Z"/>
           <g class="icon-bg">
-            <use href="#i-api" x="736" y="455" width="56" height="56"/>
+            <use href="#i-excel" x="736" y="455" width="56" height="56"/>
           </g>
         </g>
 
@@ -518,62 +530,72 @@ ORDER BY TotalSales DESC`
         <!-- connectors: outer-arc midpoint → horizontal clear zone → 45° elbow → label              -->
         <!-- All elbows are exactly 45° (Δx=Δy). Symmetric: Analysis↔Other, Excel↔API             -->
         <g fill="none">
-          <!-- Analysis α=-73°: (682,92) → H above all petals → (862,92) → 45°↘56px → (918,148) -->
-          <path class="connector" d="M682,92 L862,92 L918,148" stroke="var(--c-analysis)"/>
-          <circle class="dot" cx="918" cy="148" r="5" fill="var(--c-analysis)" stroke="none"/>
+          <!-- Analysis petal (geom) → Analysis label (y=142): color Analysis -->
+          <path class="connector" d="M682,92 L862,92 L918,142" stroke="var(--c-analysis)"/>
+          <circle class="dot" cx="918" cy="142" r="5" fill="var(--c-analysis)" stroke="none"/>
 
-          <!-- Excel α=-37°: (824,192) → H short → (858,192) → 45°↘60px → (918,252) -->
-          <path class="connector" d="M824,192 L858,192 L918,252" stroke="var(--c-excel)"/>
-          <circle class="dot" cx="918" cy="252" r="5" fill="var(--c-excel)" stroke="none"/>
+          <!-- Excel petal (geom) → API label (y=279): color AI -->
+          <path class="connector" d="M824,192 L858,192 L918,279" stroke="var(--c-ai)"/>
+          <circle class="dot" cx="918" cy="279" r="5" fill="var(--c-ai)" stroke="none"/>
 
-          <!-- AI α=0°: (880,360) → H → (918,360) -->
-          <path class="connector" d="M880,360 L918,360" stroke="var(--c-ai)"/>
-          <circle class="dot" cx="918" cy="360" r="5" fill="var(--c-ai)" stroke="none"/>
+          <!-- AI petal (geom) → AI label (y=396): color API (turquesa) -->
+          <path class="connector" d="M880,360 L918,396" stroke="var(--c-api)"/>
+          <circle class="dot" cx="918" cy="396" r="5" fill="var(--c-api)" stroke="none"/>
 
-          <!-- API α=+37°: (824,529) → H short → (857,529) → 45°↗61px → (918,468) -->
-          <path class="connector" d="M824,529 L857,529 L918,468" stroke="var(--c-api)"/>
-          <circle class="dot" cx="918" cy="468" r="5" fill="var(--c-api)" stroke="none"/>
+          <!-- API petal (geom) → Excel label (y=513): color Excel -->
+          <path class="connector" d="M824,529 L857,529 L918,513" stroke="var(--c-excel)"/>
+          <circle class="dot" cx="918" cy="513" r="5" fill="var(--c-excel)" stroke="none"/>
 
-          <!-- Other α=+73°: (682,628) → H below all petals → (862,628) → 45°↗56px → (918,572) -->
-          <path class="connector" d="M682,628 L862,628 L918,572" stroke="var(--c-other)"/>
-          <circle class="dot" cx="918" cy="572" r="5" fill="var(--c-other)" stroke="none"/>
+          <!-- Other petal (geom) → Other label (y=610): color Other -->
+          <path class="connector" d="M682,628 L862,628 L918,610" stroke="var(--c-other)"/>
+          <circle class="dot" cx="918" cy="610" r="5" fill="var(--c-other)" stroke="none"/>
         </g>
 
-        <!-- SVG TEXT LABELS (replaces HTML overlay for better scaling) -->
+        <!-- SVG TEXT LABELS -->
+        <!-- Layout: icon(h=22) + 24px gap → title baseline. Bullets +26 then +20 spacing. -->
+        <!-- 20px gap between groups. All y-values within viewBox (60–680).               -->
         <g class="svg-labels" font-family="system-ui, -apple-system, sans-serif">
-          <!-- CRONO ANALYSIS -->
+
+          <!-- 1. CRONO ANALYSIS — icon y=70, title y=116, bullets y=142/162/182 → ends ~187 -->
           <g class="svg-label" data-key="analysis">
-            <text x="930" y="125" font-size="26" font-weight="800" letter-spacing="0.06em" fill="var(--c-analysis)">CRONO ANALYSIS</text>
-            <text x="945" y="155" font-size="19" fill="#4b5563">• Análisis OLAP</text>
-            <text x="945" y="180" font-size="19" fill="#4b5563">• Análisis libre</text>
-            <text x="945" y="205" font-size="19" fill="#4b5563">• Dashboards</text>
+            <use href="#i-crono" x="930" y="96"  width="22" height="22" fill="var(--c-analysis)"/>
+            <text x="958" y="116" font-size="26" font-weight="800" letter-spacing="0.06em" fill="var(--c-analysis)">CRONO ANALYSIS</text>
+            <text x="945" y="142" font-size="19" fill="#4b5563">• Autoservicio</text>
+            <text x="945" y="162" font-size="19" fill="#4b5563">• Análisis libre</text>
+            <text x="945" y="182" font-size="19" fill="#4b5563">• Análisis OLAP</text>
           </g>
 
-          <!-- CRONO EXCEL -->
-          <g class="svg-label" data-key="excel">
-            <text x="930" y="270" font-size="26" font-weight="800" letter-spacing="0.06em" fill="var(--c-excel)">CRONO EXCEL</text>
-            <text x="945" y="300" font-size="19" fill="#4b5563">• Informes en Excel</text>
-          </g>
-
-          <!-- CRONO AI -->
+          <!-- 2. CRONO API — icon y=207, title y=253, bullets y=279/299 → ends ~304 -->
           <g class="svg-label" data-key="ai">
-            <text x="930" y="360" font-size="26" font-weight="800" letter-spacing="0.06em" fill="var(--c-ai)">CRONO AI</text>
-            <text x="945" y="390" font-size="19" fill="#4b5563">• Lenguaje natural</text>
-            <text x="945" y="415" font-size="19" fill="#4b5563">• Text to SQL</text>
+            <use href="#i-crono" x="930" y="233" width="22" height="22" fill="var(--c-ai)"/>
+            <text x="958" y="253" font-size="26" font-weight="800" letter-spacing="0.06em" fill="var(--c-ai)">CRONO API</text>
+            <text x="945" y="279" font-size="19" fill="#4b5563">• Servicios API REST</text>
+            <text x="945" y="299" font-size="19" fill="#4b5563">• Dashboards web a medida</text>
           </g>
 
-          <!-- CRONO API -->
+          <!-- 3. CRONO AI — icon y=324, title y=370, bullets y=396/416 → ends ~421 -->
           <g class="svg-label" data-key="api">
-            <text x="930" y="475" font-size="26" font-weight="800" letter-spacing="0.06em" fill="var(--c-api)">CRONO API</text>
-            <text x="945" y="505" font-size="19" fill="#4b5563">• Servicios API REST</text>
-            <text x="945" y="530" font-size="19" fill="#4b5563">• Apps web a medida</text>
+            <use href="#i-crono" x="930" y="350" width="22" height="22" fill="var(--c-api)"/>
+            <text x="958" y="370" font-size="26" font-weight="800" letter-spacing="0.06em" fill="var(--c-api)">CRONO AI</text>
+            <text x="945" y="396" font-size="19" fill="#4b5563">• Lenguaje natural</text>
+            <text x="945" y="416" font-size="19" fill="#4b5563">• Text to SQL</text>
           </g>
 
-          <!-- OTRAS SOLUCIONES -->
+          <!-- 4. CRONO EXCEL — icon y=441, title y=487, bullet y=513 → ends ~518 -->
+          <g class="svg-label" data-key="excel">
+            <use href="#i-crono" x="930" y="467" width="22" height="22" fill="var(--c-excel)"/>
+            <text x="958" y="487" font-size="26" font-weight="800" letter-spacing="0.06em" fill="var(--c-excel)">CRONO EXCEL</text>
+            <text x="945" y="513" font-size="19" fill="#4b5563">• Informes en Excel</text>
+          </g>
+
+          <!-- 5. OTRAS SOLUCIONES — icon y=538, title y=584, bullets y=610/630/650/670 → ends ~675 -->
           <g class="svg-label" data-key="other">
-            <text x="930" y="590" font-size="26" font-weight="800" letter-spacing="0.06em" fill="var(--c-other)">OTRAS SOLUCIONES</text>
-            <text x="945" y="620" font-size="19" fill="#4b5563">• Microsoft Power BI</text>
-            <text x="945" y="645" font-size="19" fill="#4b5563">• Qlicksense</text>
+            <use href="#i-crono" x="930" y="564" width="22" height="22" fill="var(--c-other)"/>
+            <text x="958" y="584" font-size="26" font-weight="800" letter-spacing="0.06em" fill="var(--c-other)">OTRAS SOLUCIONES</text>
+            <text x="945" y="610" font-size="19" fill="#4b5563">• Excel</text>
+            <text x="945" y="630" font-size="19" fill="#4b5563">• Microsoft Power BI</text>
+            <text x="945" y="650" font-size="19" fill="#4b5563">• Tableau</text>
+            <text x="945" y="670" font-size="19" fill="#4b5563">• Otros</text>
           </g>
         </g>
 
@@ -586,14 +608,33 @@ ORDER BY TotalSales DESC`
         <circle class="broadcast-ring" cx="590" cy="360" r="85" fill="none" stroke="#1B8AC7" stroke-width="1.5" opacity="0"/>
         <!-- Source particle: travels along link-line (source → DWH) -->
         <circle class="source-particle" r="4.5" fill="#3672C9" opacity="0"/>
-        <!-- Flow particles: one per connector, follow motionPath -->
+        <!-- Flow particles: match connector order & colors -->
+        <!-- 1:Analysis → Analysis, 2:Excel→API, 3:AI→AI, 4:API→Excel, 5:Other→Other -->
         <circle class="flow-dot" r="4.5" fill="var(--c-analysis)" opacity="0"/>
-        <circle class="flow-dot" r="4.5" fill="var(--c-excel)"    opacity="0"/>
         <circle class="flow-dot" r="4.5" fill="var(--c-ai)"       opacity="0"/>
         <circle class="flow-dot" r="4.5" fill="var(--c-api)"      opacity="0"/>
+        <circle class="flow-dot" r="4.5" fill="var(--c-excel)"    opacity="0"/>
         <circle class="flow-dot" r="4.5" fill="var(--c-other)"    opacity="0"/>
       </svg>
+
     </div>
+
+    <!-- Diagram control buttons -->
+    <div class="diagram-controls">
+      <button class="diagram-btn" id="toggleAnimation" title="Pausar animación" aria-label="Pausar animación">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><rect x="3" y="2" width="3.5" height="12" rx="1"/><rect x="9.5" y="2" width="3.5" height="12" rx="1"/></svg>
+      </button>
+      <button class="diagram-btn" id="fullscreenBtn" title="Pantalla completa" aria-label="Pantalla completa">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2h4v4M6 14H2v-4M14 2l-5 5M2 14l5-5"/></svg>
+      </button>
+    </div>
+
+    <!-- Close button for fullscreen (hidden by default, shown via CSS :fullscreen) -->
+    <button class="diagram-close-btn" id="closeFullscreenBtn" title="Cerrar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <path d="M18 6L6 18M6 6l12 12"/>
+      </svg>
+    </button>
   </div>
 </section>
 
@@ -1116,6 +1157,121 @@ ORDER BY TotalSales DESC`
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- CRONO EXCEL -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<section id="crono-excel" class="not-content product-section scroll-reveal" style="--section-color: #1E7B47;">
+  <div class="section-bg" style="background: radial-gradient(ellipse 80% 60% at 70% 50%, color-mix(in srgb, #1E7B47 8%, transparent), transparent);"></div>
+  <div class="mx-auto max-w-6xl px-6 py-16 lg:py-20">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <!-- Left: Excel Mockup -->
+      <div class="product-demo order-2 lg:order-1">
+        <div class="excel-window">
+          <div class="excel-titlebar">
+            <div class="excel-logo">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1E7B47" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/></svg>
+            </div>
+            <span class="excel-filename">Informe_Ventas_2025.xlsx</span>
+            <div class="excel-win-controls">
+              <span class="excel-btn">─</span>
+              <span class="excel-btn">□</span>
+              <span class="excel-btn close">✕</span>
+            </div>
+          </div>
+          <div class="excel-ribbon">
+            <span class="excel-tab active">Inicio</span>
+            <span class="excel-tab">Insertar</span>
+            <span class="excel-tab">Datos</span>
+            <span class="excel-tab crono-tab">
+              <svg width="11" height="11" viewBox="0 0 128 128" fill="#1E7B47"><path d="M84.25,15.44c-4.92,6.75-9.52,13.33-14.51,19.61-.83,1.04-3.41,1.24-5.06,1-16.4-2.37-31.31,6.13-36.18,20.8-4.27,12.85-.25,26.4,10.29,34.69,10.63,8.36,25.66,9.31,37.03,2.03,9.44-6.04,14.46-14.74,14.86-26.08.05-1.45,1-3.66,2.14-4.16,7.16-3.2,14.5-6.02,21.79-8.97,6.26,19.88-2.73,46.97-24.58,60.68-23.82,14.94-55.76,10.61-74.29-10.06C-3,84.09-4.05,53.49,13.22,31.56,29.41,11.01,62.27,3.39,84.25,15.44z"/><path d="M61.05,63.5c2.8-3.84,5.58-7.68,8.4-11.5,10.6-14.36,21.2-28.72,31.83-43.06,4.34-5.86,5.59-5.83,9.72.3,5.23,7.78,10.3,15.68,15.61,23.4,2.15,3.13,2,4.97-1.76,6.52-19.85,8.15-39.64,16.45-59.48,24.64-1.12.46-2.43.49-3.65.72-.22-.34-.45-.68-.67-1.01z"/></svg>
+              Crono
+            </span>
+          </div>
+          <div class="excel-formula-bar">
+            <span class="excel-cell-ref">B2</span>
+            <span class="excel-fx">fx</span>
+            <span class="excel-formula">=CRONO("ventas.importe_total", region="Norte", año=2025)</span>
+          </div>
+          <div class="excel-grid">
+            <div class="excel-header-row">
+              <div class="excel-col-header"></div>
+              <div class="excel-col-header">A</div>
+              <div class="excel-col-header">B</div>
+              <div class="excel-col-header">C</div>
+              <div class="excel-col-header">D</div>
+            </div>
+            <div class="excel-row excel-row-header">
+              <div class="excel-row-num">1</div>
+              <div class="excel-cell bold">Región</div>
+              <div class="excel-cell bold">Ventas 2025</div>
+              <div class="excel-cell bold">Variación</div>
+              <div class="excel-cell bold">Objetivo</div>
+            </div>
+            <div class="excel-row">
+              <div class="excel-row-num">2</div>
+              <div class="excel-cell">Norte</div>
+              <div class="excel-cell crono-cell selected">€1.240.000</div>
+              <div class="excel-cell positive">+15%</div>
+              <div class="excel-cell">€1.100.000</div>
+            </div>
+            <div class="excel-row">
+              <div class="excel-row-num">3</div>
+              <div class="excel-cell">Sur</div>
+              <div class="excel-cell crono-cell">€980.000</div>
+              <div class="excel-cell positive">+8%</div>
+              <div class="excel-cell">€950.000</div>
+            </div>
+            <div class="excel-row">
+              <div class="excel-row-num">4</div>
+              <div class="excel-cell">Este</div>
+              <div class="excel-cell crono-cell">€1.500.000</div>
+              <div class="excel-cell positive">+22%</div>
+              <div class="excel-cell">€1.200.000</div>
+            </div>
+            <div class="excel-row excel-row-total">
+              <div class="excel-row-num">5</div>
+              <div class="excel-cell bold">Total</div>
+              <div class="excel-cell bold">€3.720.000</div>
+              <div class="excel-cell bold positive">+15,4%</div>
+              <div class="excel-cell bold">€3.250.000</div>
+            </div>
+          </div>
+          <div class="excel-sheet-tabs">
+            <span class="excel-sheet active">Ventas Regiones</span>
+            <span class="excel-sheet">Productos</span>
+            <span class="excel-sheet">⊕</span>
+          </div>
+        </div>
+        <div class="demo-badge" style="right: -15px; top: 20%;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1E7B47" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <span>Actualización automática</span>
+        </div>
+        <div class="demo-badge" style="left: -15px; bottom: 25%;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1E7B47" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <span>Datos verificados del DWH</span>
+        </div>
+      </div>
+      <!-- Right: Content -->
+      <div class="product-content order-1 lg:order-2">
+        <div class="product-label" style="color: #1E7B47;">Reporting · Excel nativo</div>
+        <h2 class="product-title">Crono Excel</h2>
+        <p class="product-desc">
+          Crono Excel permite generar informes Excel a partir de los datos del DWH aprovechando la capa semántica de Crono.
+        </p>
+        <blockquote class="excel-quote">
+          ¿Quién quiere renunciar al Excel?
+        </blockquote>
+        <ul class="product-features">
+          <li><span style="color: #1E7B47;">✓</span> Informes Excel conectados a datos reales del DWH</li>
+          <li><span style="color: #1E7B47;">✓</span> Usa la capa semántica de Crono Metadata</li>
+          <li><span style="color: #1E7B47;">✓</span> Actualización automática sin macros ni VBA</li>
+          <li><span style="color: #1E7B47;">✓</span> Formato y estructura Excel 100% personalizable</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
 <!-- MANUALES CRONO -->
 <!-- ═══════════════════════════════════════════════════════════════ -->
 <section id="manuales-crono" class="not-content border-t border-[var(--sl-color-hairline)] py-16">
@@ -1559,86 +1715,72 @@ ORDER BY TotalSales DESC`
     margin: 0 0 1.75rem 0;
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 0.75rem;
-    max-width: 560px;
+    grid-template-rows: auto auto auto;
+    max-width: 620px;
   }
   .hero-bullets li {
     --bullet-accent: #3B82F6;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 0.35rem;
-    padding: 1.25rem 0.75rem 1rem;
-    min-height: 6.5rem;
-    border-radius: 0.75rem;
-    border: 1px solid color-mix(in srgb, var(--bullet-accent) 35%, var(--sl-color-hairline-light));
-    background:
-      linear-gradient(180deg, color-mix(in srgb, var(--bullet-accent) 10%, var(--sl-color-bg-nav)) 0%, color-mix(in srgb, var(--sl-color-bg-nav) 96%, transparent) 100%);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.07), 0 8px 18px -14px rgba(0, 0, 0, 0.5);
-    color: var(--sl-color-white);
-    position: relative;
-    overflow: hidden;
-    isolation: isolate;
-    text-align: center;
+    display: grid;
+    grid-row: span 3;
+    grid-template-rows: subgrid;
+    align-items: start;
+    padding-right: 1.25rem;
   }
-  .hero-bullets li:nth-child(1) { --bullet-accent: #3B82F6; }
-  .hero-bullets li:nth-child(2) { --bullet-accent: #8B5CF6; }
-  .hero-bullets li:nth-child(3) { --bullet-accent: #06B6D4; }
-  .hero-bullets li:nth-child(4) { --bullet-accent: #10B981; }
+  .hero-bullets li + li {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    border-left: 3px solid var(--sl-color-gray-5);
+  }
+  .hero-bullets li:last-child { padding-right: 0; }
   .hero-stat-icon {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 2.25rem;
-    height: 2.25rem;
+    width: 2.5rem;
+    height: 2.5rem;
     flex-shrink: 0;
-    border-radius: 0.5rem;
-    color: color-mix(in srgb, var(--bullet-accent) 86%, white);
-    background: color-mix(in srgb, var(--bullet-accent) 15%, var(--sl-color-bg-nav));
-    border: 1px solid color-mix(in srgb, var(--bullet-accent) 40%, transparent);
-    margin-bottom: 0.5rem;
+    border-radius: 0.625rem;
+    color: var(--bullet-accent);
+    background: color-mix(in srgb, var(--bullet-accent) 18%, transparent);
+    margin-bottom: 0.75rem;
   }
-  .hero-stat-icon svg { width: 1.125rem; height: 1.125rem; }
+  .hero-stat-icon svg { width: 1.2rem; height: 1.2rem; stroke-width: 2.5; }
   .hero-stat-number {
-    font-size: 1.1rem;
-    font-weight: 700;
-    line-height: 1.25;
+    font-size: 1rem;
+    font-weight: 800;
+    line-height: 1.1;
     color: var(--sl-color-white);
-    letter-spacing: -0.01em;
-    text-wrap: balance;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.25rem;
+    white-space: nowrap;
   }
   .hero-stat-label {
-    font-size: 0.7rem;
-    font-weight: 500;
+    font-size: 0.62rem;
+    font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.08em;
     color: var(--sl-color-gray-3);
     line-height: 1.2;
   }
   @media (max-width: 640px) {
     .hero-bullets-label { margin-bottom: 0.5rem; }
     .hero-bullets {
+      display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 0.625rem;
+      gap: 1.5rem 0;
       max-width: 100%;
     }
-    .hero-bullets li {
-      padding: 1rem 0.5rem 0.875rem;
-      min-height: 5.5rem;
-    }
-    .hero-stat-number {
-      font-size: 1rem;
-    }
-    .hero-stat-label {
-      font-size: 0.65rem;
-    }
+    .hero-bullets li + li { border-left: none; padding-left: 0; }
+    .hero-bullets li:nth-child(3),
+    .hero-bullets li:nth-child(4) { border-top: 1px solid var(--sl-color-hairline); padding-top: 1.25rem; }
+    .hero-stat-number { font-size: 1.25rem; white-space: normal; }
+    .hero-stat-label { white-space: normal; }
   }
 
-  .hero-btn-primary { position: relative; display: inline-flex; align-items: center; gap: 0.625rem; padding: 0.875rem 1.75rem; background: linear-gradient(135deg, #9ca3af 0%, #6b7280 100%); color: white; border: 1px solid rgba(255,255,255,0.15); border-radius: 0.75rem; font-size: 0.9375rem; font-weight: 600; text-decoration: none; transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 4px 14px -4px rgba(156, 163, 175, 0.4), 0 1px 2px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.15); overflow: hidden; }
+  .hero-btn-primary { position: relative; display: inline-flex; align-items: center; gap: 0.625rem; padding: 0.875rem 1.75rem; background: linear-gradient(135deg, #9ca3af 0%, #6b7280 100%); color: white; border: 1px solid rgba(255,255,255,0.15); border-radius: 0.75rem; font-size: 0.9375rem; font-weight: 600; text-decoration: none; transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: none; overflow: hidden; }
   .hero-btn-primary::before { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent); transform: translateX(-100%); transition: transform 0.6s ease; }
   .hero-btn-primary::after { content: ''; position: absolute; inset: -1px; border-radius: 0.75rem; padding: 1px; background: linear-gradient(135deg, rgba(255,255,255,0.3), transparent 50%); -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask-composite: exclude; opacity: 0.6; }
-  .hero-btn-primary:hover { transform: translateY(-2px) scale(1.02); box-shadow: 0 8px 24px -6px rgba(156, 163, 175, 0.5), 0 2px 4px rgba(0,0,0,0.1); }
+  .hero-btn-primary:hover { transform: translateY(-2px) scale(1.02); box-shadow: none; }
   .hero-btn-primary:hover::before { transform: translateX(100%); }
   .hero-btn-primary:active { transform: translateY(0) scale(0.98); }
 
@@ -4147,6 +4289,148 @@ ORDER BY TotalSales DESC`
   }
 
   /* ═══════════════════════════════════════════════════════════════
+     CRONO EXCEL MOCKUP
+     ═══════════════════════════════════════════════════════════════ */
+  .excel-window {
+    background: var(--sl-color-bg);
+    border: 1px solid var(--sl-color-hairline-light);
+    border-radius: 0.75rem;
+    overflow: hidden;
+    box-shadow: 0 20px 50px -15px rgba(0,0,0,0.35), 0 0 0 1px rgba(255,255,255,0.04);
+    font-size: 0.78rem;
+  }
+  .excel-titlebar {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem 0.75rem;
+    background: color-mix(in srgb, var(--sl-color-bg-nav) 90%, var(--sl-color-bg));
+    border-bottom: 1px solid var(--sl-color-hairline-light);
+  }
+  .excel-logo { display: flex; align-items: center; }
+  .excel-filename { flex: 1; font-size: 0.72rem; color: var(--sl-color-gray-3); font-weight: 500; }
+  .excel-win-controls { display: flex; gap: 0; }
+  .excel-btn {
+    width: 32px; height: 22px;
+    display: inline-flex; align-items: center; justify-content: center;
+    font-size: 0.65rem; color: var(--sl-color-gray-3);
+    cursor: default;
+    transition: background 0.15s;
+  }
+  .excel-btn:hover { background: color-mix(in srgb, var(--sl-color-gray-4) 15%, transparent); }
+  .excel-btn.close:hover { background: #e81123; color: #fff; }
+  .excel-ribbon {
+    display: flex;
+    gap: 0;
+    padding: 0 0.5rem;
+    background: color-mix(in srgb, var(--sl-color-bg-nav) 60%, var(--sl-color-bg));
+    border-bottom: 1px solid var(--sl-color-hairline-light);
+  }
+  .excel-tab {
+    display: inline-flex; align-items: center; gap: 0.3rem;
+    padding: 0.4rem 0.75rem;
+    font-size: 0.7rem; color: var(--sl-color-gray-3);
+    border-bottom: 2px solid transparent;
+    cursor: default;
+  }
+  .excel-tab.active { color: var(--sl-color-white); border-bottom-color: #1E7B47; }
+  .excel-tab.crono-tab { color: #1E7B47; font-weight: 600; }
+  .excel-formula-bar {
+    display: flex; align-items: center; gap: 0.5rem;
+    padding: 0.3rem 0.75rem;
+    background: var(--sl-color-bg);
+    border-bottom: 1px solid var(--sl-color-hairline-light);
+    font-size: 0.7rem;
+  }
+  .excel-cell-ref { font-weight: 700; color: var(--sl-color-gray-2); min-width: 2rem; }
+  .excel-fx { color: var(--sl-color-gray-4); font-style: italic; }
+  .excel-formula { color: #1E7B47; font-family: monospace; font-size: 0.68rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .excel-grid { border-bottom: 1px solid var(--sl-color-hairline-light); }
+  .excel-header-row, .excel-row {
+    display: grid;
+    grid-template-columns: 1.5rem repeat(4, 1fr);
+  }
+  .excel-col-header {
+    padding: 0.2rem 0.4rem;
+    background: color-mix(in srgb, var(--sl-color-bg-nav) 70%, var(--sl-color-bg));
+    border-right: 1px solid var(--sl-color-hairline-light);
+    border-bottom: 1px solid var(--sl-color-hairline-light);
+    text-align: center; font-size: 0.65rem; color: var(--sl-color-gray-3); font-weight: 600;
+  }
+  .excel-row-num {
+    padding: 0.25rem 0.3rem;
+    background: color-mix(in srgb, var(--sl-color-bg-nav) 70%, var(--sl-color-bg));
+    border-right: 1px solid var(--sl-color-hairline-light);
+    border-bottom: 1px solid var(--sl-color-hairline-light);
+    text-align: center; font-size: 0.65rem; color: var(--sl-color-gray-3);
+  }
+  .excel-cell {
+    padding: 0.3rem 0.5rem;
+    border-right: 1px solid var(--sl-color-hairline-light);
+    border-bottom: 1px solid var(--sl-color-hairline-light);
+    color: var(--sl-color-gray-2); font-size: 0.72rem;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .excel-cell.bold { font-weight: 700; color: var(--sl-color-white); }
+  .excel-cell.positive { color: #1E7B47; font-weight: 600; }
+  .excel-cell.crono-cell { background: color-mix(in srgb, #1E7B47 8%, var(--sl-color-bg)); }
+  .excel-cell.crono-cell.selected {
+    background: color-mix(in srgb, #1E7B47 15%, var(--sl-color-bg));
+    outline: 2px solid #1E7B47; outline-offset: -2px;
+  }
+  .excel-row-header .excel-cell { background: color-mix(in srgb, var(--sl-color-bg-nav) 50%, var(--sl-color-bg)); }
+  .excel-row-total .excel-cell { background: color-mix(in srgb, var(--sl-color-bg-nav) 40%, var(--sl-color-bg)); border-top: 2px solid var(--sl-color-hairline); }
+  .excel-sheet-tabs {
+    display: flex; align-items: center; gap: 0;
+    padding: 0 0.5rem;
+    background: color-mix(in srgb, var(--sl-color-bg-nav) 60%, var(--sl-color-bg));
+    border-top: 1px solid var(--sl-color-hairline-light);
+  }
+  .excel-sheet {
+    padding: 0.3rem 0.75rem;
+    font-size: 0.68rem; color: var(--sl-color-gray-3);
+    border-right: 1px solid var(--sl-color-hairline-light);
+    cursor: default;
+  }
+  .excel-sheet.active { color: #1E7B47; font-weight: 600; background: var(--sl-color-bg); border-top: 2px solid #1E7B47; }
+
+  .excel-quote {
+    position: relative;
+    margin: 1.25rem 0 1.5rem;
+    padding: 0.25rem 1rem 0.25rem 2.75rem;
+    font-size: 1.15rem;
+    font-weight: 700;
+    font-style: italic;
+    color: var(--sl-color-white);
+    line-height: 1.4;
+    border: none;
+    background: none;
+  }
+  .excel-quote::before {
+    content: '\201C';
+    position: absolute;
+    left: 0;
+    top: -0.3rem;
+    font-size: 3.5rem;
+    font-style: normal;
+    color: #1E7B47;
+    line-height: 1;
+    font-family: Georgia, serif;
+    opacity: 0.9;
+  }
+  .excel-quote::after {
+    content: '\201D';
+    font-size: 3.5rem;
+    font-style: normal;
+    color: #1E7B47;
+    line-height: 0;
+    vertical-align: -0.6rem;
+    font-family: Georgia, serif;
+    opacity: 0.9;
+    margin-left: 0.15rem;
+  }
+
+  /* ═══════════════════════════════════════════════════════════════
      SYNTAX HIGHLIGHTING - Single color for all reserved words
      ═══════════════════════════════════════════════════════════════ */
 
@@ -4186,8 +4470,8 @@ ORDER BY TotalSales DESC`
     --border: #e5e7eb;
     --c-analysis: #C04A2D;
     --c-excel: #1E7B47;
-    --c-ai: #3CA8B5;
-    --c-api: #E5523F;
+    --c-ai: #E5523F;
+    --c-api: #3CA8B5;
     --c-other: #1F7A4D;
     --c-purple: #7E3FA8;
     --c-blue: #3672C9;
@@ -4484,6 +4768,154 @@ ORDER BY TotalSales DESC`
   .diagram .flow-dot {
     opacity: 0;
   }
+
+  /* Diagram control buttons */
+  .diagram-controls {
+    display: flex !important;
+    align-items: center !important;
+    flex-direction: row !important;
+    gap: 8px !important;
+    margin: 6px 0 0 4px !important;
+    padding: 0 !important;
+    border: none !important;
+    background: none !important;
+    line-height: 0 !important;
+  }
+
+  .diagram-controls .diagram-btn {
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 32px !important;
+    height: 32px !important;
+    min-width: 32px !important;
+    min-height: 32px !important;
+    max-width: 32px !important;
+    max-height: 32px !important;
+    box-sizing: border-box !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: rgba(255, 255, 255, 0.88) !important;
+    border: 1px solid rgba(0, 0, 0, 0.09) !important;
+    border-radius: 8px !important;
+    cursor: pointer !important;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08) !important;
+    color: #9ca3af !important;
+    outline: none !important;
+    overflow: hidden !important;
+    transition: background 0.15s, border-color 0.15s, box-shadow 0.15s !important;
+    line-height: 0 !important;
+    vertical-align: middle !important;
+    flex-shrink: 0 !important;
+  }
+
+  .diagram-controls .diagram-btn svg {
+    width: 16px !important;
+    height: 16px !important;
+    display: block !important;
+    pointer-events: none !important;
+    flex-shrink: 0 !important;
+  }
+
+  .diagram-controls .diagram-btn:hover {
+    background: #fff !important;
+    border-color: rgba(27, 138, 199, 0.4) !important;
+    color: #1B8AC7 !important;
+    box-shadow: 0 2px 8px rgba(27, 138, 199, 0.15) !important;
+  }
+
+  .diagram-controls .diagram-btn:focus {
+    outline: none !important;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08) !important;
+  }
+
+  /* Fullscreen styles */
+  .ecosystem-diagram-wrapper:fullscreen {
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ecosystem-diagram-wrapper:fullscreen .diagram {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: auto;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ecosystem-diagram-wrapper:fullscreen .diagram svg {
+    position: relative;
+    max-height: 90vh;
+    max-width: 90vw;
+    width: auto;
+    height: auto;
+    background: #ffffff;
+  }
+
+  /* In fullscreen: hide fullscreen btn, position controls bottom-left */
+  .ecosystem-diagram-wrapper:fullscreen .diagram-controls #fullscreenBtn {
+    display: none !important;
+  }
+
+  .ecosystem-diagram-wrapper:fullscreen .diagram-controls {
+    position: fixed !important;
+    bottom: 20px !important;
+    left: 20px !important;
+    margin: 0 !important;
+  }
+
+  /* Close button for fullscreen */
+  .diagram-close-btn {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 44px;
+    height: 44px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+  }
+
+  .diagram-close-btn:hover {
+    background: #ffffff;
+    border-color: #d1d5db;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transform: scale(1.05);
+  }
+
+  .diagram-close-btn svg {
+    width: 20px;
+    height: 20px;
+    color: #374151;
+  }
+
+  /* Show close button only in fullscreen - fixed position relative to viewport */
+  .ecosystem-diagram-wrapper:fullscreen .diagram-close-btn {
+    display: flex;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+  }
+
+  @media (max-width: 820px) {
+    .ecosystem-diagram-wrapper:fullscreen .diagram-controls {
+      bottom: 12px !important;
+      left: 12px !important;
+    }
+  }
 </style>
 
 <script>
@@ -4540,6 +4972,8 @@ ORDER BY TotalSales DESC`
 
   // ── Trigger when ecosystem diagram enters viewport ──────────────
   const diagramWrapper = document.querySelector('.ecosystem-diagram-wrapper');
+  let animationPaused = false;
+
   if (diagramWrapper) {
     const io = new IntersectionObserver(([e]) => {
       if (!e.isIntersecting) return;
@@ -4554,6 +4988,53 @@ ORDER BY TotalSales DESC`
       }
     }, { threshold: 0.2, rootMargin: '-40px' });
     io.observe(diagramWrapper);
+
+    // Animation toggle button
+    const toggleBtn = document.getElementById('toggleAnimation');
+    const ICON_PAUSE = '<svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><rect x="3" y="2" width="3.5" height="12" rx="1"/><rect x="9.5" y="2" width="3.5" height="12" rx="1"/></svg>';
+    const ICON_PLAY = '<svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M4 2.5l10 5.5-10 5.5V2.5z"/></svg>';
+
+    if (toggleBtn) {
+      toggleBtn.addEventListener('click', () => {
+        animationPaused = !animationPaused;
+        if (animationPaused) {
+          gsap.globalTimeline.pause();
+          toggleBtn.innerHTML = ICON_PLAY;
+          toggleBtn.title = 'Reanudar animación';
+        } else {
+          gsap.globalTimeline.resume();
+          toggleBtn.innerHTML = ICON_PAUSE;
+          toggleBtn.title = 'Pausar animación';
+        }
+      });
+    }
+
+    // Fullscreen button
+    const fullscreenBtn = document.getElementById('fullscreenBtn');
+    const closeFullscreenBtn = document.getElementById('closeFullscreenBtn');
+
+    if (fullscreenBtn) {
+      fullscreenBtn.addEventListener('click', () => {
+        if (!document.fullscreenElement) {
+          diagramWrapper.requestFullscreen().catch(err => {
+            console.warn('Error entering fullscreen:', err);
+          });
+        } else {
+          document.exitFullscreen();
+        }
+      });
+    }
+
+    // Close fullscreen button
+    if (closeFullscreenBtn) {
+      closeFullscreenBtn.addEventListener('click', () => {
+        if (document.fullscreenElement) {
+          document.exitFullscreen();
+        }
+      });
+    }
+
+    // fullscreenchange: close button visibility handled by CSS :fullscreen selector
   }
 
   function revealAll() {
@@ -4691,16 +5172,14 @@ ORDER BY TotalSales DESC`
     // ── B. DWH → PETALS: broadcast ring expands radially ──────────
     const broadcastRing = document.querySelector('.broadcast-ring');
     if (broadcastRing) {
-      const pulse = () => {
-        gsap.timeline({ onComplete: () => gsap.delayedCall(2.2, pulse) })
+      gsap.delayedCall(1.5, () => {
+        gsap.timeline()
           .set(broadcastRing, { attr: { r: 90 }, opacity: 0.55 })
           .to(broadcastRing,  {
             attr: { r: 295 }, opacity: 0,
             duration: 1.3, ease: 'power2.out'
           });
-      };
-      // Trigger broadcast ~0.8s after a source particle arrives at DWH
-      gsap.delayedCall(1.5, pulse);
+      });
     }
 
     // ── C. PETALS → LABELS: particles along connectors ────────────
