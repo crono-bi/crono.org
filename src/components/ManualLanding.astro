@@ -136,7 +136,7 @@ const brandRgb = brandColor.startsWith('#') ? hexToRgb(brandColor) : '27, 95, 14
   <section class="hero">
     {typeof logo === 'string'
       ? <img src={logo} alt={logoAlt} class="hero-logo" />
-      : <Image src={logo} alt={logoAlt} class="hero-logo" height={60} inferSize />
+      : <Image src={logo} alt={logoAlt} class="hero-logo" height={60} inferSize quality={100} />
     }
     <p class="hero-subtitle">{subtitle}</p>
     <div class="hero-cta">

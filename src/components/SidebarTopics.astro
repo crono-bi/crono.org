@@ -28,7 +28,7 @@ const { topics } = Astro.locals.starlightSidebarTopics
           <a href={topic.link} class:list={{ 'starlight-sidebar-topics-current': topic.isCurrent }}>
             <div class="starlight-sidebar-topics-icon">
               {logo ? (
-                <Image src={logo} alt={topic.label} width={20} height={20} />
+                <Image src={logo} alt={topic.label} width={20} height={20} quality={100} />
               ) : (
                 <span class="starlight-sidebar-topics-icon-placeholder" />
               )}
