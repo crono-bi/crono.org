@@ -337,6 +337,20 @@ html {
   padding-left: 1.5rem !important;
 }
 
+/* ===== LANDING PAGE MOBILE HEADER — theme toggle ===== */
+/* data-page-id is NOT a real Starlight attribute.
+   Starlight sets data-has-sidebar on <html> for docs pages.
+   The landing page has no sidebar, so we target html:not([data-has-sidebar]).
+   The theme toggle lives inside .right-group which Starlight hides on mobile
+   (class sl-hidden) because it expects the sidebar to carry it instead. */
+@media (max-width: 50rem) {
+  html:not([data-has-sidebar]) .right-group {
+    display: flex !important;
+    align-items: center;
+    gap: 0.5rem;
+  }
+}
+
 /* ===== PLAYGROUND SIDEBAR LINK COLOR OVERRIDE ===== */
 /* Force Playground link in sidebar to be blue, not cached yellow */
 /* Only target sidebar links, not buttons */
