@@ -399,11 +399,10 @@ ORDER BY TotalSales DESC`
           </g>
         </g>
 
-        <!-- pill: CRONO ETL — centrado bajo el conector ETL -->
-        <g transform="translate(375,408)">
-          <rect class="pill" x="-70" y="-14" width="140" height="28" rx="14" fill="#fff" stroke="#e2e8f0" stroke-width="1.5" filter="drop-shadow(0 2px 6px rgba(15,23,42,0.08))"/>
-          <image href="/crono-etl.ico" x="-60" y="-10" width="20" height="20" preserveAspectRatio="xMidYMid meet"/>
-          <text class="tag" x="-36" y="6" font-size="16" font-weight="600" letter-spacing="0.05em" fill="var(--c-blue)" font-family="system-ui,-apple-system,sans-serif">CRONO ETL</text>
+        <!-- CRONO ETL label — centrado sobre el conector ETL -->
+        <g transform="translate(375,195)">
+          <use href="#i-crono" x="-60" y="-14" width="20" height="20" fill="var(--c-blue)"/>
+          <text x="-32" y="6" font-size="24" font-weight="600" letter-spacing="0.05em" fill="var(--c-blue)" font-family="system-ui,-apple-system,sans-serif">CRONO ETL</text>
         </g>
 
         <!-- MIDDLE NODE: DATA WAREHOUSE / CRONO METADATA -->
@@ -412,15 +411,12 @@ ORDER BY TotalSales DESC`
           <use href="#i-cube" x="558" y="312" width="64" height="64"/>
           <text class="title" x="590" y="395">DATA WAREHOUSE</text>
           <line x1="550" y1="408" x2="630" y2="408" stroke="#e5e7eb" stroke-width="1"/>
-          <!-- Connector from DWH circle to METADATA label (left side) -->
-          <path d="M555,420 L490,480" stroke="var(--c-purple)" stroke-width="1.5" stroke-dasharray="4,2" fill="none" opacity="0.6"/>
-          <circle cx="555" cy="420" r="3" fill="var(--c-purple)"/>
-          <g transform="translate(455,495)">
-            <rect class="pill" x="-100" y="-14" width="200" height="28" rx="14" fill="#fff" stroke="var(--c-purple)" stroke-width="1.5" filter="drop-shadow(0 2px 6px rgba(91,44,125,0.15))"/>
-            <g transform="translate(-90, 0)">
-              <image href="/crono-metadata.ico" x="0" y="-10" width="20" height="20" preserveAspectRatio="xMidYMid meet"/>
-              <text x="28" y="6" font-size="16" font-weight="600" letter-spacing="0.05em" fill="var(--c-purple)" font-family="system-ui,-apple-system,sans-serif">CRONO METADATA</text>
-            </g>
+          <!-- Connector from inner arc to METADATA label -->
+          <path d="M603.7,465.1 L440,506" stroke="var(--c-purple)" stroke-width="1.5" stroke-dasharray="4,2" fill="none" opacity="0.6"/>
+          <circle cx="603.7" cy="465.1" r="3" fill="var(--c-purple)"/>
+          <g transform="translate(340,520)">
+            <use href="#i-crono" x="-60" y="-14" width="20" height="20" fill="var(--c-purple)"/>
+            <text x="-32" y="6" font-size="24" font-weight="600" letter-spacing="0.05em" fill="var(--c-purple)" font-family="system-ui,-apple-system,sans-serif">CRONO METADATA</text>
           </g>
         </g>
 
@@ -429,17 +425,17 @@ ORDER BY TotalSales DESC`
         <!-- r=105 → ~25px gap from petals, ~65px gap from DWH circle                  -->
         <!-- spans -88°→+88°, color transitions at petal gaps: -55°,-19°,+19°,+55°     -->
         <g class="inner-deco">
-          <path class="inner-arc" d="M603.7,254.9 A105,105 0 0 1 660.2,274.0" stroke="var(--c-analysis)"/>
-          <path class="inner-arc" d="M660.2,274.0 A105,105 0 0 1 699.3,325.8" stroke="var(--c-excel)"/>
-          <path class="inner-arc" d="M699.3,325.8 A105,105 0 0 1 699.3,394.2" stroke="var(--c-ai)"/>
-          <path class="inner-arc" d="M699.3,394.2 A105,105 0 0 1 660.2,446.0" stroke="var(--c-api)"/>
-          <path class="inner-arc" d="M660.2,446.0 A105,105 0 0 1 603.7,465.1" stroke="var(--c-other)"/>
-          <circle cx="603.7" cy="254.9" r="4" fill="var(--c-analysis)"/>
-          <circle cx="660.2" cy="274.0" r="4" fill="var(--c-excel)"/>
-          <circle cx="699.3" cy="325.8" r="4" fill="var(--c-ai)"/>
-          <circle cx="699.3" cy="394.2" r="4" fill="var(--c-api)"/>
-          <circle cx="660.2" cy="446.0" r="4" fill="var(--c-other)"/>
-          <circle cx="603.7" cy="465.1" r="4" fill="var(--c-other)"/>
+          <path class="inner-arc" d="M603.7,254.9 A105,105 0 0 1 660.2,274.0" stroke="var(--c-purple)"/>
+          <path class="inner-arc" d="M660.2,274.0 A105,105 0 0 1 699.3,325.8" stroke="var(--c-purple)"/>
+          <path class="inner-arc" d="M699.3,325.8 A105,105 0 0 1 699.3,394.2" stroke="var(--c-purple)"/>
+          <path class="inner-arc" d="M699.3,394.2 A105,105 0 0 1 660.2,446.0" stroke="var(--c-purple)"/>
+          <path class="inner-arc" d="M660.2,446.0 A105,105 0 0 1 603.7,465.1" stroke="var(--c-purple)"/>
+          <circle cx="603.7" cy="254.9" r="4" fill="var(--c-purple)"/>
+          <circle cx="660.2" cy="274.0" r="4" fill="var(--c-purple)"/>
+          <circle cx="699.3" cy="325.8" r="4" fill="var(--c-purple)"/>
+          <circle cx="699.3" cy="394.2" r="4" fill="var(--c-purple)"/>
+          <circle cx="660.2" cy="446.0" r="4" fill="var(--c-purple)"/>
+          <circle cx="603.7" cy="465.1" r="4" fill="var(--c-purple)"/>
         </g>
 
         <!-- ===================== PETALS (wheel) ===================== -->
@@ -552,56 +548,55 @@ ORDER BY TotalSales DESC`
         <!-- 20px gap between groups. All y-values within viewBox (60–680).               -->
         <g class="svg-labels" font-family="system-ui, -apple-system, sans-serif">
 
-          <!-- 1. CRONO ANALYSIS — icon y=70, title y=116, bullets y=142/162/182 → ends ~187 -->
-          <!-- 1. CRONO ANALYSIS —  -->
+          <!-- 1. CRONO ANALYSIS -->
           <g class="svg-label" data-key="analysis">
-            <g transform="translate(945, 116)">
+            <g transform="translate(945, 120)">
               <use href="#i-crono" x="0" y="-16" width="20" height="20" fill="var(--c-analysis)"/>
-              <text x="28" y="0" font-size="16" font-weight="600" letter-spacing="0.05em" fill="var(--c-analysis)" font-family="system-ui,-apple-system,sans-serif">CRONO ANALYSIS</text>
+              <text x="28" y="0" font-size="24" font-weight="600" letter-spacing="0.05em" fill="var(--c-analysis)" font-family="system-ui,-apple-system,sans-serif">CRONO ANALYSIS</text>
             </g>
-            <text x="945" y="152" font-size="16" fill="#4b5563">Autoservicio BI con análisis</text>
-            <text x="945" y="178" font-size="16" fill="#4b5563">libre y OLAP multidimensional</text>
+            <text x="945" y="158" font-size="14" fill="#4b5563">Autoservicio BI con análisis</text>
+            <text x="945" y="178" font-size="14" fill="#4b5563">libre y OLAP multidimensional</text>
           </g>
 
           <!-- 2. CRONO API -->
           <g class="svg-label" data-key="api-label">
-            <g transform="translate(945, 253)">
+            <g transform="translate(945, 240)">
               <use href="#i-crono" x="0" y="-16" width="20" height="20" fill="var(--c-api)"/>
-              <text x="28" y="0" font-size="16" font-weight="600" letter-spacing="0.05em" fill="var(--c-api)" font-family="system-ui,-apple-system,sans-serif">CRONO API</text>
+              <text x="28" y="0" font-size="24" font-weight="600" letter-spacing="0.05em" fill="var(--c-api)" font-family="system-ui,-apple-system,sans-serif">CRONO API</text>
             </g>
-            <text x="945" y="289" font-size="16" fill="#4b5563">Servicios API REST y</text>
-            <text x="945" y="315" font-size="16" fill="#4b5563">dashboards web integrables</text>
+            <text x="945" y="278" font-size="14" fill="#4b5563">Servicios API REST y</text>
+            <text x="945" y="298" font-size="14" fill="#4b5563">dashboards web integrables</text>
           </g>
 
           <!-- 3. CRONO AI -->
           <g class="svg-label" data-key="ai-label">
-            <g transform="translate(945, 370)">
+            <g transform="translate(945, 360)">
               <use href="#i-crono" x="0" y="-16" width="20" height="20" fill="var(--c-ai)"/>
-              <text x="28" y="0" font-size="16" font-weight="600" letter-spacing="0.05em" fill="var(--c-ai)" font-family="system-ui,-apple-system,sans-serif">CRONO AI</text>
+              <text x="28" y="0" font-size="24" font-weight="600" letter-spacing="0.05em" fill="var(--c-ai)" font-family="system-ui,-apple-system,sans-serif">CRONO AI</text>
             </g>
-            <text x="945" y="406" font-size="16" fill="#4b5563">Consultas en lenguaje natural</text>
-            <text x="945" y="432" font-size="16" fill="#4b5563">con conversión automática a SQL</text>
+            <text x="945" y="398" font-size="14" fill="#4b5563">Consultas en lenguaje natural</text>
+            <text x="945" y="418" font-size="14" fill="#4b5563">con conversión automática a SQL</text>
           </g>
 
           <!-- 4. CRONO EXCEL -->
           <g class="svg-label" data-key="excel">
-            <g transform="translate(945, 487)">
+            <g transform="translate(945, 480)">
               <use href="#i-crono" x="0" y="-16" width="20" height="20" fill="var(--c-excel)"/>
-              <text x="28" y="0" font-size="16" font-weight="600" letter-spacing="0.05em" fill="var(--c-excel)" font-family="system-ui,-apple-system,sans-serif">CRONO EXCEL</text>
+              <text x="28" y="0" font-size="24" font-weight="600" letter-spacing="0.05em" fill="var(--c-excel)" font-family="system-ui,-apple-system,sans-serif">CRONO EXCEL</text>
             </g>
-            <text x="945" y="523" font-size="16" fill="#4b5563">Informes y dashboards en Excel</text>
-            <text x="945" y="549" font-size="16" fill="#4b5563">conectados directamente al DWH</text>
+            <text x="945" y="518" font-size="14" fill="#4b5563">Informes y dashboards en Excel</text>
+            <text x="945" y="538" font-size="14" fill="#4b5563">conectados directamente al DWH</text>
           </g>
 
           <!-- 5. OTRAS SOLUCIONES -->
           <g class="svg-label" data-key="other">
-            <g transform="translate(945, 584)">
+            <g transform="translate(945, 600)">
               <use href="#i-crono" x="0" y="-16" width="20" height="20" fill="var(--c-other)"/>
-              <text x="28" y="0" font-size="16" font-weight="600" letter-spacing="0.05em" fill="var(--c-other)" font-family="system-ui,-apple-system,sans-serif">OTRAS SOLUCIONES</text>
+              <text x="28" y="0" font-size="24" font-weight="600" letter-spacing="0.05em" fill="var(--c-other)" font-family="system-ui,-apple-system,sans-serif">OTRAS SOLUCIONES</text>
             </g>
-            <text x="945" y="620" font-size="16" fill="#4b5563">Compatibilidad nativa con Excel,</text>
-            <text x="945" y="646" font-size="16" fill="#4b5563">Power BI, Tableau y cualquier</text>
-            <text x="945" y="672" font-size="16" fill="#4b5563">herramienta de análisis externa</text>
+            <text x="945" y="638" font-size="14" fill="#4b5563">Compatibilidad nativa con Excel,</text>
+            <text x="945" y="658" font-size="14" fill="#4b5563">Power BI, Tableau y cualquier</text>
+            <text x="945" y="678" font-size="14" fill="#4b5563">herramienta de análisis externa</text>
           </g>
         </g>
 
@@ -4950,7 +4945,7 @@ ORDER BY TotalSales DESC`
   /* the small tri-color arc inside the wheel */
   .inner-arc {
     fill: none;
-    stroke-width: 2.4;
+    stroke-width: 4;
     stroke-linecap: round;
   }
   
