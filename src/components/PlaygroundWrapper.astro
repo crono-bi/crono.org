@@ -12,12 +12,18 @@
   @import '../styles/playground-codemirror.css';
   @import '../styles/playground-editor.css';
 
-  /* ── Apply playground brand color (blue) ── */
+  /* ── Hide Starlight footer in playground ── */
+  body:has(.pg-content) footer {
+    display: none !important;
+  }
+
+  /* ── Apply playground brand color (blue) + zero out main padding ── */
   body:has(.pg-content) {
     --sl-color-accent: #3B82F6;
     --sl-color-accent-low: #2563EB;
     --sl-color-accent-high: #60A5FA;
     --sl-color-text-accent: #3B82F6;
+    --sl-main-pad: 0px;
   }
 
   /* ── Remove content-panel padding (green space) ── */
@@ -45,6 +51,7 @@
     max-width: 100% !important;
     width: 100% !important;
     flex: 1 1 auto !important;
+    padding: 0 !important;
   }
 
   /* ── Override Starlight's two-column layout flex constraints ── */
