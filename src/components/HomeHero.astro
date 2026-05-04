@@ -401,9 +401,11 @@ ORDER BY TotalSales DESC`
 
         <!-- CRONO ETL label — centrado sobre el conector ETL -->
         <g transform="translate(375,195)">
-          <use href="#i-crono" x="-60" y="-14" width="20" height="20" fill="var(--c-blue)"/>
-          <text x="-32" y="6" font-size="24" font-weight="600" letter-spacing="0.05em" fill="var(--c-blue)" font-family="system-ui,-apple-system,sans-serif">CRONO ETL</text>
+          <use href="#i-crono" x="-79" y="-14" width="20" height="20" fill="var(--c-blue)"/>
+          <text x="-51" y="6" font-size="24" font-weight="600" letter-spacing="0.05em" fill="var(--c-blue)" font-family="system-ui,-apple-system,sans-serif">CRONO ETL</text>
         </g>
+        <!-- Connector from ETL label toward ETL flow -->
+        <path d="M375,212 L375,295" stroke="var(--c-blue)" stroke-width="1.5" stroke-dasharray="4,2" fill="none" opacity="0.4"/>
 
         <!-- MIDDLE NODE: DATA WAREHOUSE / CRONO METADATA -->
         <g class="node node--dwh">
@@ -412,11 +414,11 @@ ORDER BY TotalSales DESC`
           <text class="title" x="590" y="395">DATA WAREHOUSE</text>
           <line x1="550" y1="408" x2="630" y2="408" stroke="#e5e7eb" stroke-width="1"/>
           <!-- Connector from inner arc to METADATA label -->
-          <path d="M603.7,465.1 L440,506" stroke="var(--c-purple)" stroke-width="1.5" stroke-dasharray="4,2" fill="none" opacity="0.6"/>
+          <path d="M603.7,465.1 L530,516" stroke="var(--c-purple)" stroke-width="1.5" stroke-dasharray="4,2" fill="none" opacity="0.6"/>
           <circle cx="603.7" cy="465.1" r="3" fill="var(--c-purple)"/>
-          <g transform="translate(340,520)">
-            <use href="#i-crono" x="-60" y="-14" width="20" height="20" fill="var(--c-purple)"/>
-            <text x="-32" y="6" font-size="24" font-weight="600" letter-spacing="0.05em" fill="var(--c-purple)" font-family="system-ui,-apple-system,sans-serif">CRONO METADATA</text>
+          <g transform="translate(375,520)">
+            <use href="#i-crono" x="-114" y="-14" width="20" height="20" fill="var(--c-purple)"/>
+            <text x="-86" y="6" font-size="24" font-weight="600" letter-spacing="0.05em" fill="var(--c-purple)" font-family="system-ui,-apple-system,sans-serif">CRONO METADATA</text>
           </g>
         </g>
 
