@@ -95,8 +95,9 @@ ORDER BY TotalSales DESC`
           <div class="hero-stat-divider"></div>
           <div class="hero-stat-item">
             <div class="hero-stat-icon-wrap" style="--stat-accent: #22C55E;">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="3">
-                <polyline points="20 6 9 17 4 12"/>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="9 12 11 14 15 10"/>
               </svg>
             </div>
             <div class="hero-stat-big">1</div>
@@ -422,22 +423,22 @@ ORDER BY TotalSales DESC`
           </g>
         </g>
 
-        <!-- inner arc: centered at wheel center (600,360), r=105                       -->
+        <!-- inner arc: centered at wheel center (600,360), r=75                       -->
         <!-- space: DWH right edge ~40 from wheel center, inner petal ri=130            -->
-        <!-- r=105 → ~25px gap from petals, ~65px gap from DWH circle                  -->
+        <!-- r=75 → ~55px gap from petals, ~45px gap from DWH circle                  -->
         <!-- spans -88°→+88°, color transitions at petal gaps: -55°,-19°,+19°,+55°     -->
         <g class="inner-deco">
-          <path class="inner-arc" d="M603.7,254.9 A105,105 0 0 1 660.2,274.0" stroke="var(--c-purple)"/>
-          <path class="inner-arc" d="M660.2,274.0 A105,105 0 0 1 699.3,325.8" stroke="var(--c-purple)"/>
-          <path class="inner-arc" d="M699.3,325.8 A105,105 0 0 1 699.3,394.2" stroke="var(--c-purple)"/>
-          <path class="inner-arc" d="M699.3,394.2 A105,105 0 0 1 660.2,446.0" stroke="var(--c-purple)"/>
-          <path class="inner-arc" d="M660.2,446.0 A105,105 0 0 1 603.7,465.1" stroke="var(--c-purple)"/>
-          <circle cx="603.7" cy="254.9" r="4" fill="var(--c-purple)"/>
-          <circle cx="660.2" cy="274.0" r="4" fill="var(--c-purple)"/>
-          <circle cx="699.3" cy="325.8" r="4" fill="var(--c-purple)"/>
-          <circle cx="699.3" cy="394.2" r="4" fill="var(--c-purple)"/>
-          <circle cx="660.2" cy="446.0" r="4" fill="var(--c-purple)"/>
-          <circle cx="603.7" cy="465.1" r="4" fill="var(--c-purple)"/>
+          <path class="inner-arc" d="M602.6,285.1 A75,75 0 0 1 643.0,298.6" stroke="var(--c-purple)"/>
+          <path class="inner-arc" d="M643.0,298.6 A75,75 0 0 1 671.0,335.6" stroke="var(--c-purple)"/>
+          <path class="inner-arc" d="M671.0,335.6 A75,75 0 0 1 671.0,384.4" stroke="var(--c-purple)"/>
+          <path class="inner-arc" d="M671.0,384.4 A75,75 0 0 1 643.0,421.4" stroke="var(--c-purple)"/>
+          <path class="inner-arc" d="M643.0,421.4 A75,75 0 0 1 602.6,434.9" stroke="var(--c-purple)"/>
+          <circle cx="602.6" cy="285.1" r="4" fill="var(--c-purple)"/>
+          <circle cx="643.0" cy="298.6" r="4" fill="var(--c-purple)"/>
+          <circle cx="671.0" cy="335.6" r="4" fill="var(--c-purple)"/>
+          <circle cx="671.0" cy="384.4" r="4" fill="var(--c-purple)"/>
+          <circle cx="643.0" cy="421.4" r="4" fill="var(--c-purple)"/>
+          <circle cx="602.6" cy="434.9" r="4" fill="var(--c-purple)"/>
         </g>
 
         <!-- ===================== PETALS (wheel) ===================== -->

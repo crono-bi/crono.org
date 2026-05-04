@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <!-- MS Fabric logo: stylized fabric/weave mark in Microsoft colors -->
+  <!-- Top-left: blue -->
+  <path d="M4 4 L16 4 L16 16 L4 16 Z" rx="2" fill="#0078D4" opacity="0.9"/>
+  <!-- Top-right: green -->
+  <path d="M16 4 L28 4 L28 16 L16 16 Z" rx="2" fill="#107C10" opacity="0.9"/>
+  <!-- Bottom-left: yellow -->
+  <path d="M4 16 L16 16 L16 28 L4 28 Z" rx="2" fill="#FFB900" opacity="0.9"/>
+  <!-- Bottom-right: orange/red -->
+  <path d="M16 16 L28 16 L28 28 L16 28 Z" rx="2" fill="#D83B01" opacity="0.9"/>
+  <!-- Center weave overlay -->
+  <circle cx="16" cy="16" r="5" fill="white" opacity="0.92"/>
+  <path d="M16 11 C13 11 11 13 11 16 C11 19 13 21 16 21 C19 21 21 19 21 16 C21 13 19 11 16 11 Z" fill="none" stroke="#0078D4" stroke-width="1.8"/>
+  <path d="M12 12 L20 20 M20 12 L12 20" stroke="#0078D4" stroke-width="1.2" stroke-linecap="round" opacity="0.5"/>
+</svg>

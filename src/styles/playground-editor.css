@@ -25,7 +25,7 @@
 .pg-panel {
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  overflow: clip;
   min-width: 0;
   padding: 0 !important;
   margin: 0 !important;
@@ -74,7 +74,9 @@
   border-bottom: 1px solid var(--sl-color-gray-5);
   background: var(--sl-color-bg);
   box-sizing: border-box;
-  overflow: hidden;
+  overflow: visible;
+  position: relative;
+  z-index: 10;
 }
 
 /* Reset Starlight prose margins on ALL header children */
@@ -196,6 +198,9 @@
   gap: 4px;
   flex-shrink: 0;
   height: 100%;
+  position: relative;
+  z-index: 10;
+  overflow: visible;
 }
 
 .pg-copy-btn {

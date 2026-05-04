@@ -6,11 +6,13 @@ import type { EtlOptions } from '../types/interfaces'
 import { playgroundBus } from '../event-bus'
 
 const ENGINE_LABELS: Record<EngineId, string> = {
-  [EngineId.SQLServer]: 'SQL Server',
-  [EngineId.Snowflake]: 'Snowflake',
-  [EngineId.Postgres]:  'PostgreSQL',
-  [EngineId.Redshift]:  'Redshift',
-  [EngineId.BigQuery]:  'BigQuery'
+  [EngineId.SQLServer]:  'SQL Server',
+  [EngineId.Snowflake]:  'Snowflake',
+  [EngineId.Postgres]:   'PostgreSQL',
+  [EngineId.Redshift]:   'Redshift',
+  [EngineId.BigQuery]:   'BigQuery',
+  [EngineId.Databricks]: 'Databricks',
+  [EngineId.MSFabric]:   'MS Fabric DWH'
 }
 
 const defaultCode = `/*
@@ -48,7 +50,7 @@ export function useCompilation() {
   const initialEngine = urlParams?.get('engine') as EngineId
   const validEngine = Object.values(EngineId).includes(initialEngine) 
     ? initialEngine 
-    : EngineId.SQLServer
+    : EngineId.Snowflake
 
   const selectedEngine: Ref<EngineId> = ref(validEngine)
   const isCompiling: Ref<boolean> = ref(false)
@@ -99,7 +101,7 @@ export function useCompilation() {
     if (cronoCode.value !== defaultCode) {
       params.set('code', btoa(encodeURIComponent(cronoCode.value)))
     }
-    if (selectedEngine.value !== EngineId.SQLServer) {
+    if (selectedEngine.value !== EngineId.Snowflake) {
       params.set('engine', selectedEngine.value)
     }
     // Only serialize ETL fields that differ from defaults

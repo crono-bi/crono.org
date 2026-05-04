@@ -12,23 +12,23 @@ let productName = '';
 
 if (pathname.startsWith('/analysis/')) {
 	siteTitle = 'Manual Crono Analysis';
-	productLogoSrc = '/logos/Crono Analysis.webp';
+	productLogoSrc = '/logos/crono-analysis.webp';
 	productName = 'Crono Analysis';
 } else if (pathname.startsWith('/metadata/')) {
 	siteTitle = 'Manual Crono Metadata';
-	productLogoSrc = '/logos/Crono Metadata.webp';
+	productLogoSrc = '/logos/crono-metadata.webp';
 	productName = 'Crono Metadata';
 } else if (pathname.startsWith('/etl/')) {
 	siteTitle = 'Manual Crono ETL';
-	productLogoSrc = '/logos/Crono ETL.webp';
+	productLogoSrc = '/logos/crono-etl.webp';
 	productName = 'Crono ETL';
 } else if (pathname.startsWith('/sql/')) {
 	siteTitle = 'Manual Crono SQL';
-	productLogoSrc = '/logos/Crono SQL.webp';
+	productLogoSrc = '/logos/crono-sql.webp';
 	productName = 'Crono SQL';
 } else if (pathname.startsWith('/playground')) {
 	siteTitle = 'Crono Playground';
-	productLogoSrc = '/logos/Crono Playground.webp';
+	productLogoSrc = '/logos/crono-playground.webp';
 	productName = 'Crono Playground';
 }
 ---
@@ -48,10 +48,7 @@ if (pathname.startsWith('/analysis/')) {
 	{productLogoSrc ? (
 		<img src={productLogoSrc} alt={productName} class="product-logo" />
 	) : (
-		<>
-			<img src="/crono-logo-h-white.png" alt="Crono" class="dark-logo" />
-			<img src="/crono-logo-h.png" alt="Crono" class="light-logo" />
-		</>
+		<img src="/logos/crono.webp" alt="Crono" class="main-logo" />
 	)}
 	<span class="sr-only" translate="no">
 		{siteTitle}
@@ -80,14 +77,11 @@ if (pathname.startsWith('/analysis/')) {
 			object-fit: contain;
 			object-position: 0 50%;
 		}
-		/* Crono logo dark/light toggle */
-		.dark-logo, .light-logo {
+		/* Crono main logo */
+		.main-logo {
 			height: 28px;
 			width: auto;
 		}
-		:root[data-theme='light'] .dark-logo { display: none; }
-		:root[data-theme='dark'] .light-logo { display: none; }
-		:root:not([data-theme='light']) .light-logo { display: none; }
 
 		/* Product logo */
 		.product-logo {

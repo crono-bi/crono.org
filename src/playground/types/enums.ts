@@ -1,9 +1,11 @@
 export enum SqlDialect {
-  SQLServer = 'SQLServer',
-  Snowflake = 'Snowflake',
-  Postgres  = 'Postgres',
-  Redshift  = 'Redshift',
-  BigQuery  = 'BigQuery'
+  SQLServer  = 'SQLServer',
+  Snowflake  = 'Snowflake',
+  Postgres   = 'Postgres',
+  Redshift   = 'Redshift',
+  BigQuery   = 'BigQuery',
+  Databricks = 'Databricks',
+  MSFabric   = 'MSFabric'
 }
 
 export enum Theme {
@@ -18,11 +20,13 @@ export enum ToastType {
 }
 
 export enum EngineId {
-  SQLServer = 'sqlserver',
-  Snowflake = 'snowflake',
-  Postgres  = 'postgre',
-  Redshift  = 'redshift',
-  BigQuery  = 'bigquery'
+  SQLServer  = 'sqlserver',
+  Snowflake  = 'snowflake',
+  Postgres   = 'postgre',
+  Redshift   = 'redshift',
+  BigQuery   = 'bigquery',
+  Databricks = 'databricks',
+  MSFabric   = 'msfabric'
 }
 
 export enum ExampleGroupId {
