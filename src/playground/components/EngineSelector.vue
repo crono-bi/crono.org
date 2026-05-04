@@ -46,7 +46,7 @@ const engines: Engine[] = [
   { id: EngineId.Snowflake, label: 'Snowflake',  icon: LOGOS[EngineId.Snowflake] },
   { id: EngineId.Postgres,  label: 'PostgreSQL', icon: LOGOS[EngineId.Postgres] },
   { id: EngineId.Redshift,  label: 'Redshift',   icon: LOGOS[EngineId.Redshift] },
-  { id: EngineId.BigQuery,  label: 'BigQuery',   icon: LOGOS[EngineId.BigQuery],   disabled: true }
+  { id: EngineId.BigQuery,  label: 'BigQuery',   icon: LOGOS[EngineId.BigQuery] }
 ]
 </script>
 
