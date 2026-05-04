@@ -602,9 +602,9 @@ ORDER BY TotalSales DESC`
 
         <!-- ══ ANIMATION ELEMENTS (GSAP-controlled) ══════════════════ -->
         <!-- DWH awakening rings: scale outward + fade on intro -->
-        <circle class="dwh-ring" cx="590" cy="360" r="85" fill="none" stroke="#1B8AC7" stroke-width="2.5" opacity="0"/>
-        <circle class="dwh-ring" cx="590" cy="360" r="85" fill="none" stroke="#5B2C7D" stroke-width="1.5" opacity="0"/>
-        <circle class="dwh-ring" cx="590" cy="360" r="85" fill="none" stroke="#1B8AC7" stroke-width="1"   opacity="0"/>
+        <circle class="dwh-ring" cx="590" cy="360" r="85" fill="none" stroke="#5B2C7D" stroke-width="4"   opacity="0"/>
+        <circle class="dwh-ring" cx="590" cy="360" r="85" fill="none" stroke="#5B2C7D" stroke-width="3"   opacity="0"/>
+        <circle class="dwh-ring" cx="590" cy="360" r="85" fill="none" stroke="#5B2C7D" stroke-width="2"   opacity="0"/>
         <!-- Broadcast ring: DWH → petals (radial pulse) -->
         <circle class="broadcast-ring" cx="590" cy="360" r="85" fill="none" stroke="#1B8AC7" stroke-width="1.5" opacity="0"/>
         <!-- Source particle: travels along link-line (source → DWH) -->
@@ -4947,6 +4947,20 @@ ORDER BY TotalSales DESC`
     fill: none;
     stroke-width: 4;
     stroke-linecap: round;
+    stroke-opacity: 0.25;
+    animation: arcReveal 4s ease-in-out infinite;
+  }
+  .inner-arc:nth-child(1) { animation-delay: 0s; }
+  .inner-arc:nth-child(2) { animation-delay: 0.4s; }
+  .inner-arc:nth-child(3) { animation-delay: 0.8s; }
+  .inner-arc:nth-child(4) { animation-delay: 1.2s; }
+  .inner-arc:nth-child(5) { animation-delay: 1.6s; }
+  @keyframes arcReveal {
+    0%   { stroke-opacity: 0.25; stroke-width: 3; }
+    10%  { stroke-opacity: 1; stroke-width: 5; }
+    50%  { stroke-opacity: 1; stroke-width: 5; }
+    65%  { stroke-opacity: 0.25; stroke-width: 3; }
+    100% { stroke-opacity: 0.25; stroke-width: 3; }
   }
   
   .inner-arc-dot {
@@ -5909,6 +5923,7 @@ ORDER BY TotalSales DESC`
       duration: 1.8, repeat: -1, yoyo: true,
       ease: 'sine.inOut', stagger: { each: 0.35 }
     });
+
   }
 
   // ── 4. FLOW: full data journey SOURCE → DWH → PETALS → LABELS ───
