@@ -1,41 +1,34 @@
 ---
 import { logos } from 'virtual:starlight/user-images';
 import config from 'virtual:starlight/user-config';
-import { Image } from 'astro:assets';
-
-import logoAnalysis from '../assets/logos/Crono Analysis.webp';
-import logoMetadata from '../assets/logos/Crono Metadata.webp';
-import logoETL from '../assets/logos/Crono ETL.webp';
-import logoSQL from '../assets/logos/Crono SQL.webp';
-import logoPlayground from '../assets/logos/Crono Playground.webp';
 
 const { siteTitleHref } = Astro.locals.starlightRoute;
 
 const pathname = Astro.url.pathname;
 
 let siteTitle = 'Manual de usuario';
-let productLogo: ImageMetadata | null = null;
+let productLogoSrc: string | null = null;
 let productName = '';
 
 if (pathname.startsWith('/analysis/')) {
 	siteTitle = 'Manual Crono Analysis';
-	productLogo = logoAnalysis;
+	productLogoSrc = '/logos/Crono Analysis.webp';
 	productName = 'Crono Analysis';
 } else if (pathname.startsWith('/metadata/')) {
 	siteTitle = 'Manual Crono Metadata';
-	productLogo = logoMetadata;
+	productLogoSrc = '/logos/Crono Metadata.webp';
 	productName = 'Crono Metadata';
 } else if (pathname.startsWith('/etl/')) {
 	siteTitle = 'Manual Crono ETL';
-	productLogo = logoETL;
+	productLogoSrc = '/logos/Crono ETL.webp';
 	productName = 'Crono ETL';
 } else if (pathname.startsWith('/sql/')) {
 	siteTitle = 'Manual Crono SQL';
-	productLogo = logoSQL;
+	productLogoSrc = '/logos/Crono SQL.webp';
 	productName = 'Crono SQL';
 } else if (pathname.startsWith('/playground')) {
 	siteTitle = 'Crono Playground';
-	productLogo = logoPlayground;
+	productLogoSrc = '/logos/Crono Playground.webp';
 	productName = 'Crono Playground';
 }
 ---
@@ -52,8 +45,8 @@ if (pathname.startsWith('/analysis/')) {
 </script>
 
 <a href={siteTitleHref} class="site-title sl-flex">
-	{productLogo ? (
-		<Image src={productLogo} alt={productName} class="product-logo" height={28} inferSize quality={100} />
+	{productLogoSrc ? (
+		<img src={productLogoSrc} alt={productName} class="product-logo" />
 	) : (
 		<>
 			<img src="/crono-logo-h-white.png" alt="Crono" class="dark-logo" />

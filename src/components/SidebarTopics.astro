@@ -1,19 +1,12 @@
 ---
 import { Badge } from '@astrojs/starlight/components'
-import { Image } from 'astro:assets'
 
-import logoAnalysis from '../assets/logos/Crono Analysis.webp'
-import logoMetadata from '../assets/logos/Crono Metadata.webp'
-import logoETL from '../assets/logos/Crono ETL.webp'
-import logoSQL from '../assets/logos/Crono SQL.webp'
-import logoPlayground from '../assets/logos/Crono Playground.webp'
-
-const LOGO_MAP: Record<string, ImageMetadata> = {
-  'Crono Analysis': logoAnalysis,
-  'Crono Metadata': logoMetadata,
-  'Crono ETL': logoETL,
-  'Crono SQL': logoSQL,
-  'Playground': logoPlayground,
+const LOGO_MAP: Record<string, string> = {
+  'Crono Analysis': '/logos/Crono Analysis.webp',
+  'Crono Metadata': '/logos/Crono Metadata.webp',
+  'Crono ETL': '/logos/Crono ETL.webp',
+  'Crono SQL': '/logos/Crono SQL.webp',
+  'Playground': '/logos/Crono Playground.webp',
 }
 
 const { topics } = Astro.locals.starlightSidebarTopics
@@ -28,7 +21,7 @@ const { topics } = Astro.locals.starlightSidebarTopics
           <a href={topic.link} class:list={{ 'starlight-sidebar-topics-current': topic.isCurrent }}>
             <div class="starlight-sidebar-topics-icon">
               {logo ? (
-                <Image src={logo} alt={topic.label} width={20} height={20} quality={100} />
+                <img src={logo} alt={topic.label} width={20} height={20} />
               ) : (
                 <span class="starlight-sidebar-topics-icon-placeholder" />
               )}

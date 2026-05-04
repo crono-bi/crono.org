@@ -2,7 +2,6 @@
 // SQL Landing Page - Using the generic ManualLanding component
 import ManualLanding from './ManualLanding.astro'
 import type { Feature, Category, Statement, FuncExample } from './ManualLanding.astro'
-import logoSQL from '../assets/logos/Crono SQL.webp'
 
 const features: Feature[] = [
   {
@@ -88,7 +87,7 @@ LEFT JOIN staging.ProductCategory USING ProductSubCategory(ProductCategoryId)`
 ---
 
 <ManualLanding
-  logo={logoSQL}
+  logo="/logos/Crono SQL.webp"
   logoAlt="Crono SQL"
   subtitle="SQL con superpoderes para construir Data Warehouses"
   ctaText="Acceder al manual"
