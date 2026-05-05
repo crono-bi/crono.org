@@ -388,6 +388,26 @@ ORDER BY TotalSales DESC`
             <rect x="20" y="34" width="10" height="10" fill="#7B1FA2" opacity="0.4"/>
             <rect x="34" y="34" width="10" height="10" fill="#7B1FA2" opacity="0.6"/>
           </symbol>
+
+          <!-- Framework icons -->
+          <symbol id="i-fw-vue" viewBox="0 0 64 64">
+            <polygon points="32,8 52,44 12,44" fill="none" stroke="#41B883" stroke-width="3" stroke-linejoin="round"/>
+            <polygon points="32,18 44,40 20,40" fill="#41B883" opacity="0.35"/>
+          </symbol>
+          <symbol id="i-fw-react" viewBox="0 0 64 64">
+            <circle cx="32" cy="32" r="5" fill="#61DAFB"/>
+            <ellipse cx="32" cy="32" rx="26" ry="10" fill="none" stroke="#61DAFB" stroke-width="2.5"/>
+            <ellipse cx="32" cy="32" rx="26" ry="10" fill="none" stroke="#61DAFB" stroke-width="2.5" transform="rotate(60 32 32)"/>
+            <ellipse cx="32" cy="32" rx="26" ry="10" fill="none" stroke="#61DAFB" stroke-width="2.5" transform="rotate(120 32 32)"/>
+          </symbol>
+          <symbol id="i-fw-angular" viewBox="0 0 64 64">
+            <polygon points="32,6 56,16 52,50 32,60 12,50 8,16" fill="#DD0031" opacity="0.15" stroke="#DD0031" stroke-width="2.5" stroke-linejoin="round"/>
+            <polygon points="32,16 44,44 38,44 34,34 30,34 26,44 20,44" fill="#DD0031"/>
+          </symbol>
+          <symbol id="i-fw-astro" viewBox="0 0 64 64">
+            <path d="M32 8 C32 8 20 32 20 44 C20 52 25 58 32 58 C39 58 44 52 44 44 C44 32 32 8 32 8Z" fill="#FF5D01" opacity="0.2" stroke="#FF5D01" stroke-width="2"/>
+            <path d="M32 20 L36 40 L28 40 Z" fill="#FF5D01"/>
+          </symbol>
         </defs>
 
         <!-- LEFT NODE: FUENTES DE DATOS / CRONO ETL -->
@@ -513,8 +533,96 @@ ORDER BY TotalSales DESC`
             A280,280 0 0 1 850.6,235.1 Q859.6,255.1 839.2,263.3
             L740.9,303.1 Q720.5,311.3 710.6,291.7
             A130,130 0 0 0 696.1,272.4 Q680.0,257.6 693.5,240.3 Z"/>
-          <g class="icon-bg">
+
+          <!-- Default state: API icon -->
+          <g id="api-petal-default">
             <use href="#i-api" x="736" y="209" width="56" height="56"/>
+          </g>
+
+          <!-- Framework previews: clipped to petal shape -->
+          <defs>
+            <clipPath id="clip-petal-api">
+              <path d="M693.5,240.3 L758.9,156.7 Q772.4,139.4 789.2,153.6 A280,280 0 0 1 850.6,235.1 Q859.6,255.1 839.2,263.3 L740.9,303.1 Q720.5,311.3 710.6,291.7 A130,130 0 0 0 696.1,272.4 Q680.0,257.6 693.5,240.3 Z"/>
+            </clipPath>
+          </defs>
+
+          <!-- VUE: logos + bar chart mockup directo en el pétalo -->
+          <g id="fw-preview-vue" style="display:none" clip-path="url(#clip-petal-api)">
+            <!-- bar chart grid lines -->
+            <line x1="718" y1="175" x2="845" y2="175" stroke="#41B883" stroke-width="0.4" opacity="0.2"/>
+            <line x1="718" y1="196" x2="845" y2="196" stroke="#41B883" stroke-width="0.4" opacity="0.2"/>
+            <line x1="718" y1="217" x2="845" y2="217" stroke="#41B883" stroke-width="0.4" opacity="0.2"/>
+            <line x1="718" y1="238" x2="845" y2="238" stroke="#41B883" stroke-width="0.4" opacity="0.2"/>
+            <!-- bars -->
+            <rect x="722" y="214" width="14" height="24" rx="2" fill="#41B883" opacity="0.45"/>
+            <rect x="740" y="200" width="14" height="38" rx="2" fill="#41B883" opacity="0.6"/>
+            <rect x="758" y="206" width="14" height="32" rx="2" fill="#41B883" opacity="0.55"/>
+            <rect x="776" y="190" width="14" height="48" rx="2" fill="#41B883" opacity="0.85"/>
+            <rect x="794" y="195" width="14" height="43" rx="2" fill="#41B883" opacity="0.7"/>
+            <rect x="812" y="185" width="14" height="53" rx="2" fill="#41B883"/>
+            <!-- baseline -->
+            <line x1="718" y1="239" x2="845" y2="239" stroke="#41B883" stroke-width="0.8" opacity="0.4"/>
+            <!-- logos -->
+            <use href="#i-api" x="712" y="252" width="36" height="36"/>
+            <text x="749" y="275" font-size="18" fill="#41B883" font-weight="700" font-family="system-ui,sans-serif" opacity="0.7">+</text>
+            <image href="/frameworks-logos/vuejs.svg" x="758" y="252" width="36" height="36"/>
+          </g>
+
+          <!-- REACT: bar chart cyan -->
+          <g id="fw-preview-react" style="display:none" clip-path="url(#clip-petal-api)">
+            <line x1="718" y1="175" x2="845" y2="175" stroke="#61DAFB" stroke-width="0.4" opacity="0.2"/>
+            <line x1="718" y1="196" x2="845" y2="196" stroke="#61DAFB" stroke-width="0.4" opacity="0.2"/>
+            <line x1="718" y1="217" x2="845" y2="217" stroke="#61DAFB" stroke-width="0.4" opacity="0.2"/>
+            <line x1="718" y1="238" x2="845" y2="238" stroke="#61DAFB" stroke-width="0.4" opacity="0.2"/>
+            <rect x="722" y="214" width="14" height="24" rx="2" fill="#61DAFB" opacity="0.45"/>
+            <rect x="740" y="200" width="14" height="38" rx="2" fill="#61DAFB" opacity="0.6"/>
+            <rect x="758" y="206" width="14" height="32" rx="2" fill="#61DAFB" opacity="0.55"/>
+            <rect x="776" y="190" width="14" height="48" rx="2" fill="#61DAFB" opacity="0.85"/>
+            <rect x="794" y="195" width="14" height="43" rx="2" fill="#61DAFB" opacity="0.7"/>
+            <rect x="812" y="185" width="14" height="53" rx="2" fill="#61DAFB"/>
+            <line x1="718" y1="239" x2="845" y2="239" stroke="#61DAFB" stroke-width="0.8" opacity="0.4"/>
+            <!-- logos -->
+            <use href="#i-api" x="712" y="252" width="36" height="36"/>
+            <text x="749" y="275" font-size="18" fill="#61DAFB" font-weight="700" font-family="system-ui,sans-serif" opacity="0.7">+</text>
+            <image href="/frameworks-logos/reactjs.svg" x="758" y="252" width="36" height="36"/>
+          </g>
+
+          <!-- ANGULAR: bar chart red -->
+          <g id="fw-preview-angular" style="display:none" clip-path="url(#clip-petal-api)">
+            <line x1="718" y1="175" x2="845" y2="175" stroke="#DD0031" stroke-width="0.4" opacity="0.2"/>
+            <line x1="718" y1="196" x2="845" y2="196" stroke="#DD0031" stroke-width="0.4" opacity="0.2"/>
+            <line x1="718" y1="217" x2="845" y2="217" stroke="#DD0031" stroke-width="0.4" opacity="0.2"/>
+            <line x1="718" y1="238" x2="845" y2="238" stroke="#DD0031" stroke-width="0.4" opacity="0.2"/>
+            <rect x="722" y="214" width="14" height="24" rx="2" fill="#DD0031" opacity="0.45"/>
+            <rect x="740" y="200" width="14" height="38" rx="2" fill="#DD0031" opacity="0.6"/>
+            <rect x="758" y="206" width="14" height="32" rx="2" fill="#DD0031" opacity="0.55"/>
+            <rect x="776" y="190" width="14" height="48" rx="2" fill="#DD0031" opacity="0.85"/>
+            <rect x="794" y="195" width="14" height="43" rx="2" fill="#DD0031" opacity="0.7"/>
+            <rect x="812" y="185" width="14" height="53" rx="2" fill="#DD0031"/>
+            <line x1="718" y1="239" x2="845" y2="239" stroke="#DD0031" stroke-width="0.8" opacity="0.4"/>
+            <!-- logos -->
+            <use href="#i-api" x="712" y="252" width="36" height="36"/>
+            <text x="749" y="275" font-size="18" fill="#DD0031" font-weight="700" font-family="system-ui,sans-serif" opacity="0.7">+</text>
+            <image href="/frameworks-logos/angularjs.svg" x="758" y="252" width="36" height="36"/>
+          </g>
+
+          <!-- ASTRO: bar chart orange -->
+          <g id="fw-preview-astro" style="display:none" clip-path="url(#clip-petal-api)">
+            <line x1="718" y1="175" x2="845" y2="175" stroke="#FF5D01" stroke-width="0.4" opacity="0.2"/>
+            <line x1="718" y1="196" x2="845" y2="196" stroke="#FF5D01" stroke-width="0.4" opacity="0.2"/>
+            <line x1="718" y1="217" x2="845" y2="217" stroke="#FF5D01" stroke-width="0.4" opacity="0.2"/>
+            <line x1="718" y1="238" x2="845" y2="238" stroke="#FF5D01" stroke-width="0.4" opacity="0.2"/>
+            <rect x="722" y="214" width="14" height="24" rx="2" fill="#FF5D01" opacity="0.45"/>
+            <rect x="740" y="200" width="14" height="38" rx="2" fill="#FF5D01" opacity="0.6"/>
+            <rect x="758" y="206" width="14" height="32" rx="2" fill="#FF5D01" opacity="0.55"/>
+            <rect x="776" y="190" width="14" height="48" rx="2" fill="#FF5D01" opacity="0.85"/>
+            <rect x="794" y="195" width="14" height="43" rx="2" fill="#FF5D01" opacity="0.7"/>
+            <rect x="812" y="185" width="14" height="53" rx="2" fill="#FF5D01"/>
+            <line x1="718" y1="239" x2="845" y2="239" stroke="#FF5D01" stroke-width="0.8" opacity="0.4"/>
+            <!-- logos -->
+            <use href="#i-api" x="712" y="252" width="36" height="36"/>
+            <text x="749" y="275" font-size="18" fill="#FF5D01" font-weight="700" font-family="system-ui,sans-serif" opacity="0.7">+</text>
+            <image href="/frameworks-logos/astrojs.svg" x="758" y="252" width="36" height="36"/>
           </g>
         </g>
 
@@ -606,8 +714,22 @@ ORDER BY TotalSales DESC`
               <use href="#i-crono" x="0" y="-22" width="28" height="28" fill="var(--c-api)"/>
               <text x="36" y="0" font-size="24" font-weight="600" letter-spacing="0.05em" fill="var(--c-api)" font-family="system-ui,-apple-system,sans-serif">CRONO API</text>
             </g>
-            <text x="945" y="278" font-size="14" fill="#4b5563">Servicios API REST y</text>
-            <text x="945" y="298" font-size="14" fill="#4b5563">dashboards web integrables</text>
+            <text x="945" y="274" font-size="13" fill="#4b5563">Servicios API REST y dashboards web integrables</text>
+            <!-- Framework buttons (SVG native for pixel-perfect alignment) -->
+            <g class="fw-svg-btns">
+              <!-- Vue -->
+              <rect class="fw-svg-btn" data-fw="vue" x="945" y="282" width="36" height="36" rx="6" title="Vue.js"/>
+              <image href="/frameworks-logos/vuejs.svg" x="950" y="287" width="26" height="26" style="pointer-events:none"/>
+              <!-- React -->
+              <rect class="fw-svg-btn" data-fw="react" x="985" y="282" width="36" height="36" rx="6" title="React"/>
+              <image href="/frameworks-logos/reactjs.svg" x="990" y="287" width="26" height="26" style="pointer-events:none"/>
+              <!-- Angular -->
+              <rect class="fw-svg-btn" data-fw="angular" x="1025" y="282" width="36" height="36" rx="6" title="Angular"/>
+              <image href="/frameworks-logos/angularjs.svg" x="1030" y="287" width="26" height="26" style="pointer-events:none"/>
+              <!-- Astro -->
+              <rect class="fw-svg-btn" data-fw="astro" x="1065" y="282" width="36" height="36" rx="6" title="Astro"/>
+              <image href="/frameworks-logos/astrojs.svg" x="1070" y="287" width="26" height="26" style="pointer-events:none"/>
+            </g>
           </g>
 
           <!-- 3. CRONO AI -->
@@ -5942,6 +6064,36 @@ ORDER BY TotalSales DESC`
     border-color: rgba(255, 255, 255, 0.1) !important;
   }
 
+  /* Framework SVG buttons */
+  .fw-svg-btn {
+    fill: rgba(255,255,255,0.85);
+    stroke: rgba(0,0,0,0.1);
+    stroke-width: 1;
+    cursor: pointer;
+    transition: fill 0.15s, stroke 0.15s;
+  }
+  .fw-svg-btn:hover {
+    fill: #fff;
+    stroke: rgba(0,0,0,0.2);
+  }
+  .fw-svg-btn.active {
+    fill: rgba(59,130,246,0.12);
+    stroke: #3B82F6;
+    stroke-width: 1.5;
+  }
+  :root[data-theme='dark'] .fw-svg-btn {
+    fill: rgba(30,32,48,0.85);
+    stroke: rgba(255,255,255,0.12);
+  }
+  :root[data-theme='dark'] .fw-svg-btn:hover {
+    fill: rgba(40,44,66,0.95);
+    stroke: rgba(56,189,248,0.4);
+  }
+  :root[data-theme='dark'] .fw-svg-btn.active {
+    fill: rgba(59,130,246,0.22);
+    stroke: #3B82F6;
+  }
+
   /* Fullscreen styles */
   .ecosystem-diagram-wrapper:fullscreen {
     background: #ffffff;
@@ -6220,6 +6372,41 @@ ORDER BY TotalSales DESC`
           resetToDefaultIcon();
         } else {
           selectEngine(btn as HTMLElement);
+        }
+      });
+    });
+
+    // ── Framework buttons (CRONO API petal) ─────────────────────────
+    const fwButtons = document.querySelectorAll('.fw-svg-btn');
+    const apiPetalDefault = document.getElementById('api-petal-default');
+    const fwPreviews = ['vue','react','angular','astro'].map(fw => ({
+      fw, el: document.getElementById(`fw-preview-${fw}`)
+    }));
+
+    function resetFwPreviews() {
+      if (apiPetalDefault) apiPetalDefault.style.display = '';
+      fwPreviews.forEach(({ el }) => { if (el) el.style.display = 'none'; });
+    }
+
+    function showFwPreview(fw: string) {
+      if (apiPetalDefault) apiPetalDefault.style.display = 'none';
+      fwPreviews.forEach(({ fw: f, el }) => {
+        if (el) el.style.display = f === fw ? '' : 'none';
+      });
+    }
+
+    fwButtons.forEach((btn: Element) => {
+      btn.addEventListener('click', () => {
+        const fw = (btn as SVGRectElement).dataset.fw || '';
+        const isActive = btn.classList.contains('active');
+
+        fwButtons.forEach(b => b.classList.remove('active'));
+
+        if (isActive) {
+          resetFwPreviews();
+        } else {
+          btn.classList.add('active');
+          showFwPreview(fw);
         }
       });
     });
