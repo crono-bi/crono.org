@@ -6097,6 +6097,9 @@ ORDER BY TotalSales DESC`
   /* Fullscreen styles */
   .ecosystem-diagram-wrapper:fullscreen {
     background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   :root[data-theme='dark'] .ecosystem-diagram-wrapper:fullscreen {
     background: #0f1117 !important;
@@ -6110,6 +6113,9 @@ ORDER BY TotalSales DESC`
     height: 100%;
     aspect-ratio: auto;
     background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   :root[data-theme='dark'] .ecosystem-diagram-wrapper:fullscreen .diagram,
   .ecosystem-diagram-wrapper:fullscreen.dark-mode .diagram {
@@ -6334,11 +6340,20 @@ ORDER BY TotalSales DESC`
       msfabric:   'MS FABRIC'
     };
     const dwhTitle = document.getElementById('dwh-title');
-    
+    const engineBrandColors: Record<string, string> = {
+      snowflake:  '#29B5E8',
+      redshift:   '#1A73C8',
+      bigquery:   '#4285F4',
+      sqlserver:  '#A91D22',
+      postgres:   '#336791',
+      databricks: '#FF3621',
+      msfabric:   '#7B1FA2'
+    };
+
     function resetToDefaultIcon() {
       if (dwhDefaultIcon) dwhDefaultIcon.style.display = '';
       if (dwhEngineImg)   { dwhEngineImg.setAttribute('href', ''); dwhEngineImg.style.display = 'none'; }
-      if (dwhTitle)       dwhTitle.textContent = 'DATA WAREHOUSE';
+      if (dwhTitle)       { dwhTitle.textContent = 'DATA WAREHOUSE'; (dwhTitle as SVGTextElement).style.fill = ''; }
     }
     
     function selectEngine(selectedBtn: HTMLElement) {
@@ -6361,6 +6376,7 @@ ORDER BY TotalSales DESC`
       }
       if (dwhTitle && engineNames[engine]) {
         dwhTitle.textContent = engineNames[engine];
+        (dwhTitle as SVGTextElement).style.fill = engineBrandColors[engine] || '';
       }
     }
     
