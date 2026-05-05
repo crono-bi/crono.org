@@ -350,6 +350,44 @@ ORDER BY TotalSales DESC`
             <!-- API text -->
             <text x="32" y="36" font-size="14" font-weight="800" fill="var(--c-api)" text-anchor="middle">API</text>
           </symbol>
+
+          <!-- Database Engine Icons -->
+          <symbol id="i-engine-snowflake" viewBox="0 0 64 64">
+            <circle cx="32" cy="32" r="28" fill="#E5F3FF" stroke="#29B5E8" stroke-width="2"/>
+            <path d="M32 8v16M32 40v16M8 32h16M40 32h16M15 15l11 11M38 38l11 11M15 49l11-11M38 26l11-11" stroke="#29B5E8" stroke-width="3" stroke-linecap="round"/>
+          </symbol>
+          <symbol id="i-engine-redshift" viewBox="0 0 64 64">
+            <circle cx="32" cy="32" r="28" fill="#FFE5E5" stroke="#DC382D" stroke-width="2"/>
+            <path d="M20 16l24 16-24 16z" fill="#DC382D"/>
+          </symbol>
+          <symbol id="i-engine-bigquery" viewBox="0 0 64 64">
+            <circle cx="32" cy="32" r="28" fill="#E8F5E9" stroke="#1E8E3E" stroke-width="2"/>
+            <path d="M32 12l20 11v18L32 52 12 41V23l20-11z" fill="none" stroke="#1E8E3E" stroke-width="2"/>
+            <circle cx="32" cy="32" r="6" fill="#1E8E3E"/>
+          </symbol>
+          <symbol id="i-engine-sqlserver" viewBox="0 0 64 64">
+            <circle cx="32" cy="32" r="28" fill="#E3F2FD" stroke="#A91D22" stroke-width="2"/>
+            <rect x="18" y="18" width="28" height="28" rx="4" fill="#A91D22" opacity="0.2"/>
+            <text x="32" y="40" font-size="18" font-weight="800" fill="#A91D22" text-anchor="middle">SQL</text>
+          </symbol>
+          <symbol id="i-engine-postgres" viewBox="0 0 64 64">
+            <circle cx="32" cy="32" r="28" fill="#E8EAF6" stroke="#336791" stroke-width="2"/>
+            <ellipse cx="32" cy="38" rx="14" ry="10" fill="#336791" opacity="0.3"/>
+            <circle cx="32" cy="24" r="8" fill="#336791"/>
+            <path d="M28 24c-4 0-8 6-8 14 0 8 6 12 12 12s12-4 12-12c0-8-4-14-8-14" stroke="#336791" stroke-width="3" fill="none"/>
+          </symbol>
+          <symbol id="i-engine-databricks" viewBox="0 0 64 64">
+            <circle cx="32" cy="32" r="28" fill="#FFF3E0" stroke="#FF3621" stroke-width="2"/>
+            <ellipse cx="32" cy="32" rx="18" ry="12" fill="none" stroke="#FF3621" stroke-width="2"/>
+            <ellipse cx="32" cy="32" rx="10" ry="6" fill="#FF3621" opacity="0.3"/>
+          </symbol>
+          <symbol id="i-engine-msfabric" viewBox="0 0 64 64">
+            <circle cx="32" cy="32" r="28" fill="#F3E5F5" stroke="#7B1FA2" stroke-width="2"/>
+            <rect x="20" y="20" width="10" height="10" fill="#7B1FA2" opacity="0.6"/>
+            <rect x="34" y="20" width="10" height="10" fill="#7B1FA2" opacity="0.4"/>
+            <rect x="20" y="34" width="10" height="10" fill="#7B1FA2" opacity="0.4"/>
+            <rect x="34" y="34" width="10" height="10" fill="#7B1FA2" opacity="0.6"/>
+          </symbol>
         </defs>
 
         <!-- LEFT NODE: FUENTES DE DATOS / CRONO ETL -->
@@ -411,8 +449,9 @@ ORDER BY TotalSales DESC`
         <!-- MIDDLE NODE: DATA WAREHOUSE / CRONO METADATA -->
         <g class="node node--dwh">
           <circle class="bg" cx="590" cy="360" r="85"/>
-          <use href="#i-cube" x="558" y="312" width="64" height="64"/>
-          <text class="title" x="590" y="395">DATA WAREHOUSE</text>
+          <use id="dwh-default-icon" href="#i-cube" x="558" y="312" width="64" height="64"/>
+          <image id="dwh-engine-img" x="558" y="312" width="64" height="64" href="" style="display:none"/>
+          <text id="dwh-title" class="title" x="590" y="395">DATA WAREHOUSE</text>
           <line x1="550" y1="408" x2="630" y2="408" stroke="#e5e7eb" stroke-width="1"/>
           <!-- Connector from inner arc to METADATA label -->
           <path d="M603.7,465.1 L530,516" stroke="var(--c-purple)" stroke-width="1.5" stroke-dasharray="4,2" fill="none" opacity="0.6"/>
@@ -925,6 +964,28 @@ ORDER BY TotalSales DESC`
       </button>
       <button class="diagram-btn" id="fullscreenBtn" title="Pantalla completa" aria-label="Pantalla completa">
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2h4v4M6 14H2v-4M14 2l-5 5M2 14l5-5"/></svg>
+      </button>
+      <div class="engine-buttons-divider"></div>
+      <button class="diagram-btn engine-btn" data-engine="snowflake" title="Snowflake">
+        <img src="/playground-assets/snowflake.svg" alt="Snowflake" />
+      </button>
+      <button class="diagram-btn engine-btn" data-engine="redshift" title="Redshift">
+        <img src="/playground-assets/redshift.svg" alt="Redshift" />
+      </button>
+      <button class="diagram-btn engine-btn" data-engine="bigquery" title="BigQuery">
+        <img src="/playground-assets/bigquery.svg" alt="BigQuery" />
+      </button>
+      <button class="diagram-btn engine-btn" data-engine="sqlserver" title="SQL Server">
+        <img src="/playground-assets/microsoft-sql-server.svg" alt="SQL Server" />
+      </button>
+      <button class="diagram-btn engine-btn" data-engine="postgres" title="PostgreSQL">
+        <img src="/playground-assets/postgresql.svg" alt="PostgreSQL" />
+      </button>
+      <button class="diagram-btn engine-btn" data-engine="databricks" title="Databricks">
+        <img src="/playground-assets/databricks.svg" alt="Databricks" />
+      </button>
+      <button class="diagram-btn engine-btn" data-engine="msfabric" title="MS Fabric">
+        <img src="/playground-assets/msfabric.svg" alt="MS Fabric" />
       </button>
     </div>
 
@@ -5827,6 +5888,59 @@ ORDER BY TotalSales DESC`
     box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.3) !important;
   }
 
+  /* Engine buttons divider */
+  .engine-buttons-divider {
+    width: 1px !important;
+    height: 20px !important;
+    background: rgba(0, 0, 0, 0.15) !important;
+    margin: 0 4px !important;
+  }
+  :root[data-theme='dark'] .engine-buttons-divider {
+    background: rgba(255, 255, 255, 0.15) !important;
+  }
+
+  /* Engine buttons specific styles */
+  .diagram-controls .engine-btn {
+    padding: 4px !important;
+  }
+  .diagram-controls .engine-btn img {
+    width: 20px !important;
+    height: 20px !important;
+    object-fit: contain !important;
+    display: block !important;
+  }
+
+  /* Engine button active state */
+  .diagram-controls .engine-btn.active {
+    background: rgba(59, 130, 246, 0.15) !important;
+    border-color: #3B82F6 !important;
+    box-shadow: 0 0 0 1px #3B82F6 inset !important;
+  }
+  :root[data-theme='dark'] .diagram-controls .engine-btn.active {
+    background: rgba(59, 130, 246, 0.25) !important;
+    border-color: #3B82F6 !important;
+    box-shadow: 0 0 0 1px #3B82F6 inset !important;
+  }
+
+  /* Engine button disabled state */
+  .diagram-controls .engine-btn[disabled] {
+    opacity: 0.4 !important;
+    cursor: not-allowed !important;
+    filter: grayscale(1) !important;
+  }
+  .diagram-controls .engine-btn[disabled]:hover {
+    background: rgba(255, 255, 255, 0.88) !important;
+    border-color: rgba(0, 0, 0, 0.09) !important;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08) !important;
+  }
+  :root[data-theme='dark'] .diagram-controls .engine-btn[disabled] {
+    opacity: 0.3 !important;
+  }
+  :root[data-theme='dark'] .diagram-controls .engine-btn[disabled]:hover {
+    background: rgba(30, 32, 48, 0.88) !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+  }
+
   /* Fullscreen styles */
   .ecosystem-diagram-wrapper:fullscreen {
     background: #ffffff;
@@ -6050,6 +6164,73 @@ ORDER BY TotalSales DESC`
     }
 
     // fullscreenchange: close button visibility handled by CSS :fullscreen selector
+
+    // Engine buttons click handling - single selection only
+    const dwhDefaultIcon = document.getElementById('dwh-default-icon');
+    const dwhEngineImg = document.getElementById('dwh-engine-img');
+    const engineButtons = document.querySelectorAll('.engine-btn');
+    
+    // Map engine IDs to their icon paths and display names
+    const engineIconPaths: Record<string, string> = {
+      snowflake:  '/playground-assets/snowflake.svg',
+      redshift:   '/playground-assets/redshift.svg',
+      bigquery:   '/playground-assets/bigquery.svg',
+      sqlserver:  '/playground-assets/microsoft-sql-server.svg',
+      postgres:   '/playground-assets/postgresql.svg',
+      databricks: '/playground-assets/databricks.svg',
+      msfabric:   '/playground-assets/msfabric.svg'
+    };
+    const engineNames: Record<string, string> = {
+      snowflake:  'SNOWFLAKE',
+      redshift:   'REDSHIFT',
+      bigquery:   'BIGQUERY',
+      sqlserver:  'SQL SERVER',
+      postgres:   'POSTGRESQL',
+      databricks: 'DATABRICKS',
+      msfabric:   'MS FABRIC'
+    };
+    const dwhTitle = document.getElementById('dwh-title');
+    
+    function resetToDefaultIcon() {
+      if (dwhDefaultIcon) dwhDefaultIcon.style.display = '';
+      if (dwhEngineImg)   { dwhEngineImg.setAttribute('href', ''); dwhEngineImg.style.display = 'none'; }
+      if (dwhTitle)       dwhTitle.textContent = 'DATA WAREHOUSE';
+    }
+    
+    function selectEngine(selectedBtn: HTMLElement) {
+      const engine = selectedBtn.dataset.engine || '';
+      
+      // Deselect all buttons
+      engineButtons.forEach((btn: Element) => {
+        btn.classList.remove('active');
+      });
+      
+      // Activate this one
+      selectedBtn.classList.add('active');
+      
+      // Swap DWH icon and title
+      const path = engineIconPaths[engine];
+      if (path && dwhDefaultIcon && dwhEngineImg) {
+        dwhDefaultIcon.style.display = 'none';
+        dwhEngineImg.setAttribute('href', path);
+        dwhEngineImg.style.display = '';
+      }
+      if (dwhTitle && engineNames[engine]) {
+        dwhTitle.textContent = engineNames[engine];
+      }
+    }
+    
+    engineButtons.forEach((btn: Element) => {
+      btn.addEventListener('click', () => {
+        const isActive = btn.classList.contains('active');
+        if (isActive) {
+          btn.classList.remove('active');
+          resetToDefaultIcon();
+        } else {
+          selectEngine(btn as HTMLElement);
+        }
+      });
+    });
   }
 
   function revealAll() {
