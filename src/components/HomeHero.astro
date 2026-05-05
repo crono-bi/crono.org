@@ -439,12 +439,12 @@ ORDER BY TotalSales DESC`
         </g>
 
         <!-- CRONO ETL label — centrado sobre el conector ETL -->
-        <g transform="translate(375,195)">
+        <g class="etl-label" transform="translate(375,195)">
           <use href="#i-crono" x="-87" y="-16" width="28" height="28" fill="var(--c-blue)"/>
           <text x="-51" y="6" font-size="24" font-weight="600" letter-spacing="0.05em" fill="var(--c-blue)" font-family="system-ui,-apple-system,sans-serif">CRONO ETL</text>
         </g>
         <!-- Connector from ETL label toward ETL flow -->
-        <path d="M375,212 L375,295" stroke="var(--c-blue)" stroke-width="1.5" stroke-dasharray="4,2" fill="none" opacity="0.4"/>
+        <path class="etl-connector" d="M375,212 L375,295" stroke="var(--c-blue)" stroke-width="1.5" stroke-dasharray="4,2" fill="none" opacity="0.4"/>
 
         <!-- MIDDLE NODE: DATA WAREHOUSE / CRONO METADATA -->
         <g class="node node--dwh">
@@ -454,9 +454,9 @@ ORDER BY TotalSales DESC`
           <text id="dwh-title" class="title" x="590" y="395">DATA WAREHOUSE</text>
           <line x1="550" y1="408" x2="630" y2="408" stroke="#e5e7eb" stroke-width="1"/>
           <!-- Connector from inner arc to METADATA label -->
-          <path d="M603.7,465.1 L530,516" stroke="var(--c-purple)" stroke-width="1.5" stroke-dasharray="4,2" fill="none" opacity="0.6"/>
-          <circle cx="603.7" cy="465.1" r="3" fill="var(--c-purple)"/>
-          <g transform="translate(375,520)">
+          <path class="metadata-connector" d="M603.7,465.1 L530,516" stroke="var(--c-purple)" stroke-width="1.5" stroke-dasharray="4,2" fill="none" opacity="0.6"/>
+          <circle class="metadata-dot" cx="603.7" cy="465.1" r="3" fill="var(--c-purple)"/>
+          <g class="metadata-label" transform="translate(375,520)">
             <use href="#i-crono" x="-122" y="-16" width="28" height="28" fill="var(--c-purple)"/>
             <text x="-86" y="6" font-size="24" font-weight="600" letter-spacing="0.05em" fill="var(--c-purple)" font-family="system-ui,-apple-system,sans-serif">CRONO METADATA</text>
           </g>
@@ -5794,18 +5794,19 @@ ORDER BY TotalSales DESC`
     }
   }
 
-  /* ── Ecosystem animation: initial hidden state (GSAP overrides) ── */
-  .diagram .node--dwh,
-  .diagram .node--source,
+  .diagram .flow-dot,
+  .diagram .etl-label,
+  .diagram .etl-connector,
+  .diagram .inner-deco,
+  .diagram .metadata-connector,
+  .diagram .metadata-dot,
+  .diagram .metadata-label,
   .diagram .petal,
-  .diagram .link-line,
-  .diagram .link-dot,
   .diagram .connector,
   .diagram .dot,
-  .diagram .svg-label,
-  .diagram .dwh-ring,
-  .diagram .flow-dot {
+  .diagram .svg-label {
     opacity: 0;
+    visibility: hidden;
   }
 
   /* Diagram control buttons */
@@ -6089,8 +6090,6 @@ ORDER BY TotalSales DESC`
   import { MotionPathPlugin } from 'gsap/MotionPathPlugin';
   gsap.registerPlugin(MotionPathPlugin);
 
-  const INTRO_KEY = 'ecosystem-intro-done';
-
   // ── Trigger when ecosystem diagram enters viewport ──────────────
   const diagramWrapper = document.querySelector('.ecosystem-diagram-wrapper');
   let animationPaused = false;
@@ -6099,14 +6098,7 @@ ORDER BY TotalSales DESC`
     const io = new IntersectionObserver(([e]) => {
       if (!e.isIntersecting) return;
       io.disconnect();
-      if (sessionStorage.getItem(INTRO_KEY)) {
-        // Intro already played this session: show everything instantly, run flows only
-        revealAll();
-        startAmbient();
-        startFlow();
-      } else {
-        runEcosystemAnimation();
-      }
+      runIntro();
     }, { threshold: 0.2, rootMargin: '-40px' });
     io.observe(diagramWrapper);
 
@@ -6233,93 +6225,67 @@ ORDER BY TotalSales DESC`
     });
   }
 
-  function revealAll() {
+  function runIntro() {
     const O = '590 360';
-    document.querySelectorAll('.connector, .link-line').forEach(el => {
-      gsap.set(el, { strokeDasharray: 0, strokeDashoffset: 0, autoAlpha: 1 });
-    });
-    gsap.set(['.node--dwh', '.petal'], { scale: 1, autoAlpha: 1, svgOrigin: O });
-    gsap.set('.node--source',  { x: 0, autoAlpha: 1 });
-    gsap.set('.link-dot',      { attr: { r: 4 }, autoAlpha: 1 });
-    gsap.set('.dot',           { attr: { r: 5 } });
-    gsap.set('.svg-label',     { x: 0, autoAlpha: 1 });
-    gsap.set('.flow-dot',      { autoAlpha: 0 });
-  }
 
-  function runEcosystemAnimation() {
-    const O = '590 360'; // DWH center in SVG coords (for svgOrigin)
+    // ── Todo lo FIJO: visible instantáneamente ──────────────────────
+    gsap.set('.node--source',   { autoAlpha: 1 });
+    gsap.set('.node--dwh',      { autoAlpha: 1 });
+    gsap.set('.link-line',      { strokeDasharray: 0, strokeDashoffset: 0, autoAlpha: 1 });
+    gsap.set('.link-dot',       { attr: { r: 4 }, autoAlpha: 1 });
+    gsap.set('.flow-dot',       { autoAlpha: 0 });
 
-    // ── 1. SETUP: force initial state via GSAP (overrides CSS) ──────
-    gsap.set(['.node--dwh', '.petal'], { scale: 0, svgOrigin: O, autoAlpha: 0 });
-    gsap.set('.node--source',          { x: -90, autoAlpha: 0 });
-    gsap.set('.link-line',             { autoAlpha: 0 });
-    gsap.set('.link-dot',              { attr: { r: 0 }, autoAlpha: 0 });
-    gsap.set('.connector',             { autoAlpha: 0 });
-    gsap.set('.dot',                   { attr: { r: 0 } });
-    gsap.set('.svg-label',             { x: 35, autoAlpha: 0 });
-    gsap.set('.dwh-ring',              { scale: 1, svgOrigin: O, autoAlpha: 0 });
-    gsap.set('.flow-dot',              { autoAlpha: 0 });
+    // ── Todo lo ANIMADO: oculto al inicio ───────────────────────────
+    gsap.set('.etl-label',          { autoAlpha: 0 });
+    gsap.set('.etl-connector',      { autoAlpha: 0 });
+    gsap.set('.inner-deco',         { autoAlpha: 0 });
+    gsap.set('.metadata-connector', { autoAlpha: 0 });
+    gsap.set('.metadata-dot',       { autoAlpha: 0 });
+    gsap.set('.metadata-label',     { autoAlpha: 0 });
+    gsap.set('.petal',              { scale: 0, autoAlpha: 0, svgOrigin: O });
+    gsap.set('.connector',          { autoAlpha: 0 });
+    gsap.set('.dot',                { attr: { r: 0 }, autoAlpha: 0 });
+    gsap.set('.svg-label',          { autoAlpha: 0 });
 
-    // Prepare connector + link-line stroke animation
-    document.querySelectorAll('.connector, .link-line').forEach(el => {
-      const len = el.getTotalLength();
+    // ── Preparar dash para conectores de petals ──────────────────────
+    document.querySelectorAll('.connector').forEach(el => {
+      const len = (el as SVGPathElement).getTotalLength();
       gsap.set(el, { strokeDasharray: len, strokeDashoffset: len });
     });
 
-    // ── 2. INTRO TIMELINE ────────────────────────────────────────────
     const tl = gsap.timeline({
       defaults: { ease: 'power3.out' },
-      onComplete: () => {
-        sessionStorage.setItem(INTRO_KEY, '1');
-        startAmbient();
-        startFlow();
-      }
+      onComplete: () => { startAmbient(); startFlow(); }
     });
 
     tl
-      // ① DWH awakening: three rings burst outward + fade
-      .to('.dwh-ring', {
-        scale: 2.8, autoAlpha: 0, svgOrigin: O,
-        duration: 1.4, stagger: 0.28, ease: 'power2.out'
-      })
-      // ① (concurrent) DWH node zooms in with elastic bounce
-      .to('.node--dwh', {
-        scale: 1, autoAlpha: 1, svgOrigin: O,
-        duration: 0.85, ease: 'back.out(2.2)'
-      }, '<0.05')
+      // ① ETL label + conector
+      .to('.etl-label',     { autoAlpha: 1, duration: 0.5 })
+      .to('.etl-connector', { autoAlpha: 1, duration: 0.35 }, '-=0.2')
 
-      // ② Source node flies in from the left
-      .to('.node--source', { x: 0, autoAlpha: 1, duration: 0.65 }, '-=0.55')
+      // ② Metadata: arco + conector + dot + label
+      .to('.inner-deco',         { autoAlpha: 1, duration: 0.5 }, '+=0.1')
+      .to('.metadata-connector', { autoAlpha: 1, duration: 0.4 }, '-=0.25')
+      .to('.metadata-dot',       { autoAlpha: 1, duration: 0.25 }, '-=0.15')
+      .to('.metadata-label',     { autoAlpha: 1, duration: 0.45 }, '-=0.2')
 
-      // ③ Link line draws (source ↔ DWH)
-      .to('.link-line', {
-        strokeDashoffset: 0, autoAlpha: 1, duration: 0.55, ease: 'power2.inOut'
-      }, '-=0.4')
-      .to('.link-dot', {
-        attr: { r: 4 }, autoAlpha: 1, duration: 0.3, stagger: 0.2, ease: 'back.out(3)'
-      }, '-=0.15')
-
-      // ④ Petals fan out from DWH center — the HERO moment
+      // ③ Petals en secuencia + sus conectores + dots + labels
       .to('.petal', {
         scale: 1, autoAlpha: 1, svgOrigin: O,
-        duration: 0.6, stagger: 0.1, ease: 'back.out(1.7)'
-      }, '-=0.55')
-
-      // ⑤ Connectors draw (synced with petal entrance)
+        duration: 0.55, stagger: 0.1, ease: 'back.out(1.6)'
+      }, '+=0.1')
       .to('.connector', {
         strokeDashoffset: 0, autoAlpha: 1,
-        duration: 0.45, stagger: 0.1, ease: 'power2.inOut'
-      }, '-=0.65')
-
-      // ⑥ Connector endpoint dots pop
+        duration: 0.4, stagger: 0.1, ease: 'power2.inOut'
+      }, '-=0.5')
       .to('.dot', {
-        attr: { r: 5 }, duration: 0.25, stagger: 0.09, ease: 'back.out(3)'
-      }, '-=0.2')
-
-      // ⑦ Labels slide in from right
+        attr: { r: 5 }, autoAlpha: 1,
+        duration: 0.22, stagger: 0.09, ease: 'back.out(3)'
+      }, '-=0.3')
       .to('.svg-label', {
-        x: 0, autoAlpha: 1, duration: 0.5, stagger: 0.09
-      }, '-=0.35');
+        autoAlpha: 1,
+        duration: 0.45, stagger: 0.09
+      }, '-=0.25');
   }
 
   // ── 3. AMBIENT: subtle looping micro-animations ──────────────────
