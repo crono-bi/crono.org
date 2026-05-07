@@ -2161,7 +2161,9 @@ ORDER BY TotalSales DESC`
     left: 50%;
     width: 100vw;
     transform: translateX(-50%);
-    background: linear-gradient(160deg, color-mix(in srgb, #1B8AC7 6%, var(--sl-color-bg-nav)) 0%, var(--sl-color-bg-nav) 40%, color-mix(in srgb, #5B2C7D 4%, var(--sl-color-bg-nav)) 100%);
+    background: 
+      linear-gradient(to bottom, transparent 70%, var(--sl-color-bg) 100%),
+      linear-gradient(160deg, color-mix(in srgb, #1B8AC7 6%, var(--sl-color-bg-nav)) 0%, var(--sl-color-bg-nav) 40%, color-mix(in srgb, #5B2C7D 4%, var(--sl-color-bg-nav)) 100%);
     z-index: -1;
   }
 
@@ -2268,9 +2270,8 @@ ORDER BY TotalSales DESC`
   .hero-btn-secondary:hover { background: var(--sl-color-bg-nav); border-color: var(--sl-color-accent); color: var(--sl-color-white); }
 
   .ecosystem-section {
-    border-top: 1px solid var(--sl-color-hairline);
-    border-bottom: 1px solid var(--sl-color-hairline);
     background: 
+      linear-gradient(to bottom, var(--sl-color-bg) 0%, transparent 8%, transparent 92%, var(--sl-color-bg) 100%),
       radial-gradient(ellipse 80% 50% at 50% 0%, color-mix(in srgb, #1B8AC7 8%, transparent) 0%, transparent 60%),
       radial-gradient(ellipse 60% 40% at 80% 50%, color-mix(in srgb, #5B2C7D 6%, transparent) 0%, transparent 50%),
       radial-gradient(ellipse 50% 30% at 20% 80%, color-mix(in srgb, #C85A47 5%, transparent) 0%, transparent 50%),
