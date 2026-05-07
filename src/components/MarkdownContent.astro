@@ -1,0 +1,11 @@
+---
+import GiscusComments from './GiscusComments.astro';
+
+const { starlightRoute } = Astro.locals;
+const entryId: string = starlightRoute.entry.id;
+const showGiscus = entryId.startsWith('sql/functions/');
+---
+
+<slot />
+
+{showGiscus && <GiscusComments />}

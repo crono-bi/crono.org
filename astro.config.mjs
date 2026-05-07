@@ -45,6 +45,7 @@ export default defineConfig({
 				ThemeSelect: './src/components/ThemeToggle.astro',
 				Sidebar: './src/components/Sidebar.astro',
 				PageTitle: './src/components/PageTitle.astro',
+				MarkdownContent: './src/components/MarkdownContent.astro',
 			},
 			expressiveCode: {
 				shiki: {

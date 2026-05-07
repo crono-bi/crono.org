@@ -1,0 +1,62 @@
+<div id="giscus-container">
+  <script src="https://giscus.app/client.js"
+    data-repo="crono-bi/CronoSupport"
+    data-repo-id="MDEwOlJlcG9zaXRvcnkyNDM2MTQxMjE="
+    data-category="Comentarios"
+    data-category-id="DIC_kwDODoVBqc4C8hL9"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="dark_dimmed"
+    data-lang="es"
+    crossorigin="anonymous"
+    async>
+  </script>
+</div>
+
+<script>
+  function getGiscusTheme(): string {
+    const htmlTheme = document.documentElement.getAttribute('data-theme');
+    return htmlTheme === 'light' ? 'light' : 'dark_dimmed';
+  }
+
+  function sendGiscusTheme(theme: string) {
+    const iframe = document.querySelector<HTMLIFrameElement>('iframe.giscus-frame');
+    if (!iframe?.contentWindow) return;
+    iframe.contentWindow.postMessage(
+      { giscus: { setConfig: { theme } } },
+      'https://giscus.app'
+    );
+  }
+
+  function initGiscus() {
+    // Send correct theme as soon as the iframe signals it's ready
+    function onGiscusMessage(event: MessageEvent) {
+      if (event.origin !== 'https://giscus.app') return;
+      if (typeof event.data === 'object' && event.data?.giscus?.discussion !== undefined) {
+        sendGiscusTheme(getGiscusTheme());
+        window.removeEventListener('message', onGiscusMessage);
+      }
+    }
+    window.addEventListener('message', onGiscusMessage);
+
+    // Watch for Starlight theme changes
+    const observer = new MutationObserver(() => sendGiscusTheme(getGiscusTheme()));
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['data-theme'],
+    });
+
+    // Cleanup on View Transitions navigation
+    document.addEventListener('astro:before-swap', () => {
+      observer.disconnect();
+      window.removeEventListener('message', onGiscusMessage);
+    }, { once: true });
+  }
+
+  // Run on initial load and after each View Transition
+  initGiscus();
+  document.addEventListener('astro:page-load', initGiscus);
+</script>
