@@ -379,7 +379,6 @@ watch(() => props.modelValue, (newVal) => {
       }
     })
     editorView.requestMeasure()
-    setTimeout(() => editorView?.requestMeasure(), 100)
   }
 })
 

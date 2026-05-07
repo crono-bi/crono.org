@@ -79,9 +79,17 @@
  * Overriding them with !important breaks gutter virtualization. */
 
 /* ===== GUTTERS ===== */
+/* position:sticky + z-index: gutter must stay on top of content during horizontal scroll */
 .code-editor .cm-gutters {
-  background: transparent;
+  position: sticky !important;
+  left: 0 !important;
+  z-index: 10 !important;
+  background: #eaeef2; /* light theme gutter bg — slightly darker than content */
   border-right: 1px solid var(--sl-color-gray-6, #333);
+}
+
+.pg-theme-dark .code-editor .cm-gutters {
+  background: #282c34; /* oneDark background */
 }
 
 /* ===== FOLD GUTTER (default from basicSetup) ===== */
