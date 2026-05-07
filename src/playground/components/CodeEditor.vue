@@ -356,6 +356,14 @@ onMounted(() => {
         }),
         parent: el
       })
+      // Force CM6 to re-measure after flex layout fully settles.
+      // Two rAFs ensure we run after two paint cycles — flex heights
+      // are not guaranteed to be final in the same frame as init.
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          editorView?.requestMeasure()
+        })
+      })
     }
   })
   ro.observe(el)

@@ -256,9 +256,8 @@
 /* ===== PANEL BODY ===== */
 .pg-panel-body {
   flex: 1 1 0;
-  overflow: hidden;
+  overflow: clip;     /* clip no crea scroll context, no rompe IntersectionObserver de CM */
   min-height: 0;
-  height: 0;
   padding: 0 !important;
   margin: 0 !important;
   position: relative;

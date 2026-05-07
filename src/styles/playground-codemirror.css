@@ -58,20 +58,11 @@
 }
 
 /* ===== STARLIGHT PROSE MARGIN RESET ===== */
-/* Starlight's "lobotomized owl" selector (.sl-markdown-content :not() + :not())
- * adds margin-top: 1rem to every sibling element, including CodeMirror internals.
- * This causes gutter/content misalignment that breaks fold click coordinates.
- * Reset ALL internal CM elements with !important to override the layered Starlight rule.
- */
-.code-editor .cm-editor > *,
-.code-editor .cm-scroller > *,
-.code-editor .cm-gutters > *,
-.code-editor .cm-gutter > *,
-.code-editor .cm-gutterElement,
-.code-editor .cm-content,
+/* Starlight's "lobotomized owl" adds margin-top: 1rem to siblings.
+ * Only reset cm-line and cm-panels — DO NOT touch cm-gutters/cm-content/cm-scroller:
+ * CM6 syncs paddingTop between those via JS for virtual scrolling. */
 .code-editor .cm-line,
-.code-editor .cm-panels,
-.code-editor .cm-announced {
+.code-editor .cm-panels {
   margin-top: 0 !important;
   margin-bottom: 0 !important;
 }
@@ -83,14 +74,9 @@
   overflow-wrap: normal !important;
 }
 
-.code-editor .cm-content {
-  padding-top: 0 !important;
-  padding-bottom: 0 !important;
-}
-
-.code-editor .cm-line:first-child {
-  padding-top: 0;
-}
+/* NOTE: DO NOT override padding-top/padding-bottom on .cm-content
+ * CM6 uses these as virtual scroll spacers (set via inline style).
+ * Overriding them with !important breaks gutter virtualization. */
 
 /* ===== GUTTERS ===== */
 .code-editor .cm-gutters {
