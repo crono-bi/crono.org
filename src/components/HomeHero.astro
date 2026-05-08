@@ -786,297 +786,185 @@ ORDER BY TotalSales DESC`
 
     <!-- ── Mobile-only diagram (hidden on desktop) ── -->
     <div class="diagram-mobile">
+      <div class="eco-card">
 
-      <!-- ① Dark pipeline card -->
-      <div class="dmo-pipeline">
-        <div class="dmo-glow-tr"></div>
-        <div class="dmo-glow-bl"></div>
-
-        <!-- Header bar -->
-        <div class="dmo-pipe-header">
-          <span class="dmo-pipe-status"><span class="dmo-status-dot"></span>Pipeline activo</span>
-          <span class="dmo-pipe-caption">Crono Data Stack</span>
-        </div>
-
-        <!-- Source node -->
-        <div class="dmo-node">
-          <div class="dmo-node-icon" style="--ni:#10B981">
-            <svg width="20" height="20" viewBox="0 0 64 64" fill="none">
-              <rect x="14" y="8" width="36" height="48" rx="5" fill="rgba(16,185,129,0.15)" stroke="#10B981" stroke-width="2"/>
-              <rect x="19" y="16" width="26" height="5" rx="2" fill="#10B981" opacity="0.7"/>
-              <rect x="19" y="25" width="26" height="5" rx="2" fill="#10B981" opacity="0.45"/>
-              <rect x="19" y="34" width="26" height="5" rx="2" fill="#10B981" opacity="0.25"/>
-              <circle cx="24" cy="50" r="3" fill="#10B981"/>
-              <circle cx="32" cy="50" r="3" fill="#10B981" opacity="0.5"/>
-              <circle cx="40" cy="50" r="3" fill="#10B981" opacity="0.25"/>
-            </svg>
-          </div>
-          <div class="dmo-node-body">
-            <span class="dmo-node-title">Fuentes de Datos</span>
-            <span class="dmo-node-desc">Bases de datos · APIs · Ficheros · Excel</span>
-          </div>
-          <span class="dmo-node-badge" style="color:#10B981;border-color:rgba(16,185,129,.3);background:rgba(16,185,129,.1)">LIVE</span>
-        </div>
-
-        <!-- Connector 1 -->
-        <div class="dmo-connector">
-          <div class="dmo-conn-line">
-            <span class="dmo-cdot" style="animation-delay:0s"></span>
-            <span class="dmo-cdot" style="animation-delay:.55s"></span>
-            <span class="dmo-cdot" style="animation-delay:1.1s"></span>
+        <!-- ── HERO HEADER ── -->
+        <div class="eco-hero">
+          <div class="eco-hero-glow"></div>
+          <div class="eco-hero-inner">
+            <div class="eco-hero-badge"><span class="eco-live-dot"></span>Live</div>
+            <h3 class="eco-hero-title">Crono Data Stack</h3>
+            <p class="eco-hero-sub">Del dato crudo a la decisión, sin fricciones</p>
           </div>
         </div>
 
-        <!-- ETL processing -->
-        <div class="dmo-etl">
-          <div class="dmo-etl-header">
-            <img src="/crono-etl.ico" width="13" height="13" alt=""/>
-            <span>Crono ETL</span>
-            <span class="dmo-etl-tag">Transformando…</span>
-          </div>
-          <div class="dmo-etl-row">
-            <div class="dmo-step">
-              <div class="dmo-step-ring">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="8 17 12 21 16 17"/><line x1="12" y1="3" x2="12" y2="21"/></svg>
+        <!-- ── FLOW ── -->
+        <div class="eco-flow">
+
+          <!-- Step 1: Sources -->
+          <div class="eco-step eco-step--sources">
+            <div class="eco-step-num">1</div>
+            <div class="eco-step-content">
+              <div class="eco-step-head">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="1.8" stroke-linecap="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v6c0 1.66 4.03 3 9 3s9-1.34 9-3V5"/><path d="M3 11v6c0 1.66 4.03 3 9 3s9-1.34 9-3v-6"/></svg>
+                <span class="eco-step-label">Fuentes de Datos</span>
+                <span class="eco-badge eco-badge--green">LIVE</span>
               </div>
-              <span>Extract</span>
-            </div>
-            <div class="dmo-step-line"></div>
-            <div class="dmo-step dmo-step--active">
-              <div class="dmo-step-ring">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="8 7 12 3 16 7"/><line x1="12" y1="21" x2="12" y2="3"/></svg>
+              <div class="eco-source-pills">
+                <span class="eco-pill">Bases de datos</span>
+                <span class="eco-pill">APIs REST</span>
+                <span class="eco-pill">Ficheros</span>
+                <span class="eco-pill">Excel</span>
               </div>
-              <span>Load</span>
-            </div>
-            <div class="dmo-step-line"></div>
-            <div class="dmo-step">
-              <div class="dmo-step-ring">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
-              </div>
-              <span>Transform</span>
             </div>
           </div>
-        </div>
 
-        <!-- Connector 2 -->
-        <div class="dmo-connector">
-          <div class="dmo-conn-line">
-            <span class="dmo-cdot" style="animation-delay:.35s"></span>
-            <span class="dmo-cdot" style="animation-delay:.9s"></span>
-            <span class="dmo-cdot" style="animation-delay:1.45s"></span>
+          <!-- Arrow 1 -->
+          <div class="eco-arrow">
+            <div class="eco-arrow-line eco-arrow-line--blue">
+              <span class="eco-dot" style="--delay:0s"></span>
+              <span class="eco-dot" style="--delay:.6s"></span>
+              <span class="eco-dot" style="--delay:1.2s"></span>
+            </div>
+            <span class="eco-arrow-label">Extract · Load · Transform</span>
           </div>
-        </div>
 
-        <!-- DWH node -->
-        <div class="dmo-node">
-          <div class="dmo-node-icon" style="--ni:#0F766E">
-            <svg width="20" height="20" viewBox="0 0 64 64" fill="none">
-              <path d="M32 8L54 20v24L32 56 10 44V20Z" fill="rgba(15,118,110,0.15)" stroke="#0F766E" stroke-width="2"/>
-              <path d="M32 8v24L10 44V20Z" fill="#14B8A6" opacity="0.35"/>
-              <path d="M32 32v24l22-12V20Z" fill="#0D5C57" opacity="0.2"/>
-              <path d="M10 20l22 12 22-12" stroke="#0F766E" stroke-width="1.5"/>
-            </svg>
+          <!-- Step 2: ETL -->
+          <div class="eco-step eco-step--etl">
+            <div class="eco-step-num eco-step-num--blue">2</div>
+            <div class="eco-step-content">
+              <div class="eco-step-head">
+                <img src="/crono-etl.ico" width="18" height="18" alt="" style="border-radius:4px"/>
+                <span class="eco-step-label">Crono ETL</span>
+                <span class="eco-badge eco-badge--blue">AUTO</span>
+              </div>
+              <div class="eco-etl-stages">
+                <div class="eco-etl-stage">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="8 17 12 21 16 17"/><line x1="12" y1="3" x2="12" y2="21"/></svg>
+                  <span>Extract</span>
+                </div>
+                <div class="eco-etl-sep">→</div>
+                <div class="eco-etl-stage eco-etl-stage--active">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="8 7 12 3 16 7"/><line x1="12" y1="21" x2="12" y2="3"/></svg>
+                  <span>Load</span>
+                </div>
+                <div class="eco-etl-sep">→</div>
+                <div class="eco-etl-stage">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4"/></svg>
+                  <span>Transform</span>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="dmo-node-body">
-            <span class="dmo-node-title">Data Warehouse</span>
-            <span class="dmo-node-desc">Tu fuente única de verdad</span>
+
+          <!-- Arrow 2 -->
+          <div class="eco-arrow">
+            <div class="eco-arrow-line eco-arrow-line--teal">
+              <span class="eco-dot eco-dot--teal" style="--delay:.2s"></span>
+              <span class="eco-dot eco-dot--teal" style="--delay:.8s"></span>
+              <span class="eco-dot eco-dot--teal" style="--delay:1.4s"></span>
+            </div>
           </div>
-          <span class="dmo-node-badge" style="color:#0F766E;border-color:rgba(15,118,110,.3);background:rgba(15,118,110,.1)">DWH</span>
+
+          <!-- Step 3: DWH -->
+          <div class="eco-step eco-step--dwh">
+            <div class="eco-step-num eco-step-num--teal">3</div>
+            <div class="eco-step-content">
+              <div class="eco-step-head">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0F766E" stroke-width="1.8" stroke-linecap="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+                <span class="eco-step-label">Data Warehouse</span>
+                <span class="eco-badge eco-badge--teal">DWH</span>
+              </div>
+              <div class="eco-engines-row">
+                <span class="eco-engine-chip"><img src="/playground-assets/snowflake.svg" alt="" width="14" height="14"/>Snowflake</span>
+                <span class="eco-engine-chip"><img src="/playground-assets/redshift.svg" alt="" width="14" height="14"/>Redshift</span>
+                <span class="eco-engine-chip"><img src="/playground-assets/bigquery.svg" alt="" width="14" height="14"/>BigQuery</span>
+                <span class="eco-engine-chip"><img src="/playground-assets/microsoft-sql-server.svg" alt="" width="14" height="14"/>SQL Server</span>
+                <span class="eco-engine-chip"><img src="/playground-assets/postgresql.svg" alt="" width="14" height="14"/>PostgreSQL</span>
+                <span class="eco-engine-chip"><img src="/playground-assets/databricks.svg" alt="" width="14" height="14"/>Databricks</span>
+                <span class="eco-engine-chip"><img src="/playground-assets/msfabric.svg" alt="" width="14" height="14"/>Fabric</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Arrow 3 -->
+          <div class="eco-arrow">
+            <div class="eco-arrow-line eco-arrow-line--purple">
+              <span class="eco-dot eco-dot--purple" style="--delay:.1s"></span>
+              <span class="eco-dot eco-dot--purple" style="--delay:.7s"></span>
+              <span class="eco-dot eco-dot--purple" style="--delay:1.3s"></span>
+            </div>
+          </div>
+
+          <!-- Step 4: Metadata -->
+          <div class="eco-step eco-step--meta">
+            <div class="eco-step-num eco-step-num--purple">4</div>
+            <div class="eco-step-content">
+              <div class="eco-step-head">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7C3AED" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/></svg>
+                <span class="eco-step-label">Crono Metadata</span>
+                <span class="eco-badge eco-badge--purple">SEM</span>
+              </div>
+              <p class="eco-step-desc">Capa semántica · Autoservicio BI · Sin SQL</p>
+            </div>
+          </div>
+
         </div>
 
-        <!-- Petals -->
-        <div class="dmo-petals">
-          <svg viewBox="0 0 320 280" width="100%" aria-hidden="true">
-            <defs>
-              <radialGradient id="pg-analysis" cx="50%" cy="100%" r="100%">
-                <stop offset="0%" stop-color="#C85A47" stop-opacity="0.18"/>
-                <stop offset="100%" stop-color="#C85A47" stop-opacity="0.75"/>
-              </radialGradient>
-              <radialGradient id="pg-excel" cx="50%" cy="100%" r="100%">
-                <stop offset="0%" stop-color="#1E7B47" stop-opacity="0.18"/>
-                <stop offset="100%" stop-color="#1E7B47" stop-opacity="0.75"/>
-              </radialGradient>
-              <radialGradient id="pg-ai" cx="50%" cy="100%" r="100%">
-                <stop offset="0%" stop-color="#8B5CF6" stop-opacity="0.18"/>
-                <stop offset="100%" stop-color="#8B5CF6" stop-opacity="0.75"/>
-              </radialGradient>
-              <radialGradient id="pg-api" cx="50%" cy="100%" r="100%">
-                <stop offset="0%" stop-color="#0EA5E9" stop-opacity="0.18"/>
-                <stop offset="100%" stop-color="#0EA5E9" stop-opacity="0.75"/>
-              </radialGradient>
-              <radialGradient id="pg-other" cx="50%" cy="100%" r="100%">
-                <stop offset="0%" stop-color="#6B7280" stop-opacity="0.12"/>
-                <stop offset="100%" stop-color="#6B7280" stop-opacity="0.55"/>
-              </radialGradient>
-              <filter id="petal-glow" x="-30%" y="-30%" width="160%" height="160%">
-                <feGaussianBlur stdDeviation="4" result="blur"/>
-                <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-              </filter>
-            </defs>
-
-            <!--
-              Mobile petals: trapezoidal fan shapes matching desktop style
-              cx=160, cy=150, ri=46, ro=100, 5 petals × 72° (no gaps)
-              Corner radius cr=6. Each petal rotated by n×72°.
-              Base petal (0°, pointing up = -90°):
-                A=inner-start, B=outer-start, C=outer-end, D=inner-end
-              Angles: α1=-126°, α2=-54° (72° span, centered at -90°)
-              A=(160+46×cos(-126°), 150+46×sin(-126°)) = (160-27.0, 150-37.2) = (133.0,112.8)
-              B=(160+100×cos(-126°),150+100×sin(-126°)) = (160-58.8,150-80.9) = (101.2,69.1)
-              C=(160+100×cos(-54°), 150+100×sin(-54°))  = (160+58.8,150-80.9) = (218.8,69.1)
-              D=(160+46×cos(-54°),  150+46×sin(-54°))   = (160+27.0,150-37.2) = (187.0,112.8)
-              cr=6 applied at each corner.
-            -->
-
-            <!-- Petal 0: ANALYSIS — red, 0° (top) -->
-            <g transform="rotate(0, 160, 150)">
-              <path d="
-                M139.6,113.7 L104.0,72.0
-                Q101.2,69.1 104.7,66.8
-                A100,100 0 0 1 215.3,66.8
-                Q218.8,69.1 216.0,72.0
-                L180.4,113.7
-                Q187.0,112.8 187.0,112.8
-                A46,46 0 0 0 133.0,112.8
-                Q133.0,112.8 139.6,113.7 Z"
-                fill="url(#pg-analysis)" stroke="#C85A47" stroke-width="1" stroke-opacity="0.7"
-                filter="url(#petal-glow)"/>
-              <circle cx="160" cy="82" r="14" fill="white" fill-opacity="0.85" stroke="#C85A47" stroke-width="1" stroke-opacity="0.7"/>
-              <!-- bar chart icon -->
-              <g transform="translate(153, 75)" fill="#C85A47">
-                <rect x="0" y="4" width="2.5" height="7" rx="0.5" opacity="0.6"/>
-                <rect x="3.5" y="2" width="2.5" height="9" rx="0.5" opacity="0.8"/>
-                <rect x="7" y="0" width="2.5" height="11" rx="0.5"/>
-              </g>
-            </g>
-
-            <!-- Petal 1: EXCEL — green, 72° -->
-            <g transform="rotate(72, 160, 150)">
-              <path d="
-                M139.6,113.7 L104.0,72.0
-                Q101.2,69.1 104.7,66.8
-                A100,100 0 0 1 215.3,66.8
-                Q218.8,69.1 216.0,72.0
-                L180.4,113.7
-                Q187.0,112.8 187.0,112.8
-                A46,46 0 0 0 133.0,112.8
-                Q133.0,112.8 139.6,113.7 Z"
-                fill="url(#pg-excel)" stroke="#1E7B47" stroke-width="1" stroke-opacity="0.7"
-                filter="url(#petal-glow)"/>
-              <circle cx="160" cy="82" r="14" fill="white" fill-opacity="0.85" stroke="#1E7B47" stroke-width="1" stroke-opacity="0.7"/>
-              <!-- spreadsheet icon -->
-              <g transform="translate(152, 75)" stroke="#1E7B47" stroke-width="1.2" fill="none">
-                <rect x="0" y="0" width="14" height="11" rx="1.5"/>
-                <line x1="7" y1="0" x2="7" y2="11"/>
-                <line x1="0" y1="5.5" x2="14" y2="5.5"/>
-              </g>
-            </g>
-
-            <!-- Petal 2: AI — purple, 144° -->
-            <g transform="rotate(144, 160, 150)">
-              <path d="
-                M139.6,113.7 L104.0,72.0
-                Q101.2,69.1 104.7,66.8
-                A100,100 0 0 1 215.3,66.8
-                Q218.8,69.1 216.0,72.0
-                L180.4,113.7
-                Q187.0,112.8 187.0,112.8
-                A46,46 0 0 0 133.0,112.8
-                Q133.0,112.8 139.6,113.7 Z"
-                fill="url(#pg-ai)" stroke="#8B5CF6" stroke-width="1" stroke-opacity="0.7"
-                filter="url(#petal-glow)"/>
-              <circle cx="160" cy="82" r="14" fill="white" fill-opacity="0.85" stroke="#8B5CF6" stroke-width="1" stroke-opacity="0.7"/>
-              <!-- sparkle icon -->
-              <g transform="translate(153, 75)" stroke="#8B5CF6" stroke-width="1.3" stroke-linecap="round" fill="none">
-                <line x1="7" y1="0" x2="7" y2="4"/><line x1="7" y1="8" x2="7" y2="12"/>
-                <line x1="0" y1="6" x2="4" y2="6"/><line x1="10" y1="6" x2="14" y2="6"/>
-                <line x1="2" y1="2" x2="4.5" y2="4.5"/><line x1="9.5" y1="7.5" x2="12" y2="10"/>
-                <line x1="12" y1="2" x2="9.5" y2="4.5"/><line x1="4.5" y1="7.5" x2="2" y2="10"/>
-              </g>
-            </g>
-
-            <!-- Petal 3: OTHER — gray, 216° -->
-            <g transform="rotate(216, 160, 150)">
-              <path d="
-                M139.6,113.7 L104.0,72.0
-                Q101.2,69.1 104.7,66.8
-                A100,100 0 0 1 215.3,66.8
-                Q218.8,69.1 216.0,72.0
-                L180.4,113.7
-                Q187.0,112.8 187.0,112.8
-                A46,46 0 0 0 133.0,112.8
-                Q133.0,112.8 139.6,113.7 Z"
-                fill="url(#pg-other)" stroke="#6B7280" stroke-width="1" stroke-opacity="0.5"
-                filter="url(#petal-glow)"/>
-              <circle cx="160" cy="82" r="14" fill="white" fill-opacity="0.85" stroke="#6B7280" stroke-width="1" stroke-opacity="0.7"/>
-              <!-- grid icon -->
-              <g transform="translate(153, 75)" stroke="#6B7280" stroke-width="1.2" fill="none">
-                <rect x="0" y="0" width="5.5" height="5.5" rx="1"/>
-                <rect x="7" y="0" width="5.5" height="5.5" rx="1"/>
-                <rect x="0" y="7" width="5.5" height="5.5" rx="1"/>
-                <rect x="7" y="7" width="5.5" height="5.5" rx="1"/>
-              </g>
-            </g>
-
-            <!-- Petal 4: API — sky, 288° -->
-            <g transform="rotate(288, 160, 150)">
-              <path d="
-                M139.6,113.7 L104.0,72.0
-                Q101.2,69.1 104.7,66.8
-                A100,100 0 0 1 215.3,66.8
-                Q218.8,69.1 216.0,72.0
-                L180.4,113.7
-                Q187.0,112.8 187.0,112.8
-                A46,46 0 0 0 133.0,112.8
-                Q133.0,112.8 139.6,113.7 Z"
-                fill="url(#pg-api)" stroke="#0EA5E9" stroke-width="1" stroke-opacity="0.7"
-                filter="url(#petal-glow)"/>
-              <circle cx="160" cy="82" r="14" fill="white" fill-opacity="0.85" stroke="#0EA5E9" stroke-width="1" stroke-opacity="0.7"/>
-              <!-- </> icon -->
-              <g transform="translate(153, 76)" stroke="#0EA5E9" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none">
-                <polyline points="4,1 0,5.5 4,10"/>
-                <polyline points="9,1 13,5.5 9,10"/>
-              </g>
-            </g>
-
-            <!-- Center DWH -->
-            <circle cx="160" cy="150" r="28" fill="white" stroke="#0F766E" stroke-width="1.5" stroke-opacity="0.8"/>
-            <circle cx="160" cy="150" r="21" fill="rgba(15,118,110,0.15)"/>
-            <path d="M160 138L172 144v12l-12 6-12-6v-12Z" fill="rgba(15,118,110,0.35)" stroke="#0F766E" stroke-width="1.2"/>
-            <path d="M160 138v12l-12 6v-12Z" fill="#14B8A6" opacity="0.35"/>
-            <path d="M148 144l12 6 12-6" stroke="#0F766E" stroke-width="1"/>
-
-            <!-- Labels inside each petal group (counter-rotated to stay upright) -->
-            <!-- Petal tip center at (160, 50) in local space before rotation -->
-            <g transform="rotate(0, 160, 150)">
-              <text transform="rotate(0, 160, 52)" x="160" y="52" text-anchor="middle" font-family="system-ui,-apple-system,sans-serif" font-size="7.5" font-weight="700" letter-spacing="0.05em" fill="#C85A47">
-                <tspan x="160" dy="0">CRONO</tspan><tspan x="160" dy="9">ANALYSIS</tspan>
-              </text>
-            </g>
-            <g transform="rotate(72, 160, 150)">
-              <text transform="rotate(-72, 160, 52)" x="160" y="52" text-anchor="middle" font-family="system-ui,-apple-system,sans-serif" font-size="7.5" font-weight="700" letter-spacing="0.05em" fill="#1E7B47">
-                <tspan x="160" dy="0">CRONO</tspan><tspan x="160" dy="9">EXCEL</tspan>
-              </text>
-            </g>
-            <g transform="rotate(144, 160, 150)">
-              <text transform="rotate(-144, 160, 52)" x="160" y="52" text-anchor="middle" font-family="system-ui,-apple-system,sans-serif" font-size="7.5" font-weight="700" letter-spacing="0.05em" fill="#8B5CF6">
-                <tspan x="160" dy="0">CRONO</tspan><tspan x="160" dy="9">AI</tspan>
-              </text>
-            </g>
-            <g transform="rotate(216, 160, 150)">
-              <text transform="rotate(-216, 160, 52)" x="160" y="52" text-anchor="middle" font-family="system-ui,-apple-system,sans-serif" font-size="7.5" font-weight="700" letter-spacing="0.05em" fill="#6B7280">
-                <tspan x="160" dy="0">OTRAS</tspan><tspan x="160" dy="9">SOLUCIONES</tspan>
-              </text>
-            </g>
-            <g transform="rotate(288, 160, 150)">
-              <text transform="rotate(-288, 160, 52)" x="160" y="52" text-anchor="middle" font-family="system-ui,-apple-system,sans-serif" font-size="7.5" font-weight="700" letter-spacing="0.05em" fill="#0EA5E9">
-                <tspan x="160" dy="0">CRONO</tspan><tspan x="160" dy="9">API</tspan>
-              </text>
-            </g>
-          </svg>
+        <!-- ── PRODUCTS SECTION ── -->
+        <div class="eco-products-section">
+          <div class="eco-products-header">
+            <div class="eco-products-line"></div>
+            <span class="eco-products-title">Herramientas de Análisis</span>
+            <div class="eco-products-line"></div>
+          </div>
+          <div class="eco-products-grid">
+            <a href="/analysis/" class="eco-prod" style="--pc:#C85A47;--pca:rgba(200,90,71,0.12)">
+              <div class="eco-prod-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C85A47" stroke-width="1.8" stroke-linecap="round"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
+              </div>
+              <span class="eco-prod-name">Crono Analysis</span>
+              <span class="eco-prod-tag">Business Intelligence</span>
+              <span class="eco-prod-desc">Toma decisiones basadas en datos en minutos, no en días.</span>
+            </a>
+            <a href="/excel/" class="eco-prod" style="--pc:#1E7B47;--pca:rgba(30,123,71,0.12)">
+              <div class="eco-prod-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1E7B47" stroke-width="1.8" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/></svg>
+              </div>
+              <span class="eco-prod-name">Crono Excel</span>
+              <span class="eco-prod-tag">Informes en Excel</span>
+              <span class="eco-prod-desc">Informes Excel conectados a tu DWH, siempre actualizados.</span>
+            </a>
+            <a href="/ai/" class="eco-prod" style="--pc:#7C3AED;--pca:rgba(124,58,237,0.12)">
+              <div class="eco-prod-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7C3AED" stroke-width="1.8" stroke-linecap="round"><path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.38-1 1.72V8h1a7 7 0 0 1 7 7h1a1 1 0 0 1 0 2h-1v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1H2a1 1 0 0 1 0-2h1a7 7 0 0 1 7-7h1V5.72A2 2 0 0 1 10 4a2 2 0 0 1 2-2z"/></svg>
+              </div>
+              <span class="eco-prod-name">Crono AI</span>
+              <span class="eco-prod-tag">Lenguaje natural</span>
+              <span class="eco-prod-desc">Consulta tus datos con lenguaje natural, sin escribir SQL.</span>
+            </a>
+            <a href="/api/" class="eco-prod" style="--pc:#0EA5E9;--pca:rgba(14,165,233,0.12)">
+              <div class="eco-prod-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0EA5E9" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+              </div>
+              <span class="eco-prod-name">Crono API</span>
+              <span class="eco-prod-tag">Dashboards web</span>
+              <span class="eco-prod-desc">Integra tus datos en cualquier app o dashboard web.</span>
+            </a>
+          </div>
+          <a href="#otras" class="eco-other">
+            <div class="eco-other-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6B7280" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+            </div>
+            <div class="eco-other-body">
+              <span class="eco-other-name">Otras Soluciones</span>
+              <span class="eco-other-tag">Power BI · Tableau · cualquier herramienta BI</span>
+            </div>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg>
+          </a>
         </div>
+
       </div>
-
     </div>
 
     <!-- Diagram control buttons -->
@@ -5414,443 +5302,438 @@ ORDER BY TotalSales DESC`
       width: 100%;
     }
 
-    /* ── Pipeline dark card ── */
-    .dmo-pipeline {
-      position: relative;
-      overflow: hidden;
-      border-radius: 1.375rem;
-      background: #0D1117;
+    /* ── ECO CARD (new design) ── */
+    .eco-card {
+      border-radius: 1.5rem;
+      background: #0A0F1E;
       border: 1px solid rgba(255,255,255,0.07);
-      box-shadow:
-        0 0 0 1px rgba(255,255,255,0.04),
-        0 24px 48px -12px rgba(0,0,0,0.6),
-        0 4px 16px rgba(0,0,0,0.3);
-      padding: 0 0 0.25rem;
+      box-shadow: 0 32px 64px -16px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,255,255,0.04);
+      overflow: hidden;
     }
 
-    .dmo-glow-tr {
-      position: absolute;
-      top: -40px; right: -40px;
-      width: 180px; height: 180px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(16,185,129,0.18) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
-    .dmo-glow-bl {
-      position: absolute;
-      bottom: -40px; left: -40px;
-      width: 180px; height: 180px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(15,118,110,0.2) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
-    /* Header bar */
-    .dmo-pipe-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0.625rem 1rem;
+    /* ── HERO HEADER ── */
+    .eco-hero {
+      position: relative;
+      padding: 1.75rem 1.25rem 1.25rem;
       border-bottom: 1px solid rgba(255,255,255,0.06);
-      margin-bottom: 0.125rem;
+      overflow: hidden;
     }
-
-    .dmo-pipe-status {
+    .eco-hero-glow {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 60% at 50% 0%, rgba(124,58,237,0.18) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 40% at 80% 100%, rgba(14,165,233,0.1) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .eco-hero-inner {
+      position: relative;
       display: flex;
+      flex-direction: column;
       align-items: center;
       gap: 0.375rem;
-      font-size: 0.7rem;
-      font-weight: 600;
-      color: #10B981;
-      letter-spacing: 0.03em;
+      text-align: center;
     }
-
-    .dmo-status-dot {
-      width: 6px;
-      height: 6px;
+    .eco-hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375rem;
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #10B981;
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      background: rgba(16,185,129,0.1);
+      border: 1px solid rgba(16,185,129,0.25);
+    }
+    .eco-live-dot {
+      width: 5px; height: 5px;
       border-radius: 50%;
       background: #10B981;
       box-shadow: 0 0 6px #10B981;
-      animation: dmo-pulse 2s ease-in-out infinite;
+      animation: eco-pulse 2s ease-in-out infinite;
+    }
+    @keyframes eco-pulse {
+      0%,100% { opacity:1; transform:scale(1); }
+      50%      { opacity:.5; transform:scale(.8); }
+    }
+    .eco-hero-title {
+      margin: 0;
+      font-size: 1.375rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: #fff;
+      line-height: 1.15;
+    }
+    .eco-hero-sub {
+      margin: 0;
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 0.01em;
     }
 
-    @keyframes dmo-pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.6; transform: scale(0.85); }
-    }
-
-    .dmo-pipe-caption {
-      font-size: 0.65rem;
-      font-weight: 500;
-      color: rgba(255,255,255,0.3);
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-    }
-
-    /* Nodes */
-    .dmo-node {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      margin: 0.375rem 0.75rem;
-      padding: 0.75rem 0.875rem;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 0.875rem;
-      backdrop-filter: blur(4px);
-    }
-
-    .dmo-node-icon {
-      width: 38px;
-      height: 38px;
-      border-radius: 0.625rem;
-      background: rgba(var(--ni-rgb, 15,118,110), 0.12);
-      border: 1px solid color-mix(in srgb, var(--ni) 30%, transparent);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      box-shadow: 0 0 12px color-mix(in srgb, var(--ni) 20%, transparent);
-    }
-
-    .dmo-node-body {
+    /* ── FLOW ── */
+    .eco-flow {
+      padding: 0.75rem 1rem;
       display: flex;
       flex-direction: column;
-      gap: 0.15rem;
+      gap: 0;
+    }
+
+    /* Steps */
+    .eco-step {
+      display: flex;
+      gap: 0.875rem;
+      align-items: flex-start;
+      padding: 0.875rem 0.875rem;
+      border-radius: 1rem;
+      border: 1px solid rgba(255,255,255,0.07);
+      background: rgba(255,255,255,0.03);
+    }
+    .eco-step--etl  { border-color: rgba(59,130,246,0.2);  background: rgba(59,130,246,0.06);  }
+    .eco-step--dwh  { border-color: rgba(15,118,110,0.25); background: rgba(15,118,110,0.07);  }
+    .eco-step--meta { border-color: rgba(124,58,237,0.25); background: rgba(124,58,237,0.07);  }
+
+    .eco-step-num {
+      width: 24px; height: 24px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      font-size: 0.65rem;
+      font-weight: 800;
+      color: rgba(255,255,255,0.4);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+    .eco-step-num--blue   { background: rgba(59,130,246,0.15);  border-color: rgba(59,130,246,0.35);  color: #60A5FA; }
+    .eco-step-num--teal   { background: rgba(15,118,110,0.15);  border-color: rgba(15,118,110,0.35);  color: #2DD4BF; }
+    .eco-step-num--purple { background: rgba(124,58,237,0.15);  border-color: rgba(124,58,237,0.35);  color: #A78BFA; }
+
+    .eco-step-content {
       flex: 1;
       min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
     }
-
-    .dmo-node-title {
+    .eco-step-head {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .eco-step-label {
       font-size: 0.8rem;
       font-weight: 700;
-      color: rgba(255,255,255,0.92);
-      letter-spacing: 0.02em;
+      color: rgba(255,255,255,0.88);
+      flex: 1;
     }
-
-    .dmo-node-desc {
+    .eco-step-desc {
+      margin: 0;
       font-size: 0.65rem;
-      color: rgba(255,255,255,0.38);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+      color: rgba(255,255,255,0.35);
     }
 
-    .dmo-node-badge {
-      font-size: 0.6rem;
+    /* Badges */
+    .eco-badge {
+      font-size: 0.55rem;
       font-weight: 700;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.07em;
       padding: 0.2rem 0.5rem;
       border-radius: 999px;
       border: 1px solid;
       flex-shrink: 0;
     }
+    .eco-badge--green  { color:#10B981; border-color:rgba(16,185,129,.3);  background:rgba(16,185,129,.1);  }
+    .eco-badge--blue   { color:#60A5FA; border-color:rgba(59,130,246,.3);  background:rgba(59,130,246,.1);  }
+    .eco-badge--teal   { color:#2DD4BF; border-color:rgba(15,118,110,.3);  background:rgba(15,118,110,.1);  }
+    .eco-badge--purple { color:#A78BFA; border-color:rgba(124,58,237,.3);  background:rgba(124,58,237,.1);  }
 
-    /* Petals */
-    .dmo-petals {
+    /* Source pills */
+    .eco-source-pills {
       display: flex;
-      justify-content: center;
-      padding: 0.25rem 0 0.75rem;
-      border-top: 1px solid rgba(255,255,255,0.05);
-      margin-top: 0.25rem;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+    }
+    .eco-pill {
+      font-size: 0.6rem;
+      color: rgba(255,255,255,0.45);
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 999px;
+      padding: 0.2rem 0.6rem;
     }
 
-    /* ── Light mode overrides for mobile diagram ── */
-    :root[data-theme='light'] .dmo-pipeline,
-    :root:not([data-theme='dark']) .dmo-pipeline {
+    /* ETL stages */
+    .eco-etl-stages {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+    .eco-etl-stage {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: rgba(96,165,250,0.55);
+    }
+    .eco-etl-stage--active {
+      color: #60A5FA;
+    }
+    .eco-etl-stage--active svg {
+      filter: drop-shadow(0 0 4px rgba(59,130,246,0.6));
+    }
+    .eco-etl-sep {
+      font-size: 0.65rem;
+      color: rgba(255,255,255,0.18);
+    }
+
+    /* Engines row */
+    .eco-engines-row {
+      display: flex;
+      gap: 0.3rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .eco-engine-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      padding: 0.2rem 0.55rem 0.2rem 0.35rem;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      font-size: 0.6rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.55);
+      white-space: nowrap;
+      letter-spacing: 0.02em;
+    }
+    .eco-engine-chip img {
+      width: 14px; height: 14px;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+    :root[data-theme='light'] .eco-engine-chip,
+    :root:not([data-theme='dark']) .eco-engine-chip {
       background: #f8fafc;
-      border-color: #e2e8f0;
-      box-shadow: 0 4px 24px rgba(15,23,42,0.08), 0 1px 4px rgba(15,23,42,0.04);
-    }
-    :root[data-theme='light'] .dmo-glow-tr,
-    :root:not([data-theme='dark']) .dmo-glow-tr {
-      background: radial-gradient(circle, rgba(200,90,71,0.08) 0%, transparent 70%);
-    }
-    :root[data-theme='light'] .dmo-glow-bl,
-    :root:not([data-theme='dark']) .dmo-glow-bl {
-      background: radial-gradient(circle, rgba(91,44,125,0.06) 0%, transparent 70%);
-    }
-    :root[data-theme='light'] .dmo-pipe-header,
-    :root:not([data-theme='dark']) .dmo-pipe-header {
-      border-bottom-color: #e2e8f0;
-    }
-    :root[data-theme='light'] .dmo-pipe-caption,
-    :root:not([data-theme='dark']) .dmo-pipe-caption {
-      color: #9ca3af;
-    }
-    :root[data-theme='light'] .dmo-node,
-    :root:not([data-theme='dark']) .dmo-node {
-      background: #ffffff;
       border-color: #e5e7eb;
-    }
-    :root[data-theme='light'] .dmo-node-title,
-    :root:not([data-theme='dark']) .dmo-node-title {
-      color: #1f2937;
-    }
-    :root[data-theme='light'] .dmo-node-desc,
-    :root:not([data-theme='dark']) .dmo-node-desc {
-      color: #9ca3af;
-    }
-    :root[data-theme='light'] .dmo-petals,
-    :root:not([data-theme='dark']) .dmo-petals {
-      border-top-color: #e5e7eb;
-    }
-    :root[data-theme='light'] .dmo-conn-line,
-    :root:not([data-theme='dark']) .dmo-conn-line {
-      background: #e5e7eb;
-    }
-    :root[data-theme='light'] .dmo-cdot,
-    :root:not([data-theme='dark']) .dmo-cdot {
-      background: #3672C9;
-    }
-    :root[data-theme='light'] .dmo-etl,
-    :root:not([data-theme='dark']) .dmo-etl {
-      background: #f0f9ff;
-      border-color: #bae6fd;
-    }
-    :root[data-theme='light'] .dmo-etl-header span:not(.dmo-etl-tag),
-    :root:not([data-theme='dark']) .dmo-etl-header span:not(.dmo-etl-tag) {
-      color: #1B8AC7;
-    }
-    :root[data-theme='light'] .dmo-step span,
-    :root:not([data-theme='dark']) .dmo-step span {
       color: #6b7280;
     }
-    :root[data-theme='light'] .dmo-step-ring,
-    :root:not([data-theme='dark']) .dmo-step-ring {
-      background: #e0f2fe;
-      border-color: #7dd3fc;
-      color: #1B8AC7;
-    }
-    :root[data-theme='light'] .dmo-step--active .dmo-step-ring,
-    :root:not([data-theme='dark']) .dmo-step--active .dmo-step-ring {
-      background: #1B8AC7;
-      border-color: #1B8AC7;
-      color: #fff;
-    }
-    :root[data-theme='light'] .dmo-step-line,
-    :root:not([data-theme='dark']) .dmo-step-line {
-      background: #bae6fd;
-    }
 
-    .dmo-petals svg {
-      overflow: visible;
-    }
-
-    /* Connectors */
-    .dmo-connector {
+    /* Arrows between steps */
+    .eco-arrow {
       display: flex;
-      justify-content: center;
-      padding: 0.125rem 0;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0 1.5rem;
+      margin: 0.125rem 0;
     }
-
-    .dmo-conn-line {
+    .eco-arrow-line {
       width: 2px;
-      height: 36px;
-      background: linear-gradient(to bottom, rgba(255,255,255,0.06), rgba(54,114,201,0.5), rgba(255,255,255,0.06));
+      height: 32px;
       border-radius: 1px;
       position: relative;
       overflow: visible;
+      flex-shrink: 0;
     }
+    .eco-arrow-line--blue   { background: linear-gradient(to bottom, transparent, rgba(59,130,246,0.5), transparent); }
+    .eco-arrow-line--teal   { background: linear-gradient(to bottom, transparent, rgba(15,118,110,0.5), transparent); }
+    .eco-arrow-line--purple { background: linear-gradient(to bottom, transparent, rgba(124,58,237,0.5), transparent); }
 
-    .dmo-cdot {
+    .eco-dot {
       position: absolute;
-      left: 50%;
-      top: -4px;
+      left: 50%; top: -4px;
       transform: translateX(-50%);
-      width: 5px;
-      height: 5px;
+      width: 5px; height: 5px;
       border-radius: 50%;
       background: #3B82F6;
       box-shadow: 0 0 6px #3B82F6;
-      animation: dmo-fall 1.8s ease-in-out infinite;
+      animation: eco-fall 1.8s ease-in-out infinite;
+      animation-delay: var(--delay, 0s);
     }
+    .eco-dot--teal   { background: #2DD4BF; box-shadow: 0 0 6px #2DD4BF; }
+    .eco-dot--purple { background: #A78BFA; box-shadow: 0 0 6px #A78BFA; }
 
-    @keyframes dmo-fall {
-      0%   { top: -4px;    opacity: 0; }
+    @keyframes eco-fall {
+      0%   { top: -4px;           opacity: 0; }
       12%  { opacity: 1; }
       88%  { opacity: 1; }
       100% { top: calc(100% + 4px); opacity: 0; }
     }
 
-    /* ETL section */
-    .dmo-etl {
-      margin: 0 0.75rem;
-      padding: 0.75rem 0.875rem;
-      background: rgba(54,114,201,0.08);
-      border: 1px solid rgba(54,114,201,0.2);
-      border-radius: 0.875rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.625rem;
-    }
-
-    .dmo-etl-header {
-      display: flex;
-      align-items: center;
-      gap: 0.375rem;
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      color: #60A5FA;
-    }
-
-    .dmo-etl-tag {
-      margin-left: auto;
-      font-size: 0.6rem;
-      font-weight: 500;
-      color: rgba(96,165,250,0.6);
-      letter-spacing: 0.03em;
-    }
-
-    .dmo-etl-row {
-      display: flex;
-      align-items: center;
-      gap: 0;
-    }
-
-    .dmo-step {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.3rem;
-      flex: 1;
-    }
-
-    .dmo-step span {
+    .eco-arrow-label {
       font-size: 0.58rem;
-      font-weight: 600;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.35);
+      color: rgba(255,255,255,0.2);
+      letter-spacing: 0.04em;
+      white-space: nowrap;
     }
 
-    .dmo-step-ring {
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      border: 1.5px solid rgba(54,114,201,0.4);
-      background: rgba(54,114,201,0.08);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: rgba(96,165,250,0.7);
-    }
-
-    .dmo-step--active .dmo-step-ring {
-      border-color: #3B82F6;
-      background: rgba(59,130,246,0.15);
-      color: #60A5FA;
-      box-shadow: 0 0 12px rgba(59,130,246,0.35);
-      animation: dmo-ring-pulse 2s ease-in-out infinite;
-    }
-
-    .dmo-step--active span {
-      color: #60A5FA;
-    }
-
-    @keyframes dmo-ring-pulse {
-      0%, 100% { box-shadow: 0 0 12px rgba(59,130,246,0.35); }
-      50% { box-shadow: 0 0 20px rgba(59,130,246,0.6); }
-    }
-
-    .dmo-step-line {
-      flex: 1;
-      height: 1px;
-      background: linear-gradient(to right, rgba(59,130,246,0.3), rgba(59,130,246,0.6), rgba(59,130,246,0.3));
-      margin-bottom: 1.2rem;
-    }
-
-    /* ── Products ── */
-    .dmo-products-section {
+    /* ── PRODUCTS SECTION ── */
+    .eco-products-section {
+      padding: 0 1rem 1.25rem;
       display: flex;
       flex-direction: column;
       gap: 0.75rem;
     }
-
-    .dmo-section-hd {
+    .eco-products-header {
       display: flex;
       align-items: center;
-      gap: 0.625rem;
-      padding: 0 0.25rem;
+      gap: 0.75rem;
+      margin-top: 0.25rem;
     }
-
-    .dmo-section-hd span {
-      font-size: 0.65rem;
+    .eco-products-line {
+      flex: 1;
+      height: 1px;
+      background: rgba(255,255,255,0.07);
+    }
+    .eco-products-title {
+      font-size: 0.6rem;
       font-weight: 600;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--sl-color-gray-3);
+      color: rgba(255,255,255,0.25);
       white-space: nowrap;
     }
 
-    .dmo-section-line {
-      flex: 1;
-      height: 1px;
-      background: var(--sl-color-hairline-light);
-    }
-
-    .dmo-grid {
+    /* Product grid 2×2 */
+    .eco-products-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 0.5rem;
     }
-
-    .dmo-card {
+    .eco-prod {
       display: flex;
+      flex-direction: column;
       align-items: center;
       gap: 0.5rem;
-      padding: 0.75rem 0.875rem;
-      border-radius: 0.875rem;
-      background: color-mix(in srgb, var(--c) 9%, var(--sl-color-bg-nav));
-      border: 1px solid color-mix(in srgb, var(--c) 18%, transparent);
+      padding: 1rem 0.5rem 0.875rem;
+      border-radius: 1rem;
+      background: color-mix(in srgb, var(--pc) 8%, rgba(255,255,255,0.02));
+      border: 1px solid color-mix(in srgb, var(--pc) 20%, rgba(255,255,255,0.06));
       text-decoration: none;
-      transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
-      position: relative;
-      overflow: hidden;
+      transition: transform 0.15s, background 0.15s;
     }
-
-    .dmo-card::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, color-mix(in srgb, var(--c) 12%, transparent) 0%, transparent 60%);
-      opacity: 0;
-      transition: opacity 0.2s ease;
-    }
-
-    .dmo-card:active {
-      transform: scale(0.97);
-    }
-
-    .dmo-card:hover::before { opacity: 1; }
-
-    .dmo-card--full {
-      grid-column: span 2;
-    }
-
-    .dmo-card-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--c);
+    .eco-prod:active { transform: scale(0.96); }
+    .eco-prod-icon {
+      width: 42px; height: 42px;
+      border-radius: 12px;
+      background: var(--pca);
+      border: 1px solid color-mix(in srgb, var(--pc) 30%, transparent);
+      display: flex; align-items: center; justify-content: center;
       flex-shrink: 0;
-      box-shadow: 0 0 6px color-mix(in srgb, var(--c) 60%, transparent);
+    }
+    .eco-prod-name {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: rgba(255,255,255,0.88);
+      text-align: center;
+      letter-spacing: 0.01em;
+    }
+    .eco-prod-tag {
+      font-size: 0.58rem;
+      color: rgba(255,255,255,0.3);
+      text-align: center;
+    }
+    .eco-prod-desc {
+      font-size: 0.62rem;
+      color: rgba(255,255,255,0.38);
+      text-align: center;
+      line-height: 1.4;
+      padding: 0 0.25rem;
     }
 
-    .dmo-card-name {
+    /* Otras Soluciones row */
+    .eco-other {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.75rem 1rem;
+      border-radius: 1rem;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      text-decoration: none;
+      transition: background 0.15s;
+    }
+    .eco-other:active { background: rgba(255,255,255,0.05); }
+    .eco-other-icon {
+      width: 36px; height: 36px;
+      border-radius: 10px;
+      background: rgba(107,114,128,0.12);
+      border: 1px solid rgba(107,114,128,0.2);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .eco-other-body { flex: 1; min-width: 0; }
+    .eco-other-name {
+      display: block;
       font-size: 0.75rem;
-      font-weight: 600;
-      color: var(--sl-color-white);
-      flex: 1;
+      font-weight: 700;
+      color: rgba(255,255,255,0.8);
     }
+    .eco-other-tag {
+      font-size: 0.6rem;
+      color: rgba(255,255,255,0.3);
+    }
+    .eco-other > svg { color: rgba(255,255,255,0.25); flex-shrink:0; }
 
-    .dmo-card svg {
-      color: var(--c);
-      opacity: 0.6;
-      flex-shrink: 0;
+    /* ── Light mode ── */
+    :root[data-theme='light'] .eco-card,
+    :root:not([data-theme='dark']) .eco-card {
+      background: #f8fafc;
+      border-color: #e2e8f0;
+      box-shadow: 0 12px 32px rgba(15,23,42,0.1);
     }
+    :root[data-theme='light'] .eco-hero-title,
+    :root:not([data-theme='dark']) .eco-hero-title { color: #0f172a; }
+    :root[data-theme='light'] .eco-hero-sub,
+    :root:not([data-theme='dark']) .eco-hero-sub { color: #6b7280; }
+    :root[data-theme='light'] .eco-step,
+    :root:not([data-theme='dark']) .eco-step { background: #fff; border-color: #e5e7eb; }
+    :root[data-theme='light'] .eco-step--etl,
+    :root:not([data-theme='dark']) .eco-step--etl { background: #eff6ff; border-color: #bfdbfe; }
+    :root[data-theme='light'] .eco-step--dwh,
+    :root:not([data-theme='dark']) .eco-step--dwh { background: #f0fdfa; border-color: #99f6e4; }
+    :root[data-theme='light'] .eco-step--meta,
+    :root:not([data-theme='dark']) .eco-step--meta { background: #faf5ff; border-color: #e9d5ff; }
+    :root[data-theme='light'] .eco-step-label,
+    :root:not([data-theme='dark']) .eco-step-label { color: #1f2937; }
+    :root[data-theme='light'] .eco-step-desc,
+    :root:not([data-theme='dark']) .eco-step-desc { color: #9ca3af; }
+    :root[data-theme='light'] .eco-pill,
+    :root:not([data-theme='dark']) .eco-pill { color: #6b7280; background: #f1f5f9; border-color: #e2e8f0; }
+    :root[data-theme='light'] .eco-prod,
+    :root:not([data-theme='dark']) .eco-prod {
+      background: color-mix(in srgb, var(--pc) 5%, #ffffff);
+      border-color: color-mix(in srgb, var(--pc) 15%, #e5e7eb);
+    }
+    :root[data-theme='light'] .eco-prod-name,
+    :root:not([data-theme='dark']) .eco-prod-name { color: #1f2937; }
+    :root[data-theme='light'] .eco-prod-tag,
+    :root:not([data-theme='dark']) .eco-prod-tag { color: #9ca3af; }
+    :root[data-theme='light'] .eco-prod-desc,
+    :root:not([data-theme='dark']) .eco-prod-desc { color: #6b7280; }
+    :root[data-theme='light'] .eco-prod-icon,
+    :root:not([data-theme='dark']) .eco-prod-icon {
+      background: color-mix(in srgb, var(--pc) 10%, #f1f5f9);
+      border-color: color-mix(in srgb, var(--pc) 20%, #e5e7eb);
+    }
+    :root[data-theme='light'] .eco-other,
+    :root:not([data-theme='dark']) .eco-other { background: #fff; border-color: #e5e7eb; }
+    :root[data-theme='light'] .eco-other-name,
+    :root:not([data-theme='dark']) .eco-other-name { color: #1f2937; }
+    :root[data-theme='light'] .eco-other-tag,
+    :root:not([data-theme='dark']) .eco-other-tag { color: #9ca3af; }
+    :root[data-theme='light'] .eco-products-line,
+    :root:not([data-theme='dark']) .eco-products-line { background: #e5e7eb; }
+    :root[data-theme='light'] .eco-products-title,
+    :root:not([data-theme='dark']) .eco-products-title { color: #9ca3af; }
+    :root[data-theme='light'] .eco-arrow-label,
+    :root:not([data-theme='dark']) .eco-arrow-label { color: #d1d5db; }
   }
 
   /* responsive: stack labels under diagram */
@@ -6354,7 +6237,7 @@ ORDER BY TotalSales DESC`
       sqlserver:  '#A91D22',
       postgres:   '#336791',
       databricks: '#FF3621',
-      msfabric:   '#7B1FA2'
+      msfabric:   '#00D8AA'
     };
 
     function resetToDefaultIcon() {
