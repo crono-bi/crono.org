@@ -9,10 +9,11 @@ const allFunctions = [
   ...CRONO_FUNCTIONS.aggregation,
   ...CRONO_FUNCTIONS.conversion,
   ...CRONO_FUNCTIONS.dates,
-  ...CRONO_FUNCTIONS.informational,
+  ...CRONO_FUNCTIONS.metadata,
   ...CRONO_FUNCTIONS.nullsAndConditions,
   ...CRONO_FUNCTIONS.numeric,
   ...CRONO_FUNCTIONS.text,
+  ...CRONO_FUNCTIONS.others,
 ].sort((a, b) => b.length - a.length);
 
 const functionsPattern = allFunctions.join('|');

@@ -50,13 +50,11 @@ const SQL_FUNCTIONS = [
   ...CRONO_FUNCTIONS.aggregation,
   ...CRONO_FUNCTIONS.conversion,
   ...CRONO_FUNCTIONS.dates,
-  ...CRONO_FUNCTIONS.informational,
+  ...CRONO_FUNCTIONS.metadata,
   ...CRONO_FUNCTIONS.nullsAndConditions,
   ...CRONO_FUNCTIONS.numeric,
   ...CRONO_FUNCTIONS.text,
-  ...CRONO_FUNCTIONS.obsolete,
-  ...CRONO_FUNCTIONS.obsoleteUncertain,
-  ...CRONO_FUNCTIONS.obsoleteAD
+  ...CRONO_FUNCTIONS.others,
 ]
 
 // ══════════════════════════════════════════════════════════════════

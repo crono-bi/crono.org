@@ -43,9 +43,14 @@ export const sqlTopics = {
 									autogenerate: { directory: 'sql/functions/agregacion' }
 								},
 								{
-									label: 'Funciones informacionales',
+									label: 'Funciones de metadata',
 									collapsed: true,
-									autogenerate: { directory: 'sql/functions/informacional' }
+									autogenerate: { directory: 'sql/functions/metadata' }
+								},
+								{
+									label: 'Otras funciones',
+									collapsed: true,
+									autogenerate: { directory: 'sql/functions/others' }
 								},
 							]
 						},

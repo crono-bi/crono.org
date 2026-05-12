@@ -54,7 +54,8 @@ const categoryOrder: Record<string, number> = {
   'fecha': 4,
   'nulos': 5,
   'texto': 6,
-  'informacional': 7,
+  'metadata': 7,
+  'others': 8,
 }
 
 const sortedGroups = Object.entries(groupedPages).sort((a, b) => {
@@ -72,7 +73,8 @@ function formatCategoryName(name: string): string {
     'fecha': 'Fecha',
     'nulos': 'Nulos y condiciones',
     'texto': 'Texto',
-    'informacional': 'Informacional',
+    'metadata': 'Metadata',
+    'others': 'Otras',
   }
   return names[name] || name.charAt(0).toUpperCase() + name.slice(1)
 }
