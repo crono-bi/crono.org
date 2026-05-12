@@ -669,28 +669,29 @@ ORDER BY TotalSales DESC`
         <!-- ===================== connectors to labels ===================== -->
         <!-- each goes from petal outer edge (radial), kink, to label entry -->
 
-        <!-- connectors: outer-arc midpoint → horizontal clear zone → 45° elbow → label              -->
-        <!-- All elbows are exactly 45° (Δx=Δy). Symmetric: Analysis↔Other, Excel↔API             -->
+        <!-- connectors: petal outer-arc → elbow → dot at vertical center of each label group     -->
+        <!-- Centers: analysis=(80+146)/2=113  api=(190+282)/2=236  ai=(327+393)/2=360(horiz)   -->
+        <!--          excel=(438+504)/2=471     other=(549+633)/2=591                            -->
         <g fill="none">
-          <!-- Analysis petal → CRONO ANALYSIS label -->
-          <path class="connector" d="M682,92 L862,92 L918,142" stroke="var(--c-analysis)"/>
-          <circle class="dot" cx="918" cy="142" r="5" fill="var(--c-analysis)" stroke="none"/>
+          <!-- Analysis petal → CRONO ANALYSIS label  [center y=113] -->
+          <path class="connector" d="M682,92 L862,92 L918,113" stroke="var(--c-analysis)"/>
+          <circle class="dot" cx="918" cy="113" r="5" fill="var(--c-analysis)" stroke="none"/>
 
-          <!-- Excel petal → CRONO API label -->
-          <path class="connector" d="M824,192 L858,192 L918,279" stroke="var(--c-api)"/>
-          <circle class="dot" cx="918" cy="279" r="5" fill="var(--c-api)" stroke="none"/>
+          <!-- API petal → CRONO API label  [center y=236] -->
+          <path class="connector" d="M824,192 L858,192 L918,236" stroke="var(--c-api)"/>
+          <circle class="dot" cx="918" cy="236" r="5" fill="var(--c-api)" stroke="none"/>
 
-          <!-- AI petal → CRONO AI label -->
-          <path class="connector" d="M880,360 L918,396" stroke="var(--c-ai)"/>
-          <circle class="dot" cx="918" cy="396" r="5" fill="var(--c-ai)" stroke="none"/>
+          <!-- AI petal → CRONO AI label  [center y=360, horizontal: petal center = label center] -->
+          <path class="connector" d="M881,360 L918,360" stroke="var(--c-ai)"/>
+          <circle class="dot" cx="918" cy="360" r="5" fill="var(--c-ai)" stroke="none"/>
 
-          <!-- API petal → CRONO EXCEL label -->
-          <path class="connector" d="M824,529 L857,529 L918,513" stroke="var(--c-excel)"/>
-          <circle class="dot" cx="918" cy="513" r="5" fill="var(--c-excel)" stroke="none"/>
+          <!-- Excel petal → CRONO EXCEL label  [center y=471] -->
+          <path class="connector" d="M824,529 L857,529 L918,471" stroke="var(--c-excel)"/>
+          <circle class="dot" cx="918" cy="471" r="5" fill="var(--c-excel)" stroke="none"/>
 
-          <!-- Other petal → OTRAS SOLUCIONES label -->
-          <path class="connector" d="M682,628 L862,628 L918,610" stroke="var(--c-other)"/>
-          <circle class="dot" cx="918" cy="610" r="5" fill="var(--c-other)" stroke="none"/>
+          <!-- Other petal → OTRAS SOLUCIONES label  [center y=591] -->
+          <path class="connector" d="M682,628 L862,628 L918,591" stroke="var(--c-other)"/>
+          <circle class="dot" cx="918" cy="591" r="5" fill="var(--c-other)" stroke="none"/>
         </g>
 
         <!-- SVG TEXT LABELS -->
@@ -700,67 +701,67 @@ ORDER BY TotalSales DESC`
 
           <!-- 1. CRONO ANALYSIS -->
           <g class="svg-label" data-key="analysis">
-            <g transform="translate(945, 120)">
+            <g transform="translate(945, 102)">
               <use href="#i-crono" x="0" y="-22" width="28" height="28" fill="var(--c-analysis)"/>
               <text x="36" y="0" font-size="24" font-weight="600" letter-spacing="0.05em" fill="var(--c-analysis)" font-family="system-ui,-apple-system,sans-serif">CRONO ANALYSIS</text>
             </g>
-            <text x="945" y="146" font-size="14" fill="#4b5563">Autoservicio BI con análisis</text>
-            <text x="945" y="164" font-size="14" fill="#4b5563">libre y OLAP multidimensional</text>
+            <text x="945" y="128" font-size="14" fill="#4b5563">Autoservicio BI con análisis</text>
+            <text x="945" y="146" font-size="14" fill="#4b5563">libre y OLAP multidimensional</text>
           </g>
 
           <!-- 2. CRONO API -->
           <g class="svg-label" data-key="api-label">
-            <g transform="translate(945, 240)">
+            <g transform="translate(945, 212)">
               <use href="#i-crono" x="0" y="-22" width="28" height="28" fill="var(--c-api)"/>
               <text x="36" y="0" font-size="24" font-weight="600" letter-spacing="0.05em" fill="var(--c-api)" font-family="system-ui,-apple-system,sans-serif">CRONO API</text>
             </g>
-            <text x="945" y="266" font-size="13" fill="#4b5563">Servicios API REST y dashboards web integrables</text>
+            <text x="945" y="238" font-size="13" fill="#4b5563">Servicios API REST y dashboards web integrables</text>
             <!-- Framework buttons (SVG native for pixel-perfect alignment) -->
             <g class="fw-svg-btns">
               <!-- Vue -->
-              <rect class="fw-svg-btn" data-fw="vue" x="945" y="274" width="36" height="36" rx="6" title="Vue.js"/>
-              <image href="/frameworks-logos/vuejs.svg" x="950" y="279" width="26" height="26" style="pointer-events:none"/>
+              <rect class="fw-svg-btn" data-fw="vue" x="945" y="246" width="36" height="36" rx="6" title="Vue.js"/>
+              <image href="/frameworks-logos/vuejs.svg" x="950" y="251" width="26" height="26" style="pointer-events:none"/>
               <!-- React -->
-              <rect class="fw-svg-btn" data-fw="react" x="985" y="274" width="36" height="36" rx="6" title="React"/>
-              <image href="/frameworks-logos/reactjs.svg" x="990" y="279" width="26" height="26" style="pointer-events:none"/>
+              <rect class="fw-svg-btn" data-fw="react" x="985" y="246" width="36" height="36" rx="6" title="React"/>
+              <image href="/frameworks-logos/reactjs.svg" x="990" y="251" width="26" height="26" style="pointer-events:none"/>
               <!-- Angular -->
-              <rect class="fw-svg-btn" data-fw="angular" x="1025" y="274" width="36" height="36" rx="6" title="Angular"/>
-              <image href="/frameworks-logos/angularjs.svg" x="1030" y="279" width="26" height="26" style="pointer-events:none"/>
+              <rect class="fw-svg-btn" data-fw="angular" x="1025" y="246" width="36" height="36" rx="6" title="Angular"/>
+              <image href="/frameworks-logos/angularjs.svg" x="1030" y="251" width="26" height="26" style="pointer-events:none"/>
               <!-- Astro -->
-              <rect class="fw-svg-btn" data-fw="astro" x="1065" y="274" width="36" height="36" rx="6" title="Astro"/>
-              <image href="/frameworks-logos/astrojs.svg" x="1070" y="279" width="26" height="26" style="pointer-events:none"/>
+              <rect class="fw-svg-btn" data-fw="astro" x="1065" y="246" width="36" height="36" rx="6" title="Astro"/>
+              <image href="/frameworks-logos/astrojs.svg" x="1070" y="251" width="26" height="26" style="pointer-events:none"/>
             </g>
           </g>
 
           <!-- 3. CRONO AI -->
           <g class="svg-label" data-key="ai-label">
-            <g transform="translate(945, 360)">
+            <g transform="translate(945, 349)">
               <use href="#i-crono" x="0" y="-22" width="28" height="28" fill="var(--c-ai)"/>
               <text x="36" y="0" font-size="24" font-weight="600" letter-spacing="0.05em" fill="var(--c-ai)" font-family="system-ui,-apple-system,sans-serif">CRONO AI</text>
             </g>
-            <text x="945" y="386" font-size="14" fill="#4b5563">Consultas en lenguaje natural</text>
-            <text x="945" y="404" font-size="14" fill="#4b5563">con conversión automática a SQL</text>
+            <text x="945" y="375" font-size="14" fill="#4b5563">Consultas en lenguaje natural</text>
+            <text x="945" y="393" font-size="14" fill="#4b5563">con conversión automática a SQL</text>
           </g>
 
           <!-- 4. CRONO EXCEL -->
           <g class="svg-label" data-key="excel">
-            <g transform="translate(945, 480)">
+            <g transform="translate(945, 460)">
               <use href="#i-crono" x="0" y="-22" width="28" height="28" fill="var(--c-excel)"/>
               <text x="36" y="0" font-size="24" font-weight="600" letter-spacing="0.05em" fill="var(--c-excel)" font-family="system-ui,-apple-system,sans-serif">CRONO EXCEL</text>
             </g>
-            <text x="945" y="506" font-size="14" fill="#4b5563">Informes y dashboards en Excel</text>
-            <text x="945" y="524" font-size="14" fill="#4b5563">conectados directamente al DWH</text>
+            <text x="945" y="486" font-size="14" fill="#4b5563">Informes y dashboards en Excel</text>
+            <text x="945" y="504" font-size="14" fill="#4b5563">conectados directamente al DWH</text>
           </g>
 
           <!-- 5. OTRAS SOLUCIONES -->
           <g class="svg-label" data-key="other">
-            <g transform="translate(945, 600)">
+            <g transform="translate(945, 571)">
               <use href="#i-crono" x="0" y="-22" width="28" height="28" fill="var(--c-other)"/>
               <text x="36" y="0" font-size="24" font-weight="600" letter-spacing="0.05em" fill="var(--c-other)" font-family="system-ui,-apple-system,sans-serif">OTRAS SOLUCIONES</text>
             </g>
-            <text x="945" y="626" font-size="14" fill="#4b5563">Compatibilidad nativa con Power BI,</text>
-            <text x="945" y="644" font-size="14" fill="#4b5563">Tableau y cualquier herramienta</text>
-            <text x="945" y="662" font-size="14" fill="#4b5563">de análisis externa</text>
+            <text x="945" y="597" font-size="14" fill="#4b5563">Compatibilidad nativa con Power BI,</text>
+            <text x="945" y="615" font-size="14" fill="#4b5563">Tableau y cualquier herramienta</text>
+            <text x="945" y="633" font-size="14" fill="#4b5563">de análisis externa</text>
           </g>
         </g>
 

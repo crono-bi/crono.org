@@ -1,25 +1,10 @@
 <div id="giscus-container">
-  <script src="https://giscus.app/client.js"
-    data-repo="crono-bi/CronoSupport"
-    data-repo-id="MDEwOlJlcG9zaXRvcnkyNDM2MTQxMjE="
-    data-category="Comentarios"
-    data-category-id="DIC_kwDODoVBqc4C8hL9"
-    data-mapping="pathname"
-    data-strict="0"
-    data-reactions-enabled="1"
-    data-emit-metadata="0"
-    data-input-position="bottom"
-    data-theme="dark_dimmed"
-    data-lang="es"
-    crossorigin="anonymous"
-    async>
-  </script>
+  <!-- data-theme is set dynamically by the inline script below before Giscus loads -->
 </div>
 
 <script>
   function getGiscusTheme(): string {
-    const htmlTheme = document.documentElement.getAttribute('data-theme');
-    return htmlTheme === 'light' ? 'light' : 'dark_dimmed';
+    return document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark_dimmed';
   }
 
   function sendGiscusTheme(theme: string) {
@@ -31,18 +16,45 @@
     );
   }
 
+  function loadGiscus() {
+    const container = document.getElementById('giscus-container');
+    if (!container) return;
+
+    // Remove any existing Giscus iframe (e.g. after View Transitions)
+    container.innerHTML = '';
+
+    const script = document.createElement('script');
+    script.src = 'https://giscus.app/client.js';
+    script.setAttribute('data-repo', 'crono-bi/CronoSupport');
+    script.setAttribute('data-repo-id', 'MDEwOlJlcG9zaXRvcnkyNDM2MTQxMjE=');
+    script.setAttribute('data-category', 'Comentarios');
+    script.setAttribute('data-category-id', 'DIC_kwDODoVBqc4C8hL9');
+    script.setAttribute('data-mapping', 'pathname');
+    script.setAttribute('data-strict', '0');
+    script.setAttribute('data-reactions-enabled', '1');
+    script.setAttribute('data-emit-metadata', '0');
+    script.setAttribute('data-input-position', 'bottom');
+    script.setAttribute('data-theme', getGiscusTheme()); // correct theme at load time
+    script.setAttribute('data-lang', 'es');
+    script.setAttribute('crossorigin', 'anonymous');
+    script.async = true;
+    container.appendChild(script);
+  }
+
   function initGiscus() {
-    // Send correct theme as soon as the iframe signals it's ready
-    function onGiscusMessage(event: MessageEvent) {
+    loadGiscus();
+
+    // Giscus signals ready via resizeHeight (works with emit-metadata=0)
+    function onGiscusReady(event: MessageEvent) {
       if (event.origin !== 'https://giscus.app') return;
-      if (typeof event.data === 'object' && event.data?.giscus?.discussion !== undefined) {
+      if (typeof event.data === 'object' && event.data?.giscus?.resizeHeight) {
         sendGiscusTheme(getGiscusTheme());
-        window.removeEventListener('message', onGiscusMessage);
+        window.removeEventListener('message', onGiscusReady);
       }
     }
-    window.addEventListener('message', onGiscusMessage);
+    window.addEventListener('message', onGiscusReady);
 
-    // Watch for Starlight theme changes
+    // Watch for Starlight theme changes after load
     const observer = new MutationObserver(() => sendGiscusTheme(getGiscusTheme()));
     observer.observe(document.documentElement, {
       attributes: true,
@@ -52,11 +64,10 @@
     // Cleanup on View Transitions navigation
     document.addEventListener('astro:before-swap', () => {
       observer.disconnect();
-      window.removeEventListener('message', onGiscusMessage);
+      window.removeEventListener('message', onGiscusReady);
     }, { once: true });
   }
 
-  // Run on initial load and after each View Transition
   initGiscus();
   document.addEventListener('astro:page-load', initGiscus);
 </script>
