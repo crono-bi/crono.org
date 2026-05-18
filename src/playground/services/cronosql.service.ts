@@ -7,7 +7,9 @@ const DIALECT_MAP: Record<EngineId, SqlDialect> = {
   [EngineId.Snowflake]: SqlDialect.Snowflake,
   [EngineId.Postgres]:  SqlDialect.Postgres,
   [EngineId.Redshift]:  SqlDialect.Redshift,
-  [EngineId.BigQuery]:  SqlDialect.BigQuery
+  [EngineId.BigQuery]:  SqlDialect.BigQuery,
+  [EngineId.Databricks]: SqlDialect.Databricks,
+  [EngineId.MSFabric]: SqlDialect.MSFabric
 }
 
 export const CronoSqlService = {

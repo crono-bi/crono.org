@@ -49,7 +49,7 @@ const engines: Engine[] = [
   { id: EngineId.BigQuery,   label: 'BigQuery',         icon: LOGOS[EngineId.BigQuery] },
   { id: EngineId.SQLServer,  label: 'SQL Server',       icon: LOGOS[EngineId.SQLServer] },
   { id: EngineId.Postgres,   label: 'PostgreSQL',       icon: LOGOS[EngineId.Postgres] },
-  { id: EngineId.Databricks, label: 'Databricks',       icon: LOGOS[EngineId.Databricks], disabled: true },
+  { id: EngineId.Databricks, label: 'Databricks',       icon: LOGOS[EngineId.Databricks] },
   { id: EngineId.MSFabric,   label: 'Microsoft Fabric', icon: LOGOS[EngineId.MSFabric],   disabled: true }
 ]
 </script>
