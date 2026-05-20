@@ -5,7 +5,7 @@ export enum SqlDialect {
   Redshift   = 'Redshift',
   BigQuery   = 'BigQuery',
   Databricks = 'Databricks',
-  MSFabric   = 'MSFabric'
+  MSFabric   = 'Fabric'
 }
 
 export enum Theme {
