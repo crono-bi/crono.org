@@ -10,6 +10,7 @@ import { etlTopics } from './src/config/sidebar-etl.js';
 import { sqlTopics } from './src/config/sidebar-sql.js';
 import { examplesTopics } from './src/config/sidebar-examples.js';
 import { playgroundTopics } from './src/config/sidebar-playground.js';
+import { downloadsTopics } from './src/config/sidebar-downloads.js';
 
 import cronoSqlLang from './src/config/crono-sql-grammar.mjs';
 
@@ -55,6 +56,7 @@ export default defineConfig({
 			plugins: [
 				starlightSidebarTopics(
 					[
+						downloadsTopics,
 						analysisTopics,
 						metadataTopics,
 						etlTopics,

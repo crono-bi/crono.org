@@ -321,22 +321,52 @@ html {
   font-weight: 600 !important;
 }
 
-/* ===== FIX ORDERED LIST NUMBERS ===== */
+/* ===== FIX TYPOGRAPHY — Tailwind v4 Preflight resets margins to 0 ===== */
+.sl-markdown-content p {
+  margin: 0.75rem 0;
+  line-height: 1.75;
+}
+
+.sl-markdown-content h1,
+.sl-markdown-content h2,
+.sl-markdown-content h3,
+.sl-markdown-content h4,
+.sl-markdown-content h5,
+.sl-markdown-content h6 {
+  margin-top: 1.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.sl-markdown-content h1:first-child,
+.sl-markdown-content h2:first-child,
+.sl-markdown-content h3:first-child {
+  margin-top: 0;
+}
+
+/* ===== FIX LISTS — Tailwind v4 Preflight resets list-style to none ===== */
+.sl-markdown-content ul:not(.hero-bullets) {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+  margin: 1rem 0;
+}
+
+.sl-markdown-content ul:not(.hero-bullets) li {
+  display: list-item;
+  list-style-type: disc;
+  list-style-position: outside;
+  margin: 0.4rem 0;
+}
+
 .sl-markdown-content ol {
-  list-style-type: decimal !important;
-  padding-left: 1.5rem !important;
-  margin: 1rem 0 !important;
+  list-style-type: decimal;
+  padding-left: 1.5rem;
+  margin: 1rem 0;
 }
 
 .sl-markdown-content ol li {
-  display: list-item !important;
-  list-style-position: outside !important;
-  margin: 0.5rem 0 !important;
-}
-
-.sl-markdown-content ul:not(.hero-bullets) {
-  list-style-type: disc !important;
-  padding-left: 1.5rem !important;
+  display: list-item;
+  list-style-position: outside;
+  margin: 0.5rem 0;
 }
 
 /* ===== LANDING PAGE MOBILE HEADER — theme toggle ===== */
@@ -363,4 +393,24 @@ a[data-playground-link] {
   color: #3B82F6 !important;
 }
 
+/* ===== FIX ANCHOR LINKS GLOBALLY ===== */
+/* Make heading wrapper inline so anchor appears next to text, not below */
+.sl-heading-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
 
+/* Hide anchor link by default, show only on hover */
+.sl-anchor-link {
+  opacity: 0;
+  transition: opacity 0.15s ease;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+}
+
+.sl-heading-wrapper:hover .sl-anchor-link,
+.sl-heading-wrapper:focus-within .sl-anchor-link {
+  opacity: 1;
+}

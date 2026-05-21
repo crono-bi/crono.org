@@ -81,6 +81,8 @@ if (pathname.startsWith('/analysis/')) {
 		.main-logo {
 			height: 28px;
 			width: auto;
+			filter: invert(0);
+			transition: filter 0.2s;
 		}
 
 		/* Product logo */
@@ -95,7 +97,9 @@ if (pathname.startsWith('/analysis/')) {
 		}
 
 		:root[data-theme='dark'] .product-logo,
-		:root:not([data-theme='light']) .product-logo {
+		:root:not([data-theme='light']) .product-logo,
+		:root[data-theme='dark'] .main-logo,
+		:root:not([data-theme='light']) .main-logo {
 			filter: invert(1);
 		}
 	}

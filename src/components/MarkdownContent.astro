@@ -6,6 +6,8 @@ const entryId: string = starlightRoute.entry.id;
 const showGiscus = entryId.startsWith('sql/functions/');
 ---
 
-<slot />
+<div class="sl-markdown-content">
+  <slot />
+</div>
 
 {showGiscus && <GiscusComments />}
