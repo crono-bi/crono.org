@@ -1,494 +1,406 @@
 ---
-// Downloads Landing Page - Custom design for the downloads section
-import DownloadSummaryTable from './DownloadSummaryTable.astro'
+// Descargas - Landing épica con grid de 3 productos
 
-// Colores oficiales por producto (idénticos a los usados en BrandThemeHead y cada Landing)
-const COLORS = {
-  analysis: '#C85A47',
-  metadata: '#5B2C7D',
-  etl: '#1B8AC7',
-  sql: '#10B981',
-  downloads: '#2563EB',
-  excel: '#1E7B47',
-}
-
-const productGroups = [
+const mainProducts = [
   {
-    title: 'Productos principales',
-    description: 'Los instaladores recomendados para la mayoría de entornos',
-    items: [
-      { name: 'Crono Analysis', desc: 'Herramienta de análisis y reporting', path: '/downloads/crono-analysis/', color: COLORS.analysis },
-      { name: 'Crono Metadata', desc: 'Capa semántica y modelado', path: '/downloads/crono-metadata/', color: COLORS.metadata },
-      { name: 'Crono ETL', desc: 'Extracción, transformación y carga', path: '/downloads/crono-etl/', color: COLORS.etl },
-      { name: 'Crono Excel', desc: 'Informes en Excel', path: '/downloads/crono-excel/', color: COLORS.excel },
-      { name: 'Crono Viewer', desc: 'Visualizador de informes', path: '/downloads/crono-viewer/', color: COLORS.analysis },
-      { name: 'Crono Reporting', desc: 'Generación de informes', path: '/downloads/crono-reporting/', color: COLORS.analysis },
-    ]
+    id: 'analysis',
+    name: 'Crono Analysis',
+    tagline: 'Análisis y reporting',
+    description: 'Informes interactivos y cuadros de mando para usuarios de negocio.',
+    color: '#C85A47',
+    rgb: '200, 90, 71',
+    path: '/downloads/crono-analysis/',
+    icon: 'chart',
+    features: ['Dashboards', 'KPIs', 'Reportes']
   },
   {
-    title: 'Aplicaciones de servidor',
-    description: 'Crono Administrator instala y administra Crono Server',
-    items: [
-      { name: 'Crono', desc: 'Producto base', path: '/downloads/crono/', color: COLORS.etl },
-      { name: 'Crono Administrator', desc: 'Gestión de Crono Server', path: '/downloads/crono-administrator/', color: COLORS.etl },
-      { name: 'Crono Jobs', desc: 'Servicio de tareas programadas', path: '/downloads/crono-jobs/', color: COLORS.etl },
-      { name: 'Crono Server', desc: 'Infraestructura servidor', path: '/downloads/crono-server/', color: COLORS.etl },
-    ]
+    id: 'metadata',
+    name: 'Crono Metadata',
+    tagline: 'Capa semántica',
+    description: 'Modelado de datos, diccionario semántico y gobierno de metadatos.',
+    color: '#5B2C7D',
+    rgb: '91, 44, 125',
+    path: '/downloads/crono-metadata/',
+    icon: 'database',
+    features: ['Semántica', 'Gobierno', 'Modelos']
+  },
+  {
+    id: 'etl',
+    name: 'Crono ETL',
+    tagline: 'Integración de datos',
+    description: 'Extracción, transformación y carga entre sistemas heterogéneos.',
+    color: '#1B8AC7',
+    rgb: '27, 138, 199',
+    path: '/downloads/crono-etl/',
+    icon: 'transfer',
+    features: ['ETL', 'Pipelines', 'Conectores']
   }
 ]
-
-const specialGroups = [
-  {
-    title: 'Arquitectura x86 (32 bits)',
-    description: 'Las aplicaciones de 32 bits son necesarias si no dispone de drivers de 64 bits para conectarse a sus orígenes de datos.',
-    section: 'StandardReleaseX86' as const,
-    items: [
-      { name: 'Crono Analysis 32', path: '/downloads/crono-analysis-32/', color: COLORS.analysis },
-      { name: 'Crono Metadata 32', path: '/downloads/crono-metadata-32/', color: COLORS.metadata },
-      { name: 'Crono ETL 32', path: '/downloads/crono-etl-32/', color: COLORS.etl },
-      { name: 'Crono Jobs 32', path: '/downloads/crono-jobs-32/', color: COLORS.etl },
-    ]
-  },
-  {
-    title: 'Packages MSI',
-    description: 'No se recomienda el uso de estos instaladores MSI. Antes de utilizar estos paquetes consulte con su distribuidor.',
-    section: 'MSIRelease' as const,
-    items: [
-      { name: 'Crono Analysis MSI', path: '/downloads/crono-analysis-msi/', color: COLORS.analysis },
-      { name: 'Crono Metadata MSI', path: '/downloads/crono-metadata-msi/', color: COLORS.metadata },
-      { name: 'Crono Administrator MSI', path: '/downloads/crono-administrator-msi/', color: COLORS.etl },
-    ]
-  },
-  {
-    title: 'Crono Classic',
-    description: 'Esta es la última versión de la plataforma Crono vigente entre 2010 y 2015. Esta versión no tiene soporte y NO SE RECOMIENDA para proyectos nuevos.',
-    section: 'CronoClassic' as const,
-    items: [
-      { name: 'Crono Classic', path: '/downloads/crono-classic/', color: '#6B7280' },
-      { name: 'Crono Excel Classic', path: '/downloads/crono-excel-classic/', color: COLORS.excel },
-    ]
-  }
-]
-
-const downloadsColor = COLORS.downloads
-const downloadsRgb = '37, 99, 235'
 ---
 
-<div class="dl-landing not-content" style={`--brand-color: ${downloadsColor}; --brand-rgb: ${downloadsRgb}`}>
+<div class="dl-landing not-content">
 
-  <!-- ═══ HERO ═══ -->
-  <section class="dl-hero">
-    <div class="dl-hero-bg"></div>
-    <div class="dl-hero-content">
-      <div class="dl-hero-label">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        <span>Plataforma Crono</span>
+  <!-- ═══ INTRO ═══ -->
+  <div class="dl-intro">
+    <div class="dl-intro-badge">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+      </svg>
+      Plataforma de Business Intelligence
+    </div>
+    <p class="dl-intro-desc">
+      Tres productos que trabajan juntos para cubrir todo el ciclo del dato: 
+      desde la integración hasta el análisis.
+    </p>
+    <div class="dl-intro-stats">
+      <div class="dl-stat">
+        <span class="dl-stat-num">3</span>
+        <span class="dl-stat-label">productos</span>
       </div>
-      <h1 class="dl-hero-title">Descargas</h1>
-      <p class="dl-hero-subtitle">La instalación es rápida y sencilla. Cada producto tiene un instalador independiente.</p>
-      <p class="dl-hero-desc">El usuario de negocio solo necesita <strong>Crono Analysis</strong>, mientras que el usuario técnico necesita además <strong>Crono Metadata</strong> y/o <strong>Crono ETL</strong>.</p>
-      <div class="dl-hero-stats">
-        <div class="dl-stat">
-          <span class="dl-stat-num">6</span>
-          <span class="dl-stat-label">productos</span>
-        </div>
-        <div class="dl-stat-sep"></div>
-        <div class="dl-stat">
-          <span class="dl-stat-num">Windows</span>
-          <span class="dl-stat-label">plataforma</span>
-        </div>
-        <div class="dl-stat-sep"></div>
-        <div class="dl-stat">
-          <span class="dl-stat-num">.NET 6+</span>
-          <span class="dl-stat-label">framework</span>
-        </div>
+      <div class="dl-stat-divider"></div>
+      <div class="dl-stat">
+        <span class="dl-stat-num">100%</span>
+        <span class="dl-stat-label">integrados</span>
+      </div>
+      <div class="dl-stat-divider"></div>
+      <div class="dl-stat">
+        <span class="dl-stat-num">Windows</span>
+        <span class="dl-stat-label">64 y 32 bits</span>
       </div>
     </div>
-  </section>
+  </div>
 
-  <!-- ═══ DESCARGAS RECOMENDADAS ═══ -->
-  <section class="dl-section">
-    <div class="dl-section-header">
-      <div class="dl-section-label">
-        <div class="dl-section-line"></div>
-        <span>Descargas recomendadas</span>
-        <div class="dl-section-line"></div>
-      </div>
-      <p class="dl-section-desc">Los instaladores recomendados para la mayoría de entornos son los siguientes:</p>
-    </div>
-    <div class="dl-table-card">
-      <DownloadSummaryTable section="StandardRelease" />
-    </div>
-  </section>
-
-  <!-- ═══ PRODUCT CARDS — PRINCIPALES ═══ -->
-  <section class="dl-section">
-    <div class="dl-section-header">
-      <div class="dl-section-label">
-        <div class="dl-section-line"></div>
-        <span>Productos principales</span>
-        <div class="dl-section-line"></div>
-      </div>
-      <p class="dl-section-desc">Los instaladores recomendados para la mayoría de entornos</p>
-    </div>
-    <div class="dl-product-grid">
-      {productGroups[0].items.map(item => (
-        <a href={item.path} class="dl-product-card" style={`--product-color: ${item.color}`}>
-          <div class="dl-card-glow"></div>
-          <div class="dl-card-top">
-            <div class="dl-card-icon" style={`background: ${item.color}18; color: ${item.color}`}>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-            </div>
+  <!-- ═══ 3 CARDS EN GRID ═══ -->
+  <div class="dl-grid">
+    {mainProducts.map(product => (
+      <a href={product.path} class="dl-card" style={`--c: ${product.color}; --rgb: ${product.rgb}`}>
+        <div class="dl-card-top">
+          <div class="dl-card-icon">
+            {product.icon === 'chart' && (
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/>
+              </svg>
+            )}
+            {product.icon === 'database' && (
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <ellipse cx="12" cy="5" rx="9" ry="3"/>
+                <path d="M3 5V19A9 3 0 0 0 21 19V5"/>
+                <path d="M3 12A9 3 0 0 0 21 12"/>
+              </svg>
+            )}
+            {product.icon === 'transfer' && (
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v4"/>
+                <path d="M14 2v6h6"/>
+                <path d="M2 15h10"/><path d="m5 12-3 3 3 3"/><path d="m9 12 3 3-3 3"/>
+              </svg>
+            )}
           </div>
-          <h3 class="dl-card-title">{item.name}</h3>
-          <p class="dl-card-desc">{item.desc}</p>
-          <span class="dl-card-cta">
-            Ver versiones
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          <span class="dl-card-tagline">{product.tagline}</span>
+        </div>
+        <div class="dl-card-body">
+          <h2 class="dl-card-name">{product.name}</h2>
+          <p class="dl-card-desc">{product.description}</p>
+          <div class="dl-card-features">
+            {product.features.map(f => (
+              <span class="dl-card-feature">{f}</span>
+            ))}
+          </div>
+        </div>
+        <div class="dl-card-foot">
+          <span class="dl-card-btn">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <polyline points="7 10 12 15 17 10"/>
+              <line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
+            Descargar
           </span>
-          <div class="dl-card-border" style={`background: ${item.color}`}></div>
-        </a>
-      ))}
-    </div>
-  </section>
-
-  <!-- ═══ SERVIDOR ═══ -->
-  <section class="dl-section">
-    <div class="dl-section-header">
-      <div class="dl-section-label">
-        <div class="dl-section-line"></div>
-        <span>Aplicaciones de servidor</span>
-        <div class="dl-section-line"></div>
-      </div>
-      <p class="dl-section-desc">Crono Administrator es la aplicación que instala y administra Crono Server.</p>
-    </div>
-    <div class="dl-table-card">
-      <DownloadSummaryTable section="ServerRelease" />
-    </div>
-    <div class="dl-product-grid dl-product-grid--small" style="margin-top: 1rem">
-      {productGroups[1].items.map(item => (
-        <a href={item.path} class="dl-product-card dl-product-card--compact" style={`--product-color: ${item.color}`}>
-          <div class="dl-card-icon-sm" style={`background: ${item.color}18; color: ${item.color}`}>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="14" x="2" y="3" rx="2"/><path d="M8 21h8m-4-4v4"/></svg>
-          </div>
-          <span class="dl-card-title-sm">{item.name}</span>
-          <svg class="dl-card-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
-        </a>
-      ))}
-    </div>
-  </section>
-
-  <!-- ═══ ESPECIALES ═══ -->
-  {specialGroups.map(group => (
-    <section class="dl-section dl-section--special">
-      <div class="dl-special-header">
-        <div class="dl-special-badge">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-          Avanzado
         </div>
-        <h2 class="dl-special-title">{group.title}</h2>
-        <p class="dl-special-desc">{group.description}</p>
-      </div>
-      <div class="dl-table-card">
-        <DownloadSummaryTable section={group.section} />
-      </div>
-      <div class="dl-product-grid dl-product-grid--small" style="margin-top: 1rem">
-        {group.items.map(item => (
-          <a href={item.path} class="dl-product-card dl-product-card--compact" style={`--product-color: ${item.color}`}>
-            <div class="dl-card-icon-sm" style={`background: ${item.color}18; color: ${item.color}`}>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-            </div>
-            <span class="dl-card-title-sm">{item.name}</span>
-            <svg class="dl-card-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
-          </a>
-        ))}
-      </div>
-    </section>
-  ))}
-
-  <!-- ═══ REQUISITOS ═══ -->
-  <section class="dl-section">
-    <div class="dl-section-header">
-      <div class="dl-section-label">
-        <div class="dl-section-line"></div>
-        <span>Requisitos del sistema</span>
-        <div class="dl-section-line"></div>
-      </div>
-    </div>
-    <div class="dl-req-grid">
-      <div class="dl-req-card">
-        <div class="dl-req-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="14" x="2" y="3" rx="2"/><path d="M8 21h8m-4-4v4"/></svg>
-        </div>
-        <h4>Sistema operativo</h4>
-        <p>Windows 10 o superior<br/><span class="dl-req-note">(Windows 7 soportado en versiones Classic)</span></p>
-      </div>
-      <div class="dl-req-card">
-        <div class="dl-req-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        </div>
-        <h4>Frameworks</h4>
-        <p><a href="https://dotnet.microsoft.com/download">.NET 6</a> o superior<br/><a href="https://dotnet.microsoft.com/download/dotnet-framework">.NET Framework 4.7</a> <span class="dl-req-note">(solo Crono Excel)</span></p>
-      </div>
-      <div class="dl-req-card">
-        <div class="dl-req-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 17.58A5 5 0 0 0 18 8h-1.26A8 8 0 1 0 4 16.25"/><polyline points="16 21 12 17 8 21"/></svg>
-        </div>
-        <h4>Hardware mínimo</h4>
-        <p>4GB RAM <span class="dl-req-note">(8GB recomendado)</span><br/>1GB espacio en disco</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══ TOOLS ═══ -->
-  <section class="dl-section dl-tools-section">
-    <div class="dl-tools-card">
-      <div class="dl-tools-content">
-        <div class="dl-tools-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
-        </div>
-        <div>
-          <h3 class="dl-tools-title">Herramientas de terceros</h3>
-          <p class="dl-tools-desc">Software adicional recomendado para desarrolladores y administradores.</p>
-        </div>
-      </div>
-      <a href="/downloads/tools/" class="dl-tools-cta">
-        Cronobase 22.4
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
       </a>
+    ))}
+  </div>
+
+  <!-- ═══ BANNER TODOS LOS PRODUCTOS ═══ -->
+  <a href="/downloads/all/" class="dl-banner">
+    <div class="dl-banner-left">
+      <div class="dl-banner-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/>
+          <rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/>
+        </svg>
+      </div>
+      <div>
+        <p class="dl-banner-title">Todos los productos</p>
+        <p class="dl-banner-sub">Server, x86, MSI, Classic y herramientas adicionales</p>
+      </div>
     </div>
-  </section>
+    <span class="dl-banner-cta">
+      Ver catálogo completo
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+      </svg>
+    </span>
+  </a>
 
 </div>
 
 <style>
-  /* ── BASE ── */
   .dl-landing {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 1.5rem 4rem;
+    padding: 0 0 2.5rem;
   }
 
-  /* ── HERO ── */
-  .dl-hero {
-    position: relative;
-    text-align: center;
-    padding: 4rem 1rem 3rem;
-    margin-bottom: 3rem;
-    overflow: hidden;
+  /* ── INTRO ── */
+  .dl-intro {
+    padding: 1.5rem 0 2rem;
+    border-bottom: 1px solid var(--sl-color-hairline);
+    margin-bottom: 1.75rem;
   }
-  .dl-hero-bg {
-    position: absolute; inset: 0; pointer-events: none; z-index: 0;
-    background:
-      radial-gradient(ellipse 70% 60% at 50% 0%, rgba(var(--brand-rgb), 0.12) 0%, transparent 70%);
-    border-bottom: 1px solid rgba(var(--brand-rgb), 0.12);
+  .dl-intro-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.3rem 0.875rem;
+    border-radius: 999px;
+    border: 1px solid var(--sl-color-hairline);
+    background: var(--sl-color-bg-nav);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--sl-color-gray-2);
+    margin-bottom: 1rem;
   }
-  .dl-hero-content { position: relative; z-index: 1; }
-
-  .dl-hero-label {
-    display: inline-flex; align-items: center; gap: 0.5rem;
-    padding: 0.35rem 0.875rem; border-radius: 999px;
-    background: rgba(var(--brand-rgb), 0.1);
-    border: 1px solid rgba(var(--brand-rgb), 0.2);
-    color: var(--brand-color); font-size: 0.8125rem; font-weight: 500;
-    margin-bottom: 1.5rem;
+  .dl-intro-desc {
+    font-size: 1.0625rem;
+    color: var(--sl-color-gray-2);
+    max-width: 520px;
+    margin: 0 0 1.5rem;
+    line-height: 1.6;
   }
-  .dl-hero-title {
-    font-size: clamp(2.5rem, 5vw, 3.5rem); font-weight: 800; line-height: 1.1;
-    color: var(--sl-color-white); margin: 0 0 1rem;
+  .dl-intro-stats {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  .dl-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+  }
+  .dl-stat-num {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--sl-color-white);
+    line-height: 1;
     letter-spacing: -0.02em;
   }
-  .dl-hero-subtitle {
-    font-size: 1.125rem; color: var(--sl-color-gray-2); margin: 0 0 0.75rem;
+  .dl-stat-label {
+    font-size: 0.75rem;
+    color: var(--sl-color-gray-3);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
   }
-  .dl-hero-desc {
-    font-size: 0.9375rem; color: var(--sl-color-gray-3);
-    max-width: 560px; margin: 0 auto 2rem; line-height: 1.7;
-  }
-  .dl-hero-desc strong { color: var(--sl-color-gray-2); }
-
-  .dl-hero-stats {
-    display: inline-flex; align-items: center; gap: 1.5rem;
-    padding: 0.875rem 2rem;
-    background: var(--sl-color-bg-nav);
-    border: 1px solid var(--sl-color-hairline-light);
-    border-radius: 999px;
-  }
-  .dl-stat { display: flex; flex-direction: column; align-items: center; gap: 0.1rem; }
-  .dl-stat-num { font-size: 1rem; font-weight: 700; color: var(--sl-color-white); line-height: 1; }
-  .dl-stat-label { font-size: 0.6875rem; color: var(--sl-color-gray-3); text-transform: uppercase; letter-spacing: 0.06em; }
-  .dl-stat-sep { width: 1px; height: 2rem; background: var(--sl-color-hairline-light); }
-
-  /* ── SECTIONS ── */
-  .dl-section { margin-bottom: 3.5rem; }
-  .dl-section-header { margin-bottom: 1.5rem; }
-
-  .dl-section-label {
-    display: flex; align-items: center; gap: 1rem;
-    font-size: 0.8rem; font-weight: 700; text-transform: uppercase;
-    letter-spacing: 0.1em; color: var(--sl-color-gray-3);
-    margin-bottom: 0.75rem;
-  }
-  .dl-section-line { flex: 1; height: 1px; background: var(--sl-color-hairline-light); }
-  .dl-section-desc { font-size: 0.9375rem; color: var(--sl-color-gray-3); margin: 0; }
-
-  /* ── TABLE CONTAINER ── */
-  .dl-table-card {
-    width: 100%;
-    max-width: 100%;
-    overflow-x: auto;
+  .dl-stat-divider {
+    width: 1px;
+    height: 2rem;
+    background: var(--sl-color-hairline);
   }
 
-  /* ── PRODUCT GRID ── */
-  .dl-product-grid {
+  /* ── GRID 3 COLUMNAS ── */
+  .dl-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
-  }
-  .dl-product-grid--small {
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    margin-bottom: 1.25rem;
   }
 
-  /* ── PRODUCT CARD ── */
-  .dl-product-card {
-    position: relative;
-    display: flex; flex-direction: column;
+  /* ── CARD ── */
+  .dl-card {
+    display: flex;
+    flex-direction: column;
     background: var(--sl-color-bg-nav);
-    border: 1px solid var(--sl-color-hairline-light);
-    border-radius: 14px; overflow: hidden;
-    padding: 1.25rem;
+    border: 1px solid var(--sl-color-hairline);
+    border-radius: 16px;
+    padding: 1.5rem;
     text-decoration: none;
-    transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+    overflow: hidden;
+    position: relative;
+    transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
   }
-  .dl-product-card:hover {
+  .dl-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(160deg, rgba(var(--rgb), 0.07) 0%, transparent 55%);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.25s;
+  }
+  .dl-card:hover {
+    border-color: var(--c);
     transform: translateY(-3px);
-    border-color: var(--product-color);
-    box-shadow: 0 12px 32px -8px rgba(0,0,0,0.25);
+    box-shadow: 0 16px 40px -12px rgba(var(--rgb), 0.25);
   }
-  .dl-card-glow {
-    position: absolute; inset: 0; opacity: 0; pointer-events: none;
-    background: radial-gradient(circle at 50% 0%, var(--product-color, var(--brand-color)), transparent 60%);
-    transition: opacity 0.3s;
-    opacity: 0.04;
-  }
-  .dl-product-card:hover .dl-card-glow { opacity: 0.08; }
+  .dl-card:hover::before { opacity: 1; }
 
-  .dl-card-top { margin-bottom: 0.875rem; }
-  .dl-card-icon {
-    width: 42px; height: 42px; border-radius: 10px;
-    display: flex; align-items: center; justify-content: center;
+  /* Top row: icono + tagline */
+  .dl-card-top {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
   }
-  .dl-card-title {
-    font-size: 1.0625rem; font-weight: 700; margin: 0 0 0.4rem;
+  .dl-card-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    background: rgba(var(--rgb), 0.12);
+    border: 1px solid rgba(var(--rgb), 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--c);
+    transition: background 0.2s;
+  }
+  .dl-card-icon svg { width: 20px; height: 20px; }
+  .dl-card:hover .dl-card-icon { background: rgba(var(--rgb), 0.2); }
+
+  .dl-card-tagline {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    color: var(--c);
+  }
+
+  /* Body */
+  .dl-card-body { flex: 1; }
+  .dl-card-name {
+    font-size: 1.125rem;
+    font-weight: 700;
     color: var(--sl-color-white);
+    margin: 0 0 0.5rem;
+    line-height: 1.25;
   }
   .dl-card-desc {
-    font-size: 0.875rem; color: var(--sl-color-gray-3);
-    margin: 0 0 1rem; line-height: 1.5; flex: 1;
+    font-size: 0.875rem;
+    color: var(--sl-color-gray-3);
+    margin: 0 0 1rem;
+    line-height: 1.5;
   }
-  .dl-card-cta {
-    display: inline-flex; align-items: center; gap: 0.4rem;
-    font-size: 0.8125rem; font-weight: 600;
-    color: var(--product-color, var(--brand-color));
-    transition: gap 0.2s;
+  .dl-card-features {
+    display: flex;
+    gap: 0.375rem;
+    flex-wrap: wrap;
   }
-  .dl-product-card:hover .dl-card-cta { gap: 0.65rem; }
+  .dl-card-feature {
+    font-size: 0.6875rem;
+    font-weight: 500;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    background: rgba(var(--rgb), 0.08);
+    color: var(--c);
+    border: 1px solid rgba(var(--rgb), 0.18);
+  }
 
-  .dl-card-border {
-    position: absolute; bottom: 0; left: 0; right: 0;
-    height: 2px;
+  /* Footer con botón */
+  .dl-card-foot {
+    margin-top: 1.25rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--sl-color-hairline);
+  }
+  .dl-card-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    width: 100%;
+    justify-content: center;
+    padding: 0.625rem;
+    border-radius: 8px;
+    background: rgba(var(--rgb), 0.1);
+    border: 1px solid rgba(var(--rgb), 0.2);
+    color: var(--c);
+    font-size: 0.875rem;
+    font-weight: 600;
+    transition: background 0.2s, border-color 0.2s, color 0.2s;
+  }
+  .dl-card:hover .dl-card-btn {
+    background: var(--c);
+    border-color: var(--c);
+    color: white;
   }
 
-  /* ── COMPACT CARD ── */
-  .dl-product-card--compact {
-    flex-direction: row; align-items: center;
-    padding: 0.875rem 1rem; gap: 0.75rem;
-  }
-  .dl-card-icon-sm {
-    width: 32px; height: 32px; border-radius: 8px; flex-shrink: 0;
-    display: flex; align-items: center; justify-content: center;
-  }
-  .dl-card-title-sm {
-    font-size: 0.9rem; font-weight: 600; color: var(--sl-color-white); flex: 1;
-  }
-  .dl-card-chevron { color: var(--sl-color-gray-3); flex-shrink: 0; }
-  .dl-product-card--compact:hover .dl-card-chevron { color: var(--product-color, var(--brand-color)); }
-
-  /* ── SPECIAL SECTION ── */
-  .dl-section--special {
+  /* ── BANNER TODOS LOS PRODUCTOS ── */
+  .dl-banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.25rem 1.5rem;
+    border-radius: 14px;
+    border: 1px solid var(--sl-color-hairline);
     background: var(--sl-color-bg-nav);
-    border: 1px solid var(--sl-color-hairline-light);
-    border-radius: 16px; padding: 1.75rem;
+    text-decoration: none;
+    transition: border-color 0.2s, background 0.2s;
+    margin-top: 0.25rem;
   }
-  .dl-special-header { margin-bottom: 1.5rem; }
-  .dl-special-badge {
-    display: inline-flex; align-items: center; gap: 0.4rem;
-    padding: 0.25rem 0.75rem; border-radius: 999px;
-    background: rgba(var(--brand-rgb), 0.08);
-    border: 1px solid rgba(var(--brand-rgb), 0.2);
-    color: var(--brand-color); font-size: 0.75rem; font-weight: 600;
-    margin-bottom: 0.75rem;
+  .dl-banner:hover {
+    border-color: var(--sl-color-accent);
+    background: color-mix(in srgb, var(--sl-color-bg-nav) 90%, var(--sl-color-accent));
   }
-  .dl-special-title { font-size: 1.25rem; font-weight: 700; margin: 0 0 0.5rem; color: var(--sl-color-white); }
-  .dl-special-desc { font-size: 0.9rem; color: var(--sl-color-gray-3); margin: 0; }
-
-  /* ── REQUIREMENTS ── */
-  .dl-req-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  .dl-banner-left {
+    display: flex;
+    align-items: center;
     gap: 1rem;
   }
-  .dl-req-card {
-    background: var(--sl-color-bg-nav);
+  .dl-banner-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background: var(--sl-color-bg);
     border: 1px solid var(--sl-color-hairline-light);
-    border-radius: 14px; padding: 1.5rem;
-    transition: border-color 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--sl-color-gray-2);
+    flex-shrink: 0;
   }
-  .dl-req-card:hover { border-color: rgba(var(--brand-rgb), 0.4); }
-  .dl-req-icon {
-    width: 44px; height: 44px; border-radius: 12px; margin-bottom: 1rem;
-    background: rgba(var(--brand-rgb), 0.1);
-    color: var(--brand-color);
-    display: flex; align-items: center; justify-content: center;
+  .dl-banner-title {
+    font-size: 0.9375rem;
+    font-weight: 700;
+    color: var(--sl-color-white);
+    margin: 0 0 0.2rem;
   }
-  .dl-req-card h4 {
-    font-size: 0.875rem; font-weight: 700; text-transform: uppercase;
-    letter-spacing: 0.06em; color: var(--sl-color-gray-2); margin: 0 0 0.625rem;
+  .dl-banner-sub {
+    font-size: 0.8125rem;
+    color: var(--sl-color-gray-3);
+    margin: 0;
   }
-  .dl-req-card p { font-size: 0.9375rem; color: var(--sl-color-gray-3); margin: 0; line-height: 1.6; }
-  .dl-req-note { font-size: 0.8125rem; color: var(--sl-color-gray-4, #9ca3af); }
-  .dl-req-card a { color: var(--brand-color); text-decoration: none; }
-  .dl-req-card a:hover { text-decoration: underline; }
-
-  /* ── TOOLS ── */
-  .dl-tools-card {
-    display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap;
-    background: linear-gradient(135deg, rgba(var(--brand-rgb), 0.06) 0%, rgba(var(--brand-rgb), 0.02) 100%);
-    border: 1px solid rgba(var(--brand-rgb), 0.2);
-    border-radius: 16px; padding: 1.75rem 2rem;
-  }
-  .dl-tools-content { display: flex; align-items: center; gap: 1rem; }
-  .dl-tools-icon {
-    width: 48px; height: 48px; border-radius: 12px; flex-shrink: 0;
-    background: rgba(var(--brand-rgb), 0.12); color: var(--brand-color);
-    display: flex; align-items: center; justify-content: center;
-  }
-  .dl-tools-title { font-size: 1.0625rem; font-weight: 700; color: var(--sl-color-white); margin: 0 0 0.25rem; }
-  .dl-tools-desc { font-size: 0.875rem; color: var(--sl-color-gray-3); margin: 0; }
-  .dl-tools-cta {
-    display: inline-flex; align-items: center; gap: 0.5rem;
-    padding: 0.75rem 1.5rem; border-radius: 10px; font-size: 0.9rem; font-weight: 600;
-    background: var(--brand-color); color: white; text-decoration: none;
-    transition: opacity 0.2s, transform 0.2s;
+  .dl-banner-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.625rem 1.25rem;
+    border-radius: 8px;
+    background: var(--sl-color-accent);
+    color: white;
+    font-size: 0.875rem;
+    font-weight: 600;
     white-space: nowrap;
+    transition: opacity 0.2s;
+    flex-shrink: 0;
   }
-  .dl-tools-cta:hover { opacity: 0.88; transform: translateY(-1px); }
+  .dl-banner:hover .dl-banner-cta { opacity: 0.88; }
 
   /* ── RESPONSIVE ── */
-  @media (max-width: 640px) {
-    .dl-hero { padding: 2.5rem 0.5rem 2rem; }
-    .dl-hero-stats { gap: 1rem; padding: 0.75rem 1.25rem; flex-wrap: wrap; justify-content: center; }
-    .dl-stat-sep { display: none; }
-    .dl-tools-card { flex-direction: column; align-items: flex-start; }
+  @media (max-width: 800px) {
+    .dl-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 560px) {
+    .dl-intro-stats { gap: 1rem; }
+    .dl-banner { flex-direction: column; align-items: flex-start; }
+    .dl-banner-cta { width: 100%; justify-content: center; }
   }
 </style>

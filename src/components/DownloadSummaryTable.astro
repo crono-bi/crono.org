@@ -41,6 +41,32 @@ const productSlugMap: Record<string, string> = {
 	CronoExcelClassicMSI: 'crono-excel-classic',
 };
 
+const getProductColor = (releaseName: string): string => {
+	const mapping: Record<string, string> = {
+		CronoAnalysis:        '#C85A47',
+		CronoAnalysis32:      '#C85A47',
+		CronoAnalysisMSI:     '#C85A47',
+		CronoViewer:          '#C85A47',
+		CronoReporting:       '#C85A47',
+		CronoMetadata:        '#5B2C7D',
+		CronoMetadata32:      '#5B2C7D',
+		CronoMetadataMSI:     '#5B2C7D',
+		CronoETL:             '#1B8AC7',
+		CronoETL32:           '#1B8AC7',
+		CronoServer:          '#1B8AC7',
+		Crono:                '#1B8AC7',
+		CronoJobs:            '#1B8AC7',
+		CronoJobs32:          '#1B8AC7',
+		CronoAdministrator:   '#1B8AC7',
+		CronoAdministratorMSI:'#1B8AC7',
+		CronoExcel:           '#1E7B47',
+		CronoExcelMSI:        '#1E7B47',
+		CronoClassicMSI:      '#6B7280',
+		CronoExcelClassicMSI: '#1E7B47',
+	};
+	return mapping[releaseName] || '#6B7280';
+};
+
 const formatDate = (dateStr: string): string => {
 	if (!dateStr) return '';
 	const date = new Date(dateStr);
@@ -116,7 +142,7 @@ try {
 										target="_blank"
 										rel="noopener noreferrer"
 										title="Descargar instalador"
-									>
+										style={`--btn-color: ${getProductColor(item.ReleaseName)}`}>
 										<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
 											<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
 											<polyline points="7 10 12 15 17 10"/>
@@ -127,15 +153,17 @@ try {
 								)}
 							</td>
 							<td class="link-cell">
-								<a 
-									href={`/downloads/${productSlugMap[item.ReleaseName] || item.ReleaseName.toLowerCase()}`} 
+								<a
+									href={`/downloads/${productSlugMap[item.ReleaseName] || item.ReleaseName.toLowerCase()}`}
 									class="versions-btn"
 									title="Ver historial completo de versiones"
+									style={`--btn-color: ${getProductColor(item.ReleaseName)}`}
 								>
-									<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+									<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 										<path d="M12 8v4l3 3"/>
 										<circle cx="12" cy="12" r="10"/>
 									</svg>
+									Historial
 								</a>
 							</td>
 						</tr>
@@ -246,8 +274,32 @@ try {
 		justify-content: center;
 		gap: 0.35rem;
 		width: 100%;
-		padding: 0.375rem 0.5rem;
-		background: var(--sl-color-bg-nav);
+		padding: 0.375rem 0.625rem;
+		background: color-mix(in srgb, var(--btn-color) 12%, transparent);
+		border: 1px solid color-mix(in srgb, var(--btn-color) 30%, transparent);
+		border-radius: 0.375rem;
+		color: var(--btn-color);
+		font-size: 0.8125rem;
+		font-weight: 600;
+		text-decoration: none;
+		transition: all 0.15s;
+		white-space: nowrap;
+	}
+
+	.download-btn:hover {
+		background: var(--btn-color);
+		border-color: var(--btn-color);
+		color: white;
+	}
+
+	.versions-btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.3rem;
+		width: 100%;
+		padding: 0.375rem 0.625rem;
+		background: transparent;
 		border: 1px solid var(--sl-color-hairline);
 		border-radius: 0.375rem;
 		color: var(--sl-color-gray-2);
@@ -258,34 +310,10 @@ try {
 		white-space: nowrap;
 	}
 
-	.download-btn:hover {
-		background: var(--sl-color-bg-sidebar);
-		border-color: var(--sl-color-hairline-light);
-		color: var(--sl-color-white);
-	}
-
-	.versions-btn {
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-		width: 2rem;
-		height: 2rem;
-		background: transparent;
-		border: 1px solid var(--sl-color-hairline);
-		border-radius: 0.5rem;
-		color: var(--sl-color-gray-3);
-		text-decoration: none;
-		transition: all 0.15s;
-	}
-
 	.versions-btn:hover {
-		background: var(--sl-color-bg-nav);
-		border-color: var(--sl-color-hairline-light);
-		color: var(--sl-color-white);
-	}
-
-	.versions-btn:hover svg {
-		opacity: 1;
+		background: color-mix(in srgb, var(--btn-color) 12%, transparent);
+		border-color: color-mix(in srgb, var(--btn-color) 40%, transparent);
+		color: var(--btn-color);
 	}
 
 	.error-message,

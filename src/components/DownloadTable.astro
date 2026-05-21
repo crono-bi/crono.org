@@ -70,7 +70,7 @@ const hasExpiration = items.some(d => d.ExpirationDate);
 const hasSetupUri = items.some(d => d.SetupUri);
 ---
 
-<div class="download-table-container not-content">
+<div class="download-table-container not-content" style={`--btn-color: ${getProductColor(product)}`}>
 	{title && <h2>{title}</h2>}
 	
 	{error ? (
@@ -202,14 +202,15 @@ const hasSetupUri = items.some(d => d.SetupUri);
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		gap: 0.3rem;
 		width: 100%;
-		padding: 0.375rem 0.5rem;
-		background: var(--sl-color-bg-sidebar);
-		border: 1px solid var(--sl-color-hairline);
+		padding: 0.375rem 0.625rem;
+		background: color-mix(in srgb, var(--btn-color) 12%, transparent);
+		border: 1px solid color-mix(in srgb, var(--btn-color) 30%, transparent);
 		border-radius: 0.375rem;
-		color: var(--sl-color-gray-2);
+		color: var(--btn-color);
 		font-size: 0.8125rem;
-		font-weight: 500;
+		font-weight: 600;
 		text-decoration: none;
 		transition: all 0.15s;
 		white-space: nowrap;
@@ -218,9 +219,9 @@ const hasSetupUri = items.some(d => d.SetupUri);
 	}
 
 	.download-btn:hover {
-		background: var(--sl-color-bg-inline-code);
-		border-color: var(--sl-color-hairline-light);
-		color: var(--sl-color-white);
+		background: var(--btn-color);
+		border-color: var(--btn-color);
+		color: white;
 	}
 
 	.error-message,

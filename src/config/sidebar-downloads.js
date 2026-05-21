@@ -3,7 +3,8 @@ export const downloadsTopics = {
 	link: '/downloads/',
 	icon: 'download',
 	items: [
-		{ label: "Inicio", link: "downloads/" },
+		{ label: "Suite Crono", link: "downloads/" },
+		{ label: "Todos los productos", link: "downloads/all" },
 		{
 			label: "Productos principales",
 			items: [
