@@ -1,0 +1,433 @@
+---
+const products = [
+  { name: 'Crono SQL',      href: '/sql/',       color: '#10B981', rgb: '16,185,129',  tag: 'SQL',      icon: '<path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/>' },
+  { name: 'Crono ETL',      href: '/etl/',       color: '#1B8AC7', rgb: '27,138,199',  tag: 'ETL',      icon: '<circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M6 21V9a9 9 0 0 0 9 9"/>' },
+  { name: 'Crono Metadata', href: '/metadata/',  color: '#8B5CF6', rgb: '139,92,246',  tag: 'Metadata', icon: '<path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/>' },
+  { name: 'Crono Analysis', href: '/analysis/',  color: '#F97316', rgb: '249,115,22',  tag: 'BI',       icon: '<path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/>' },
+]
+
+const socials = [
+  {
+    label: 'LinkedIn',
+    href: 'https://www.linkedin.com/company/businessintelligence',
+    icon: '<path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>',
+  },
+  {
+    label: 'Twitter / X',
+    href: 'https://twitter.com/bifacil',
+    icon: '<path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>',
+  },
+  {
+    label: 'YouTube',
+    href: 'https://www.youtube.com/c/BusinessIntelligenceInfo',
+    icon: '<path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/>',
+  },
+  {
+    label: 'Facebook',
+    href: 'https://www.facebook.com/CronoBusinessIntelligence',
+    icon: '<path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>',
+  },
+]
+---
+
+<footer class="not-content hf">
+
+  <!-- ═══ CTA BAND ═══ -->
+  <div class="hf-band">
+    <div class="hf-band-glow"></div>
+    <div class="hf-band-inner">
+      <div class="hf-band-left">
+        <span class="hf-eyebrow">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          Plataforma Crono BI
+        </span>
+        <h2 class="hf-band-title">
+          Del dato crudo al <span class="hf-grad">dashboard.</span>
+        </h2>
+        <p class="hf-band-sub">ETL · Modelo semántico · Análisis · Reporting · IA. Una sola plataforma.</p>
+      </div>
+      <div class="hf-band-actions">
+        <a href="/downloads/" class="hf-btn-primary">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Descargar gratis
+        </a>
+        <a href="https://businessintelligence.es/demo" target="_blank" rel="noopener" class="hf-btn-ghost">Ver demo →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ MAIN ═══ -->
+  <div class="hf-main">
+    <div class="hf-grid">
+
+      <!-- Brand + Social -->
+      <div class="hf-brand">
+        <a href="/" class="hf-logo">
+          <img src="/logos/crono.webp" alt="Crono" class="hf-logo-img" />
+        </a>
+        <p class="hf-bio">Documentación técnica oficial de la plataforma Crono Business Intelligence.</p>
+        <div class="hf-socials">
+          {socials.map(s => (
+            <a href={s.href} target="_blank" rel="noopener" aria-label={s.label} class="hf-social-btn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" set:html={s.icon}></svg>
+            </a>
+          ))}
+        </div>
+        <div class="hf-ext-links">
+          <a href="https://businessintelligence.es/" target="_blank" rel="noopener" class="hf-ext">
+            businessintelligence.es
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M17 7H7M17 7v10"/></svg>
+          </a>
+          <a href="https://www.businessintelligence.info/" target="_blank" rel="noopener" class="hf-ext">
+            Blog Business Intelligence
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M17 7H7M17 7v10"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Productos -->
+      <div class="hf-col">
+        <p class="hf-col-label">Productos</p>
+        <div class="hf-products">
+          {products.map(p => (
+            <a href={p.href} class="hf-product" style={`--c:${p.color};--rgb:${p.rgb}`}>
+              <span class="hf-product-icon">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" set:html={p.icon}></svg>
+              </span>
+              <span class="hf-product-name">{p.name}</span>
+              <span class="hf-product-badge">{p.tag}</span>
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <!-- Recursos -->
+      <div class="hf-col">
+        <p class="hf-col-label">Recursos</p>
+        <nav class="hf-nav">
+          <a href="/downloads/" class="hf-nav-link">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Descargas
+          </a>
+          <a href="/playground/" class="hf-nav-link">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            Playground
+          </a>
+          <a href="/downloads/all/" class="hf-nav-link">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8v4l3 3"/><circle cx="12" cy="12" r="10"/></svg>
+            Novedades
+          </a>
+          <a href="/sql/intro/" class="hf-nav-link">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+            Empezar a leer
+          </a>
+        </nav>
+      </div>
+
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="hf-bar">
+      <span class="hf-copy">© {new Date().getFullYear()} Crono Business Intelligence</span>
+      <div class="hf-stack">
+        <span>Astro</span><span class="hf-sep">·</span>
+        <span>Starlight</span><span class="hf-sep">·</span>
+        <span>MDX</span>
+      </div>
+    </div>
+  </div>
+
+</footer>
+
+<style>
+  /* ── FULL BLEED ── */
+  .hf {
+    position: relative;
+    left: 50%;
+    width: 100vw;
+    transform: translateX(-50%);
+    margin-top: 5rem;
+  }
+
+  /* ═══ CTA BAND ═══ */
+  .hf-band {
+    position: relative;
+    overflow: hidden;
+    background: var(--sl-color-bg-nav);
+    border-top: 1px solid var(--sl-color-hairline);
+    padding: 5rem 3rem;
+  }
+  .hf-band-glow {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(ellipse 60% 180% at 0% 50%,  color-mix(in srgb, #1B8AC7 20%, transparent) 0%, transparent 55%),
+      radial-gradient(ellipse 50% 160% at 100% 50%, color-mix(in srgb, #8B5CF6 16%, transparent) 0%, transparent 55%),
+      radial-gradient(ellipse 40% 100% at 50% 100%, color-mix(in srgb, #10B981 8%, transparent) 0%, transparent 60%);
+  }
+  .hf-band-inner {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  .hf-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--sl-color-accent);
+    margin-bottom: 0.875rem;
+  }
+  .hf-band-title {
+    font-size: clamp(2.25rem, 4.5vw, 3.5rem);
+    font-weight: 800;
+    color: var(--sl-color-white);
+    line-height: 1.1;
+    letter-spacing: -0.04em;
+    margin: 0 0 0.875rem;
+  }
+  .hf-grad {
+    background: linear-gradient(90deg, #1B8AC7, #10B981);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .hf-band-sub {
+    font-size: 0.9rem;
+    color: var(--sl-color-gray-3);
+    margin: 0;
+    line-height: 1.5;
+  }
+  .hf-band-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    flex-shrink: 0;
+    min-width: 220px;
+  }
+  .hf-btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.875rem 1.75rem;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    background: var(--sl-color-accent);
+    color: white;
+    transition: all 0.2s;
+    box-shadow: 0 6px 28px -4px color-mix(in srgb, var(--sl-color-accent) 55%, transparent);
+  }
+  .hf-btn-primary:hover { filter: brightness(1.1); transform: translateY(-2px); box-shadow: 0 10px 36px -4px color-mix(in srgb, var(--sl-color-accent) 65%, transparent); }
+  .hf-btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.875rem 1.75rem;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 500;
+    text-decoration: none;
+    background: transparent;
+    border: 1px solid var(--sl-color-hairline);
+    color: var(--sl-color-gray-2);
+    transition: all 0.2s;
+  }
+  .hf-btn-ghost:hover { border-color: var(--sl-color-accent); color: var(--sl-color-white); background: color-mix(in srgb, var(--sl-color-accent) 6%, transparent); }
+
+  /* ═══ MAIN ═══ */
+  .hf-main {
+    background: var(--sl-color-bg);
+    border-top: 1px solid var(--sl-color-hairline);
+    padding: 3rem 3rem 0;
+  }
+  .hf-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1.3fr 1fr;
+    gap: 3rem;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid var(--sl-color-hairline);
+  }
+
+  /* Brand */
+  .hf-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    margin-bottom: 0.75rem;
+  }
+  .hf-logo-img {
+    height: 36px;
+    width: auto;
+    display: block;
+    flex-shrink: 0;
+    object-fit: contain;
+  }
+  .hf-logo-text {
+    font-size: 1.0625rem;
+    font-weight: 700;
+    color: var(--sl-color-white);
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+  .hf-logo-dot { color: var(--sl-color-accent); }
+  .hf-bio {
+    font-size: 0.875rem;
+    color: var(--sl-color-gray-3);
+    line-height: 1.6;
+    margin: 0 0 1.25rem;
+    max-width: 30ch;
+  }
+
+  /* Socials */
+  .hf-socials {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1.25rem;
+    flex-wrap: wrap;
+  }
+  .hf-social-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 9px;
+    border: 1px solid var(--sl-color-hairline);
+    color: var(--sl-color-gray-2);
+    text-decoration: none;
+    transition: all 0.15s;
+    background: var(--sl-color-bg-nav);
+  }
+  .hf-social-btn svg { width: 18px; height: 18px; }
+  .hf-social-btn:hover {
+    border-color: var(--sl-color-accent);
+    color: var(--sl-color-accent);
+    background: color-mix(in srgb, var(--sl-color-accent) 8%, transparent);
+    transform: translateY(-2px);
+  }
+
+  /* External links */
+  .hf-ext-links { display: flex; flex-direction: column; gap: 0.375rem; }
+  .hf-ext {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.8125rem;
+    color: var(--sl-color-gray-3);
+    text-decoration: none;
+    width: fit-content;
+    transition: color 0.15s;
+  }
+  .hf-ext:hover { color: var(--sl-color-white); }
+
+  /* Col label */
+  .hf-col-label {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    color: var(--sl-color-gray-2);
+    margin: 0 0 1rem;
+  }
+
+  /* Products */
+  .hf-products { display: flex; flex-direction: column; gap: 0.25rem; }
+  .hf-product {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    padding: 0.45rem 0.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    border: 1px solid transparent;
+    transition: all 0.15s;
+  }
+  .hf-product:hover {
+    background: color-mix(in srgb, var(--c) 8%, transparent);
+    border-color: color-mix(in srgb, var(--c) 20%, transparent);
+  }
+  .hf-product-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 7px;
+    background: color-mix(in srgb, var(--c) 12%, transparent);
+    border: 1px solid color-mix(in srgb, var(--c) 22%, transparent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--c);
+    flex-shrink: 0;
+  }
+  .hf-product-name {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--sl-color-gray-2);
+    flex: 1;
+    transition: color 0.15s;
+  }
+  .hf-product:hover .hf-product-name { color: var(--sl-color-white); }
+  .hf-product-badge {
+    font-size: 0.5875rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.15rem 0.4rem;
+    border-radius: 4px;
+    background: color-mix(in srgb, var(--c) 10%, transparent);
+    color: var(--c);
+    border: 1px solid color-mix(in srgb, var(--c) 22%, transparent);
+  }
+
+  /* Nav */
+  .hf-nav { display: flex; flex-direction: column; gap: 0.125rem; }
+  .hf-nav-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem 0;
+    font-size: 0.875rem;
+    color: var(--sl-color-gray-3);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+  .hf-nav-link svg { opacity: 0.5; flex-shrink: 0; transition: opacity 0.15s; }
+  .hf-nav-link:hover { color: var(--sl-color-white); }
+  .hf-nav-link:hover svg { opacity: 1; }
+
+  /* Bottom bar */
+  .hf-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem 0 1.25rem;
+  }
+  .hf-copy { font-size: 0.75rem; color: var(--sl-color-gray-3); }
+  .hf-stack { display: flex; align-items: center; gap: 0.4rem; font-size: 0.75rem; color: var(--sl-color-gray-3); }
+  .hf-sep { color: var(--sl-color-hairline); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 860px) {
+    .hf-band-inner { flex-direction: column; align-items: flex-start; }
+    .hf-band-actions { width: 100%; }
+    .hf-btn-primary, .hf-btn-ghost { width: 100%; }
+    .hf-grid { grid-template-columns: 1fr 1fr; }
+    .hf-brand { grid-column: 1 / -1; }
+  }
+  @media (max-width: 520px) {
+    .hf-band, .hf-main { padding-left: 1.25rem; padding-right: 1.25rem; }
+    .hf-grid { grid-template-columns: 1fr; }
+    .hf-bar { flex-direction: column; align-items: flex-start; }
+  }
+</style>

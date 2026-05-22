@@ -1,7 +1,7 @@
 ---
 // Descargas - Landing épica con grid de 3 productos
 
-const mainProducts = [
+const productDefs = [
   {
     id: 'analysis',
     name: 'Crono Analysis',
@@ -10,6 +10,7 @@ const mainProducts = [
     color: '#C85A47',
     rgb: '200, 90, 71',
     path: '/downloads/crono-analysis/',
+    apiKey: 'CronoAnalysis',
     icon: 'chart',
     features: ['Dashboards', 'KPIs', 'Reportes']
   },
@@ -21,6 +22,7 @@ const mainProducts = [
     color: '#5B2C7D',
     rgb: '91, 44, 125',
     path: '/downloads/crono-metadata/',
+    apiKey: 'CronoMetadata',
     icon: 'database',
     features: ['Semántica', 'Gobierno', 'Modelos']
   },
@@ -32,10 +34,26 @@ const mainProducts = [
     color: '#1B8AC7',
     rgb: '27, 138, 199',
     path: '/downloads/crono-etl/',
+    apiKey: 'CronoETL',
     icon: 'transfer',
     features: ['ETL', 'Pipelines', 'Conectores']
   }
 ]
+
+// Fetch latest SetupUri for each product
+const mainProducts = await Promise.all(productDefs.map(async (p) => {
+  let downloadUrl: string | null = null;
+  try {
+    const res = await fetch(`https://updates.crono.net/${p.apiKey}/history.json`);
+    if (res.ok) {
+      const items: any[] = await res.json();
+      items.sort((a, b) => new Date(b.Date).getTime() - new Date(a.Date).getTime());
+      const latest = items.find(i => i.SetupUri);
+      downloadUrl = latest?.SetupUri ?? null;
+    }
+  } catch {}
+  return { ...p, downloadUrl };
+}));
 ---
 
 <div class="dl-landing not-content">
@@ -73,7 +91,7 @@ const mainProducts = [
   <!-- ═══ 3 CARDS EN GRID ═══ -->
   <div class="dl-grid">
     {mainProducts.map(product => (
-      <a href={product.path} class="dl-card" style={`--c: ${product.color}; --rgb: ${product.rgb}`}>
+      <div class="dl-card" style={`--c: ${product.color}; --rgb: ${product.rgb}`}>
         <div class="dl-card-top">
           <div class="dl-card-icon">
             {product.icon === 'chart' && (
@@ -99,7 +117,9 @@ const mainProducts = [
           <span class="dl-card-tagline">{product.tagline}</span>
         </div>
         <div class="dl-card-body">
-          <h2 class="dl-card-name">{product.name}</h2>
+          <h2 class="dl-card-name">
+            <a href={product.path} class="dl-card-name-link">{product.name}</a>
+          </h2>
           <p class="dl-card-desc">{product.description}</p>
           <div class="dl-card-features">
             {product.features.map(f => (
@@ -108,16 +128,29 @@ const mainProducts = [
           </div>
         </div>
         <div class="dl-card-foot">
-          <span class="dl-card-btn">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-              <polyline points="7 10 12 15 17 10"/>
-              <line x1="12" y1="15" x2="12" y2="3"/>
-            </svg>
-            Descargar
-          </span>
+          {product.downloadUrl ? (
+            <a
+              href={product.downloadUrl}
+              class="dl-card-btn"
+              download
+            >
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="7 10 12 15 17 10"/>
+                <line x1="12" y1="15" x2="12" y2="3"/>
+              </svg>
+              Descargar
+            </a>
+          ) : (
+            <a href={product.path} class="dl-card-btn dl-card-btn--nav">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+              </svg>
+              Ver versiones
+            </a>
+          )}
         </div>
-      </a>
+      </div>
     ))}
   </div>
 
@@ -311,6 +344,12 @@ const mainProducts = [
     padding-top: 1rem;
     border-top: 1px solid var(--sl-color-hairline);
   }
+  .dl-card-name-link {
+    color: inherit;
+    text-decoration: none;
+  }
+  .dl-card-name-link:hover { text-decoration: underline; }
+
   .dl-card-btn {
     display: inline-flex;
     align-items: center;
@@ -324,12 +363,17 @@ const mainProducts = [
     color: var(--c);
     font-size: 0.875rem;
     font-weight: 600;
+    text-decoration: none;
     transition: background 0.2s, border-color 0.2s, color 0.2s;
   }
+  .dl-card-btn:hover,
   .dl-card:hover .dl-card-btn {
     background: var(--c);
     border-color: var(--c);
     color: white;
+  }
+  .dl-card-btn--nav {
+    background: rgba(var(--rgb), 0.06);
   }
 
   /* ── BANNER TODOS LOS PRODUCTOS ── */
