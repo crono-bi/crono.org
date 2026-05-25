@@ -11,7 +11,7 @@ const productDefs = [
     rgb: '200, 90, 71',
     path: '/downloads/crono-analysis/',
     apiKey: 'CronoAnalysis',
-    icon: 'chart',
+    icon: 'bar-chart',
     features: ['Dashboards', 'KPIs', 'Reportes']
   },
   {
@@ -94,9 +94,9 @@ const mainProducts = await Promise.all(productDefs.map(async (p) => {
       <div class="dl-card" style={`--c: ${product.color}; --rgb: ${product.rgb}`}>
         <div class="dl-card-top">
           <div class="dl-card-icon">
-            {product.icon === 'chart' && (
+            {product.icon === 'bar-chart' && (
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/>
+                <line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>
               </svg>
             )}
             {product.icon === 'database' && (
@@ -108,9 +108,7 @@ const mainProducts = await Promise.all(productDefs.map(async (p) => {
             )}
             {product.icon === 'transfer' && (
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v4"/>
-                <path d="M14 2v6h6"/>
-                <path d="M2 15h10"/><path d="m5 12-3 3 3 3"/><path d="m9 12 3 3-3 3"/>
+                <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
               </svg>
             )}
           </div>
@@ -288,17 +286,16 @@ const mainProducts = await Promise.all(productDefs.map(async (p) => {
     width: 42px;
     height: 42px;
     border-radius: 10px;
-    background: rgba(var(--rgb), 0.12);
-    border: 1px solid rgba(var(--rgb), 0.25);
+    background: var(--c);
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    color: var(--c);
-    transition: background 0.2s;
+    color: white;
+    transition: filter 0.2s;
   }
   .dl-card-icon svg { width: 20px; height: 20px; }
-  .dl-card:hover .dl-card-icon { background: rgba(var(--rgb), 0.2); }
+  .dl-card:hover .dl-card-icon { filter: brightness(1.1); }
 
   .dl-card-tagline {
     font-size: 0.6875rem;
@@ -333,9 +330,9 @@ const mainProducts = await Promise.all(productDefs.map(async (p) => {
     font-weight: 500;
     padding: 0.2rem 0.5rem;
     border-radius: 4px;
-    background: rgba(var(--rgb), 0.08);
+    background: transparent;
     color: var(--c);
-    border: 1px solid rgba(var(--rgb), 0.18);
+    border: 1px solid var(--c);
   }
 
   /* Footer con botón */
@@ -358,22 +355,22 @@ const mainProducts = await Promise.all(productDefs.map(async (p) => {
     justify-content: center;
     padding: 0.625rem;
     border-radius: 8px;
-    background: rgba(var(--rgb), 0.1);
-    border: 1px solid rgba(var(--rgb), 0.2);
-    color: var(--c);
+    background: var(--c);
+    border: 1px solid var(--c);
+    color: white;
     font-size: 0.875rem;
     font-weight: 600;
     text-decoration: none;
-    transition: background 0.2s, border-color 0.2s, color 0.2s;
+    transition: filter 0.2s;
   }
   .dl-card-btn:hover,
   .dl-card:hover .dl-card-btn {
-    background: var(--c);
-    border-color: var(--c);
-    color: white;
+    filter: brightness(1.1);
   }
   .dl-card-btn--nav {
-    background: rgba(var(--rgb), 0.06);
+    background: var(--sl-color-bg-nav);
+    border-color: var(--sl-color-hairline-light);
+    color: var(--sl-color-gray-2);
   }
 
   /* ── BANNER TODOS LOS PRODUCTOS ── */

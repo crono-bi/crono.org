@@ -115,7 +115,7 @@ const downloadsRgb = '37, 99, 235'
         <a href={item.path} class="dl-product-card" style={`--product-color: ${item.color}`}>
           <div class="dl-card-glow"></div>
           <div class="dl-card-top">
-            <div class="dl-card-icon" style={`background: ${item.color}18; color: ${item.color}`}>
+            <div class="dl-card-icon" style={`background: ${item.color}; color: white`}>
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
             </div>
           </div>
@@ -147,7 +147,7 @@ const downloadsRgb = '37, 99, 235'
     <div class="dl-product-grid dl-product-grid--small" style="margin-top: 1rem">
       {productGroups[1].items.map(item => (
         <a href={item.path} class="dl-product-card dl-product-card--compact" style={`--product-color: ${item.color}`}>
-          <div class="dl-card-icon-sm" style={`background: ${item.color}18; color: ${item.color}`}>
+          <div class="dl-card-icon-sm" style={`background: ${item.color}; color: white`}>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="14" x="2" y="3" rx="2"/><path d="M8 21h8m-4-4v4"/></svg>
           </div>
           <span class="dl-card-title-sm">{item.name}</span>
@@ -174,7 +174,7 @@ const downloadsRgb = '37, 99, 235'
       <div class="dl-product-grid dl-product-grid--small" style="margin-top: 1rem">
         {group.items.map(item => (
           <a href={item.path} class="dl-product-card dl-product-card--compact" style={`--product-color: ${item.color}`}>
-            <div class="dl-card-icon-sm" style={`background: ${item.color}18; color: ${item.color}`}>
+            <div class="dl-card-icon-sm" style={`background: ${item.color}; color: white`}>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
             </div>
             <span class="dl-card-title-sm">{item.name}</span>

@@ -1,7 +1,7 @@
 ---
 const products = [
-  { name: 'Crono SQL',      href: '/sql/',       color: '#10B981', rgb: '16,185,129',  tag: 'SQL',      icon: '<path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/>' },
-  { name: 'Crono ETL',      href: '/etl/',       color: '#1B8AC7', rgb: '27,138,199',  tag: 'ETL',      icon: '<circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M6 21V9a9 9 0 0 0 9 9"/>' },
+  { name: 'Crono SQL',      href: '/sql/',       color: '#10B981', rgb: '16,185,129',  tag: 'SQL',      icon: '<polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>' },
+  { name: 'Crono ETL',      href: '/etl/',       color: '#1B8AC7', rgb: '27,138,199',  tag: 'ETL',      icon: '<path d="M22 12h-4l-3 9L9 3l-3 9H2"/>' },
   { name: 'Crono Metadata', href: '/metadata/',  color: '#8B5CF6', rgb: '139,92,246',  tag: 'Metadata', icon: '<path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/>' },
   { name: 'Crono Analysis', href: '/analysis/',  color: '#F97316', rgb: '249,115,22',  tag: 'BI',       icon: '<path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/>' },
 ]
@@ -361,12 +361,11 @@ const socials = [
     width: 28px;
     height: 28px;
     border-radius: 7px;
-    background: color-mix(in srgb, var(--c) 12%, transparent);
-    border: 1px solid color-mix(in srgb, var(--c) 22%, transparent);
+    background: var(--c);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--c);
+    color: white;
     flex-shrink: 0;
   }
   .hf-product-name {
