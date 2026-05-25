@@ -34,7 +34,7 @@ export enum EngineId {
 export enum ExampleGroupId {
   Select     = 'SELECT',
   Delete     = 'DELETE',
-  Statements = 'Statements',
+  Statements = 'ETL Statements',
   ETL        = 'ETL',
   DML        = 'DML',
   Other      = 'Other'

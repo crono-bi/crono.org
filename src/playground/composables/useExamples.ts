@@ -6,8 +6,10 @@ import type { ExampleGroupData, ExampleItem } from '../types/interfaces'
 const exampleModules = import.meta.glob('/src/playground/examples/*.sql', { query: '?raw', import: 'default' })
 
 const GROUP_ORDER: ExampleGroupId[] = [
-  ExampleGroupId.Select, ExampleGroupId.Statements, ExampleGroupId.Delete,
-  ExampleGroupId.ETL, ExampleGroupId.DML, ExampleGroupId.Other
+  ExampleGroupId.Select, 
+  ExampleGroupId.Statements,
+  ExampleGroupId.DML, 
+  ExampleGroupId.Other
 ]
 
 const GROUP_MAP: Record<string, ExampleGroupId> = {
@@ -25,22 +27,15 @@ const GROUP_MAP: Record<string, ExampleGroupId> = {
   'identifier-delimiters': ExampleGroupId.Select,
   'functions': ExampleGroupId.Select, 
   'pseudo-views': ExampleGroupId.Select,
-  'delete': ExampleGroupId.Delete,
-  'delete-and-insert': ExampleGroupId.Delete,
-  'insert': ExampleGroupId.Delete,
-  'insert-all': ExampleGroupId.Delete,
-  'delete-ansi': ExampleGroupId.Delete, 
-  'update-ansi': ExampleGroupId.Statements,
+  'merge-history': ExampleGroupId.Statements,
   'merge-clone': ExampleGroupId.Statements,
-  'merge-history': ExampleGroupId.Statements, 
   'merge-soft-delete': ExampleGroupId.Statements,
-  'merge-update': ExampleGroupId.Statements, 
   'merge-upsert': ExampleGroupId.Statements,
-  'truncate-and-insert': ExampleGroupId.Statements, 
+  'insert-overwrite': ExampleGroupId.Statements,
+  'insert-if-new': ExampleGroupId.Statements,
+  'insert': ExampleGroupId.Statements,
   'update': ExampleGroupId.Statements,
-  'merge-all': ExampleGroupId.Statements,
-  'partition': ExampleGroupId.ETL, 
-  'update-all': ExampleGroupId.ETL,
+  'delete': ExampleGroupId.Statements,
   'create-table': ExampleGroupId.DML, 
   'alter-table': ExampleGroupId.DML, 
   'create-view': ExampleGroupId.DML,
@@ -52,11 +47,11 @@ const ITEM_ORDER: string[] = Object.keys(GROUP_MAP)
 
 // Crono SQL instructions that should be displayed in uppercase
 const CRONO_SQL_INSTRUCTIONS = new Set([
-  'merge-clone', 'merge-history', 'merge-update', 'merge-upsert', 
-  'merge-soft-delete', 'merge-all', 'select', 'filter', 'materialize',
+  'merge-history', 'merge-clone', 'merge-soft-delete', 'merge-upsert',
+  'insert-overwrite', 'insert-if-new', 'insert', 'update', 'delete',
+  'select', 'filter', 'materialize',
   'check-snowflake', 'assert', 'calculate', 'semi-join', 'anti-join',
-  'nested-selects', 'string-interpolation', 'pseudo-views',
-  'delete-and-insert', 'truncate-and-insert', 'update-all', 'partition'
+  'nested-selects', 'string-interpolation', 'pseudo-views'
 ])
 
 function fileNameToLabel(fileName: string): string {

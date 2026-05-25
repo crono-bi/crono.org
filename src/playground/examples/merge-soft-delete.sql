@@ -1,12 +1,12 @@
 /*
-  MERGE SOFT DELETE marks as deleted the records
-  that no longer exist in the source, without physically deleting them.
-  Adds a logical deletion column.
+  MERGE SOFT DELETE inserts and updates records from the source,
+  and marks as deleted (delete_date) those that no longer exist.
+  Records are never physically deleted, preserving the full history.
 */
 
-MERGE SOFT DELETE dwh.DimCustomers
+MERGE SOFT DELETE dwh.dim_customers KEY (customer_id)
 SELECT
-  CustomerId #CustomerId,
-  CustomerName,
-  Email
-FROM staging.Customers
+  customers.customer_id,
+  customers.company_name,
+  customers.country
+FROM staging.customers
