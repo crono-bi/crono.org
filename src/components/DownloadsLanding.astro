@@ -6,10 +6,10 @@ const productDefs = [
   {
     ...PRODUCTS.analysis,
     tagline: 'Análisis y reporting',
-    description: 'Informes interactivos y cuadros de mando para usuarios de negocio.',
+    description: 'Autoservicio de datos. Análisis libre con informes interactivos y cuadros de mando.',
     path: '/downloads/crono-analysis/',
     apiKey: 'CronoAnalysis',
-    features: ['Dashboards', 'KPIs', 'Reportes']
+    features: []
   },
   {
     ...PRODUCTS.metadata,
@@ -17,7 +17,7 @@ const productDefs = [
     description: 'Modelado de datos, diccionario semántico y gobierno de metadatos.',
     path: '/downloads/crono-metadata/',
     apiKey: 'CronoMetadata',
-    features: ['Semántica', 'Gobierno', 'Modelos']
+    features: []
   },
   {
     ...PRODUCTS.etl,
@@ -25,7 +25,7 @@ const productDefs = [
     description: 'Extracción, transformación y carga entre sistemas heterogéneos.',
     path: '/downloads/crono-etl/',
     apiKey: 'CronoETL',
-    features: ['ETL', 'Pipelines', 'Conectores']
+    features: []
   }
 ]
 
@@ -47,36 +47,6 @@ const mainProducts = await Promise.all(productDefs.map(async (p) => {
 
 <div class="dl-landing not-content">
 
-  <!-- ═══ INTRO ═══ -->
-  <div class="dl-intro">
-    <div class="dl-intro-badge">
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
-      </svg>
-      Plataforma de Business Intelligence
-    </div>
-    <p class="dl-intro-desc">
-      Tres productos que trabajan juntos para cubrir todo el ciclo del dato: 
-      desde la integración hasta el análisis.
-    </p>
-    <div class="dl-intro-stats">
-      <div class="dl-stat">
-        <span class="dl-stat-num">3</span>
-        <span class="dl-stat-label">productos</span>
-      </div>
-      <div class="dl-stat-divider"></div>
-      <div class="dl-stat">
-        <span class="dl-stat-num">100%</span>
-        <span class="dl-stat-label">integrados</span>
-      </div>
-      <div class="dl-stat-divider"></div>
-      <div class="dl-stat">
-        <span class="dl-stat-num">Windows</span>
-        <span class="dl-stat-label">64 y 32 bits</span>
-      </div>
-    </div>
-  </div>
-
   <!-- ═══ 3 CARDS EN GRID ═══ -->
   <div class="dl-grid">
     {mainProducts.map(product => (
@@ -90,11 +60,6 @@ const mainProducts = await Promise.all(productDefs.map(async (p) => {
             <a href={product.path} class="dl-card-name-link">{product.name}</a>
           </h2>
           <p class="dl-card-desc">{product.description}</p>
-          <div class="dl-card-features">
-            {product.features.map(f => (
-              <span class="dl-card-feature">{f}</span>
-            ))}
-          </div>
         </div>
         <div class="dl-card-foot">
           {product.downloadUrl ? (
@@ -396,15 +361,20 @@ const mainProducts = await Promise.all(productDefs.map(async (p) => {
     gap: 0.4rem;
     padding: 0.625rem 1.25rem;
     border-radius: 8px;
-    background: var(--sl-color-accent);
-    color: white;
+    background: transparent;
+    border: 1px solid var(--sl-color-hairline);
+    color: var(--sl-color-gray-2);
     font-size: 0.875rem;
-    font-weight: 600;
+    font-weight: 500;
     white-space: nowrap;
-    transition: opacity 0.2s;
+    transition: all 0.2s;
     flex-shrink: 0;
   }
-  .dl-banner:hover .dl-banner-cta { opacity: 0.88; }
+  .dl-banner:hover .dl-banner-cta {
+    background: var(--sl-color-bg-nav);
+    border-color: var(--sl-color-gray-3);
+    color: var(--sl-color-white);
+  }
 
   /* ── RESPONSIVE ── */
   @media (max-width: 800px) {

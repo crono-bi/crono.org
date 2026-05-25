@@ -3,10 +3,10 @@ export const downloadsTopics = {
 	link: '/downloads/',
 	icon: 'download',
 	items: [
-		{ label: "Suite Crono", link: "downloads/" },
+		{ label: "Descargas principales", link: "downloads/" },
 		{ label: "Todos los productos", link: "downloads/all" },
 		{
-			label: "Productos principales",
+			label: "Aplicaciones cliente",
 			items: [
 				{ label: "Crono Analysis", link: "downloads/crono-analysis" },
 				{ label: "Crono Metadata", link: "downloads/crono-metadata" },
