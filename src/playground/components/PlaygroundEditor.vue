@@ -84,10 +84,12 @@ const { selectedEngine, isCompiling, compilationError, etlOptions, cronoCode, sq
 const { toastMessage, toastType, copyToClipboard, loadCodeFromUrl } = useClipboard()
 
 
-function onLoadExample(item: ExampleItem) {
+async function onLoadExample(item: ExampleItem) {
   cronoCode.value = item.code
   sqlOutput.value = ''
   compilationError.value = ''
+  // Auto-compile when switching examples
+  await handleRun()
 }
 
 onMounted(() => {
