@@ -1,41 +1,30 @@
 ---
 // Descargas - Landing épica con grid de 3 productos
+import { PRODUCTS } from '../config/products'
 
 const productDefs = [
   {
-    id: 'analysis',
-    name: 'Crono Analysis',
+    ...PRODUCTS.analysis,
     tagline: 'Análisis y reporting',
     description: 'Informes interactivos y cuadros de mando para usuarios de negocio.',
-    color: '#C85A47',
-    rgb: '200, 90, 71',
     path: '/downloads/crono-analysis/',
     apiKey: 'CronoAnalysis',
-    icon: 'bar-chart',
     features: ['Dashboards', 'KPIs', 'Reportes']
   },
   {
-    id: 'metadata',
-    name: 'Crono Metadata',
+    ...PRODUCTS.metadata,
     tagline: 'Capa semántica',
     description: 'Modelado de datos, diccionario semántico y gobierno de metadatos.',
-    color: '#5B2C7D',
-    rgb: '91, 44, 125',
     path: '/downloads/crono-metadata/',
     apiKey: 'CronoMetadata',
-    icon: 'lightbulb',
     features: ['Semántica', 'Gobierno', 'Modelos']
   },
   {
-    id: 'etl',
-    name: 'Crono ETL',
+    ...PRODUCTS.etl,
     tagline: 'Integración de datos',
     description: 'Extracción, transformación y carga entre sistemas heterogéneos.',
-    color: '#1B8AC7',
-    rgb: '27, 138, 199',
     path: '/downloads/crono-etl/',
     apiKey: 'CronoETL',
-    icon: 'database',
     features: ['ETL', 'Pipelines', 'Conectores']
   }
 ]
@@ -93,26 +82,7 @@ const mainProducts = await Promise.all(productDefs.map(async (p) => {
     {mainProducts.map(product => (
       <div class="dl-card" style={`--c: ${product.color}; --rgb: ${product.rgb}`}>
         <div class="dl-card-top">
-          <div class="dl-card-icon">
-            {product.icon === 'bar-chart' && (
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>
-              </svg>
-            )}
-            {product.icon === 'database' && (
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-                <ellipse cx="12" cy="5" rx="9" ry="3"/>
-                <path d="M3 5V19A9 3 0 0 0 21 19V5"/>
-                <path d="M3 12A9 3 0 0 0 21 12"/>
-              </svg>
-            )}
-            {product.icon === 'lightbulb' && (
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7z"/>
-                <path d="M9 21h6"/>
-              </svg>
-            )}
-          </div>
+          <div class="dl-card-icon" set:html={product.icon} />
           <span class="dl-card-tagline">{product.tagline}</span>
         </div>
         <div class="dl-card-body">

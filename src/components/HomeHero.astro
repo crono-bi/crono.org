@@ -1,31 +1,25 @@
 ---
 import { Code } from 'astro-expressive-code/components'
 import HomeFooter from './HomeFooter.astro'
+import { PRODUCTS } from '../config/products'
 
 const products = [
   {
-    id: 'sql',
-    name: 'Crono SQL',
+    ...PRODUCTS.sql,
     tagline: 'Lenguaje SQL extendido',
     desc: 'Reduce el tiempo de desarrollo un 40%. Escribe 5 líneas de Crono SQL, genera 200 de SQL estándar automáticamente.',
     href: '/sql/',
-    color: '#10B981',
     stats: '376 docs',
-    icon: '<path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/>',
   },
   {
-    id: 'etl',
-    name: 'Crono ETL',
+    ...PRODUCTS.etl,
     tagline: 'Data Warehouse',
     desc: 'Cargas diarias automatizadas que nunca fallan. Ahorra 10 horas semanales de trabajo manual repetitivo.',
     href: '/etl/',
-    color: '#1B8AC7',
     stats: 'En desarrollo',
-    icon: '<circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M6 21V9a9 9 0 0 0 9 9"/>',
   },
   {
-    id: 'metadata',
-    name: 'Crono Metadata',
+    ...PRODUCTS.metadata,
     tagline: 'Capa Semántica',
     desc: 'Los usuarios de negocio crean sus propios informes sin depender del equipo IT. Auto-servicio de verdad.',
     href: '/metadata/',
@@ -34,14 +28,11 @@ const products = [
     icon: '<path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/>',
   },
   {
-    id: 'analysis',
-    name: 'Crono Analysis',
+    ...PRODUCTS.analysis,
     tagline: 'Business Intelligence',
     desc: 'Toma decisiones basadas en datos en minutos, no en días. Dashboards que se actualizan solos.',
     href: '/analysis/',
-    color: '#F97316',
     stats: '17 artículos',
-    icon: '<path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/>',
   },
 ]
 

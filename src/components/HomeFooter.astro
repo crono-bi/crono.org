@@ -1,9 +1,11 @@
 ---
+import { PRODUCTS } from '../config/products'
+
 const products = [
-  { name: 'Crono SQL',      href: '/sql/',       color: '#10B981', rgb: '16,185,129',  tag: 'SQL',      icon: '<polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>' },
-  { name: 'Crono ETL',      href: '/etl/',       color: '#1B8AC7', rgb: '27,138,199',  tag: 'ETL',      icon: '<ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5V19A9 3 0 0 0 21 19V5"/><path d="M3 12A9 3 0 0 0 21 12"/>' },
-  { name: 'Crono Metadata', href: '/metadata/',  color: '#8B5CF6', rgb: '139,92,246',  tag: 'Metadata', icon: '<path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7z"/><path d="M9 21h6"/>' },
-  { name: 'Crono Analysis', href: '/analysis/',  color: '#F97316', rgb: '249,115,22',  tag: 'BI',       icon: '<path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/>' },
+  { ...PRODUCTS.sql, href: '/sql/', tag: 'SQL' },
+  { ...PRODUCTS.etl, href: '/etl/', tag: 'ETL' },
+  { ...PRODUCTS.metadata, href: '/metadata/', tag: 'Metadata' },
+  { ...PRODUCTS.analysis, href: '/analysis/', tag: 'BI' },
 ]
 
 const socials = [
