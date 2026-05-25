@@ -5,7 +5,8 @@ export enum SqlDialect {
   Redshift   = 'Redshift',
   BigQuery   = 'BigQuery',
   Databricks = 'Databricks',
-  MSFabric   = 'Fabric'
+  MSFabric   = 'Fabric',
+  DuckDB     = 'DuckDB'
 }
 
 export enum Theme {
@@ -26,7 +27,8 @@ export enum EngineId {
   Redshift   = 'redshift',
   BigQuery   = 'bigquery',
   Databricks = 'databricks',
-  MSFabric   = 'msfabric'
+  MSFabric   = 'msfabric',
+  DuckDB     = 'duckdb'
 }
 
 export enum ExampleGroupId {

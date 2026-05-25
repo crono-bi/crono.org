@@ -12,7 +12,8 @@ const ENGINE_LABELS: Record<EngineId, string> = {
   [EngineId.Redshift]:   'Redshift',
   [EngineId.BigQuery]:   'BigQuery',
   [EngineId.Databricks]: 'Databricks',
-  [EngineId.MSFabric]:   'MS Fabric DWH'
+  [EngineId.MSFabric]:   'MS Fabric DWH',
+  [EngineId.DuckDB]:     'DuckDB'
 }
 
 const defaultCode = `/*

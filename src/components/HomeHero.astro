@@ -891,6 +891,7 @@ ORDER BY TotalSales DESC`
                 <span class="eco-engine-chip"><img src="/playground-assets/postgresql.svg" alt="" width="14" height="14"/>PostgreSQL</span>
                 <span class="eco-engine-chip"><img src="/playground-assets/databricks.svg" alt="" width="14" height="14"/>Databricks</span>
                 <span class="eco-engine-chip"><img src="/playground-assets/msfabric.svg" alt="" width="14" height="14"/>Fabric</span>
+                <span class="eco-engine-chip"><img src="/playground-assets/duckDB.svg" alt="" width="14" height="14"/>DuckDB</span>
               </div>
             </div>
           </div>
@@ -1004,6 +1005,9 @@ ORDER BY TotalSales DESC`
       </button>
       <button class="diagram-btn engine-btn" data-engine="msfabric" title="Microsoft Fabric">
         <img src="/playground-assets/msfabric.svg" alt="Microsoft Fabric" />
+      </button>
+      <button class="diagram-btn engine-btn" data-engine="duckdb" title="DuckDB">
+        <img src="/playground-assets/duckDB.svg" alt="DuckDB" />
       </button>
     </div>
 
@@ -6331,7 +6335,8 @@ ORDER BY TotalSales DESC`
       sqlserver:  '/playground-assets/microsoft-sql-server.svg',
       postgres:   '/playground-assets/postgresql.svg',
       databricks: '/playground-assets/databricks.svg',
-      msfabric:   '/playground-assets/msfabric.svg'
+      msfabric:   '/playground-assets/msfabric.svg',
+      duckdb:     '/playground-assets/duckDB.svg'
     };
     const engineNames: Record<string, string> = {
       snowflake:  'SNOWFLAKE',
@@ -6340,7 +6345,8 @@ ORDER BY TotalSales DESC`
       sqlserver:  'SQL SERVER',
       postgres:   'POSTGRESQL',
       databricks: 'DATABRICKS',
-      msfabric:   'MICROSOFT FABRIC'
+      msfabric:   'MICROSOFT FABRIC',
+      duckdb:     'DUCKDB'
     };
     const dwhTitle = document.getElementById('dwh-title');
     const engineBrandColors: Record<string, string> = {
@@ -6350,7 +6356,8 @@ ORDER BY TotalSales DESC`
       sqlserver:  '#A91D22',
       postgres:   '#336791',
       databricks: '#FF3621',
-      msfabric:   '#00D8AA'
+      msfabric:   '#00D8AA',
+      duckdb:     '#000000'
     };
 
     function resetToDefaultIcon() {

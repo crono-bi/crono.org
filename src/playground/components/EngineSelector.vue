@@ -29,7 +29,8 @@ const LOGOS = {
   [EngineId.Redshift]:   '/playground-assets/redshift.svg',
   [EngineId.BigQuery]:   '/playground-assets/bigquery.svg',
   [EngineId.Databricks]: '/playground-assets/databricks.svg',
-  [EngineId.MSFabric]:   '/playground-assets/msfabric.svg'
+  [EngineId.MSFabric]:   '/playground-assets/msfabric.svg',
+  [EngineId.DuckDB]:     '/playground-assets/duckDB.svg'
 } as const
 
 const props = defineProps<{
@@ -50,7 +51,8 @@ const engines: Engine[] = [
   { id: EngineId.SQLServer,  label: 'SQL Server',       icon: LOGOS[EngineId.SQLServer] },
   { id: EngineId.Postgres,   label: 'PostgreSQL',       icon: LOGOS[EngineId.Postgres] },
   { id: EngineId.Databricks, label: 'Databricks',       icon: LOGOS[EngineId.Databricks] },
-  { id: EngineId.MSFabric,   label: 'Microsoft Fabric', icon: LOGOS[EngineId.MSFabric] }
+  { id: EngineId.MSFabric,   label: 'Microsoft Fabric', icon: LOGOS[EngineId.MSFabric] },
+  { id: EngineId.DuckDB,     label: 'DuckDB',           icon: LOGOS[EngineId.DuckDB] }
 ]
 </script>
 
