@@ -76,14 +76,24 @@ const functions: FuncExample[] = [
   { code: 'substraction(a, b)', description: 'Resta segura' }
 ]
 
-const codeExample = `SELECT
+const codeExample = `/*
+  MERGE CLONE fully synchronizes the target table
+  with the SELECT result: inserts, updates and
+  deletes records as needed.
+*/
+
+MERGE CLONE dwh.DimProducts
+SELECT
+  ProductID #ProductID,
   Product.Name Product,
   ProductCategory.name ProductCategory,
-  sum(SalesOrderDetail.LineTotal) Sales
-FROM staging.SalesOrderDetail
-INNER JOIN staging.Product USING ProductId
+  ProductSubCategory.name ProductSubCategory
+FROM staging.Product
 LEFT JOIN staging.ProductSubCategory USING ProductSubcategoryID
 LEFT JOIN staging.ProductCategory USING ProductSubCategory(ProductCategoryId)`
+
+// Encode example code for playground URL
+const playgroundUrl = `/playground/?code=${btoa(encodeURIComponent(codeExample))}`
 ---
 
 <ManualLanding
@@ -108,8 +118,8 @@ LEFT JOIN staging.ProductCategory USING ProductSubCategory(ProductCategoryId)`
   playgroundCta={{
     title: 'Playground interactivo',
     description: 'Escribe Crono SQL y mira en tiempo real el SQL generado para cada motor de base de datos.',
-    buttonText: 'Abrir Playground',
-    href: '/playground'
+    buttonText: 'Probar este ejemplo',
+    href: playgroundUrl
   }}
   categories={categories}
   categoriesTitle="Explorar por categoría"

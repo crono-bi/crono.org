@@ -179,11 +179,9 @@ export function useCompilation() {
 
   const hasCompiledOnce: Ref<boolean> = ref(false)
 
-  // Auto-run when playground loads with ?code= in URL
+  // Auto-run when playground loads
   onMounted(() => {
-    if (hasCodeInUrl) {
-      handleRun().then(() => { hasCompiledOnce.value = true })
-    }
+    handleRun().then(() => { hasCompiledOnce.value = true })
   })
 
   watch(selectedEngine, () => {
