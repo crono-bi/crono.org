@@ -23,7 +23,7 @@ const productDefs = [
     rgb: '91, 44, 125',
     path: '/downloads/crono-metadata/',
     apiKey: 'CronoMetadata',
-    icon: 'database',
+    icon: 'lightbulb',
     features: ['Semántica', 'Gobierno', 'Modelos']
   },
   {
@@ -35,7 +35,7 @@ const productDefs = [
     rgb: '27, 138, 199',
     path: '/downloads/crono-etl/',
     apiKey: 'CronoETL',
-    icon: 'transfer',
+    icon: 'database',
     features: ['ETL', 'Pipelines', 'Conectores']
   }
 ]
@@ -106,9 +106,10 @@ const mainProducts = await Promise.all(productDefs.map(async (p) => {
                 <path d="M3 12A9 3 0 0 0 21 12"/>
               </svg>
             )}
-            {product.icon === 'transfer' && (
+            {product.icon === 'lightbulb' && (
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                <path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7z"/>
+                <path d="M9 21h6"/>
               </svg>
             )}
           </div>
