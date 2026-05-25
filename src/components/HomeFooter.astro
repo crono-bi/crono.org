@@ -2,10 +2,10 @@
 import { PRODUCTS } from '../config/products'
 
 const products = [
-  { ...PRODUCTS.sql, href: '/sql/', tag: 'SQL' },
-  { ...PRODUCTS.etl, href: '/etl/', tag: 'ETL' },
-  { ...PRODUCTS.metadata, href: '/metadata/', tag: 'Metadata' },
-  { ...PRODUCTS.analysis, href: '/analysis/', tag: 'BI' },
+  { ...PRODUCTS.sql, href: '/sql/', tags: ['SQL', 'Multimotor', 'DWH'] },
+  { ...PRODUCTS.etl, href: '/etl/', tags: ['Extracción', 'Carga', 'Transformación'] },
+  { ...PRODUCTS.metadata, href: '/metadata/', tags: ['Capa semántica', 'Lenguaje negocio'] },
+  { ...PRODUCTS.analysis, href: '/analysis/', tags: ['BI', 'Análisis libre', 'Autoservicio'] },
 ]
 
 const socials = [
@@ -97,7 +97,9 @@ const socials = [
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" set:html={p.icon}></svg>
               </span>
               <span class="hf-product-name">{p.name}</span>
-              <span class="hf-product-badge">{p.tag}</span>
+              {p.tags.map(tag => (
+                <span class="hf-product-badge">{tag}</span>
+              ))}
             </a>
           ))}
         </div>
@@ -131,11 +133,6 @@ const socials = [
     <!-- Bottom bar -->
     <div class="hf-bar">
       <span class="hf-copy">© {new Date().getFullYear()} Crono Business Intelligence</span>
-      <div class="hf-stack">
-        <span>Astro</span><span class="hf-sep">·</span>
-        <span>Starlight</span><span class="hf-sep">·</span>
-        <span>MDX</span>
-      </div>
     </div>
   </div>
 
@@ -381,8 +378,7 @@ const socials = [
   .hf-product-badge {
     font-size: 0.5875rem;
     font-weight: 700;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
+    letter-spacing: 0.03em;
     padding: 0.15rem 0.4rem;
     border-radius: 4px;
     background: color-mix(in srgb, var(--c) 10%, transparent);
