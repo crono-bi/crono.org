@@ -1,10 +1,3 @@
-/*
-  DELETE removes records from the target table whose KEY matches
-  the SELECT result. Supports complex filtering and aggregations
-  that cannot be expressed in a simple ANSI WHERE clause.
-  This example deletes orders where the average discount
-  exceeds 50% of the total amount.
-*/
 
 /*
   UPDATE modifies records in the target table whose KEY matches
