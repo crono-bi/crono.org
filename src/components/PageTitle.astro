@@ -1,7 +1,9 @@
 ---
 import Default from '@astrojs/starlight/components/PageTitle.astro';
 
-const isPlayground = Astro.url.pathname.startsWith('/playground');
+const path = Astro.url.pathname;
+const hiddenPaths = ['/playground', '/sql', '/etl', '/metadata', '/analysis'];
+const isHidden = hiddenPaths.some(p => path === p || path === p + '/');
 ---
 
-{!isPlayground && <Default {...Astro.props}><slot /></Default>}
+{!isHidden && <Default {...Astro.props}><slot /></Default>}
