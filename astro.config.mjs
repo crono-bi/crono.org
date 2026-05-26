@@ -42,6 +42,7 @@ export default defineConfig({
 			social: [],
 			customCss: ['./src/styles/custom.css'],
 			components: {
+				Header: './src/components/Header.astro',
 				SiteTitle: './src/components/SiteTitle.astro',
 				ThemeSelect: './src/components/ThemeToggle.astro',
 				Sidebar: './src/components/Sidebar.astro',
