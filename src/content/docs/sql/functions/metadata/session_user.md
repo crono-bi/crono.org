@@ -2,8 +2,12 @@
 title: "session_user"
 ---
 
+La función `session_user` devuelve el nombre del usuario de la sesión actual, tal como fue autenticado al conectarse.
 
-SESSION_USER devuelve el nombre de usuario del contexto actual en la base de datos actual.
+Esta función se comporta como una constante del sistema y no requiere paréntesis.
 
-## Comentarios 
+## Ejemplo
 
+```crono-sql
+select session_user resultado;
+```

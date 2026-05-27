@@ -2,8 +2,12 @@
 title: "current_user"
 ---
 
+La función `current_user` devuelve el nombre del usuario de base de datos con el que se está ejecutando la sesión actual.
 
-Esta función devuelve el nombre del usuario actual. Esta función es equivalente a `USER_NAME()`.
+Esta función se comporta como una constante del sistema y no requiere paréntesis.
 
-## Comentarios 
+## Ejemplo
 
+```crono-sql
+select current_user resultado;
+```

@@ -2,8 +2,12 @@
 title: "system_user"
 ---
 
+La función `system_user` devuelve el nombre del inicio de sesión del sistema operativo con el que se está ejecutando la sesión actual.
 
-Permite insertar en una tabla un valor proporcionado por el sistema para el inicio de sesión actual cuando no se especifica ningún valor predeterminado.
+Esta función se comporta como una constante del sistema y no requiere paréntesis.
 
-## Comentarios 
+## Ejemplo
 
+```crono-sql
+select system_user resultado;
+```

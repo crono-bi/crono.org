@@ -2,41 +2,24 @@
 title: "quartile"
 ---
 
+La función `quartile` es una función de ventana que clasifica cada fila en uno de los 4 grupos de igual tamaño según el valor de la expresión de ordenación. El grupo 1 contiene los valores más bajos y el 4 los más altos.
 
-La función `quartile` es una función de ventana que devuelve el ranking de cada fila normalizado entre 1 y 4. Es decir, divide el conjunto de registros en 4 grupos con el mismo número de registros cada uno y los numera de 1 a 10.
-
-Requiere la cláusula ORDER BY en la partición OVER.
-
-Se puede usar tanto la sintaxis `OVER` del SQL estándar como la sintaxis compacta propia de Crono.
+Requiere la cláusula `ORDER BY`. Se puede usar tanto la sintaxis `OVER` estándar como la sintaxis compacta de Crono.
 
 ## Ejemplo
 
-La siguiente consulta devuelve el cuartil de ventas en que se encuentra cada libro. Los libros con un percentil de 4 están en el grupo del 25% de libros más vendidos.
+La siguiente consulta devuelve el cuartil de ventas de cada producto. Los productos del cuartil 4 están entre el 25% más vendido:
 
 ```crono-sql
-select 
-  lb_libros.titulo libro,
-  sum(unidades) ventas,
-  quartile(order by ventas) percentil
-from dbo.lb_ventas
-inner join lb_libros using id_libro
-group by all
-```
-
-La consulta SQL generada es:
-
-```crono-sql
-SELECT
-  lb_libros.titulo AS libro,
-  sum(unidades) AS ventas,
-  ceiling(4.0*rank() OVER (ORDER BY sum(unidades))/count(*) OVER ()) AS percentil
-FROM dbo.lb_ventas
-INNER JOIN lb_libros ON (lb_ventas.id_libro=lb_libros.id_libro)
-GROUP BY lb_libros.titulo
+select
+  products.product_name,
+  sum(order_details.unit_price * order_details.quantity) ventas,
+  quartile(order by ventas) cuartil
+from staging.order_details
+inner join staging.products using product_id
+group by all;
 ```
 
 ## Comentarios
 
-Esta función es similar a `rank`, `percentile`, `decile` y `quantile`. La función `rank` devuelve la posición ordinal de cada registro, mientras que las otras funciones clasifican los registros en grupos de distintos tamaños (100, 10, 4 o *n*).
-
-
+Esta función es similar a `percentile`, `decile` y `quantile`. La función `rank` devuelve la posición ordinal, mientras que estas funciones clasifican los registros en grupos de distinto tamaño (100, 10, 4 o *n*).

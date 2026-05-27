@@ -2,68 +2,34 @@
 title: "runningsum"
 ---
 
+La función `runningsum` es una función de ventana que devuelve la suma acumulada de un indicador desde el inicio del rango hasta cada fila.
 
-La función `runningsum` es una función de ventana que devuelve el acumulado de un indicador desde el inicio del rango hasta cada fila.
-
-Requiere la cláusula ORDER BY en la partición OVER.
-
-Se puede usar tanto la sintaxis `OVER` del SQL estándar como la sintaxis compacta propia de Crono.
+Requiere la cláusula `ORDER BY`. Se puede usar tanto la sintaxis `OVER` estándar como la sintaxis compacta de Crono.
 
 ## Ejemplo
 
-La siguiente consulta devuelve las ventas de cada mes y el acumulado desde el inicio de la historia.
+La siguiente consulta muestra las ventas de cada mes y el acumulado histórico:
 
 ```crono-sql
-select 
-  year(fecha) anyo,
-  month(fecha) mes,
-  sum(unidades) ventas,
-  runningsum(ventas order by anyo,mes)
-from dbo.lb_ventas
-group by all
+select
+  year(orders.order_date) anyo,
+  month(orders.order_date) mes,
+  sum(order_details.unit_price * order_details.quantity) ventas,
+  runningsum(ventas order by anyo, mes) ventas_acumuladas
+from staging.order_details
+inner join staging.orders using order_id
+group by all;
 ```
 
-La consulta SQL generada es:
+También se puede incluir `PARTITION BY` para reiniciar el acumulado en cada grupo:
 
 ```crono-sql
-SELECT
-  year(fecha) AS anyo,
-  month(fecha) AS mes,
-  sum(unidades) AS ventas,
-  sum(sum(unidades)) OVER (ORDER BY year(fecha),month(fecha) ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW) AS expr4
-FROM dbo.lb_ventas
-GROUP BY
-  year(fecha),
-  month(fecha)
+select
+  year(orders.order_date) anyo,
+  month(orders.order_date) mes,
+  sum(order_details.unit_price * order_details.quantity) ventas,
+  runningsum(ventas partition by anyo order by mes) ventas_acumuladas_anyo
+from staging.order_details
+inner join staging.orders using order_id
+group by all;
 ```
-
-También se puede incluir la cláusula `PARTITION BY`. La siguiente consulta muestra las ventas de todos los meses de todos los años, incluyendo el acumulado desde el inicio de año.
-
-
-```crono-sql
-
-select 
-  year(fecha) anyo,
-  month(fecha) mes,
-  sum(unidades) ventas,
-  runningsum(ventas partition by anyo order by mes)
-from dbo.lb_ventas
-group by all
-```
-
-El SQL generado es:
-
-```crono-sql
-SELECT
-  year(fecha) AS anyo,
-  month(fecha) AS mes,
-  sum(unidades) AS ventas,
-  sum(sum(unidades)) OVER (PARTITION BY year(fecha) ORDER BY month(fecha) ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW) AS expr4
-FROM dbo.lb_ventas
-GROUP BY
-  year(fecha),
-  month(fecha)
-```
-
-
-

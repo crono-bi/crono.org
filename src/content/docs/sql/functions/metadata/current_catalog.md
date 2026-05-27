@@ -2,17 +2,12 @@
 title: "current_catalog"
 ---
 
+La función `current_catalog` devuelve el nombre de la base de datos actualmente en uso.
 
+Esta función se comporta como una constante del sistema y no requiere paréntesis.
 
-La función `current_catalog` devuelve el nombre del catálogo (base de datos) actualmente en uso en la sesión de conexión.
-
-Esta función no requiere paréntesis, ya que actúa como una constante de sistema.
-
-`CURRENT_CATALOG` es Equivalente a funciones como `DB_NAME()` en SQL Server o `current_database()` en PostgreSQL.
-
-**Sintaxis:**  
+## Ejemplo
 
 ```crono-sql
-current_catalog
+select current_catalog resultado;
 ```
-

@@ -2,53 +2,21 @@
 title: "next_value"
 ---
 
+La función `next_value` es una función de ventana que devuelve el valor de la siguiente fila del rango.
 
-La función `next_value` es una función de ventana que devuelve el valor del siguiente registro del rango.
-
-Requiere la cláusula `ORDER BY` en la partición `OVER`.
-
-Se puede usar tanto la sintaxis `OVER` del SQL estándar como la sintaxis compacta propia de Crono.
+Requiere la cláusula `ORDER BY`. Se puede usar tanto la sintaxis `OVER` estándar como la sintaxis compacta de Crono.
 
 ## Ejemplo
 
-La siguiente consulta devuelve las ventas de cada mes y las ventas en el mes siguiente.
+La siguiente consulta devuelve las ventas de cada mes junto con las ventas del mes siguiente:
 
 ```crono-sql
-select 
-  year(fecha) anyo, 
-  month(fecha) mes,
-  sum(unidades) ventas,
-  next_value(ventas) over (order by anyo,mes) nextValue,
-from dbo.lb_ventas
-group by all
+select
+  year(orders.order_date) anyo,
+  month(orders.order_date) mes,
+  sum(order_details.unit_price * order_details.quantity) ventas,
+  next_value(ventas order by anyo, mes) ventas_mes_siguiente
+from staging.order_details
+inner join staging.orders using order_id
+group by all;
 ```
-
-La misma consulta se puede construir con la sintaxis compacta del `OVER`:
-
-```crono-sql
-select 
-  year(fecha) anyo, 
-  month(fecha) mes,
-  sum(unidades) ventas,
-  next_value(ventas order by anyo,mes) nextValue,
-from dbo.lb_ventas
-group by all
-```
-
-La consulta SQL generada en ambos casos es:
-
-```crono-sql
-
-SELECT
-  year(fecha) AS anyo,
-  month(fecha) AS mes,
-  sum(unidades) AS ventas,
-  max(sum(unidades)) OVER (ORDER BY year(fecha),month(fecha) ROWS BETWEEN 1 FOLLOWING AND 1 FOLLOWING) AS nextValue
-FROM dbo.lb_ventas
-GROUP BY
-  year(fecha),
-  month(fecha)
-```
-
-
-

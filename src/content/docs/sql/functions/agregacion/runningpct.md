@@ -2,38 +2,21 @@
 title: "runningpct"
 ---
 
+La función `runningpct` es una función de ventana que devuelve el porcentaje acumulado de un indicador desde el inicio del rango hasta cada fila, respecto al total.
 
-La función `runningpct` es una función de ventana que devuelve el porcentaje acumulado de un indicador desde el inicio del rango respecto el total.
-
-Requiere la cláusula ORDER BY en la partición OVER.
-
-Se puede usar tanto la sintaxis `OVER` del SQL estándar como la sintaxis compacta propia de Crono.
+Requiere las cláusulas `PARTITION BY` y `ORDER BY`. Se puede usar tanto la sintaxis `OVER` estándar como la sintaxis compacta de Crono.
 
 ## Ejemplo
 
-La siguiente consulta devuelve el porcentaje de ventas acumulado (*year to date* ) para cada mes .
+La siguiente consulta muestra el porcentaje de ventas acumulado por mes dentro de cada año:
 
 ```crono-sql
-select 
-  year(fecha) anyo,
-  month(fecha) mes,
-  sum(unidades) ventas,
-  runningpct(ventas partition by anyo order by mes)
-from dbo.lb_ventas
-group by all
+select
+  year(orders.order_date) anyo,
+  month(orders.order_date) mes,
+  sum(order_details.unit_price * order_details.quantity) ventas,
+  runningpct(ventas partition by anyo order by mes) pct_acumulado
+from staging.order_details
+inner join staging.orders using order_id
+group by all;
 ```
-
-La consulta SQL generada es:
-
-```crono-sql
-SELECT
-  year(fecha) AS anyo,
-  month(fecha) AS mes,
-  sum(unidades) AS ventas,
-  CASE WHEN sum(sum(unidades)) OVER (PARTITION BY year(fecha))<>0 THEN 1.0*sum(sum(unidades)) OVER (PARTITION BY year(fecha) ORDER BY month(fecha) ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW)/sum(sum(unidades)) OVER (PARTITION BY year(fecha)) END AS expr4
-FROM dbo.lb_ventas
-GROUP BY
-  year(fecha),
-  month(fecha)
-```
-

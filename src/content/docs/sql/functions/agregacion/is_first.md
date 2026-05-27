@@ -2,45 +2,20 @@
 title: "is_first"
 ---
 
+La función `is_first` es una función de ventana que devuelve `1` para la primera fila del rango y `0` para el resto.
 
-La función `is_first` es una función de ventana que identifica la fila inicial del rango.
+Se puede usar tanto la sintaxis `OVER` estándar como la sintaxis compacta de Crono.
 
-**Sintaxis:**
+## Ejemplo
 
-```crono-sql
-is_first() over (PARTITION BY ... ORDER BY ...)
-```
-
-Como todas las funciones de ventana admite la sintaxis compacta:
+La siguiente consulta identifica el primer y el último pedido de cada cliente:
 
 ```crono-sql
-is_first(PARTITION BY ... ORDER BY ...)
-```
-
-# Ejemplo
-
-La siguiente sentencia usa las funciiones `is_first` y `is_last` para identificar el primer y último escandallo de cada artículo.
-
-```crono-sql
-select 
-	articulo, 
-	coste, 
-	fecha FechaInicio, 
-	end_datetime(fecha partition by articulo) Fechafin,
-	is_first(partition by articulo order by fecha) EsPrimerEscandallo,
-	is_last(partition by articulo order by fecha) EsUltimoEscandallo
-from stg.escandallos
-```
-
-El código generado es:
-
-```crono-sql
-SELECT
-  articulo,
-  coste,
-  fecha AS FechaInicio,
-  coalesce(max(fecha) OVER (PARTITION BY articulo ORDER BY fecha ROWS BETWEEN 1 FOLLOWING And 1 FOLLOWING),'21000101') AS Fechafin,
-  CAST(CASE WHEN ROW_NUMBER() OVER (PARTITION BY articulo ORDER BY fecha)=1 THEN 1 ELSE 0 END AS bit) AS EsPrimerEscandallo,
-  CAST(CASE WHEN ROW_NUMBER() OVER (PARTITION BY articulo ORDER BY fecha DESC)=1 THEN 1 ELSE 0 END AS bit) AS EsUltimoEscandallo
-FROM stg.escandallos
+select
+  customers.company_name,
+  orders.order_date,
+  is_first(partition by orders.customer_id order by orders.order_date) primer_pedido,
+  is_last(partition by orders.customer_id order by orders.order_date) ultimo_pedido
+from staging.orders
+inner join staging.customers using customer_id;
 ```

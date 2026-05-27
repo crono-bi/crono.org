@@ -2,69 +2,34 @@
 title: "pct"
 ---
 
+La función `pct` es una función de ventana que devuelve el porcentaje de cada valor respecto a la suma total del rango.
 
-La función `pct` es una función de ventana que devuelve el porcentaje de cada valor respecto la suma de todos los registros del rango.
-
-Es una función con `OVER` implícito, es decir, si no se especifica la partición se asume `OVER ()`
-
-Se puede usar tanto la sintaxis `OVER` del SQL estándar como la sintaxis compacta propia de Crono.
+Si no se especifica `PARTITION BY`, el denominador es la suma global. Se puede usar tanto la sintaxis `OVER` estándar como la sintaxis compacta de Crono.
 
 ## Ejemplo
 
-La siguiente consulta devuelve las ventas de cada mes y el porcentaje de cada mes respecto el total del año.
+La siguiente consulta muestra las ventas de cada categoría y su porcentaje sobre el total:
 
 ```crono-sql
-select 
-  year(fecha) anyo, 
-  month(fecha) mes, 
-  sum(unidades) ventas,
-  pct(ventas) pct
-from dbo.lb_ventas
-where anyo=2012
-group by all
+select
+  categories.category_name,
+  sum(order_details.unit_price * order_details.quantity) ventas,
+  pct(ventas) pct_sobre_total
+from staging.order_details
+inner join staging.products using product_id
+inner join staging.categories using category_id
+group by all;
 ```
 
-La consulta SQL generada es:
+También es posible usar `PARTITION BY` para calcular el porcentaje dentro de un grupo:
 
 ```crono-sql
-SELECT
-  year(fecha) AS anyo,
-  month(fecha) AS mes,
-  sum(unidades) AS ventas,
-  CASE WHEN sum(sum(unidades)) OVER ()<>0 THEN 1.0*sum(unidades)/sum(sum(unidades)) OVER () END AS [pct]
-FROM dbo.lb_ventas
-WHERE year(fecha)=2012
-GROUP BY
-  year(fecha),
-  month(fecha)
+select
+  year(orders.order_date) anyo,
+  month(orders.order_date) mes,
+  sum(order_details.unit_price * order_details.quantity) ventas,
+  pct(ventas partition by anyo) pct_sobre_anyo
+from staging.order_details
+inner join staging.orders using order_id
+group by all;
 ```
-
-También se puede incluir la cláusula `PARTITION BY`. La siguiente consulta muestra las ventas de todos los meses de todos los años, incluyendo el porcentaje de cada mes respecto al total anual.
-
-
-```crono-sql
-select 
-  year(fecha) anyo, 
-  month(fecha) mes, 
-  sum(unidades) ventas,
-  pct(ventas partition by anyo) pct
-from dbo.lb_ventas
-group by all
-```
-
-El SQL generado es:
-
-```crono-sql
-SELECT
-  year(fecha) AS anyo,
-  month(fecha) AS mes,
-  sum(unidades) AS ventas,
-  CASE WHEN sum(sum(unidades)) OVER (PARTITION BY year(fecha))<>0 THEN 1.0*sum(unidades)/sum(sum(unidades)) OVER (PARTITION BY year(fecha)) END AS [pct]
-FROM dbo.lb_ventas
-GROUP BY
-  year(fecha),
-  month(fecha)
-```
-
-
-

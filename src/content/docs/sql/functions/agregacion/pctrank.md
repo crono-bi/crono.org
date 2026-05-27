@@ -2,44 +2,25 @@
 title: "pctrank"
 ---
 
+La función `pctrank` es una función de ventana que devuelve la posición relativa de cada fila normalizada entre 0 y 1.
 
-La función `pctrank` es una función de ventana que devuelve el ranking de cada fila normalizado entre 0 y 1.
-
-Requiere la cláusula ORDER BY en la partición OVER.
-
-Se puede usar tanto la sintaxis `OVER` del SQL estándar como la sintaxis compacta propia de Crono.
+Requiere la cláusula `ORDER BY`. Se puede usar tanto la sintaxis `OVER` estándar como la sintaxis compacta de Crono.
 
 ## Ejemplo
 
-La siguiente consulta devuelve el 40% de las tiendas con mayor venta.
+La siguiente consulta devuelve los productos del 20% superior en ventas:
 
 ```crono-sql
-select 
-  lb_tiendas.nombre tienda,
-  sum(unidades) ventas,
-  pctrank(order by ventas desc) rank
-from dbo.lb_ventas
-inner join lb_tiendas using id_tienda
+select
+  products.product_name,
+  sum(order_details.unit_price * order_details.quantity) ventas,
+  pctrank(order by ventas desc) ranking
+from staging.order_details
+inner join staging.products using product_id
 group by all
-qualify rank<0.4
-```
-
-La consulta SQL generada es:
-
-```crono-sql
-SELECT *
-FROM (
-    SELECT
-      lb_tiendas.nombre AS tienda,
-      sum(unidades) AS ventas,
-      1.0*rank() OVER (ORDER BY sum(unidades) DESC)/count(*) OVER () AS rank
-    FROM dbo.lb_ventas
-    INNER JOIN lb_tiendas ON (lb_ventas.id_tienda=lb_tiendas.id_tienda)
-    GROUP BY lb_tiendas.nombre
-  ) a
-WHERE rank<0.4
+qualify ranking < 0.2;
 ```
 
 ## Comentarios
 
-Esta función es similar a `rank` y `percentile`. La función `rank` devuelve la posición ordinal de cada registro, `percentile` la normaliza entre 0 y 100, y `pctrank`la normaliza entre 0 y 1.
+Esta función es similar a `percentile`. La diferencia es que `pctrank` normaliza entre 0 y 1, mientras que `percentile` lo hace entre 1 y 100.
