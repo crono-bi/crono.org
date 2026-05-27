@@ -14,6 +14,8 @@ const GROUP_ORDER: ExampleGroupId[] = [
 
 const GROUP_MAP: Record<string, ExampleGroupId> = {
   'select': ExampleGroupId.Select,
+  'smart-columns': ExampleGroupId.Select,
+  'nested-selects': ExampleGroupId.Select,
   'filter': ExampleGroupId.Select,
   'materialize': ExampleGroupId.Select,
   'check-snowflake': ExampleGroupId.Select,
