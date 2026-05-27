@@ -1,18 +1,23 @@
 ---
-title: "coalesce ❇️"
+title: "coalesce"
 ---
 
-
-La función `coalesce` evalúa los argumentos en orden y devuelve el valor de la primera expresión que no se evalúa como NULL. Por ejemplo, `SELECT COALESCE(NULL, NULL, 'third_value', 'fourth_value')` devuelve el tercer valor porque el tercer valor es el primer valor que no es `NULL`.
-
+La función `coalesce` evalúa sus argumentos en orden y devuelve el primer valor que no sea `NULL`.
 
 ## Ejemplo
 
 ```crono-sql
-SELECT COALESCE(NULL, NULL, 'third_value', 'fourth_value')
+select coalesce(null, null, 'tercero', 'cuarto') resultado;
 ```
 
+El resultado es:
 
-## Comentarios
+> tercero
 
+También es habitual usarla con columnas que pueden contener valores nulos:
 
+```crono-sql
+select customers.customer_id,
+  coalesce(customers.region, 'Sin región') region
+from staging.customers;
+```

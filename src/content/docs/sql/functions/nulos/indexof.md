@@ -2,25 +2,16 @@
 title: "indexof"
 ---
 
+La función `indexof` devuelve la posición de una expresión dentro de una lista de valores. El índice comienza en 1. Si la expresión no se encuentra en la lista, devuelve `NULL`.
 
-La función `IndexOf` devuelve la posición de una expresión dentro de la lista.
+Es una forma compacta de traducir valores en su posición ordinal.
 
-Se trata de un modo compacto de utilizar la sintaxis simple de `CASE`.
-
-
-# Ejemplo
+## Ejemplo
 
 ```crono-sql
-select Id,IndexOf(Description, 'High', 'Medium', 'Low') Code
-from MyTable
+select indexof('Medio', 'Alto', 'Medio', 'Bajo') resultado;
 ```
 
-La sentencia SQL generada utiliza la expresión `CASE`:
+El resultado es:
 
-```crono-sql
-SELECT
-  Id,
-  CASE Description WHEN 'High' THEN 1 WHEN 'Medium' THEN 2 WHEN 'Low' THEN 3 END AS Code
-FROM MyTable
-```
-
+> 2

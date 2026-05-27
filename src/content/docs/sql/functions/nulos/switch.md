@@ -2,29 +2,16 @@
 title: "switch"
 ---
 
+La función `switch` evalúa una expresión y devuelve el resultado asociado al primer valor que coincida. Es una forma compacta de escribir una expresión `CASE`.
 
-La función `switch` es una manera compacta de utilizar el la sintaxis simple de `CASE`. Esta función evalúa una expresión y devuelve una de las posibles salidas en función de su valor.
-
-Requiere por lo menos 3 argumentos. 
+El último argumento, si el número total de argumentos es par, actúa como valor por defecto.
 
 ## Ejemplo
 
 ```crono-sql
-select Code, switch(Code, 1,'High', 2, 'Medium', 3, 'Low', 'N.A.')
-from MyDimensionTable
+select switch(2, 1, 'Alto', 2, 'Medio', 3, 'Bajo', 'Desconocido') resultado;
 ```
 
-El código SQL generado utiliza el operador `CASE`:
+El resultado es:
 
-```crono-sql
-SELECT
-  Code,
-  CASE Code WHEN 1 THEN 'High' WHEN 2 THEN 'Medium' WHEN 3 THEN 'Low' ELSE 'N.A.' END AS expr2
-FROM MyDimensionTable
-```
-
-
-## Comentarios
-
-Se recomienda utilizar la expresión `CASE` en lugar de esta función `SWITCH`.
-
+> Medio

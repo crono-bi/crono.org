@@ -2,19 +2,16 @@
 title: "nullifzero"
 ---
 
+La función `nullifzero` devuelve `NULL` si la expresión de entrada es `0`. En cualquier otro caso devuelve la propia expresión de entrada.
 
-La función `nullifzero` devuelve `NULL` si la expresión de entrada es un `0`. En cualquier otro caso devuelve la propia expresión de entrada.
+Es útil para evitar que los ceros distorsionen cálculos como mínimos o medias.
 
 ## Ejemplo
 
 ```crono-sql
-SELECT min(nullifzero(myTable.Value)) MinValue
-FROM dbo.myTable
+select nullifzero(0) resultado;
 ```
 
-El código SQL generado utiliza el operador `CASE`:
+El resultado es:
 
-```crono-sql
-SELECT min(CASE WHEN myTable.[Value]<>0 THEN myTable.[Value] END) AS MinValue
-FROM dbo.myTable
-```
+> NULL
