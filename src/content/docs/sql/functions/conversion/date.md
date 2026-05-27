@@ -7,4 +7,3 @@ Las secciones de este artículo cubren todos los tipos y funciones de datos de f
 
 ## Comentarios 
 
-`date` es una función de SQL estándar. Consulte la documentación completa de la función [`date`](https://learn.microsoft.com/es-es/sql/t-sql/functions/date-transact-sql) para mayor información.

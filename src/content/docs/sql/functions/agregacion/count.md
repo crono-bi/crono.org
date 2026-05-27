@@ -7,7 +7,6 @@ Esta función devuelve el número de elementos encontrados en un grupo. `COUNT` 
 
 ## Comentarios 
 
-`count` es una función de SQL estándar. Consulte la documentación completa de la función [`count`](https://learn.microsoft.com/es-es/sql/t-sql/functions/count-transact-sql) para mayor información.
 
 ## Ejemplos con sintaxis Crono SQL
 

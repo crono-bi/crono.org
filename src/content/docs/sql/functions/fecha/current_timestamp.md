@@ -7,4 +7,3 @@ Esta función devuelve la marca de tiempo actual del sistema de la base de datos
 
 ## Comentarios 
 
-`current_timestamp` es una función de SQL estándar. Consulte la documentación completa de la función [`current_timestamp`](https://learn.microsoft.com/es-es/sql/t-sql/functions/current_timestamp-transact-sql) para mayor información.

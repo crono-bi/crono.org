@@ -2,26 +2,14 @@
 title: "split"
 ---
 
-
-
-La función `split` divide una cadena de texto en partes usando un separador especificado y devuelve el elemento en la posición indicada por el índice (comenzando en 1).
-
-Es útil para extraer componentes específicos de cadenas estructuradas, como nombres, rutas, o listas separadas por comas o espacios.
-
-**Sintaxis:**
-
-```crono-sql
-SPLIT(cadena, separador, índice)
-```
+La función `split` divide una cadena de texto usando un separador y devuelve el elemento en la posición indicada. El índice comienza en 1.
 
 ## Ejemplo
 
 ```crono-sql
-SELECT SPLIT('hola mundo', ' ', 2);  -- Devuelve 'mundo'
+select split('hola mundo crono', ' ', 2) resultado;
 ```
 
-El código generado es:
+El resultado es:
 
-```crono-sql
-SELECT SUBSTRING('hola mundo',CHARINDEX(' ','hola mundo'+' ')+1,CHARINDEX(' ','hola mundo'+' ',CHARINDEX(' ','hola mundo'+' ')+1)-CHARINDEX(' ','hola mundo'+' ')-1) AS expr1
-```
+> mundo

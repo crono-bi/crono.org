@@ -7,4 +7,3 @@ Permite insertar en una tabla un valor proporcionado por el sistema para el inic
 
 ## Comentarios 
 
-`system_user` es una función de SQL estándar. Consulte la documentación completa de la función [`system_user`](https://learn.microsoft.com/es-es/sql/t-sql/functions/system_user-transact-sql) para mayor información.

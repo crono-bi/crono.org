@@ -7,4 +7,3 @@ Esta función devuelve el nombre del usuario actual. Esta función es equivalent
 
 ## Comentarios 
 
-`current_user` es una función de SQL estándar. Consulte la documentación completa de la función [`current_user`](https://learn.microsoft.com/es-es/sql/t-sql/functions/current_user-transact-sql) para mayor información.

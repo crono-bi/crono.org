@@ -2,8 +2,7 @@
 title: "abc"
 ---
 
-
-La función `abc` traduce los números del 1 al 26 en las letras del abecedeario, de la A la la Z. Es decir, convierte el 1 en una A, el 2, en un B, etc.
+La función `abc` traduce los números del 1 al 26 en las letras del abecedario, de la A a la Z. Es decir, convierte el 1 en una A, el 2 en una B, etc.
 
 Si el valor de entrada es superior al número 26 la función devuelve `NULL`.
 
@@ -13,19 +12,10 @@ Si el valor de entrada es superior al número 26 la función devuelve `NULL`.
 select abc(11) letra;
 ```
 
-El código SQL generado es:
-
-```crono-sql
-SELECT CASE WHEN 11<=26 THEN CHAR(64+11) END AS letra
-```
-
 El resultado es:
 
 > K
 
 ## Comentario
 
-**Crono Analysis** utiliza la función àbc` y la función `quantile` para crear fácilmente *ránkings ABC*: `abc(quantile 3 order by unidades desc)`
-
-
-
+La función `abc` combinada con `quantile` permite crear fácilmente rankings ABC: `abc(quantile(3) order by unidades desc)`.

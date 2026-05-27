@@ -31,12 +31,7 @@ const GROUP_MAP: Record<string, ExampleGroupId> = {
   'insert-if-new': ExampleGroupId.Statements,
   'insert': ExampleGroupId.Statements,
   'update': ExampleGroupId.Statements,
-  'delete': ExampleGroupId.Statements,
-  'create-table': ExampleGroupId.DML, 
-  'alter-table': ExampleGroupId.DML, 
-  'create-view': ExampleGroupId.DML,
-  'create-or-replace-view': ExampleGroupId.DML, 
-  'create-procedure': ExampleGroupId.DML
+  'delete': ExampleGroupId.Statements
 }
 
 const ITEM_ORDER: string[] = Object.keys(GROUP_MAP)

@@ -2,20 +2,14 @@
 title: "trim"
 ---
 
-
-La función `trim` suprime los espacios iniciales y finales de una cadena de texto.
+La función `trim` elimina los espacios al inicio y al final de una cadena de texto.
 
 ## Ejemplo
 
 ```crono-sql
-select trim('   Hello World! ')  as result;
+select trim('   Hello World!   ') resultado;
 ```
 
-El código generado es:
+El resultado es:
 
-```crono-sql
-SELECT ltrim(rtrim('   Hello World! ')) AS result
-```
-
-El resultado es una cadena de texto sin espacios al inicio ni al final del texto: **'Hello World!'**
-
+> Hello World!

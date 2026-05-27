@@ -2,9 +2,14 @@
 title: "char"
 ---
 
+La función `char` devuelve el carácter correspondiente al código ASCII especificado.
 
-Devuelve el carácter de un solo byte con el código entero especificado, según lo definido por el juego de caracteres y la codificación de la intercalación predeterminada de la base de datos actual.
+## Ejemplo
 
-## Comentarios 
+```crono-sql
+select char(65) letra;
+```
 
-`char` es una función de SQL estándar. Consulte la documentación completa de la función [`char`](https://learn.microsoft.com/es-es/sql/t-sql/functions/char-transact-sql) para mayor información.
+El resultado es:
+
+> A
