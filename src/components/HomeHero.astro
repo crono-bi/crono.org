@@ -1031,21 +1031,15 @@ ORDER BY TotalSales DESC`
             </a>
           </div>
           <div class="code-body">
-            <pre class="code-block"><code><span class="sql-keyword">MERGE</span> <span class="crono-keyword">CLONE</span> <span class="sql-identifier">dwh.DimProducts</span>(<span class="sql-identifier">ProductSid</span>)
-<span class="sql-keyword">SELECT</span>
-  <span class="crono-special">#ProductID</span>,
-  <span class="sql-identifier">Product.Name</span>        <span class="sql-identifier">Product</span>,
-  <span class="sql-identifier">ProductCategory.name</span> <span class="sql-identifier">ProductCategory</span>,
-  <span class="sql-identifier">ProductNumber</span>,
-  <span class="sql-identifier">Color</span>,
-  <span class="sql-identifier">StandardCost</span>,
-  <span class="sql-identifier">ListPrice</span>
-<span class="sql-keyword">FROM</span> <span class="sql-identifier">staging.Product</span>
-<span class="sql-keyword">LEFT JOIN</span> <span class="sql-identifier">staging.ProductSubCategory</span>
-  <span class="crono-keyword">USING</span> <span class="sql-identifier">Product</span>(<span class="sql-identifier">ProductSubcategoryID</span>)
-<span class="sql-keyword">LEFT JOIN</span> <span class="sql-identifier">staging.ProductCategory</span>
-  <span class="crono-keyword">USING</span> <span class="sql-identifier">ProductSubCategory</span>(<span class="sql-identifier">ProductCategoryId</span>)
-<span class="crono-keyword">CHECK SNOWFLAKE</span></code></pre>
+            <pre class="code-block"><code><span class="crono-keyword">MERGE CLONE</span> dwh.DimProducts
+<span class="crono-keyword">SELECT</span>
+  ProductID #ProductID,
+  Product.Name <span class="crono-keyword">Product</span>,
+  ProductCategory.name ProductCategory,
+  ProductSubCategory.name ProductSubCategory
+<span class="crono-keyword">FROM</span> staging.Product
+<span class="crono-keyword">LEFT JOIN</span> staging.ProductSubCategory <span class="crono-keyword">USING</span> ProductSubcategoryID
+<span class="crono-keyword">LEFT JOIN</span> staging.ProductCategory <span class="crono-keyword">USING</span> ProductSubCategory(ProductCategoryId)</code></pre>
           </div>
         </div>
         <!-- Floating badges -->
@@ -2821,9 +2815,9 @@ ORDER BY TotalSales DESC`
   }
 
   .hero-product-card:hover {
-    transform: translateY(-6px);
+    transform: translateY(-1px);
     border-color: var(--product-color);
-    box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.4), 0 0 0 1px var(--product-color);
+    box-shadow: 0 6px 16px -6px rgba(0, 0, 0, 0.25), 0 0 0 1px var(--product-color);
   }
 
   .hero-card-glow {
@@ -3295,6 +3289,7 @@ ORDER BY TotalSales DESC`
     gap: 0.75rem;
     font-size: 0.9375rem;
     color: var(--sl-color-gray-2);
+    list-style: none;
   }
   
   .btn-product {
@@ -4454,6 +4449,7 @@ ORDER BY TotalSales DESC`
     gap: 0.75rem;
     font-size: 0.9375rem;
     color: var(--sl-color-gray-2);
+    list-style: none;
   }
 
   .playground-check {
@@ -5050,11 +5046,14 @@ ORDER BY TotalSales DESC`
      SYNTAX HIGHLIGHTING - Single color for all reserved words
      ═══════════════════════════════════════════════════════════════ */
 
-  .sql-keyword,
-  .crono-keyword,
-  .crono-special {
+  .crono-keyword {
     color: #79c0ff;
     font-weight: 600;
+  }
+
+  .code-comment {
+    color: #3fb950;
+    font-style: italic;
   }
 
   .sql-identifier {

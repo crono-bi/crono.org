@@ -37,6 +37,7 @@ const keywordsPattern = [
   'HISTORY',
   'VIRTUAL',
   'NONUNIQUE',
+  'USING',
 ].join('|');
 
 export default {

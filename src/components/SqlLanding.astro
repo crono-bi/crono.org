@@ -92,6 +92,8 @@ FROM staging.Product
 LEFT JOIN staging.ProductSubCategory USING ProductSubcategoryID
 LEFT JOIN staging.ProductCategory USING ProductSubCategory(ProductCategoryId)`
 
+const codeExampleDisplay = `<span class="ck">MERGE CLONE</span> dwh.DimProducts\n<span class="ck">SELECT</span>\n  ProductID #ProductID,\n  Product.Name <span class="ck">Product</span>,\n  ProductCategory.name ProductCategory,\n  ProductSubCategory.name ProductSubCategory\n<span class="ck">FROM</span> staging.Product\n<span class="ck">LEFT JOIN</span> staging.ProductSubCategory <span class="ck">USING</span> ProductSubcategoryID\n<span class="ck">LEFT JOIN</span> staging.ProductCategory <span class="ck">USING</span> ProductSubCategory(ProductCategoryId)`
+
 // Encode example code for playground URL
 const playgroundUrl = `/playground/?code=${btoa(encodeURIComponent(codeExample))}`
 ---
@@ -109,7 +111,8 @@ const playgroundUrl = `/playground/?code=${btoa(encodeURIComponent(codeExample))
   engines={engines}
   codeExample={{
     label: 'Crono SQL',
-    code: codeExample
+    code: codeExampleDisplay,
+    language: 'html-pre'
   }}
   statements={statements}
   statementsTitle="Sentencias principales"

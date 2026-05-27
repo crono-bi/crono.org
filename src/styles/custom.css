@@ -415,6 +415,26 @@ a[data-playground-link] {
   opacity: 1;
 }
 
+/* Eliminar bullets nativos en listas de HomeHero */
+.product-features,
+.playground-features {
+  list-style: none !important;
+  padding-left: 0 !important;
+}
+
+.product-features li,
+.playground-features li {
+  list-style: none !important;
+}
+
+.product-features li::before,
+.playground-features li::before,
+.product-features li::marker,
+.playground-features li::marker {
+  display: none !important;
+  content: none !important;
+}
+
 /* Ocultar línea vertical separadora en el header */
 .social-icons::after {
   display: none !important;

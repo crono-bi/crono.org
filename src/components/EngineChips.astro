@@ -4,27 +4,85 @@ interface Props {
 }
 
 const { engines } = Astro.props
+
+const engineLogos: Record<string, string> = {
+  'Snowflake': '/playground-assets/snowflake.svg',
+  'SQL Server': '/playground-assets/microsoft-sql-server.svg',
+  'PostgreSQL': '/playground-assets/postgresql.svg',
+  'Redshift': '/playground-assets/redshift.svg',
+  'BigQuery': '/playground-assets/bigquery.svg',
+  'Databricks': '/playground-assets/databricks.svg',
+  'MS Fabric': '/playground-assets/msfabric.svg',
+  'DuckDB': '/playground-assets/duckDB.svg',
+}
+
+const engineColors: Record<string, string> = {
+  'Snowflake':  '#29B5E8',
+  'SQL Server': '#A91D22',
+  'PostgreSQL': '#336791',
+  'Redshift':   '#1A73C8',
+  'BigQuery':   '#4285F4',
+  'Databricks': '#FF3621',
+  'MS Fabric':  '#00D8AA',
+  'DuckDB':     '#E6B000',
+}
 ---
 
-<div class="engines-list">
+<div class="engines-logos">
   {engines.map((engine) => (
-    <span class="engine-chip">{engine}</span>
+    <div class="engine-logo-item">
+      {engineLogos[engine]
+        ? <img src={engineLogos[engine]} alt={engine} class="engine-logo" />
+        : null
+      }
+      <span class="engine-name" style={`color: ${engineColors[engine] ?? 'var(--sl-color-gray-2)'}`}>
+        {engine}
+      </span>
+    </div>
   ))}
 </div>
 
 <style>
-  .engines-list {
+  .engines-logos {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .engine-logo-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    opacity: 0.75;
+    transition: opacity 0.2s ease;
+    filter: grayscale(15%);
+  }
+
+  .engine-logo-item:hover {
+    opacity: 1;
+    filter: grayscale(0%);
+  }
+
+  .engine-logo {
+    height: 28px;
+    width: auto;
+    object-fit: contain;
+  }
+
+  .engine-name {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
   }
 
   .engine-chip {
-    padding: 8px 20px;
+    padding: 6px 14px;
     border-radius: 20px;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 600;
-    letter-spacing: 0.3px;
     background: rgba(var(--brand-rgb-value, 27, 95, 140), 0.15);
     border: 1px solid rgba(var(--brand-rgb-value, 27, 95, 140), 0.3);
     color: var(--brand-color, var(--sl-color-accent));
