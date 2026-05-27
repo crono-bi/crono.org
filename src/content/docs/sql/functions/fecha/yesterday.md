@@ -2,20 +2,10 @@
 title: "yesterday"
 ---
 
-
-
-La función `yesterday` devuelve la fecha (tipo **date**) correspondiente al día de ayer.
-
+La función `yesterday` devuelve la fecha de ayer como un valor de tipo `date`.
 
 ## Ejemplo
 
 ```crono-sql
-select yesterday() as result;
+select yesterday() resultado;
 ```
-
-El código SQL generado es:
-
-```crono-sql
-SELECT cast(getdate()-1 as date) AS result
-```
-

@@ -2,26 +2,20 @@
 title: "isoweek"
 ---
 
+La función `isoweek` devuelve el número de semana ISO de una fecha determinada.
 
-La función  `isoweek` devuelve el número de semana ISO de una fecha determinada.
-
-La norma ISO 8601 establece que una semana inicia el día lunes y termina el día domingo. Además, esta norma indica que la primera semana del año es aquella que contenga el primer día jueves del año. El resto de semanas del año se numeran consecutivamente hasta completar 52 o 53 semanas de 7 días exactamente.
+La norma ISO 8601 establece que la semana comienza el lunes y que la primera semana del año es aquella que contiene el primer jueves del año.
 
 ## Ejemplo
 
 ```crono-sql
-select isoweek('2022-11-26') as week;
+select isoweek('2025-06-15') resultado;
 ```
 
-El código SQL generado es:
+El resultado es:
 
-```crono-sql
-SELECT datepart(isowk,'2022-11-26') AS week
-```
+> 24
 
 ## Comentarios
 
-El año de la semana ISO de una fecha no coincide necesariamente con el año de esa fecha. Por ejemplo, el 1 de enero de 2022 corresponde a la semana 52 del año 2021. Por este motivo es necesario agrupar o filtrar utilizando la función `isoweekyear` para seleccionar sin ambigüedad semanas ISO completas.
-
-
-
+El año de la semana ISO de una fecha no coincide necesariamente con el año natural de esa fecha. Por ejemplo, el 1 de enero de 2022 pertenece a la semana 52 del año 2021. Por este motivo, al agrupar o filtrar por semana ISO conviene usar `isoweekyear` junto con `isoweek`.

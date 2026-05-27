@@ -2,19 +2,10 @@
 title: "today"
 ---
 
-
-La función `today` devuelve la fecha (tipo **date**) correspondiente al día de hoy.
-
+La función `today` devuelve la fecha actual del sistema como un valor de tipo `date`.
 
 ## Ejemplo
 
 ```crono-sql
-select today() as result;
+select today() resultado;
 ```
-
-El código SQL generado es:
-
-```crono-sql
-SELECT cast(getdate() as date) AS result
-```
-

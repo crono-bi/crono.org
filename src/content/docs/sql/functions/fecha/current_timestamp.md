@@ -2,8 +2,12 @@
 title: "current_timestamp"
 ---
 
+La función `current_timestamp` devuelve la fecha y hora actuales del sistema, incluyendo milisegundos, como un valor de tipo `datetime`.
 
-Esta función devuelve la marca de tiempo actual del sistema de la base de datos como un valor de **fecha y hora**, sin el desplazamiento de la zona horaria de la base de datos. `CURRENT_TIMESTAMP` deriva este valor del sistema operativo de la computadora en la que se ejecuta la instancia de SQL Server.
+Esta función se comporta como una constante del sistema y no requiere paréntesis.
 
-## Comentarios 
+## Ejemplo
 
+```crono-sql
+select current_timestamp resultado;
+```

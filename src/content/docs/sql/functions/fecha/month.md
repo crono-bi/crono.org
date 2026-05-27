@@ -2,8 +2,14 @@
 title: "month"
 ---
 
+La función `month` devuelve un número entero entre 1 y 12 que representa el mes de una fecha.
 
-Devuelve un número entero que representa el mes de la *fecha* especificada.
+## Ejemplo
 
-## Comentarios 
+```crono-sql
+select month('2025-06-15') resultado;
+```
 
+El resultado es:
+
+> 6

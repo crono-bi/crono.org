@@ -2,31 +2,14 @@
 title: "adddays"
 ---
 
-La función adddays devuelve una nueva fecha que resulta de sumar un número determinado de días a una fecha base especificada.
-
-
-**Sintaxis:**  
-
-```crono-sql
-adddays(fecha_base, numero_dias)
-```
-
-**Argumentos:**
-
-- fecha_base (DATETIME o DATE): Fecha inicial a la que se le agregarán (o restarán) días. Puede ser una constante, una columna o una función como getdate().
-- numero_dias (INT): Número de días a agregar. Si es positivo, se suman días; si es negativo, se restan.
+La función `adddays` devuelve una nueva fecha que resulta de sumar un número determinado de días a una fecha dada. Si el número es negativo, se restan días.
 
 ## Ejemplo
 
-
 ```crono-sql
-SELECt adddayes(getdate(),3);
+select adddays('2025-01-01', 10) resultado;
 ```
 
-El codigo generado es:
+El resultado es:
 
-```crono-sql
-SELECT dateadd(d,3,getdate())
-```
-
-
+> 2025-01-11

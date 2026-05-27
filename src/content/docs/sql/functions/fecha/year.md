@@ -2,8 +2,14 @@
 title: "year"
 ---
 
+La función `year` devuelve un número entero que representa el año de una fecha.
 
-Devuelve un entero que representa el año de la *fecha* especificada.
+## Ejemplo
 
-## Comentarios 
+```crono-sql
+select year('2025-06-15') resultado;
+```
 
+El resultado es:
+
+> 2025

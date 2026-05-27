@@ -2,28 +2,14 @@
 title: "daysdiff"
 ---
 
-La función `daysdiff` calcula el número de días completos entre dos fechas. El resultado es un valor entero que representa la diferencia en días, y puede ser positivo, negativo o cero.
-
-**Sintaxis:**  
-
-```crono-sql
-daysdiff(startDate, endDate)
-```
-
+La función `daysdiff` calcula el número de días entre dos fechas. El resultado puede ser positivo, negativo o cero.
 
 ## Ejemplo
 
-La siguiente sentencia devuelve el número de días entre el 1 de enero del 2025 y el 1 de mayo de 2025.
-
 ```crono-sql
-select  daysdiff('20250101','20250401') num;
--- Devuelve 90
+select daysdiff('2025-01-01', '2025-12-31') resultado;
 ```
 
-El código generado es:
+El resultado es:
 
-```crono-sql
-SELECT datediff(d,'20250101','20250401') AS num
-```
-
-
+> 364

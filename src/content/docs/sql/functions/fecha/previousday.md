@@ -2,22 +2,14 @@
 title: "previousday"
 ---
 
-
-La función `PREVIOUSDAY()` devuelve la fecha del día anterior a la fecha proporcionada, como un valor de tipo DATE. 
-
-Es útil para realizar comparaciones, cálculos de rangos o filtrado basado en fechas anteriores.
-
-
+La función `previousday` devuelve la fecha del día anterior a la fecha proporcionada.
 
 ## Ejemplo
 
-
 ```crono-sql
-SELECT PREVIOUSDAY('2025-01-01'); -- Devuelve 2024-12-31
+select previousday('2025-03-01') resultado;
 ```
 
-El código SQL generado es:
+El resultado es:
 
-```crono-sql
-SELECT dateadd(d,-1,'2025-01-01') AS expr1
-```
+> 2025-02-28

@@ -2,19 +2,10 @@
 title: "tomorrow"
 ---
 
-
-La función `tomorrow` devuelve la fecha (tipo **date**) correspondiente al día de mañana.
-
+La función `tomorrow` devuelve la fecha de mañana como un valor de tipo `date`.
 
 ## Ejemplo
 
 ```crono-sql
-select tomorrow() as result;
+select tomorrow() resultado;
 ```
-
-El código SQL generado es:
-
-```crono-sql
-SELECT cast(getdate()+1 as date) AS result
-```
-
