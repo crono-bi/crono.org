@@ -2,29 +2,18 @@
 title: "substraction"
 ---
 
-
-La función `substraction` resta del primer argumento el resto de argumentos de entrada. Esta función considera que los valores nulos equivalen a cero.
-
-La función `substraction` necesita al menos dos argumentos de entrada y estos deben ser numéricos.
-
-Si todos los parámetros de entrada son nulos devuelve `NULL`
+La función `substraction` resta del primer argumento el resto de argumentos. Los valores nulos se tratan como cero. Si todos los parámetros son nulos devuelve `NULL`.
 
 ## Ejemplo
 
 ```crono-sql
-select substraction(10,3,null,2) resta;
+select substraction(10, 3, null, 2) resultado;
 ```
 
-El código SQL generado es el siguiente.
+El resultado es:
 
-```crono-sql
-SELECT CASE WHEN 10 IS NOT NULL OR 3 IS NOT NULL OR NULL IS NOT NULL OR 2 IS NOT NULL THEN coalesce(10,0)-coalesce(3,0)-coalesce(NULL,0)-coalesce(2,0) END AS resta
-```
-
-El resultado de la operación es:
-
-> 5 
+> 5
 
 ## Comentario
 
-Esta función es útil porque el operador estándar `-`  devuleve `NULL` cuando cualiquiera de los sumandos es nulo.  La función `substraction`, en cambio, se comporta igual que la resta del Excel.
+El operador estándar `-` devuelve `NULL` si cualquiera de los operandos es nulo. La función `substraction`, en cambio, trata los nulos como cero, igual que la resta de Excel.

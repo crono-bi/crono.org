@@ -2,35 +2,22 @@
 title: "average"
 ---
 
+La función `average` calcula el promedio de una lista de valores. Los valores nulos se ignoran en el cálculo.
 
-**Descripción:**  
-
-La función `average` calcula el valor promedio (media aritmética) de una lista de valores numéricos proporcionados como argumentos.
-
-Los valores nulos se ignoran a efectos del cálculo promedio.
-
-
-**Sintaxis:**  
+## Ejemplos
 
 ```crono-sql
-average(valor1, valor2, ..., valorN)
+select average(1, 2, 3, 4, 6.5) resultado;
 ```
 
-## Ejemplo
-
+> 3.3
 
 ```crono-sql
--- Calcula el promedio de los valores 1, 2, 3, 4 y 6.5
-SELECT average(1, 2, 3, 4, 6.5);
--- Resultado: 3.3
+select average(1, null, 3) resultado;
 ```
 
-Los valores nulos se ignoran a efectos del cálculo promedio:
+> 2
 
-```crono-sql
-select average(1,null,3); -- El resultado es 2
-```
+## Comentario
 
-
-
-
+La función `average` opera sobre una lista de expresiones de un mismo registro, a diferencia de `avg` que es una función de agregación que opera sobre los registros de una tabla.

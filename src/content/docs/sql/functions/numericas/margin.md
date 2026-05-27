@@ -2,70 +2,33 @@
 title: "margin"
 ---
 
+La función `margin` calcula el margen de venta a partir del importe de venta y el coste. El resultado es un valor porcentual: el margen absoluto dividido entre las ventas.
 
-Esta función calcula el margen de venta a partir del *coste de venta* y el *importe de venta*. El margen de venta es una medida de la rentabilidad de una empresa. Es un valor porcentual que se calcula dividiendo el margen absoluto entre las ventas totales.
+Si el importe de venta es `0` devuelve `NULL`.
 
-![Margen de ventas](/images/margen.png)
-
-**Crono SQL** verifica que el denominador no sea cero para evitar el error que generaría la división entre cero.
-
-## Ejemplos
-
-La siguiente consulta calcula el margen a partir del coste y el importe de venta.
-
-<div>
+## Ejemplo
 
 ```crono-sql
-select margin(ventas,coste) margen;
+select margin(100, 70) margen;
 ```
 
-El código SQL generado es:
+El resultado es:
 
-```crono-sql
-SELECT CASE WHEN ventas<>0 THEN 1.0*CASE WHEN ventas IS NOT NULL OR coste IS NOT NULL THEN coalesce(ventas,0)-coalesce(coste,0) END/ventas END AS margen
-```
-</div>
+> 0.30
 
-
-La siguiente consulta calcula el margen de cada producto durante un periodo determinado:
+## Ejemplo con tabla
 
 ```crono-sql
 SELECT
-  LB_LIBROS.TITULO AS [Título],
-  sum(LB_VENTAS.PVP) AS Importe,
-  sum(LB_VENTAS.COSTE) AS Coste,
-  substraction(importe,coste) Margen,
-  margin(importe,coste) MargenPct
-FROM dbo.LB_VENTAS LB_VENTAS
-INNER JOIN dbo.LB_TIEMPO LB_TIEMPO ON (LB_VENTAS.FECHA=LB_TIEMPO.FECHA)
-INNER JOIN dbo.LB_LIBROS LB_LIBROS ON (LB_VENTAS.ID_LIBRO=LB_LIBROS.ID_LIBRO)
-WHERE LB_TIEMPO.ANYO =2022
-GROUP BY LB_LIBROS.TITULO
+  products.product_name,
+  sum(order_details.unit_price * order_details.quantity) ventas,
+  sum(products.unit_price * order_details.quantity) coste,
+  substraction(ventas, coste) margen_absoluto,
+  margin(ventas, coste) margen_pct
+FROM staging.order_details
+INNER JOIN staging.products USING product_id
 ```
-
-  
-
-  <details>
-<summary>Ver SQL compilado</summary>
-
-```crono-sql
-SELECT
-  LB_LIBROS.TITULO AS [Título],
-  sum(LB_VENTAS.PVP) AS Importe,
-  sum(LB_VENTAS.COSTE) AS Coste,
-  CASE WHEN sum(LB_VENTAS.PVP) IS NOT NULL OR sum(LB_VENTAS.COSTE) IS NOT NULL THEN coalesce(sum(LB_VENTAS.PVP),0)-coalesce(sum(LB_VENTAS.COSTE),0) END AS Margen,
-  CASE WHEN sum(LB_VENTAS.PVP)<>0 THEN 1.0*CASE WHEN sum(LB_VENTAS.PVP) IS NOT NULL OR sum(LB_VENTAS.COSTE) IS NOT NULL THEN coalesce(sum(LB_VENTAS.PVP),0)-coalesce(sum(LB_VENTAS.COSTE),0) END/sum(LB_VENTAS.PVP) END AS MargenPct
-FROM dbo.LB_VENTAS
-INNER JOIN dbo.LB_TIEMPO ON (LB_VENTAS.FECHA=LB_TIEMPO.FECHA)
-INNER JOIN dbo.LB_LIBROS ON (LB_VENTAS.ID_LIBRO=LB_LIBROS.ID_LIBRO)
-WHERE LB_TIEMPO.ANYO=2022
-GROUP BY LB_LIBROS.TITULO
-
-```
-
-</details>
-
 
 ## Comentario
 
-El margen de venta se calcula dividiendo el margen absoluto entre las ventas. Es la medida de rentabilidad más habitual y no se debe confundir con el **markup** que se calcula dividiéndolo entre el coste.
+El margen se calcula dividiendo el margen absoluto entre las ventas. No debe confundirse con el `markup`, que se calcula dividiendo entre el coste.

@@ -1,24 +1,19 @@
 ---
-title: "addition ❇️"
+title: "addition"
 ---
 
-
-La función `addition` devuelve la suma de un conjunto de números, ignorando los valores nulos que pueda haber.
-
-Si todos los parámetros de entrada son nulos devuelve `NULL`
+La función `addition` devuelve la suma de varios valores, ignorando los nulos. Si todos los parámetros son nulos devuelve `NULL`.
 
 ## Ejemplo
 
 ```crono-sql
-SELECT addition(1,2,null,4) suma;
+select addition(1, 2, null, 4) suma;
 ```
 
-El código SQL generado es el siguiente.
+El resultado es:
 
-```crono-sql
-SELECT CASE WHEN 1 IS NOT NULL OR 2 IS NOT NULL OR NULL IS NOT NULL OR 4 IS NOT NULL THEN coalesce(1,0)+coalesce(2,0)+coalesce(NULL,0)+coalesce(4,0) END AS suma
-```
+> 7
 
 ## Comentario
 
-Esta función es útil porque el operador estándar `+`  devuleve `NULL` cuando cualiquiera de los sumandos es nulo.  La función `addition`, en cambio, se comporta igual que la suma del  Excel.
+El operador estándar `+` devuelve `NULL` si cualquiera de los sumandos es nulo. La función `addition`, en cambio, trata los nulos como cero, igual que la suma de Excel.

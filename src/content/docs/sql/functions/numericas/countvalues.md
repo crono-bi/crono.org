@@ -2,32 +2,22 @@
 title: "countvalues"
 ---
 
+La función `countvalues` devuelve el número de valores no nulos de una lista de expresiones.
 
-**Descripción:**  
-
-La función `COUNTVALUES` devuelve el número de valores no nulos de una lista de valores proporcionados como argumentos.
-
-
-**Sintaxis:**  
+## Ejemplos
 
 ```crono-sql
-COUNTVALUES(valor1, valor2, ..., valorN)
+select countvalues(1, 2, 3, 4, 6.5) resultado;
 ```
 
-## Ejemplo
-
+> 5
 
 ```crono-sql
--- Cuenta el número de valores no nulos
-SELECT COUNTVALUES(1, 2, 3, 4, 6.5);
--- Resultado: 5
+select countvalues(1, null, 3) resultado;
 ```
 
-Los valores nulos se ignoran a efectos del cálculo promedio:
+> 2
 
-```crono-sql
-select COUNTVALUES(1,null,3); -- El resultado es 2
-```
+## Comentario
 
-
-
+La función `countvalues` opera sobre una lista de expresiones de un mismo registro, a diferencia de `count` que es una función de agregación que opera sobre los registros de una tabla.
