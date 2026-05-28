@@ -2,6 +2,36 @@
 import { Code } from 'astro-expressive-code/components'
 import HomeFooter from './HomeFooter.astro'
 import { PRODUCTS } from '../config/products'
+import mergeCloneExample from '../playground/examples/merge-clone.sql?raw'
+
+// Generate playground URL from the example
+const playgroundUrl = `/playground/?code=${btoa(encodeURIComponent(mergeCloneExample))}`
+
+// Process mergeCloneExample dynamically: remove comment, escape HTML, add color spans
+function highlightMergeClone(code: string): string {
+  // Remove /* */ comment block
+  const withoutComment = code.replace(/\/\*[\s\S]*?\*\//, '').trim()
+  
+  // Escape HTML special chars
+  let escaped = withoutComment
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+  
+  // Apply color spans to Crono SQL keywords (sorted by length desc to avoid partial matches)
+  const keywords = [
+    'MERGE CLONE', 'INNER JOIN', 'SELECT', 'FROM', 'USING', 'KEY'
+  ]
+  
+  for (const kw of keywords) {
+    const regex = new RegExp(kw.replace(/\s+/g, '\\s+'), 'g')
+    escaped = escaped.replace(regex, `<span class="crono-keyword">${kw}</span>`)
+  }
+  
+  return escaped
+}
+
+const highlightedCode = highlightMergeClone(mergeCloneExample)
 
 const products = [
   {
@@ -1024,22 +1054,14 @@ ORDER BY TotalSales DESC`
       <div class="product-demo">
         <div class="code-window">
           <div class="code-header">
-            <span class="code-title">dwh.DimProducts.sql</span>
-            <a href="/playground/?code=LyogCiAgTUVSR0UgQ0xPTkUgZnVsbHkgc3luY2hyb25pemVzIHRoZSB0YXJnZXQgdGFibGUKICB3aXRoIHRoZSBTRUxFQ1QgcmVzdWx0OiBpbnNlcnRzLCB1cGRhdGVzIGFuZAogIGRlbGV0ZXMgcmVjb3JkcyBhcyBuZWVkZWQuCiovCgpNRVJHRSBDTE9ORSBkd2guRGltUHJvZHVjdHMKU0VMRUNUCiAgUHJvZHVjdElEICNQcm9kdWN0SUQsCiAgUHJvZHVjdC5OYW1lIFByb2R1Y3QsCiAgUHJvZHVjdENhdGVnb3J5Lm5hbWUgUHJvZHVjdENhdGVnb3J5LAogIFByb2R1Y3RTdWJDYXRlZ29yeS5uYW1lIFByb2R1Y3RTdWJDYXRlZ29yeQpGUk9NIHN0YWdpbmcuUHJvZHVjdApMRUZUIEpPSU4gc3RhZ2luZy5Qcm9kdWN0U3ViQ2F0ZWdvcnkgVVNJTkcgUHJvZHVjdFN1YmNhdGVnb3J5SUQKTEVGVCBKT0lOIHN0YWdpbmcuUHJvZHVjdENhdGVnb3J5IFVTSU5HIFByb2R1Y3RTdWJDYXRlZ29yeShQcm9kdWN0Q2F0ZWdvcnlJZCkK" class="code-playground-link" title="Abrir en Playground">
+            <span class="code-title">dwh.dim_products.sql</span>
+            <a href={playgroundUrl} class="code-playground-link" title="Abrir en Playground">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 17l6-6-6-6"/><path d="M12 19h8"/></svg>
               <span>Abrir en Playground</span>
             </a>
           </div>
           <div class="code-body">
-            <pre class="code-block"><code><span class="crono-keyword">MERGE CLONE</span> dwh.DimProducts
-<span class="crono-keyword">SELECT</span>
-  ProductID #ProductID,
-  Product.Name <span class="crono-keyword">Product</span>,
-  ProductCategory.name ProductCategory,
-  ProductSubCategory.name ProductSubCategory
-<span class="crono-keyword">FROM</span> staging.Product
-<span class="crono-keyword">LEFT JOIN</span> staging.ProductSubCategory <span class="crono-keyword">USING</span> ProductSubcategoryID
-<span class="crono-keyword">LEFT JOIN</span> staging.ProductCategory <span class="crono-keyword">USING</span> ProductSubCategory(ProductCategoryId)</code></pre>
+            <pre class="code-block"><code set:html={highlightedCode} /></pre>
           </div>
         </div>
         <!-- Floating badges -->
@@ -1074,7 +1096,7 @@ ORDER BY TotalSales DESC`
             Explorar documentación
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
           </a>
-          <a href="playground/?code=LyogCiAgTUVSR0UgQ0xPTkUgZnVsbHkgc3luY2hyb25pemVzIHRoZSB0YXJnZXQgdGFibGUKICB3aXRoIHRoZSBTRUxFQ1QgcmVzdWx0OiBpbnNlcnRzLCB1cGRhdGVzIGFuZAogIGRlbGV0ZXMgcmVjb3JkcyBhcyBuZWVkZWQuCiovCgpNRVJHRSBDTE9ORSBkd2guRGltUHJvZHVjdHMKU0VMRUNUCiAgUHJvZHVjdElEICNQcm9kdWN0SUQsCiAgUHJvZHVjdC5OYW1lIFByb2R1Y3QsCiAgUHJvZHVjdENhdGVnb3J5Lm5hbWUgUHJvZHVjdENhdGVnb3J5LAogIFByb2R1Y3RTdWJDYXRlZ29yeS5uYW1lIFByb2R1Y3RTdWJDYXRlZ29yeQpGUk9NIHN0YWdpbmcuUHJvZHVjdApMRUZUIEpPSU4gc3RhZ2luZy5Qcm9kdWN0U3ViQ2F0ZWdvcnkgVVNJTkcgUHJvZHVjdFN1YmNhdGVnb3J5SUQKTEVGVCBKT0lOIHN0YWdpbmcuUHJvZHVjdENhdGVnb3J5IFVTSU5HIFByb2R1Y3RTdWJDYXRlZ29yeShQcm9kdWN0Q2F0ZWdvcnlJZCkK" class="btn-product" style="background: #10B981; box-shadow: 0 4px 20px -4px #10B981;">
+          <a href={playgroundUrl} class="btn-product" style="background: #10B981; box-shadow: 0 4px 20px -4px #10B981;">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
             Playground
           </a>
@@ -1834,7 +1856,7 @@ ORDER BY TotalSales DESC`
             Sin instalación, funciona en tu navegador
           </li>
         </ul>
-        <a href="/playground/?code=LyogCiAgTUVSR0UgQ0xPTkUgZnVsbHkgc3luY2hyb25pemVzIHRoZSB0YXJnZXQgdGFibGUKICB3aXRoIHRoZSBTRUxFQ1QgcmVzdWx0OiBpbnNlcnRzLCB1cGRhdGVzIGFuZAogIGRlbGV0ZXMgcmVjb3JkcyBhcyBuZWVkZWQuCiovCgpNRVJHRSBDTE9ORSBkd2guRGltUHJvZHVjdHMKU0VMRUNUCiAgUHJvZHVjdElEICNQcm9kdWN0SUQsCiAgUHJvZHVjdC5OYW1lIFByb2R1Y3QsCiAgUHJvZHVjdENhdGVnb3J5Lm5hbWUgUHJvZHVjdENhdGVnb3J5LAogIFByb2R1Y3RTdWJDYXRlZ29yeS5uYW1lIFByb2R1Y3RTdWJDYXRlZ29yeQpGUk9NIHN0YWdpbmcuUHJvZHVjdApMRUZUIEpPSU4gc3RhZ2luZy5Qcm9kdWN0U3ViQ2F0ZWdvcnkgVVNJTkcgUHJvZHVjdFN1YmNhdGVnb3J5SUQKTEVGVCBKT0lOIHN0YWdpbmcuUHJvZHVjdENhdGVnb3J5IFVTSU5HIFByb2R1Y3RTdWJDYXRlZ29yeShQcm9kdWN0Q2F0ZWdvcnlJZCkK" class="playground-btn">
+        <a href={playgroundUrl} class="playground-btn">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <polygon points="5 3 19 12 5 21 5 3"/>
           </svg>
@@ -2992,6 +3014,7 @@ ORDER BY TotalSales DESC`
     margin: 0 !important;
     background: transparent !important;
     border: none !important;
+    color: #e6edf3 !important;
   }
   
   /* Floating badges */
@@ -5046,12 +5069,12 @@ ORDER BY TotalSales DESC`
      SYNTAX HIGHLIGHTING - Single color for all reserved words
      ═══════════════════════════════════════════════════════════════ */
 
-  .crono-keyword {
+  :global(.crono-keyword) {
     color: #79c0ff;
     font-weight: 600;
   }
 
-  .code-comment {
+  :global(.code-comment) {
     color: #3fb950;
     font-style: italic;
   }
