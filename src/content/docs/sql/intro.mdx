@@ -38,6 +38,8 @@ El lenguaje **Crono SQL** pretende simplificar la sintaxis del SQL evitando las 
 
 **La calidad del dato, en el código.** Las validaciones no son un paso separado ni una responsabilidad externa. `CHECK SNOWFLAKE` y `ASSERT` son cláusulas del propio lenguaje: si los datos de origen tienen un problema, la carga falla explícitamente antes de contaminar el DWH.
 
+**El modelo y la carga, en un único fichero.** Crono SQL no separa la definición de la estructura de la lógica de carga. La misma sentencia que carga los datos crea la tabla si no existe, añade los campos nuevos cuando evolucionas el modelo y mantiene los índices y las claves foráneas durante toda la vida del proyecto. El esquema nunca se desincroniza del código porque son la misma cosa.
+
 **Un verdadero lenguaje, no plantillas.** Toda disciplina de ingeniería madura tiene un lenguaje específico para su dominio. Crono SQL es ese lenguaje para ETL/DWH: tiene gramática formal, compilador, y detección de errores en tiempo de compilación —antes de que nada se ejecute en base de datos—. No es un sistema de macros, no es una capa de plantillas sobre SQL, no es una caja negra que genera código impredecible. El código que ves es exactamente lo que se ejecuta, y si hay un error, lo sabes antes de tocar producción.
 
 
@@ -45,238 +47,88 @@ El lenguaje **Crono SQL** pretende simplificar la sintaxis del SQL evitando las 
 
 En **Crono SQL**, una única sentencia define simultáneamente la estructura de la tabla y la lógica que la carga y mantiene actualizada. El mismo código compila a SQL nativo para cualquiera de los motores soportados, genera un procedimiento optimizado y aplica automáticamente las columnas de auditoría del proyecto.
 
-El siguiente ejemplo es representativo de un caso de uso habitual: la carga de una tabla de hechos con validación de integridad referencial. Este manual asume conocimientos básicos de SQL.
+El siguiente ejemplo es representativo de un caso de uso habitual: la carga de una dimensión de productos a partir de tres tablas de staging. Este manual asume conocimientos básicos de SQL.
 
 ```crono-sql
 CREATE OR REPLACE PROCEDURE
-MERGE CLONE dwh.FactSalesOrderDetails(SalesOrderDetailSid)
+MERGE CLONE dwh.dim_products KEY (product_id)
 SELECT
-	SalesOrderDetail.SalesOrderDetailID #SalesOrderDetailID,
-	DimProducts.ProductSid						ProductSid	NONUNIQUE REFERENCES dwh.DimProducts,
-	FactSalesOrderHeader.SalesOrderSid			SalesOrderSid NONUNIQUE	REFERENCES dwh.FactSalesOrderHeader,
-	SalesOrderDetail.CarrierTrackingNumber,
-	SalesOrderDetail.OrderQty,
-	SalesOrderDetail.UnitPrice,
-	SalesOrderDetail.UnitPriceDiscount,
-	SalesOrderDetail.LineTotal,
-	SpecialOffer.Description SpecialOffer,
-	SpecialOffer.Type			SpecialOfferType,
-	SpecialOffer.Category		SpecialOfferCategory,
-from @@erp.SalesOrderDetail SalesOrderDetail
-inner join @@erp.SalesOrderHeader using (SalesOrderID)  
-inner join @@erp.SpecialOffer using (SpecialOfferID)
-inner join @@erp.Product using (ProductID)
-inner join dwh.DimProducts using Product(ProductID)
-inner join dwh.FactSalesOrderHeader using SalesOrderHeader(SalesOrderID)
-check snowflake
+  products.product_id,
+  products.product_name,
+  categories.category_name,
+  suppliers.company_name supplier
+FROM staging.products
+INNER JOIN staging.categories USING category_id
+INNER JOIN staging.suppliers USING supplier_id
 ```
 
 <details>
-<summary>Ver SQL compilado (SQL Server)</summary>
+<summary>Ver SQL compilado (Snowflake)</summary>
 
 ```crono-sql
-IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.ROUTINES WHERE ROUTINE_NAME='LOAD dwh.FactSalesOrderDetails' AND ROUTINE_TYPE='PROCEDURE')
-DROP PROCEDURE [LOAD dwh.FactSalesOrderDetails];
-
-CREATE PROCEDURE [LOAD dwh.FactSalesOrderDetails] AS
+CREATE OR REPLACE PROCEDURE dwh.load_dwh_dim_products() RETURNS NUMBER
+LANGUAGE SQL AS
 BEGIN
 
-  IF EXISTS (
-    SELECT count(*)
-    FROM @@erp.SalesOrderDetail
-    LEFT JOIN @@erp.SalesOrderHeader ON (SalesOrderDetail.SalesOrderID=SalesOrderHeader.SalesOrderID)
-    LEFT JOIN @@erp.SpecialOffer ON (SalesOrderDetail.SpecialOfferID=SpecialOffer.SpecialOfferID)
-    LEFT JOIN @@erp.Product ON (SalesOrderDetail.ProductID=Product.ProductID)
-    LEFT JOIN dwh.DimProducts ON (Product.ProductID=DimProducts.ProductID)
-    LEFT JOIN dwh.FactSalesOrderHeader ON (SalesOrderHeader.SalesOrderID=FactSalesOrderHeader.SalesOrderID)
-    HAVING count(CASE WHEN SalesOrderHeader.SalesOrderID IS NOT NULL AND SpecialOffer.SpecialOfferID IS NOT NULL AND Product.ProductID IS NOT NULL AND DimProducts.ProductID IS NOT NULL AND FactSalesOrderHeader.SalesOrderID IS NOT NULL THEN 1 END) <> (SELECT count(*) FROM @@erp.SalesOrderDetail)
-  ) THROW 50001,'Las relaciones de esta consulta pierden o duplican registros de SalesOrderDetail.',1
+  DELETE FROM dwh.dim_products
+  WHERE
+    NOT EXISTS (
+      SELECT 1
+      FROM (
+          SELECT
+            products.product_id AS product_id,
+            products.product_name AS product_name,
+            categories.category_name AS category_name,
+            suppliers.company_name AS supplier
+          FROM staging.products
+          INNER JOIN staging.categories ON (products.category_id=categories.category_id)
+          INNER JOIN staging.suppliers ON (products.supplier_id=suppliers.supplier_id)
+      ) AS query
+      WHERE query.product_id=dim_products.product_id
+    );
   
-  ;WITH
-  query AS (
-    SELECT
-      SalesOrderDetail.SalesOrderDetailID AS SalesOrderDetailID,
-      DimProducts.ProductSid AS ProductSid,
-      FactSalesOrderHeader.SalesOrderSid AS SalesOrderSid,
-      SalesOrderDetail.CarrierTrackingNumber AS CarrierTrackingNumber,
-      SalesOrderDetail.OrderQty AS OrderQty,
-      SalesOrderDetail.UnitPrice AS UnitPrice,
-      SalesOrderDetail.UnitPriceDiscount AS UnitPriceDiscount,
-      SalesOrderDetail.LineTotal AS LineTotal,
-      SpecialOffer.Description AS SpecialOffer,
-      SpecialOffer.Type AS SpecialOfferType,
-      SpecialOffer.Category AS SpecialOfferCategory
-    FROM @@erp.SalesOrderDetail
-    INNER JOIN @@erp.SalesOrderHeader ON (SalesOrderDetail.SalesOrderID=SalesOrderHeader.SalesOrderID)
-    INNER JOIN @@erp.SpecialOffer ON (SalesOrderDetail.SpecialOfferID=SpecialOffer.SpecialOfferID)
-    INNER JOIN @@erp.Product ON (SalesOrderDetail.ProductID=Product.ProductID)
-    INNER JOIN dwh.DimProducts ON (Product.ProductID=DimProducts.ProductID)
-    INNER JOIN dwh.FactSalesOrderHeader ON (SalesOrderHeader.SalesOrderID=FactSalesOrderHeader.SalesOrderID)
-  )
-  MERGE dwh.FactSalesOrderDetails AS FactSalesOrderDetails
-  USING query ON query.SalesOrderDetailID=FactSalesOrderDetails.SalesOrderDetailID
-  WHEN MATCHED AND ((FactSalesOrderDetails.ProductSid<>query.ProductSid OR (FactSalesOrderDetails.ProductSid IS NULL AND query.ProductSid IS NOT NULL) OR  (FactSalesOrderDetails.ProductSid IS NOT NULL AND query.ProductSid IS NULL)
-                    OR FactSalesOrderDetails.SalesOrderSid<>query.SalesOrderSid OR (FactSalesOrderDetails.SalesOrderSid IS NULL AND query.SalesOrderSid IS NOT NULL) OR  (FactSalesOrderDetails.SalesOrderSid IS NOT NULL AND query.SalesOrderSid IS NULL)
-                    OR FactSalesOrderDetails.CarrierTrackingNumber<>query.CarrierTrackingNumber OR (FactSalesOrderDetails.CarrierTrackingNumber IS NULL AND query.CarrierTrackingNumber IS NOT NULL) OR  (FactSalesOrderDetails.CarrierTrackingNumber IS NOT NULL AND query.CarrierTrackingNumber IS NULL)
-                    OR FactSalesOrderDetails.OrderQty<>query.OrderQty OR (FactSalesOrderDetails.OrderQty IS NULL AND query.OrderQty IS NOT NULL) OR  (FactSalesOrderDetails.OrderQty IS NOT NULL AND query.OrderQty IS NULL)
-                    OR FactSalesOrderDetails.UnitPrice<>query.UnitPrice OR (FactSalesOrderDetails.UnitPrice IS NULL AND query.UnitPrice IS NOT NULL) OR  (FactSalesOrderDetails.UnitPrice IS NOT NULL AND query.UnitPrice IS NULL)
-                    OR FactSalesOrderDetails.UnitPriceDiscount<>query.UnitPriceDiscount OR (FactSalesOrderDetails.UnitPriceDiscount IS NULL AND query.UnitPriceDiscount IS NOT NULL) OR  (FactSalesOrderDetails.UnitPriceDiscount IS NOT NULL AND query.UnitPriceDiscount IS NULL)
-                    OR FactSalesOrderDetails.LineTotal<>query.LineTotal OR (FactSalesOrderDetails.LineTotal IS NULL AND query.LineTotal IS NOT NULL) OR  (FactSalesOrderDetails.LineTotal IS NOT NULL AND query.LineTotal IS NULL)
-                    OR FactSalesOrderDetails.SpecialOffer<>query.SpecialOffer OR (FactSalesOrderDetails.SpecialOffer IS NULL AND query.SpecialOffer IS NOT NULL) OR  (FactSalesOrderDetails.SpecialOffer IS NOT NULL AND query.SpecialOffer IS NULL)
-                    OR FactSalesOrderDetails.SpecialOfferType<>query.SpecialOfferType OR (FactSalesOrderDetails.SpecialOfferType IS NULL AND query.SpecialOfferType IS NOT NULL) OR  (FactSalesOrderDetails.SpecialOfferType IS NOT NULL AND query.SpecialOfferType IS NULL)
-                    OR FactSalesOrderDetails.SpecialOfferCategory<>query.SpecialOfferCategory OR (FactSalesOrderDetails.SpecialOfferCategory IS NULL AND query.SpecialOfferCategory IS NOT NULL) OR  (FactSalesOrderDetails.SpecialOfferCategory IS NOT NULL AND query.SpecialOfferCategory IS NULL))) THEN
+  MERGE INTO dwh.dim_products AS dim_products
+  USING (
+      SELECT
+        products.product_id AS product_id,
+        products.product_name AS product_name,
+        categories.category_name AS category_name,
+        suppliers.company_name AS supplier
+      FROM staging.products
+      INNER JOIN staging.categories ON (products.category_id=categories.category_id)
+      INNER JOIN staging.suppliers ON (products.supplier_id=suppliers.supplier_id)
+  ) AS query ON query.product_id=dim_products.product_id
+  WHEN MATCHED AND (
+    dim_products.product_name<>query.product_name OR (dim_products.product_name IS NULL AND query.product_name IS NOT NULL) OR  (dim_products.product_name IS NOT NULL AND query.product_name IS NULL)
+    OR dim_products.category_name<>query.category_name OR (dim_products.category_name IS NULL AND query.category_name IS NOT NULL) OR  (dim_products.category_name IS NOT NULL AND query.category_name IS NULL)
+    OR dim_products.supplier<>query.supplier OR (dim_products.supplier IS NULL AND query.supplier IS NOT NULL) OR  (dim_products.supplier IS NOT NULL AND query.supplier IS NULL)
+  ) THEN
     UPDATE SET
-      ProductSid=query.ProductSid,
-      SalesOrderSid=query.SalesOrderSid,
-      CarrierTrackingNumber=query.CarrierTrackingNumber,
-      OrderQty=query.OrderQty,
-      UnitPrice=query.UnitPrice,
-      UnitPriceDiscount=query.UnitPriceDiscount,
-      LineTotal=query.LineTotal,
-      SpecialOffer=query.SpecialOffer,
-      SpecialOfferType=query.SpecialOfferType,
-      SpecialOfferCategory=query.SpecialOfferCategory
+      product_name=query.product_name,
+      category_name=query.category_name,
+      supplier=query.supplier,
+      UPDATE_DATE=CURRENT_TIMESTAMP
   WHEN NOT MATCHED THEN
-    INSERT (SalesOrderDetailID,ProductSid,SalesOrderSid,CarrierTrackingNumber,OrderQty,UnitPrice,UnitPriceDiscount,LineTotal,SpecialOffer,SpecialOfferType,SpecialOfferCategory) VALUES (
-      query.SalesOrderDetailID,
-      query.ProductSid,
-      query.SalesOrderSid,
-      query.CarrierTrackingNumber,
-      query.OrderQty,
-      query.UnitPrice,
-      query.UnitPriceDiscount,
-      query.LineTotal,
-      query.SpecialOffer,
-      query.SpecialOfferType,
-      query.SpecialOfferCategory)
-  WHEN NOT MATCHED BY SOURCE THEN
-    DELETE;
-  
-  DECLARE @LastExecutedDate datetime=getdate();
-  
-  IF EXISTS (SELECT p.Name AS Name FROM sys.extended_properties p INNER JOIN sys.all_objects sp ON (p.major_id=sp.object_id) WHERE p.minor_id=0 AND p.class=1 AND SCHEMA_NAME(sp.schema_id)='dbo' AND sp.name='LOAD dwh.FactSalesOrderDetails' AND p.Name='LastExecutedDate')
-  EXEC sys.sp_dropextendedproperty @level0type = 'SCHEMA',  @level0name = 'dbo',    @level1type = 'PROCEDURE', @level1name = 'LOAD dwh.FactSalesOrderDetails', @name = 'LastExecutedDate'
-  
-  EXEC sys.sp_addextendedproperty @level0type = 'SCHEMA',  @level0name = 'dbo',    @level1type = 'PROCEDURE', @level1name = 'LOAD dwh.FactSalesOrderDetails', @name = 'LastExecutedDate', @value=@LastExecutedDate
+    INSERT (product_id, product_name, category_name, supplier, INSERT_DATE) VALUES (
+      query.product_id,
+      query.product_name,
+      query.category_name,
+      query.supplier,
+      CURRENT_TIMESTAMP);
 
 END
 ```
 
 </details>
 
+Estas 10 líneas de Crono SQL hacen todo lo siguiente:
 
-Estas 21 líneas de código hacen todo lo siguiente:
+- Crean la tabla `dwh.dim_products` si no existe, con los campos y tipos inferidos de la SELECT.
+- Si la tabla ya existe, añade los campos nuevos que le falten, sin destruir ni recrear nada.
+- Crea una restricción de unicidad sobre `product_id` que actúa como *business key*.
+- Crea el procedimiento de carga con estrategia **MERGE CLONE**: sincronización completa con la fuente. Elimina los productos que ya no existen en origen, actualiza los que han cambiado y registra automáticamente la fecha de modificación en `UPDATE_DATE`, e inserta los nuevos con su fecha de alta en `INSERT_DATE`.
 
-- Si no existe, crean la tabla `dwh.FactSalesOrderDetails` con todos sus campos (con el tipo correcto).
-- Si la tabla ya existe, añade los campos que le falten.
-- También crea una restricción de unicidad `BK_FactSalesOrderDetails` que actuará como *business key* y asegurará que el campo `SalesOrderDetailID` no tiene repetidos.
-- Crea las claves foráneas con las tablas `dwh.DimProducts` y `dwh.FactSalesOrderHeader`.
-- Crea los índices `NONUNIQUE` sobre los campos que intervienen en las dos relaciones previas para optimizar el rendimiento.
-- Crea el procedimiento de carga de la tabla `dwh.FactSalesOrderDetails`. Esta carga sigue una estrategia **MERGE CLONE**: añade o elimina los registros necesarios para que la tabla del DWH tenga exactamente el mismo contenido que el origen. Si algún registro ha cambiado, también actualiza las modificaciones.
-- Antes de actualizar los datos, verifica que las relaciones son correctas y que no se pierden ni duplican registros. La cláusula `CHECK SNOWFLAKE` garantiza que se cargan exactamente todas las líneas de origen, ni una más ni una menos. Esta comprobación es fundamental para asegurar la calidad del dato.
-- El procedimiento guarda **columnas de auditoría** automáticamente. Cada registro tendrá información de la fecha de alta y la fecha de la última modificación.
-- También registra en la tabla de auditoría del proyecto información sobre cada ejecución: cuándo se ha ejecutado, cuántos registros se han procesado y cuánto tiempo ha tardado. Esta configuración se define una sola vez por proyecto.
-
-En resumen, esas 21 líneas de código se transforman en 282 líneas que hacen todo lo necesario para crear la tabla en el DWH y cargarla diariamente siguiendo las mejores prácticas.
-
-En cierto modo, este código **Crono SQL** es una fusión inteligente entre una sentencia `CREATE TABLE` y una sentencia `CREATE PROCEDURE` que ejecuta un `MERGE`.
-
-Aunque lo anterior ya es una gran ventaja respecto al código **SQL ANSI**, el mayor beneficio es la sintaxis simplificada de la sentencia **MERGE**. La sentencia **MERGE** es fundamental en los proyectos ETL/DWH, pero su sintaxis estándar es tan farragosa que su creación y mantenimiento se vuelve inviable. Con **Crono SQL** la sintaxis es tan sencilla que hace innecesario utilizar cualquier otra herramienta ETL.
-
-El siguiente código permite comparar la facilidad y legibilidad del código **Crono SQL** frente al SQL estándar que genera.
-
-
-```crono-sql
-MERGE CLONE dwh.FactSalesOrderDetails(SalesOrderDetailSid)
-SELECT
-	SalesOrderDetail.SalesOrderDetailID #SalesOrderDetailID,
-	DimProducts.ProductSid						ProductSid	NONUNIQUE REFERENCES dwh.DimProducts,
-	FactSalesOrderHeader.SalesOrderSid			SalesOrderSid NONUNIQUE	REFERENCES dwh.FactSalesOrderHeader,
-	SalesOrderDetail.CarrierTrackingNumber,
-	SalesOrderDetail.OrderQty,
-	SalesOrderDetail.UnitPrice,
-	SalesOrderDetail.UnitPriceDiscount,
-	SalesOrderDetail.LineTotal,
-	SpecialOffer.Description SpecialOffer,
-	SpecialOffer.Type			SpecialOfferType,
-	SpecialOffer.Category		SpecialOfferCategory,
-from @@erp.SalesOrderDetail SalesOrderDetail
-inner join @@erp.SalesOrderHeader using (SalesOrderID)  
-inner join @@erp.SpecialOffer using (SpecialOfferID)
-inner join @@erp.Product using (ProductID)
-inner join dwh.DimProducts using Product(ProductID)
-inner join dwh.FactSalesOrderHeader using SalesOrderHeader(SalesOrderID)
-```
-
-<details>
-<summary>Ver SQL compilado (SQL Server)</summary>
-
-```crono-sql
-;WITH
-query AS (
-  SELECT
-    SalesOrderDetail.SalesOrderDetailID AS SalesOrderDetailID,
-    DimProducts.ProductSid AS ProductSid,
-    FactSalesOrderHeader.SalesOrderSid AS SalesOrderSid,
-    SalesOrderDetail.CarrierTrackingNumber AS CarrierTrackingNumber,
-    SalesOrderDetail.OrderQty AS OrderQty,
-    SalesOrderDetail.UnitPrice AS UnitPrice,
-    SalesOrderDetail.UnitPriceDiscount AS UnitPriceDiscount,
-    SalesOrderDetail.LineTotal AS LineTotal,
-    SpecialOffer.Description AS SpecialOffer,
-    SpecialOffer.Type AS SpecialOfferType,
-    SpecialOffer.Category AS SpecialOfferCategory
-  FROM @@erp.SalesOrderDetail
-  INNER JOIN @@erp.SalesOrderHeader ON (SalesOrderDetail.SalesOrderID=SalesOrderHeader.SalesOrderID)
-  INNER JOIN @@erp.SpecialOffer ON (SalesOrderDetail.SpecialOfferID=SpecialOffer.SpecialOfferID)
-  INNER JOIN @@erp.Product ON (SalesOrderDetail.ProductID=Product.ProductID)
-  INNER JOIN dwh.DimProducts ON (Product.ProductID=DimProducts.ProductID)
-  INNER JOIN dwh.FactSalesOrderHeader ON (SalesOrderHeader.SalesOrderID=FactSalesOrderHeader.SalesOrderID)
-)
-MERGE dwh.FactSalesOrderDetails AS FactSalesOrderDetails
-USING query ON query.SalesOrderDetailID=FactSalesOrderDetails.SalesOrderDetailID
-WHEN MATCHED AND ((FactSalesOrderDetails.ProductSid<>query.ProductSid OR (FactSalesOrderDetails.ProductSid IS NULL AND query.ProductSid IS NOT NULL) OR  (FactSalesOrderDetails.ProductSid IS NOT NULL AND query.ProductSid IS NULL)
-                  OR FactSalesOrderDetails.SalesOrderSid<>query.SalesOrderSid OR (FactSalesOrderDetails.SalesOrderSid IS NULL AND query.SalesOrderSid IS NOT NULL) OR  (FactSalesOrderDetails.SalesOrderSid IS NOT NULL AND query.SalesOrderSid IS NULL)
-                  OR FactSalesOrderDetails.CarrierTrackingNumber<>query.CarrierTrackingNumber OR (FactSalesOrderDetails.CarrierTrackingNumber IS NULL AND query.CarrierTrackingNumber IS NOT NULL) OR  (FactSalesOrderDetails.CarrierTrackingNumber IS NOT NULL AND query.CarrierTrackingNumber IS NULL)
-                  OR FactSalesOrderDetails.OrderQty<>query.OrderQty OR (FactSalesOrderDetails.OrderQty IS NULL AND query.OrderQty IS NOT NULL) OR  (FactSalesOrderDetails.OrderQty IS NOT NULL AND query.OrderQty IS NULL)
-                  OR FactSalesOrderDetails.UnitPrice<>query.UnitPrice OR (FactSalesOrderDetails.UnitPrice IS NULL AND query.UnitPrice IS NOT NULL) OR  (FactSalesOrderDetails.UnitPrice IS NOT NULL AND query.UnitPrice IS NULL)
-                  OR FactSalesOrderDetails.UnitPriceDiscount<>query.UnitPriceDiscount OR (FactSalesOrderDetails.UnitPriceDiscount IS NULL AND query.UnitPriceDiscount IS NOT NULL) OR  (FactSalesOrderDetails.UnitPriceDiscount IS NOT NULL AND query.UnitPriceDiscount IS NULL)
-                  OR FactSalesOrderDetails.LineTotal<>query.LineTotal OR (FactSalesOrderDetails.LineTotal IS NULL AND query.LineTotal IS NOT NULL) OR  (FactSalesOrderDetails.LineTotal IS NOT NULL AND query.LineTotal IS NULL)
-                  OR FactSalesOrderDetails.SpecialOffer<>query.SpecialOffer OR (FactSalesOrderDetails.SpecialOffer IS NULL AND query.SpecialOffer IS NOT NULL) OR  (FactSalesOrderDetails.SpecialOffer IS NOT NULL AND query.SpecialOffer IS NULL)
-                  OR FactSalesOrderDetails.SpecialOfferType<>query.SpecialOfferType OR (FactSalesOrderDetails.SpecialOfferType IS NULL AND query.SpecialOfferType IS NOT NULL) OR  (FactSalesOrderDetails.SpecialOfferType IS NOT NULL AND query.SpecialOfferType IS NULL)
-                  OR FactSalesOrderDetails.SpecialOfferCategory<>query.SpecialOfferCategory OR (FactSalesOrderDetails.SpecialOfferCategory IS NULL AND query.SpecialOfferCategory IS NOT NULL) OR  (FactSalesOrderDetails.SpecialOfferCategory IS NOT NULL AND query.SpecialOfferCategory IS NULL))) THEN
-  UPDATE SET
-    ProductSid=query.ProductSid,
-    SalesOrderSid=query.SalesOrderSid,
-    CarrierTrackingNumber=query.CarrierTrackingNumber,
-    OrderQty=query.OrderQty,
-    UnitPrice=query.UnitPrice,
-    UnitPriceDiscount=query.UnitPriceDiscount,
-    LineTotal=query.LineTotal,
-    SpecialOffer=query.SpecialOffer,
-    SpecialOfferType=query.SpecialOfferType,
-    SpecialOfferCategory=query.SpecialOfferCategory
-WHEN NOT MATCHED THEN
-  INSERT (SalesOrderDetailID,ProductSid,SalesOrderSid,CarrierTrackingNumber,OrderQty,UnitPrice,UnitPriceDiscount,LineTotal,SpecialOffer,SpecialOfferType,SpecialOfferCategory) VALUES (
-    query.SalesOrderDetailID,
-    query.ProductSid,
-    query.SalesOrderSid,
-    query.CarrierTrackingNumber,
-    query.OrderQty,
-    query.UnitPrice,
-    query.UnitPriceDiscount,
-    query.LineTotal,
-    query.SpecialOffer,
-    query.SpecialOfferType,
-    query.SpecialOfferCategory)
-WHEN NOT MATCHED BY SOURCE THEN
-  DELETE;
-```
-
-</details>
-
-
-Además, el código generado es óptimo. Es imposible cargar esta tabla de una manera más rápida o eficiente. Con ninguna otra herramienta es posible cargar estos mismos datos más rápidamente.
+En cierto modo, este código **Crono SQL** es una fusión inteligente entre un `CREATE TABLE` y un `CREATE PROCEDURE` que ejecuta un `MERGE`. El código generado es óptimo: es imposible cargar esta tabla de una manera más rápida o eficiente.
 
 
 ## Estructura del manual
