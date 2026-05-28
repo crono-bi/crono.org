@@ -1,5 +1,5 @@
 ---
-title: "OVER 🚧"
+title: "OVER"
 sidebar:
   order: 85
 ---

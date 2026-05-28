@@ -1,5 +1,5 @@
 ---
-title: "Palabras reservadas de Crono SQL"
+title: "Palabras reservadas"
 sidebar:
   order: 110
 ---
@@ -56,26 +56,27 @@ Estas palabras clave se pueden utilizar como identificadores o nombres de objeto
 |WITHIN          |WITHOUT        |YES            |YTD          |               |
 
 
-El propio lenguaje **Crono SQL** permite consultar las palabras reservadas con la vista **Crono$Keywords**.
+El propio lenguaje **Crono SQL** permite consultar las palabras reservadas con la vista **crono.keywords**.
 
 El anterior listado se puede obtener con esta consulta:
 
 
 ```crono-sql
-select
-	maxif(col=0,name) Keyword1,
-	maxif(col=1,name) Keyword2,
-	maxif(col=2,name) Keyword3,
-	maxif(col=3,name) Keyword4,
-	maxif(col=4,name) Keyword5
-from (select
-		rank(order by name)-1 [rank],
-		floor([rank]/5.0)	[row],
-		mod([rank],5) col,
-		name
-	from Crono$Keywords
-  where not name starts with 'CRONO'
-  ) a
-group by [row]
-order by [row]
+SELECT
+  maxif(col=0, name) keyword1,
+  maxif(col=1, name) keyword2,
+  maxif(col=2, name) keyword3,
+  maxif(col=3, name) keyword4,
+  maxif(col=4, name) keyword5
+FROM (
+  SELECT
+    rank(ORDER BY name) - 1  [rank],
+    floor([rank] / 5.0)      [row],
+    mod([rank], 5)           col,
+    name
+  FROM crono.Keywords
+  WHERE NOT name STARTS WITH 'CRONO'
+) a
+GROUP BY [row]
+ORDER BY [row]
 ```
