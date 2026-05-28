@@ -6,11 +6,11 @@ sidebar:
 
 import CategorySelector from '../../../../components/CategorySelector.astro'
 
-**Crono SQL** soporta todas las funciones que admita la base de datos con la que se esté trabajando. Se pueden utilizar con normalidad las funciones `length`, `sum`, `substring`, `upper` o cualquier otra que admita la base de datos.
+**Crono SQL** soporta todas las funciones nativas del motor de base de datos con el que se esté trabajando. Se pueden usar con normalidad funciones como `length`, `sum`, `substring`, `upper` o cualquier otra que admita el motor, aunque su disponibilidad depende de cada plataforma.
 
-Además de estas funciones, **Crono SQL** incluye algunas funciones propias que facilitan o resuelven problemáticas adicionales. Por ejemplo, la función `divide` permite hacer una división sabiendo que no se producirá un error si se divide entre cero. La función `left` permite extraer los primeros caracteres de una cadena simplificando un poco la sintaxis del `substring`. Etc.
+Además, **Crono SQL** incluye un conjunto de funciones propias que funcionan en todos los motores soportados: SQL Server, Snowflake, PostgreSQL, BigQuery, Redshift, Databricks, Microsoft Fabric y DuckDB. Crono SQL compila cada función al equivalente nativo de cada motor de forma transparente. Por ejemplo, `divide` realiza una división que devuelve `NULL` en lugar de error si el divisor es cero, y `left` extrae los primeros caracteres de una cadena sin necesidad de usar `substring`.
 
-En esta sección se describen todas las funciones propias de **Crono SQL** y las funciones de **SQL Server** y de otros motores de bases de datos.
+En esta sección se documentan las funciones propias de **Crono SQL**, agrupadas por categorías.
 
 Las funciones se han agrupado por categorías:
 

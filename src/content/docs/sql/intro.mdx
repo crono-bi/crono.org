@@ -5,51 +5,47 @@ title: "Introducción"
 import { Aside } from '@astrojs/starlight/components';
 import CategorySelector from '../../../components/CategorySelector.astro'
 
+**Crono SQL** es un superconjunto de SQL diseñado para proyectos ETL/DWH. Todo el conocimiento SQL existente es válido y aprovechable. Crono añade exactamente tres cosas al estándar:
 
+1. **Sintaxis SELECT extendida** — apilamiento de SELECTs para transformaciones encadenadas, reutilización de columnas calculadas, SEMI JOIN, ANTI JOIN, MATERIALIZE y otros atajos para patrones analíticos habituales.
 
-Crono SQL es un lenguaje de programación para facilitar el desarrollo ágil de proyectos ETL/DWH. En esta página se muestra la sintaxis del lenguaje y todas las funciones admitidas.
+2. **Nueve patrones de carga** — sentencias declarativas (`MERGE CLONE`, `MERGE UPSERT`, `MERGE HISTORY`...) que resuelven todos los escenarios habituales de carga de datos: sincronización completa, carga incremental, SCD1, SCD2, borrado lógico y más. Cada patrón mantiene automáticamente las columnas de auditoría y compila a SQL nativo para los ocho motores soportados.
+
+3. **Biblioteca de funciones portables** — un conjunto de funciones comunes (de texto, numéricas, de fecha, de agregación...) que compilan correctamente en cualquier motor, eliminando las incompatibilidades habituales entre dialectos SQL.
 
 ## ¿Qué es Crono SQL?
 
 **Crono SQL** es un lenguaje de programación creado por Pablo Urquizu (fundador de Crono BI) para facilitar el desarrollo ágil de proyectos ETL/DWH.
 
-**Crono SQL** es un lenguaje que compila en SQL. Crono SQL y SQL tienen la misma relación, por ejemplo, que [TypeScript](https://es.wikipedia.org/wiki/TypeScript) y JavaScript, o [Markdown](https://daringfireball.net/projects/markdown/syntax) y HTML. 
+**Crono SQL** compila en SQL. La relación entre Crono SQL y SQL es similar a la que existe entre [TypeScript](https://es.wikipedia.org/wiki/TypeScript) y JavaScript, o entre [Markdown](https://daringfireball.net/projects/markdown/syntax) y HTML: el desarrollador escribe en el lenguaje de alto nivel y el compilador genera el código equivalente para el entorno de destino. En el caso de Crono SQL, ese entorno puede ser cualquiera de los ocho motores soportados.
 
-**Crono SQL** extiende la sintaxis de SQL, por tanto cualquier sentencia **SELECT** existente funciona sin problemas. 
+**Crono SQL** extiende la sintaxis de SQL, por tanto cualquier sentencia **SELECT** existente funciona sin cambios.
 
-El lenguaje **Crono SQL** pretende simplificar la sintaxis del SQL evitando las repeticiones de código y automatizando la generación del código más farragoso y repetitivo. 
+El lenguaje **Crono SQL** pretende simplificar la sintaxis del SQL evitando las repeticiones de código y automatizando la generación del código más farragoso y repetitivo.
 
-**Crono SQL** es un lenguaje mucho más imperativo, más fácil de escribir, de leer, y de mantener que el SQL ISO. 
+**Crono SQL** es un lenguaje más conciso, más expresivo y más fácil de escribir, de leer y de mantener que el SQL ISO.
 
 
 ## Principios
 
-En la definición de la sintaxis y el desarrollo de las herramientas asociadas se han seguido estos principios:
+**El SQL es suficiente.** No hace falta aprender un nuevo paradigma ni abandonar el conocimiento acumulado. Crono SQL extiende SQL, no lo reemplaza. Cualquier consulta SQL válida es también código Crono SQL válido, y todo lo que sabes de SQL sigue siendo útil.
+
+**Todo el código, en ficheros de texto.** La lógica de negocio, la estructura del modelo de datos y las reglas de carga residen en ficheros de texto plano. Cada tabla se define y se carga desde un único fichero con una sola sentencia: la lógica no está diseminada entre N ficheros ni el proyecto organizado de cualquier manera. Nada se esconde en interfaces gráficas, configuraciones binarias o metadatos de herramientas propietarias. El código es la verdad única del proyecto, y puede —y debe— versionarse en Git como cualquier otro software.
+
+**Sin repeticiones.** El código repetido es código que se desactualiza, que falla de formas distintas en sitios distintos y que nadie quiere mantener. Crono SQL elimina activamente las repeticiones: los JOINs se simplifican, las columnas calculadas se reutilizan, los patrones de carga se definen una sola vez.
+
+**Legible antes que inteligente.** Un `MERGE CLONE` de 20 líneas que cualquier miembro del equipo puede leer y entender es mejor que 300 líneas de SQL optimizado que solo entiende quien lo escribió. Crono SQL prioriza la expresividad y la claridad porque el código se escribe una vez pero se lee y se mantiene durante años.
+
+**La calidad del dato, en el código.** Las validaciones no son un paso separado ni una responsabilidad externa. `CHECK SNOWFLAKE` y `ASSERT` son cláusulas del propio lenguaje: si los datos de origen tienen un problema, la carga falla explícitamente antes de contaminar el DWH.
+
+**Un verdadero lenguaje, no plantillas.** Toda disciplina de ingeniería madura tiene un lenguaje específico para su dominio. Crono SQL es ese lenguaje para ETL/DWH: tiene gramática formal, compilador, y detección de errores en tiempo de compilación —antes de que nada se ejecute en base de datos—. No es un sistema de macros, no es una capa de plantillas sobre SQL, no es una caja negra que genera código impredecible. El código que ves es exactamente lo que se ejecuta, y si hay un error, lo sabes antes de tocar producción.
 
 
-| Principio              | Objetivo              | Justificación        |
-|------------------------|--------------------------|----------------------|
-| Principio SQL          | Similitud al **SQL ANSI** | El lenguaje SQL es un lenguaje conocido y ampliamente aceptado por el mercado. Es un lenguaje declarativo muy potente y adecuado para interactuar con los datos. **Crono SQL** trata de parecerse los más posible al SQL estándar. |
-| Principio DRY          | Evitar repeticiones       | El código debe ser los más conciso posible y se debe evitar especialmente las repeticiones de código. Las repeticiones de código son fuente de errores y degradan la mantenibilidad del proyecto. |
-| Principo KISS          | Buscar la simplicidad. | Mantener la simplicidad es importante en todos los proyectos, y eso incluye al lenguaje y a las herramientas de desarrollo. Siempre será preferible un código breve y sencillo que otro más farragoso o difícil de recordar.|
-| Principo TEXT          | Mantener todo el código del proyecto y las configuraciones en ficheros de textos | El formato de texto es el más universal y el que mejor se puede gestionar desde un sistema de control de versiones como **GIT**. |
+## Ejemplo
 
+En **Crono SQL**, una única sentencia define simultáneamente la estructura de la tabla y la lógica que la carga y mantiene actualizada. El mismo código compila a SQL nativo para cualquiera de los motores soportados, genera un procedimiento optimizado y aplica automáticamente las columnas de auditoría del proyecto.
 
-## Un resumen, por favor
-
-Este manual tiene más de 300 páginas, por lo que probablemente querrás saber lo que puedes llegar a conseguir con Crono y si vale la pena seguir leyendo.
-
-En menos de 100 palabras:
-
-<Aside type="tip" title="RESUMEN">
-Con **Crono SQL** puedes escribir un código sencillo que crea una tabla y crea el procedimiento que se encarga de su aprovisionamiento.
-Con unas pocas líneas de código se consigue al mismo tiempo crear el modelo de datos y construir la ETL.
-Además, el código generado es óptimo y el rendimiento es inigualable. Todo ello redunda en un código más mantenible, más escalable y con menos errores.
-</Aside>
-
-El siguiente ejemplo muestra todo lo anterior con más detalle. Incluye prácticamente todo lo que vas a necesitar para construir un DWH y cargar prácticamente todas las dimensiones y el 90% o más de las tablas de hechos.
-
-Este manual asume que se tienen al menos conocimientos básicos de SQL.
+El siguiente ejemplo es representativo de un caso de uso habitual: la carga de una tabla de hechos con validación de integridad referencial. Este manual asume conocimientos básicos de SQL.
 
 ```crono-sql
 CREATE OR REPLACE PROCEDURE
@@ -75,10 +71,8 @@ inner join dwh.FactSalesOrderHeader using SalesOrderHeader(SalesOrderID)
 check snowflake
 ```
 
-  
-
-  <details>
-<summary>Ver SQL compilado</summary>
+<details>
+<summary>Ver SQL compilado (SQL Server)</summary>
 
 ```crono-sql
 IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.ROUTINES WHERE ROUTINE_NAME='LOAD dwh.FactSalesOrderDetails' AND ROUTINE_TYPE='PROCEDURE')
@@ -164,22 +158,8 @@ BEGIN
   EXEC sys.sp_dropextendedproperty @level0type = 'SCHEMA',  @level0name = 'dbo',    @level1type = 'PROCEDURE', @level1name = 'LOAD dwh.FactSalesOrderDetails', @name = 'LastExecutedDate'
   
   EXEC sys.sp_addextendedproperty @level0type = 'SCHEMA',  @level0name = 'dbo',    @level1type = 'PROCEDURE', @level1name = 'LOAD dwh.FactSalesOrderDetails', @name = 'LastExecutedDate', @value=@LastExecutedDate
-  
 
 END
-
-EXEC sys.sp_addextendedproperty @level0type = 'SCHEMA',  @level0name = 'dbo',    @level1type = 'PROCEDURE', @level1name = 'LOAD dwh.FactSalesOrderDetails', @name = 'Hash', @value='D3B7FDA0D66B341F12BE2E5226A5E1FC'
-
-EXEC sys.sp_addextendedproperty @level0type = 'SCHEMA',  @level0name = 'dbo',    @level1type = 'PROCEDURE', @level1name = 'LOAD dwh.FactSalesOrderDetails', @name = 'UserName', @value='SELVA\pauur'
-
-EXEC sys.sp_addextendedproperty @level0type = 'SCHEMA',  @level0name = 'dbo',    @level1type = 'PROCEDURE', @level1name = 'LOAD dwh.FactSalesOrderDetails', @name = 'CronoVersion', @value='Crono SQL 22.51.0.0'
-
-EXEC sys.sp_addextendedproperty @level0type = 'SCHEMA',  @level0name = 'dbo',    @level1type = 'PROCEDURE', @level1name = 'LOAD dwh.FactSalesOrderDetails', @name = 'LoadType', @value='Clone'
-
-EXEC sys.sp_addextendedproperty @level0type = 'SCHEMA',  @level0name = 'dbo',    @level1type = 'PROCEDURE', @level1name = 'LOAD dwh.FactSalesOrderDetails', @name = 'TableName', @value='FactSalesOrderDetails'
-
-EXEC sys.sp_addextendedproperty @level0type = 'SCHEMA',  @level0name = 'dbo',    @level1type = 'PROCEDURE', @level1name = 'LOAD dwh.FactSalesOrderDetails', @name = 'SchemaTableName', @value='dwh'
-
 ```
 
 </details>
@@ -192,19 +172,18 @@ Estas 21 líneas de código hacen todo lo siguiente:
 - También crea una restricción de unicidad `BK_FactSalesOrderDetails` que actuará como *business key* y asegurará que el campo `SalesOrderDetailID` no tiene repetidos.
 - Crea las claves foráneas con las tablas `dwh.DimProducts` y `dwh.FactSalesOrderHeader`.
 - Crea los índices `NONUNIQUE` sobre los campos que intervienen en las dos relaciones previas para optimizar el rendimiento.
-- Crea un procedimiento en base de datos que carga la tabla `dwh.FactSalesOrderDetails` a partir de los datos de la consulta indicada. Esta carga se hará siguiendo una estrategia **MERGE CLONE**, es decir, añadirá o eliminará los nuevos registros que hagan falta para que la tabla del DWH tenga exactamente el mismo contenido que el ERP de origen. Si algún registro ha cambiado sus valores, también actualizará las modificaciones. Después de ejecutar la carga, la tabla del DWH será literalmente un "clon" de los datos de origen.
-- Antes de actualizar los datos, sin embargo, se verifica que las relaciones sean correctas y que no se pierden ni duplican registros. La cláusula `CHECK SNOWFLAKE` asegura que se cargan exactamente todas las ventas de origen. Ni una más ni una menos. Esta comprobación es fundamental para asegurar la calidad de los datos. Si los datos de origen tienen algún error, no queremos cargarlos en el data warehouse.
-- El procedimiento también guarda **información de auditoria**. Es decir, cada registro tendrá información de la fecha de alta y la fecha de la última modificación.
-- También se informará en la tabla de auditoría `audit.logs` información sobre todas las ejecuciones del procedimiento. Sabremos cada vez que se ha ejecutando, cuando y quién lo ha hecho, sabremos cuántos registros se han actualizado, y el tiempo que ha tardado. Esta información de auditoria se configura una sola vez en cada proyecto.
-- Finalmente, también se informan algunas propiedades extendidas sobre la estrategia de carga y otras características del código.
+- Crea el procedimiento de carga de la tabla `dwh.FactSalesOrderDetails`. Esta carga sigue una estrategia **MERGE CLONE**: añade o elimina los registros necesarios para que la tabla del DWH tenga exactamente el mismo contenido que el origen. Si algún registro ha cambiado, también actualiza las modificaciones.
+- Antes de actualizar los datos, verifica que las relaciones son correctas y que no se pierden ni duplican registros. La cláusula `CHECK SNOWFLAKE` garantiza que se cargan exactamente todas las líneas de origen, ni una más ni una menos. Esta comprobación es fundamental para asegurar la calidad del dato.
+- El procedimiento guarda **columnas de auditoría** automáticamente. Cada registro tendrá información de la fecha de alta y la fecha de la última modificación.
+- También registra en la tabla de auditoría del proyecto información sobre cada ejecución: cuándo se ha ejecutado, cuántos registros se han procesado y cuánto tiempo ha tardado. Esta configuración se define una sola vez por proyecto.
 
-En resumen, esas 21 lineas de código se transforman en 282 líneas que hacen todo lo necesario para crear la tabla en el DWH y cargarla diariamente siguiendo las mejores prácticas.
+En resumen, esas 21 líneas de código se transforman en 282 líneas que hacen todo lo necesario para crear la tabla en el DWH y cargarla diariamente siguiendo las mejores prácticas.
 
-En cierto modo, este código **Crono SQL** es una fusión inteligente entre una sentencia `CREATE TABLE` y una sentencia `CREATE PROCEDURE` que crea un procedimiento que ejecuta un `MERGE`. 
+En cierto modo, este código **Crono SQL** es una fusión inteligente entre una sentencia `CREATE TABLE` y una sentencia `CREATE PROCEDURE` que ejecuta un `MERGE`.
 
-Aunque lo anterior ya es una gran ventaja respecto al código **SQL ANSI**, el mayor beneficio es la sintaxis simplificada de la sentencia **MERGE**. La sentencia **MERGE** es fundamental en los proyectos ETL/DWH, pero su sintaxis estándar es tan farragosa que su creación y mantenimiento se convierte en inviable. Con **Crono SQL** la sintaxis es tan sencilla que convierte innecesario utilizar cualquier otra herramienta ETL.
+Aunque lo anterior ya es una gran ventaja respecto al código **SQL ANSI**, el mayor beneficio es la sintaxis simplificada de la sentencia **MERGE**. La sentencia **MERGE** es fundamental en los proyectos ETL/DWH, pero su sintaxis estándar es tan farragosa que su creación y mantenimiento se vuelve inviable. Con **Crono SQL** la sintaxis es tan sencilla que hace innecesario utilizar cualquier otra herramienta ETL.
 
-El siguiente código permite comparar la facilidad y legibilidad del código **Crono SQL** frente al código **SQL** estándar.
+El siguiente código permite comparar la facilidad y legibilidad del código **Crono SQL** frente al SQL estándar que genera.
 
 
 ```crono-sql
@@ -229,10 +208,8 @@ inner join dwh.DimProducts using Product(ProductID)
 inner join dwh.FactSalesOrderHeader using SalesOrderHeader(SalesOrderID)
 ```
 
-  
-
-  <details>
-<summary>Ver SQL compilado</summary>
+<details>
+<summary>Ver SQL compilado (SQL Server)</summary>
 
 ```crono-sql
 ;WITH
@@ -294,7 +271,6 @@ WHEN NOT MATCHED THEN
     query.SpecialOfferCategory)
 WHEN NOT MATCHED BY SOURCE THEN
   DELETE;
-
 ```
 
 </details>
