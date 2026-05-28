@@ -5,19 +5,19 @@ import type { Feature, Category, Statement, FuncExample } from './ManualLanding.
 
 const features: Feature[] = [
   {
-    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>',
-    title: 'SQL con superpoderes',
-    description: 'Un lenguaje como SQL, pero más fácil de escribir, más mantenible y más escalable.'
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3"/><path d="M21 8V5a2 2 0 0 0-2-2h-3"/><path d="M3 16v3a2 2 0 0 0 2 2h3"/><path d="M16 21h3a2 2 0 0 0 2-2v-3"/><path d="M12 8v8"/><path d="M8 12h8"/></svg>',
+    title: 'SELECT extendido',
+    description: 'JOINs simplificados, columnas calculadas reutilizables, apilamiento de consultas, SEMI JOIN, ANTI JOIN y MATERIALIZE. Todo el SQL estándar sigue funcionando sin cambios.'
   },
   {
-    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/><path d="M3 15h18"/><path d="M9 3v18"/><path d="M15 3v18"/></svg>',
-    title: 'Generador de SQL',
-    description: 'No es una base de datos ni una caja negra. Crono SQL genera código SQL nativo para tu motor.'
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9h16"/><path d="M4 15h16"/><path d="M10 3 8 21"/><path d="M14 3l-2 18"/></svg>',
+    title: 'Nueve patrones de carga',
+    description: 'MERGE CLONE, MERGE UPSERT, MERGE HISTORY y más. Cada sentencia crea la tabla, la evoluciona cuando añades campos y gestiona las columnas de auditoría automáticamente.'
   },
   {
-    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5V19A9 3 0 0 0 21 19V5"/><path d="M3 12A9 3 0 0 0 21 12"/></svg>',
-    title: 'Crono ETL',
-    description: 'El lenguaje utilizado por Crono ETL para crear procesos de carga de Data Warehouse.'
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2H2v10l9.29 9.29c.94.94 2.48.94 3.42 0l6.58-6.58c.94-.94.94-2.48 0-3.42L12 2Z"/><path d="M7 7h.01"/></svg>',
+    title: 'Funciones portables',
+    description: 'Más de 80 funciones de texto, numéricas, de fecha y de agregación que compilan correctamente en los ocho motores soportados, sin incompatibilidades entre dialectos.'
   }
 ]
 
@@ -59,14 +59,15 @@ const categories: Category[] = [
 const engines = ['SQL Server', 'Snowflake', 'PostgreSQL', 'Redshift', 'BigQuery', 'Databricks', 'MS Fabric', 'DuckDB']
 
 const statements: Statement[] = [
-  { name: 'SELECT', description: 'Consultas con JOINs simplificados usando USING' },
-  { name: 'MERGE UPSERT', description: 'Inserta nuevos registros y actualiza los existentes' },
-  { name: 'MERGE HISTORY', description: 'Mantiene historial de cambios (SCD Tipo 2)' },
-  { name: 'MERGE CLONE', description: 'Sincroniza completamente la tabla destino' },
-  { name: 'DELETE AND INSERT', description: 'Recarga parcial: elimina y vuelve a insertar' },
+  { name: 'SELECT', description: 'JOINs simplificados, columnas reutilizables y apilamiento de consultas' },
+  { name: 'MERGE CLONE', description: 'Sincronización completa: crea la tabla, la mantiene y gestiona la auditoría' },
+  { name: 'MERGE UPSERT', description: 'Inserta los registros nuevos y actualiza los existentes (SCD Tipo 1)' },
+  { name: 'MERGE HISTORY', description: 'Mantiene historial completo de cambios (SCD Tipo 2)' },
+  { name: 'MERGE SOFT DELETE', description: 'Marca como eliminados los registros que ya no existen en origen' },
+  { name: 'INSERT OVERWRITE', description: 'Recarga completa: elimina y vuelve a insertar todos los registros' },
+  { name: 'INSERT IF NEW', description: 'Inserta solo los registros nuevos, sin modificar los existentes' },
   { name: 'CHECK SNOWFLAKE', description: 'Verifica que los JOINs no pierdan ni dupliquen registros' },
-  { name: 'CALCULATE', description: 'Agregaciones sobre el resultado total con columnas agrupadas' },
-  { name: 'MATERIALIZE', description: 'Tablas temporales para mejorar el rendimiento' }
+  { name: 'MATERIALIZE', description: 'Define tablas temporales para simplificar consultas complejas' }
 ]
 
 const functions: FuncExample[] = [
@@ -76,23 +77,17 @@ const functions: FuncExample[] = [
   { code: 'substraction(a, b)', description: 'Resta segura' }
 ]
 
-const codeExample = `/*
-  MERGE CLONE fully synchronizes the target table
-  with the SELECT result: inserts, updates and
-  deletes records as needed.
-*/
-
-MERGE CLONE dwh.DimProducts
+const codeExample = `MERGE CLONE dwh.dim_products KEY (product_id)
 SELECT
-  ProductID #ProductID,
-  Product.Name Product,
-  ProductCategory.name ProductCategory,
-  ProductSubCategory.name ProductSubCategory
-FROM staging.Product
-LEFT JOIN staging.ProductSubCategory USING ProductSubcategoryID
-LEFT JOIN staging.ProductCategory USING ProductSubCategory(ProductCategoryId)`
+  products.product_id,
+  products.product_name,
+  categories.category_name,
+  suppliers.company_name supplier
+FROM staging.products
+INNER JOIN staging.categories USING category_id
+INNER JOIN staging.suppliers USING supplier_id`
 
-const codeExampleDisplay = `<span class="ck">MERGE CLONE</span> dwh.DimProducts\n<span class="ck">SELECT</span>\n  ProductID #ProductID,\n  Product.Name <span class="ck">Product</span>,\n  ProductCategory.name ProductCategory,\n  ProductSubCategory.name ProductSubCategory\n<span class="ck">FROM</span> staging.Product\n<span class="ck">LEFT JOIN</span> staging.ProductSubCategory <span class="ck">USING</span> ProductSubcategoryID\n<span class="ck">LEFT JOIN</span> staging.ProductCategory <span class="ck">USING</span> ProductSubCategory(ProductCategoryId)`
+const codeExampleDisplay = `<span class="ck">MERGE CLONE</span> dwh.dim_products <span class="ck">KEY</span> (product_id)\n<span class="ck">SELECT</span>\n  products.product_id,\n  products.product_name,\n  categories.category_name,\n  suppliers.company_name supplier\n<span class="ck">FROM</span> staging.products\n<span class="ck">INNER JOIN</span> staging.categories <span class="ck">USING</span> category_id\n<span class="ck">INNER JOIN</span> staging.suppliers <span class="ck">USING</span> supplier_id`
 
 // Encode example code for playground URL
 const playgroundUrl = `/playground/?code=${btoa(encodeURIComponent(codeExample))}`
@@ -101,7 +96,7 @@ const playgroundUrl = `/playground/?code=${btoa(encodeURIComponent(codeExample))
 <ManualLanding
   logo="/logos/crono-sql.webp"
   logoAlt="Crono SQL"
-  subtitle="SQL con superpoderes para construir Data Warehouses"
+  subtitle="Escríbelo una vez. Cárgalo en cualquier motor."
   ctaText="Acceder al manual"
   ctaHref="/sql/intro/"
   secondaryCta={{ text: 'Playground', href: playgroundUrl }}
