@@ -261,7 +261,9 @@ Las subconsultas que envuelven un SELECT completo en el FROM son otra historia. 
 
 ## SELECTs anidados
 
-**Crono SQL** permite apilar varios **SELECT** en una misma consulta como alternativa a las subconsultas del ejemplo anterior. Cada capa opera sobre el resultado de la que tiene debajo, la consulta se lee de abajo a arriba, y cada nivel expresa una única transformación. El código es más legible porque no hay indentación de subconsultas ni alias intermedios como `subquery`.
+**Crono SQL** permite apilar varios **SELECT** en una misma consulta como alternativa a las subconsultas del ejemplo anterior. Los SELECTs apilados funcionan como un pipeline de transformaciones: cada operador actúa sobre el resultado del anterior, de abajo a arriba. La consulta se construye por capas, y cada capa expresa una única transformación con toda la potencia de SQL.
+
+Esta idea no es nueva. Es la misma filosofía de composición que tienen los pipes de Unix (`|`), los DataFrames de Pandas o dplyr en R: encadenar operaciones simples para construir transformaciones complejas. La diferencia es que aquí no se abandona SQL en ningún momento — se siguen usando SELECT, WHERE, GROUP BY, ORDER BY, con la misma sintaxis y el mismo compilador. No hay un nuevo paradigma que aprender, solo una forma más expresiva de componer lo que ya se sabe.
 
 La consulta anterior —media de ventas anuales por producto— se escribe en **Crono SQL** apilando dos SELECT:
 
