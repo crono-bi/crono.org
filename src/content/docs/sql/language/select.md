@@ -233,6 +233,82 @@ LEFT JOIN (
   WHERE discount > 0) discounted USING order_id
 ```
 
+También se puede usar una subconsulta en el FROM para operar sobre el resultado de otra consulta. Este ejemplo calcula la media de las ventas anuales por producto: la subconsulta interior obtiene el total por producto y año, y la consulta exterior agrega esos totales.
+
+```crono-sql
+SELECT
+  product_name,
+  product_id,
+  avg(annual_revenue) AS avg_annual_revenue
+FROM (
+  SELECT
+    products.product_name,
+    products.product_id,
+    year(orders.order_date) AS order_year,
+    sum(order_details.unit_price * order_details.quantity) AS annual_revenue
+  FROM staging.order_details
+  INNER JOIN staging.orders USING order_id
+  INNER JOIN staging.products USING product_id
+) subquery
+```
+
+Las subconsultas en los JOINs —como las del primer ejemplo— son útiles y a veces necesarias: permiten filtrar o preparar una tabla antes de combinarla con el resto de la consulta, y su lugar en el código es exactamente el correcto, junto al JOIN que las usa.
+
+Las subconsultas que envuelven un SELECT completo en el FROM son otra historia. Funcionan, pero presentan problemas de legibilidad y mantenimiento que se acumulan con la complejidad. La consulta exterior no puede referenciar directamente las columnas de la interior sin pasar por el alias de la subconsulta. Si la lógica cambia, hay que buscar dentro de los paréntesis para entender qué hace cada nivel. Con dos niveles de anidamiento el código ya resulta difícil de leer; con tres o más, prácticamente imposible de mantener.
+
+**Crono SQL** resuelve este problema con los **SELECTs anidados**: en lugar de envolver la consulta interior entre paréntesis y darle un alias, se apila directamente encima como una capa separada. El resultado es el mismo SQL compilado, pero el código se lee de forma natural, de abajo a arriba, sin indentación creciente ni nombres de subconsulta artificiales como `subquery`, `a` o `inner_query`.
+
+
+## SELECTs anidados
+
+**Crono SQL** permite apilar varios **SELECT** en una misma consulta como alternativa a las subconsultas del ejemplo anterior. Cada capa opera sobre el resultado de la que tiene debajo, la consulta se lee de abajo a arriba, y cada nivel expresa una única transformación. El código es más legible porque no hay indentación de subconsultas ni alias intermedios como `subquery`.
+
+La consulta anterior —media de ventas anuales por producto— se escribe en **Crono SQL** apilando dos SELECT:
+
+```crono-sql
+SELECT
+  product_name,
+  product_id,
+  avg(annual_revenue) AS avg_annual_revenue
+SELECT
+  products.product_name,
+  products.product_id,
+  year(orders.order_date) AS order_year,
+  sum(order_details.unit_price * order_details.quantity) AS annual_revenue
+FROM staging.order_details
+INNER JOIN staging.orders USING order_id
+INNER JOIN staging.products USING product_id
+```
+
+Las capas apiladas no se limitan a la cláusula **SELECT**. También se pueden apilar **WHERE** y **ORDER BY** como capas independientes que operan sobre el resultado de las capas inferiores. Esto permite filtrar o ordenar sobre valores agregados sin necesidad de subconsultas ni CTEs.
+
+La siguiente consulta devuelve los clientes con más de 10.000 en ventas, ordenados de mayor a menor.
+
+```crono-sql
+SELECT ORDER BY total_sales DESC
+SELECT WHERE total_sales > 10000
+SELECT
+  customers.company_name,
+  sum(order_details.unit_price * order_details.quantity) AS total_sales
+FROM staging.order_details
+INNER JOIN staging.orders USING order_id
+INNER JOIN staging.customers USING orders(customer_id)
+```
+
+Las cláusulas apiladas permiten también contar el número de registros que devuelve una consulta previa.
+
+```crono-sql
+SELECT count(*)
+SELECT
+  products.product_name,
+  products.product_id,
+  sum(order_details.unit_price * order_details.quantity) AS revenue
+FROM staging.order_details
+INNER JOIN staging.products USING product_id
+```
+
+Esta capacidad es especialmente valiosa durante el desarrollo. Cuando se está construyendo o depurando una consulta compleja, es habitual querer inspeccionarla: contar cuántos registros devuelve, agrupar los resultados de una forma distinta, filtrar por un valor concreto para verificar que el dato es correcto. Con los SELECTs apilados, esa inspección se añade encima de la consulta original sin tocarla. Cuando ya no se necesita, se elimina la capa superior y la consulta queda exactamente como estaba.
+
 
 ## FILTER
 
@@ -475,6 +551,39 @@ INNER JOIN staging.customers USING customer_id
 ```
 
 
+## DUPLICATES OVER ()
+
+La cláusula **DUPLICATES OVER (PARTITION BY …)** devuelve únicamente los registros para los que existe más de una fila con la misma combinación de campos en la partición. El compilador genera la subconsulta con `COUNT(*) OVER (PARTITION BY …)` necesaria para cada motor.
+
+Su uso más habitual es la detección de duplicados en los datos de origen: si la consulta devuelve algún registro, hay un problema de calidad que debe resolverse antes de la carga.
+
+```crono-sql
+SELECT DUPLICATES OVER (PARTITION BY customer_id)
+  customer_id,
+  company_name,
+  contact_name,
+  contact_title,
+  address
+FROM staging.customers
+```
+
+Se puede combinar con SELECTs apilados. La cláusula **DUPLICATES** actúa sobre el resultado de la capa inferior, lo que permite aplicarla sobre cualquier consulta previa sin repetir código.
+
+```crono-sql
+SELECT DUPLICATES OVER (PARTITION BY customer_id)
+SELECT *
+FROM staging.customers
+```
+
+También es útil para consultas analíticas. La siguiente consulta devuelve todos los pedidos en los que el mismo cliente realizó más de una orden el mismo día.
+
+```crono-sql
+SELECT DUPLICATES OVER (PARTITION BY customer_id, order_date)
+SELECT *
+FROM staging.orders
+```
+
+
 ## WITH
 
 Las expresiones de tabla comunes (**CTE**) con cláusula **WITH** están soportadas. Se pueden combinar con **FILTER** para reutilizar la misma CTE con distintas condiciones sin duplicar código.
@@ -625,55 +734,6 @@ SELECT
 FROM staging.orders
 INNER JOIN staging.customers USING customer_id
 WHERE order_year = '2023'
-```
-
-
-## SELECTs anidados
-
-En lugar de escribir subconsultas, **Crono SQL** permite apilar varios **SELECT** en una misma consulta. Cada capa opera sobre el resultado de la que tiene debajo. La consulta se lee de abajo a arriba, y cada nivel expresa una única transformación clara. El código resultante es más legible y más fácil de mantener que una subconsulta anidada equivalente.
-
-Esta consulta devuelve la media de las ventas anuales de cada producto. La capa inferior calcula el total por producto y año; la capa superior agrega esos totales para obtener la media.
-
-```crono-sql
-SELECT
-  product_name,
-  product_id,
-  avg(annual_revenue) AS avg_annual_revenue
-SELECT
-  products.product_name,
-  products.product_id,
-  year(orders.order_date) AS order_year,
-  sum(order_details.unit_price * order_details.quantity) AS annual_revenue
-FROM staging.order_details
-INNER JOIN staging.orders USING order_id
-INNER JOIN staging.products USING product_id
-```
-
-Las capas apiladas no se limitan a la cláusula **SELECT**. También se pueden apilar **WHERE** y **ORDER BY** como capas independientes que operan sobre el resultado de las capas inferiores. Esto permite filtrar o ordenar sobre valores agregados sin necesidad de subconsultas ni CTEs.
-
-La siguiente consulta devuelve los clientes con más de 10.000 en ventas, ordenados de mayor a menor.
-
-```crono-sql
-SELECT ORDER BY total_sales DESC
-SELECT WHERE total_sales > 10000
-SELECT
-  customers.company_name,
-  sum(order_details.unit_price * order_details.quantity) AS total_sales
-FROM staging.order_details
-INNER JOIN staging.orders USING order_id
-INNER JOIN staging.customers USING orders(customer_id)
-```
-
-Las cláusulas apiladas permiten también contar el número de registros que devuelve una consulta previa.
-
-```crono-sql
-SELECT count(*)
-SELECT
-  products.product_name,
-  products.product_id,
-  sum(order_details.unit_price * order_details.quantity) AS revenue
-FROM staging.order_details
-INNER JOIN staging.products USING product_id
 ```
 
 
