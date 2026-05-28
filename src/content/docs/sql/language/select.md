@@ -4,736 +4,318 @@ sidebar:
   order: 1
 ---
 
+En esta sección se documenta el funcionamiento de la sentencia **SELECT** del lenguaje. **Crono SQL** extiende el SELECT estándar sin romper ninguna compatibilidad: cualquier consulta SQL existente funciona sin cambios. Las extensiones se añaden encima, como capas opcionales que el desarrollador adopta a su ritmo.
 
-En esta sección se documenta el funcionamiento de la sentencia **SELECT** del lenguaje. La sintaxis **SELECT** de **Crono SQL** aporta algunas ventajas (algunas importantes) frente al SQL ISO. Sin embargo, el mayor beneficio del lenguaje se manifiesta en el resto de instrucciones DML (**INSERT**, **UPDATE**, **MERGE**, …), donde Crono SQL automatiza toda la lógica de carga. Por eso la sentencia **SELECT** es tan importante… ¡Es prácticamente lo único que tendrá que codificar el desarrollador de un proyecto  ETL/DWH!
+La sentencia **SELECT** es la pieza central del lenguaje porque todas las instrucciones de carga (**MERGE**, **INSERT**, **UPDATE**...) se construyen sobre ella. En la práctica, es casi lo único que el desarrollador de un proyecto ETL/DWH tiene que escribir.
 
-A continuación se describen sistemáticamente todas las características soportadas en la sentencia **SELECT** del lenguaje **Crono SQL**.
-
-
-
-## Basado en el lenguaje SQL 
+A continuación se describen sistemáticamente todas las extensiones y características de la sentencia **SELECT** de **Crono SQL**.
 
 
-**Proposición:** Cuualquier sentencia **SELECT** válida en SQL es válida también en **Crono SQL**
+## Basado en el lenguaje SQL
 
+Todo el conocimiento SQL existente es válido en **Crono SQL**. Cualquier sentencia **SELECT** válida en SQL es también válida en **Crono SQL**, sin modificaciones.
 
 ```crono-sql
 SELECT 'Hola mundo';
 ```
 
-  
-
-  <details>
-<summary>Ver SQL compilado</summary>
-
-```crono-sql
-SELECT 'Hola mundo' AS expr1
-```
-
-</details>
-
-
 Si ninguna tabla participa en la consulta, se debe terminar la sentencia con el carácter punto y coma ";". En cualquier otro caso, el punto y coma es opcional.
 
 ```crono-sql
-select *
-from staging.Customer
-```
-
-  
-
-  <details>
-<summary>Ver SQL compilado</summary>
-
-```crono-sql
 SELECT *
-FROM staging.Customer
-
+FROM staging.customers
 ```
 
-</details>
-
-
-
-Se pueden incluir las cláusulas **JOIN**, **WHERE**, **GROUP BY**, **HAVING** y/o **ORDER BY**
+Se pueden incluir las cláusulas **JOIN**, **WHERE**, **GROUP BY**, **HAVING** y/o **ORDER BY**.
 
 ```crono-sql
 SELECT
-  Customer.CustomerId AS CustomerId,
-  Person.FirstName AS FirstName,
-  Person.LastName AS LastName,
-  sum(Sales.subtotal) AS Amount
-FROM staging.SalesOrderHeader Sales
-INNER JOIN staging.Customer ON (Sales.customerId=Customer.customerId)
-LEFT JOIN staging.Person ON (Customer.PersonID=Person.BusinessEntityId)
-WHERE Person.FirstName='Fernando'
+  customers.customer_id,
+  customers.company_name AS customer,
+  sum(orders.freight) AS total_freight
+FROM staging.orders
+INNER JOIN staging.customers ON (orders.customer_id=customers.customer_id)
+WHERE customers.country='Germany'
 GROUP BY
-  Customer.CustomerId,
-  Person.FirstName,
-  Person.LastName
-HAVING sum(Sales.subtotal)>3000
-ORDER BY sum(Sales.subtotal) DESC
+  customers.customer_id,
+  customers.company_name
+HAVING sum(orders.freight) > 100
+ORDER BY sum(orders.freight) DESC
 ```
-
-  
-
-  <details>
-<summary>Ver SQL compilado</summary>
-
-```crono-sql
-SELECT
-  Customer.CustomerId AS CustomerId,
-  Person.FirstName AS FirstName,
-  Person.LastName AS LastName,
-  sum(Sales.subtotal) AS Amount
-FROM staging.SalesOrderHeader Sales
-INNER JOIN staging.Customer ON (Sales.customerId=Customer.customerId)
-LEFT JOIN staging.Person ON (Customer.PersonID=Person.BusinessEntityId)
-WHERE Person.FirstName='Fernando'
-GROUP BY
-  Customer.CustomerId,
-  Person.FirstName,
-  Person.LastName
-HAVING sum(Sales.subtotal)>3000
-ORDER BY sum(Sales.subtotal) DESC
-
-```
-
-</details>
-
-
 
 Se pueden utilizar las funciones propias del motor de base de datos o funciones definidas por el usuario.
 
-
 ```crono-sql
 SELECT
-  year(sales.OrderDate) AS OrderYear,
-  Customer.CustomerId AS CustomerId,
-  concat(CustomerPerson.FirstName,' ',CustomerPerson.LastName) AS Customer,
-  CustomerPerson.FirstName AS FirstName,
-  CustomerPerson.LastName AS LastName,
-  sum(sales.subtotal) AS Amount
-FROM staging.SalesOrderHeader sales
-INNER JOIN staging.customer ON (sales.customerId=customer.customerId)
-LEFT JOIN staging.Person CustomerPerson ON (Customer.PersonID=CustomerPerson.BusinessEntityId)
-WHERE year(sales.OrderDate)=2012
+  year(orders.order_date) AS order_year,
+  customers.customer_id,
+  customers.company_name AS customer,
+  customers.contact_name,
+  sum(orders.freight) AS total_freight
+FROM staging.orders
+INNER JOIN staging.customers ON (orders.customer_id=customers.customer_id)
+WHERE year(orders.order_date) = 2023
 GROUP BY
-  year(sales.OrderDate),
-  Customer.CustomerId,
-  concat(CustomerPerson.FirstName,' ',CustomerPerson.LastName),
-  CustomerPerson.FirstName,
-  CustomerPerson.LastName
+  year(orders.order_date),
+  customers.customer_id,
+  customers.company_name,
+  customers.contact_name
 ```
 
-  
 
-  <details>
-<summary>Ver SQL compilado</summary>
+## Columnas inteligentes
+
+En SQL ISO no está permitido hacer referencia a un alias definido en el mismo SELECT. Si una columna calculada se necesita en otra expresión, hay que repetir la expresión original o envolver la consulta en una subconsulta. **Crono SQL** elimina esa limitación: cualquier columna del SELECT puede referenciarse por su alias desde cualquier otra columna del mismo SELECT.
+
+Esto aplica directamente el principio **sin repeticiones**: cada cálculo se escribe una sola vez. Si la lógica cambia, se actualiza en un único lugar y el resto de la consulta se ajusta automáticamente.
+
+El siguiente ejemplo usa `order_year` en el WHERE sin repetir la expresión `year(orders.order_date)`, y `upper_customer` referencia el alias `customer` en lugar de duplicar `customers.company_name`.
 
 ```crono-sql
 SELECT
-  year(sales.OrderDate) AS OrderYear,
-  Customer.CustomerId AS CustomerId,
-  concat(CustomerPerson.FirstName,' ',CustomerPerson.LastName) AS Customer,
-  CustomerPerson.FirstName AS FirstName,
-  CustomerPerson.LastName AS LastName,
-  sum(sales.subtotal) AS Amount
-FROM staging.SalesOrderHeader sales
-INNER JOIN staging.customer ON (sales.customerId=customer.customerId)
-LEFT JOIN staging.Person CustomerPerson ON (Customer.PersonID=CustomerPerson.BusinessEntityId)
-WHERE year(sales.OrderDate)=2012
-GROUP BY
-  year(sales.OrderDate),
-  Customer.CustomerId,
-  concat(CustomerPerson.FirstName,' ',CustomerPerson.LastName),
-  CustomerPerson.FirstName,
-  CustomerPerson.LastName
-
+  year(orders.order_date) AS order_year,
+  customers.customer_id,
+  customers.company_name AS customer,
+  upper(customer) AS upper_customer,
+  customers.contact_name,
+  sum(orders.freight) AS total_freight
+FROM staging.orders
+INNER JOIN staging.customers ON orders.customer_id=customers.customer_id
+WHERE order_year = 2023
 ```
 
-</details>
-
-
-## Referencia a columnas existentes
-
-A diferencia del SQL ISO, en **Crono SQL** se puede hacer referencia a otra columna de la sentencia SELECT mediante el Alias de la columna.
-
-
+La reutilización de alias es especialmente útil en columnas agregadas. En este ejemplo, `total_amount` y `total_discount` se calculan una sola vez y se reutilizan en `divide()` sin repetir las expresiones.
 
 ```crono-sql
 SELECT
-  year(sales.OrderDate) AS OrderYear,
-  Customer.CustomerId AS CustomerId,
-  concat(CustomerPerson.FirstName,' ',CustomerPerson.LastName) AS Customer,
-  upper(customer) UpperCustomer,
-  CustomerPerson.FirstName AS FirstName,
-  CustomerPerson.LastName AS LastName,
-  sum(sales.subtotal) AS Amount
-FROM staging.SalesOrderHeader sales
-INNER JOIN staging.customer ON sales.CustomerId=customer.CustomerId
-LEFT JOIN staging.Person CustomerPerson ON Customer.PersonID=CustomerPerson.BusinessEntityId
-WHERE OrderYear=2012
+  customers.company_name,
+  sum(order_details.unit_price * order_details.quantity) total_amount,
+  sum(order_details.unit_price * order_details.quantity * order_details.discount) total_discount,
+  divide(total_discount, total_amount) discount_pct
+FROM staging.order_details
+INNER JOIN staging.orders USING order_id
+INNER JOIN staging.customers USING orders(customer_id)
 ```
-
-  
-
-  <details>
-<summary>Ver SQL compilado</summary>
-
-```crono-sql
-SELECT
-  year(sales.OrderDate) AS OrderYear,
-  Customer.CustomerId AS CustomerId,
-  concat(CustomerPerson.FirstName,' ',CustomerPerson.LastName) AS Customer,
-  upper(concat(CustomerPerson.FirstName,' ',CustomerPerson.LastName)) AS UpperCustomer,
-  CustomerPerson.FirstName AS FirstName,
-  CustomerPerson.LastName AS LastName,
-  sum(sales.subtotal) AS Amount
-FROM staging.SalesOrderHeader sales
-INNER JOIN staging.customer ON (sales.CustomerId=customer.CustomerId)
-LEFT JOIN staging.Person CustomerPerson ON (Customer.PersonID=CustomerPerson.BusinessEntityId)
-WHERE year(sales.OrderDate)=2012
-GROUP BY
-  year(sales.OrderDate),
-  Customer.CustomerId,
-  concat(CustomerPerson.FirstName,' ',CustomerPerson.LastName),
-  upper(concat(CustomerPerson.FirstName,' ',CustomerPerson.LastName)),
-  CustomerPerson.FirstName,
-  CustomerPerson.LastName
-
-```
-
-</details>
 
 
 ## Prescindiendo del GROUP BY
 
-Se puede utilizar la cláusula **GROUP BY ALL** para indicar que se agrupe por todas las columnas que no sean funciones de agregación. 
+En SQL ISO, el **GROUP BY** obliga a listar de nuevo todas las columnas no agregadas, duplicando información que ya está presente en el SELECT. **Crono SQL** elimina esa repetición: el compilador infiere automáticamente qué columnas deben agruparse.
+
+Se puede utilizar la cláusula **GROUP BY ALL** para indicar explícitamente que se agrupe por todas las columnas que no sean funciones de agregación.
 
 ```crono-sql
 SELECT
-  year(sales.OrderDate) AS OrderYear,
-  Customer.CustomerId AS CustomerId,
-  concat(CustomerPerson.FirstName,' ',CustomerPerson.LastName) AS Customer,
-  CustomerPerson.FirstName AS FirstName,
-  CustomerPerson.LastName AS LastName,
-  sum(sales.subtotal) AS Amount
-FROM staging.SalesOrderHeader sales
-INNER JOIN staging.customer ON (sales.customerId=customer.customerId)
-LEFT JOIN staging.Person CustomerPerson ON (Customer.PersonID=CustomerPerson.BusinessEntityId)
-WHERE year(sales.OrderDate)=2012
+  year(orders.order_date) AS order_year,
+  customers.customer_id,
+  customers.company_name AS customer,
+  customers.contact_name,
+  sum(orders.freight) AS total_freight
+FROM staging.orders
+INNER JOIN staging.customers ON (orders.customer_id=customers.customer_id)
+WHERE year(orders.order_date) = 2023
 GROUP BY ALL
 ```
 
-  
-
-  <details>
-<summary>Ver SQL compilado</summary>
+O prescindir completamente de la cláusula **GROUP BY**. **Crono SQL** incluirá las columnas necesarias en el SQL generado.
 
 ```crono-sql
 SELECT
-  year(sales.OrderDate) AS OrderYear,
-  Customer.CustomerId AS CustomerId,
-  concat(CustomerPerson.FirstName,' ',CustomerPerson.LastName) AS Customer,
-  CustomerPerson.FirstName AS FirstName,
-  CustomerPerson.LastName AS LastName,
-  sum(sales.subtotal) AS Amount
-FROM staging.SalesOrderHeader sales
-INNER JOIN staging.customer ON (sales.customerId=customer.customerId)
-LEFT JOIN staging.Person CustomerPerson ON (Customer.PersonID=CustomerPerson.BusinessEntityId)
-WHERE year(sales.OrderDate)=2012
-GROUP BY
-  year(sales.OrderDate),
-  Customer.CustomerId,
-  concat(CustomerPerson.FirstName,' ',CustomerPerson.LastName),
-  CustomerPerson.FirstName,
-  CustomerPerson.LastName
-
+  year(orders.order_date) AS order_year,
+  customers.customer_id,
+  customers.company_name AS customer,
+  customers.contact_name,
+  sum(orders.freight) AS total_freight
+FROM staging.orders
+INNER JOIN staging.customers ON (orders.customer_id=customers.customer_id)
+WHERE year(orders.order_date) = 2023
 ```
-
-</details>
-
-
-Siempre se puede prescindir totalmente de la cláusula **GROUP BY**. **Crono SQL** incluirá las columnas necesarias en el SQL generado.
-
-```crono-sql
-SELECT
-  year(sales.OrderDate) AS OrderYear,
-  Customer.CustomerId AS CustomerId,
-  concat(CustomerPerson.FirstName,' ',CustomerPerson.LastName) AS Customer,
-  CustomerPerson.FirstName AS FirstName,
-  CustomerPerson.LastName AS LastName,
-  sum(sales.subtotal) AS Amount
-FROM staging.SalesOrderHeader sales
-INNER JOIN staging.customer ON (sales.customerId=customer.customerId)
-LEFT JOIN staging.Person CustomerPerson ON (Customer.PersonID=CustomerPerson.BusinessEntityId)
-WHERE year(sales.OrderDate)=2012
-```
-
-  
-
-  <details>
-<summary>Ver SQL compilado</summary>
-
-```crono-sql
-SELECT
-  year(sales.OrderDate) AS OrderYear,
-  Customer.CustomerId AS CustomerId,
-  concat(CustomerPerson.FirstName,' ',CustomerPerson.LastName) AS Customer,
-  CustomerPerson.FirstName AS FirstName,
-  CustomerPerson.LastName AS LastName,
-  sum(sales.subtotal) AS Amount
-FROM staging.SalesOrderHeader sales
-INNER JOIN staging.customer ON (sales.customerId=customer.customerId)
-LEFT JOIN staging.Person CustomerPerson ON (Customer.PersonID=CustomerPerson.BusinessEntityId)
-WHERE year(sales.OrderDate)=2012
-GROUP BY
-  year(sales.OrderDate),
-  Customer.CustomerId,
-  concat(CustomerPerson.FirstName,' ',CustomerPerson.LastName),
-  CustomerPerson.FirstName,
-  CustomerPerson.LastName
-
-```
-
-</details>
 
 
 ## USING
 
-Se puede utilizar la cláusula **USING**  para simplificar la sintaxis de los JOIN equi-join.
+La cláusula **USING** simplifica la sintaxis de los JOINs. En lugar de escribir la condición completa `ON (tabla_a.campo = tabla_b.campo)`, basta con indicar el nombre del campo o la tabla de la que proviene la clave. El resultado es más conciso y más fácil de leer.
 
 ```crono-sql
 SELECT
-  year(sales.OrderDate) AS OrderYear,
-  Customer.CustomerId AS CustomerId,
-  concat(CustomerPerson.FirstName,' ',CustomerPerson.LastName) AS Customer,
-  CustomerPerson.FirstName AS FirstName,
-  CustomerPerson.LastName AS LastName,
-  sum(sales.subtotal) AS Amount
-FROM staging.SalesOrderHeader sales
-INNER JOIN staging.customer USING Sales(CustomerId)
-LEFT JOIN staging.Person CustomerPerson ON (Customer.PersonID=CustomerPerson.BusinessEntityId)
-WHERE year(sales.OrderDate)=2012
+  year(orders.order_date) AS order_year,
+  customers.customer_id,
+  customers.company_name AS customer,
+  customers.contact_name,
+  sum(orders.freight) AS total_freight
+FROM staging.orders
+INNER JOIN staging.customers USING orders(customer_id)
+WHERE year(orders.order_date) = 2023
 ```
 
-  
-
-  <details>
-<summary>Ver SQL compilado</summary>
+**USING** también puede utilizarse cuando los campos de la equi-join tienen distinto nombre en cada tabla.
 
 ```crono-sql
 SELECT
-  year(sales.OrderDate) AS OrderYear,
-  Customer.CustomerId AS CustomerId,
-  concat(CustomerPerson.FirstName,' ',CustomerPerson.LastName) AS Customer,
-  CustomerPerson.FirstName AS FirstName,
-  CustomerPerson.LastName AS LastName,
-  sum(sales.subtotal) AS Amount
-FROM staging.SalesOrderHeader sales
-INNER JOIN staging.customer ON (Sales.CustomerId=customer.CustomerId)
-LEFT JOIN staging.Person CustomerPerson ON (Customer.PersonID=CustomerPerson.BusinessEntityId)
-WHERE year(sales.OrderDate)=2012
-GROUP BY
-  year(sales.OrderDate),
-  Customer.CustomerId,
-  concat(CustomerPerson.FirstName,' ',CustomerPerson.LastName),
-  CustomerPerson.FirstName,
-  CustomerPerson.LastName
-
+  year(orders.order_date) AS order_year,
+  customers.customer_id,
+  customers.company_name AS customer,
+  shippers.company_name AS shipper,
+  sum(orders.freight) AS total_freight
+FROM staging.orders
+INNER JOIN staging.customers USING orders(customer_id)
+INNER JOIN staging.shippers USING orders(ship_via shipper_id)
+WHERE year(orders.order_date) = 2023
 ```
 
-</details>
-
-
-La cláusula **USING** también puede utilizarse cuando los campos de la equi-join tienen distinto nombre.
+Si no se especifica el nombre de la tabla izquierda, se asume que es la tabla del **FROM**.
 
 ```crono-sql
 SELECT
-  year(sales.OrderDate) AS OrderYear,
-  Customer.CustomerId AS CustomerId,
-  concat(CustomerPerson.FirstName,' ',CustomerPerson.LastName) AS Customer,
-  CustomerPerson.FirstName AS FirstName,
-  CustomerPerson.LastName AS LastName,
-  sum(sales.subtotal) AS Amount
-FROM staging.SalesOrderHeader sales
-INNER JOIN staging.customer USING Sales(CustomerId)
-LEFT JOIN staging.Person CustomerPerson USING Customer(PersonID BusinessEntityId)
-WHERE year(sales.OrderDate)=2012
+  year(orders.order_date) AS order_year,
+  customers.customer_id,
+  customers.company_name AS customer,
+  shippers.company_name AS shipper,
+  sum(orders.freight) AS total_freight
+FROM staging.orders
+INNER JOIN staging.customers USING customer_id
+INNER JOIN staging.shippers USING orders(ship_via shipper_id)
+WHERE year(orders.order_date) = 2023
 ```
-
-  
-
-  <details>
-<summary>Ver SQL compilado</summary>
-
-```crono-sql
-SELECT
-  year(sales.OrderDate) AS OrderYear,
-  Customer.CustomerId AS CustomerId,
-  concat(CustomerPerson.FirstName,' ',CustomerPerson.LastName) AS Customer,
-  CustomerPerson.FirstName AS FirstName,
-  CustomerPerson.LastName AS LastName,
-  sum(sales.subtotal) AS Amount
-FROM staging.SalesOrderHeader sales
-INNER JOIN staging.customer ON (Sales.CustomerId=customer.CustomerId)
-LEFT JOIN staging.Person CustomerPerson ON (Customer.PersonID=CustomerPerson.BusinessEntityId)
-WHERE year(sales.OrderDate)=2012
-GROUP BY
-  year(sales.OrderDate),
-  Customer.CustomerId,
-  concat(CustomerPerson.FirstName,' ',CustomerPerson.LastName),
-  CustomerPerson.FirstName,
-  CustomerPerson.LastName
-
-```
-
-</details>
-
-
-Si no se especifica el nombre de la tabla izquierda en la cláusula **USING**, se asume que es la tabla del **FROM** es la que participa en la relación. 
-
-```crono-sql
-SELECT
-  year(sales.OrderDate) AS OrderYear,
-  Customer.CustomerId AS CustomerId,
-  concat(CustomerPerson.FirstName,' ',CustomerPerson.LastName) AS Customer,
-  CustomerPerson.FirstName AS FirstName,
-  CustomerPerson.LastName AS LastName,
-  sum(sales.subtotal) AS Amount
-FROM staging.SalesOrderHeader sales
-INNER JOIN staging.customer USING CustomerId
-LEFT JOIN staging.Person CustomerPerson USING Customer(PersonID BusinessEntityId)
-WHERE year(sales.OrderDate)=2012
-```
-
-  
-
-  <details>
-<summary>Ver SQL compilado</summary>
-
-```crono-sql
-SELECT
-  year(sales.OrderDate) AS OrderYear,
-  Customer.CustomerId AS CustomerId,
-  concat(CustomerPerson.FirstName,' ',CustomerPerson.LastName) AS Customer,
-  CustomerPerson.FirstName AS FirstName,
-  CustomerPerson.LastName AS LastName,
-  sum(sales.subtotal) AS Amount
-FROM staging.SalesOrderHeader sales
-INNER JOIN staging.customer ON (sales.CustomerId=customer.CustomerId)
-LEFT JOIN staging.Person CustomerPerson ON (Customer.PersonID=CustomerPerson.BusinessEntityId)
-WHERE year(sales.OrderDate)=2012
-GROUP BY
-  year(sales.OrderDate),
-  Customer.CustomerId,
-  concat(CustomerPerson.FirstName,' ',CustomerPerson.LastName),
-  CustomerPerson.FirstName,
-  CustomerPerson.LastName
-
-```
-
-</details>
-
 
 Si la relación equi-join está formada por distintos campos, se pueden especificar en la cláusula **USING** separados por comas.
 
 ```crono-sql
 SELECT count(*)
-FROM staging.SalesOrderHeader sales
-INNER JOIN staging.customer USING (CompanyId,CustomerId)
-LEFT JOIN staging.Person CustomerPerson USING customer(CompanyId,PersonID BusinessEntityId)
-WHERE year(sales.OrderDate)=2012
+FROM staging.orders
+INNER JOIN staging.customers USING (customer_id)
+INNER JOIN staging.employees USING orders(employee_id, ship_country region)
 ```
-
-  
-
-  <details>
-<summary>Ver SQL compilado</summary>
-
-```crono-sql
-SELECT count(*) AS expr1
-FROM staging.SalesOrderHeader sales
-INNER JOIN staging.customer ON (sales.CompanyId=customer.CompanyId AND sales.CustomerId=customer.CustomerId)
-LEFT JOIN staging.Person CustomerPerson ON (customer.CompanyId=CustomerPerson.CompanyId AND customer.PersonID=CustomerPerson.BusinessEntityId)
-WHERE year(sales.OrderDate)=2012
-
-```
-
-</details>
 
 
 ## CHECK SNOWFLAKE
 
-La cláusula **CHECK SNOWFLAKE**, colocada justo después de todos los **JOINs**, verifica que las relaciones no pierden ni duplican ningún registro de la tabla del **FROM**. Se trata de una comprobación fundamental para validar que no estamos cometiendo ninguna equivocación al escribir la consulta y que los datos de origen son coherentes con lo esperado.
+La calidad del dato forma parte del lenguaje, no es un paso separado. La cláusula **CHECK SNOWFLAKE**, colocada justo después de los **JOINs**, verifica en tiempo de ejecución que las relaciones no pierden ni duplican ningún registro de la tabla del **FROM**. Si los datos de origen no cumplen la condición, la consulta no se ejecuta y devuelve un error inmediatamente, antes de que ningún dato incorrecto llegue al destino.
 
 ```crono-sql
 SELECT
-  year(sales.OrderDate) AS OrderYear,
-  Customer.CustomerId AS CustomerId,
-  concat(CustomerPerson.FirstName,' ',CustomerPerson.LastName) AS Customer,
-  CustomerPerson.FirstName AS FirstName,
-  CustomerPerson.LastName AS LastName,
-  sum(sales.subtotal) AS Amount
-FROM staging.SalesOrderHeader sales
-INNER JOIN staging.customer USING CustomerId
-INNER JOIN staging.Person CustomerPerson USING Customer(PersonID BusinessEntityId)
+  year(orders.order_date) AS order_year,
+  customers.customer_id,
+  customers.company_name AS customer,
+  employees.first_name,
+  employees.last_name,
+  sum(orders.freight) AS total_freight
+FROM staging.orders
+INNER JOIN staging.customers USING customer_id
+INNER JOIN staging.employees USING employee_id
 CHECK SNOWFLAKE
-WHERE year(sales.OrderDate)=2012
+WHERE year(orders.order_date) = 2023
 ```
 
-  
+En este ejemplo, **CHECK SNOWFLAKE** verifica que todas las órdenes correspondan a exactamente un cliente y un empleado válidos. Si alguna orden quedara sin cliente o sin empleado, o si los JOINs produjeran duplicados, la carga fallaría antes de ejecutarse.
 
-  <details>
-<summary>Ver SQL compilado</summary>
-
-```crono-sql
-IF EXISTS (
-  SELECT count(*)
-  FROM staging.SalesOrderHeader sales
-  LEFT JOIN staging.customer ON (sales.CustomerId=customer.CustomerId)
-  LEFT JOIN staging.Person CustomerPerson ON (Customer.PersonID=CustomerPerson.BusinessEntityId)
-  HAVING count(CASE WHEN customer.CustomerId IS NOT NULL AND CustomerPerson.BusinessEntityId IS NOT NULL THEN 1 END) <> (SELECT count(*) FROM staging.SalesOrderHeader sales)
-) THROW 50001,'Las relaciones de esta consulta pierden o duplican registros de sales.',1
-
-SELECT
-  year(sales.OrderDate) AS OrderYear,
-  Customer.CustomerId AS CustomerId,
-  concat(CustomerPerson.FirstName,' ',CustomerPerson.LastName) AS Customer,
-  CustomerPerson.FirstName AS FirstName,
-  CustomerPerson.LastName AS LastName,
-  sum(sales.subtotal) AS Amount
-FROM staging.SalesOrderHeader sales
-INNER JOIN staging.customer ON (sales.CustomerId=customer.CustomerId)
-INNER JOIN staging.Person CustomerPerson ON (Customer.PersonID=CustomerPerson.BusinessEntityId)
-WHERE year(sales.OrderDate)=2012
-GROUP BY
-  year(sales.OrderDate),
-  Customer.CustomerId,
-  concat(CustomerPerson.FirstName,' ',CustomerPerson.LastName),
-  CustomerPerson.FirstName,
-  CustomerPerson.LastName
-
-```
-
-</details>
-
-
-La cláusula **CHECK SNOWFLAKE** verifica que todas las ventas correspondan a un cliente y que ese cliente exista en la tabla de personas. Si no fuera así, la consulta no se ejecutaría y devolvería un error.
-
-   
 
 ## Subconsultas
 
-Se pueden incluir subconsultas.
-
-```crono-sql
-SELECT 
-  Person.BusinessEntityId,
-  Person.LastName,
-  HomeAddress.AddressLine1 HomeAddressLine1,
-  HomeAddress.AddressLine2 HomeAddressLine2,
-  HomeAddress.City HomeCity,
-  ShippingAddress.AddressLine1 ShippingAddressLine1,
-  ShippingAddress.AddressLine2 ShippingAddressLine2,
-  ShippingAddress.City ShippingCity
-FROM staging.Person
-LEFT JOIN (
-  select * from staging.BusinessEntityAddress 
-  where AddressTypeId=2) BEHomeAddress using BusinessEntityId
-LEFT JOIN (
-  select * from staging.BusinessEntityAddress 
-  where AddressTypeId=5) BEShippingAddress using BusinessEntityId
-LEFT JOIN staging.Address HomeAddress using BEHomeAddress(AddressId)
-LEFT JOIN staging.Address ShippingAddress using BEShippingAddress(AddressId)
-```
-
-  
-
-  <details>
-<summary>Ver SQL compilado</summary>
+Se pueden incluir subconsultas en los JOINs de la misma forma que en SQL estándar.
 
 ```crono-sql
 SELECT
-  Person.BusinessEntityId AS BusinessEntityId,
-  Person.LastName AS LastName,
-  HomeAddress.AddressLine1 AS HomeAddressLine1,
-  HomeAddress.AddressLine2 AS HomeAddressLine2,
-  HomeAddress.City AS HomeCity,
-  ShippingAddress.AddressLine1 AS ShippingAddressLine1,
-  ShippingAddress.AddressLine2 AS ShippingAddressLine2,
-  ShippingAddress.City AS ShippingCity
-FROM staging.Person
-LEFT JOIN (SELECT *
-           FROM staging.BusinessEntityAddress
-           WHERE AddressTypeId=2) BEHomeAddress ON Person.BusinessEntityId=BEHomeAddress.BusinessEntityId
-LEFT JOIN (SELECT *
-           FROM staging.BusinessEntityAddress
-           WHERE AddressTypeId=5) BEShippingAddress ON Person.BusinessEntityId=BEShippingAddress.BusinessEntityId
-LEFT JOIN staging.Address HomeAddress ON (BEHomeAddress.AddressId=HomeAddress.AddressId)
-LEFT JOIN staging.Address ShippingAddress ON (BEShippingAddress.AddressId=ShippingAddress.AddressId)
-
+  orders.order_id,
+  orders.order_date,
+  customers.company_name AS customer,
+  bulk_items.product_id AS bulk_product,
+  bulk_items.quantity,
+  discounted.product_id AS discounted_product,
+  discounted.discount
+FROM staging.orders
+INNER JOIN staging.customers USING customer_id
+LEFT JOIN (
+  SELECT * FROM staging.order_details
+  WHERE quantity > 10) bulk_items USING order_id
+LEFT JOIN (
+  SELECT * FROM staging.order_details
+  WHERE discount > 0) discounted USING order_id
 ```
 
-</details>
 
+## FILTER
 
-## Subconsultas con FILTER y COLUMNS
-
-Después del nombre de la tabla, se puede incluir la cláusula **FILTER** para seleccionar solo una parte de los registros de la tabla. El código SQL generado incluirá una subconsulta similar a la del Ejemplo anterior.
-
-```crono-sql
-SELECT 
-  Person.BusinessEntityId,
-  Person.PersonType,
-  Person.LastName,
-  HomeAddress.AddressLine1	HomeAddressLine1,
-  HomeAddress.AddressLine2	HomeAddressLine2,
-  HomeAddress.City		HomeCity,
-  ShippingAddress.AddressLine1	ShippingAddressLine1,
-  ShippingAddress.AddressLine2	ShippingAddressLine2,
-  ShippingAddress.City		ShippingCity
-FROM staging.Person
-LEFT JOIN staging.BusinessEntityAddress FILTER (AddressTypeId=2) BEHomeAddress using BusinessEntityId
-LEFT JOIN staging.BusinessEntityAddress FILTER (AddressTypeId=5) BEShippingAddress using BusinessEntityId
-LEFT JOIN staging.Address HomeAddress using BEHomeAddress(AddressId)
-LEFT JOIN staging.Address ShippingAddress using BEShippingAddress(AddressId)
-```
-
-  
-
-  <details>
-<summary>Ver SQL compilado</summary>
+**FILTER** es un modificador de tabla que aplica una condición sobre los registros de la tabla antes de que se ejecute el JOIN. El compilador genera una subconsulta equivalente a la del ejemplo anterior, pero la sintaxis es más legible: el filtro se declara junto a la tabla a la que pertenece, no en un WHERE alejado de su contexto.
 
 ```crono-sql
 SELECT
-  Person.BusinessEntityId AS BusinessEntityId,
-  Person.PersonType AS PersonType,
-  Person.LastName AS LastName,
-  HomeAddress.AddressLine1 AS HomeAddressLine1,
-  HomeAddress.AddressLine2 AS HomeAddressLine2,
-  HomeAddress.City AS HomeCity,
-  ShippingAddress.AddressLine1 AS ShippingAddressLine1,
-  ShippingAddress.AddressLine2 AS ShippingAddressLine2,
-  ShippingAddress.City AS ShippingCity
-FROM staging.Person
-LEFT JOIN (SELECT * FROM staging.BusinessEntityAddress WHERE AddressTypeId=2) BEHomeAddress ON (Person.BusinessEntityId=BEHomeAddress.BusinessEntityId)
-LEFT JOIN (SELECT * FROM staging.BusinessEntityAddress WHERE AddressTypeId=5) BEShippingAddress ON (Person.BusinessEntityId=BEShippingAddress.BusinessEntityId)
-LEFT JOIN staging.Address HomeAddress ON (BEHomeAddress.AddressId=HomeAddress.AddressId)
-LEFT JOIN staging.Address ShippingAddress ON (BEShippingAddress.AddressId=ShippingAddress.AddressId)
-
+  orders.order_id,
+  orders.order_date,
+  customers.company_name AS customer,
+  bulk_items.product_id AS bulk_product,
+  bulk_items.quantity,
+  discounted.product_id AS discounted_product,
+  discounted.discount
+FROM staging.orders
+INNER JOIN staging.customers USING customer_id
+LEFT JOIN staging.order_details FILTER (quantity > 10) bulk_items USING order_id
+LEFT JOIN staging.order_details FILTER (discount > 0) discounted USING order_id
 ```
 
-</details>
-
-
-
-La cláusula **FILTER** es muy útil en combinación con la cláusula **CHECK SNOWFLAKE**. En el siguiente ejemplo, se verifica que cada persona tenga una única *HomeAddress* (o ninguna) y una única *ShippingAddress* (o ninguna). Si no fuera así, la consulta no duplicaría los registros  porque devolvería previamente un error. 
+**FILTER** es especialmente útil en combinación con **CHECK SNOWFLAKE**. El siguiente ejemplo verifica que cada orden corresponda exactamente a un cliente alemán y a un empleado. Si no fuera así, la consulta fallaría antes de ejecutarse.
 
 ```crono-sql
-SELECT 
-  Person.BusinessEntityId,
-  Person.PersonType,
-  Person.LastName,
-  HomeAddress.AddressLine1	HomeAddressLine1,
-  HomeAddress.AddressLine2	HomeAddressLine2,
-  HomeAddress.City		HomeCity,
-  ShippingAddress.AddressLine1	ShippingAddressLine1,
-  ShippingAddress.AddressLine2	ShippingAddressLine2,
-  ShippingAddress.City		ShippingCity
-FROM staging.Person
-LEFT JOIN staging.BusinessEntityAddress FILTER (AddressTypeId=2) BEHomeAddress using BusinessEntityId
-LEFT JOIN staging.BusinessEntityAddress FILTER (AddressTypeId=5) BEShippingAddress using BusinessEntityId
-LEFT JOIN staging.Address HomeAddress using BEHomeAddress(AddressId)
-LEFT JOIN staging.Address ShippingAddress using BEShippingAddress(AddressId)
+SELECT
+  orders.order_id,
+  orders.order_date,
+  customers.company_name AS customer,
+  customers.country,
+  employees.first_name,
+  employees.last_name
+FROM staging.orders
+INNER JOIN staging.customers FILTER (country='Germany') german_customers USING customer_id
+INNER JOIN staging.employees USING employee_id
 CHECK SNOWFLAKE
 ```
 
-  
 
-  <details>
-<summary>Ver SQL compilado</summary>
+## COLUMNS y ADD COLUMNS
 
-```crono-sql
-IF EXISTS (
-  SELECT count(*)
-  FROM staging.Person
-  LEFT JOIN (SELECT * FROM staging.BusinessEntityAddress WHERE AddressTypeId=2) BEHomeAddress ON (Person.BusinessEntityId=BEHomeAddress.BusinessEntityId)
-  LEFT JOIN (SELECT * FROM staging.BusinessEntityAddress WHERE AddressTypeId=5) BEShippingAddress ON (Person.BusinessEntityId=BEShippingAddress.BusinessEntityId)
-  LEFT JOIN staging.Address HomeAddress ON (BEHomeAddress.AddressId=HomeAddress.AddressId)
-  LEFT JOIN staging.Address ShippingAddress ON (BEShippingAddress.AddressId=ShippingAddress.AddressId)
-  HAVING count(*) <> (SELECT count(*) FROM staging.Person)
-) THROW 50001,'Las relaciones de esta consulta pierden o duplican registros de Person.',1
+**COLUMNS** y **ADD COLUMNS** son modificadores de tabla que, al igual que **FILTER**, generan una subconsulta sobre la tabla. La diferencia está en qué hacen con las columnas.
 
-SELECT
-  Person.BusinessEntityId AS BusinessEntityId,
-  Person.PersonType AS PersonType,
-  Person.LastName AS LastName,
-  HomeAddress.AddressLine1 AS HomeAddressLine1,
-  HomeAddress.AddressLine2 AS HomeAddressLine2,
-  HomeAddress.City AS HomeCity,
-  ShippingAddress.AddressLine1 AS ShippingAddressLine1,
-  ShippingAddress.AddressLine2 AS ShippingAddressLine2,
-  ShippingAddress.City AS ShippingCity
-FROM staging.Person
-LEFT JOIN (SELECT * FROM staging.BusinessEntityAddress WHERE AddressTypeId=2) BEHomeAddress ON (Person.BusinessEntityId=BEHomeAddress.BusinessEntityId)
-LEFT JOIN (SELECT * FROM staging.BusinessEntityAddress WHERE AddressTypeId=5) BEShippingAddress ON (Person.BusinessEntityId=BEShippingAddress.BusinessEntityId)
-LEFT JOIN staging.Address HomeAddress ON (BEHomeAddress.AddressId=HomeAddress.AddressId)
-LEFT JOIN staging.Address ShippingAddress ON (BEShippingAddress.AddressId=ShippingAddress.AddressId)
-
-```
-
-</details>
-
-
-
-Se puede utilizar la cláusula **COLUMNS** para seleccionar, renombrar, u operar sobre las columnas físicas de la tabla. El código SQL generado incluirá una subconsulta con esas columnas.
-    
-```crono-sql
-SELECT 
-  Person.BusinessEntityId,
-  Person.PersonType,
-  Person.PersonName,
-  HomeAddress.AddressLine1	HomeAddressLine1,
-  HomeAddress.AddressLine2	HomeAddressLine2,
-  HomeAddress.City			HomeCity,
-  ShippingAddress.AddressLine1	ShippingAddressLine1,
-  ShippingAddress.AddressLine2	ShippingAddressLine2,
-  ShippingAddress.City			ShippingCity
-FROM staging.Person COLUMNS (BusinessEntityId,PersonType,LastName PersonName) FILTER (PersonType='IN')
-LEFT JOIN staging.BusinessEntityAddress FILTER (AddressTypeId=2) BEHomeAddress using BusinessEntityId
-LEFT JOIN staging.BusinessEntityAddress FILTER (AddressTypeId=5) BEShippingAddress using BusinessEntityId
-LEFT JOIN staging.Address HomeAddress using BEHomeAddress(AddressId)
-LEFT JOIN staging.Address ShippingAddress using BEShippingAddress(AddressId)
-```
-
-  
-
-  <details>
-<summary>Ver SQL compilado</summary>
+**COLUMNS** selecciona y opcionalmente renombra un subconjunto de columnas, descartando el resto. Es útil para exponer solo los campos necesarios de una tabla con muchas columnas, o para renombrarlos antes de que entren en el JOIN. Se puede combinar con **FILTER**.
 
 ```crono-sql
 SELECT
-  Person.BusinessEntityId AS BusinessEntityId,
-  Person.PersonType AS PersonType,
-  Person.PersonName AS PersonName,
-  HomeAddress.AddressLine1 AS HomeAddressLine1,
-  HomeAddress.AddressLine2 AS HomeAddressLine2,
-  HomeAddress.City AS HomeCity,
-  ShippingAddress.AddressLine1 AS ShippingAddressLine1,
-  ShippingAddress.AddressLine2 AS ShippingAddressLine2,
-  ShippingAddress.City AS ShippingCity
-FROM (SELECT BusinessEntityId, PersonType, LastName AS PersonName FROM staging.Person WHERE PersonType='IN') Person
-LEFT JOIN (SELECT * FROM staging.BusinessEntityAddress WHERE AddressTypeId=2) BEHomeAddress ON (Person.BusinessEntityId=BEHomeAddress.BusinessEntityId)
-LEFT JOIN (SELECT * FROM staging.BusinessEntityAddress WHERE AddressTypeId=5) BEShippingAddress ON (Person.BusinessEntityId=BEShippingAddress.BusinessEntityId)
-LEFT JOIN staging.Address HomeAddress ON (BEHomeAddress.AddressId=HomeAddress.AddressId)
-LEFT JOIN staging.Address ShippingAddress ON (BEShippingAddress.AddressId=ShippingAddress.AddressId)
-
+  orders.order_id,
+  orders.order_date,
+  customers.customer_name,
+  customers.customer_country,
+  employees.first_name,
+  employees.last_name
+FROM staging.orders
+INNER JOIN staging.customers COLUMNS (customer_id, company_name customer_name, country customer_country) FILTER (country='Germany') USING customer_id
+INNER JOIN staging.employees USING employee_id
 ```
 
-</details>
+**ADD COLUMNS** conserva todas las columnas físicas de la tabla y añade expresiones calculadas. Las expresiones se escriben sin prefijo de tabla y quedan disponibles como nuevas columnas en el resto de la consulta. Esto permite definir un cálculo una sola vez, junto a la tabla donde tiene sentido, y reutilizarlo después sin repetición.
 
+El siguiente ejemplo define `total_amount` directamente sobre `order_details`. Al quedar disponible como columna de la subconsulta resultante, puede reutilizarse dos veces en el SELECT superior sin repetir la expresión.
+
+```crono-sql
+SELECT
+  company_name,
+  sum(total_amount) total_amount,
+  sum(order_details.total_amount * order_details.discount) total_discount,
+  divide(total_discount, total_amount) discount_pct
+FROM staging.order_details ADD COLUMNS (unit_price * quantity total_amount)
+INNER JOIN staging.orders USING order_id
+INNER JOIN staging.customers USING orders(customer_id)
+```
+
+**ADD COLUMNS** y **FILTER** se pueden combinar. El siguiente ejemplo añade `total_amount` y al mismo tiempo restringe las líneas a las que tienen descuento aplicado.
+
+```crono-sql
+SELECT
+  company_name,
+  sum(total_amount) total_amount,
+  sum(order_details.total_amount * order_details.discount) total_discount,
+  divide(total_discount, total_amount) discount_pct
+FROM staging.order_details ADD COLUMNS (unit_price * quantity total_amount) FILTER (discount > 0)
+INNER JOIN staging.orders USING order_id
+INNER JOIN staging.customers USING orders(customer_id)
+```
 
 
 ## ANTI JOIN
@@ -746,946 +328,366 @@ El lenguaje **Crono SQL** soporta todos los *joins* habituales:
 - **FULL JOIN**
 - **CROSS JOIN** (también **CROSS APPLY**)
 
-Además, implementa el **ANTI JOIN**. Un **ANTI JOIN** devuelve todos los registros de la izquierda que no aparecen en la parte derecha de la relación. Para ello, el SQL generado incluye un predicado **NOT EXISTS IN (…)**
+Además, implementa el **ANTI JOIN** y el **SEMI JOIN**. Ambos expresan en una sola cláusula patrones que en SQL estándar requieren un predicado `NOT EXISTS` o `EXISTS` con subconsulta — una construcción más verbosa y más difícil de leer.
 
-La  siguiente consulta devuelve todos los clientes que no tienen ninguna venta.  Puede ampliar la información sobre los **ANTI JOIN** en [el blog de SQL Server de Dale Burnett](http://daleburnett.com/2011/10/semi-joins-and-anti-joins/).
-
-```crono-sql
-select *
-FROM staging.customer 
-ANTI JOIN staging.SalesOrderHeader sales using customerId
-```
-
-  
-
-  <details>
-<summary>Ver SQL compilado</summary>
+Un **ANTI JOIN** devuelve todos los registros de la izquierda que no tienen ninguna correspondencia en la tabla derecha. La siguiente consulta devuelve todos los clientes que no tienen ninguna orden.
 
 ```crono-sql
 SELECT *
-FROM staging.customer
-WHERE NOT EXISTS (SELECT 1 FROM staging.SalesOrderHeader sales WHERE customer.customerId=sales.customerId)
-
+FROM staging.customers
+ANTI JOIN staging.orders USING customer_id
 ```
 
-</details>
-    
-
-El **ANTI JOIN** se puede combinar con el resto de características del lenguaje.  
-
-Esta consulta devuelve todos las personas que no tienen Home Address.
-
-```crono-sql
-select *
-FROM staging.Person
-ANTI JOIN staging.BusinessEntityAddress FILTER (AddressTypeId=2) BEHomeAddress using BusinessEntityId
-```
-
-  
-
-  <details>
-<summary>Ver SQL compilado</summary>
+El **ANTI JOIN** se puede combinar con **FILTER** y el resto de características del lenguaje. Esta consulta devuelve todos los productos que no tienen ninguna línea de detalle con descuento.
 
 ```crono-sql
 SELECT *
-FROM staging.Person
-WHERE NOT EXISTS (SELECT 1 FROM (SELECT * FROM staging.BusinessEntityAddress WHERE AddressTypeId=2) BEHomeAddress WHERE Person.BusinessEntityId=BEHomeAddress.BusinessEntityId)
-
+FROM staging.products
+ANTI JOIN staging.order_details FILTER (discount > 0) disc_details USING product_id
 ```
-
-</details>
 
 
 ## SEMI JOIN
 
-El lenguaje **Crono SQL** implementa también la relación **SEMI JOIN**. Un **SEMI JOIN** devuelve todos los registros de la izquierda que aparecen en la parte derecha de la relación. Para ello, el SQL generado incluye un predicado **EXISTS IN (…)**, por lo que a diferencia del **INNER JOIN** no duplica los registros en el resultado.
+Un **SEMI JOIN** devuelve todos los registros de la izquierda que tienen al menos una correspondencia en la tabla derecha. A diferencia del **INNER JOIN**, no duplica los registros del resultado aunque existan múltiples coincidencias.
 
-Esta consulta devuelve todos los clientes que tienen alguna venta (sin duplicados). Puede ampliar la información sobre los **SEMI JOIN** en [el blog de SQL Server de Dale Burnett](http://daleburnett.com/2011/10/semi-joins-and-anti-joins/).
-     
-
-```crono-sql
-select *
-FROM staging.customer 
-SEMI JOIN staging.SalesOrderHeader sales using customerId
-```
-
-  
-
-  <details>
-<summary>Ver SQL compilado</summary>
+Esta consulta devuelve todos los clientes que tienen al menos una orden, sin duplicados.
 
 ```crono-sql
 SELECT *
-FROM staging.customer
-WHERE EXISTS (SELECT 1 FROM staging.SalesOrderHeader sales WHERE customer.customerId=sales.customerId)
-
+FROM staging.customers
+SEMI JOIN staging.orders USING customer_id
 ```
-
-</details>
 
 
 ## UNPIVOT
 
-Se puede utilizar el operador **UNPIVOT** (según la [sintaxis de T-SQL](https://technet.microsoft.com/es-es/library/ms177410(v=sql.105).aspx)) para despivotar las columnas de una tabla.
+Se puede utilizar el operador **UNPIVOT** para convertir columnas en filas.
 
-En este ejemplo, las columna *“AddressLine1”*  y *“AddressLine2”* se han convertido en filas diferenciadas, duplicándose los registros.
-
-```crono-sql
-SELECT
-  AddressId,
-  AddressItem,
-  content
-FROM staging.Address
-UNPIVOT (content FOR AddressItem in (AddressLine1,AddressLine2)) as unpvt
-```
-
-  
-
-  <details>
-<summary>Ver SQL compilado</summary>
+En este ejemplo, las columnas `city` y `country` se convierten en filas diferenciadas, duplicándose los registros.
 
 ```crono-sql
 SELECT
-  AddressId,
-  AddressItem,
-  content
-FROM staging.Address
-UNPIVOT (content FOR AddressItem IN (AddressLine1,AddressLine2)) unpvt
-
+  customer_id,
+  field_name,
+  field_value
+FROM staging.customers
+UNPIVOT (field_value FOR field_name IN (city, country)) AS unpvt
 ```
-
-</details>
 
 
 ## ORDER BY
 
-Se puede utilizar la cláusula **ORDER BY** para forzar la ordenación del resultado.
-
-
-```crono-sql
-SELECT
-  year(sales.OrderDate) AS OrderYear,
-  month(sales.OrderDate) as OrderMonth,
-  sum(sales.subtotal) AS Amount
-FROM staging.SalesOrderHeader sales
-ORDER BY OrderYear, OrderMonth
-```
-
-  
-
-  <details>
-<summary>Ver SQL compilado</summary>
+Se puede utilizar la cláusula **ORDER BY** para forzar la ordenación del resultado. Gracias a las columnas inteligentes, se puede ordenar por alias sin repetir la expresión.
 
 ```crono-sql
 SELECT
-  year(sales.OrderDate) AS OrderYear,
-  month(sales.OrderDate) AS OrderMonth,
-  sum(sales.subtotal) AS Amount
-FROM staging.SalesOrderHeader sales
-GROUP BY
-  year(sales.OrderDate),
-  month(sales.OrderDate)
-ORDER BY
-  year(sales.OrderDate),
-  month(sales.OrderDate)
-
+  year(orders.order_date) AS order_year,
+  month(orders.order_date) AS order_month,
+  sum(orders.freight) AS total_freight
+FROM staging.orders
+ORDER BY order_year, order_month
 ```
 
-</details>
-
-    
-    
-El **ORDER BY** se puede escribir haciendo referencia a la posición de las columnas. 
-    
+El **ORDER BY** también puede escribirse haciendo referencia a la posición de las columnas.
 
 ```crono-sql
 SELECT
-  year(sales.OrderDate) AS OrderYear,
-  month(sales.OrderDate) as OrderMonth,
-  sum(sales.subtotal) AS Amount
-FROM staging.SalesOrderHeader sales
-ORDER BY 1,2
+  year(orders.order_date) AS order_year,
+  month(orders.order_date) AS order_month,
+  sum(orders.freight) AS total_freight
+FROM staging.orders
+ORDER BY 1, 2
 ```
-
-  
-
-  <details>
-<summary>Ver SQL compilado</summary>
-
-```crono-sql
-SELECT
-  year(sales.OrderDate) AS OrderYear,
-  month(sales.OrderDate) AS OrderMonth,
-  sum(sales.subtotal) AS Amount
-FROM staging.SalesOrderHeader sales
-GROUP BY
-  year(sales.OrderDate),
-  month(sales.OrderDate)
-ORDER BY
-  1,
-  2
-
-```
-
-</details>
 
 
 ## SELECT DISTINCT
 
-Se puede utilizar la palabra clave **DISTINCT** para obtener los valores distintos
-    
-    
-```crono-sql
-SELECT DISTINCT FirstName
-FROM staging.Person
-```
-
-  
-
-  <details>
-<summary>Ver SQL compilado</summary>
+Se puede utilizar la palabra clave **DISTINCT** para obtener los valores distintos.
 
 ```crono-sql
-SELECT DISTINCT FirstName
-FROM staging.Person
-
+SELECT DISTINCT country
+FROM staging.customers
 ```
-
-</details>
-
 
 
 ## SELECT TOP
 
-Se puede utilizar la palabra clave **TOP** para limitar el número de registros del resultado.
+Se puede utilizar la palabra clave **TOP** para limitar el número de registros del resultado. **Crono SQL** compila **TOP** a la sintaxis correcta de cada motor.
 
-Esta consulta devuelve los 5 clientes con mayores ventas. 
-
-```crono-sql
-SELECT TOP 5
-  SalesTerritory.Name Territory,
-  Customer.CustomerId,
-  CustomerPerson.FirstName,
-  CustomerPerson.LastName,
-  sum(sales.subtotal) Amount			 
-FROM staging.SalesOrderHeader sales
-INNER JOIN staging.customer USING sales(customerId)
-INNER JOIN staging.SalesTerritory USING TerritoryId
-LEFT JOIN staging.Person CustomerPerson USING Customer(PersonID BusinessEntityId)
-ORDER BY Amount DESC
-```
-
-  
-
-  <details>
-<summary>Ver SQL compilado</summary>
+Esta consulta devuelve los 5 clientes con mayor importe de transporte acumulado.
 
 ```crono-sql
 SELECT TOP 5
-  SalesTerritory.Name AS Territory,
-  Customer.CustomerId AS CustomerId,
-  CustomerPerson.FirstName AS FirstName,
-  CustomerPerson.LastName AS LastName,
-  sum(sales.subtotal) AS Amount
-FROM staging.SalesOrderHeader sales
-INNER JOIN staging.customer ON (sales.customerId=customer.customerId)
-INNER JOIN staging.SalesTerritory ON (sales.TerritoryId=SalesTerritory.TerritoryId)
-LEFT JOIN staging.Person CustomerPerson ON (Customer.PersonID=CustomerPerson.BusinessEntityId)
-GROUP BY
-  SalesTerritory.Name,
-  Customer.CustomerId,
-  CustomerPerson.FirstName,
-  CustomerPerson.LastName
-ORDER BY sum(sales.subtotal) DESC
-
+  customers.customer_id,
+  customers.company_name AS customer,
+  customers.country,
+  sum(orders.freight) AS total_freight
+FROM staging.orders
+INNER JOIN staging.customers USING customer_id
+ORDER BY total_freight DESC
 ```
-
-</details>
-
 
 
 ## OVER ()
 
-Las funciones de ventana **OVER (…)** también están soportadas. 
+Las funciones de ventana **OVER (…)** también están soportadas. Las columnas inteligentes permiten referenciar columnas agregadas previas dentro de la propia función de ventana, lo que simplifica su escritura.
 
-Esta consulta devuelve las ventas acumuladas desde el principio de cada año. La funciones de ventana, también llamadas funciones analíticas, tienen mucha utilidad en entornos ETL/DWH y permiten simplificar el desarrollo de muchos escenarios ETL comunes.  Puede ampliar la información sobre las funciones de ventana en la documentación de la [cláusula **OVER** en T-SQL](https://msdn.microsoft.com/es-es/library/ms189461.aspx).
-
-```crono-sql
-SELECT
-  year(sales.OrderDate) AS OrderYear,
-  month(sales.OrderDate) as OrderMonth,
-  sum(sales.subtotal) AS Amount,
-  sum(Amount) over (partition by OrderYear order by OrderMonth)  AmountYTD
-FROM staging.SalesOrderHeader sales
-ORDER BY OrderYear, OrderMonth
-```
-
-  
-
-  <details>
-<summary>Ver SQL compilado</summary>
+Esta consulta devuelve el acumulado de transporte desde el inicio de cada año.
 
 ```crono-sql
 SELECT
-  year(sales.OrderDate) AS OrderYear,
-  month(sales.OrderDate) AS OrderMonth,
-  sum(sales.subtotal) AS Amount,
-  sum(sum(sales.subtotal)) OVER (PARTITION BY year(sales.OrderDate) ORDER BY month(sales.OrderDate)) AS AmountYTD
-FROM staging.SalesOrderHeader sales
-GROUP BY
-  year(sales.OrderDate),
-  month(sales.OrderDate)
-ORDER BY
-  year(sales.OrderDate),
-  month(sales.OrderDate)
-
+  year(orders.order_date) AS order_year,
+  month(orders.order_date) AS order_month,
+  sum(orders.freight) AS monthly_freight,
+  sum(monthly_freight) OVER (PARTITION BY order_year ORDER BY order_month) AS freight_ytd
+FROM staging.orders
+ORDER BY order_year, order_month
 ```
-
-</details>
-
 
 
 ## TOP OVER ()
 
-Se puede incluir la cláusula **OVER** junto a la palabra clave **TOP** para limitar el número de registros por grupos de registros.
+La combinación **TOP n OVER (PARTITION BY … ORDER BY …)** permite obtener los N primeros registros por grupo sin necesidad de CTEs ni de la función `ROW_NUMBER()` explícita. El compilador genera la subconsulta anidada necesaria para cada motor.
 
-Esta consulta devuelve los tres clientes con más ventas en cada territorio.
-
-
-```crono-sql
-SELECT TOP 3 OVER (PARTITION BY Territory ORDER BY Amount DESC)  
-  SalesTerritory.Name Territory,
-  Customer.CustomerId,
-  CustomerPerson.FirstName,
-  CustomerPerson.LastName,
-  sum(sales.subtotal) Amount			 
-FROM staging.SalesOrderHeader sales
-INNER JOIN staging.customer USING sales(customerId)
-INNER JOIN staging.SalesTerritory USING TerritoryId
-INNER JOIN staging.Person CustomerPerson USING Customer(PersonID BusinessEntityId)
-```
-
-  
-
-  <details>
-<summary>Ver SQL compilado</summary>
+Esta consulta devuelve los tres clientes con mayor transporte acumulado en cada país.
 
 ```crono-sql
-SELECT
-  Territory,
-  CustomerId,
-  FirstName,
-  LastName,
-  Amount
-FROM (
-    SELECT
-      Territory,
-      CustomerId,
-      FirstName,
-      LastName,
-      Amount,
-      ROW_NUMBER() OVER (PARTITION BY Territory ORDER BY Amount DESC) rownumber
-    FROM (
-        SELECT
-          SalesTerritory.Name AS Territory,
-          Customer.CustomerId AS CustomerId,
-          CustomerPerson.FirstName AS FirstName,
-          CustomerPerson.LastName AS LastName,
-          sum(sales.subtotal) AS Amount
-        FROM staging.SalesOrderHeader sales
-        INNER JOIN staging.customer ON (sales.customerId=customer.customerId)
-        INNER JOIN staging.SalesTerritory ON (sales.TerritoryId=SalesTerritory.TerritoryId)
-        INNER JOIN staging.Person CustomerPerson ON (Customer.PersonID=CustomerPerson.BusinessEntityId)
-        GROUP BY
-          SalesTerritory.Name,
-          Customer.CustomerId,
-          CustomerPerson.FirstName,
-          CustomerPerson.LastName
-      ) allRows
-  ) allRowsNumbered
-WHERE rownumber<=3
-
+SELECT TOP 3 OVER (PARTITION BY country ORDER BY total_freight DESC)
+  customers.country,
+  customers.customer_id,
+  customers.company_name AS customer,
+  sum(orders.freight) AS total_freight
+FROM staging.orders
+INNER JOIN staging.customers USING customer_id
 ```
 
-</details>
-
-
-La combinación **TOP n OVER ()** tiene muchos usos en procesos ETL/DWH. La sentencia SQL generada es un consulta sobre una subconsulta de una subconsulta. La siguiente consulta devuelve la última venta de cada cliente.
-
+La siguiente consulta devuelve la última orden de cada cliente.
 
 ```crono-sql
-SELECT TOP 1 OVER (PARTITION BY customerId ORDER BY orderDate desc)
-  Customer.CustomerId,
-  CustomerPerson.FirstName,
-  CustomerPerson.LastName,
-  SalesOrderHeader.OrderDate,
-  SalesOrderHeader.subtotal Amount
-FROM staging.SalesOrderHeader 
-INNER JOIN staging.Customer USING customerId
-INNER JOIN staging.Person CustomerPerson USING Customer(PersonID BusinessEntityId)
+SELECT TOP 1 OVER (PARTITION BY customer_id ORDER BY order_date DESC)
+  customers.customer_id,
+  customers.company_name AS customer,
+  orders.order_date,
+  orders.freight
+FROM staging.orders
+INNER JOIN staging.customers USING customer_id
 ```
-
-  
-
-  <details>
-<summary>Ver SQL compilado</summary>
-
-```crono-sql
-SELECT
-  CustomerId,
-  FirstName,
-  LastName,
-  OrderDate,
-  Amount
-FROM (
-    SELECT
-      CustomerId,
-      FirstName,
-      LastName,
-      OrderDate,
-      Amount,
-      ROW_NUMBER() OVER (PARTITION BY CustomerId ORDER BY OrderDate DESC) rownumber
-    FROM (
-        SELECT
-          Customer.CustomerId AS CustomerId,
-          CustomerPerson.FirstName AS FirstName,
-          CustomerPerson.LastName AS LastName,
-          SalesOrderHeader.OrderDate AS OrderDate,
-          SalesOrderHeader.subtotal AS Amount
-        FROM staging.SalesOrderHeader
-        INNER JOIN staging.Customer ON (SalesOrderHeader.customerId=Customer.customerId)
-        INNER JOIN staging.Person CustomerPerson ON (Customer.PersonID=CustomerPerson.BusinessEntityId)
-      ) allRows
-  ) allRowsNumbered
-WHERE rownumber=1
-
-```
-
-</details>
-
-
-
 
 
 ## WITH
 
-Las [sentencias CTE](https://msdn.microsoft.com/es-es/library/ms175972.aspx) con cláusula **WITH** están soportadas.
+Las expresiones de tabla comunes (**CTE**) con cláusula **WITH** están soportadas. Se pueden combinar con **FILTER** para reutilizar la misma CTE con distintas condiciones sin duplicar código.
 
 ```crono-sql
-WITH addresses AS (
-  SELECT bia.BusinessEntityID,bia.AddressTypeId,CountryRegion.Name Region,Address.AddressLine1,Address.City
-  FROM staging.BusinessEntityAddress bia
-  INNER JOIN staging.Address using AddressId
-  INNER JOIN staging.StateProvince USING Address(StateProvinceId)
-  INNER JOIN staging.CountryRegion USING StateProvince(CountryRegionCode)
-) 
-SELECT 
-  Person.FirstName,
-  Person.LastName,
-  HomeAddress.AddressLine1 HomeAddressLine1,
-  HomeAddress.City HomeCity,
-  HomeAddress.Region HomeRegion,
-  ShippingAddress.AddressLine1 ShippingAddressLine1,
-  ShippingAddress.City ShippingCity ,
-  ShippingAddress.Region ShippingRegion ,
-FROM staging.Person 
-LEFT JOIN addresses FILTER (AddressTypeId=2) HomeAddress USING BusinessEntityID
-LEFT JOIN addresses FILTER (AddressTypeId=5) ShippingAddress USING BusinessEntityID
-```
-
-  
-
-  <details>
-<summary>Ver SQL compilado</summary>
-
-```crono-sql
-;WITH
-addresses AS (
+WITH order_summary AS (
   SELECT
-    bia.BusinessEntityID AS BusinessEntityID,
-    bia.AddressTypeId AS AddressTypeId,
-    CountryRegion.Name AS Region,
-    Address.AddressLine1 AS AddressLine1,
-    Address.City AS City
-  FROM staging.BusinessEntityAddress bia
-  INNER JOIN staging.Address ON (bia.AddressId=Address.AddressId)
-  INNER JOIN staging.StateProvince ON (Address.StateProvinceId=StateProvince.StateProvinceId)
-  INNER JOIN staging.CountryRegion ON (StateProvince.CountryRegionCode=CountryRegion.CountryRegionCode)
+    orders.customer_id,
+    year(orders.order_date) AS order_year,
+    count(orders.order_id) AS order_count,
+    sum(orders.freight) AS total_freight
+  FROM staging.orders
+  INNER JOIN staging.order_details USING order_id
 )
 SELECT
-  Person.FirstName AS FirstName,
-  Person.LastName AS LastName,
-  HomeAddress.AddressLine1 AS HomeAddressLine1,
-  HomeAddress.City AS HomeCity,
-  HomeAddress.Region AS HomeRegion,
-  ShippingAddress.AddressLine1 AS ShippingAddressLine1,
-  ShippingAddress.City AS ShippingCity,
-  ShippingAddress.Region AS ShippingRegion
-FROM staging.Person
-LEFT JOIN (SELECT * FROM addresses WHERE AddressTypeId=2) HomeAddress ON (Person.BusinessEntityID=HomeAddress.BusinessEntityID)
-LEFT JOIN (SELECT * FROM addresses WHERE AddressTypeId=5) ShippingAddress ON (Person.BusinessEntityID=ShippingAddress.BusinessEntityID)
-
+  customers.company_name AS customer,
+  customers.country,
+  summary_2022.total_freight AS freight_2022,
+  summary_2023.total_freight AS freight_2023
+FROM staging.customers
+LEFT JOIN order_summary FILTER (order_year=2022) summary_2022 USING customer_id
+LEFT JOIN order_summary FILTER (order_year=2023) summary_2023 USING customer_id
 ```
 
-</details>
+En **Crono SQL**, las CTEs raramente son necesarias y en general desaconsejamos su uso. Una subconsulta definida en el **WITH** queda físicamente separada del JOIN que la consume: el lector tiene que desplazarse hacia arriba para entender qué contiene, y luego volver abajo para ver cómo se usa. Esa separación dificulta la lectura.
 
+La alternativa es incluir la subconsulta directamente junto al JOIN que la necesita, usando la sintaxis habitual de subconsulta en el FROM o la cláusula **FILTER**. La lógica queda así junto a su contexto, que es exactamente donde se necesita para entenderla. Para los casos en que el rendimiento importa, **MATERIALIZE** ofrece la misma reutilización que una CTE materializada, pero expresada de forma más explícita y sin alejar el código de donde se usa.
 
 
 ## UNION y UNION ALL
 
-Se pueden utilizar los operadores **UNION** y **UNION ALL**
-
-Este ejemplo tiene únicamente fines didácticos. Para combinar de este modo dos o más consultas es preferible el operador **COMBINE** que se muestra continuación.
-
+Se pueden utilizar los operadores **UNION** y **UNION ALL**. Para combinar consultas en la mayoría de escenarios ETL/DWH es preferible el operador **COMBINE** que se muestra a continuación, ya que evita repetir los JOINs y expresa la intención con más claridad.
 
 ```crono-sql
 SELECT
-  CustomerPerson.LastName AS LastName,
-  sum(sales.subtotal) AS Amount2012,
-  null Amount2013
-FROM staging.SalesOrderHeader sales
-INNER JOIN staging.customer ON (sales.customerId=customer.customerId)
-LEFT JOIN staging.Person CustomerPerson ON (Customer.PersonID=CustomerPerson.BusinessEntityId)
-WHERE year(sales.OrderDate)=2012
-UNION 
-  SELECT
-    CustomerPerson.LastName AS LastName,
-    null Amount2012,
-    sum(sales.subtotal) AS Amount2013
-  FROM staging.SalesOrderHeader sales
-  INNER JOIN staging.customer ON (sales.customerId=customer.customerId)
-  LEFT JOIN staging.Person CustomerPerson ON (Customer.PersonID=CustomerPerson.BusinessEntityId)
-  WHERE year(sales.OrderDate)=2013
-```
-
-  
-
-  <details>
-<summary>Ver SQL compilado</summary>
-
-```crono-sql
-SELECT
-  CustomerPerson.LastName AS LastName,
-  sum(sales.subtotal) AS Amount2012,
-  NULL AS Amount2013
-FROM staging.SalesOrderHeader sales
-INNER JOIN staging.customer ON (sales.customerId=customer.customerId)
-LEFT JOIN staging.Person CustomerPerson ON (Customer.PersonID=CustomerPerson.BusinessEntityId)
-WHERE year(sales.OrderDate)=2012
-GROUP BY CustomerPerson.LastName
+  customers.company_name AS customer,
+  sum(orders.freight) AS freight_2022,
+  null AS freight_2023
+FROM staging.orders
+INNER JOIN staging.customers ON (orders.customer_id=customers.customer_id)
+WHERE year(orders.order_date) = 2022
 UNION
-SELECT
-  CustomerPerson.LastName AS LastName,
-  NULL AS Amount2012,
-  sum(sales.subtotal) AS Amount2013
-FROM staging.SalesOrderHeader sales
-INNER JOIN staging.customer ON (sales.customerId=customer.customerId)
-LEFT JOIN staging.Person CustomerPerson ON (Customer.PersonID=CustomerPerson.BusinessEntityId)
-WHERE year(sales.OrderDate)=2013
-GROUP BY CustomerPerson.LastName
-
+  SELECT
+    customers.company_name AS customer,
+    null AS freight_2022,
+    sum(orders.freight) AS freight_2023
+  FROM staging.orders
+  INNER JOIN staging.customers ON (orders.customer_id=customers.customer_id)
+  WHERE year(orders.order_date) = 2023
 ```
-
-</details>
 
 
 ## COMBINE
 
+El operador **COMBINE BY** combina dos o más consultas en un único resultado haciendo un **FULL JOIN** sobre las claves indicadas. Permite comparar conjuntos de datos de distintas fuentes o periodos sin duplicar los JOINs comunes ni recurrir a un **UNION** con columnas nulas.
 
-El operador **COMBINE BY** permite combinar dos o más consultas en un único resultado.
-
-    
 ```crono-sql
-COMBINE BY firstname,LastName
-  sales2012 AS (
+COMBINE BY customer
+  sales_2022 AS (
     SELECT
-      Person.FirstName AS FirstName,
-      Person.LastName AS LastName,
-      sum(sales.subtotal) AS Amount2012
-    FROM staging.SalesOrderHeader sales
-    INNER JOIN staging.customer USING customerId
-    LEFT JOIN staging.Person USING Customer(PersonID BusinessEntityId)
-    WHERE year(sales.OrderDate)=2012),
-  sales2013 AS ( 
+      customers.company_name AS customer,
+      sum(orders.freight) AS freight_2022
+    FROM staging.orders
+    INNER JOIN staging.customers USING customer_id
+    WHERE year(orders.order_date) = 2022),
+  sales_2023 AS (
     SELECT
-      Person.FirstName AS FirstName,
-      Person.LastName AS LastName,
-      sum(sales.subtotal) AS Amount2013
-    FROM staging.SalesOrderHeader sales
-    INNER JOIN staging.customer USING customerId
-    LEFT JOIN staging.Person USING Customer(PersonID BusinessEntityId)
-    WHERE year(sales.OrderDate)=2013)
+      customers.company_name AS customer,
+      sum(orders.freight) AS freight_2023
+    FROM staging.orders
+    INNER JOIN staging.customers USING customer_id
+    WHERE year(orders.order_date) = 2023)
 ```
 
-  
-
-  <details>
-<summary>Ver SQL compilado</summary>
+Se pueden utilizar tablas distintas en cada consulta del **COMBINE**. En este ejemplo, se comparan las unidades vendidas y el stock actual por producto.
 
 ```crono-sql
-SELECT
-  coalesce(sales2012.FirstName,sales2013.FirstName) AS FirstName,
-  coalesce(sales2012.LastName,sales2013.LastName) AS LastName,
-  sales2012.Amount2012 AS Amount2012,
-  sales2013.Amount2013 AS Amount2013
-FROM 
-    (SELECT
-      Person.FirstName AS FirstName,
-      Person.LastName AS LastName,
-      sum(sales.subtotal) AS Amount2012
-    FROM staging.SalesOrderHeader sales
-    INNER JOIN staging.customer ON (sales.customerId=customer.customerId)
-    LEFT JOIN staging.Person ON (Customer.PersonID=Person.BusinessEntityId)
-    WHERE year(sales.OrderDate)=2012
-    GROUP BY
-      Person.FirstName,
-      Person.LastName) sales2012
-FULL JOIN 
-    (SELECT
-      Person.FirstName AS FirstName,
-      Person.LastName AS LastName,
-      sum(sales.subtotal) AS Amount2013
-    FROM staging.SalesOrderHeader sales
-    INNER JOIN staging.customer ON (sales.customerId=customer.customerId)
-    LEFT JOIN staging.Person ON (Customer.PersonID=Person.BusinessEntityId)
-    WHERE year(sales.OrderDate)=2013
-    GROUP BY
-      Person.FirstName,
-      Person.LastName) AS sales2013 ON (sales2012.FirstName=sales2013.FirstName AND sales2012.LastName=sales2013.LastName)
-
-```
-
-</details>
-    
-
-Se pueden utilizar tablas distintas en cada consulta del **COMBINE**. En este ejemplo, se comparan las ventas y las compras por producto. El SQL generado combinará los resultados utilizando un **FULL JOIN**.
-
-```crono-sql
-COMBINE BY Product,ProductNumber
-  sales (
-	select 
-	  Product.Name Product,
-	  Product.ProductNumber ProductNumber,
-	  sum(PurchaseOrderDetail.LineTotal) Purchases
-	from staging.PurchaseOrderDetail
-	inner join staging.Product  using ProductId
+COMBINE BY product_name, product_id
+  sold (
+    SELECT
+      products.product_name,
+      products.product_id,
+      sum(order_details.quantity) AS units_sold
+    FROM staging.order_details
+    INNER JOIN staging.products USING product_id
   ),
-  purchases (
-	select 
-	  Product.Name #Product,
-	  Product.ProductNumber #ProductNumber,
-	  sum(SalesOrderDetail.LineTotal) Sales
-	from staging.SalesOrderDetail
-	inner join staging.Product  using ProductId
+  stock (
+    SELECT
+      products.product_name,
+      products.product_id,
+      products.units_in_stock
+    FROM staging.products
   )
 ```
-
-  
-
-  <details>
-<summary>Ver SQL compilado</summary>
-
-```crono-sql
-SELECT
-  coalesce(sales.Product,purchases.Product) AS Product,
-  coalesce(sales.ProductNumber,purchases.ProductNumber) AS ProductNumber,
-  sales.Purchases AS Purchases,
-  purchases.Sales AS Sales
-FROM 
-    (SELECT
-      Product.Name AS Product,
-      Product.ProductNumber AS ProductNumber,
-      sum(PurchaseOrderDetail.LineTotal) AS Purchases
-    FROM staging.PurchaseOrderDetail
-    INNER JOIN staging.Product ON (PurchaseOrderDetail.ProductId=Product.ProductId)
-    GROUP BY
-      Product.Name,
-      Product.ProductNumber) sales
-FULL JOIN 
-    (SELECT
-      Product.Name AS Product,
-      Product.ProductNumber AS ProductNumber,
-      sum(SalesOrderDetail.LineTotal) AS Sales
-    FROM staging.SalesOrderDetail
-    INNER JOIN staging.Product ON (SalesOrderDetail.ProductId=Product.ProductId)
-    GROUP BY
-      Product.Name,
-      Product.ProductNumber) AS purchases ON (sales.Product=purchases.Product AND sales.ProductNumber=purchases.ProductNumber)
-
-```
-
-</details>
 
 
 ## MATERIALIZE
 
-La cláusula **MATERIALIZE** permite crear una tabla temporal con el contenido de una subconsulta. Es decir, antes de la ejecución de la consulta, se crean las tablas temporales necesarias y finalmente se ejecuta la consulta utilizando dichas tablas. Esta estrategia de carga simplifica el plan de ejecución del motor de base de datos y se pueden obtener mejoras de rendimiento muy significativas, sin penalizar o dificultar la escritura de la consulta.
+**MATERIALIZE** crea una tabla temporal con el resultado de una subconsulta antes de que se ejecute la consulta principal. Esto simplifica el plan de ejecución del motor y puede mejorar el rendimiento de forma significativa en consultas complejas. Desde el punto de vista del código, permite mantener toda la lógica de carga en una única sentencia, sin necesidad de crear tablas temporales manualmente ni fragmentar la lógica en varios pasos.
 
 ```crono-sql
 SELECT
-  SalesOrderHeader.OrderDate,
-  Product.Name Product,
-  Product.ProductNumber,
-  sum(Sales.LineTotal) Sales
-FROM staging.SalesOrderDetail FILTER (year(ModifiedDate)=2014) MATERIALIZE Sales
-INNER JOIN staging.SalesOrderHeader USING SalesOrderId
-INNER JOIN staging.Product USING ProductId
+  orders.order_date,
+  products.product_name AS product,
+  products.product_id,
+  sum(details.quantity) AS units_sold
+FROM staging.order_details FILTER (discount > 0) MATERIALIZE details
+INNER JOIN staging.orders USING order_id
+INNER JOIN staging.products USING product_id
 ```
 
-  
-
-  <details>
-<summary>Ver SQL compilado</summary>
+Con **MATERIALIZE** también se pueden materializar las consultas de una sentencia **COMBINE**. En este ejemplo, primero se materializa la consulta de unidades vendidas, luego la del stock, y finalmente se combinan en un único resultado.
 
 ```crono-sql
--- Materialized query: Sales
-SELECT *
-INTO #Sales__39872
-FROM (SELECT * FROM staging.SalesOrderDetail WHERE year(ModifiedDate)=2014) SalesOrderDetail
-
-SELECT
-  SalesOrderHeader.OrderDate AS OrderDate,
-  Product.Name AS Product,
-  Product.ProductNumber AS ProductNumber,
-  sum(Sales.LineTotal) AS Sales
-FROM #Sales__39872 Sales
-INNER JOIN staging.SalesOrderHeader ON (Sales.SalesOrderId=SalesOrderHeader.SalesOrderId)
-INNER JOIN staging.Product ON (Sales.ProductId=Product.ProductId)
-GROUP BY
-  SalesOrderHeader.OrderDate,
-  Product.Name,
-  Product.ProductNumber
-
-```
-
-</details>
-
-
-
-Con la cláusula **MATERIALIZE**, también se pueden materializar las consultas de una sentencia **COMBINE**. En este ejemplo, primero se ejecutará la consulta con las ventas, luego se ejecutará una consulta con las compras, y finalmente se combinarán en un único resultado.
-
-
-```crono-sql
-COMBINE bY Product,productNumber
-  MATERIALIZE sales (
-	select 
-	  Product.Name Product,
-	  Product.ProductNumber ProductNumber,
-	  sum(PurchaseOrderDetail.LineTotal) Purchases
-	from staging.PurchaseOrderDetail
-	inner join staging.Product  using ProductId
+COMBINE BY product_name, product_id
+  MATERIALIZE sold (
+    SELECT
+      products.product_name,
+      products.product_id,
+      sum(order_details.quantity) AS units_sold
+    FROM staging.order_details
+    INNER JOIN staging.products USING product_id
   ),
-  MATERIALIZE purchases (
-	select 
-	  Product.Name Product,
-	  Product.ProductNumber ProductNumber,
-	  sum(SalesOrderDetail.LineTotal) Sales
-	from staging.SalesOrderDetail
-	inner join staging.Product  using ProductId
+  MATERIALIZE stock (
+    SELECT
+      products.product_name,
+      products.product_id,
+      products.units_in_stock
+    FROM staging.products
   )
 ```
-
-  
-
-  <details>
-<summary>Ver SQL compilado</summary>
-
-```crono-sql
--- Materialized query: sales
-SELECT
-  Product.Name AS Product,
-  Product.ProductNumber AS ProductNumber,
-  sum(PurchaseOrderDetail.LineTotal) AS Purchases
-INTO #sales__D83E4
-FROM staging.PurchaseOrderDetail
-INNER JOIN staging.Product ON (PurchaseOrderDetail.ProductId=Product.ProductId)
-GROUP BY
-  Product.Name,
-  Product.ProductNumber
-
--- Materialized query: purchases
-SELECT
-  Product.Name AS Product,
-  Product.ProductNumber AS ProductNumber,
-  sum(SalesOrderDetail.LineTotal) AS Sales
-INTO #purchases__1CD26
-FROM staging.SalesOrderDetail
-INNER JOIN staging.Product ON (SalesOrderDetail.ProductId=Product.ProductId)
-GROUP BY
-  Product.Name,
-  Product.ProductNumber
-
-SELECT
-  coalesce(sales.Product,purchases.Product) AS Product,
-  coalesce(sales.ProductNumber,purchases.ProductNumber) AS ProductNumber,
-  sales.Purchases AS Purchases,
-  purchases.Sales AS Sales
-FROM #sales__D83E4 sales
-FULL JOIN #purchases__1CD26 purchases ON (sales.Product=purchases.Product AND sales.ProductNumber=purchases.ProductNumber)
-
-```
-
-</details>
 
 
 ## CAST automático
 
-Se puede forzar el tipo de datos resultante de una columna especificándolo justo después del alias de la columna. El SQL generado incluirá una llamada a la función **CAST**.
+Se puede forzar el tipo de datos de una columna especificándolo justo después del alias. El compilador generará la llamada a **CAST** correspondiente en el motor de destino.
 
 ```crono-sql
 SELECT
-   year(sales.OrderDate)	OrderYear varchar(4),
-  Customer.CustomerId,
-  concat(CustomerPerson.FirstName,' ',CustomerPerson.LastName) AS Customer,
-  Upper(customer) UpperCustomer,
-  CustomerPerson.FirstName,
-  CustomerPerson.LastName,
-  sum(sales.subtotal) AS Amount,
-  count(*)		TicketsCount,
-  Amount/TicketsCount AvgTicket numeric(12,2)
-FROM staging.SalesOrderHeader sales
-INNER JOIN staging.customer USING CustomerId
-LEFT JOIN staging.Person CustomerPerson USING Customer(PersonID BusinessEntityId)
-WHERE OrderYear=2012
+  year(orders.order_date) AS order_year varchar(4),
+  customers.customer_id,
+  customers.company_name AS customer,
+  upper(customer) AS upper_customer,
+  customers.contact_name,
+  sum(orders.freight) AS total_freight,
+  count(*) AS order_count,
+  total_freight / order_count AS avg_freight numeric(12,2)
+FROM staging.orders
+INNER JOIN staging.customers USING customer_id
+WHERE order_year = '2023'
 ```
-
-  
-
-  <details>
-<summary>Ver SQL compilado</summary>
-
-```crono-sql
-SELECT
-  cast(year(sales.OrderDate) AS varchar(4)) AS OrderYear,
-  Customer.CustomerId AS CustomerId,
-  concat(CustomerPerson.FirstName,' ',CustomerPerson.LastName) AS Customer,
-  Upper(concat(CustomerPerson.FirstName,' ',CustomerPerson.LastName)) AS UpperCustomer,
-  CustomerPerson.FirstName AS FirstName,
-  CustomerPerson.LastName AS LastName,
-  sum(sales.subtotal) AS Amount,
-  count(*) AS TicketsCount,
-  cast(sum(sales.subtotal)/count(*) AS numeric(12,2)) AS AvgTicket
-FROM staging.SalesOrderHeader sales
-INNER JOIN staging.customer ON (sales.CustomerId=customer.CustomerId)
-LEFT JOIN staging.Person CustomerPerson ON (Customer.PersonID=CustomerPerson.BusinessEntityId)
-WHERE cast(year(sales.OrderDate) AS varchar(4))=2012
-GROUP BY
-  year(sales.OrderDate),
-  Customer.CustomerId,
-  concat(CustomerPerson.FirstName,' ',CustomerPerson.LastName),
-  Upper(concat(CustomerPerson.FirstName,' ',CustomerPerson.LastName)),
-  CustomerPerson.FirstName,
-  CustomerPerson.LastName
-
-```
-
-</details>
 
 
 ## SELECTs anidados
 
-Es posible incluir varios **SELECT** en una misma consulta. Esta sintaxis permite escribir rápidamente una consulta sobre el resultado de otra consulta.  Son consultas encadenadas.
+En lugar de escribir subconsultas, **Crono SQL** permite apilar varios **SELECT** en una misma consulta. Cada capa opera sobre el resultado de la que tiene debajo. La consulta se lee de abajo a arriba, y cada nivel expresa una única transformación clara. El código resultante es más legible y más fácil de mantener que una subconsulta anidada equivalente.
 
-Este consulta devuelve la media de las ventas anuales de cada producto.
-
-
-```crono-sql
-select
-  Product,
-  ProductNumber,
-  avg(Sales) AvgYearSales
-select 
-  Product.Name Product,
-  Product.ProductNumber,
-  year(OrderDate) OrderYear,
-  sum(SalesOrderDetail.LineTotal) Sales
-from staging.SalesOrderDetail
-inner join staging.SalesOrderHeader using SalesOrderId
-inner join staging.Product  using ProductId
-```
-
-  
-
-  <details>
-<summary>Ver SQL compilado</summary>
+Esta consulta devuelve la media de las ventas anuales de cada producto. La capa inferior calcula el total por producto y año; la capa superior agrega esos totales para obtener la media.
 
 ```crono-sql
 SELECT
-  Product,
-  ProductNumber,
-  avg(Sales) AS AvgYearSales
-FROM (
-    SELECT
-      Product.Name AS Product,
-      Product.ProductNumber AS ProductNumber,
-      year(OrderDate) AS OrderYear,
-      sum(SalesOrderDetail.LineTotal) AS Sales
-    FROM staging.SalesOrderDetail
-    INNER JOIN staging.SalesOrderHeader ON (SalesOrderDetail.SalesOrderId=SalesOrderHeader.SalesOrderId)
-    INNER JOIN staging.Product ON (SalesOrderDetail.ProductId=Product.ProductId)
-    GROUP BY
-      Product.Name,
-      Product.ProductNumber,
-      year(OrderDate)
-  ) a
-GROUP BY
-  Product,
-  ProductNumber
-
+  product_name,
+  product_id,
+  avg(annual_revenue) AS avg_annual_revenue
+SELECT
+  products.product_name,
+  products.product_id,
+  year(orders.order_date) AS order_year,
+  sum(order_details.unit_price * order_details.quantity) AS annual_revenue
+FROM staging.order_details
+INNER JOIN staging.orders USING order_id
+INNER JOIN staging.products USING product_id
 ```
 
-</details>
+Las capas apiladas no se limitan a la cláusula **SELECT**. También se pueden apilar **WHERE** y **ORDER BY** como capas independientes que operan sobre el resultado de las capas inferiores. Esto permite filtrar o ordenar sobre valores agregados sin necesidad de subconsultas ni CTEs.
 
+La siguiente consulta devuelve los clientes con más de 10.000 en ventas, ordenados de mayor a menor.
 
+```crono-sql
+SELECT ORDER BY total_sales DESC
+SELECT WHERE total_sales > 10000
+SELECT
+  customers.company_name,
+  sum(order_details.unit_price * order_details.quantity) AS total_sales
+FROM staging.order_details
+INNER JOIN staging.orders USING order_id
+INNER JOIN staging.customers USING orders(customer_id)
+```
 
-La cláusulas **SELECT** encadenadas permiten, por ejemplo, contar el número de registros que devuelve una consulta previa. La siguiente consulta ejecuta un **count(\*)** sobre el resultado de la consulta inferior.
-
+Las cláusulas apiladas permiten también contar el número de registros que devuelve una consulta previa.
 
 ```crono-sql
 SELECT count(*)
 SELECT
-  Product.Name Product,
-  Product.ProductNumber,
-  sum(SalesOrderDetail.LineTotal) Sales
-FROM staging.SalesOrderDetail
-INNER JOIN staging.Product USING ProductId
+  products.product_name,
+  products.product_id,
+  sum(order_details.unit_price * order_details.quantity) AS revenue
+FROM staging.order_details
+INNER JOIN staging.products USING product_id
 ```
-
-  
-
-  <details>
-<summary>Ver SQL compilado</summary>
-
-```crono-sql
-SELECT count(*) AS expr1
-FROM (
-    SELECT
-      Product.Name AS Product,
-      Product.ProductNumber AS ProductNumber,
-      sum(SalesOrderDetail.LineTotal) AS Sales
-    FROM staging.SalesOrderDetail
-    INNER JOIN staging.Product ON (SalesOrderDetail.ProductId=Product.ProductId)
-    GROUP BY
-      Product.Name,
-      Product.ProductNumber
-  ) a
-
-```
-
-</details>
 
 
 ## Resumen
 
-En resumen, si se conoce SQL, ya se conoce la parte más importante de **Crono SQL**. **Crono SQL**, simplemente, facilita la escritura de SQL y aporta algunas extensiones para necesidades comunes en ETL/DWH. Destacamos:
+En resumen, si se conoce SQL, ya se conoce la parte más importante de **Crono SQL**. Las extensiones del SELECT están diseñadas para eliminar repeticiones, mejorar la legibilidad y expresar con más claridad la intención del código. Destacamos:
 
-- Posibilidad de referenciar a Alias de columnas de la consulta
-- No es necesario el **GROUP BY**
-- Sintaxis simplificada de los **JOIN**
-- Sentencia **COMBINE**
-- Cláusula **MATERIALIZE**
-- Cláusula **CHECK SNOWFLAKE**
-- Cláusulas **COLUMNS** y **FILTER** para reducir el número de subconsultas
-- Cláusula **TOP OVER**
-- Relaciones **ANTI JOIN** y **SEMI JOIN**
-- **SELECTs** anidados
+- **Columnas inteligentes** — referencia a alias dentro del mismo SELECT, sin repetir expresiones
+- **GROUP BY automático** — el compilador infiere las columnas de agrupación
+- **USING** — JOINs más concisos sin repetir los campos de la condición
+- **FILTER, COLUMNS, ADD COLUMNS** — modificadores de tabla que evitan subconsultas explícitas
+- **CHECK SNOWFLAKE** — validación de integridad de JOINs integrada en la consulta
+- **ANTI JOIN** y **SEMI JOIN** — alternativas legibles a `NOT EXISTS` y `EXISTS`
+- **TOP OVER** — top N por grupo sin CTEs ni `ROW_NUMBER()` explícito
+- **COMBINE** — combinación de consultas más expresiva que **UNION**
+- **MATERIALIZE** — tablas temporales declarativas dentro de una única sentencia
+- **SELECTs anidados** — transformaciones encadenadas sin subconsultas
