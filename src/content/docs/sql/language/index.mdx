@@ -6,25 +6,31 @@ sidebar:
 
 import SectionIndex from '../../../../components/SectionIndex.astro'
 
-En un proyecto ETL/DWH, todo el código es una de dos cosas: **lógica de negocio** o **estrategia de carga**.
+En esta sección se explica en detalle la sintaxis del lenguaje Crono SQL.
 
-La lógica de negocio vive en el **SELECT**: transformaciones, reglas de negocio, relaciones entre tablas. Es específica de cada empresa y requiere que el desarrollador la entienda y la exprese con precisión. **Crono SQL** extiende el SELECT estándar —sin romper ninguna compatibilidad— con operadores pensados para el trabajo ETL: `USING`, `FILTER`, `ADD COLUMNS`, `CHECK SNOWFLAKE`, `ANTI JOIN`, `SEMI JOIN` y más.
+En primer lugar se introduce la sentencia `SELECT`, y en los siguientes apartados se describen el resto de sentencias principales de **Crono SQL** (`INSERT`, `UPDATE`, `MERGE`,...). La sintaxis de todas estas sentencias es similar y comparte los principios fundamentales descritos en la introducción de este manual.
 
-La estrategia de carga es otra historia. Insertar los registros nuevos, actualizar los que han cambiado, eliminar los que ya no existen en origen: son patrones resueltos, sin variación, que funcionan igual en cualquier empresa y cualquier proyecto. En SQL estándar, implementarlos bien es verboso, repetitivo y propenso a errores. **Crono SQL** los convierte en una sola línea: el compilador genera todo el código necesario para cada motor de base de datos y añade la auditoría automáticamente.
 
-Lo más importante de esta sección son la sentencia **SELECT** y los nueve patrones de carga:
+Las páginas de `SELECT` y `MERGE` son especialmente importantes para entender y aprovechar las características del lenguaje **Crono SQL**. Prácticamente, son las dos únicas sentencias que se necesitan en un proyecto DWH habitual.
 
-- [**SELECT**](/sql/language/select/) — la pieza central del lenguaje; todas las sentencias de carga se construyen sobre ella
-- [**MERGE CLONE**](/sql/language/merge/) — sincronización completa: inserta, actualiza y elimina (SCD tipo 1)
-- [**MERGE UPSERT**](/sql/language/merge/) — inserta los nuevos y actualiza los existentes, sin eliminar
-- [**MERGE SOFT DELETE**](/sql/language/merge/) — como MERGE UPSERT, pero marca los eliminados con `delete_date`
-- [**MERGE HISTORY**](/sql/language/merge/) — mantiene el historial completo de cambios (SCD tipo 2)
-- [**INSERT RAW**](/sql/language/insert/) — inserta todos los registros sin clave; el patrón más simple
-- [**INSERT IF NEW**](/sql/language/insert/) — inserta solo los registros que aún no existen en destino
-- [**INSERT OVERWRITE**](/sql/language/insert/) — recarga completa o parcial de la tabla destino
-- [**UPDATE**](/sql/language/update/) — actualiza solo los registros que han cambiado
-- [**DELETE**](/sql/language/delete/) — elimina los registros que cumplen una condición
+Este apartado está escrito para leerse secuencialmente, desde el primer al último al artículo. De todos modos, también puede leerse en cualquier orden o usarse como referencia.
 
-El resto de artículos documentan características más avanzadas o específicas del lenguaje: tipos de datos, sentencias DDL, funciones de ventana, TRUNCATE, ASSERT y otras.
+La funcionalidad de todas las instrucciones se explica mediante ejemplos y se incluye siempre el código **Crono SQL** original y el código resultante en lenguaje **SQL**.
+
+Este manual asume que se tienen al menos conocimientos básicos de SQL.
+
+## Sentencias del lenguaje
 
 <SectionIndex src="/sql/language/" />
+
+En la sección "Referencia lenguaje" se completa la documentación del lenguaje con algunas funcionalidades o sintaxis avanzadas.
+
+
+---
+
+## Motores compatibles
+
+import EngineChips from '../../../../components/EngineChips.astro'
+
+<EngineChips engines={['SQL Server', 'Snowflake', 'PostgreSQL', 'Redshift', 'BigQuery', 'Databricks', 'MS Fabric', 'DuckDB']} />
+

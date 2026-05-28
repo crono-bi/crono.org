@@ -4,12 +4,15 @@ title: "Introducción"
 
 import { Aside } from '@astrojs/starlight/components';
 import CategorySelector from '../../../components/CategorySelector.astro'
+import EngineChips from '../../../components/EngineChips.astro'
 
 **Crono SQL** es un superconjunto de SQL diseñado para proyectos ETL/DWH. Todo el conocimiento SQL existente es válido y aprovechable. Crono añade exactamente tres cosas al estándar:
 
 1. **Sintaxis SELECT extendida** — apilamiento de SELECTs para transformaciones encadenadas, reutilización de columnas calculadas, SEMI JOIN, ANTI JOIN, MATERIALIZE y otros atajos para patrones analíticos habituales.
 
 2. **Nueve patrones de carga** — sentencias declarativas (`MERGE CLONE`, `MERGE UPSERT`, `MERGE HISTORY`...) que resuelven todos los escenarios habituales de carga de datos: sincronización completa, carga incremental, SCD1, SCD2, borrado lógico y más. Cada patrón mantiene automáticamente las columnas de auditoría y compila a SQL nativo para los ocho motores soportados.
+
+<EngineChips engines={['SQL Server', 'Snowflake', 'PostgreSQL', 'Redshift', 'BigQuery', 'Databricks', 'MS Fabric', 'DuckDB']} />
 
 3. **Biblioteca de funciones portables** — un conjunto de funciones comunes (de texto, numéricas, de fecha, de agregación...) que compilan correctamente en cualquier motor, eliminando las incompatibilidades habituales entre dialectos SQL.
 

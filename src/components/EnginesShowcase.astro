@@ -1,0 +1,152 @@
+---
+// Componente reusable para mostrar los motores compatibles
+import { ENGINES } from '../config/engines'
+
+interface Props {
+  title?: string
+  variant?: 'horizontal' | 'grid' | 'compact'
+  showNames?: boolean
+}
+
+const { 
+  title = 'Motores compatibles', 
+  variant = 'horizontal',
+  showNames = true 
+} = Astro.props
+---
+
+<div class={`engines-showcase engines-showcase--${variant}`}>
+  {title && <h3 class="engines-title">{title}</h3>}
+  
+  <div class="engines-list">
+    {ENGINES.map(engine => (
+      <div class="engine-item">
+        <img src={engine.logo} alt={engine.name} class="engine-logo"/>
+        {showNames && <span class="engine-name" style={`color: ${engine.color}`}>{engine.name}</span>}
+      </div>
+    ))}
+  </div>
+</div>
+
+<style>
+  .engines-showcase {
+    width: 100%;
+  }
+
+  .engines-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--sl-color-white);
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+
+  /* Horizontal - para HomeHero y footer */
+  .engines-showcase--horizontal .engines-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.25rem;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .engines-showcase--horizontal .engine-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+
+  .engines-showcase--horizontal .engine-logo {
+    width: 16px;
+    height: 16px;
+  }
+
+  .engines-showcase--horizontal .engine-name {
+    font-size: 0.75rem;
+    font-weight: 500;
+  }
+
+  /* Grid - para landing SQL */
+  .engines-showcase--grid .engines-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 1.5rem;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .engines-showcase--grid .engine-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+  }
+
+  .engines-showcase--grid .engine-item:hover {
+    background: rgba(16, 185, 129, 0.05);
+    transform: translateY(-4px);
+  }
+
+  .engines-showcase--grid .engine-logo {
+    width: 48px;
+    height: 48px;
+    filter: grayscale(100%);
+    opacity: 0.6;
+    transition: all 0.3s ease;
+  }
+
+  .engines-showcase--grid .engine-item:hover .engine-logo {
+    filter: grayscale(0%);
+    opacity: 1;
+  }
+
+  .engines-showcase--grid .engine-name {
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  /* Compact - para el footer CTA */
+  .engines-showcase--compact .engines-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .engines-showcase--compact .engine-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+  }
+
+  .engines-showcase--compact .engine-item:hover {
+    transform: translateY(-6px);
+  }
+
+  .engines-showcase--compact .engine-logo {
+    width: 36px;
+    height: 36px;
+    filter: grayscale(100%) brightness(0.8);
+    opacity: 0.5;
+    transition: all 0.3s ease;
+  }
+
+  .engines-showcase--compact .engine-item:hover .engine-logo {
+    filter: grayscale(0%) brightness(1);
+    opacity: 1;
+    transform: scale(1.2);
+  }
+
+  .engines-showcase--compact .engine-name {
+    font-size: 0.7rem;
+    font-weight: 500;
+    text-align: center;
+  }
+</style>

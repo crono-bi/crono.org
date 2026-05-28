@@ -77,7 +77,6 @@ const downloadsRgb = '37, 99, 235'
 
   <!-- ═══ HEADER ═══ -->
   <div class="dl-all-header">
-    <h1>Todos los productos</h1>
     <p>Lista completa de descargas disponibles de la plataforma Crono.</p>
     <a href="/downloads/" class="dl-back-link">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
@@ -100,37 +99,6 @@ const downloadsRgb = '37, 99, 235'
     </div>
   </section>
 
-  <!-- ═══ PRODUCT CARDS — PRINCIPALES ═══ -->
-  <section class="dl-section">
-    <div class="dl-section-header">
-      <div class="dl-section-label">
-        <div class="dl-section-line"></div>
-        <span>Productos principales</span>
-        <div class="dl-section-line"></div>
-      </div>
-      <p class="dl-section-desc">Los instaladores recomendados para la mayoría de entornos</p>
-    </div>
-    <div class="dl-product-grid">
-      {productGroups[0].items.map(item => (
-        <a href={item.path} class="dl-product-card" style={`--product-color: ${item.color}`}>
-          <div class="dl-card-glow"></div>
-          <div class="dl-card-top">
-            <div class="dl-card-icon" style={`background: ${item.color}; color: white`}>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-            </div>
-          </div>
-          <h3 class="dl-card-title">{item.name}</h3>
-          <p class="dl-card-desc">{item.desc}</p>
-          <span class="dl-card-cta">
-            Ver versiones
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-          </span>
-          <div class="dl-card-border" style={`background: ${item.color}`}></div>
-        </a>
-      ))}
-    </div>
-  </section>
-
   <!-- ═══ SERVIDOR ═══ -->
   <section class="dl-section">
     <div class="dl-section-header">
@@ -143,17 +111,6 @@ const downloadsRgb = '37, 99, 235'
     </div>
     <div class="dl-table-card">
       <DownloadSummaryTable section="ServerRelease" />
-    </div>
-    <div class="dl-product-grid dl-product-grid--small" style="margin-top: 1rem">
-      {productGroups[1].items.map(item => (
-        <a href={item.path} class="dl-product-card dl-product-card--compact" style={`--product-color: ${item.color}`}>
-          <div class="dl-card-icon-sm" style={`background: ${item.color}; color: white`}>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="14" x="2" y="3" rx="2"/><path d="M8 21h8m-4-4v4"/></svg>
-          </div>
-          <span class="dl-card-title-sm">{item.name}</span>
-          <svg class="dl-card-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
-        </a>
-      ))}
     </div>
   </section>
 
@@ -170,17 +127,6 @@ const downloadsRgb = '37, 99, 235'
       </div>
       <div class="dl-table-card">
         <DownloadSummaryTable section={group.section} />
-      </div>
-      <div class="dl-product-grid dl-product-grid--small" style="margin-top: 1rem">
-        {group.items.map(item => (
-          <a href={item.path} class="dl-product-card dl-product-card--compact" style={`--product-color: ${item.color}`}>
-            <div class="dl-card-icon-sm" style={`background: ${item.color}; color: white`}>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-            </div>
-            <span class="dl-card-title-sm">{item.name}</span>
-            <svg class="dl-card-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
-          </a>
-        ))}
       </div>
     </section>
   ))}
@@ -207,7 +153,7 @@ const downloadsRgb = '37, 99, 235'
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
         </div>
         <h4>Frameworks</h4>
-        <p><a href="https://dotnet.microsoft.com/download">.NET 6</a> o superior<br/><a href="https://dotnet.microsoft.com/download/dotnet-framework">.NET Framework 4.7</a> <span class="dl-req-note">(solo Crono Excel)</span></p>
+        <p><a href="https://dotnet.microsoft.com/download">.NET 10</a> o superior<br/><a href="https://dotnet.microsoft.com/download/dotnet-framework">.NET Framework 4.7</a> <span class="dl-req-note">(solo Crono Excel)</span></p>
       </div>
       <div class="dl-req-card">
         <div class="dl-req-icon">
@@ -219,24 +165,6 @@ const downloadsRgb = '37, 99, 235'
     </div>
   </section>
 
-  <!-- ═══ TOOLS ═══ -->
-  <section class="dl-section dl-tools-section">
-    <div class="dl-tools-card">
-      <div class="dl-tools-content">
-        <div class="dl-tools-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
-        </div>
-        <div>
-          <h3 class="dl-tools-title">Herramientas de terceros</h3>
-          <p class="dl-tools-desc">Software adicional recomendado para desarrolladores y administradores.</p>
-        </div>
-      </div>
-      <a href="/downloads/tools/" class="dl-tools-cta">
-        Ver herramientas
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-      </a>
-    </div>
-  </section>
 
 </div>
 
@@ -252,7 +180,6 @@ const downloadsRgb = '37, 99, 235'
   .dl-all-header {
     text-align: center;
     padding: 2rem 0 2.5rem;
-    border-bottom: 1px solid var(--sl-color-hairline-light);
     margin-bottom: 2.5rem;
   }
   .dl-all-header h1 {

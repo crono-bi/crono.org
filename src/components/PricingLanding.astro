@@ -1,0 +1,388 @@
+---
+// Página de Precios - mismo estilo visual que DownloadsLanding
+import { PRODUCTS } from '../config/products'
+
+interface Tier {
+  name: string
+  tagline: string
+  price: string
+  priceDetail?: string
+  description: string
+  cta: string
+  ctaHref: string
+  highlight?: boolean
+}
+
+interface Section {
+  title: string
+  color: string
+  rgb: string
+  icon: string
+  tiers: Tier[]
+}
+
+const sections: Section[] = [
+  {
+    title: 'Crono ETL',
+    color: PRODUCTS.etl.color,
+    rgb: PRODUCTS.etl.rgb,
+    icon: PRODUCTS.etl.icon,
+    tiers: [
+      {
+        name: 'Crono ETL CLI',
+        tagline: 'Línea de comando',
+        price: 'Gratis',
+        description: 'Versión línea de comando de Crono ETL. Ideal para automatizaciones y entornos headless.',
+        cta: 'Descargar',
+        ctaHref: '/downloads/crono-etl/',
+      },
+      {
+        name: 'Crono ETL Windows',
+        tagline: 'Free Trial',
+        price: 'Free Trial',
+        description: 'Versión reducida para pruebas, fines académicos.',
+        cta: 'Descargar',
+        ctaHref: '/downloads/crono-etl/',
+      },
+      {
+        name: 'Crono ETL Windows',
+        tagline: 'Licencia completa',
+        price: '100 €',
+        priceDetail: '/usuario mes',
+        description: 'Versión completa con todas las funcionalidades de integración de datos.',
+        cta: 'Contactar',
+        ctaHref: 'mailto:business@businessintelligence.es',
+        highlight: true,
+      },
+    ]
+  },
+  {
+    title: 'Crono Analysis',
+    color: PRODUCTS.analysis.color,
+    rgb: PRODUCTS.analysis.rgb,
+    icon: PRODUCTS.analysis.icon,
+    tiers: [
+      {
+        name: 'Crono Analysis Windows',
+        tagline: 'Free Trial',
+        price: 'Free Trial',
+        description: 'Versión reducida para pruebas, fines académicos.',
+        cta: 'Descargar',
+        ctaHref: '/downloads/crono-analysis/',
+      },
+      {
+        name: 'Crono Analysis Windows',
+        tagline: 'Licencia completa',
+        price: '10 €',
+        priceDetail: '/usuario mes',
+        description: 'Versión completa de Business Intelligence y análisis de datos.',
+        cta: 'Contactar',
+        ctaHref: 'mailto:business@businessintelligence.es',
+        highlight: true,
+      },
+    ]
+  },
+  {
+    title: 'Crono Enterprise',
+    color: '#5B2C7D',
+    rgb: '91, 44, 125',
+    icon: PRODUCTS.metadata.icon,
+    tiers: [
+      {
+        name: 'Crono API',
+        tagline: 'API y dashboards web',
+        price: '1.000 €',
+        priceDetail: '/año org',
+        description: 'API REST para integrar dashboards y reportes en tus aplicaciones web.',
+        cta: 'Contactar',
+        ctaHref: 'mailto:business@businessintelligence.es',
+      },
+      {
+        name: 'Crono Server',
+        tagline: 'Servidor empresarial',
+        price: '1.000 €',
+        priceDetail: '/año org',
+        description: 'Servidor de aplicaciones para despliegues empresariales con alta disponibilidad.',
+        cta: 'Contactar',
+        ctaHref: 'mailto:business@businessintelligence.es',
+      },
+      {
+        name: 'Crono Enterprise',
+        tagline: 'Plataforma completa',
+        price: 'Pide',
+        priceDetail: 'presupuesto',
+        description: 'La plataforma completa para usuarios ilimitados. Solución personalizada para grandes organizaciones.',
+        cta: 'Contactar',
+        ctaHref: 'mailto:business@businessintelligence.es',
+        highlight: true,
+      },
+    ]
+  },
+]
+---
+
+<div class="pr-landing not-content">
+
+  {sections.map(section => (
+    <div class="pr-section">
+      <!-- Cabecera de sección -->
+      <div class="pr-section-head" style={`--c: ${section.color}`}>
+        <div class="pr-section-icon" set:html={section.icon} />
+        <h2 class="pr-section-title">{section.title}</h2>
+      </div>
+
+      <!-- Grid de tarjetas -->
+      <div class="pr-grid">
+        {section.tiers.map(tier => (
+          <div class={`pr-card${tier.highlight ? ' pr-card--hl' : ''}`} style={`--c: ${section.color}; --rgb: ${section.rgb}`}>
+            <!-- Top: tagline -->
+            <div class="pr-card-top">
+              <span class="pr-card-tagline">{tier.tagline}</span>
+              {tier.highlight && <span class="pr-badge">Recomendado</span>}
+            </div>
+            <!-- Body -->
+            <div class="pr-card-body">
+              <h3 class="pr-card-name">{tier.name}</h3>
+              <div class="pr-card-price">
+                <span class="pr-price-value">{tier.price}</span>
+                {tier.priceDetail && <span class="pr-price-detail">{tier.priceDetail}</span>}
+              </div>
+              <p class="pr-card-desc">{tier.description}</p>
+            </div>
+            <!-- Foot: CTA -->
+            <div class="pr-card-foot">
+              <a href={tier.ctaHref} class={`pr-btn${tier.highlight ? ' pr-btn--primary' : ' pr-btn--secondary'}`}>
+                {tier.cta}
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  ))}
+
+  <!-- Nota al pie -->
+  <p class="pr-note">
+    ¿Necesitas ayuda para elegir? <a href="mailto:business@businessintelligence.es">Contáctanos</a> y te asesoramos sin compromiso.
+  </p>
+
+</div>
+
+<style>
+  .pr-landing {
+    padding: 0.25rem 0 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+
+  /* ── SECCIÓN ── */
+  .pr-section-head {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+    padding-left: 0.25rem;
+  }
+
+  .pr-section-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: var(--c);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    flex-shrink: 0;
+    vertical-align: baseline;
+  }
+
+  .pr-section-icon :global(svg) {
+    width: 20px;
+    height: 20px;
+  }
+
+  .pr-section-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--c);
+    margin: 0;
+    letter-spacing: -0.01em;
+    line-height: 1;
+  }
+
+  /* ── GRID ── */
+  .pr-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1rem;
+  }
+
+  /* ── TARJETA ── */
+  .pr-card {
+    display: flex;
+    flex-direction: column;
+    background: var(--sl-color-bg-nav);
+    border: 1px solid var(--sl-color-hairline);
+    border-radius: 14px;
+    padding: 1.25rem;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+  }
+
+  .pr-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(160deg, rgba(var(--rgb), 0.06) 0%, transparent 55%);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.25s;
+  }
+
+  .pr-card:hover {
+    border-color: var(--c);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px -6px rgba(var(--rgb), 0.2);
+  }
+
+  .pr-card:hover::before { opacity: 1; }
+
+  .pr-card--hl {
+    border-color: var(--c);
+  }
+
+  .pr-card--hl::before { opacity: 1; }
+
+  /* Top */
+  .pr-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .pr-card-tagline {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    color: var(--c);
+  }
+
+  .pr-badge {
+    font-size: 0.5625rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 0.2rem 0.55rem;
+    border-radius: 999px;
+    background: var(--c);
+    color: white;
+    flex-shrink: 0;
+  }
+
+  /* Body */
+  .pr-card-body { flex: 1; }
+
+  .pr-card-name {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--sl-color-white);
+    margin: 0 0 0.625rem;
+    line-height: 1.25;
+  }
+
+  .pr-card-price {
+    display: flex;
+    align-items: baseline;
+    gap: 0.35rem;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--sl-color-hairline);
+  }
+
+  .pr-price-value {
+    font-size: 1.625rem;
+    font-weight: 800;
+    color: var(--c);
+    line-height: 1;
+  }
+
+  .pr-price-detail {
+    font-size: 0.8rem;
+    color: var(--sl-color-gray-3);
+  }
+
+  .pr-card-desc {
+    font-size: 0.8125rem;
+    color: var(--sl-color-gray-3);
+    line-height: 1.55;
+    margin: 0 0 1rem;
+  }
+
+  /* Foot */
+  .pr-card-foot {
+    margin-top: auto;
+    padding-top: 0.875rem;
+    border-top: 1px solid var(--sl-color-hairline);
+  }
+
+  .pr-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 0.55rem 1rem;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.15s;
+  }
+
+  .pr-btn--primary {
+    background: var(--c);
+    color: white;
+  }
+
+  .pr-btn--primary:hover {
+    filter: brightness(1.1);
+    box-shadow: 0 3px 10px rgba(var(--rgb), 0.35);
+  }
+
+  .pr-btn--secondary {
+    background: transparent;
+    border: 1px solid var(--sl-color-hairline);
+    color: var(--sl-color-gray-2);
+  }
+
+  .pr-btn--secondary:hover {
+    border-color: var(--c);
+    color: var(--c);
+  }
+
+  /* Nota */
+  .pr-note {
+    font-size: 0.8125rem;
+    color: var(--sl-color-gray-3);
+    text-align: center;
+    border-top: 1px solid var(--sl-color-hairline);
+    padding-top: 1.5rem;
+    margin: 0;
+  }
+
+  .pr-note a {
+    color: var(--sl-color-accent);
+    text-decoration: underline;
+  }
+
+  @media (max-width: 640px) {
+    .pr-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
