@@ -396,6 +396,35 @@ INNER JOIN staging.customers USING orders(customer_id)
 ```
 
 
+## CROSS APPLY ROW
+
+**ADD COLUMNS** añade columnas calculadas sobre una sola tabla, antes de los JOINs. Cuando el cálculo necesita combinar columnas de varias tablas —por ejemplo, cruzar un valor del cliente con uno del empleado—, **ADD COLUMNS** ya no es suficiente porque sus expresiones se evalúan antes de que los JOINs se hayan resuelto.
+
+**CROSS APPLY ROW** resuelve ese caso: define un conjunto de columnas calculadas que se evalúan después de todos los JOINs, con acceso a cualquier columna de cualquier tabla participante. Se comporta como un JOIN con una tabla de una única fila de columnas calculadas, de ahí su nombre. Las expresiones dentro de **ROW** pueden referenciarse entre sí, igual que las columnas inteligentes del SELECT.
+
+El siguiente ejemplo combina ambos modificadores. Primero, **ADD COLUMNS** sobre `orders` define `days_to_ship` e `is_late` a partir de columnas de esa tabla. Después, **CROSS APPLY ROW** calcula `late_fee` usando `is_late` (ya disponible por el ADD COLUMNS), junto con `customers.country` y `employees.country`, que pertenecen a tablas distintas.
+
+```crono-sql
+SELECT
+  orders.order_id,
+  orders.order_date,
+  customers.company_name AS customer,
+  employees.last_name AS employee,
+  orders.days_to_ship,
+  orders.is_late,
+  shipping.late_fee
+FROM staging.orders ADD COLUMNS (daysdiff(order_date, shipped_date) days_to_ship, if(shipped_date > required_date) is_late)
+INNER JOIN staging.customers USING customer_id
+INNER JOIN staging.employees USING employee_id
+CROSS APPLY ROW (
+  if(orders.is_late=YES AND customers.country <> employees.country, freight * 0.15, 0) late_fee
+) shipping
+WHERE orders.is_late = 1
+```
+
+El alias del bloque (`shipping`) sirve para referenciar sus columnas en el SELECT. Cuando solo hay un **CROSS APPLY ROW**, las columnas también son accesibles sin prefijo.
+
+
 ## ANTI JOIN
 
 El lenguaje **Crono SQL** soporta todos los *joins* habituales:
@@ -747,6 +776,7 @@ En resumen, si se conoce SQL, ya se conoce la parte más importante de **Crono S
 - **GROUP BY automático** — el compilador infiere las columnas de agrupación
 - **USING** — JOINs más concisos sin repetir los campos de la condición
 - **FILTER, COLUMNS, ADD COLUMNS** — modificadores de tabla que evitan subconsultas explícitas
+- **CROSS APPLY ROW** — columnas calculadas post-JOIN que combinan columnas de varias tablas
 - **CHECK SNOWFLAKE** — validación de integridad de JOINs integrada en la consulta
 - **ANTI JOIN** y **SEMI JOIN** — alternativas legibles a `NOT EXISTS` y `EXISTS`
 - **TOP OVER** — top N por grupo sin CTEs ni `ROW_NUMBER()` explícito
