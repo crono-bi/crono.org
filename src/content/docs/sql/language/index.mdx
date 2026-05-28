@@ -6,21 +6,75 @@ sidebar:
 
 import SectionIndex from '../../../../components/SectionIndex.astro'
 
-En esta sección se explica en detalle la sintaxis del lenguaje Crono SQL.
+En un proyecto ETL/DWH hay dos tipos de código:
 
-En primer lugar se introduce la sentencia `SELECT`, y en los siguientes apartados se describen el resto de sentencias principales de **Crono SQL** (`INSERT`, `UPDATE`, `MERGE`,...). La sintaxis de todas estas sentencias es similar y comparte los principios fundamentales descritos en la introducción de este manual.
+- **Lógica de negocio** (`SELECT`): transformaciones, reglas y relaciones entre tablas. Es distinta en cada empresa.
+- **Estrategia de carga** (`MERGE`, `INSERT`, `UPDATE`...): cómo insertar, actualizar o sincronizar los datos. Es siempre igual, independientemente del negocio.
 
+**Crono SQL** asume esa distinción: la lógica de negocio se escribe en SQL estándar, con toda la expresividad del lenguaje; la estrategia de carga se declara en una sola línea, y el compilador genera el código necesario para cada motor, incluyendo la auditoría.
 
-Las páginas de `SELECT` y `MERGE` son especialmente importantes para entender y aprovechar las características del lenguaje **Crono SQL**. Prácticamente, son las dos únicas sentencias que se necesitan en un proyecto DWH habitual.
+Esta sección documenta en detalle la sintaxis del lenguaje. Se asumen conocimientos básicos de SQL.
 
-Este apartado está escrito para leerse secuencialmente, desde el primer al último al artículo. De todos modos, también puede leerse en cualquier orden o usarse como referencia.
+## SELECT
 
-La funcionalidad de todas las instrucciones se explica mediante ejemplos y se incluye siempre el código **Crono SQL** original y el código resultante en lenguaje **SQL**.
+La sentencia **SELECT** es la pieza central del lenguaje. Todas las sentencias de carga se construyen sobre ella, por lo que entender el SELECT es entender el 90% de **Crono SQL**.
 
-Este manual asume que se tienen al menos conocimientos básicos de SQL.
+**Crono SQL** extiende el SELECT estándar sin romper ninguna compatibilidad: cualquier consulta SQL existente funciona sin cambios. Las extensiones más importantes son **USING** (JOINs concisos), **CHECK SNOWFLAKE** (validación de integridad), **FILTER / ADD COLUMNS** (modificadores de tabla), **ANTI JOIN** y **SEMI JOIN**, las funciones de ventana extendidas y los **SELECTs anidados** como alternativa legible a las subconsultas.
+
+## Patrones de carga
+
+**Crono SQL** define nueve patrones de carga que cubren todos los escenarios habituales en un proyecto ETL/DWH. Todos ellos mantienen la auditoría automáticamente y admiten toda la potencia del **SELECT**: **USING**, **FILTER**, **CHECK SNOWFLAKE**, **SELECTs anidados** y el resto de operadores.
+
+La mayoría de patrones requieren una **clave de carga** declarada con `KEY (col1, col2)` en la cabecera de la sentencia. La clave identifica el registro y determina qué filas se insertan, actualizan o eliminan según el patrón elegido.
+
+| Sentencia | KEY | Auditoría |
+|---|---|---|
+| MERGE CLONE | obligatoria | `insert_date`, `update_date` |
+| MERGE HISTORY | obligatoria | `start_date`, `end_date` |
+| MERGE SOFT DELETE | obligatoria | `insert_date`, `update_date`, `delete_date` |
+| MERGE UPSERT | obligatoria | `insert_date`, `update_date` |
+| INSERT OVERWRITE | opcional | `insert_date` |
+| INSERT IF NEW | obligatoria | `insert_date` |
+| INSERT RAW | — | `insert_date` |
+| UPDATE | obligatoria | `update_date` |
+| DELETE | obligatoria | — |
+
+El nombre de estos campos es configurable a nivel de proyecto ETL. **MERGE CLONE** es el equivalente al patrón **SCD tipo 1** (sobreescribe los cambios sin conservar histórico); **MERGE HISTORY** es el equivalente al **SCD tipo 2** (conserva el histórico completo de cambios mediante filas versionadas).
+
+La elección del patrón de carga es una decisión de negocio, no técnica. El siguiente ejemplo sincroniza la tabla `dwh.dim_products` con los datos de origen usando **MERGE CLONE**: inserta los productos nuevos, actualiza los que han cambiado y elimina los que ya no existen en origen.
+
+```crono-sql
+MERGE CLONE dwh.dim_products KEY (product_id)
+SELECT
+  products.product_id,
+  products.product_name,
+  categories.category_name,
+  suppliers.company_name supplier
+FROM staging.products
+INNER JOIN staging.categories USING category_id
+INNER JOIN staging.suppliers USING supplier_id
+```
+
+Si los requisitos cambian —por ejemplo, se decide conservar el histórico de cambios en lugar de sobreescribirlos— basta con cambiar la primera línea:
+
+```crono-sql
+MERGE HISTORY dwh.dim_products KEY (product_id)
+```
+
+O si solo se quiere una recarga completa sin lógica de clave:
+
+```crono-sql
+INSERT OVERWRITE dwh.dim_products
+```
+
+El resto de la sentencia —los JOINs, los filtros, las transformaciones— no cambia en ninguno de los casos.
+
+Esta separación no es casual: refleja una distinción fundamental entre dos tipos de conocimiento muy distintos. La lógica de transformación es específica de cada negocio: qué tablas existen, cómo se relacionan, qué cálculos tienen sentido. No hay dos empresas con el mismo modelo de datos ni con las mismas reglas de negocio. Esa lógica vive en el **SELECT** y requiere que el desarrollador la entienda y la exprese con precisión.
+
+Las estrategias de carga, en cambio, son universales. Un MERGE CLONE, un INSERT IF NEW o un MERGE HISTORY funcionan igual en una startup que en una multinacional, en un e-commerce que en un banco. Son patrones resueltos, sin variación. Implementarlos correctamente en SQL estándar es verboso, repetitivo y propenso a errores —exactamente el tipo de código que nadie debería tener que escribir a mano.
+
+**Crono SQL** elimina ese trabajo. Cada estrategia de carga se expresa en una sola línea. El compilador genera todo el código necesario para cada motor de base de datos y añade la auditoría automáticamente. El desarrollador solo tiene que decidir qué estrategia necesita su negocio —y escribir el SELECT que describe sus datos.
 
 ## Sentencias del lenguaje
 
 <SectionIndex src="/sql/language/" />
-
-En la sección "Referencia lenguaje" se completa la documentación del lenguaje con algunas funcionalidades o sintaxis avanzadas.

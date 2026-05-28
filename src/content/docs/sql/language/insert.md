@@ -4,591 +4,101 @@ sidebar:
   order: 2
 ---
 
+**Crono SQL** define tres patrones de carga basados en INSERT. Los tres admiten toda la potencia del **SELECT** y mantienen la auditoría automáticamente.
 
-**Crono SQL** soporta la sintaxis estándar de la sentencia **INSERT**:
+- **INSERT RAW** — inserta todos los registros sin verificación de clave
+- **INSERT IF NEW** — inserta solo los registros nuevos
+- **INSERT OVERWRITE** — elimina y recarga la tabla, total o parcialmente
 
-```crono-sql
-INSERT INTO dwh.DimProducts(
-  ProductID,
-  Product,
-  ProductCategory,
-  ProductSubCategory,
-  ProductNumber,
-  ProductModel,
-  Color,
-  StandardCost,
-  ListPrice,
-  ProductSize,
-  SizeUnitMeasureCode,
-  Weight,
-  WeightUnitMeasureCode)
-select 
-  ProductID,
-  Product.Name,
-  ProductCategory.name,
-  ProductSubCategory.name,
-  ProductNumber,
-  ProductModel.name,
-  Product.Color,
-  Product.StandardCost,
-  Product.ListPrice,
-  Product.Size,
-  Product.SizeUnitMeasureCode,
-  Product.Weight,
-  Product.WeightUnitMeasureCode
-FROM staging.Product
-LEFT JOIN staging.ProductSubCategory using Product(ProductSubcategoryID)
-LEFT JOIN staging.ProductCategory using ProductSubCategory(ProductCategoryId)
-LEFT JOIN staging.ProductModel using Product(ProductModelID)
-```
 
-  
+## INSERT RAW
 
-  <details>
-<summary>Ver SQL compilado</summary>
+**INSERT RAW** inserta todos los registros del SELECT en la tabla destino sin ninguna verificación de clave. Es el patrón más directo: lo que devuelve la consulta se añade a la tabla. Es el único patrón de carga que no admite **KEY**.
 
 ```crono-sql
-INSERT dwh.DimProducts(ProductID,Product,ProductCategory,ProductSubCategory,ProductNumber,ProductModel,Color,StandardCost,ListPrice,ProductSize,SizeUnitMeasureCode,Weight,WeightUnitMeasureCode)
+INSERT RAW dwh.dim_products
 SELECT
-  ProductID,
-  Product.Name AS Name,
-  ProductCategory.name AS name,
-  ProductSubCategory.name AS name,
-  ProductNumber,
-  ProductModel.name AS name,
-  Product.Color AS Color,
-  Product.StandardCost AS StandardCost,
-  Product.ListPrice AS ListPrice,
-  Product.Size AS Size,
-  Product.SizeUnitMeasureCode AS SizeUnitMeasureCode,
-  Product.Weight AS Weight,
-  Product.WeightUnitMeasureCode AS WeightUnitMeasureCode
-FROM staging.Product
-LEFT JOIN staging.ProductSubCategory ON (Product.ProductSubcategoryID=ProductSubCategory.ProductSubcategoryID)
-LEFT JOIN staging.ProductCategory ON (ProductSubCategory.ProductCategoryId=ProductCategory.ProductCategoryId)
-LEFT JOIN staging.ProductModel ON (Product.ProductModelID=ProductModel.ProductModelID);
-
+  products.product_id,
+  products.product_name,
+  categories.category_name,
+  suppliers.company_name AS supplier
+FROM staging.products
+INNER JOIN staging.categories USING category_id
+INNER JOIN staging.suppliers USING supplier_id
 ```
 
-</details>
 
+## INSERT IF NEW
 
-Sin embargo, especialmente cuando la tabla tiene muchas columnas, esta sintaxis es repetitiva e incómoda de mantener.  Por ello, **Crono SQL** prescinde de la cláusula **VALUES** y asume que el nombre de los campos coincide con el *alias* de las columnas de la consulta de origen:
+**INSERT IF NEW** inserta únicamente los registros cuya clave no exista aún en la tabla destino. Los registros ya presentes se ignoran.
 
-```crono-sql
-INSERT INTO dwh.DimProducts
-select 
-  ProductID,
-  Product.Name Product,
-  ProductCategory.name ProductCategory,
-  ProductSubCategory.name ProductSubCategory,
-  ProductNumber,
-  ProductModel.name ProductModel,
-  Product.Color,
-  Product.StandardCost ProductCost,
-  Product.ListPrice,
-  Product.Size,
-  Product.SizeUnitMeasureCode,
-  Product.Weight,
-  Product.WeightUnitMeasureCode
-FROM staging.Product
-LEFT JOIN staging.ProductSubCategory using Product(ProductSubcategoryID)
-LEFT JOIN staging.ProductCategory using ProductSubCategory(ProductCategoryId)
-LEFT JOIN staging.ProductModel using Product(ProductModelID)
-```
-
-  
-
-  <details>
-<summary>Ver SQL compilado</summary>
+La clave de carga se declara con `KEY (col1, col2)` en la cabecera de la sentencia. Es obligatoria en este patrón.
 
 ```crono-sql
-;WITH
-query AS (
-  SELECT
-    ProductID,
-    Product.Name AS Product,
-    ProductCategory.name AS ProductCategory,
-    ProductSubCategory.name AS ProductSubCategory,
-    ProductNumber,
-    ProductModel.name AS ProductModel,
-    Product.Color AS Color,
-    Product.StandardCost AS ProductCost,
-    Product.ListPrice AS ListPrice,
-    Product.Size AS Size,
-    Product.SizeUnitMeasureCode AS SizeUnitMeasureCode,
-    Product.Weight AS Weight,
-    Product.WeightUnitMeasureCode AS WeightUnitMeasureCode
-  FROM staging.Product
-  LEFT JOIN staging.ProductSubCategory ON (Product.ProductSubcategoryID=ProductSubCategory.ProductSubcategoryID)
-  LEFT JOIN staging.ProductCategory ON (ProductSubCategory.ProductCategoryId=ProductCategory.ProductCategoryId)
-  LEFT JOIN staging.ProductModel ON (Product.ProductModelID=ProductModel.ProductModelID)
-)
-INSERT dwh.DimProducts(ProductID,Product,ProductCategory,ProductSubCategory,ProductNumber,ProductModel,Color,ProductCost,ListPrice,Size,SizeUnitMeasureCode,Weight,WeightUnitMeasureCode)
+INSERT IF NEW dwh.dim_products KEY (product_id)
 SELECT
-  query.ProductID,
-  query.Product,
-  query.ProductCategory,
-  query.ProductSubCategory,
-  query.ProductNumber,
-  query.ProductModel,
-  query.Color,
-  query.ProductCost,
-  query.ListPrice,
-  query.Size,
-  query.SizeUnitMeasureCode,
-  query.Weight,
-  query.WeightUnitMeasureCode
-FROM query;
-
+  products.product_id,
+  products.product_name,
+  categories.category_name,
+  suppliers.company_name AS supplier
+FROM staging.products
+INNER JOIN staging.categories USING category_id
+INNER JOIN staging.suppliers USING supplier_id
 ```
 
-</details>
 
+## INSERT OVERWRITE
 
-
-Por supuesto, para definir el  origen de datos del **INSERT** se pueden utilizar [todas las características de la sentencia **SELECT**](#sentencia-select) de **Crono SQL**. En la siguiente consulta, por ejemplo, se verifica que las relaciones sean correctas antes de realizar la inserción. Es decir, si las relaciones pierden o duplican registros,  no se ejecutará el **INSERT**.    
+**INSERT OVERWRITE** elimina el contenido actual de la tabla y la recarga con los datos de la consulta. Es la estrategia más sencilla cuando se puede asumir que todos los datos de origen están disponibles y son correctos.
 
 ```crono-sql
-INSERT INTO dwh.DimProducts
-select 
-  ProductID,
-  Product.Name Product,
-  ProductCategory.name ProductCategory,
-  ProductSubCategory.name ProductSubCategory,
-  ProductNumber,
-  ProductModel.name ProductModel,
-  Product.Color,
-  Product.StandardCost ProductCost,
-  Product.ListPrice,
-  Product.Size,
-  Product.SizeUnitMeasureCode,
-  Product.Weight,
-  Product.WeightUnitMeasureCode
-FROM staging.Product
-LEFT JOIN staging.ProductSubCategory using Product(ProductSubcategoryID)
-LEFT JOIN staging.ProductCategory using ProductSubCategory(ProductCategoryId)
-LEFT JOIN staging.ProductModel using Product(ProductModelID)
+INSERT OVERWRITE dwh.dim_products
+SELECT
+  products.product_id,
+  products.product_name,
+  categories.category_name,
+  suppliers.company_name AS supplier
+FROM staging.products
+INNER JOIN staging.categories USING category_id
+INNER JOIN staging.suppliers USING supplier_id
 CHECK SNOWFLAKE
 ```
 
-  
-
-  <details>
-<summary>Ver SQL compilado</summary>
+**INSERT OVERWRITE** es el único patrón de carga donde la **KEY** es opcional. Sin clave vacía toda la tabla; con clave elimina y recarga únicamente los registros cuya clave coincida con los datos de la consulta, sin afectar al resto de la tabla.
 
 ```crono-sql
-IF EXISTS (
-  SELECT count(*)
-  FROM staging.Product
-  LEFT JOIN staging.ProductSubCategory ON (Product.ProductSubcategoryID=ProductSubCategory.ProductSubcategoryID)
-  LEFT JOIN staging.ProductCategory ON (ProductSubCategory.ProductCategoryId=ProductCategory.ProductCategoryId)
-  LEFT JOIN staging.ProductModel ON (Product.ProductModelID=ProductModel.ProductModelID)
-  HAVING count(*) <> (SELECT count(*) FROM staging.Product)
-) THROW 50001,'Las relaciones de esta consulta pierden o duplican registros de Product.',1
-
-;WITH
-query AS (
-  SELECT
-    ProductID,
-    Product.Name AS Product,
-    ProductCategory.name AS ProductCategory,
-    ProductSubCategory.name AS ProductSubCategory,
-    ProductNumber,
-    ProductModel.name AS ProductModel,
-    Product.Color AS Color,
-    Product.StandardCost AS ProductCost,
-    Product.ListPrice AS ListPrice,
-    Product.Size AS Size,
-    Product.SizeUnitMeasureCode AS SizeUnitMeasureCode,
-    Product.Weight AS Weight,
-    Product.WeightUnitMeasureCode AS WeightUnitMeasureCode
-  FROM staging.Product
-  LEFT JOIN staging.ProductSubCategory ON (Product.ProductSubcategoryID=ProductSubCategory.ProductSubcategoryID)
-  LEFT JOIN staging.ProductCategory ON (ProductSubCategory.ProductCategoryId=ProductCategory.ProductCategoryId)
-  LEFT JOIN staging.ProductModel ON (Product.ProductModelID=ProductModel.ProductModelID)
-)
-INSERT dwh.DimProducts(ProductID,Product,ProductCategory,ProductSubCategory,ProductNumber,ProductModel,Color,ProductCost,ListPrice,Size,SizeUnitMeasureCode,Weight,WeightUnitMeasureCode)
+INSERT OVERWRITE dwh.fact_orders KEY (order_id)
 SELECT
-  query.ProductID,
-  query.Product,
-  query.ProductCategory,
-  query.ProductSubCategory,
-  query.ProductNumber,
-  query.ProductModel,
-  query.Color,
-  query.ProductCost,
-  query.ListPrice,
-  query.Size,
-  query.SizeUnitMeasureCode,
-  query.Weight,
-  query.WeightUnitMeasureCode
-FROM query;
-
+  orders.order_id,
+  orders.order_date,
+  customers.company_name AS customer,
+  employees.last_name AS employee,
+  sum(order_details.unit_price * order_details.quantity) AS total_amount,
+  orders.freight
+FROM staging.orders
+INNER JOIN staging.customers USING customer_id
+INNER JOIN staging.employees USING employee_id
+INNER JOIN staging.order_details USING order_id
+WHERE year(orders.order_date) = 2024 AND month(orders.order_date) = 1
 ```
 
-</details>
+En este ejemplo solo se eliminan y reinsertan las órdenes de enero de 2024. El resto de registros de `dwh.fact_orders` no se modifica.
 
 
+## Compatibilidad ANSI
 
-También se puede utilizar, por ejemplo, la sentencia **COMBINE** o la funcionalidad de **MATERIALIZE**. En la siguiente consulta se verificará que todas las relaciones sean correctas, se crearán entonces las tablas temporales con la información de *ventas* y *compras*, y finalmente se unirán mediante un **FULL JOIN** en un único resultado a insertar.
+Por compatibilidad, **Crono SQL** también soporta la sintaxis estándar con lista de columnas explícita, tanto con `VALUES` como con `SELECT`:
 
 ```crono-sql
-INSERT INTO dwh.VentasVsCompras
-COMBINE BY Product,ProductNumber
-  MATERIALIZE sales (
-    select 
-      Product.Name Product,
-      Product.ProductNumber ProductNumber,
-      sum(PurchaseOrderDetail.LineTotal) Purchases
-    from staging.PurchaseOrderDetail
-    inner join staging.Product  using ProductId
-    CHECK SNOWFLAKE),
-  MATERIALIZE purchases (
-    select 
-      Product.Name Product,
-      Product.ProductNumber ProductNumber,
-      sum(SalesOrderDetail.LineTotal) Sales
-    from staging.SalesOrderDetail
-    inner join staging.Product  using ProductId
-    CHECK SNOWFLAKE)
+INSERT INTO dwh.dim_products (product_id, product_name) VALUES (1, 'Chai')
 ```
 
-  
-
-  <details>
-<summary>Ver SQL compilado</summary>
+También se puede usar `SELECT` en lugar de `VALUES`:
 
 ```crono-sql
--- Materialized query: sales
-SELECT
-  Product.Name AS Product,
-  Product.ProductNumber AS ProductNumber,
-  sum(PurchaseOrderDetail.LineTotal) AS Purchases
-INTO #sales__14C85
-FROM staging.PurchaseOrderDetail
-INNER JOIN staging.Product ON (PurchaseOrderDetail.ProductId=Product.ProductId)
-GROUP BY
-  Product.Name,
-  Product.ProductNumber
-
--- Materialized query: purchases
-SELECT
-  Product.Name AS Product,
-  Product.ProductNumber AS ProductNumber,
-  sum(SalesOrderDetail.LineTotal) AS Sales
-INTO #purchases__9D591
-FROM staging.SalesOrderDetail
-INNER JOIN staging.Product ON (SalesOrderDetail.ProductId=Product.ProductId)
-GROUP BY
-  Product.Name,
-  Product.ProductNumber
-
-IF EXISTS (
-  SELECT count(*)
-  FROM staging.PurchaseOrderDetail
-  LEFT JOIN staging.Product ON (PurchaseOrderDetail.ProductId=Product.ProductId)
-  HAVING count(CASE WHEN Product.ProductId IS NOT NULL THEN 1 END) <> (SELECT count(*) FROM staging.PurchaseOrderDetail)
-) THROW 50001,'Las relaciones de esta consulta pierden o duplican registros de PurchaseOrderDetail.',1
-
-IF EXISTS (
-  SELECT count(*)
-  FROM staging.SalesOrderDetail
-  LEFT JOIN staging.Product ON (SalesOrderDetail.ProductId=Product.ProductId)
-  HAVING count(CASE WHEN Product.ProductId IS NOT NULL THEN 1 END) <> (SELECT count(*) FROM staging.SalesOrderDetail)
-) THROW 50001,'Las relaciones de esta consulta pierden o duplican registros de SalesOrderDetail.',1
-
-;WITH
-query AS (
-  SELECT
-    coalesce(sales.Product,purchases.Product) AS Product,
-    coalesce(sales.ProductNumber,purchases.ProductNumber) AS ProductNumber,
-    sales.Purchases AS Purchases,
-    purchases.Sales AS Sales
-  FROM #sales__14C85 sales
-  FULL JOIN #purchases__9D591 purchases ON (sales.Product=purchases.Product AND sales.ProductNumber=purchases.ProductNumber)
-)
-INSERT dwh.VentasVsCompras(Product,ProductNumber,Purchases,Sales)
-SELECT
-  query.Product,
-  query.ProductNumber,
-  query.Purchases,
-  query.Sales
-FROM query;
-
+INSERT INTO dwh.dim_products (product_id, product_name)
+SELECT products.product_id, products.product_name
+FROM staging.products
 ```
 
-</details>
-
-
-Una necesidad habitual en ETL/DWH es insertar únicamente los registros que no existan en la tabla destino. Para ello, es necesario especificar la "clave de inserción". La clave de inserción se define mediante el *carácter #* delante del  *alias* de cada campo. Como veremos a lo largo de este tutorial, las claves de todas las estrategias de carga se definen con el carácter **#**.
-
-La siguiente consulta inserta los productos que no existan aún en la tabla *dwh.DimProducts*
-
-```crono-sql
-INSERT INTO dwh.DimProducts
-select 
-  ProductID #ProductID,
-  Product.Name Product,
-  ProductCategory.name ProductCategory,
-  ProductSubCategory.name ProductSubCategory,
-  ProductNumber,
-  ProductModel.name ProductModel,
-  Product.Color,
-  Product.StandardCost ProductCost,
-  Product.ListPrice,
-  Product.Size,
-  Product.SizeUnitMeasureCode,
-  Product.Weight,
-  Product.WeightUnitMeasureCode
-FROM staging.Product
-LEFT JOIN staging.ProductSubCategory using Product(ProductSubcategoryID)
-LEFT JOIN staging.ProductCategory using ProductSubCategory(ProductCategoryId)
-LEFT JOIN staging.ProductModel using Product(ProductModelID)
-```
-
-  
-
-  <details>
-<summary>Ver SQL compilado</summary>
-
-```crono-sql
-;WITH
-query AS (
-  SELECT
-    ProductID,
-    Product.Name AS Product,
-    ProductCategory.name AS ProductCategory,
-    ProductSubCategory.name AS ProductSubCategory,
-    ProductNumber,
-    ProductModel.name AS ProductModel,
-    Product.Color AS Color,
-    Product.StandardCost AS ProductCost,
-    Product.ListPrice AS ListPrice,
-    Product.Size AS Size,
-    Product.SizeUnitMeasureCode AS SizeUnitMeasureCode,
-    Product.Weight AS Weight,
-    Product.WeightUnitMeasureCode AS WeightUnitMeasureCode
-  FROM staging.Product
-  LEFT JOIN staging.ProductSubCategory ON (Product.ProductSubcategoryID=ProductSubCategory.ProductSubcategoryID)
-  LEFT JOIN staging.ProductCategory ON (ProductSubCategory.ProductCategoryId=ProductCategory.ProductCategoryId)
-  LEFT JOIN staging.ProductModel ON (Product.ProductModelID=ProductModel.ProductModelID)
-)
-INSERT dwh.DimProducts(ProductID,Product,ProductCategory,ProductSubCategory,ProductNumber,ProductModel,Color,ProductCost,ListPrice,Size,SizeUnitMeasureCode,Weight,WeightUnitMeasureCode)
-SELECT
-  query.ProductID,
-  query.Product,
-  query.ProductCategory,
-  query.ProductSubCategory,
-  query.ProductNumber,
-  query.ProductModel,
-  query.Color,
-  query.ProductCost,
-  query.ListPrice,
-  query.Size,
-  query.SizeUnitMeasureCode,
-  query.Weight,
-  query.WeightUnitMeasureCode
-FROM query
-LEFT JOIN dwh.DimProducts ON (DimProducts.ProductID=query.ProductID)
-WHERE DimProducts.ProductID IS NULL;
-
-```
-
-</details>
-
-
-
-Es es posible realizar una recarga completa mediante la sentencia **DELETE AND INSERT**. Esta sentencia elimina el contenido de la tabla y la recarga con los datos de la consulta de origen. 
-
-
-```crono-sql
-DELETE AND INSERT INTO dwh.DimProducts 
-select 
-  ProductID,
-  Product.Name Product,
-  ProductCategory.name ProductCategory,
-  ProductSubCategory.name ProductSubCategory,
-  ProductNumber,
-  ProductModel.name ProductModel,
-  Product.Color,
-  Product.StandardCost ProductCost
-FROM staging.Product
-LEFT JOIN staging.ProductSubCategory using Product(ProductSubcategoryID)
-LEFT JOIN staging.ProductModel using Product(ProductModelID)
-```
-
-  
-
-  <details>
-<summary>Ver SQL compilado</summary>
-
-```crono-sql
-DELETE FROM dwh.DimProducts;
-
-;WITH
-query AS (
-  SELECT
-    ProductID,
-    Product.Name AS Product,
-    ProductCategory.name AS ProductCategory,
-    ProductSubCategory.name AS ProductSubCategory,
-    ProductNumber,
-    ProductModel.name AS ProductModel,
-    Product.Color AS Color,
-    Product.StandardCost AS ProductCost
-  FROM staging.Product
-  LEFT JOIN staging.ProductSubCategory ON (Product.ProductSubcategoryID=ProductSubCategory.ProductSubcategoryID)
-  LEFT JOIN staging.ProductModel ON (Product.ProductModelID=ProductModel.ProductModelID)
-)
-INSERT dwh.DimProducts(ProductID,Product,ProductCategory,ProductSubCategory,ProductNumber,ProductModel,Color,ProductCost)
-SELECT
-  query.ProductID,
-  query.Product,
-  query.ProductCategory,
-  query.ProductSubCategory,
-  query.ProductNumber,
-  query.ProductModel,
-  query.Color,
-  query.ProductCost
-FROM query;
-
-```
-
-</details>
-
-
-También es posible realizar un **TRUNCATE AND INSERT**
-
-```crono-sql
-TRUNCATE AND INSERT INTO dwh.DimProducts 
-select 
-  ProductID,
-  Product.Name Product,
-  ProductCategory.name ProductCategory,
-  ProductSubCategory.name ProductSubCategory,
-  ProductNumber,
-  ProductModel.name ProductModel,
-  Product.Color,
-  Product.StandardCost ProductCost
-FROM staging.Product
-LEFT JOIN staging.ProductSubCategory using Product(ProductSubcategoryID)
-LEFT JOIN staging.ProductModel using Product(ProductModelID)
-```
-
-  
-
-  <details>
-<summary>Ver SQL compilado</summary>
-
-```crono-sql
-TRUNCATE TABLE dwh.DimProducts;
-
-;WITH
-query AS (
-  SELECT
-    ProductID,
-    Product.Name AS Product,
-    ProductCategory.name AS ProductCategory,
-    ProductSubCategory.name AS ProductSubCategory,
-    ProductNumber,
-    ProductModel.name AS ProductModel,
-    Product.Color AS Color,
-    Product.StandardCost AS ProductCost
-  FROM staging.Product
-  LEFT JOIN staging.ProductSubCategory ON (Product.ProductSubcategoryID=ProductSubCategory.ProductSubcategoryID)
-  LEFT JOIN staging.ProductModel ON (Product.ProductModelID=ProductModel.ProductModelID)
-)
-INSERT dwh.DimProducts(ProductID,Product,ProductCategory,ProductSubCategory,ProductNumber,ProductModel,Color,ProductCost)
-SELECT
-  query.ProductID,
-  query.Product,
-  query.ProductCategory,
-  query.ProductSubCategory,
-  query.ProductNumber,
-  query.ProductModel,
-  query.Color,
-  query.ProductCost
-FROM query;
-
-```
-
-</details>
-
-
-La opción **PARTITION** permite recargar solo una parte de la tabla. Por ejemplo, es habitual cargar solo los movimientos del mes en curso (si sabemos que los demás no han sido modificados). La siguiente sentencia recarga las ventas de los últimos 30 días:
-
-```crono-sql
-DELETE AND INSERT INTO dwh.FactSalesOrderHeader PARTITION (OrderDate>=getdate()-30)
-SELECT 
-  SalesOrderHeader.SalesOrderId,
-  Customer.CustomerId,
-  cast(SalesOrderHeader.OrderDate as date) OrderDate,
-  SalesOrderHeader.SalesOrderNumber,
-  cast(SalesOrderHeader.DueDate as date) DueDate,
-  cast(SalesOrderHeader.ShipDate as date) ShipDate,
-  SalesOrderHeader.OnlineOrderFlag,
-  SalesOrderHeader.PurchaseOrderNumber,
-  SalesOrderHeader.AccountNumber,
-  SalesOrderHeader.Freight,
-  SalesOrderHeader.CreditCardApprovalCode,
-  SalesOrderHeader.SubTotal Amount,
-  SalesOrderHeader.TaxAmt
-FROM staging.SalesOrderHeader
-INNER JOIN staging.customer using SalesOrderHeader(customerId)
-where OrderDate>=getdate()-30
-```
-
-  
-
-  <details>
-<summary>Ver SQL compilado</summary>
-
-```crono-sql
-DELETE FROM dwh.FactSalesOrderHeader
-WHERE
-  FactSalesOrderHeader.OrderDate>=getdate()-30;
-
-;WITH
-query AS (
-  SELECT
-    SalesOrderHeader.SalesOrderId AS SalesOrderId,
-    Customer.CustomerId AS CustomerId,
-    CAST(SalesOrderHeader.OrderDate AS date) AS OrderDate,
-    SalesOrderHeader.SalesOrderNumber AS SalesOrderNumber,
-    CAST(SalesOrderHeader.DueDate AS date) AS DueDate,
-    CAST(SalesOrderHeader.ShipDate AS date) AS ShipDate,
-    SalesOrderHeader.OnlineOrderFlag AS OnlineOrderFlag,
-    SalesOrderHeader.PurchaseOrderNumber AS PurchaseOrderNumber,
-    SalesOrderHeader.AccountNumber AS AccountNumber,
-    SalesOrderHeader.Freight AS Freight,
-    SalesOrderHeader.CreditCardApprovalCode AS CreditCardApprovalCode,
-    SalesOrderHeader.SubTotal AS Amount,
-    SalesOrderHeader.TaxAmt AS TaxAmt
-  FROM staging.SalesOrderHeader
-  INNER JOIN staging.customer ON (SalesOrderHeader.customerId=customer.customerId)
-  WHERE CAST(SalesOrderHeader.OrderDate AS date)>=getdate()-30
-)
-INSERT dwh.FactSalesOrderHeader(SalesOrderId,CustomerId,OrderDate,SalesOrderNumber,DueDate,ShipDate,OnlineOrderFlag,PurchaseOrderNumber,AccountNumber,Freight,CreditCardApprovalCode,Amount,TaxAmt)
-SELECT
-  query.SalesOrderId,
-  query.CustomerId,
-  query.OrderDate,
-  query.SalesOrderNumber,
-  query.DueDate,
-  query.ShipDate,
-  query.OnlineOrderFlag,
-  query.PurchaseOrderNumber,
-  query.AccountNumber,
-  query.Freight,
-  query.CreditCardApprovalCode,
-  query.Amount,
-  query.TaxAmt
-FROM query;
-
-```
-
-</details>
-
-
-Con el tipo de estrategias descritas en este apartado es posible conseguir que cada tabla se cargue desde una única sentencia, centralizando la lógica de negocio en un único punto, facilitando el desarrollo, y promocionando el seguimiento de buenas prácticas. Los mismos principios y métodos se utilizan en el resto de sentencias DML, como se muestra en los siguientes apartados.
+Estas formas ANSI no mantienen auditoría y raramente se necesitan en un proyecto ETL/DWH habitual.

@@ -4,185 +4,45 @@ sidebar:
   order: 5
 ---
 
+El patrón **DELETE** de **Crono SQL** elimina los registros de la tabla destino cuya clave coincida con los registros devueltos por la consulta. Se escribe el **SELECT** de los registros que se quieren borrar, y **Crono SQL** elimina exactamente esos.
 
-**Crono SQL** soporta la sintaxis estándar de la sentencia **DELETE** de SQL:
-
-```crono-sql
-DELETE FROM dwh.FactSalesOrderDetails WHERE SalesOrderId=43659
-```
-
-  
-
-  <details>
-<summary>Ver SQL compilado</summary>
+La clave de eliminación se declara con `KEY (col1, col2)` en la cabecera. Es obligatoria.
 
 ```crono-sql
-DELETE FROM dwh.FactSalesOrderDetails WHERE SalesOrderId=43659;
+DELETE dwh.dim_products KEY (product_id)
+SELECT products.product_id
+FROM staging.products
+WHERE discontinued = 1
 ```
 
-</details>
-
-
-Si intervienen otras tablas, se puede definir el predicado utilizando las expresiones **IN()** o **EXISTS ()**. La siguiente sentencia elimina las líneas de venta de un cliente en concreto:
+La consulta del **DELETE** admite toda la potencia del **SELECT** de **Crono SQL**. El siguiente ejemplo elimina los clientes que no tienen ninguna orden, usando **ANTI JOIN**:
 
 ```crono-sql
-DELETE 
-FROM dwh.FactSalesOrderDetails
-WHERE SalesOrderSid in (
-  SELECT SalesOrderSid
-  FROM dwh.FactSalesOrderHeader
-  INNER JOIN dwh.DimCustomers using FactSalesOrderHeader(CustomerSid)
-  WHERE DimCustomers.Customer='Oscar Simmons')
+DELETE dwh.dim_customers KEY (customer_id)
+SELECT customer_id
+FROM dwh.dim_customers
+ANTI JOIN staging.orders USING customer_id
 ```
 
-  
-
-  <details>
-<summary>Ver SQL compilado</summary>
+También se pueden combinar varias tablas para expresar condiciones más complejas. Este ejemplo elimina las líneas de pedido de un cliente concreto:
 
 ```crono-sql
-DELETE FROM dwh.FactSalesOrderDetails WHERE EXISTS (SELECT 1 FROM (
-    SELECT SalesOrderSid
-    FROM dwh.FactSalesOrderHeader
-    INNER JOIN dwh.DimCustomers ON (FactSalesOrderHeader.CustomerSid=DimCustomers.CustomerSid)
-    WHERE DimCustomers.Customer='Oscar Simmons'
-) subquery WHERE SalesOrderSid=subquery.SalesOrderSid);
-
+DELETE dwh.fact_order_details KEY (order_id, product_id)
+SELECT
+  order_details.order_id,
+  order_details.product_id
+FROM staging.order_details
+INNER JOIN staging.orders USING order_id
+INNER JOIN staging.customers USING orders(customer_id)
+WHERE customers.company_name = 'Alfreds Futterkiste'
 ```
 
-</details>
 
+## Compatibilidad ANSI
 
-De modo similar, la siguiente sentencia elimina las líneas de venta de otro cliente:
+Por compatibilidad, **Crono SQL** también soporta la sintaxis estándar del DELETE:
 
 ```crono-sql
-DELETE 
-FROM dwh.FactSalesOrderDetails 
-WHERE EXISTS (
-  SELECT *  
-  FROM dwh.FactSalesOrderHeader cab
-  INNER JOIN dwh.DimCustomers using cab(CustomerSid)
-  WHERE
-    DimCustomers.Customer='Oscar Simmons'
-    AND FactSalesOrderDetails.SalesOrderSid=cab.SalesOrderSid)
+DELETE FROM dwh.fact_order_details
+WHERE order_id = 10248
 ```
-
-  
-
-  <details>
-<summary>Ver SQL compilado</summary>
-
-```crono-sql
-DELETE FROM dwh.FactSalesOrderDetails WHERE EXISTS (SELECT *
-FROM dwh.FactSalesOrderHeader cab
-INNER JOIN dwh.DimCustomers ON (cab.CustomerSid=DimCustomers.CustomerSid)
-WHERE
-  DimCustomers.Customer='Oscar Simmons'
-  AND FactSalesOrderDetails.SalesOrderSid=cab.SalesOrderSid
-);
-
-```
-
-</details>
-
-
-**Crono SQL** propone otra sintaxis de la sentencia **DELETE** (idéntica a la sintaxis de **INSERT**, **UPDATE**, y **MERGE**). La idea subyacente es que se ha  de construir el **SELECT** de los datos que se quieren borrar. Solo el **SELECT**. Y **Crono SQL** eliminará precisamente esos registros:
-
-```crono-sql
-DELETE dwh.FactSalesOrderDetails
-select det.SalesOrderDetailSid #SalesOrderDetailSid, det.SalesOrderId, det.SalesOrderDetailsId
-from dwh.FactSalesOrderDetails det
-inner join dwh.FactSalesOrderHeader using SalesOrderSid
-inner join dwh.DimCustomers using FactSalesOrderHeader(CustomerSid)
-WHERE DimCustomers.Customer='Jada Morris'
-```
-
-  
-
-  <details>
-<summary>Ver SQL compilado</summary>
-
-```crono-sql
-;WITH
-query AS (
-  SELECT
-    det.SalesOrderDetailSid AS SalesOrderDetailSid,
-    det.SalesOrderId AS SalesOrderId,
-    det.SalesOrderDetailsId AS SalesOrderDetailsId
-  FROM dwh.FactSalesOrderDetails det
-  INNER JOIN dwh.FactSalesOrderHeader ON (det.SalesOrderSid=FactSalesOrderHeader.SalesOrderSid)
-  INNER JOIN dwh.DimCustomers ON (FactSalesOrderHeader.CustomerSid=DimCustomers.CustomerSid)
-  WHERE DimCustomers.Customer='Jada Morris'
-)
-DELETE FROM dwh.FactSalesOrderDetails
-WHERE
-  EXISTS (SELECT 1 FROM query WHERE FactSalesOrderDetails.SalesOrderDetailSid=query.SalesOrderDetailSid);
-
-```
-
-</details>
-
-
-De hecho, no es necesario que la consulta tenga ninguna referencia a la tabla de la que se quieren eliminar registros. El ejemplo anterior se puede simplificar de la siguiente manera:
-
-```crono-sql
-DELETE dwh.FactSalesOrderDetails 	
-SELECT #SalesOrderSid 
-FROM dwh.FactSalesOrderHeader 
-INNER JOIN dwh.DimCustomers using CustomerSid
-WHERE
-  DimCustomers.Customer='Katherine Turner'
-```
-
-  
-
-  <details>
-<summary>Ver SQL compilado</summary>
-
-```crono-sql
-;WITH
-query AS (
-  SELECT SalesOrderSid
-  FROM dwh.FactSalesOrderHeader
-  INNER JOIN dwh.DimCustomers ON (FactSalesOrderHeader.CustomerSid=DimCustomers.CustomerSid)
-  WHERE DimCustomers.Customer='Katherine Turner'
-)
-DELETE FROM dwh.FactSalesOrderDetails
-WHERE
-  EXISTS (SELECT 1 FROM query WHERE FactSalesOrderDetails.SalesOrderSid=query.SalesOrderSid);
-
-```
-
-</details>
-
-
-En todos los casos, lo que marca los registros que se deben eliminar es la *"clave de eliminación"* (marcada con el **carácter #**).
-
-La consulta del **DELETE** también puede utilizar todas las características del **SELECT** de **Crono SQL**. La siguiente sentencia elimina los clientes sin ninguna venta:
-
-```crono-sql
-DELETE dwh.DimCustomers
-SELECT #customerSid
-FROM dwh.DimCustomers
-ANTI JOIN dwh.FactSalesOrderHeader USING CustomerSid
-```
-
-  
-
-  <details>
-<summary>Ver SQL compilado</summary>
-
-```crono-sql
-;WITH
-query AS (
-  SELECT customerSid
-  FROM dwh.DimCustomers
-  WHERE NOT EXISTS (SELECT 1 FROM dwh.FactSalesOrderHeader WHERE DimCustomers.CustomerSid=FactSalesOrderHeader.CustomerSid)
-)
-DELETE FROM dwh.DimCustomers
-WHERE
-  EXISTS (SELECT 1 FROM query WHERE DimCustomers.customerSid=query.customerSid);
-
-```
-
-</details>
