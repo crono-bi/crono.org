@@ -1,7 +1,7 @@
 ---
-title: "Sentencias MERGE"
+title: "MERGE"
 sidebar:
-  order: 4
+  order: 20
 ---
 
 import { Aside } from '@astrojs/starlight/components';
@@ -114,4 +114,4 @@ WHEN NOT MATCHED THEN
   INSERT (product_id, product_name) VALUES (src.product_id, src.product_name)
 ```
 
-Esta forma es verbosa, propensa a errores y no mantiene auditoría. En un proyecto **Crono SQL** desaconsejamos su uso: los cuatro patrones anteriores cubren todos los escenarios habituales con una sintaxis mucho más clara y segura.
+Esta forma ANSI es verbosa, propensa a errores y no mantiene auditoría. En un proyecto **Crono SQL** desaconsejamos su uso: los cuatro patrones anteriores cubren todos los escenarios habituales con una sintaxis mucho más clara y segura.

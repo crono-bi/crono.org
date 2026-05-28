@@ -1,7 +1,7 @@
 ---
-title: "Sentencia TRUNCATE"
+title: "TRUNCATE"
 sidebar:
-  order: 6
+  order: 60
 ---
 
 

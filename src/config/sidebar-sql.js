@@ -6,7 +6,6 @@ export const sqlTopics = {
 							{ label: 'Crono SQL', link: 'sql/' },
 							{ label: 'Introducción', link: 'sql/intro' },
 							{ label: 'Lenguaje Crono SQL', collapsed: true, autogenerate: { directory: 'sql/language' } },
-							{ label: 'Referencia del lenguaje', collapsed: true, autogenerate: { directory: 'sql/reference' } },
 							{
 							label: 'Funciones',
 							collapsed: true,

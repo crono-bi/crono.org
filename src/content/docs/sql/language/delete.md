@@ -1,7 +1,7 @@
 ---
-title: "Sentencia DELETE"
+title: "DELETE"
 sidebar:
-  order: 5
+  order: 35
 ---
 
 El patrón **DELETE** de **Crono SQL** elimina los registros de la tabla destino cuya clave coincida con los registros devueltos por la consulta. Se escribe el **SELECT** de los registros que se quieren borrar, y **Crono SQL** elimina exactamente esos.

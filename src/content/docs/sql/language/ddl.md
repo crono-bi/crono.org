@@ -1,7 +1,7 @@
 ---
-title: "Sentencias DDL"
+title: "DDL"
 sidebar:
-  order: 7
+  order: 70
 ---
 
 

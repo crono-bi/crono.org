@@ -1,17 +1,12 @@
 ---
-title: "Sentencia UPDATE"
+title: "UPDATE"
 sidebar:
-  order: 3
+  order: 30
 ---
 
-El patrón **UPDATE** de **Crono SQL** actualiza los registros de la tabla destino a partir del resultado de una consulta **SELECT**. En un proyecto ETL/DWH los datos que se quieren actualizar habitualmente provienen de otras tablas, lo que convierte el UPDATE estándar en una construcción verbosa y difícil de mantener. Con **Crono SQL** basta con escribir el SELECT con los datos nuevos.
+El patrón **UPDATE** de **Crono SQL** actualiza los registros de la tabla destino cuyos valores hayan cambiado respecto a los datos de origen. Es una actualización inteligente: solo modifica los registros que realmente han cambiado, lo que reduce la carga sobre la base de datos y mantiene la precisión del campo de auditoría `update_date`.
 
-
-## UPDATE
-
-**UPDATE** actualiza los registros de la tabla destino que hayan cambiado respecto a los datos de la consulta. Los registros que ya tienen los valores correctos no se tocan, lo que mejora el rendimiento y simplifica la auditoría.
-
-La clave de actualización se declara con `KEY (col1, col2)` en la cabecera. Es obligatoria.
+La clave de carga se declara con `KEY (col1, col2)` en la cabecera. Es obligatoria.
 
 ```crono-sql
 UPDATE dwh.dim_products KEY (product_id)
@@ -25,15 +20,18 @@ INNER JOIN staging.categories USING category_id
 INNER JOIN staging.suppliers USING supplier_id
 ```
 
-También se pueden actualizar registros a partir de datos de la propia tabla destino. El siguiente ejemplo recalcula `net_amount` a partir de columnas ya existentes:
+Un producto cuyo nombre o categoría haya cambiado quedará actualizado en `dwh.dim_products`. Un producto sin cambios no genera ninguna operación en la base de datos.
+
+La consulta del **UPDATE** admite toda la potencia del **SELECT** de **Crono SQL**. El siguiente ejemplo actualiza el precio de coste de los productos a partir de la última orden recibida de cada proveedor:
 
 ```crono-sql
-UPDATE dwh.fact_orders KEY (order_id)
+UPDATE dwh.dim_products KEY (product_id)
 SELECT
-  order_id,
-  total_amount - tax_amount AS net_amount
-FROM dwh.fact_orders
-WHERE year(order_date) = 2023
+  order_details.product_id,
+  max(order_details.unit_price) AS last_unit_price
+FROM staging.order_details
+INNER JOIN staging.orders USING order_id
+GROUP BY order_details.product_id
 ```
 
 
@@ -42,9 +40,9 @@ WHERE year(order_date) = 2023
 Por compatibilidad, **Crono SQL** también soporta la sintaxis estándar del UPDATE:
 
 ```crono-sql
-UPDATE dwh.fact_orders
-SET freight = freight * 1.1
-WHERE year(order_date) = 2023
+UPDATE dwh.dim_products
+SET product_name = 'Nuevo nombre'
+WHERE product_id = 1
 ```
 
-Esta forma es útil para modificaciones puntuales sobre la propia tabla, pero no permite actualizar datos desde otras tablas de forma legible.
+Esta forma ANSI no mantiene auditoría ni realiza detección de cambios.

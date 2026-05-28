@@ -1,7 +1,7 @@
 ---
-title: "Sentencia ASSERT"
+title: "ASSERT"
 sidebar:
-  order: 8
+  order: 80
 ---
 
 La sentencia **ASSERT** permite añadir validaciones de calidad del dato al proceso de carga. Si la condición no se cumple, la ejecución se detiene y se lanza el mensaje de error indicado, impidiendo que datos incorrectos lleguen a la tabla de destino.
