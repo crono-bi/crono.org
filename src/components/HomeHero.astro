@@ -1814,29 +1814,32 @@ ORDER BY TotalSales DESC`
 <!-- ═══════════════════════════════════════════════════════════════ -->
 <section id="clientes" class="not-content clientes-section">
   <div class="clientes-container">
+    <p class="clientes-eyebrow">Confían en Crono</p>
     <h2 class="clientes-title">Nuestros clientes</h2>
     
     <div class="clientes-grid">
-      <!-- Placeholder logos - reemplazar con assets reales -->
-      <div class="cliente-logo placeholder" data-cliente="semak">
-        <span class="cliente-label">Semak</span>
-      </div>
-      <div class="cliente-logo placeholder" data-cliente="arenales">
-        <span class="cliente-label">Arenales</span>
-      </div>
-      <div class="cliente-logo placeholder" data-cliente="sonnen">
-        <span class="cliente-label">Sonnen</span>
-      </div>
-      <!-- Más placeholders para futuros clientes -->
-      <div class="cliente-logo placeholder" data-cliente="cliente4">
-        <span class="cliente-label">Cliente 4</span>
-      </div>
-      <div class="cliente-logo placeholder" data-cliente="cliente5">
-        <span class="cliente-label">Cliente 5</span>
-      </div>
-      <div class="cliente-logo placeholder" data-cliente="cliente6">
-        <span class="cliente-label">Cliente 6</span>
-      </div>
+      <div class="cliente-logo"><img src="/images/clients/cliente-01.jpeg" alt="Grupo Concesur" /></div>
+      <div class="cliente-logo"><img src="/images/clients/cliente-02.jpeg" alt="Grupo GO" /></div>
+      <div class="cliente-logo"><img src="/images/clients/cliente-03.jpeg" alt="KAO" /></div>
+      <div class="cliente-logo"><img src="/images/clients/cliente-04.jpeg" alt="Intermoda" /></div>
+      <div class="cliente-logo"><img src="/images/clients/cliente-05.jpeg" alt="Bassols" /></div>
+      <div class="cliente-logo"><img src="/images/clients/cliente-06.jpeg" alt="Sant Aniol" /></div>
+      <div class="cliente-logo"><img src="/images/clients/cliente-07.jpeg" alt="Curtidos" /></div>
+      <div class="cliente-logo"><img src="/images/clients/cliente-08.jpeg" alt="Finsa" /></div>
+      <div class="cliente-logo"><img src="/images/clients/cliente-09.jpeg" alt="Poballe" /></div>
+      <div class="cliente-logo"><img src="/images/clients/cliente-10.jpeg" alt="YMAS" /></div>
+      <div class="cliente-logo"><img src="/images/clients/cliente-11.jpeg" alt="MAZ" /></div>
+      <div class="cliente-logo"><img src="/images/clients/cliente-12.jpeg" alt="Salud" /></div>
+      <div class="cliente-logo"><img src="/images/clients/cliente-13.jpeg" alt="Cobecsa" /></div>
+      <div class="cliente-logo"><img src="/images/clients/cliente-14.jpeg" alt="Pepe" /></div>
+      <div class="cliente-logo"><img src="/images/clients/cliente-15.jpeg" alt="BFA" /></div>
+      <div class="cliente-logo"><img src="/images/clients/cliente-16.jpeg" alt="Bodegas Terras Gauda" /></div>
+      <div class="cliente-logo"><img src="/images/clients/cliente-17.jpeg" alt="Fridays" /></div>
+      <div class="cliente-logo"><img src="/images/clients/cliente-18.jpeg" alt="Fundación Loyola" /></div>
+      <div class="cliente-logo"><img src="/images/clients/cliente-19.jpeg" alt="Mil Millas" /></div>
+      <div class="cliente-logo"><img src="/images/clients/cliente-20.png" alt="Sonnen" /></div>
+      <div class="cliente-logo"><img src="/images/clients/cliente-21.png" alt="Red Educativa Arenales" /></div>
+      <div class="cliente-logo"><img src="/images/clients/cliente-22.png" alt="Semak" /></div>
     </div>
   </div>
 </section>
@@ -6084,84 +6087,81 @@ ORDER BY TotalSales DESC`
      CLIENTES SECTION
      ═══════════════════════════════════════════════════════════════ */
   .clientes-section {
-    padding: 4rem 1.5rem;
-    background: var(--sl-color-bg);
+    padding: 2.5rem 1.5rem 2.5rem;
+    background: var(--sl-color-bg-sidebar);
+    border-top: 1px solid var(--sl-color-hairline-light);
+    border-bottom: 1px solid var(--sl-color-hairline-light);
   }
 
   .clientes-container {
-    max-width: 1200px;
+    max-width: 1100px;
     margin: 0 auto;
+  }
+
+  .clientes-eyebrow {
+    text-align: center;
+    font-size: 0.68rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--sl-color-gray-3);
+    margin: 0 0 0.35rem;
   }
 
   .clientes-title {
     text-align: center;
-    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-size: clamp(1.25rem, 3vw, 1.6rem);
     font-weight: 700;
     color: var(--sl-color-white);
-    margin-bottom: 2.5rem;
+    margin: 0 0 1.75rem;
   }
 
   .clientes-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     align-items: center;
-    justify-items: center;
+    gap: 1rem 1.5rem;
   }
 
   .cliente-logo {
-    width: 100%;
-    max-width: 180px;
-    height: 80px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 8px;
-    transition: all 0.3s ease;
-    filter: grayscale(100%) opacity(0.6);
-    background: var(--sl-color-bg-nav);
-    border: 1px solid var(--sl-color-hairline-light);
+    width: calc((100% - 4rem) / 3);
   }
 
-  .cliente-logo:hover {
-    filter: grayscale(0%) opacity(1);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px -8px rgba(0, 0, 0, 0.2);
+  @media (min-width: 576px) {
+    .cliente-logo { width: calc((100% - 6rem) / 4); }
+  }
+  @media (min-width: 768px) {
+    .cliente-logo { width: calc((100% - 10rem) / 6); }
+  }
+  @media (min-width: 1100px) {
+    .cliente-logo { width: calc((100% - 14rem) / 8); }
+    .clientes-grid { gap: 1.25rem 1.75rem; }
   }
 
-  .cliente-logo.placeholder {
-    /* Estilos para placeholders hasta que lleguen los assets */
+  .cliente-logo img {
+    max-width: 100%;
+    max-height: 55px;
+    height: auto;
+    object-fit: contain;
+    filter: grayscale(100%);
+    opacity: 0.55;
+    transition: filter 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
   }
 
-  .cliente-label {
-    font-size: 0.875rem;
-    font-weight: 600;
-    color: var(--sl-color-gray-3);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
+  .cliente-logo img:hover {
+    filter: grayscale(0%);
+    opacity: 1;
+    transform: scale(1.08);
   }
 
-  .cliente-logo:hover .cliente-label {
-    color: var(--sl-color-accent);
-  }
-
-  /* Cuando se agreguen imágenes reales, usar:
-     .cliente-logo img {
-       max-width: 100%;
-       max-height: 60px;
-       object-fit: contain;
-     }
-  */
-
-  @media (max-width: 640px) {
-    .clientes-grid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1rem;
-    }
-
-    .cliente-logo {
-      height: 70px;
-    }
+  @media (max-width: 480px) {
+    .clientes-section { padding: 1.5rem 0.75rem 1.5rem; }
+    .clientes-title { margin-bottom: 1.25rem; font-size: 1.25rem; }
+    .cliente-logo img { max-height: 36px; }
   }
 </style>
 
