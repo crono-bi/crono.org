@@ -2,6 +2,37 @@
 import { Code } from 'astro-expressive-code/components'
 import HomeFooter from './HomeFooter.astro'
 import { PRODUCTS } from '../config/products'
+import { ENGINES } from '../config/engines'
+import mergeCloneExample from '../playground/examples/merge-clone.sql?raw'
+
+// Generate playground URL from the example
+const playgroundUrl = `/playground/?code=${btoa(encodeURIComponent(mergeCloneExample))}`
+
+// Process mergeCloneExample dynamically: remove comment, escape HTML, add color spans
+function highlightMergeClone(code: string): string {
+  // Remove /* */ comment block
+  const withoutComment = code.replace(/\/\*[\s\S]*?\*\//, '').trim()
+  
+  // Escape HTML special chars
+  let escaped = withoutComment
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+  
+  // Apply color spans to Crono SQL keywords (sorted by length desc to avoid partial matches)
+  const keywords = [
+    'MERGE CLONE', 'INNER JOIN', 'SELECT', 'FROM', 'USING', 'KEY'
+  ]
+  
+  for (const kw of keywords) {
+    const regex = new RegExp(kw.replace(/\s+/g, '\\s+'), 'g')
+    escaped = escaped.replace(regex, `<span class="crono-keyword">${kw}</span>`)
+  }
+  
+  return escaped
+}
+
+const highlightedCode = highlightMergeClone(mergeCloneExample)
 
 const products = [
   {
@@ -108,13 +139,17 @@ ORDER BY TotalSales DESC`
         </div>
 
         <div class="hero-btn-group">
-          <a href="#manuales-crono" class="hero-btn-primary">
-            Explorar documentación
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          <a href="#manuales-crono" class="hero-btn-primary hero-btn-docs">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><path d="M12 11h6"/><path d="M12 7h4"/></svg>
+            Documentación
           </a>
           <a href="/downloads/" class="hero-btn-primary hero-btn-downloads">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
             Descargas
+          </a>
+          <a href="/precios/" class="hero-btn-primary hero-btn-pricing">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12.83 2.18 7.64 7.64A4 4 0 0 1 21 12.83v4.34A2.83 2.83 0 0 1 18.17 20H5.83A2.83 2.83 0 0 1 3 17.17V4.83A2.83 2.83 0 0 1 5.83 2h7Z"/><circle cx="10" cy="10" r="2"/></svg>
+            Precios
           </a>
         </div>
       </div>
@@ -1024,22 +1059,14 @@ ORDER BY TotalSales DESC`
       <div class="product-demo">
         <div class="code-window">
           <div class="code-header">
-            <span class="code-title">dwh.DimProducts.sql</span>
-            <a href="/playground/?code=LyogCiAgTUVSR0UgQ0xPTkUgZnVsbHkgc3luY2hyb25pemVzIHRoZSB0YXJnZXQgdGFibGUKICB3aXRoIHRoZSBTRUxFQ1QgcmVzdWx0OiBpbnNlcnRzLCB1cGRhdGVzIGFuZAogIGRlbGV0ZXMgcmVjb3JkcyBhcyBuZWVkZWQuCiovCgpNRVJHRSBDTE9ORSBkd2guRGltUHJvZHVjdHMKU0VMRUNUCiAgUHJvZHVjdElEICNQcm9kdWN0SUQsCiAgUHJvZHVjdC5OYW1lIFByb2R1Y3QsCiAgUHJvZHVjdENhdGVnb3J5Lm5hbWUgUHJvZHVjdENhdGVnb3J5LAogIFByb2R1Y3RTdWJDYXRlZ29yeS5uYW1lIFByb2R1Y3RTdWJDYXRlZ29yeQpGUk9NIHN0YWdpbmcuUHJvZHVjdApMRUZUIEpPSU4gc3RhZ2luZy5Qcm9kdWN0U3ViQ2F0ZWdvcnkgVVNJTkcgUHJvZHVjdFN1YmNhdGVnb3J5SUQKTEVGVCBKT0lOIHN0YWdpbmcuUHJvZHVjdENhdGVnb3J5IFVTSU5HIFByb2R1Y3RTdWJDYXRlZ29yeShQcm9kdWN0Q2F0ZWdvcnlJZCkK" class="code-playground-link" title="Abrir en Playground">
+            <span class="code-title">dwh.dim_products.sql</span>
+            <a href={playgroundUrl} class="code-playground-link" title="Abrir en Playground">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 17l6-6-6-6"/><path d="M12 19h8"/></svg>
               <span>Abrir en Playground</span>
             </a>
           </div>
           <div class="code-body">
-            <pre class="code-block"><code><span class="crono-keyword">MERGE CLONE</span> dwh.DimProducts
-<span class="crono-keyword">SELECT</span>
-  ProductID #ProductID,
-  Product.Name <span class="crono-keyword">Product</span>,
-  ProductCategory.name ProductCategory,
-  ProductSubCategory.name ProductSubCategory
-<span class="crono-keyword">FROM</span> staging.Product
-<span class="crono-keyword">LEFT JOIN</span> staging.ProductSubCategory <span class="crono-keyword">USING</span> ProductSubcategoryID
-<span class="crono-keyword">LEFT JOIN</span> staging.ProductCategory <span class="crono-keyword">USING</span> ProductSubCategory(ProductCategoryId)</code></pre>
+            <pre class="code-block"><code set:html={highlightedCode} /></pre>
           </div>
         </div>
         <!-- Floating badges -->
@@ -1054,6 +1081,15 @@ ORDER BY TotalSales DESC`
             <path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/>
           </svg>
           <span>Un solo lenguaje, todos los motores</span>
+        </div>
+
+        <!-- Motores compatibles - iconos con nombres -->
+        <div class="engines-row" style="margin-top: 2rem; display: flex; flex-wrap: wrap; gap: 0.5rem 1.25rem; align-items: center; justify-content: center; padding: 0 1rem;">
+          {ENGINES.map(engine => (
+            <span class="engine-item" style={`display: inline-flex; align-items: center; gap: 0.35rem; font-size: 0.75rem; font-weight: 500; color: ${engine.color};`}>
+              <img src={engine.logo} alt="" width="16" height="16"/> {engine.name}
+            </span>
+          ))}
         </div>
       </div>
       <!-- Right: Code Demo -->
@@ -1074,7 +1110,7 @@ ORDER BY TotalSales DESC`
             Explorar documentación
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
           </a>
-          <a href="playground/?code=LyogCiAgTUVSR0UgQ0xPTkUgZnVsbHkgc3luY2hyb25pemVzIHRoZSB0YXJnZXQgdGFibGUKICB3aXRoIHRoZSBTRUxFQ1QgcmVzdWx0OiBpbnNlcnRzLCB1cGRhdGVzIGFuZAogIGRlbGV0ZXMgcmVjb3JkcyBhcyBuZWVkZWQuCiovCgpNRVJHRSBDTE9ORSBkd2guRGltUHJvZHVjdHMKU0VMRUNUCiAgUHJvZHVjdElEICNQcm9kdWN0SUQsCiAgUHJvZHVjdC5OYW1lIFByb2R1Y3QsCiAgUHJvZHVjdENhdGVnb3J5Lm5hbWUgUHJvZHVjdENhdGVnb3J5LAogIFByb2R1Y3RTdWJDYXRlZ29yeS5uYW1lIFByb2R1Y3RTdWJDYXRlZ29yeQpGUk9NIHN0YWdpbmcuUHJvZHVjdApMRUZUIEpPSU4gc3RhZ2luZy5Qcm9kdWN0U3ViQ2F0ZWdvcnkgVVNJTkcgUHJvZHVjdFN1YmNhdGVnb3J5SUQKTEVGVCBKT0lOIHN0YWdpbmcuUHJvZHVjdENhdGVnb3J5IFVTSU5HIFByb2R1Y3RTdWJDYXRlZ29yeShQcm9kdWN0Q2F0ZWdvcnlJZCkK" class="btn-product" style="background: #10B981; box-shadow: 0 4px 20px -4px #10B981;">
+          <a href={playgroundUrl} class="btn-product" style="background: #10B981; box-shadow: 0 4px 20px -4px #10B981;">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
             Playground
           </a>
@@ -1774,172 +1810,36 @@ ORDER BY TotalSales DESC`
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════════ -->
-<!-- PRODUCT SECTIONS -->
+<!-- CLIENTES SECTION -->
 <!-- ═══════════════════════════════════════════════════════════════ -->
-<section id="playground" class="not-content playground-section">
-  <div class="playground-bg"></div>
-
-  <div class="mx-auto max-w-6xl px-6 py-16 lg:py-20">
-    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-      <!-- Left: Content -->
-      <div class="playground-content">
-        <div class="playground-label">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="m6 9 6 6 6-6"/>
-            <path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-2.5a2 2 0 0 1-1.6-.8l-1-1.33A2 2 0 0 0 12.3 4h-.6a2 2 0 0 0-1.6.8l-1 1.33a2 2 0 0 1-1.6.8H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2Z"/>
-          </svg>
-          <span>Prueba Crono SQL en vivo</span>
-        </div>
-        <h2 class="playground-title">
-          Crono <span class="playground-title-accent">Playground</span>
-        </h2>
-        <p class="playground-desc">
-          Escribe código Crono SQL y compílalo en tiempo real. Compara la salida 
-          en diferentes dialectos: Snowflake, PostgreSQL, SQL Server, BigQuery y más.
-        </p>
-
-        <!-- Inline stats -->
-        <div class="playground-stats">
-          <div class="playground-stat">
-            <span class="playground-stat-number">5</span>
-            <span class="playground-stat-label">dialectos SQL</span>
-          </div>
-          <div class="playground-stat-sep"></div>
-          <div class="playground-stat">
-            <span class="playground-stat-number">100+</span>
-            <span class="playground-stat-label">funciones</span>
-          </div>
-          <div class="playground-stat-sep"></div>
-          <div class="playground-stat">
-            <span class="playground-stat-number">0</span>
-            <span class="playground-stat-label">instalación</span>
-          </div>
-        </div>
-
-        <ul class="playground-features">
-          <li>
-            <span class="playground-check">✓</span>
-            Editor con autocompletado inteligente
-          </li>
-          <li>
-            <span class="playground-check">✓</span>
-            Visualización side-by-side del SQL generado
-          </li>
-          <li>
-            <span class="playground-check">✓</span>
-            Ejemplos interactivos pre-cargados
-          </li>
-          <li>
-            <span class="playground-check">✓</span>
-            Sin instalación, funciona en tu navegador
-          </li>
-        </ul>
-        <a href="/playground/?code=LyogCiAgTUVSR0UgQ0xPTkUgZnVsbHkgc3luY2hyb25pemVzIHRoZSB0YXJnZXQgdGFibGUKICB3aXRoIHRoZSBTRUxFQ1QgcmVzdWx0OiBpbnNlcnRzLCB1cGRhdGVzIGFuZAogIGRlbGV0ZXMgcmVjb3JkcyBhcyBuZWVkZWQuCiovCgpNRVJHRSBDTE9ORSBkd2guRGltUHJvZHVjdHMKU0VMRUNUCiAgUHJvZHVjdElEICNQcm9kdWN0SUQsCiAgUHJvZHVjdC5OYW1lIFByb2R1Y3QsCiAgUHJvZHVjdENhdGVnb3J5Lm5hbWUgUHJvZHVjdENhdGVnb3J5LAogIFByb2R1Y3RTdWJDYXRlZ29yeS5uYW1lIFByb2R1Y3RTdWJDYXRlZ29yeQpGUk9NIHN0YWdpbmcuUHJvZHVjdApMRUZUIEpPSU4gc3RhZ2luZy5Qcm9kdWN0U3ViQ2F0ZWdvcnkgVVNJTkcgUHJvZHVjdFN1YmNhdGVnb3J5SUQKTEVGVCBKT0lOIHN0YWdpbmcuUHJvZHVjdENhdGVnb3J5IFVTSU5HIFByb2R1Y3RTdWJDYXRlZ29yeShQcm9kdWN0Q2F0ZWdvcnlJZCkK" class="playground-btn">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <polygon points="5 3 19 12 5 21 5 3"/>
-          </svg>
-          Probar ahora
-        </a>
-      </div>
-
-      <!-- Right: Mockup Window -->
-      <div class="playground-demo">
-        <div class="playground-window">
-          <div class="playground-window-header">
-            <div class="playground-window-tabs">
-              <span class="tab active">editor.cronosql</span>
-              <span class="tab">output.sql</span>
-            </div>
-            <span class="playground-window-btns">— □ ×</span>
-          </div>
-          <div class="playground-window-body">
-            <div class="playground-editor-pane">
-              <div class="playground-code-line">
-                <span class="line-num">1</span>
-                <span><span class="kw">MERGE</span> <span class="cr">CLONE</span> <span class="id">dwh.DimProduct</span></span>
-              </div>
-              <div class="playground-code-line">
-                <span class="line-num">2</span>
-                <span><span class="kw">SELECT</span></span>
-              </div>
-              <div class="playground-code-line">
-                <span class="line-num">3</span>
-                <span>  <span class="cs">#ProductID</span>,</span>
-              </div>
-              <div class="playground-code-line">
-                <span class="line-num">4</span>
-                <span>  <span class="id">Product.Name</span>,</span>
-              </div>
-              <div class="playground-code-line">
-                <span class="line-num">5</span>
-                <span>  <span class="id">Product.Category</span></span>
-              </div>
-              <div class="playground-code-line">
-                <span class="line-num">6</span>
-                <span><span class="kw">FROM</span> <span class="id">staging.Product</span></span>
-              </div>
-              <div class="playground-code-line">
-                <span class="line-num">7</span>
-                <span><span class="kw">CHECK</span> <span class="cr">SNOWFLAKE</span></span>
-              </div>
-            </div>
-            <div class="playground-gutter"></div>
-            <div class="playground-output-pane">
-              <div class="playground-code-line dim">
-                <span class="line-num">1</span>
-                <span><span class="kw">MERGE INTO</span> <span class="id">dwh.DimProduct</span> <span class="kw">AS T</span></span>
-              </div>
-              <div class="playground-code-line dim">
-                <span class="line-num">2</span>
-                <span><span class="kw">USING</span> (<span class="kw">SELECT</span> <span class="id">ProductID</span>...</span>
-              </div>
-              <div class="playground-code-line dim">
-                <span class="line-num">3</span>
-                <span>  <span class="kw">FROM</span> <span class="id">staging.Product</span>) <span class="kw">AS S</span></span>
-              </div>
-              <div class="playground-code-line dim">
-                <span class="line-num">4</span>
-                <span><span class="kw">ON</span> <span class="id">T.ProductSid</span> = <span class="id">S.ProductID</span></span>
-              </div>
-            </div>
-          </div>
-          <div class="playground-window-footer">
-            <div class="playground-dialect-selector">
-              <span class="dialect active">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M12 3v18"/>
-                  <path d="M3 12h18"/>
-                </svg>
-                Snowflake
-              </span>
-              <span class="dialect">PostgreSQL</span>
-              <span class="dialect">BigQuery</span>
-              <span class="dialect">T-SQL</span>
-            </div>
-            <div class="playground-status">
-              <span class="status-dot success"></span>
-              <span>Compilado</span>
-            </div>
-          </div>
-        </div>
-        <!-- Floating badges -->
-        <div class="demo-badge" style="left: -20px; top: 20%;">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2">
-            <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/>
-            <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/>
-            <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/>
-            <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/>
-          </svg>
-          <span>100% online</span>
-        </div>
-        <div class="demo-badge" style="right: -15px; bottom: 25%;">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="2">
-            <circle cx="12" cy="12" r="10"/>
-            <path d="m9 12 2 2 4-4"/>
-          </svg>
-          <span>Sin registro</span>
-        </div>
-      </div>
+<section id="clientes" class="not-content clientes-section">
+  <div class="clientes-container">
+    <p class="clientes-eyebrow">Confían en Crono</p>
+    <h2 class="clientes-title">Nuestros clientes</h2>
+    
+    <div class="clientes-grid">
+      <div class="cliente-logo"><img src="/images/clients/cliente-01.jpeg" alt="Grupo Concesur" /></div>
+      <div class="cliente-logo"><img src="/images/clients/cliente-02.jpeg" alt="Grupo GO" /></div>
+      <div class="cliente-logo"><img src="/images/clients/cliente-03.jpeg" alt="KAO" /></div>
+      <div class="cliente-logo"><img src="/images/clients/cliente-04.jpeg" alt="Intermoda" /></div>
+      <div class="cliente-logo"><img src="/images/clients/cliente-05.jpeg" alt="Bassols" /></div>
+      <div class="cliente-logo"><img src="/images/clients/cliente-06.jpeg" alt="Sant Aniol" /></div>
+      <div class="cliente-logo"><img src="/images/clients/cliente-07.jpeg" alt="Curtidos" /></div>
+      <div class="cliente-logo"><img src="/images/clients/cliente-08.jpeg" alt="Finsa" /></div>
+      <div class="cliente-logo"><img src="/images/clients/cliente-09.jpeg" alt="Poballe" /></div>
+      <div class="cliente-logo"><img src="/images/clients/cliente-10.jpeg" alt="YMAS" /></div>
+      <div class="cliente-logo"><img src="/images/clients/cliente-11.jpeg" alt="MAZ" /></div>
+      <div class="cliente-logo"><img src="/images/clients/cliente-12.jpeg" alt="Salud" /></div>
+      <div class="cliente-logo"><img src="/images/clients/cliente-13.jpeg" alt="Cobecsa" /></div>
+      <div class="cliente-logo"><img src="/images/clients/cliente-14.jpeg" alt="Pepe" /></div>
+      <div class="cliente-logo"><img src="/images/clients/cliente-15.jpeg" alt="BFA" /></div>
+      <div class="cliente-logo"><img src="/images/clients/cliente-16.jpeg" alt="Bodegas Terras Gauda" /></div>
+      <div class="cliente-logo"><img src="/images/clients/cliente-17.jpeg" alt="Fridays" /></div>
+      <div class="cliente-logo"><img src="/images/clients/cliente-18.jpeg" alt="Fundación Loyola" /></div>
+      <div class="cliente-logo"><img src="/images/clients/cliente-19.jpeg" alt="Mil Millas" /></div>
+      <div class="cliente-logo"><img src="/images/clients/cliente-20.png" alt="Sonnen" /></div>
+      <div class="cliente-logo"><img src="/images/clients/cliente-21.png" alt="Red Educativa Arenales" /></div>
+      <div class="cliente-logo"><img src="/images/clients/cliente-22.png" alt="Semak" /></div>
     </div>
   </div>
 </section>
@@ -2143,9 +2043,12 @@ ORDER BY TotalSales DESC`
     }
   }
 
-  .hero-btn-group { display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; }
+  .hero-btn-group { display: flex; align-items: center; gap: 0.75rem; flex-wrap: nowrap; }
+  @media (max-width: 640px) {
+    .hero-btn-group { flex-wrap: wrap; }
+  }
 
-  .hero-btn-primary { position: relative; display: inline-flex; align-items: center; gap: 0.625rem; padding: 0.875rem 1.75rem; background: linear-gradient(135deg, #9ca3af 0%, #6b7280 100%); color: white; border: 1px solid rgba(255,255,255,0.15); border-radius: 0.75rem; font-size: 0.9375rem; font-weight: 600; text-decoration: none; transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: none; overflow: hidden; }
+  .hero-btn-primary { position: relative; display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.25rem; background: linear-gradient(135deg, #9ca3af 0%, #6b7280 100%); color: white; border: 1px solid rgba(255,255,255,0.15); border-radius: 0.625rem; font-size: 0.875rem; font-weight: 600; text-decoration: none; transition: all 0.2s ease; box-shadow: 0 2px 8px -2px rgba(0,0,0,0.15); overflow: hidden; white-space: nowrap; }
   .hero-btn-primary::before { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent); transform: translateX(-100%); transition: transform 0.6s ease; }
   .hero-btn-primary::after { content: ''; position: absolute; inset: -1px; border-radius: 0.75rem; padding: 1px; background: linear-gradient(135deg, rgba(255,255,255,0.3), transparent 50%); -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask-composite: exclude; opacity: 0.6; }
   .hero-btn-primary:hover { transform: translateY(-2px) scale(1.02); box-shadow: none; }
@@ -2155,7 +2058,9 @@ ORDER BY TotalSales DESC`
   .hero-btn-secondary { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.5rem; background: transparent; color: var(--sl-color-gray-2); border: 1px solid var(--sl-color-hairline-light); border-radius: 0.5rem; font-size: 0.9375rem; font-weight: 500; text-decoration: none; transition: all 0.2s ease; }
   .hero-btn-secondary:hover { background: var(--sl-color-bg-nav); border-color: var(--sl-color-accent); color: var(--sl-color-white); }
 
+  .hero-btn-docs { background: linear-gradient(135deg, #6B7280 0%, #4B5563 100%) !important; }
   .hero-btn-downloads { background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%) !important; }
+  .hero-btn-pricing { background: linear-gradient(135deg, #10B981 0%, #059669 100%) !important; }
 
   /* ===== DOWNLOADS SECTION ===== */
   .downloads-label {
@@ -2992,6 +2897,7 @@ ORDER BY TotalSales DESC`
     margin: 0 !important;
     background: transparent !important;
     border: none !important;
+    color: #e6edf3 !important;
   }
   
   /* Floating badges */
@@ -5046,12 +4952,12 @@ ORDER BY TotalSales DESC`
      SYNTAX HIGHLIGHTING - Single color for all reserved words
      ═══════════════════════════════════════════════════════════════ */
 
-  .crono-keyword {
+  :global(.crono-keyword) {
     color: #79c0ff;
     font-weight: 600;
   }
 
-  .code-comment {
+  :global(.code-comment) {
     color: #3fb950;
     font-style: italic;
   }
@@ -6175,6 +6081,87 @@ ORDER BY TotalSales DESC`
       bottom: 12px !important;
       left: 12px !important;
     }
+  }
+
+  /* ═══════════════════════════════════════════════════════════════
+     CLIENTES SECTION
+     ═══════════════════════════════════════════════════════════════ */
+  .clientes-section {
+    padding: 2.5rem 1.5rem 2.5rem;
+    background: var(--sl-color-bg-sidebar);
+    border-top: 1px solid var(--sl-color-hairline-light);
+    border-bottom: 1px solid var(--sl-color-hairline-light);
+  }
+
+  .clientes-container {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .clientes-eyebrow {
+    text-align: center;
+    font-size: 0.68rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--sl-color-gray-3);
+    margin: 0 0 0.35rem;
+  }
+
+  .clientes-title {
+    text-align: center;
+    font-size: clamp(1.25rem, 3vw, 1.6rem);
+    font-weight: 700;
+    color: var(--sl-color-white);
+    margin: 0 0 1.75rem;
+  }
+
+  .clientes-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem 1.5rem;
+  }
+
+  .cliente-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: calc((100% - 4rem) / 3);
+  }
+
+  @media (min-width: 576px) {
+    .cliente-logo { width: calc((100% - 6rem) / 4); }
+  }
+  @media (min-width: 768px) {
+    .cliente-logo { width: calc((100% - 10rem) / 6); }
+  }
+  @media (min-width: 1100px) {
+    .cliente-logo { width: calc((100% - 14rem) / 8); }
+    .clientes-grid { gap: 1.25rem 1.75rem; }
+  }
+
+  .cliente-logo img {
+    max-width: 100%;
+    max-height: 55px;
+    height: auto;
+    object-fit: contain;
+    filter: grayscale(100%);
+    opacity: 0.55;
+    transition: filter 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  .cliente-logo img:hover {
+    filter: grayscale(0%);
+    opacity: 1;
+    transform: scale(1.08);
+  }
+
+  @media (max-width: 480px) {
+    .clientes-section { padding: 1.5rem 0.75rem 1.5rem; }
+    .clientes-title { margin-bottom: 1.25rem; font-size: 1.25rem; }
+    .cliente-logo img { max-height: 36px; }
   }
 </style>
 

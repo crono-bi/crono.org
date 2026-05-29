@@ -1,0 +1,21 @@
+---
+// Layout sin sidebar para páginas como Precios
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro'
+
+interface Props {
+  title: string
+}
+
+const { title } = Astro.props.frontmatter || Astro.props
+---
+
+<StarlightPage 
+  frontmatter={{ 
+    title,
+    template: 'splash',
+    pagefind: false
+  }}
+  hasSidebar={false}
+>
+  <slot />
+</StarlightPage>

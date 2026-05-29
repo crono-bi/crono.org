@@ -29,9 +29,20 @@ const productDefs = [
   }
 ]
 
-// Fetch latest SetupUri for each product
+// Fetch latest version info for each product
 const mainProducts = await Promise.all(productDefs.map(async (p) => {
   let downloadUrl: string | null = null;
+  let version: string | null = null;
+  let date: string | null = null;
+  
+  const formatDate = (dateStr: string): string => {
+    if (!dateStr) return '';
+    const d = new Date(dateStr);
+    if (d.getFullYear() === 1) return '';
+    const months = ['ene.', 'feb.', 'mar.', 'abr.', 'may.', 'jun.', 'jul.', 'ago.', 'sep.', 'oct.', 'nov.', 'dic.'];
+    return `${d.getDate()} ${months[d.getMonth()]} ${d.getFullYear()}`;
+  };
+  
   try {
     const res = await fetch(`https://updates.crono.net/${p.apiKey}/history.json`);
     if (res.ok) {
@@ -39,9 +50,11 @@ const mainProducts = await Promise.all(productDefs.map(async (p) => {
       items.sort((a, b) => new Date(b.Date).getTime() - new Date(a.Date).getTime());
       const latest = items.find(i => i.SetupUri);
       downloadUrl = latest?.SetupUri ?? null;
+      version = latest?.Version ?? null;
+      date = latest?.Date ? formatDate(latest.Date) : null;
     }
   } catch {}
-  return { ...p, downloadUrl };
+  return { ...p, downloadUrl, version, date };
 }));
 ---
 
@@ -60,6 +73,12 @@ const mainProducts = await Promise.all(productDefs.map(async (p) => {
             <a href={product.path} class="dl-card-name-link">{product.name}</a>
           </h2>
           <p class="dl-card-desc">{product.description}</p>
+          {(product.version || product.date) && (
+            <div class="dl-card-meta">
+              {product.version && <span class="dl-card-version">v{product.version}</span>}
+              {product.date && <span class="dl-card-date">{product.date}</span>}
+            </div>
+          )}
         </div>
         <div class="dl-card-foot">
           {product.downloadUrl ? (
@@ -206,8 +225,8 @@ const mainProducts = await Promise.all(productDefs.map(async (p) => {
   }
   .dl-card:hover {
     border-color: var(--c);
-    transform: translateY(-3px);
-    box-shadow: 0 16px 40px -12px rgba(var(--rgb), 0.25);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px -6px rgba(var(--rgb), 0.25);
   }
   .dl-card:hover::before { opacity: 1; }
 
@@ -253,8 +272,28 @@ const mainProducts = await Promise.all(productDefs.map(async (p) => {
   .dl-card-desc {
     font-size: 0.875rem;
     color: var(--sl-color-gray-3);
-    margin: 0 0 1rem;
+    margin: 0 0 0.75rem;
     line-height: 1.5;
+  }
+  .dl-card-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.75rem;
+    color: var(--sl-color-gray-3);
+    margin-bottom: 0.5rem;
+  }
+  .dl-card-version {
+    font-family: ui-monospace, monospace;
+    font-weight: 600;
+    color: var(--c);
+    padding: 0.15rem 0.4rem;
+    border-radius: 4px;
+    background: rgba(var(--rgb), 0.1);
+  }
+  .dl-card-date {
+    color: var(--sl-color-gray-3);
+    opacity: 0.8;
   }
   .dl-card-features {
     display: flex;

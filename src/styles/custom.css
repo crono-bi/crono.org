@@ -463,3 +463,9 @@ button[data-open-modal] svg {
   width: 1.125rem;
   height: 1.125rem;
 }
+
+/* Ocultar el content-panel vacio (header sin titulo) en landings de productos.
+   Se detecta por la presencia de .manual-landing en el main. */
+main:has(.manual-landing) > .content-panel:first-child {
+  display: none !important;
+}

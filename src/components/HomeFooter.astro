@@ -1,5 +1,6 @@
 ---
 import { PRODUCTS } from '../config/products'
+import { ENGINES } from '../config/engines'
 
 const products = [
   { ...PRODUCTS.sql, href: '/sql/', tags: ['SQL', 'Multimotor', 'DWH'] },
@@ -53,7 +54,17 @@ const socials = [
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
           Descargar gratis
         </a>
-        <a href="https://businessintelligence.es/demo" target="_blank" rel="noopener" class="hf-btn-ghost">Ver demo →</a>
+        <a href="https://www.youtube.com/watch?v=F6fTBQUyIh8" target="_blank" rel="noopener" class="hf-btn-ghost">Ver demo →</a>
+      </div>
+
+      <!-- Motores compatibles -->
+      <div class="hf-band-engines">
+        {ENGINES.map(engine => (
+          <div class="hf-band-engine">
+            <img src={engine.logo} alt={engine.name}/>
+            <span style={`color: ${engine.color};`}>{engine.name}</span>
+          </div>
+        ))}
       </div>
     </div>
   </div>
@@ -75,16 +86,20 @@ const socials = [
             </a>
           ))}
         </div>
-        <div class="hf-ext-links">
-          <a href="https://businessintelligence.es/" target="_blank" rel="noopener" class="hf-ext">
-            businessintelligence.es
-            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M17 7H7M17 7v10"/></svg>
-          </a>
-          <a href="https://www.businessintelligence.info/" target="_blank" rel="noopener" class="hf-ext">
-            Blog Business Intelligence
-            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M17 7H7M17 7v10"/></svg>
-          </a>
-        </div>
+        <a href="https://www.businessintelligence.info/" target="_blank" rel="noopener" class="hf-blog-btn">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+            <path d="M8 7h8"/><path d="M8 11h8"/><path d="M8 15h5"/>
+          </svg>
+          Blog Business Intelligence
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M17 7H7M17 7v10"/></svg>
+        </a>
+        <a href="https://www.businessintelligence.info/subscribe.html" target="_blank" rel="noopener" class="hf-newsletter-btn">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+          </svg>
+          Newsletter Business Intelligence fácil
+        </a>
       </div>
 
       <!-- Productos -->
@@ -132,7 +147,7 @@ const socials = [
 
     <!-- Bottom bar -->
     <div class="hf-bar">
-      <span class="hf-copy">© {new Date().getFullYear()} Crono Business Intelligence</span>
+      <span class="hf-copy">Made by Crono with ❤️</span>
     </div>
   </div>
 
@@ -402,15 +417,57 @@ const socials = [
   .hf-nav-link:hover { color: var(--sl-color-white); }
   .hf-nav-link:hover svg { opacity: 1; }
 
+  /* ═══ BLOG BTN (first column) ═══ */
+  .hf-blog-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    margin-top: 0.875rem;
+    padding: 0.55rem 1rem;
+    border-radius: 9px;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    text-decoration: none;
+    background: linear-gradient(135deg, #8B5CF6, #6D28D9);
+    color: white;
+    box-shadow: 0 3px 12px -3px rgba(139, 92, 246, 0.5);
+    transition: all 0.2s;
+  }
+  .hf-blog-btn:hover {
+    filter: brightness(1.12);
+    transform: translateY(-1px);
+    box-shadow: 0 5px 18px -3px rgba(139, 92, 246, 0.65);
+  }
+  .hf-newsletter-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    margin-top: 0.5rem;
+    padding: 0.55rem 1rem;
+    border-radius: 9px;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    text-decoration: none;
+    background: linear-gradient(135deg, #3B82F6, #1D4ED8);
+    color: white;
+    box-shadow: 0 3px 12px -3px rgba(59, 130, 246, 0.5);
+    transition: all 0.2s;
+  }
+  .hf-newsletter-btn:hover {
+    filter: brightness(1.12);
+    transform: translateY(-1px);
+    box-shadow: 0 5px 18px -3px rgba(59, 130, 246, 0.65);
+  }
+
   /* Bottom bar */
   .hf-bar {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     gap: 1rem;
     padding: 1rem 0 1.25rem;
   }
-  .hf-copy { font-size: 0.75rem; color: var(--sl-color-gray-3); }
+  .hf-copy { font-size: 0.75rem; color: var(--sl-color-gray-3); text-align: center; }
   .hf-stack { display: flex; align-items: center; gap: 0.4rem; font-size: 0.75rem; color: var(--sl-color-gray-3); }
   .hf-sep { color: var(--sl-color-hairline); }
 
@@ -425,6 +482,57 @@ const socials = [
   @media (max-width: 520px) {
     .hf-band, .hf-main { padding-left: 1.25rem; padding-right: 1.25rem; }
     .hf-grid { grid-template-columns: 1fr; }
-    .hf-bar { flex-direction: column; align-items: flex-start; }
+    .hf-bar { flex-direction: column; align-items: center; }
+  }
+
+  /* ═══ MOTORES EN BAND ═══ */
+  .hf-band-engines {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+    margin-top: auto;
+    padding-top: 3rem;
+    width: 100%;
+  }
+
+  .hf-band-engine {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+  }
+
+  .hf-band-engine img {
+    width: 36px;
+    height: 36px;
+    filter: grayscale(100%) brightness(0.8);
+    opacity: 0.5;
+    transition: all 0.3s ease;
+  }
+
+  .hf-band-engine span {
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.4);
+    text-align: center;
+    letter-spacing: 0.02em;
+    transition: all 0.3s ease;
+  }
+
+  .hf-band-engine:hover {
+    transform: translateY(-6px);
+  }
+
+  .hf-band-engine:hover img {
+    filter: grayscale(0%) brightness(1);
+    opacity: 1;
+    transform: scale(1.2);
+  }
+
+  .hf-band-engine:hover span {
+    color: rgba(255, 255, 255, 0.9);
   }
 </style>

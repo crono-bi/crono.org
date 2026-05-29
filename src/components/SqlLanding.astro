@@ -2,6 +2,7 @@
 // SQL Landing Page - Using the generic ManualLanding component
 import ManualLanding from './ManualLanding.astro'
 import type { Feature, Category, Statement, FuncExample } from './ManualLanding.astro'
+import mergeCloneExample from '../playground/examples/merge-clone.sql?raw'
 
 const features: Feature[] = [
   {
@@ -77,17 +78,34 @@ const functions: FuncExample[] = [
   { code: 'substraction(a, b)', description: 'Resta segura' }
 ]
 
-const codeExample = `MERGE CLONE dwh.dim_products KEY (product_id)
-SELECT
-  products.product_id,
-  products.product_name,
-  categories.category_name,
-  suppliers.company_name supplier
-FROM staging.products
-INNER JOIN staging.categories USING category_id
-INNER JOIN staging.suppliers USING supplier_id`
+// Use the example from playground (single source of truth)
+const codeExample = mergeCloneExample
 
-const codeExampleDisplay = `<span class="ck">MERGE CLONE</span> dwh.dim_products <span class="ck">KEY</span> (product_id)\n<span class="ck">SELECT</span>\n  products.product_id,\n  products.product_name,\n  categories.category_name,\n  suppliers.company_name supplier\n<span class="ck">FROM</span> staging.products\n<span class="ck">INNER JOIN</span> staging.categories <span class="ck">USING</span> category_id\n<span class="ck">INNER JOIN</span> staging.suppliers <span class="ck">USING</span> supplier_id`
+// Process dynamically: remove comment, escape HTML, add color spans
+function highlightForLanding(code: string): string {
+  // Remove /* */ comment block
+  const withoutComment = code.replace(/\/\*[\s\S]*?\*\//, '').trim()
+  
+  // Escape HTML special chars
+  let escaped = withoutComment
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+  
+  // Apply color spans to Crono SQL keywords
+  const keywords = [
+    'MERGE CLONE', 'INNER JOIN', 'SELECT', 'FROM', 'USING', 'KEY'
+  ]
+  
+  for (const kw of keywords) {
+    const regex = new RegExp(kw.replace(/\s+/g, '\\s+'), 'g')
+    escaped = escaped.replace(regex, `<span class="ck">${kw}</span>`)
+  }
+  
+  return escaped
+}
+
+const codeExampleDisplay = highlightForLanding(mergeCloneExample)
 
 // Encode example code for playground URL
 const playgroundUrl = `/playground/?code=${btoa(encodeURIComponent(codeExample))}`
@@ -122,5 +140,6 @@ const playgroundUrl = `/playground/?code=${btoa(encodeURIComponent(codeExample))
   }}
   footerTitle="¿Listo para probar Crono SQL?"
   footerDesc="Explora la documentación completa y empieza a construir tu Data Warehouse."
-  footerCta="Empezar ahora"
+  footerCta="Acceder al manual"
+  footerSecondaryCta={{ text: 'Playground', href: playgroundUrl }}
 />

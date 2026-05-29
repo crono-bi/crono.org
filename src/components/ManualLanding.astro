@@ -94,6 +94,10 @@ interface Props {
   footerTitle?: string
   footerDesc?: string
   footerCta?: string
+  footerSecondaryCta?: {
+    text: string
+    href: string
+  }
 }
 
 const {
@@ -121,7 +125,8 @@ const {
   playgroundCta,
   footerTitle = '¿Listo para empezar?',
   footerDesc = 'Explora la documentación completa.',
-  footerCta = 'Empezar ahora'
+  footerCta = 'Empezar ahora',
+  footerSecondaryCta
 } = Astro.props
 
 // Generate unique ID for this instance
@@ -259,6 +264,7 @@ const brandRgb = brandColor.startsWith('#') ? hexToRgb(brandColor) : '27, 95, 14
     description={footerDesc}
     ctaText={footerCta}
     ctaHref={ctaHref}
+    secondaryCta={footerSecondaryCta}
   />
 </div>
 

@@ -1,0 +1,15 @@
+---
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro'
+import PricingLanding from '../components/PricingLanding.astro'
+---
+
+<StarlightPage
+  frontmatter={{
+    title: 'Precios',
+    template: 'splash',
+    pagefind: false
+  }}
+  hasSidebar={false}
+>
+  <PricingLanding />
+</StarlightPage>
