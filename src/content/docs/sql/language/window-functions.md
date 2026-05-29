@@ -71,17 +71,17 @@ Además de las funciones de agregación estándar (`sum`, `avg`, `min`, `max`, `
 
 **`pct(expr)`** — porcentaje de cada fila sobre el total general (o sobre la partición si se especifica).
 
-**`runningsum(expr ORDER BY ...)`** — suma acumulada ordenada.
+**`running_sum(expr ORDER BY ...)`** — suma acumulada ordenada.
 
-**`runningpct(expr ORDER BY ...)`** — porcentaje acumulado ordenado. Muy útil para análisis de Pareto.
+**`running_pct(expr ORDER BY ...)`** — porcentaje acumulado ordenado. Muy útil para análisis de Pareto.
 
 **`percentile(ORDER BY ...)`** — percentil de cada fila dentro de su partición.
 
 **`rank(ORDER BY ...)`** — posición ordinal de cada fila dentro de su partición.
 
-**`isFirst`** / **`isLast`** — indica si la fila es la primera o la última dentro de su partición.
+**`is_first`** / **`is_last`** — indica si la fila es la primera o la última dentro de su partición.
 
-**`nextValue(expr)`** / **`previousValue(expr)`** — valor de la expresión en la fila siguiente o anterior (equivalente a `LEAD`/`LAG`).
+**`next_value(expr)`** / **`previous_value(expr)`** — valor de la expresión en la fila siguiente o anterior (equivalente a `LEAD`/`LAG`).
 
 El siguiente ejemplo muestra el desglose de ventas por producto con su porcentaje sobre el total, suma acumulada y porcentaje acumulado:
 
@@ -90,14 +90,14 @@ SELECT
   products.product_name,
   sum(od.quantity * od.unit_price)              amount,
   pct(amount)                                   percentage,
-  runningsum(amount ORDER BY amount DESC)        running_amount,
-  runningpct(amount ORDER BY amount DESC)        running_pct
+  running_sum(amount ORDER BY amount DESC)       running_amount,
+  running_pct(amount ORDER BY amount DESC)       running_pct
 FROM staging.order_details od
 INNER JOIN staging.orders USING order_id
 INNER JOIN staging.products USING product_id
 ```
 
-Combinado con SELECTs apilados, `runningpct` permite hacer análisis de Pareto de forma muy directa. Este ejemplo devuelve los productos que representan el primer 20% de la venta total:
+Combinado con SELECTs apilados, `running_pct` permite hacer análisis de Pareto de forma muy directa. Este ejemplo devuelve los productos que representan el primer 20% de la venta total:
 
 ```crono-sql
 SELECT WHERE running_pct < 0.20
@@ -105,7 +105,7 @@ SELECT
   products.product_name,
   sum(od.quantity * od.unit_price)              amount,
   pct(amount)                                   percentage,
-  runningpct(amount ORDER BY amount DESC)        running_pct
+  running_pct(amount ORDER BY amount DESC)       running_pct
 FROM staging.order_details od
 INNER JOIN staging.orders USING order_id
 INNER JOIN staging.products USING product_id
@@ -119,13 +119,13 @@ SELECT
   products.product_name,
   sum(od.quantity * od.unit_price)              amount,
   pct(amount)                                   percentage,
-  runningpct(amount ORDER BY amount ASC)         running_pct
+  running_pct(amount ORDER BY amount ASC)        running_pct
 FROM staging.order_details od
 INNER JOIN staging.orders USING order_id
 INNER JOIN staging.products USING product_id
 ```
 
-El filtro `running_pct < 0.20` excluye el producto que cruza el umbral — es decir, el primero cuyo acumulado supera el 20%. Para incluirlo, se puede filtrar sobre el valor anterior del acumulado usando `previousValue`. Si el acumulado anterior era inferior al 20%, el registro se incluye aunque el acumulado actual ya lo supere:
+El filtro `running_pct < 0.20` excluye el producto que cruza el umbral — es decir, el primero cuyo acumulado supera el 20%. Para incluirlo, se puede filtrar sobre el valor anterior del acumulado usando `previous_value`. Si el acumulado anterior era inferior al 20%, el registro se incluye aunque el acumulado actual ya lo supere:
 
 ```crono-sql
 SELECT WHERE prev_running_pct < 0.20
@@ -133,11 +133,11 @@ SELECT
   product_name,
   amount,
   running_pct,
-  previousValue(running_pct ORDER BY amount DESC)   prev_running_pct
+  previous_value(running_pct ORDER BY amount DESC)   prev_running_pct
 SELECT
   products.product_name,
   sum(od.quantity * od.unit_price)              amount,
-  runningpct(amount ORDER BY amount DESC)        running_pct
+  running_pct(amount ORDER BY amount DESC)       running_pct
 FROM staging.order_details od
 INNER JOIN staging.orders USING order_id
 INNER JOIN staging.products USING product_id
