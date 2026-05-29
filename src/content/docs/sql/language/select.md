@@ -134,7 +134,9 @@ WHERE year(orders.order_date) = 2023
 
 ## USING
 
-La cláusula **USING** simplifica la sintaxis de los JOINs. En lugar de escribir la condición completa `ON (tabla_a.campo = tabla_b.campo)`, basta con indicar el nombre del campo o la tabla de la que proviene la clave. El resultado es más conciso y más fácil de leer.
+**Crono SQL** soporta todos los operadores JOIN estándar —**INNER JOIN**, **LEFT JOIN**, **RIGHT JOIN**, **FULL JOIN**, **CROSS JOIN**— y añade operadores propios como **ANTI JOIN** y **SEMI JOIN**. Puedes consultar todos ellos con ejemplos en la página [Operador JOIN](/sql/language/join/).
+
+La cláusula **USING** simplifica la sintaxis de cualquiera de esos JOINs. En lugar de escribir la condición completa `ON (tabla_a.campo = tabla_b.campo)`, basta con indicar el nombre del campo o la tabla de la que proviene la clave. El resultado es más conciso y más fácil de leer.
 
 ```crono-sql
 SELECT
@@ -396,93 +398,6 @@ INNER JOIN staging.customers USING orders(customer_id)
 ```
 
 
-## CROSS APPLY ROW
-
-**ADD COLUMNS** añade columnas calculadas sobre una sola tabla, antes de los JOINs. Cuando el cálculo necesita combinar columnas de varias tablas —por ejemplo, cruzar un valor del cliente con uno del empleado—, **ADD COLUMNS** ya no es suficiente porque sus expresiones se evalúan antes de que los JOINs se hayan resuelto.
-
-**CROSS APPLY ROW** resuelve ese caso: define un conjunto de columnas calculadas que se evalúan después de todos los JOINs, con acceso a cualquier columna de cualquier tabla participante. Se comporta como un JOIN con una tabla de una única fila de columnas calculadas, de ahí su nombre. Las expresiones dentro de **ROW** pueden referenciarse entre sí, igual que las columnas inteligentes del SELECT.
-
-El siguiente ejemplo combina ambos modificadores. Primero, **ADD COLUMNS** sobre `orders` define `days_to_ship` e `is_late` a partir de columnas de esa tabla. Después, **CROSS APPLY ROW** calcula `late_fee` usando `is_late` (ya disponible por el ADD COLUMNS), junto con `customers.country` y `employees.country`, que pertenecen a tablas distintas.
-
-```crono-sql
-SELECT
-  orders.order_id,
-  orders.order_date,
-  customers.company_name AS customer,
-  employees.last_name AS employee,
-  orders.days_to_ship,
-  orders.is_late,
-  shipping.late_fee
-FROM staging.orders ADD COLUMNS (daysdiff(order_date, shipped_date) days_to_ship, if(shipped_date > required_date) is_late)
-INNER JOIN staging.customers USING customer_id
-INNER JOIN staging.employees USING employee_id
-CROSS APPLY ROW (
-  if(orders.is_late=YES AND customers.country <> employees.country, freight * 0.15, 0) late_fee
-) shipping
-WHERE orders.is_late = 1
-```
-
-El alias del bloque (`shipping`) sirve para referenciar sus columnas en el SELECT. Cuando solo hay un **CROSS APPLY ROW**, las columnas también son accesibles sin prefijo.
-
-
-## ANTI JOIN
-
-El lenguaje **Crono SQL** soporta todos los *joins* habituales:
-
-- **INNER JOIN**
-- **LEFT JOIN**
-- **RIGHT JOIN**
-- **FULL JOIN**
-- **CROSS JOIN** (también **CROSS APPLY**)
-
-Además, implementa el **ANTI JOIN** y el **SEMI JOIN**. Ambos expresan en una sola cláusula patrones que en SQL estándar requieren un predicado `NOT EXISTS` o `EXISTS` con subconsulta — una construcción más verbosa y más difícil de leer.
-
-Un **ANTI JOIN** devuelve todos los registros de la izquierda que no tienen ninguna correspondencia en la tabla derecha. La siguiente consulta devuelve todos los clientes que no tienen ninguna orden.
-
-```crono-sql
-SELECT *
-FROM staging.customers
-ANTI JOIN staging.orders USING customer_id
-```
-
-El **ANTI JOIN** se puede combinar con **FILTER** y el resto de características del lenguaje. Esta consulta devuelve todos los productos que no tienen ninguna línea de detalle con descuento.
-
-```crono-sql
-SELECT *
-FROM staging.products
-ANTI JOIN staging.order_details FILTER (discount > 0) disc_details USING product_id
-```
-
-
-## SEMI JOIN
-
-Un **SEMI JOIN** devuelve todos los registros de la izquierda que tienen al menos una correspondencia en la tabla derecha. A diferencia del **INNER JOIN**, no duplica los registros del resultado aunque existan múltiples coincidencias.
-
-Esta consulta devuelve todos los clientes que tienen al menos una orden, sin duplicados.
-
-```crono-sql
-SELECT *
-FROM staging.customers
-SEMI JOIN staging.orders USING customer_id
-```
-
-
-## UNPIVOT
-
-Se puede utilizar el operador **UNPIVOT** para convertir columnas en filas.
-
-En este ejemplo, las columnas `city` y `country` se convierten en filas diferenciadas, duplicándose los registros.
-
-```crono-sql
-SELECT
-  customer_id,
-  field_name,
-  field_value
-FROM staging.customers
-UNPIVOT (field_value FOR field_name IN (city, country)) AS unpvt
-```
-
-
 ## ORDER BY
 
 Se puede utilizar la cláusula **ORDER BY** para forzar la ordenación del resultado. Gracias a las columnas inteligentes, se puede ordenar por alias sin repetir la expresión.
@@ -614,9 +529,170 @@ SELECT *
 FROM staging.orders
 ```
 
-
 ## WITH
 
 Las expresiones de tabla comunes (**CTE**) con cláusula **WITH** están soportadas. Se pueden combinar con **FILTER** para reutilizar la misma CTE con distintas condiciones sin duplicar código.
 
 ```crono-sql
+WITH order_summary AS (
+  SELECT
+    orders.customer_id,
+    year(orders.order_date) AS order_year,
+    count(orders.order_id) AS order_count,
+    sum(orders.freight) AS total_freight
+  FROM staging.orders
+  INNER JOIN staging.order_details USING order_id
+)
+SELECT
+  customers.company_name AS customer,
+  customers.country,
+  summary_2022.total_freight AS freight_2022,
+  summary_2023.total_freight AS freight_2023
+FROM staging.customers
+LEFT JOIN order_summary FILTER (order_year=2022) summary_2022 USING customer_id
+LEFT JOIN order_summary FILTER (order_year=2023) summary_2023 USING customer_id
+```
+
+En **Crono SQL**, las CTEs raramente son necesarias y en general desaconsejamos su uso. Una subconsulta definida en el **WITH** queda físicamente separada del JOIN que la consume: el lector tiene que desplazarse hacia arriba para entender qué contiene, y luego volver abajo para ver cómo se usa. Esa separación dificulta la lectura.
+
+La alternativa es incluir la subconsulta directamente junto al JOIN que la necesita, usando la sintaxis habitual de subconsulta en el FROM o la cláusula **FILTER**. La lógica queda así junto a su contexto, que es exactamente donde se necesita para entenderla. Para los casos en que el rendimiento importa, **MATERIALIZE** ofrece la misma reutilización que una CTE materializada, pero expresada de forma más explícita y sin alejar el código de donde se usa.
+
+
+## UNION y UNION ALL
+
+Se pueden utilizar los operadores **UNION** y **UNION ALL**. Para combinar consultas en la mayoría de escenarios ETL/DWH es preferible el operador **COMBINE** que se muestra a continuación, ya que evita repetir los JOINs y expresa la intención con más claridad.
+
+```crono-sql
+SELECT
+  customers.company_name AS customer,
+  sum(orders.freight) AS freight_2022,
+  null AS freight_2023
+FROM staging.orders
+INNER JOIN staging.customers ON (orders.customer_id=customers.customer_id)
+WHERE year(orders.order_date) = 2022
+UNION
+  SELECT
+    customers.company_name AS customer,
+    null AS freight_2022,
+    sum(orders.freight) AS freight_2023
+  FROM staging.orders
+  INNER JOIN staging.customers ON (orders.customer_id=customers.customer_id)
+  WHERE year(orders.order_date) = 2023
+```
+
+
+## COMBINE
+
+El operador **COMBINE BY** combina dos o más consultas en un único resultado haciendo un **FULL JOIN** sobre las claves indicadas. Permite comparar conjuntos de datos de distintas fuentes o periodos sin duplicar los JOINs comunes ni recurrir a un **UNION** con columnas nulas.
+
+```crono-sql
+COMBINE BY customer
+  sales_2022 AS (
+    SELECT
+      customers.company_name AS customer,
+      sum(orders.freight) AS freight_2022
+    FROM staging.orders
+    INNER JOIN staging.customers USING customer_id
+    WHERE year(orders.order_date) = 2022),
+  sales_2023 AS (
+    SELECT
+      customers.company_name AS customer,
+      sum(orders.freight) AS freight_2023
+    FROM staging.orders
+    INNER JOIN staging.customers USING customer_id
+    WHERE year(orders.order_date) = 2023)
+```
+
+Se pueden utilizar tablas distintas en cada consulta del **COMBINE**. En este ejemplo, se comparan las unidades vendidas y el stock actual por producto.
+
+```crono-sql
+COMBINE BY product_name, product_id
+  sold (
+    SELECT
+      products.product_name,
+      products.product_id,
+      sum(order_details.quantity) AS units_sold
+    FROM staging.order_details
+    INNER JOIN staging.products USING product_id
+  ),
+  stock (
+    SELECT
+      products.product_name,
+      products.product_id,
+      products.units_in_stock
+    FROM staging.products
+  )
+```
+
+
+## MATERIALIZE
+
+**MATERIALIZE** crea una tabla temporal con el resultado de una subconsulta antes de que se ejecute la consulta principal. Esto simplifica el plan de ejecución del motor y puede mejorar el rendimiento de forma significativa en consultas complejas. Desde el punto de vista del código, permite mantener toda la lógica de carga en una única sentencia, sin necesidad de crear tablas temporales manualmente ni fragmentar la lógica en varios pasos.
+
+```crono-sql
+SELECT
+  orders.order_date,
+  products.product_name AS product,
+  products.product_id,
+  sum(details.quantity) AS units_sold
+FROM staging.order_details FILTER (discount > 0) MATERIALIZE details
+INNER JOIN staging.orders USING order_id
+INNER JOIN staging.products USING product_id
+```
+
+Con **MATERIALIZE** también se pueden materializar las consultas de una sentencia **COMBINE**. En este ejemplo, primero se materializa la consulta de unidades vendidas, luego la del stock, y finalmente se combinan en un único resultado.
+
+```crono-sql
+COMBINE BY product_name, product_id
+  MATERIALIZE sold (
+    SELECT
+      products.product_name,
+      products.product_id,
+      sum(order_details.quantity) AS units_sold
+    FROM staging.order_details
+    INNER JOIN staging.products USING product_id
+  ),
+  MATERIALIZE stock (
+    SELECT
+      products.product_name,
+      products.product_id,
+      products.units_in_stock
+    FROM staging.products
+  )
+```
+
+
+## CAST automático
+
+Se puede forzar el tipo de datos de una columna especificándolo justo después del alias. El compilador generará la llamada a **CAST** correspondiente en el motor de destino.
+
+```crono-sql
+SELECT
+  year(orders.order_date) AS order_year varchar(4),
+  customers.customer_id,
+  customers.company_name AS customer,
+  upper(customer) AS upper_customer,
+  customers.contact_name,
+  sum(orders.freight) AS total_freight,
+  count(*) AS order_count,
+  total_freight / order_count AS avg_freight numeric(12,2)
+FROM staging.orders
+INNER JOIN staging.customers USING customer_id
+WHERE order_year = '2023'
+```
+
+
+## Resumen
+
+En resumen, si se conoce SQL, ya se conoce la parte más importante de **Crono SQL**. Las extensiones del SELECT están diseñadas para eliminar repeticiones, mejorar la legibilidad y expresar con más claridad la intención del código. Destacamos:
+
+- **Columnas inteligentes** — referencia a alias dentro del mismo SELECT, sin repetir expresiones
+- **GROUP BY automático** — el compilador infiere las columnas de agrupación
+- **USING** — JOINs más concisos sin repetir los campos de la condición
+- **FILTER, COLUMNS, ADD COLUMNS** — modificadores de tabla que evitan subconsultas explícitas
+- **CHECK SNOWFLAKE** — validación de integridad de JOINs integrada en la consulta
+- **TOP OVER** — top N por grupo sin CTEs ni `ROW_NUMBER()` explícito
+- **COMBINE** — combinación de consultas más expresiva que **UNION**
+- **MATERIALIZE** — tablas temporales declarativas dentro de una única sentencia
+- **SELECTs anidados** — transformaciones encadenadas sin subconsultas
+- **ANTI JOIN**, **SEMI JOIN**, **CROSS APPLY ROW** — ver [Operador JOIN](/sql/language/join/)

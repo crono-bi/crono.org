@@ -90,16 +90,20 @@ El `INTO` es opcional en ambas formas.
 
 ## Compatibilidad ANSI
 
-Por compatibilidad, **Crono SQL** también soporta las formas estándar de la sentencia INSERT:
+Por compatibilidad, **Crono SQL** también soporta las formas estándar de la sentencia INSERT. La primera forma especifica explícitamente la lista de columnas destino:
 
 ```crono-sql
 INSERT INTO dwh.dim_products (product_id, product_name)
 SELECT products.product_id, products.product_name
 FROM staging.products
+```
 
+La lista de columnas también puede omitirse. En ese caso, **Crono SQL** infiere automáticamente los nombres de las columnas destino a partir de los alias del SELECT:
+
+```crono-sql
 INSERT INTO dwh.dim_products
 SELECT products.product_id, products.product_name
 FROM staging.products
 ```
 
-Estas formas ANSI no mantienen auditoría. En un proyecto **Crono SQL** se recomienda utilizar siempre uno de los tres patrones anteriores.
+Estas formas ANSI no mantienen auditoría automática. En un proyecto **Crono SQL** se recomienda utilizar siempre uno de los tres patrones anteriores.
