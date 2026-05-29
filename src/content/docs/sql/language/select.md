@@ -256,18 +256,7 @@ FROM (
 
 Las subconsultas en los JOINs —como las del primer ejemplo— son útiles y a veces necesarias: permiten filtrar o preparar una tabla antes de combinarla con el resto de la consulta, y su lugar en el código es exactamente el correcto, junto al JOIN que las usa.
 
-Las subconsultas que envuelven un SELECT completo en el FROM son otra historia. Funcionan, pero presentan problemas de legibilidad y mantenimiento que se acumulan con la complejidad. La consulta exterior no puede referenciar directamente las columnas de la interior sin pasar por el alias de la subconsulta. Si la lógica cambia, hay que buscar dentro de los paréntesis para entender qué hace cada nivel. Con dos niveles de anidamiento el código ya resulta difícil de leer; con tres o más, prácticamente imposible de mantener.
-
-**Crono SQL** resuelve este problema con los **SELECTs anidados**: en lugar de envolver la consulta interior entre paréntesis y darle un alias, se apila directamente encima como una capa separada. El resultado es el mismo SQL compilado, pero el código se lee de forma natural, de abajo a arriba, sin indentación creciente ni nombres de subconsulta artificiales como `subquery`, `a` o `inner_query`.
-
-
-## SELECTs anidados
-
-**Crono SQL** permite apilar varios **SELECT** en una misma consulta como alternativa a las subconsultas del ejemplo anterior. Los SELECTs apilados funcionan como un pipeline de transformaciones: cada operador actúa sobre el resultado del anterior, de abajo a arriba. La consulta se construye por capas, y cada capa expresa una única transformación con toda la potencia de SQL.
-
-Esta idea no es nueva. Es la misma filosofía de composición que tienen los pipes de Unix (`|`), los DataFrames de Pandas o dplyr en R: encadenar operaciones simples para construir transformaciones complejas. La diferencia es que aquí no se abandona SQL en ningún momento — se siguen usando SELECT, WHERE, GROUP BY, ORDER BY, con la misma sintaxis y el mismo compilador. No hay un nuevo paradigma que aprender, solo una forma más expresiva de componer lo que ya se sabe.
-
-La consulta anterior —media de ventas anuales por producto— se escribe en **Crono SQL** apilando dos SELECT:
+Para subconsultas que envuelven un SELECT completo en el FROM, **Crono SQL** ofrece los **SQL Pipelines** como alternativa más legible: los SELECTs se apilan como capas en lugar de anidarse entre paréntesis. La consulta anterior se escribe así:
 
 ```crono-sql
 SELECT
@@ -284,34 +273,7 @@ INNER JOIN staging.orders USING order_id
 INNER JOIN staging.products USING product_id
 ```
 
-Las capas apiladas no se limitan a la cláusula **SELECT**. También se pueden apilar **WHERE** y **ORDER BY** como capas independientes que operan sobre el resultado de las capas inferiores. Esto permite filtrar o ordenar sobre valores agregados sin necesidad de subconsultas ni CTEs.
-
-La siguiente consulta devuelve los clientes con más de 10.000 en ventas, ordenados de mayor a menor.
-
-```crono-sql
-SELECT ORDER BY total_sales DESC
-SELECT WHERE total_sales > 10000
-SELECT
-  customers.company_name,
-  sum(order_details.unit_price * order_details.quantity) AS total_sales
-FROM staging.order_details
-INNER JOIN staging.orders USING order_id
-INNER JOIN staging.customers USING orders(customer_id)
-```
-
-Las cláusulas apiladas permiten también contar el número de registros que devuelve una consulta previa.
-
-```crono-sql
-SELECT count(*)
-SELECT
-  products.product_name,
-  products.product_id,
-  sum(order_details.unit_price * order_details.quantity) AS revenue
-FROM staging.order_details
-INNER JOIN staging.products USING product_id
-```
-
-Esta capacidad es especialmente valiosa durante el desarrollo. Cuando se está construyendo o depurando una consulta compleja, es habitual querer inspeccionarla: contar cuántos registros devuelve, agrupar los resultados de una forma distinta, filtrar por un valor concreto para verificar que el dato es correcto. Con los SELECTs apilados, esa inspección se añade encima de la consulta original sin tocarla. Cuando ya no se necesita, se elimina la capa superior y la consulta queda exactamente como estaba.
+Ver [SQL Pipelines](/sql/language/select-pipelines/).
 
 
 ## FILTER
@@ -451,83 +413,25 @@ ORDER BY total_freight DESC
 ```
 
 
-## OVER ()
+## Funciones de ventana
 
-Las funciones de ventana **OVER (…)** también están soportadas. Las columnas inteligentes permiten referenciar columnas agregadas previas dentro de la propia función de ventana, lo que simplifica su escritura.
+**Crono SQL** soporta la sintaxis estándar `OVER (PARTITION BY … ORDER BY …)` para funciones de ventana. Gracias a las columnas inteligentes, los alias del SELECT pueden usarse directamente dentro del `OVER` sin repetir la expresión original.
 
-Esta consulta devuelve el acumulado de transporte desde el inicio de cada año.
+Además, **Crono SQL** añade funciones analíticas propias (`running_sum`, `running_pct`, `pct`, `percentile`, `is_first`, `is_last`…) y extensiones de sintaxis como **TOP OVER** —top N por grupo sin `ROW_NUMBER()` explícito— y **DUPLICATES OVER** —detección de duplicados integrada en la consulta.
+
+Este ejemplo calcula el acumulado de ventas desde el inicio de cada año (YTD), referenciando los alias `amount` y `order_year` directamente dentro del `OVER`:
 
 ```crono-sql
 SELECT
-  year(orders.order_date) AS order_year,
-  month(orders.order_date) AS order_month,
-  sum(orders.freight) AS monthly_freight,
-  sum(monthly_freight) OVER (PARTITION BY order_year ORDER BY order_month) AS freight_ytd
-FROM staging.orders
-ORDER BY order_year, order_month
+  year(orders.order_date)                           order_year,
+  month(orders.order_date)                          order_month,
+  sum(od.quantity * od.unit_price)                  amount,
+  sum(amount) OVER (PARTITION BY order_year ORDER BY order_month)  amount_ytd
+FROM staging.order_details od
+INNER JOIN staging.orders USING order_id
 ```
 
-
-## TOP OVER ()
-
-La combinación **TOP n OVER (PARTITION BY … ORDER BY …)** permite obtener los N primeros registros por grupo sin necesidad de CTEs ni de la función `ROW_NUMBER()` explícita. El compilador genera la subconsulta anidada necesaria para cada motor.
-
-Esta consulta devuelve los tres clientes con mayor transporte acumulado en cada país.
-
-```crono-sql
-SELECT TOP 3 OVER (PARTITION BY country ORDER BY total_freight DESC)
-  customers.country,
-  customers.customer_id,
-  customers.company_name AS customer,
-  sum(orders.freight) AS total_freight
-FROM staging.orders
-INNER JOIN staging.customers USING customer_id
-```
-
-La siguiente consulta devuelve la última orden de cada cliente.
-
-```crono-sql
-SELECT TOP 1 OVER (PARTITION BY customer_id ORDER BY order_date DESC)
-  customers.customer_id,
-  customers.company_name AS customer,
-  orders.order_date,
-  orders.freight
-FROM staging.orders
-INNER JOIN staging.customers USING customer_id
-```
-
-
-## DUPLICATES OVER ()
-
-La cláusula **DUPLICATES OVER (PARTITION BY …)** devuelve únicamente los registros para los que existe más de una fila con la misma combinación de campos en la partición. El compilador genera la subconsulta con `COUNT(*) OVER (PARTITION BY …)` necesaria para cada motor.
-
-Su uso más habitual es la detección de duplicados en los datos de origen: si la consulta devuelve algún registro, hay un problema de calidad que debe resolverse antes de la carga.
-
-```crono-sql
-SELECT DUPLICATES OVER (PARTITION BY customer_id)
-  customer_id,
-  company_name,
-  contact_name,
-  contact_title,
-  address
-FROM staging.customers
-```
-
-Se puede combinar con SELECTs apilados. La cláusula **DUPLICATES** actúa sobre el resultado de la capa inferior, lo que permite aplicarla sobre cualquier consulta previa sin repetir código.
-
-```crono-sql
-SELECT DUPLICATES OVER (PARTITION BY customer_id)
-SELECT *
-FROM staging.customers
-```
-
-También es útil para consultas analíticas. La siguiente consulta devuelve todos los pedidos en los que el mismo cliente realizó más de una orden el mismo día.
-
-```crono-sql
-SELECT DUPLICATES OVER (PARTITION BY customer_id, order_date)
-SELECT *
-FROM staging.orders
-```
+Todo ello está documentado en detalle en [Funciones de ventana](/sql/language/window-functions/).
 
 ## WITH
 
@@ -691,8 +595,8 @@ En resumen, si se conoce SQL, ya se conoce la parte más importante de **Crono S
 - **USING** — JOINs más concisos sin repetir los campos de la condición
 - **FILTER, COLUMNS, ADD COLUMNS** — modificadores de tabla que evitan subconsultas explícitas
 - **CHECK SNOWFLAKE** — validación de integridad de JOINs integrada en la consulta
-- **TOP OVER** — top N por grupo sin CTEs ni `ROW_NUMBER()` explícito
+- **TOP OVER**, **DUPLICATES OVER** — ver [Funciones de ventana](/sql/language/window-functions/)
 - **COMBINE** — combinación de consultas más expresiva que **UNION**
 - **MATERIALIZE** — tablas temporales declarativas dentro de una única sentencia
-- **SELECTs anidados** — transformaciones encadenadas sin subconsultas
+- **SQL Pipelines** — transformaciones encadenadas sin subconsultas, ver [SQL Pipelines](/sql/language/select-pipelines/)
 - **ANTI JOIN**, **SEMI JOIN**, **CROSS APPLY ROW** — ver [Operador JOIN](/sql/language/join/)
