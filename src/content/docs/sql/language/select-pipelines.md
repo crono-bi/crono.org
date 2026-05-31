@@ -4,11 +4,9 @@ sidebar:
   order: 11
 ---
 
-Las subconsultas en los JOINs son útiles y a veces necesarias: permiten filtrar o preparar una tabla antes de combinarla con el resto de la consulta, y su lugar en el código es exactamente el correcto, junto al JOIN que las usa.
+SQL estándar no incluye ningún mecanismo para encadenar transformaciones de forma directa. Cuando una consulta necesita operar sobre el resultado de otra —filtrar sobre un agregado, calcular un porcentaje sobre un total, aplicar un ranking y luego filtrar por él— la única opción en SQL es anidar subconsultas: la consulta interior se envuelve entre paréntesis y se le da un alias para que la exterior pueda referenciarla. Con una capa de anidamiento el código ya es más difícil de leer; con dos o tres, prácticamente imposible de mantener. La lógica se fragmenta entre niveles de paréntesis, los alias son artificiales (`subquery`, `a`, `inner_query`) y cualquier cambio obliga a buscar dentro de la estructura anidada para entender qué hace cada parte.
 
-Las subconsultas que envuelven un SELECT completo en el FROM son otra historia. Funcionan, pero presentan problemas de legibilidad y mantenimiento que se acumulan con la complejidad. La consulta exterior no puede referenciar directamente las columnas de la interior sin pasar por el alias de la subconsulta. Si la lógica cambia, hay que buscar dentro de los paréntesis para entender qué hace cada nivel. Con dos niveles de anidamiento el código ya resulta difícil de leer; con tres o más, prácticamente imposible de mantener.
-
-**Crono SQL** resuelve este problema con los **SQL Pipelines**: en lugar de envolver la consulta interior entre paréntesis y darle un alias, se apila directamente encima como una capa separada. El resultado es el mismo SQL compilado, pero el código se lee de forma natural, de abajo a arriba, sin indentación creciente ni nombres de subconsulta artificiales como `subquery`, `a` o `inner_query`.
+**Crono SQL** resuelve esto con los **SQL Pipelines**: en lugar de anidar subconsultas, los SELECTs se apilan como capas independientes. Cada capa opera sobre el resultado de la anterior, de abajo a arriba, sin paréntesis ni aliases artificiales. El SQL generado es el mismo, pero el código se lee de forma natural y cada transformación ocupa exactamente su lugar.
 
 
 ## SELECTs apilados
@@ -33,6 +31,21 @@ FROM staging.order_details
 INNER JOIN staging.orders USING order_id
 INNER JOIN staging.products USING product_id
 ```
+
+Al compilar, **Crono SQL** envuelve la consulta inferior en una subconsulta y ejecuta la superior sobre su resultado. Como la capa exterior contiene `avg(annual_revenue)`, el compilador infiere automáticamente el GROUP BY. El SQL generado es equivalente a:
+
+```crono-sql
+SELECT
+  product_name,
+  product_id,
+  avg(annual_revenue) AS avg_annual_revenue
+FROM (...) subquery
+GROUP BY product_name, product_id
+```
+
+La sintaxis apilada puede resultar extraña al principio, pero una vez que se interioriza la idea —cada SELECT opera sobre el resultado del que tiene debajo— se vuelve completamente natural. Es de esas construcciones que, cuando se entienden, hacen que la alternativa parezca innecesariamente complicada.
+
+Y la misma lógica se puede extender indefinidamente: cada nueva capa es simplemente una nueva subconsulta. Se pueden añadir tantas como sean necesarias para aplicar más cálculos, filtrar resultados o establecer un orden — sin que el código gane en complejidad ni en profundidad de anidamiento.
 
 
 ## WHERE y ORDER BY apilados

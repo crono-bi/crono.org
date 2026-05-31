@@ -20,7 +20,7 @@ Los tres mantienen la auditoría automáticamente. El resto de sentencias de car
 Es útil para tablas de log, registros de eventos o cualquier escenario donde se quiere acumular datos sin gestionar claves.
 
 ```crono-sql
-INSERT RAW dwh.fact_order_details
+INSERT RAW INTO dwh.fact_order_details
 SELECT
   order_details.order_id,
   order_details.product_id,
@@ -30,8 +30,6 @@ SELECT
 FROM staging.order_details
 ```
 
-El `INTO` es opcional: `INSERT RAW INTO dwh.fact_order_details` es equivalente.
-
 
 ## INSERT IF NEW
 
@@ -40,7 +38,7 @@ El `INTO` es opcional: `INSERT RAW INTO dwh.fact_order_details` es equivalente.
 Es útil cuando la tabla destino se carga incrementalmente y los registros históricos no deben modificarse.
 
 ```crono-sql
-INSERT IF NEW dwh.dim_products KEY (product_id)
+INSERT IF NEW INTO dwh.dim_products KEY (product_id)
 SELECT
   products.product_id,
   products.product_name,
@@ -51,15 +49,13 @@ INNER JOIN staging.categories USING category_id
 INNER JOIN staging.suppliers USING supplier_id
 ```
 
-El `INTO` es opcional: `INSERT IF NEW INTO dwh.dim_products KEY (product_id)` es equivalente.
-
 
 ## INSERT OVERWRITE
 
 **INSERT OVERWRITE** elimina primero el contenido de la tabla destino y luego inserta los registros de la consulta. Es el patrón de recarga completa.
 
 ```crono-sql
-INSERT OVERWRITE dwh.dim_products
+INSERT OVERWRITE INTO dwh.dim_products
 SELECT
   products.product_id,
   products.product_name,
@@ -84,9 +80,6 @@ SELECT
 FROM staging.orders
 WHERE year(orders.order_date) = 2024 AND month(orders.order_date) = 1
 ```
-
-El `INTO` es opcional en ambas formas.
-
 
 ## Compatibilidad ANSI
 

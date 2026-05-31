@@ -1,10 +1,14 @@
 ---
-title: "DDL"
+title: "CREATE y DROP"
 sidebar:
   order: 70
 ---
 
-**Crono SQL** soporta las sentencias DDL habituales para definir y gestionar objetos de base de datos. En este artículo se describe su sintaxis mediante ejemplos.
+Las sentencias DDL (*Data Definition Language*) son las instrucciones SQL que crean, modifican y eliminan objetos de base de datos: tablas, vistas, procedimientos, funciones, índices y esquemas. A diferencia de las sentencias de manipulación de datos (SELECT, INSERT, MERGE…), las sentencias DDL actúan sobre la estructura de la base de datos, no sobre su contenido.
+
+**Crono SQL** soporta las sentencias DDL habituales y las compila correctamente para cada motor. En la mayoría de proyectos ETL/DWH no es necesario escribir DDL explícito — los patrones de carga crean y mantienen las tablas automáticamente — pero en ocasiones es útil tener control directo sobre la estructura.
+
+Las sentencias soportadas son:
 
 - **CREATE PROCEDURE**
 - **CREATE FUNCTION**
@@ -13,6 +17,22 @@ sidebar:
 - **CREATE INDEX**
 - **CREATE DATABASE**
 - **CREATE SCHEMA**
+
+Todas admiten las variantes:
+
+-  **CREATE IF NOT EXISTS**
+-  **CREATE OR REPLACE**
+-  **DROP IF EXISTS**
+
+## Literales SQL
+
+Cuando se necesita ejecutar una sentencia que **Crono SQL** no soporta de forma nativa — una sintaxis específica de un motor, una opción avanzada de creación de tabla, un índice columnar — se puede usar un **literal SQL**. El contenido se escribe entre backticks precedidos de la palabra clave `SQL` y Crono SQL lo envía al motor tal cual, sin parsear ni transformar.
+
+```crono-sql
+SQL `CREATE CLUSTERED COLUMNSTORE INDEX cci_fact_orders ON dwh.fact_orders;`
+```
+
+Los literales SQL son un mecanismo de escape: permiten hacer cualquier cosa que admita el motor de destino, a cambio de perder la portabilidad entre motores y la validación del compilador.
 
 
 ## CREATE PROCEDURE
@@ -203,7 +223,7 @@ De todos modos, pueden crearse tablas usando la sintaxis habitual:
 
 ```crono-sql
 CREATE TABLE dwh.dim_customers (
-  customer_sid   int IDENTITY(1,1),
+  customer_sid   int IDENTITY,
   customer_id    varchar(10)   NOT NULL,
   company_name   varchar(100) NOT NULL,
   contact_name   varchar(100),
@@ -225,9 +245,11 @@ La sintaxis admite las siguientes restricciones e índices:
 - Restricciones **DEFAULT**
 - Índices **UNIQUE** y **NONUNIQUE** (con la opción **INCLUDE**)
 
+El siguiente ejemplo es más completo e incluye `IDENTITY`, índices `CLUSTERED` y la cláusula `INCLUDE` — características propias de SQL Server:
+
 ```crono-sql
 CREATE OR REPLACE TABLE dwh.dim_customers (
-  customer_sid   int IDENTITY(1,1),
+  customer_sid   int IDENTITY,
   customer_id    varchar(10),
   company_name   varchar(100) NOT NULL,
   contact_name   varchar(100),
@@ -246,7 +268,7 @@ Algunas características de esta sintaxis:
 - Es posible definir restricciones **IDENTITY**, **NULL**, **UNIQUE**, **REFERENCES** y **DEFAULT** en línea con el campo.
 - Es posible omitir el nombre de índices y restricciones — **Crono SQL** utilizará un criterio de nomenclatura predefinido.
 
-Si se requiere alguna funcionalidad no soportada —como especificar el *file group*, el particionado o crear índices columnares—, pueden usarse **literales SQL**:
+Si se requiere alguna funcionalidad no soportada —como especificar el *file group*, el particionado o crear índices columnares—, pueden usarse **literales SQL**. El siguiente ejemplo usa sintaxis nativa de SQL Server:
 
 ```crono-sql
 SQL `
@@ -309,13 +331,13 @@ Se puede utilizar **CREATE INDEX IF NOT EXISTS** para crear un índice solo si a
 CREATE OR REPLACE INDEX idx_orders_customer ON dwh.fact_orders (customer_sid) INCLUDE (order_id)
 ```
 
-Se pueden crear índices **UNIQUE**, **CLUSTERED** y **NONCLUSTERED**:
+En SQL Server se pueden crear índices **UNIQUE**, **CLUSTERED** y **NONCLUSTERED**:
 
 ```crono-sql
 CREATE UNIQUE NONCLUSTERED INDEX idx_customers_name ON dwh.dim_customers (company_name)
 ```
 
-Mediante **literales SQL** se puede crear cualquier otro índice que admita la base de datos, como índices columnares:
+Mediante **literales SQL** se puede crear cualquier otro índice que admita el motor. El siguiente ejemplo crea un índice columnar en SQL Server:
 
 ```crono-sql
 SQL `CREATE CLUSTERED COLUMNSTORE INDEX cci_fact_orders ON dwh.fact_orders;`
@@ -336,7 +358,7 @@ La sentencia **CREATE DATABASE** permite crear una base de datos con las opcione
 CREATE DATABASE IF NOT EXISTS crono_northwind
 ```
 
-También se puede especificar la intercalación:
+En SQL Server también se puede especificar la intercalación con `COLLATE`:
 
 ```crono-sql
 CREATE DATABASE IF NOT EXISTS crono_northwind COLLATE Traditional_Spanish_ci_ai

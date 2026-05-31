@@ -23,3 +23,7 @@ select slice('Hello World!', -6) resultado;
 ```
 
 > World!
+
+## Comentarios
+
+`slice` y `substring` son similares, pero tienen diferencias que conviene conocer. `slice` recibe la posición de inicio y la posición de fin, y admite valores negativos en cualquiera de sus argumentos: un valor negativo indica una posición contada desde el final de la cadena, lo que resulta útil para extraer sufijos sin conocer la longitud total. `substring`, en cambio, recibe la posición de inicio y la longitud de la subcadena a extraer, lo que es más directo cuando se conoce cuántos caracteres se quieren obtener.

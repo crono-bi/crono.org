@@ -412,26 +412,6 @@ INNER JOIN staging.orders USING order_id
 INNER JOIN staging.products USING product_id
 ```
 
-Con **MATERIALIZE** también se pueden materializar las consultas de una sentencia **COMBINE**. En este ejemplo, primero se materializa la consulta de unidades vendidas, luego la del stock, y finalmente se combinan en un único resultado.
-
-```crono-sql
-COMBINE BY product_name, product_id
-  MATERIALIZE sold (
-    SELECT
-      products.product_name,
-      products.product_id,
-      sum(order_details.quantity) AS units_sold
-    FROM staging.order_details
-    INNER JOIN staging.products USING product_id
-  ),
-  MATERIALIZE stock (
-    SELECT
-      products.product_name,
-      products.product_id,
-      products.units_in_stock
-    FROM staging.products
-  )
-```
 
 
 ## CHECK SNOWFLAKE
@@ -502,10 +482,12 @@ UNION
 
 ## COMBINE
 
-El operador **COMBINE BY** combina dos o más consultas en un único resultado haciendo un **FULL JOIN** sobre las claves indicadas. Permite comparar conjuntos de datos de distintas fuentes o periodos sin duplicar los JOINs comunes ni recurrir a un **UNION** con columnas nulas.
+El operador **COMBINE** combina dos o más consultas en un único resultado haciendo un **FULL JOIN** sobre las claves indicadas. Permite comparar conjuntos de datos de distintas fuentes o periodos sin duplicar los JOINs comunes ni recurrir a un **UNION** con columnas nulas.
+
+La clave se declara con `KEY column` (una sola columna) o `KEY (col1, col2)` (varias columnas), igual que en los patrones de carga.
 
 ```crono-sql
-COMBINE BY customer
+COMBINE KEY customer
   sales_2022 AS (
     SELECT
       customers.company_name AS customer,
@@ -525,7 +507,7 @@ COMBINE BY customer
 Se pueden utilizar tablas distintas en cada consulta del **COMBINE**. En este ejemplo, se comparan las unidades vendidas y el stock actual por producto.
 
 ```crono-sql
-COMBINE BY product_name, product_id
+COMBINE KEY (product_name, product_id)
   sold (
     SELECT
       products.product_name,
@@ -542,6 +524,29 @@ COMBINE BY product_name, product_id
     FROM staging.products
   )
 ```
+
+Las consultas de un **COMBINE** también se pueden materializar con **MATERIALIZE**, de la misma forma que en el SELECT. En este ejemplo, ambas subconsultas se materializan antes de combinarse.
+
+```crono-sql
+COMBINE KEY (product_name, product_id)
+  MATERIALIZE sold (
+    SELECT
+      products.product_name,
+      products.product_id,
+      sum(order_details.quantity) AS units_sold
+    FROM staging.order_details
+    INNER JOIN staging.products USING product_id
+  ),
+  MATERIALIZE stock (
+    SELECT
+      products.product_name,
+      products.product_id,
+      products.units_in_stock
+    FROM staging.products
+  )
+```
+
+Cuando se usa **MATERIALIZE** en un **COMBINE**, el compilador crea primero las tablas temporales con el resultado de cada subconsulta y solo entonces ejecuta el FULL JOIN que las combina. Esto puede mejorar el rendimiento de forma significativa cuando las subconsultas son costosas, ya que cada una se evalúa una única vez.
 
 
 ## Tablas en línea

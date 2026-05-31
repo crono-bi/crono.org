@@ -20,3 +20,7 @@ from staging.order_details
 inner join staging.orders using order_id
 group by all;
 ```
+
+## Comentarios
+
+`next_value` devuelve siempre la fila inmediatamente siguiente. Para avanzar más de una fila, usar la función estándar `lead`, que admite un segundo parámetro con el número de filas de desplazamiento.

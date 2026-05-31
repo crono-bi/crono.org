@@ -20,3 +20,7 @@ from staging.order_details
 inner join staging.orders using order_id
 group by all;
 ```
+
+## Comentarios
+
+`previous_value` devuelve siempre la fila inmediatamente anterior. Para retroceder más de una fila, usar la función estándar `lag`, que admite un segundo parámetro con el número de filas de desplazamiento.

@@ -65,9 +65,33 @@ INNER JOIN staging.orders USING order_id
 ```
 
 
+## Funciones analíticas habituales
+
+Las funciones de ventana más utilizadas son estándar SQL y funcionan en todos los motores. Las más habituales en proyectos ETL/DWH son:
+
+**`row_number()`** — asigna un número de fila único y correlativo dentro de cada partición, ordenado según el criterio indicado. Es la base del patrón "último registro por entidad".
+
+**`rank()`** — asigna una posición ordinal dentro de la partición. Si dos filas empatan, ambas reciben la misma posición y la siguiente queda vacante (1, 2, 2, 4…).
+
+**`sum(expr) OVER (...)`** — suma sobre una ventana. Combinada con `ORDER BY` produce un acumulado; sin él, calcula el total del grupo manteniendo el detalle de filas.
+
+```crono-sql
+SELECT
+  customers.company_name                                    customer,
+  year(orders.order_date)                                   order_year,
+  sum(od.quantity * od.unit_price)                          amount,
+  rank() OVER (PARTITION BY order_year ORDER BY amount DESC) ranking,
+  rank() OVER (PARTITION BY order_year ORDER BY amount DESC) dense_ranking,
+  row_number() OVER (PARTITION BY order_year ORDER BY amount DESC) row_num
+FROM staging.order_details od
+INNER JOIN staging.orders USING order_id
+INNER JOIN staging.customers USING orders(customer_id)
+```
+
+
 ## Funciones analíticas propias
 
-Además de las funciones de agregación estándar (`sum`, `avg`, `min`, `max`, `count`), **Crono SQL** proporciona un conjunto de funciones analíticas propias que expresan en una sola llamada patrones que en SQL estándar requieren expresiones `OVER` complejas o subconsultas.
+Además de las funciones estándar anteriores, **Crono SQL** proporciona un conjunto de funciones analíticas propias que expresan en una sola llamada patrones que en SQL estándar requieren expresiones `OVER` complejas o subconsultas.
 
 **`pct(expr)`** — porcentaje de cada fila sobre el total general (o sobre la partición si se especifica).
 
@@ -77,11 +101,9 @@ Además de las funciones de agregación estándar (`sum`, `avg`, `min`, `max`, `
 
 **`percentile(ORDER BY ...)`** — percentil de cada fila dentro de su partición.
 
-**`rank(ORDER BY ...)`** — posición ordinal de cada fila dentro de su partición.
-
 **`is_first`** / **`is_last`** — indica si la fila es la primera o la última dentro de su partición.
 
-**`next_value(expr)`** / **`previous_value(expr)`** — valor de la expresión en la fila siguiente o anterior (equivalente a `LEAD`/`LAG`).
+**`next_value(expr)`** / **`previous_value(expr)`** — valor de la expresión en la fila siguiente o anterior.
 
 El siguiente ejemplo muestra el desglose de ventas por producto con su porcentaje sobre el total, suma acumulada y porcentaje acumulado:
 

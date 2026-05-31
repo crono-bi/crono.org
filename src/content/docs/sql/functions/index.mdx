@@ -10,6 +10,19 @@ import CategorySelector from '../../../../components/CategorySelector.astro'
 
 Además, **Crono SQL** incluye un conjunto de funciones propias que funcionan en todos los motores soportados: SQL Server, Snowflake, PostgreSQL, BigQuery, Redshift, Databricks, Microsoft Fabric y DuckDB. Crono SQL compila cada función al equivalente nativo de cada motor de forma transparente. Por ejemplo, `divide` realiza una división que devuelve `NULL` en lugar de error si el divisor es cero, y `left` extrae los primeros caracteres de una cadena sin necesidad de usar `substring`.
 
+## Sinónimos
+
+Aunque SQL es un lenguaje estándar, cada motor nombra de forma distinta funciones equivalentes: lo que en un motor se llama `substring` en otro es `substr`; `len` y `length` hacen lo mismo según la plataforma. Los desarrolladores que cambian de motor o trabajan con varios a la vez se encuentran constantemente con esta fricción.
+
+**Crono SQL** la elimina añadiendo sinónimos para las funciones más habituales. Un desarrollador acostumbrado a `split` puede seguir usándolo aunque el nombre oficial de la función en Crono SQL sea `split_part`; quien conoce `ceiling` no tiene que aprender que aquí se llama `ceil`. Todos los sinónimos son equivalentes: Crono SQL los compilará correctamente al dialecto de cada motor, igual que hace con el nombre principal.
+
+Para consultar en tiempo de ejecución la lista completa de funciones disponibles y sus sinónimos se puede usar la pseudovista `crono.functions`:
+
+```crono-sql
+SELECT *
+FROM crono.functions
+```
+
 En esta sección se documentan las funciones propias de **Crono SQL**, agrupadas por categorías.
 
 Las funciones se han agrupado por categorías:
