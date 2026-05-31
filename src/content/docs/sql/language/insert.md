@@ -90,7 +90,19 @@ El `INTO` es opcional en ambas formas.
 
 ## Compatibilidad ANSI
 
-Por compatibilidad, **Crono SQL** también soporta las formas estándar de la sentencia INSERT. La primera forma especifica explícitamente la lista de columnas destino:
+Por compatibilidad, **Crono SQL** también soporta las formas estándar de la sentencia INSERT.
+
+La forma `VALUES` permite insertar una o varias filas directamente, sin necesidad de una consulta origen. Es útil para poblar tablas de referencia pequeñas o insertar registros puntuales durante el desarrollo:
+
+```crono-sql
+INSERT INTO dwh.dim_categories (category_id, category_name, description)
+VALUES
+  (1, 'Beverages',    'Soft drinks, coffees, teas and beers'),
+  (2, 'Condiments',   'Sweet and savory sauces and spreads'),
+  (3, 'Confections',  'Desserts, candies and sweet breads')
+```
+
+La forma con `SELECT` especifica explícitamente la lista de columnas destino:
 
 ```crono-sql
 INSERT INTO dwh.dim_products (product_id, product_name)

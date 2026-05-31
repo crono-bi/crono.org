@@ -33,7 +33,7 @@ El lenguaje **Crono SQL** pretende simplificar la sintaxis del SQL evitando las 
 
 **El SQL es suficiente.** No hace falta aprender un nuevo paradigma ni abandonar el conocimiento acumulado. Crono SQL extiende SQL, no lo reemplaza. Cualquier consulta SQL válida es también código Crono SQL válido, y todo lo que sabes de SQL sigue siendo útil.
 
-**Todo el código, en ficheros de texto.** La lógica de negocio, la estructura del modelo de datos y las reglas de carga residen en ficheros de texto plano. Cada tabla se define y se carga desde un único fichero con una sola sentencia: la lógica no está diseminada entre N ficheros ni el proyecto organizado de cualquier manera. Nada se esconde en interfaces gráficas, configuraciones binarias o metadatos de herramientas propietarias. El código es la verdad única del proyecto, y puede —y debe— versionarse en Git como cualquier otro software.
+**Todo el código, en ficheros de texto.** La lógica de negocio, la estructura del modelo de datos y las reglas de carga residen en ficheros de texto plano. Cada tabla se define y se carga desde un único fichero con una sola sentencia: la lógica no está diseminada entre N ficheros ni el proyecto organizado de cualquier manera. Nada se esconde en interfaces gráficas, configuraciones binarias o metadatos de herramientas propietarias. El código es la verdad única del proyecto, y puede —y debe— versionarse en Git como cualquier otro software. Al residir en ficheros locales, el proyecto funciona completamente en tu equipo: sin depender de notebooks en el navegador, sin que ningún proveedor controle tu entorno de trabajo, sin necesitar conexión a una plataforma cloud para poder desarrollar, revisar o depurar.
 
 **Sin repeticiones.** El código repetido es código que se desactualiza, que falla de formas distintas en sitios distintos y que nadie quiere mantener. Crono SQL elimina activamente las repeticiones: los JOINs se simplifican, las columnas calculadas se reutilizan, los patrones de carga se definen una sola vez.
 
@@ -143,23 +143,13 @@ Este manual documenta el funcionamiento de la sentencia **SELECT** del lenguaje 
     id: 'language',
     title: 'Lenguaje Crono SQL',
     description: 'Guía completa de la sintaxis con ejemplos prácticos de cada sentencia.',
-    count: 8,
     icon: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/><path d="M3 15h18"/><path d="M9 3v18"/><path d="M15 3v18"/></svg>',
     path: '/sql/language/'
-  },
-  {
-    id: 'reference',
-    title: 'Referencia del lenguaje',
-    description: 'Documentación técnica detallada de sintaxis y funcionalidades avanzadas.',
-    count: 12,
-    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/><path d="M12 11h5"/><path d="M12 7h5"/></svg>',
-    path: '/sql/reference/'
   },
   {
     id: 'functions',
     title: 'Funciones',
     description: 'Listado completo de funciones integradas agrupadas por categoría.',
-    count: 87,
     icon: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5h-2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="2"/><path d="m9 14 2 2 4-4"/></svg>',
     path: '/sql/functions/'
   },
@@ -167,7 +157,6 @@ Este manual documenta el funcionamiento de la sentencia **SELECT** del lenguaje 
     id: 'views',
     title: 'Vistas',
     description: 'Vistas predefinidas del sistema para consultar metadatos.',
-    count: 52,
     icon: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/><path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>',
     path: '/sql/views/'
   }
