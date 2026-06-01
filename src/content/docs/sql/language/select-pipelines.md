@@ -11,11 +11,9 @@ SQL estándar no incluye ningún mecanismo para encadenar transformaciones de fo
 
 ## SELECTs apilados
 
-**Crono SQL** permite apilar varios **SELECT** en una misma consulta como alternativa a las subconsultas. Los SELECTs apilados funcionan como un pipeline de transformaciones: cada operador actúa sobre el resultado del anterior, de abajo a arriba. La consulta se construye por capas, y cada capa expresa una única transformación con toda la potencia de SQL.
+Un **SQL Pipeline** es una secuencia de transformaciones donde cada SELECT opera sobre el resultado del SELECT anterior. Igual que en un pipeline ETL los datos fluyen por distintas etapas, en un SQL Pipeline los resultados fluyen de una consulta a la siguiente. Esta idea no es nueva — es la misma filosofía de composición de los pipes de Unix (`|`), los DataFrames de Pandas o dplyr en R. La diferencia es que aquí no se abandona SQL: se siguen usando SELECT, WHERE, GROUP BY, ORDER BY, con la misma sintaxis y el mismo compilador. No hay un nuevo paradigma que aprender.
 
-Esta idea no es nueva. Es la misma filosofía de composición que tienen los pipes de Unix (`|`), los DataFrames de Pandas o dplyr en R: encadenar operaciones simples para construir transformaciones complejas. La diferencia es que aquí no se abandona SQL en ningún momento — se siguen usando SELECT, WHERE, GROUP BY, ORDER BY, con la misma sintaxis y el mismo compilador. No hay un nuevo paradigma que aprender, solo una forma más expresiva de componer lo que ya se sabe.
-
-Este ejemplo calcula la media de las ventas anuales por producto. En SQL estándar requiere una subconsulta en el FROM; con SQL Pipelines se apilan dos SELECT:
+**Crono SQL** implementa esta idea apilando las consultas. Este ejemplo calcula la media de las ventas anuales por producto. En SQL estándar requiere una subconsulta en el FROM; con SQL Pipelines se apilan dos SELECT:
 
 ```crono-sql
 SELECT
@@ -42,6 +40,8 @@ SELECT
 FROM (...) subquery
 GROUP BY product_name, product_id
 ```
+
+Los SQL Pipelines eliminan así gran parte de las subconsultas y CTEs cuyo único propósito es encadenar transformaciones.
 
 La sintaxis apilada puede resultar extraña al principio, pero una vez que se interioriza la idea —cada SELECT opera sobre el resultado del que tiene debajo— se vuelve completamente natural. Es de esas construcciones que, cuando se entienden, hacen que la alternativa parezca innecesariamente complicada.
 
