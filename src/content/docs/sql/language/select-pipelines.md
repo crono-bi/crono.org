@@ -65,7 +65,11 @@ INNER JOIN staging.orders USING order_id
 INNER JOIN staging.customers USING orders(customer_id)
 ```
 
-Las cláusulas apiladas permiten también contar el número de registros que devuelve una consulta previa, sin modificarla:
+## Durante el desarrollo
+
+Esta capacidad es especialmente valiosa durante el desarrollo. Cuando se está construyendo o depurando una consulta compleja, es habitual querer inspeccionarla: contar cuántos registros devuelve, agrupar los resultados de una forma distinta, filtrar por un valor concreto para verificar que el dato es correcto. Con los SQL Pipelines, esa inspección se añade encima de la consulta original sin tocarla. Cuando ya no se necesita, se elimina la capa superior y la consulta queda exactamente como estaba.
+
+Por ejemplo, para contar cuántos registros devuelve una consulta basta con añadir un `SELECT count(*)` encima, sin modificar nada de la consulta original:
 
 ```crono-sql
 SELECT count(*)
@@ -76,11 +80,6 @@ SELECT
 FROM staging.order_details
 INNER JOIN staging.products USING product_id
 ```
-
-
-## Durante el desarrollo
-
-Esta capacidad es especialmente valiosa durante el desarrollo. Cuando se está construyendo o depurando una consulta compleja, es habitual querer inspeccionarla: contar cuántos registros devuelve, agrupar los resultados de una forma distinta, filtrar por un valor concreto para verificar que el dato es correcto. Con los SQL Pipelines, esa inspección se añade encima de la consulta original sin tocarla. Cuando ya no se necesita, se elimina la capa superior y la consulta queda exactamente como estaba.
 
 
 ## Combinado con funciones de ventana

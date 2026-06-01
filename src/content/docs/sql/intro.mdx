@@ -18,9 +18,7 @@ import EngineChips from '../../../components/EngineChips.astro'
 
 ## ¿Qué es Crono SQL?
 
-**Crono SQL** es un lenguaje de programación creado por Pablo Urquizu (fundador de Crono BI) para facilitar el desarrollo ágil de proyectos ETL/DWH.
-
-**Crono SQL** compila en SQL. La relación entre Crono SQL y SQL es similar a la que existe entre [TypeScript](https://es.wikipedia.org/wiki/TypeScript) y JavaScript, o entre [Markdown](https://daringfireball.net/projects/markdown/syntax) y HTML: el desarrollador escribe en el lenguaje de alto nivel y el compilador genera el código equivalente para el entorno de destino. En el caso de Crono SQL, ese entorno puede ser cualquiera de los ocho motores soportados.
+**Crono SQL** es un lenguaje de programación diseñado para el desarrollo de proyectos ETL/DWH. Compila en SQL. La relación entre Crono SQL y SQL es similar a la que existe entre [TypeScript](https://es.wikipedia.org/wiki/TypeScript) y JavaScript, o entre [Markdown](https://daringfireball.net/projects/markdown/syntax) y HTML: el desarrollador escribe en el lenguaje de alto nivel y el compilador genera el código equivalente para el entorno de destino. En el caso de Crono SQL, ese entorno puede ser cualquiera de los ocho motores soportados.
 
 **Crono SQL** extiende la sintaxis de SQL, por tanto cualquier sentencia **SELECT** existente funciona sin cambios.
 
@@ -39,7 +37,7 @@ El diseño de **Crono SQL** responde a cinco principios que explican la mayoría
 
 **3. Todo en ficheros de texto.** La lógica de negocio, la estructura del modelo de datos y las reglas de carga residen en ficheros de texto plano. Nada se esconde en interfaces gráficas, configuraciones binarias o metadatos de herramientas propietarias. El código es la verdad única del proyecto, y puede —y debe— versionarse en Git como cualquier otro software. Al residir en ficheros locales, el proyecto funciona completamente en tu equipo: sin depender de notebooks en el navegador, sin que ningún proveedor controle tu entorno de trabajo, sin necesitar conexión a una plataforma cloud para desarrollar, revisar o depurar.
 
-**4. Sin repeticiones.** El código repetido es código que se desactualiza, que falla de formas distintas en sitios distintos y que nadie quiere mantener. Crono SQL elimina activamente las repeticiones: las columnas calculadas se reutilizan, los JOINs se simplifican, los patrones de carga se definen una sola vez. Y la misma sentencia que carga los datos define también la estructura de la tabla: el modelo y la carga nunca se dessincronizan porque son la misma cosa.
+**4. Una única definición.** En un proyecto ETL tradicional, la misma realidad se escribe varias veces: la tabla en el DDL, la lógica de carga en el procedimiento, las validaciones en un script aparte, la auditoría en otro. Cada pieza puede desincronizarse de las demás, y cada desincronización es un bug potencial. Crono SQL parte de un principio distinto: una única sentencia declarativa es la fuente de verdad. De ella se deriva automáticamente la estructura de la tabla, los índices, las claves foráneas, los campos de auditoría y la lógica de carga. Cambiar el modelo es cambiar una línea; el resto se actualiza solo. El resultado es un proyecto más fácil de mantener, con menos posibilidades de error y donde los cambios son rápidos y seguros.
 
 **5. Un lenguaje de dominio, no plantillas.** Toda disciplina de ingeniería madura tiene un lenguaje específico para su dominio. Crono SQL es ese lenguaje para ETL/DWH: tiene gramática formal, compilador y detección de errores en tiempo de compilación, antes de que nada se ejecute en base de datos. No es un sistema de macros ni una capa de plantillas sobre SQL. El código que ves es exactamente lo que se ejecuta, y si hay un error, lo sabes antes de tocar producción.
 
