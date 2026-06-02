@@ -48,10 +48,16 @@ export function useCompilation() {
     initialCode = defaultCode
   }
     
+  const ENGINE_STORAGE_KEY = 'crono-sql-engine'
   const initialEngine = urlParams?.get('engine') as EngineId
-  const validEngine = Object.values(EngineId).includes(initialEngine) 
-    ? initialEngine 
-    : EngineId.Snowflake
+  const storedEngine = typeof window !== 'undefined'
+    ? window.localStorage.getItem(ENGINE_STORAGE_KEY) as EngineId | null
+    : null
+  const validEngine = Object.values(EngineId).includes(initialEngine)
+    ? initialEngine
+    : (storedEngine && Object.values(EngineId).includes(storedEngine))
+      ? storedEngine
+      : EngineId.Snowflake
 
   const selectedEngine: Ref<EngineId> = ref(validEngine)
   const isCompiling: Ref<boolean> = ref(false)
@@ -86,6 +92,11 @@ export function useCompilation() {
 
   // Store code in localStorage so sidebar can select matching example
   onMounted(() => {
+    // Unify engine state: persist the effective initial engine (incl. URL-driven)
+    // so the docs modal and the playground always share the same remembered engine
+    if (typeof window !== 'undefined') {
+      window.localStorage.setItem(ENGINE_STORAGE_KEY, selectedEngine.value)
+    }
     if (hasCodeInUrl && cronoCode.value !== defaultCode) {
       localStorage.setItem('pg-url-code', cronoCode.value)
       playgroundBus.emit('url-code-loaded', cronoCode.value)
@@ -122,7 +133,12 @@ export function useCompilation() {
   }
 
   watch(cronoCode, updateUrl)
-  watch(selectedEngine, updateUrl)
+  watch(selectedEngine, () => {
+    updateUrl()
+    if (typeof window !== 'undefined') {
+      window.localStorage.setItem(ENGINE_STORAGE_KEY, selectedEngine.value)
+    }
+  })
   watch(etlOptions, updateUrl, { deep: true })
 
   const sqlOutput: Ref<string> = ref('')
