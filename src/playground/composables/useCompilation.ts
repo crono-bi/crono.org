@@ -4,17 +4,7 @@ import { CronoSqlService } from '../services/cronosql.service'
 import { EngineId, EtlColumnDefault } from '../types/enums'
 import type { EtlOptions } from '../types/interfaces'
 import { playgroundBus } from '../event-bus'
-
-const ENGINE_LABELS: Record<EngineId, string> = {
-  [EngineId.SQLServer]:  'SQL Server',
-  [EngineId.Snowflake]:  'Snowflake',
-  [EngineId.Postgres]:   'PostgreSQL',
-  [EngineId.Redshift]:   'Redshift',
-  [EngineId.BigQuery]:   'BigQuery',
-  [EngineId.Databricks]: 'Databricks',
-  [EngineId.MSFabric]:   'MS Fabric DWH',
-  [EngineId.DuckDB]:     'DuckDB'
-}
+import { ENGINE_MAP, DEFAULT_ENGINE } from '../../config/engines'
 
 const defaultCode = `/*
   Welcome to Crono Playground!
@@ -53,11 +43,11 @@ export function useCompilation() {
   const storedEngine = typeof window !== 'undefined'
     ? window.localStorage.getItem(ENGINE_STORAGE_KEY) as EngineId | null
     : null
-  const validEngine = Object.values(EngineId).includes(initialEngine)
+  const validEngine = ENGINE_MAP.has(initialEngine)
     ? initialEngine
-    : (storedEngine && Object.values(EngineId).includes(storedEngine))
+    : (storedEngine && ENGINE_MAP.has(storedEngine))
       ? storedEngine
-      : EngineId.Snowflake
+      : DEFAULT_ENGINE
 
   const selectedEngine: Ref<EngineId> = ref(validEngine)
   const isCompiling: Ref<boolean> = ref(false)
@@ -142,7 +132,7 @@ export function useCompilation() {
   watch(etlOptions, updateUrl, { deep: true })
 
   const sqlOutput: Ref<string> = ref('')
-  const engineLabel = computed(() => ENGINE_LABELS[selectedEngine.value] || selectedEngine.value)
+  const engineLabel = computed(() => ENGINE_MAP.get(selectedEngine.value)?.name ?? selectedEngine.value)
 
   let runId = 0
 

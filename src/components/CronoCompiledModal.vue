@@ -55,18 +55,8 @@ import { Theme, EngineId } from '../playground/types/enums'
 import CodeEditor from '../playground/components/CodeEditor.vue'
 import EngineSelector from '../playground/components/EngineSelector.vue'
 import { CronoSqlService } from '../playground/services/cronosql.service'
+import { ENGINE_MAP, DEFAULT_ENGINE } from '../config/engines'
 import cronoIcon from '../playground/assets/datawarehouse-logos/crono.svg?url'
-
-const ENGINE_LABELS: Record<EngineId, string> = {
-  [EngineId.SQLServer]:  'SQL Server',
-  [EngineId.Snowflake]:  'Snowflake',
-  [EngineId.Postgres]:   'PostgreSQL',
-  [EngineId.Redshift]:   'Redshift',
-  [EngineId.BigQuery]:   'BigQuery',
-  [EngineId.Databricks]: 'Databricks',
-  [EngineId.MSFabric]:   'MS Fabric DWH',
-  [EngineId.DuckDB]:     'DuckDB'
-}
 
 const ENGINE_STORAGE_KEY = 'crono-sql-engine'
 
@@ -78,9 +68,9 @@ const compilationError = ref('')
 
 // Engine: persisted across blocks via localStorage
 function loadEngine(): EngineId {
-  if (typeof window === 'undefined') return EngineId.Snowflake
+  if (typeof window === 'undefined') return DEFAULT_ENGINE
   const stored = window.localStorage.getItem(ENGINE_STORAGE_KEY) as EngineId | null
-  return stored && Object.values(EngineId).includes(stored) ? stored : EngineId.Snowflake
+  return stored && ENGINE_MAP.has(stored) ? stored : DEFAULT_ENGINE
 }
 const selectedEngine = ref<EngineId>(loadEngine())
 
@@ -97,7 +87,7 @@ const themeClass = computed(() => ({
   'ccm-theme-dark': theme.value === Theme.Dark,
 }))
 
-const engineLabel = computed(() => ENGINE_LABELS[selectedEngine.value] || selectedEngine.value)
+const engineLabel = computed(() => ENGINE_MAP.get(selectedEngine.value)?.name ?? selectedEngine.value)
 
 const playgroundUrl = computed(() => {
   if (typeof window === 'undefined') return '/playground'
