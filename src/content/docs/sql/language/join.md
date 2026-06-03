@@ -152,6 +152,8 @@ INNER JOIN staging.shippers USING (ship_via shipper_id)
 WHERE shipping.is_late = TRUE
 ```
 
+**Nota de compatibilidad:** `CALCULATE JOIN` se compila como `CROSS JOIN LATERAL`. Esta construcción no está soportada en **BigQuery** ni en **Redshift**, por lo que `CALCULATE JOIN` no está disponible en estos motores. El resto de motores soportados por **Crono SQL** admiten esta funcionalidad sin restricciones.
+
 
 ## ANTI JOIN
 
