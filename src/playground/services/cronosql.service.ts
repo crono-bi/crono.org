@@ -1,17 +1,7 @@
 import httpClient from './http.client'
 import { EngineId, SqlDialect } from '../types/enums'
+import { ENGINE_MAP } from '../../config/engines'
 import type { EtlOptions, CompileResult, TranspileRequest, TranspileResponse, ApiErrorResponse } from '../types/interfaces'
-
-const DIALECT_MAP: Record<EngineId, SqlDialect> = {
-  [EngineId.SQLServer]: SqlDialect.SQLServer,
-  [EngineId.Snowflake]: SqlDialect.Snowflake,
-  [EngineId.Postgres]:  SqlDialect.Postgres,
-  [EngineId.Redshift]:  SqlDialect.Redshift,
-  [EngineId.BigQuery]:  SqlDialect.BigQuery,
-  [EngineId.Databricks]: SqlDialect.Databricks,
-  [EngineId.MSFabric]: SqlDialect.MSFabric,
-  [EngineId.DuckDB]: SqlDialect.DuckDB
-}
 
 export const CronoSqlService = {
   async compile(code: string, engine: EngineId = EngineId.SQLServer, etlOptions: EtlOptions = {} as EtlOptions): Promise<CompileResult> {
@@ -19,7 +9,7 @@ export const CronoSqlService = {
       const body: TranspileRequest = {
         CronoSql: code,
         ParseOptions: {
-          SqlDialect: DIALECT_MAP[engine]
+          SqlDialect: ENGINE_MAP.get(engine)?.dialect ?? SqlDialect.Snowflake
         },
         EtlOptions: etlOptions
       }

@@ -3,6 +3,7 @@
 import ManualLanding from './ManualLanding.astro'
 import type { Feature, Category, Statement, FuncExample } from './ManualLanding.astro'
 import mergeCloneExample from '../playground/examples/merge-clone.sql?raw'
+import { ENGINE_NAMES } from '../config/engines'
 
 const features: Feature[] = [
   {
@@ -57,7 +58,7 @@ const categories: Category[] = [
   }
 ]
 
-const engines = ['SQL Server', 'Snowflake', 'PostgreSQL', 'Redshift', 'BigQuery', 'Databricks', 'MS Fabric', 'DuckDB']
+const engines = ENGINE_NAMES
 
 const statements: Statement[] = [
   { name: 'SELECT', description: 'JOINs simplificados, columnas reutilizables y apilamiento de consultas' },

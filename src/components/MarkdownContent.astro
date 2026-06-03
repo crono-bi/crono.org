@@ -11,3 +11,68 @@ const showGiscus = entryId.startsWith('sql/functions/');
 </div>
 
 {showGiscus && <GiscusComments />}
+
+<script>
+  // Global "Ver compilado" button injector for all crono-sql code blocks.
+  // Zero imports required in markdown — runs on every doc page.
+  // The heavy Vue modal (CodeMirror) is lazy-mounted on first click only.
+
+  let modalMounted = false;
+
+  async function ensureModal(): Promise<void> {
+    if (modalMounted) return;
+    modalMounted = true;
+    const [{ createApp }, { default: Modal }] = await Promise.all([
+      import('vue'),
+      import('./CronoCompiledModal.vue'),
+    ]);
+    const host = document.createElement('div');
+    host.id = 'crono-compiled-modal-host';
+    document.body.appendChild(host);
+    createApp(Modal).mount(host);
+  }
+
+  function extractCode(pre: HTMLElement): string {
+    // Expressive Code renders one <div class="ec-line"> per source line.
+    const lines = pre.querySelectorAll('.ec-line');
+    if (lines.length > 0) {
+      return Array.from(lines).map((l) => l.textContent ?? '').join('\n').trim();
+    }
+    const code = pre.querySelector('code');
+    return (code?.textContent ?? pre.textContent ?? '').trim();
+  }
+
+  async function onCompileClick(code: string): Promise<void> {
+    await ensureModal();
+    window.dispatchEvent(new CustomEvent('crono:compile', { detail: { code } }));
+  }
+
+  function injectButtons(): void {
+    const blocks = document.querySelectorAll<HTMLElement>(
+      '.sl-markdown-content [data-language="crono-sql"]'
+    );
+    blocks.forEach((pre) => {
+      // Guard against duplicate injection (Starlight view transitions / re-runs)
+      const frame = pre.closest('.frame') ?? pre.parentElement;
+      if (!frame || frame.nextElementSibling?.classList.contains('crono-compile-btn')) return;
+
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'crono-compile-btn';
+      btn.setAttribute('aria-label', 'Ver SQL compilado');
+      btn.title = 'Ver SQL compilado';
+      btn.innerHTML =
+        '<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg><span>Ver compilado</span>';
+
+      btn.addEventListener('click', () => {
+        void onCompileClick(extractCode(pre));
+      });
+
+      // Insert button after the frame, not inside — avoids clipboard btn collision
+      frame.insertAdjacentElement('afterend', btn);
+    });
+  }
+
+  injectButtons();
+  document.addEventListener('astro:page-load', injectButtons);
+</script>

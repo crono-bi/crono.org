@@ -102,7 +102,8 @@ function findAndSelectExampleByCode(code: string): void {
   
   const normalizedCode = normalizeForCompare(code)
   
-  // First pass: look for exact code match (most reliable)
+  // Only select a sidebar item on exact code match — custom code from docs
+  // should not highlight any example
   for (const group of examples.value) {
     for (const item of group.items) {
       const itemNormalized = normalizeForCompare(item.code)
@@ -113,29 +114,8 @@ function findAndSelectExampleByCode(code: string): void {
     }
   }
   
-  // Second pass: look for "Merge Clone" specifically by name
-  const targetName = 'Merge Clone'.toLowerCase().replace(/\s+/g, '')
-  for (const group of examples.value) {
-    for (const item of group.items) {
-      const itemNameNormalized = item.name.toLowerCase().replace(/\s+/g, '')
-      if (itemNameNormalized === targetName) {
-        selectExample(group.group, item.name)
-        return
-      }
-    }
-  }
-  
-  // Third pass: fallback to partial name match in code
-  for (const group of examples.value) {
-    for (const item of group.items) {
-      if (normalizedCode.includes(item.name.toLowerCase().replace(/\s+/g, ''))) {
-        selectExample(group.group, item.name)
-        return
-      }
-    }
-  }
-  
-  // If no match found, clear pending
+  // No match: custom code — clear selection and pending, nothing to highlight
+  activeExample.value = ''
   pendingCodeFromUrl.value = null
 }
 

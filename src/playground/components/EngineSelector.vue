@@ -21,17 +21,7 @@
 import { computed } from 'vue'
 import { EngineId, Theme } from '../types/enums'
 import type { Engine } from '../types/interfaces'
-
-const LOGOS = {
-  [EngineId.SQLServer]:  '/playground-assets/microsoft-sql-server.svg',
-  [EngineId.Snowflake]:  '/playground-assets/snowflake.svg',
-  [EngineId.Postgres]:   '/playground-assets/postgresql.svg',
-  [EngineId.Redshift]:   '/playground-assets/redshift.svg',
-  [EngineId.BigQuery]:   '/playground-assets/bigquery.svg',
-  [EngineId.Databricks]: '/playground-assets/databricks.svg',
-  [EngineId.MSFabric]:   '/playground-assets/msfabric.svg',
-  [EngineId.DuckDB]:     '/playground-assets/duckDB.svg'
-} as const
+import { ENGINES } from '../../config/engines'
 
 const props = defineProps<{
   modelValue: EngineId
@@ -44,16 +34,8 @@ defineEmits<{
 
 const themeClass = computed(() => props.theme === Theme.Light ? 'theme-light' : 'theme-dark')
 
-const engines: Engine[] = [
-  { id: EngineId.Snowflake,  label: 'Snowflake',        icon: LOGOS[EngineId.Snowflake] },
-  { id: EngineId.Redshift,   label: 'Redshift',         icon: LOGOS[EngineId.Redshift] },
-  { id: EngineId.BigQuery,   label: 'BigQuery',         icon: LOGOS[EngineId.BigQuery] },
-  { id: EngineId.SQLServer,  label: 'SQL Server',       icon: LOGOS[EngineId.SQLServer] },
-  { id: EngineId.Postgres,   label: 'PostgreSQL',       icon: LOGOS[EngineId.Postgres] },
-  { id: EngineId.Databricks, label: 'Databricks',       icon: LOGOS[EngineId.Databricks] },
-  { id: EngineId.MSFabric,   label: 'Microsoft Fabric', icon: LOGOS[EngineId.MSFabric] },
-  { id: EngineId.DuckDB,     label: 'DuckDB',           icon: LOGOS[EngineId.DuckDB] }
-]
+// Derivado de la fuente única (config/engines.ts)
+const engines: Engine[] = ENGINES.map(e => ({ id: e.id, label: e.name, icon: e.logo }))
 </script>
 
 <style scoped>

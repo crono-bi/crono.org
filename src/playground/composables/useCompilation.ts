@@ -4,17 +4,7 @@ import { CronoSqlService } from '../services/cronosql.service'
 import { EngineId, EtlColumnDefault } from '../types/enums'
 import type { EtlOptions } from '../types/interfaces'
 import { playgroundBus } from '../event-bus'
-
-const ENGINE_LABELS: Record<EngineId, string> = {
-  [EngineId.SQLServer]:  'SQL Server',
-  [EngineId.Snowflake]:  'Snowflake',
-  [EngineId.Postgres]:   'PostgreSQL',
-  [EngineId.Redshift]:   'Redshift',
-  [EngineId.BigQuery]:   'BigQuery',
-  [EngineId.Databricks]: 'Databricks',
-  [EngineId.MSFabric]:   'MS Fabric DWH',
-  [EngineId.DuckDB]:     'DuckDB'
-}
+import { ENGINE_MAP, DEFAULT_ENGINE } from '../../config/engines'
 
 const defaultCode = `/*
   Welcome to Crono Playground!
@@ -48,10 +38,16 @@ export function useCompilation() {
     initialCode = defaultCode
   }
     
+  const ENGINE_STORAGE_KEY = 'crono-sql-engine'
   const initialEngine = urlParams?.get('engine') as EngineId
-  const validEngine = Object.values(EngineId).includes(initialEngine) 
-    ? initialEngine 
-    : EngineId.Snowflake
+  const storedEngine = typeof window !== 'undefined'
+    ? window.localStorage.getItem(ENGINE_STORAGE_KEY) as EngineId | null
+    : null
+  const validEngine = ENGINE_MAP.has(initialEngine)
+    ? initialEngine
+    : (storedEngine && ENGINE_MAP.has(storedEngine))
+      ? storedEngine
+      : DEFAULT_ENGINE
 
   const selectedEngine: Ref<EngineId> = ref(validEngine)
   const isCompiling: Ref<boolean> = ref(false)
@@ -86,6 +82,11 @@ export function useCompilation() {
 
   // Store code in localStorage so sidebar can select matching example
   onMounted(() => {
+    // Unify engine state: persist the effective initial engine (incl. URL-driven)
+    // so the docs modal and the playground always share the same remembered engine
+    if (typeof window !== 'undefined') {
+      window.localStorage.setItem(ENGINE_STORAGE_KEY, selectedEngine.value)
+    }
     if (hasCodeInUrl && cronoCode.value !== defaultCode) {
       localStorage.setItem('pg-url-code', cronoCode.value)
       playgroundBus.emit('url-code-loaded', cronoCode.value)
@@ -122,11 +123,16 @@ export function useCompilation() {
   }
 
   watch(cronoCode, updateUrl)
-  watch(selectedEngine, updateUrl)
+  watch(selectedEngine, () => {
+    updateUrl()
+    if (typeof window !== 'undefined') {
+      window.localStorage.setItem(ENGINE_STORAGE_KEY, selectedEngine.value)
+    }
+  })
   watch(etlOptions, updateUrl, { deep: true })
 
   const sqlOutput: Ref<string> = ref('')
-  const engineLabel = computed(() => ENGINE_LABELS[selectedEngine.value] || selectedEngine.value)
+  const engineLabel = computed(() => ENGINE_MAP.get(selectedEngine.value)?.name ?? selectedEngine.value)
 
   let runId = 0
 
