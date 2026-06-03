@@ -134,7 +134,7 @@ WHERE year(orders.order_date) = 2023
 
 ## USING
 
-**Crono SQL** soporta todos los operadores JOIN estándar —**INNER JOIN**, **LEFT JOIN**, **RIGHT JOIN**, **FULL JOIN**, **CROSS JOIN**— y añade operadores propios como **ANTI JOIN** y **SEMI JOIN**. Puedes consultar todos ellos con ejemplos en la página [JOINs](/sql/language/join/).
+**Crono SQL** soporta todos los operadores JOIN estándar —**INNER JOIN**, **LEFT JOIN**, **RIGHT JOIN**, **FULL JOIN**, **CROSS JOIN**— y añade operadores propios como **ANTI JOIN**, el **SEMI JOIN** y el **CALCULATE JOIN**. Puedes consultar todos ellos con ejemplos en la página [JOINs](/sql/language/join/).
 
 La cláusula **USING** simplifica la sintaxis de cualquiera de esos JOINs. En lugar de escribir la condición completa `ON (tabla_a.campo = tabla_b.campo)`, basta con indicar el nombre del campo o la tabla de la que proviene la clave. El resultado es más conciso y más fácil de leer.
 

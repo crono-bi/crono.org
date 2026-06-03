@@ -4,7 +4,7 @@ sidebar:
   order: 13
 ---
 
-**Crono SQL** soporta todos los JOINs estándar de SQL y añade dos propios que expresan patrones habituales en ETL/DWH con una sintaxis más legible.
+**Crono SQL** soporta todos los JOINs estándar de SQL y añade tres propios que expresan patrones habituales en ETL/DWH con una sintaxis más legible.
 
 Los operadores estándar soportados son:
 
@@ -12,14 +12,13 @@ Los operadores estándar soportados son:
 - **LEFT JOIN**
 - **CROSS JOIN**
 - **FULL JOIN**
-- **CROSS APPLY**
-- **OUTER APPLY**
 - **RIGHT JOIN**
 
 Todos ellos funcionan exactamente igual que en SQL estándar y pueden usarse con la cláusula **USING** para simplificar la condición de unión (ver [SELECT](/sql/language/select/#using)).
 
 Los operadores propios de **Crono SQL** son:
 
+- **CALCULATE JOIN**
 - **ANTI JOIN**
 - **SEMI JOIN**
 
@@ -55,6 +54,103 @@ FROM staging.customers
 LEFT JOIN staging.orders USING customer_id
 ```
 
+**Crono SQL** también soporta el modificador `LATERAL` según la especificación ANSI. **LEFT JOIN LATERAL** es el equivalente de un LEFT JOIN para subconsultas correlacionadas: la subconsulta de la derecha se evalúa una vez por cada fila de la izquierda y puede referenciar columnas de cualquier tabla ya presente en la consulta. Conserva todas las filas de la tabla izquierda aunque la subconsulta no devuelva ningún resultado, con `NULL` en las columnas de la derecha.
+
+En la mayoría de casos, un **LEFT JOIN** con `TOP OVER()` o un simple **LEFT JOIN** expresan el mismo resultado de forma más clara y sin perder portabilidad entre motores.
+
+La siguiente consulta devuelve el último pedido de cada cliente, incluyendo a los clientes que no tienen ningún pedido:
+
+```crono-sql
+SELECT
+  customers.company_name,
+  last_order.order_id,
+  last_order.order_date,
+  last_order.freight
+FROM staging.customers
+LEFT JOIN LATERAL (
+  SELECT TOP 1 order_id, order_date, freight
+  FROM staging.orders
+  WHERE orders.customer_id = customers.customer_id
+  ORDER BY order_date DESC
+) last_order
+```
+
+La misma consulta se puede reescribir de forma más legible:
+
+```crono-sql
+SELECT
+  customers.company_name,
+  last_order.order_id,
+  last_order.order_date,
+  last_order.freight
+FROM staging.customers
+LEFT JOIN (
+  SELECT TOP 1 OVER (PARTITION BY customer_id ORDER BY order_date DESC)
+    customer_id,
+    order_id,
+    order_date,
+    freight
+  FROM staging.orders
+) last_order USING customer_id
+```
+
+**Crono SQL** también acepta la sintaxis `OUTER APPLY`, propia de SQL Server, como sinónimo de `LEFT JOIN LATERAL`. Independientemente de cuál se use en el código, el compilador generará la sintaxis adecuada para cada motor.
+
+
+## CALCULATE JOIN
+
+**CALCULATE JOIN** define un conjunto de columnas derivadas a partir de cualquier columna disponible en la consulta hasta ese momento.
+
+Las columnas calculadas se agrupan bajo un alias y pasan a comportarse como las columnas de cualquier otra tabla: pueden utilizarse en el SELECT, el WHERE, el GROUP BY, el ORDER BY y en los JOINs posteriores. Es una buena forma de organizar las transformaciones paso a paso sin ensuciar el `SELECT` principal con expresiones largas o anidadas.
+
+El siguiente ejemplo calcula los días de envío, determina si un pedido llegó tarde y calcula la penalización correspondiente:
+
+
+```crono-sql
+SELECT
+  orders.order_id,
+  orders.order_date,
+  customers.company_name AS customer,
+  employees.last_name AS employee,
+  shipping.days_to_ship,
+  shipping.is_late,
+  shipping.late_fee
+FROM staging.orders
+INNER JOIN staging.customers USING customer_id
+INNER JOIN staging.employees USING employee_id
+CALCULATE JOIN (
+  daysdiff(order_date, shipped_date) days_to_ship,
+  if(shipped_date > required_date) is_late,
+  if(is_late = TRUE AND customers.country <> employees.country, freight * 0.15, 0) late_fee
+) shipping
+INNER JOIN staging.shippers USING (ship_via shipper_id)
+WHERE shipping.is_late = TRUE
+```
+
+Las columnas definidas en el bloque `CALCULATE JOIN` (`days_to_ship`, `is_late`, `late_fee`) son visibles en los JOINs posteriores, en el `WHERE` y en el `SELECT`, igual que las columnas de cualquier otra tabla unida.
+
+La palabra **JOIN** del **CALCULATE JOIN** es opcional:
+
+```crono-sql
+SELECT
+  orders.order_id,
+  orders.order_date,
+  customers.company_name AS customer,
+  employees.last_name AS employee,
+  shipping.days_to_ship,
+  shipping.is_late,
+  shipping.late_fee
+FROM staging.orders
+INNER JOIN staging.customers USING customer_id
+INNER JOIN staging.employees USING employee_id
+CALCULATE (
+  daysdiff(order_date, shipped_date) days_to_ship,
+  if(shipped_date > required_date) is_late,
+  if(is_late = TRUE AND customers.country <> employees.country, freight * 0.15, 0) late_fee
+) shipping
+INNER JOIN staging.shippers USING (ship_via shipper_id)
+WHERE shipping.is_late = TRUE
+```
 
 
 ## ANTI JOIN
@@ -103,28 +199,9 @@ FROM staging.products
 CROSS JOIN staging.categories
 ```
 
+**Crono SQL** también soporta el modificador `LATERAL` según la especificación ANSI. **CROSS JOIN LATERAL** evalúa la subconsulta de la derecha una vez por cada fila de la izquierda, pudiendo referenciar columnas de cualquier tabla ya presente en la consulta. Solo se devuelven las filas para las que la subconsulta devuelve al menos un resultado — comportamiento equivalente a un INNER JOIN.
 
-## FULL JOIN
-
-Devuelve todos los registros de ambas tablas, con `NULL` en las columnas del lado que no tiene correspondencia. Útil para detectar registros huérfanos en ambos extremos.
-
-```crono-sql
-SELECT
-  customers.company_name AS customer,
-  orders.order_id,
-  orders.order_date
-FROM staging.customers
-FULL JOIN staging.orders USING customer_id
-```
-
-
-
-
-## CROSS APPLY
-
-**CROSS APPLY** es similar a **CROSS JOIN**, con una diferencia fundamental: la expresión de la derecha se evalúa una vez por cada fila de la izquierda y puede referenciar columnas de cualquier tabla ya presente en la consulta. Solo se devuelven las filas para las que la subconsulta devuelve al menos un resultado — comportamiento equivalente a un INNER JOIN.
-
-Son operadores potentes, pero su sintaxis es densa y las consultas que los usan resultan difíciles de leer y mantener. En **Crono SQL**, casi siempre es posible expresar el mismo resultado de forma más clara con otras construcciones del lenguaje.
+Es un operador potente, pero su sintaxis es densa y las consultas que lo usan resultan difíciles de leer y mantener. En **Crono SQL**, casi siempre es posible expresar el mismo resultado de forma más clara con otras construcciones del lenguaje.
 
 El caso de uso más habitual es el patrón **top N por grupo**: obtener, para cada elemento de la tabla izquierda, los N registros más recientes o más relevantes de la tabla derecha. Este ejemplo devuelve, para cada cliente, su pedido más reciente:
 
@@ -135,7 +212,7 @@ SELECT
   last_order.order_date,
   last_order.freight
 FROM staging.customers
-CROSS APPLY (
+CROSS JOIN LATERAL (
   SELECT TOP 1 order_id, order_date, freight
   FROM staging.orders
   WHERE orders.customer_id = customers.customer_id
@@ -162,51 +239,25 @@ INNER JOIN (
 ) last_order USING customer_id
 ```
 
-**CROSS APPLY** sigue siendo útil cuando la subconsulta depende de múltiples columnas del contexto o cuando se trabaja con funciones de tabla que reciben parámetros de la fila actual.
+**CROSS JOIN LATERAL** sigue siendo útil cuando la subconsulta depende de múltiples columnas del contexto o cuando se trabaja con funciones de tabla que reciben parámetros de la fila actual.
+
+**Crono SQL** también acepta la sintaxis `CROSS APPLY`, propia de SQL Server, como sinónimo de `CROSS JOIN LATERAL`. Independientemente de cuál se use en el código, el compilador generará la sintaxis adecuada para cada motor.
 
 
-## OUTER APPLY
+## FULL JOIN
 
-**OUTER APPLY** es la variante exterior de **CROSS APPLY**: conserva todas las filas de la tabla izquierda aunque la subconsulta de la derecha no devuelva ningún resultado, con `NULL` en las columnas de la derecha. Es el equivalente de un LEFT JOIN para subconsultas correlacionadas.
-
-Al igual que **CROSS APPLY**, su uso directo produce consultas complejas. En la mayoría de casos, un **LEFT JOIN** con `TOP OVER()` o un simple **LEFT JOIN** expresan el mismo resultado de forma más clara y sin perder portabilidad entre motores.
-
-
-La siguiente consulta devuelve el último pedido de cada cliente usando **OUTER APPLY**, incluyendo a los cliente que no tienen ningún pedido.
+Devuelve todos los registros de ambas tablas, con `NULL` en las columnas del lado que no tiene correspondencia. Útil para detectar registros huérfanos en ambos extremos.
 
 ```crono-sql
 SELECT
-  customers.company_name,
-  last_order.order_id,
-  last_order.order_date,
-  last_order.freight
+  customers.company_name AS customer,
+  orders.order_id,
+  orders.order_date
 FROM staging.customers
-OUTER APPLY (
-  SELECT TOP 1 order_id, order_date, freight
-  FROM staging.orders
-  WHERE orders.customer_id = customers.customer_id
-  ORDER BY order_date DESC
-) last_order
+FULL JOIN staging.orders USING customer_id
 ```
 
-Al igual que en el caso anterior se puede reescribir de una manera más legible:
 
-```crono-sql
-SELECT
-  customers.company_name,
-  last_order.order_id,
-  last_order.order_date,
-  last_order.freight
-FROM staging.customers
-LEFT JOIN (
-  SELECT TOP 1 OVER (PARTITION BY customer_id ORDER BY order_date DESC)
-    customer_id,
-    order_id,
-    order_date,
-    freight
-  FROM staging.orders
-) last_order USING customer_id
-```
 
 
 ## RIGHT JOIN
@@ -222,3 +273,4 @@ RIGHT JOIN staging.customers USING customer_id
 ```
 
 En la práctica, el **RIGHT JOIN** se usa muy poco. Cualquier RIGHT JOIN puede reescribirse como un LEFT JOIN intercambiando el orden de las tablas, que resulta más fácil de leer. Su aparición en una consulta suele ser señal de que el FROM está mal elegido o de que la lógica de la consulta tiene alguna anomalía que merece revisarse.
+
