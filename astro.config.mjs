@@ -16,6 +16,7 @@ import cronoSqlLang from './src/config/crono-sql-grammar.mjs';
 
 // https://astro.build/config
 export default defineConfig({
+	site: 'https://crono.org',
 	vite: {
 		plugins: [tailwindcss()],
 		optimizeDeps: {
@@ -36,9 +37,15 @@ export default defineConfig({
 	integrations: [
 		vue(),
 		starlight({
-			title: 'Manual de usuario',
-			defaultLocale: 'es',
-			locales: { root: { label: 'Español', lang: 'es' } },
+			title: {
+				es: 'Manual de usuario',
+				en: 'User Manual',
+			},
+			defaultLocale: 'root',
+			locales: {
+				root: { label: 'Español', lang: 'es' },
+				en: { label: 'English', lang: 'en' },
+			},
 			social: [],
 			customCss: ['./src/styles/custom.css'],
 			components: {

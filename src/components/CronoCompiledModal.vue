@@ -5,9 +5,9 @@
       <div class="ccm-header">
         <div class="ccm-title">
           <img :src="cronoIcon" alt="Crono" class="ccm-title-icon" />
-          <span>Crono SQL → SQL compilado</span>
+          <span>{{ t('modal.title') }}</span>
         </div>
-        <button class="ccm-close" @click="close" title="Cerrar (Esc)" aria-label="Cerrar">
+        <button class="ccm-close" @click="close" :title="t('modal.close')" :aria-label="t('modal.closeAria')">
           <X :size="18" />
         </button>
       </div>
@@ -17,7 +17,7 @@
         <!-- Source -->
         <div class="ccm-col">
           <div class="ccm-col-header">
-            <span class="ccm-col-label">Crono SQL</span>
+            <span class="ccm-col-label">{{ t('modal.cronoSql') }}</span>
           </div>
           <div class="ccm-col-body">
             <CodeEditor :modelValue="sourceCode" :readonly="true" :theme="theme" />
@@ -28,8 +28,8 @@
         <div class="ccm-col">
           <div class="ccm-col-header">
             <EngineSelector v-model="selectedEngine" :theme="theme" />
-            <span v-if="isCompiling" class="ccm-status ccm-compiling">Compilando…</span>
-            <span v-else-if="compilationError" class="ccm-status ccm-error">Error</span>
+            <span v-if="isCompiling" class="ccm-status ccm-compiling">{{ t('modal.compiling') }}</span>
+            <span v-else-if="compilationError" class="ccm-status ccm-error">{{ t('modal.error') }}</span>
           </div>
           <div class="ccm-col-body">
             <CodeEditor :modelValue="sqlOutput" :readonly="true" :theme="theme" />
@@ -41,7 +41,7 @@
       <div class="ccm-footer">
         <a :href="playgroundUrl" target="_blank" rel="noopener" class="ccm-pg-link">
           <ExternalLink :size="14" />
-          <span>Abrir en Playground</span>
+          <span>{{ t('modal.openPlayground') }}</span>
         </a>
       </div>
     </div>
@@ -56,7 +56,10 @@ import CodeEditor from '../playground/components/CodeEditor.vue'
 import EngineSelector from '../playground/components/EngineSelector.vue'
 import { CronoSqlService } from '../playground/services/cronosql.service'
 import { ENGINE_MAP, DEFAULT_ENGINE } from '../config/engines'
+import { useT, getLangFromPath } from '../i18n/ui'
 import cronoIcon from '../playground/assets/datawarehouse-logos/crono.svg?url'
+
+const t = useT(getLangFromPath(typeof window !== 'undefined' ? window.location.pathname : '/'))
 
 const ENGINE_STORAGE_KEY = 'crono-sql-engine'
 
@@ -98,21 +101,21 @@ const playgroundUrl = computed(() => {
 let runId = 0
 async function compile() {
   if (!sourceCode.value.trim()) {
-    sqlOutput.value = '-- Sin código para compilar'
+    sqlOutput.value = t('modal.noCode')
     return
   }
   const currentRunId = ++runId
   isCompiling.value = true
   compilationError.value = ''
-  sqlOutput.value = `-- Compilando para ${engineLabel.value}…`
+  sqlOutput.value = t('modal.compilingFor', { engine: engineLabel.value })
 
   try {
     const result = await CronoSqlService.compile(sourceCode.value, selectedEngine.value)
     if (currentRunId !== runId) return
 
-    let output = `-- SQL generado para ${engineLabel.value}\n`
+    let output = t('modal.generatedFor', { engine: engineLabel.value }) + '\n'
     if (result.warnings.length > 0) {
-      output += `-- Advertencias:\n`
+      output += t('modal.warnings') + '\n'
       result.warnings.forEach(w => { output += `--   ${w}\n` })
       output += `\n`
     }
@@ -120,12 +123,12 @@ async function compile() {
     sqlOutput.value = output.replace(/\r\n/g, '\n').replace(/\r/g, '\n')
   } catch (error: unknown) {
     if (currentRunId !== runId) return
-    const msg = error instanceof Error ? error.message : 'Error desconocido'
+    const msg = error instanceof Error ? error.message : t('modal.unknownError')
     const code = (error as Error & { code?: string }).code
     compilationError.value = msg
     sqlOutput.value = code === 'SyntaxErrorException'
-      ? `-- Error de sintaxis en tu Crono SQL:\n-- ${msg}`
-      : `-- Error de compilación:\n-- ${msg}`
+      ? `${t('modal.syntaxError')}\n-- ${msg}`
+      : `${t('modal.compileError')}\n-- ${msg}`
   } finally {
     if (currentRunId === runId) isCompiling.value = false
   }

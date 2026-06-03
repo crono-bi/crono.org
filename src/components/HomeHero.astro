@@ -4,6 +4,9 @@ import HomeFooter from './HomeFooter.astro'
 import { PRODUCTS } from '../config/products'
 import { ENGINES } from '../config/engines'
 import mergeCloneExample from '../playground/examples/merge-clone.sql?raw'
+import { useT, getLangFromLocale } from '../i18n/ui'
+
+const t = useT(getLangFromLocale(Astro.currentLocale))
 
 // Generate playground URL from the example
 const playgroundUrl = `/playground/?code=${btoa(encodeURIComponent(mergeCloneExample))}`
@@ -37,33 +40,33 @@ const highlightedCode = highlightMergeClone(mergeCloneExample)
 const products = [
   {
     ...PRODUCTS.sql,
-    tagline: 'Lenguaje SQL extendido',
-    desc: 'Reduce el tiempo de desarrollo un 40%. Escribe 5 líneas de Crono SQL, genera 200 de SQL estándar automáticamente.',
+    tagline: t('homeHero.product.sql.tagline'),
+    desc: t('homeHero.product.sql.desc'),
     href: '/sql/',
-    stats: '376 docs',
+    stats: t('homeHero.product.sql.stats'),
   },
   {
     ...PRODUCTS.etl,
-    tagline: 'Data Warehouse',
-    desc: 'Cargas diarias automatizadas que nunca fallan. Ahorra 10 horas semanales de trabajo manual repetitivo.',
+    tagline: t('homeHero.product.etl.tagline'),
+    desc: t('homeHero.product.etl.desc'),
     href: '/etl/',
-    stats: 'En desarrollo',
+    stats: t('homeHero.product.etl.stats'),
   },
   {
     ...PRODUCTS.metadata,
-    tagline: 'Capa Semántica',
-    desc: 'Los usuarios de negocio crean sus propios informes sin depender del equipo IT. Auto-servicio de verdad.',
+    tagline: t('homeHero.product.metadata.tagline'),
+    desc: t('homeHero.product.metadata.desc'),
     href: '/metadata/',
     color: '#8B5CF6',
-    stats: '20 artículos',
+    stats: t('homeHero.product.metadata.stats'),
     icon: '<path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/>',
   },
   {
     ...PRODUCTS.analysis,
-    tagline: 'Business Intelligence',
-    desc: 'Toma decisiones basadas en datos en minutos, no en días. Dashboards que se actualizan solos.',
+    tagline: t('homeHero.product.analysis.tagline'),
+    desc: t('homeHero.product.analysis.desc'),
     href: '/analysis/',
-    stats: '17 artículos',
+    stats: t('homeHero.product.analysis.stats'),
   },
 ]
 
@@ -89,20 +92,20 @@ ORDER BY TotalSales DESC`
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
           </svg>
-          <span>Documentación técnica</span>
+          <span>{t('homeHero.label')}</span>
         </div>
 
         <h1 class="hero-headline">
-          De los datos al
+          {t('homeHero.headline1')}
         </h1>
         <h1 class="hero-headline hero-headline-accent">
-          <span class="text-gradient">dashboard</span>
+          <span class="text-gradient">{t('homeHero.headline2')}</span>
         </h1>
 
         <div class="hero-separator"></div>
 
         <p class="hero-desc">
-          De los datos crudos a las decisiones inteligentes. Una plataforma única que elimina la complejidad técnica y acelera tus proyectos BI hasta un 60%.
+          {t('homeHero.desc')}
         </p>
 
         <div class="hero-stats-row">
@@ -113,7 +116,7 @@ ORDER BY TotalSales DESC`
               </svg>
             </div>
             <div class="hero-stat-big">+</div>
-            <div class="hero-stat-sub">FÁCIL</div>
+            <div class="hero-stat-sub">{t('homeHero.stat.easy')}</div>
           </div>
           <div class="hero-stat-divider"></div>
           <div class="hero-stat-item">
@@ -124,7 +127,7 @@ ORDER BY TotalSales DESC`
               </svg>
             </div>
             <div class="hero-stat-big">1</div>
-            <div class="hero-stat-sub">PLATAFORMA</div>
+            <div class="hero-stat-sub">{t('homeHero.stat.platform')}</div>
           </div>
           <div class="hero-stat-divider"></div>
           <div class="hero-stat-item">
@@ -134,22 +137,22 @@ ORDER BY TotalSales DESC`
               </svg>
             </div>
             <div class="hero-stat-big">60%</div>
-            <div class="hero-stat-sub">MÁS RÁPIDO</div>
+            <div class="hero-stat-sub">{t('homeHero.stat.faster')}</div>
           </div>
         </div>
 
         <div class="hero-btn-group">
           <a href="#manuales-crono" class="hero-btn-primary hero-btn-docs">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><path d="M12 11h6"/><path d="M12 7h4"/></svg>
-            Documentación
+            {t('homeHero.btn.docs')}
           </a>
           <a href="/downloads/" class="hero-btn-primary hero-btn-downloads">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-            Descargas
+            {t('homeHero.btn.downloads')}
           </a>
           <a href="/precios/" class="hero-btn-primary hero-btn-pricing">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12.83 2.18 7.64 7.64A4 4 0 0 1 21 12.83v4.34A2.83 2.83 0 0 1 18.17 20H5.83A2.83 2.83 0 0 1 3 17.17V4.83A2.83 2.83 0 0 1 5.83 2h7Z"/><circle cx="10" cy="10" r="2"/></svg>
-            Precios
+            {t('homeHero.btn.pricing')}
           </a>
         </div>
       </div>
@@ -158,7 +161,7 @@ ORDER BY TotalSales DESC`
       <div class="lg:col-span-5">
         <div class="mock-window">
           <div class="mock-bar">
-            <span class="mock-bar-title">Plataforma Crono</span>
+            <span class="mock-bar-title">{t('homeHero.mock.platform')}</span>
             <div class="mock-win-controls">
               <span class="mock-win-btn minimize">
                 <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/></svg>
@@ -178,9 +181,9 @@ ORDER BY TotalSales DESC`
               </div>
               <div class="mock-col">
                 <span class="mock-name">Crono ETL</span>
-                <span class="mock-sub">Extracción y carga</span>
+                <span class="mock-sub">{t('homeHero.mock.etlSub')}</span>
               </div>
-              <span class="mock-doc-btn" title="Ver documentación" onclick="event.preventDefault(); event.stopPropagation(); window.location.href='/etl/';" role="button" tabindex="0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></span>
+              <span class="mock-doc-btn" title={t('homeHero.mock.viewDocs')} onclick="event.preventDefault(); event.stopPropagation(); window.location.href='/etl/';" role="button" tabindex="0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></span>
               <svg class="mock-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
             </a>
             <a href="#crono-sql" class="mock-row" style="--row-color: #10B981;">
@@ -189,9 +192,9 @@ ORDER BY TotalSales DESC`
               </div>
               <div class="mock-col">
                 <span class="mock-name">Crono SQL</span>
-                <span class="mock-sub">Transformación</span>
+                <span class="mock-sub">{t('homeHero.mock.sqlSub')}</span>
               </div>
-              <span class="mock-doc-btn" title="Ver documentación" onclick="event.preventDefault(); event.stopPropagation(); window.location.href='/sql/';" role="button" tabindex="0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></span>
+              <span class="mock-doc-btn" title={t('homeHero.mock.viewDocs')} onclick="event.preventDefault(); event.stopPropagation(); window.location.href='/sql/';" role="button" tabindex="0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></span>
               <svg class="mock-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
             </a>
             <a href="#crono-metadata" class="mock-row" style="--row-color: #5B2C7D;">
@@ -200,9 +203,9 @@ ORDER BY TotalSales DESC`
               </div>
               <div class="mock-col">
                 <span class="mock-name">Crono Metadata</span>
-                <span class="mock-sub">Capa semántica</span>
+                <span class="mock-sub">{t('homeHero.mock.metadataSub')}</span>
               </div>
-              <span class="mock-doc-btn" title="Ver documentación" onclick="event.preventDefault(); event.stopPropagation(); window.location.href='/metadata/';" role="button" tabindex="0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></span>
+              <span class="mock-doc-btn" title={t('homeHero.mock.viewDocs')} onclick="event.preventDefault(); event.stopPropagation(); window.location.href='/metadata/';" role="button" tabindex="0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></span>
               <svg class="mock-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
             </a>
             <a href="#crono-analysis" class="mock-row" style="--row-color: #C85A47;">
@@ -211,9 +214,9 @@ ORDER BY TotalSales DESC`
               </div>
               <div class="mock-col">
                 <span class="mock-name">Crono Analysis</span>
-                <span class="mock-sub">Autoservicio</span>
+                <span class="mock-sub">{t('homeHero.mock.analysisSub')}</span>
               </div>
-              <span class="mock-doc-btn" title="Ver documentación" onclick="event.preventDefault(); event.stopPropagation(); window.location.href='/analysis/';" role="button" tabindex="0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></span>
+              <span class="mock-doc-btn" title={t('homeHero.mock.viewDocs')} onclick="event.preventDefault(); event.stopPropagation(); window.location.href='/analysis/';" role="button" tabindex="0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></span>
               <svg class="mock-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
             </a>
             <a href="#crono-api" class="mock-row" style="--row-color: #38BDF8;">
@@ -222,7 +225,7 @@ ORDER BY TotalSales DESC`
               </div>
               <div class="mock-col">
                 <span class="mock-name">Crono API</span>
-                <span class="mock-sub">Dashboards web</span>
+                <span class="mock-sub">{t('homeHero.mock.apiSub')}</span>
               </div>
               <svg class="mock-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
             </a>
@@ -232,7 +235,7 @@ ORDER BY TotalSales DESC`
               </div>
               <div class="mock-col">
                 <span class="mock-name">Crono AI</span>
-                <span class="mock-sub">Asistente de datos</span>
+                <span class="mock-sub">{t('homeHero.mock.aiSub')}</span>
               </div>
               <svg class="mock-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
             </a>
@@ -242,7 +245,7 @@ ORDER BY TotalSales DESC`
               </div>
               <div class="mock-col">
                 <span class="mock-name">Crono Excel</span>
-                <span class="mock-sub">Informes en Excel</span>
+                <span class="mock-sub">{t('homeHero.mock.excelSub')}</span>
               </div>
               <svg class="mock-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
             </a>
@@ -271,11 +274,11 @@ ORDER BY TotalSales DESC`
     <div class="ecosystem-header">
       <div class="ecosystem-header-label">
         <span class="ecosystem-header-icon">◆</span>
-        MEJORES PRÁCTICAS
+        {t('homeHero.ecosystem.label')}
       </div>
-      <h2 class="ecosystem-header-title">Una plataforma. <span class="ecosystem-header-accent">Todo el BI.</span></h2>
+      <h2 class="ecosystem-header-title">{t('homeHero.ecosystem.title1')} <span class="ecosystem-header-accent">{t('homeHero.ecosystem.title2')}</span></h2>
       <p class="ecosystem-header-desc">
-        ETL, modelo semántico, análisis, reporting, dashboards e IA.
+        {t('homeHero.ecosystem.subtitle')}
       </p>
     </div>
 
@@ -447,7 +450,7 @@ ORDER BY TotalSales DESC`
         <g class="node node--source">
           <circle class="bg" cx="160" cy="360" r="85"/>
           <use href="#i-server" x="128" y="315" width="64" height="64"/>
-          <text class="title" x="160" y="395">FUENTES DE DATOS</text>
+          <text class="title" x="160" y="395">{t('homeHero.svg.dataSources')}</text>
           <line x1="120" y1="408" x2="200" y2="408" stroke="#e5e7eb" stroke-width="1"/>
         </g>
 
@@ -738,8 +741,8 @@ ORDER BY TotalSales DESC`
               <use href="#i-crono" x="0" y="-22" width="28" height="28" fill="var(--c-analysis)"/>
               <text x="36" y="0" font-size="24" font-weight="600" letter-spacing="0.05em" fill="var(--c-analysis)" font-family="system-ui,-apple-system,sans-serif">CRONO ANALYSIS</text>
             </g>
-            <text x="945" y="128" font-size="14" fill="#4b5563">Autoservicio BI con análisis</text>
-            <text x="945" y="146" font-size="14" fill="#4b5563">libre y OLAP multidimensional</text>
+            <text x="945" y="128" font-size="14" fill="#4b5563">{t('homeHero.svg.analysisLine1')}</text>
+            <text x="945" y="146" font-size="14" fill="#4b5563">{t('homeHero.svg.analysisLine2')}</text>
           </g>
 
           <!-- 2. CRONO API -->
@@ -748,7 +751,7 @@ ORDER BY TotalSales DESC`
               <use href="#i-crono" x="0" y="-22" width="28" height="28" fill="var(--c-api)"/>
               <text x="36" y="0" font-size="24" font-weight="600" letter-spacing="0.05em" fill="var(--c-api)" font-family="system-ui,-apple-system,sans-serif">CRONO API</text>
             </g>
-            <text x="945" y="238" font-size="13" fill="#4b5563">Servicios API REST y dashboards web integrables</text>
+            <text x="945" y="238" font-size="13" fill="#4b5563">{t('homeHero.svg.apiDesc')}</text>
             <!-- Framework buttons (SVG native for pixel-perfect alignment) -->
             <g class="fw-svg-btns">
               <!-- Vue -->
@@ -772,8 +775,8 @@ ORDER BY TotalSales DESC`
               <use href="#i-crono" x="0" y="-22" width="28" height="28" fill="var(--c-ai)"/>
               <text x="36" y="0" font-size="24" font-weight="600" letter-spacing="0.05em" fill="var(--c-ai)" font-family="system-ui,-apple-system,sans-serif">CRONO AI</text>
             </g>
-            <text x="945" y="375" font-size="14" fill="#4b5563">Consultas en lenguaje natural</text>
-            <text x="945" y="393" font-size="14" fill="#4b5563">con conversión automática a SQL</text>
+            <text x="945" y="375" font-size="14" fill="#4b5563">{t('homeHero.svg.aiLine1')}</text>
+            <text x="945" y="393" font-size="14" fill="#4b5563">{t('homeHero.svg.aiLine2')}</text>
           </g>
 
           <!-- 4. CRONO EXCEL -->
@@ -782,19 +785,19 @@ ORDER BY TotalSales DESC`
               <use href="#i-crono" x="0" y="-22" width="28" height="28" fill="var(--c-excel)"/>
               <text x="36" y="0" font-size="24" font-weight="600" letter-spacing="0.05em" fill="var(--c-excel)" font-family="system-ui,-apple-system,sans-serif">CRONO EXCEL</text>
             </g>
-            <text x="945" y="486" font-size="14" fill="#4b5563">Informes y dashboards en Excel</text>
-            <text x="945" y="504" font-size="14" fill="#4b5563">conectados directamente al DWH</text>
+            <text x="945" y="486" font-size="14" fill="#4b5563">{t('homeHero.tag.excel')}</text>
+            <text x="945" y="504" font-size="14" fill="#4b5563">{t('homeHero.desc.excel')}</text>
           </g>
 
           <!-- 5. OTRAS SOLUCIONES -->
           <g class="svg-label" data-key="other">
             <g transform="translate(945, 571)">
               <use href="#i-crono" x="0" y="-22" width="28" height="28" fill="var(--c-other)"/>
-              <text x="36" y="0" font-size="24" font-weight="600" letter-spacing="0.05em" fill="var(--c-other)" font-family="system-ui,-apple-system,sans-serif">OTRAS SOLUCIONES</text>
+              <text x="36" y="0" font-size="24" font-weight="600" letter-spacing="0.05em" fill="var(--c-other)" font-family="system-ui,-apple-system,sans-serif">{t('homeHero.otherSolutions.svgLabel')}</text>
             </g>
-            <text x="945" y="597" font-size="14" fill="#4b5563">Compatibilidad nativa con Power BI,</text>
-            <text x="945" y="615" font-size="14" fill="#4b5563">Tableau y cualquier herramienta</text>
-            <text x="945" y="633" font-size="14" fill="#4b5563">de análisis externa</text>
+            <text x="945" y="597" font-size="14" fill="#4b5563">{t('homeHero.otherSolutions.line1')}</text>
+            <text x="945" y="615" font-size="14" fill="#4b5563">{t('homeHero.otherSolutions.line2')}</text>
+            <text x="945" y="633" font-size="14" fill="#4b5563">{t('homeHero.otherSolutions.line3')}</text>
           </g>
         </g>
 
@@ -841,14 +844,14 @@ ORDER BY TotalSales DESC`
             <div class="eco-step-content">
               <div class="eco-step-head">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="1.8" stroke-linecap="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v6c0 1.66 4.03 3 9 3s9-1.34 9-3V5"/><path d="M3 11v6c0 1.66 4.03 3 9 3s9-1.34 9-3v-6"/></svg>
-                <span class="eco-step-label">Fuentes de Datos</span>
-                <span class="eco-badge eco-badge--green">LIVE</span>
+                <span class="eco-step-label">{t('homeHero.eco.dataSources')}</span>
+                <span class="eco-badge eco-badge--green">{t('homeHero.eco.live')}</span>
               </div>
               <div class="eco-source-pills">
-                <span class="eco-pill">Bases de datos</span>
-                <span class="eco-pill">APIs REST</span>
-                <span class="eco-pill">Ficheros</span>
-                <span class="eco-pill">Excel</span>
+                <span class="eco-pill">{t('homeHero.eco.pill1')}</span>
+                <span class="eco-pill">{t('homeHero.eco.pill2')}</span>
+                <span class="eco-pill">{t('homeHero.eco.pill3')}</span>
+                <span class="eco-pill">{t('homeHero.eco.pill4')}</span>
               </div>
             </div>
           </div>
@@ -940,7 +943,7 @@ ORDER BY TotalSales DESC`
                 <span class="eco-step-label">Crono Metadata</span>
                 <span class="eco-badge eco-badge--purple">SEM</span>
               </div>
-              <p class="eco-step-desc">Capa semántica · Autoservicio BI · Sin SQL</p>
+              <p class="eco-step-desc">{t('homeHero.eco.stepDesc')}</p>
             </div>
           </div>
 
@@ -950,7 +953,7 @@ ORDER BY TotalSales DESC`
         <div class="eco-products-section">
           <div class="eco-products-header">
             <div class="eco-products-line"></div>
-            <span class="eco-products-title">Herramientas de Análisis</span>
+            <span class="eco-products-title">{t('homeHero.eco.toolsTitle')}</span>
             <div class="eco-products-line"></div>
           </div>
           <div class="eco-products-grid">
@@ -960,31 +963,31 @@ ORDER BY TotalSales DESC`
               </div>
               <span class="eco-prod-name">Crono Analysis</span>
               <span class="eco-prod-tag">Business Intelligence</span>
-              <span class="eco-prod-desc">Toma decisiones basadas en datos en minutos, no en días.</span>
+              <span class="eco-prod-desc">{t('homeHero.ecoProd.analysis.desc')}</span>
             </a>
             <a href="/excel/" class="eco-prod" style="--pc:#1E7B47;--pca:rgba(30,123,71,0.12)">
               <div class="eco-prod-icon">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1E7B47" stroke-width="1.8" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/></svg>
               </div>
               <span class="eco-prod-name">Crono Excel</span>
-              <span class="eco-prod-tag">Informes en Excel</span>
-              <span class="eco-prod-desc">Informes Excel conectados a tu DWH, siempre actualizados.</span>
+              <span class="eco-prod-tag">{t('homeHero.tag.excel')}</span>
+              <span class="eco-prod-desc">{t('homeHero.desc.excel')}</span>
             </a>
             <a href="/ai/" class="eco-prod" style="--pc:#7C3AED;--pca:rgba(124,58,237,0.12)">
               <div class="eco-prod-icon">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7C3AED" stroke-width="1.8" stroke-linecap="round"><path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.38-1 1.72V8h1a7 7 0 0 1 7 7h1a1 1 0 0 1 0 2h-1v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1H2a1 1 0 0 1 0-2h1a7 7 0 0 1 7-7h1V5.72A2 2 0 0 1 10 4a2 2 0 0 1 2-2z"/></svg>
               </div>
               <span class="eco-prod-name">Crono AI</span>
-              <span class="eco-prod-tag">Lenguaje natural</span>
-              <span class="eco-prod-desc">Consulta tus datos con lenguaje natural, sin escribir SQL.</span>
+              <span class="eco-prod-tag">{t('homeHero.tag.ai')}</span>
+              <span class="eco-prod-desc">{t('homeHero.desc.ai')}</span>
             </a>
             <a href="/api/" class="eco-prod" style="--pc:#10B981;--pca:rgba(16,185,129,0.12)">
               <div class="eco-prod-icon">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/><path d="M3 15h18"/><path d="M9 3v18"/><path d="M15 3v18"/></svg>
               </div>
               <span class="eco-prod-name">Crono API</span>
-              <span class="eco-prod-tag">Dashboards web</span>
-              <span class="eco-prod-desc">Integra tus datos en cualquier app o dashboard web.</span>
+              <span class="eco-prod-tag">{t('homeHero.tag.api')}</span>
+              <span class="eco-prod-desc">{t('homeHero.desc.api')}</span>
             </a>
           </div>
           <a href="#otras" class="eco-other">
@@ -992,8 +995,8 @@ ORDER BY TotalSales DESC`
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6B7280" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
             </div>
             <div class="eco-other-body">
-              <span class="eco-other-name">Otras Soluciones</span>
-              <span class="eco-other-tag">Power BI · Tableau · cualquier herramienta BI</span>
+              <span class="eco-other-name">{t('homeHero.eco.otherName')}</span>
+              <span class="eco-other-tag">{t('homeHero.eco.otherTag')}</span>
             </div>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg>
           </a>
@@ -1004,10 +1007,10 @@ ORDER BY TotalSales DESC`
 
     <!-- Diagram control buttons -->
     <div class="diagram-controls">
-      <button class="diagram-btn" id="toggleAnimation" title="Pausar animación" aria-label="Pausar animación">
+      <button class="diagram-btn" id="toggleAnimation" title={t('homeHero.diagram.pauseAnimation')} aria-label={t('homeHero.diagram.pauseAnimation')} data-pause={t('homeHero.diagram.pauseAnimation')} data-play={t('homeHero.diagram.playAnimation')}>
         <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><rect x="3" y="2" width="3.5" height="12" rx="1"/><rect x="9.5" y="2" width="3.5" height="12" rx="1"/></svg>
       </button>
-      <button class="diagram-btn" id="fullscreenBtn" title="Pantalla completa" aria-label="Pantalla completa">
+      <button class="diagram-btn" id="fullscreenBtn" title={t('homeHero.diagram.fullscreen')} aria-label={t('homeHero.diagram.fullscreen')}>
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2h4v4M6 14H2v-4M14 2l-5 5M2 14l5-5"/></svg>
       </button>
       <div class="engine-buttons-divider"></div>
@@ -1038,7 +1041,7 @@ ORDER BY TotalSales DESC`
     </div>
 
     <!-- Close button for fullscreen (hidden by default, shown via CSS :fullscreen) -->
-    <button class="diagram-close-btn" id="closeFullscreenBtn" title="Cerrar">
+    <button class="diagram-close-btn" id="closeFullscreenBtn" title={t('homeHero.diagram.close')}>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
         <path d="M18 6L6 18M6 6l12 12"/>
       </svg>
@@ -1060,9 +1063,9 @@ ORDER BY TotalSales DESC`
         <div class="code-window">
           <div class="code-header">
             <span class="code-title">dwh.dim_products.sql</span>
-            <a href={playgroundUrl} class="code-playground-link" title="Abrir en Playground">
+            <a href={playgroundUrl} class="code-playground-link" title={t('homeHero.playground.cta')}>
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 17l6-6-6-6"/><path d="M12 19h8"/></svg>
-              <span>Abrir en Playground</span>
+              <span>{t('homeHero.playground.cta')}</span>
             </a>
           </div>
           <div class="code-body">
@@ -1080,7 +1083,7 @@ ORDER BY TotalSales DESC`
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2">
             <path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/>
           </svg>
-          <span>Un solo lenguaje, todos los motores</span>
+          <span>{t('homeHero.playground.desc')}</span>
         </div>
 
         <!-- Motores compatibles - iconos con nombres -->
@@ -1094,20 +1097,20 @@ ORDER BY TotalSales DESC`
       </div>
       <!-- Right: Code Demo -->
       <div class="product-content">
-        <div class="product-label" style="color: #10B981;">Manual Principal · 376 artículos</div>
+        <div class="product-label" style="color: #10B981;">{t('homeHero.sqlSection.label')}</div>
         <h2 class="product-title">Crono SQL</h2>
         <p class="product-desc">
-          Crono SQL es un lenguaje para Data Warehouse que compila a código nativo. Escribe solo la lógica de transformación y Crono generará el SQL complejo — MERGEs, tablas temporales, CTEs — para tu motor de base de datos.
+          {t('homeHero.sqlSection.desc')}
         </p>
         <ul class="product-features">
-          <li><span style="color: #10B981;">✓</span> Reduce el código manual un 70%</li>
-          <li><span style="color: #10B981;">✓</span> Auditoría automática en cada operación</li>
-          <li><span style="color: #10B981;">✓</span> Funciona con cualquier motor de base de datos</li>
-          <li><span style="color: #10B981;">✓</span> Detecta errores antes de ejecutar</li>
+          <li><span style="color: #10B981;">✓</span> {t('homeHero.sqlSection.feature1')}</li>
+          <li><span style="color: #10B981;">✓</span> {t('homeHero.sqlSection.feature2')}</li>
+          <li><span style="color: #10B981;">✓</span> {t('homeHero.sqlSection.feature3')}</li>
+          <li><span style="color: #10B981;">✓</span> {t('homeHero.sqlSection.feature4')}</li>
         </ul>
         <div class="product-actions">
           <a href="/sql/" class="btn-product" style="background: #10B981; box-shadow: 0 4px 20px -4px #10B981;">
-            Explorar documentación
+            {t('homeHero.btn.exploreDocs')}
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
           </a>
           <a href={playgroundUrl} class="btn-product" style="background: #10B981; box-shadow: 0 4px 20px -4px #10B981;">
@@ -1127,21 +1130,19 @@ ORDER BY TotalSales DESC`
     <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
       <!-- Left: Content -->
       <div class="product-content order-1 lg:order-1">
-        <div class="product-label" style="color: #1B8AC7;">Orquestación ETL</div>
+        <div class="product-label" style="color: #1B8AC7;">{t('homeHero.etlSection.label')}</div>
         <h2 class="product-title">Crono ETL</h2>
         <p class="product-desc">
-          Olvídate de revisar logs a las 3 AM. Cargas automatizadas que se ejecutan 
-          solas, avisan si fallan, se recuperan automáticamente y dejan una auditoría 
-          completa de cada operación.
+          {t('homeHero.etlSection.desc')}
         </p>
         <ul class="product-features">
-          <li><span style="color: #1B8AC7;">✓</span> Ahorra 10 horas semanales de trabajo manual</li>
-          <li><span style="color: #1B8AC7;">✓</span> Detecta errores antes de que lleguen a producción</li>
-          <li><span style="color: #1B8AC7;">✓</span> Datos actualizados, fiables y trazables</li>
-          <li><span style="color: #1B8AC7;">✓</span> Incluye Calendas, nuestro dashboard de monitorización: calendario visual de cargas, gestión de proyectos, logs detallados y reportes de dedicación — todo en una sola herramienta</li>
+          <li><span style="color: #1B8AC7;">✓</span> {t('homeHero.etlSection.feature1')}</li>
+          <li><span style="color: #1B8AC7;">✓</span> {t('homeHero.etlSection.feature2')}</li>
+          <li><span style="color: #1B8AC7;">✓</span> {t('homeHero.etlSection.feature3')}</li>
+          <li><span style="color: #1B8AC7;">✓</span> {t('homeHero.etlSection.feature4')}</li>
         </ul>
         <a href="/etl/" class="btn-product" style="background: #1B8AC7; box-shadow: 0 4px 20px -4px #1B8AC7;">
-          Explorar documentación
+          {t('homeHero.btn.exploreDocs')}
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
         </a>
       </div>
@@ -1150,56 +1151,56 @@ ORDER BY TotalSales DESC`
         <div class="pipeline-window">
           <div class="pipeline-header">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M6 21V9a9 9 0 0 0 9 9"/></svg>
-            <span>Pipeline: Carga Diaria DWH</span>
+            <span>{t('homeHero.pipeline.title')}</span>
           </div>
           <div class="pipeline-body">
             <div class="pipeline-step done">
               <div class="step-icon">✓</div>
               <div class="step-info">
-                <span class="step-name">Extracción ERP</span>
-                <span class="step-time">02:30 AM · 4m 12s</span>
+                <span class="step-name">{t('homeHero.pipeline.step1')}</span>
+                <span class="step-time">{t('homeHero.pipeline.time1')}</span>
               </div>
             </div>
             <div class="pipeline-connector done"></div>
             <div class="pipeline-step done">
               <div class="step-icon">✓</div>
               <div class="step-info">
-                <span class="step-name">Transformación</span>
-                <span class="step-time">02:35 AM · 8m 45s</span>
+                <span class="step-name">{t('homeHero.pipeline.step2')}</span>
+                <span class="step-time">{t('homeHero.pipeline.time2')}</span>
               </div>
             </div>
             <div class="pipeline-connector done"></div>
             <div class="pipeline-step running">
               <div class="step-icon">◐</div>
               <div class="step-info">
-                <span class="step-name">Carga DWH</span>
-                <span class="step-time">En progreso...</span>
+                <span class="step-name">{t('homeHero.pipeline.step3')}</span>
+                <span class="step-time">{t('homeHero.pipeline.time3')}</span>
               </div>
             </div>
             <div class="pipeline-connector"></div>
             <div class="pipeline-step pending">
               <div class="step-icon">○</div>
               <div class="step-info">
-                <span class="step-name">Validación</span>
-                <span class="step-time">Pendiente</span>
+                <span class="step-name">{t('homeHero.pipeline.step4')}</span>
+                <span class="step-time">{t('homeHero.pipeline.time4')}</span>
               </div>
             </div>
           </div>
         </div>
         <div class="demo-badge" style="left: -15px; bottom: 30%;">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2"><path d="M12 8v4l3 3"/><circle cx="12" cy="12" r="10"/></svg>
-          <span>Scheduling automático</span>
+          <span>{t('homeHero.badge.scheduling')}</span>
         </div>
         <!-- Badge Calendas connection -->
         <a href="https://calendas.net" target="_blank" rel="noopener" class="demo-badge calendas-badge" style="right: -10px; top: 10%; text-decoration: none;">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-          <span>Ver Calendas</span>
+          <span>{t('homeHero.badge.viewCalendas')}</span>
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="opacity: 0.7;"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
         </a>
         <!-- Mini heatmap preview -->
         <div class="calendas-preview">
           <div class="heatmap-mini">
-            <div class="heatmap-title">Dashboard Calendas</div>
+            <div class="heatmap-title">{t('homeHero.dashboard.title')}</div>
             <div class="heatmap-grid">
               <div class="h-cell success"></div>
               <div class="h-cell success"></div>
@@ -1232,57 +1233,56 @@ ORDER BY TotalSales DESC`
         <div class="catalog-window">
           <div class="catalog-header">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/></svg>
-            <span>Catálogo: Ventas Retail</span>
+            <span>{t('homeHero.catalog.title')}</span>
           </div>
           <div class="catalog-body">
             <div class="catalog-item">
               <span class="catalog-icon dim">❖</span>
-              <span class="catalog-name">Clientes</span>
-              <span class="catalog-type">Dimensión</span>
+              <span class="catalog-name">{t('homeHero.catalog.customers')}</span>
+              <span class="catalog-type">{t('homeHero.catalog.dimension')}</span>
             </div>
             <div class="catalog-item">
               <span class="catalog-icon dim">❖</span>
-              <span class="catalog-name">Productos</span>
-              <span class="catalog-type">Dimensión</span>
+              <span class="catalog-name">{t('homeHero.catalog.products')}</span>
+              <span class="catalog-type">{t('homeHero.catalog.dimension')}</span>
             </div>
             <div class="catalog-item">
               <span class="catalog-icon dim">❖</span>
-              <span class="catalog-name">Tiempo</span>
-              <span class="catalog-type">Dimensión</span>
+              <span class="catalog-name">{t('homeHero.catalog.time')}</span>
+              <span class="catalog-type">{t('homeHero.catalog.dimension')}</span>
             </div>
             <div class="catalog-item active">
               <span class="catalog-icon fact">◆</span>
-              <span class="catalog-name">Ventas</span>
-              <span class="catalog-type">Hechos</span>
+              <span class="catalog-name">{t('homeHero.catalog.sales')}</span>
+              <span class="catalog-type">{t('homeHero.catalog.facts')}</span>
             </div>
             <div class="catalog-item">
               <span class="catalog-icon ind">●</span>
-              <span class="catalog-name">Importe Total</span>
-              <span class="catalog-type">Indicador</span>
+              <span class="catalog-name">{t('homeHero.catalog.totalAmount')}</span>
+              <span class="catalog-type">{t('homeHero.catalog.indicator')}</span>
             </div>
           </div>
         </div>
         <div class="demo-badge" style="left: -20px; bottom: 25%;">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-          <span>Drag & drop al informe</span>
+          <span>{t('homeHero.badge.dragDrop')}</span>
         </div>
       </div>
       <!-- Right: Content -->
       <div class="product-content order-1 lg:order-2">
-        <div class="product-label" style="color: #5B2C7D;">Capa Semántica · 20 artículos</div>
+        <div class="product-label" style="color: #5B2C7D;">{t('homeHero.metadataSection.label')}</div>
         <h2 class="product-title">Crono Metadata</h2>
         <p class="product-desc">
-          Libera a tu equipo de las peticiones de informes repetitivas. 
-          Los usuarios de negocio crean sus propios análisis sin tocar código.
+          {t('homeHero.metadataSection.desc')}
         </p>
         <ul class="product-features">
-          <li><span style="color: #5B2C7D;">✓</span> Reduce las peticiones de IT un 60%</li>
-          <li><span style="color: #5B2C7D;">✓</span> Crea informes con arrastrar y soltar</li>
-          <li><span style="color: #5B2C7D;">✓</span> Control de acceso por usuario y rol</li>
-          <li><span style="color: #5B2C7D;">✓</span> Lenguaje de negocio</li>
+          <li><span style="color: #5B2C7D;">✓</span> {t('homeHero.metadataSection.feature1')}</li>
+          <li><span style="color: #5B2C7D;">✓</span> {t('homeHero.metadataSection.feature2')}</li>
+          <li><span style="color: #5B2C7D;">✓</span> {t('homeHero.metadataSection.feature3')}</li>
+          <li><span style="color: #5B2C7D;">✓</span> {t('homeHero.metadataSection.feature4')}</li>
         </ul>
         <a href="/metadata/" class="btn-product" style="background: #5B2C7D; box-shadow: 0 4px 20px -4px #5B2C7D;">
-          Explorar documentación
+          {t('homeHero.btn.exploreDocs')}
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
         </a>
       </div>
@@ -1297,20 +1297,19 @@ ORDER BY TotalSales DESC`
     <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
       <!-- Left: Content -->
       <div class="product-content">
-        <div class="product-label" style="color: #C85A47;">Business Intelligence · 17 artículos</div>
+        <div class="product-label" style="color: #C85A47;">{t('homeHero.analysisSection.label')}</div>
         <h2 class="product-title">Crono Analysis</h2>
         <p class="product-desc">
-          Toma decisiones de negocio en minutos, no en días. Plataforma de autoservicio 
-          con dashboards que se actualizan automáticamente con los últimos datos disponibles.
+          {t('homeHero.analysisSection.desc')}
         </p>
         <ul class="product-features">
-          <li><span style="color: #C85A47;">✓</span> Respuestas en minutos sin esperar a IT</li>
-          <li><span style="color: #C85A47;">✓</span> Datos actualizados y fiables</li>
-          <li><span style="color: #C85A47;">✓</span> Informes automáticos por email</li>
-          <li><span style="color: #C85A47;">✓</span> Exporta a Excel con un clic</li>
+          <li><span style="color: #C85A47;">✓</span> {t('homeHero.analysisSection.feature1')}</li>
+          <li><span style="color: #C85A47;">✓</span> {t('homeHero.analysisSection.feature2')}</li>
+          <li><span style="color: #C85A47;">✓</span> {t('homeHero.analysisSection.feature3')}</li>
+          <li><span style="color: #C85A47;">✓</span> {t('homeHero.analysisSection.feature4')}</li>
         </ul>
         <a href="/analysis/" class="btn-product" style="background: #C85A47; box-shadow: 0 4px 20px -4px #C85A47;">
-          Explorar documentación
+          {t('homeHero.btn.exploreDocs')}
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
         </a>
       </div>
@@ -1319,13 +1318,13 @@ ORDER BY TotalSales DESC`
         <div class="dashboard-window">
           <div class="dashboard-header">
             <div class="dashboard-tabs">
-              <span class="tab active">Ventas por Región</span>
-              <span class="tab">Tendencias</span>
+              <span class="tab active">{t('homeHero.mock.tab1')}</span>
+              <span class="tab">{t('homeHero.mock.tab2')}</span>
             </div>
           </div>
           <div class="dashboard-body">
             <div class="chart-container">
-              <div class="chart-title">Ventas Q1-Q4 2025</div>
+              <div class="chart-title">{t('homeHero.chart.salesQ1Q4')}</div>
               <div class="chart-bars">
                 <div class="bar" style="height: 45%;"><label>Q1</label></div>
                 <div class="bar" style="height: 62%;"><label>Q2</label></div>
@@ -1336,18 +1335,18 @@ ORDER BY TotalSales DESC`
             <div class="kpi-row">
               <div class="kpi">
                 <span class="kpi-value">€2.4M</span>
-                <span class="kpi-label">Total Ventas</span>
+                <span class="kpi-label">{t('homeHero.chart.totalSales')}</span>
               </div>
               <div class="kpi">
                 <span class="kpi-value">+18%</span>
-                <span class="kpi-label">vs Año Anterior</span>
+                <span class="kpi-label">{t('homeHero.kpi.vsPreviousYear')}</span>
               </div>
             </div>
           </div>
         </div>
         <div class="demo-badge" style="right: -15px; top: 15%;">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
-          <span>Actualización en tiempo real</span>
+          <span>{t('homeHero.badge.realtimeUpdate')}</span>
         </div>
       </div>
     </div>
@@ -1374,25 +1373,25 @@ ORDER BY TotalSales DESC`
             <div class="swagger-endpoint get">
               <span class="swagger-method get">GET</span>
               <span class="swagger-path">/api/ventas</span>
-              <span class="swagger-desc">Ventas por período</span>
+              <span class="swagger-desc">{t('homeHero.apiMock.endpointSales')}</span>
               <span class="swagger-status s200">200</span>
             </div>
             <div class="swagger-endpoint post swagger-endpoint-active">
               <span class="swagger-method post">POST</span>
               <span class="swagger-path">/api/ventas/filter</span>
-              <span class="swagger-desc">Filtrar por región</span>
+              <span class="swagger-desc">{t('homeHero.apiMock.filterRegion')}</span>
               <span class="swagger-status s200">200</span>
             </div>
             <div class="swagger-endpoint get">
               <span class="swagger-method get">GET</span>
               <span class="swagger-path">/api/productos</span>
-              <span class="swagger-desc">Catálogo de productos</span>
+              <span class="swagger-desc">{t('homeHero.apiMock.productCatalog')}</span>
               <span class="swagger-status s200">200</span>
             </div>
             <div class="swagger-endpoint delete">
               <span class="swagger-method delete">DEL</span>
               <span class="swagger-path">/api/cache</span>
-              <span class="swagger-desc">Limpiar caché</span>
+              <span class="swagger-desc">{t('homeHero.apiMock.clearCache')}</span>
               <span class="swagger-status s204">204</span>
             </div>
           </div>
@@ -1438,16 +1437,16 @@ ORDER BY TotalSales DESC`
 
       </div>
       <div class="order-1 lg:order-2">
-        <div class="product-label" style="color: #0EA5E9;">Dashboards web</div>
+        <div class="product-label" style="color: #0EA5E9;">{t('homeHero.api.label')}</div>
         <h2 class="product-title">Crono API</h2>
         <p class="product-desc">
-          Publica tus datos como APIs REST en segundos. Conecta cualquier aplicación web o móvil con tus modelos de datos sin escribir código de servidor.
+          {t('homeHero.api.desc')}
         </p>
         <ul class="product-features">
-          <li><span style="color: #0EA5E9;">✓</span> APIs REST autogeneradas desde tu catálogo</li>
-          <li><span style="color: #0EA5E9;">✓</span> Autenticación y control de acceso integrado</li>
-          <li><span style="color: #0EA5E9;">✓</span> Dashboards web conectados en tiempo real</li>
-          <li><span style="color: #0EA5E9;">✓</span> Cache opcional con un clic</li>
+          <li><span style="color: #0EA5E9;">✓</span> {t('homeHero.api.feature1')}</li>
+          <li><span style="color: #0EA5E9;">✓</span> {t('homeHero.api.feature2')}</li>
+          <li><span style="color: #0EA5E9;">✓</span> {t('homeHero.api.feature3')}</li>
+          <li><span style="color: #0EA5E9;">✓</span> {t('homeHero.api.feature4')}</li>
         </ul>
       </div>
     </div>
@@ -1470,13 +1469,13 @@ ORDER BY TotalSales DESC`
                 <path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.38-1 1.72v2.03c1.44.44 2.64 1.47 3.24 2.76h.06a2 2 0 1 1 0 4h-.06a4.002 4.002 0 0 1-3.24 2.76v1.72h1.5a2.5 2.5 0 0 1 0 5h-5a2.5 2.5 0 0 1 0-5H11v-1.72A4.002 4.002 0 0 1 7.76 13.5h-.06a2 2 0 1 1 0-4h.06c.6-1.29 1.8-2.32 3.24-2.76V5.72A2 2 0 1 1 12 2Z"/>
               </svg>
             </div>
-            <span class="ai-title">Análisis de Ventas AI</span>
+            <span class="ai-title">{t('homeHero.aiMock.title')}</span>
             <span class="ai-provider">OpenAI</span>
           </div>
           <div class="ai-body">
             <!-- User message -->
             <div class="ai-message user">
-              <div class="ai-message-content">¿Cuáles fueron las ventas del último trimestre por región?</div>
+              <div class="ai-message-content">{t('homeHero.aiMock.question')}</div>
             </div>
             <!-- AI response -->
             <div class="ai-message assistant">
@@ -1486,40 +1485,40 @@ ORDER BY TotalSales DESC`
                 </svg>
               </div>
               <div class="ai-message-card">
-                <div class="ai-message-header">Análisis de ventas Q4 2025</div>
+                <div class="ai-message-header">{t('homeHero.aiMock.analysisTitle')}</div>
                 <div class="ai-table">
                   <div class="ai-table-header">
-                    <span>Región</span>
-                    <span>Ventas</span>
-                    <span>Variación</span>
+                    <span>{t('homeHero.aiMock.tableHeaderRegion')}</span>
+                    <span>{t('homeHero.aiMock.tableHeaderSales')}</span>
+                    <span>{t('homeHero.aiMock.tableHeaderChange')}</span>
                   </div>
                   <div class="ai-table-row">
-                    <span>Norte</span>
+                    <span>{t('homeHero.region.north')}</span>
                     <span class="ai-num">€1.2M</span>
                     <span class="ai-up">+15%</span>
                   </div>
                   <div class="ai-table-row">
-                    <span>Sur</span>
+                    <span>{t('homeHero.region.south')}</span>
                     <span class="ai-num">€980K</span>
                     <span class="ai-up">+8%</span>
                   </div>
                   <div class="ai-table-row">
-                    <span>Este</span>
+                    <span>{t('homeHero.region.east')}</span>
                     <span class="ai-num">€1.5M</span>
                     <span class="ai-up">+22%</span>
                   </div>
                 </div>
                 <div class="ai-actions">
-                  <span class="ai-action"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg> Excel</span>
-                  <span class="ai-action"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/><path d="M3 15h18"/><path d="M9 3v18"/><path d="M15 3v18"/></svg> Ver SQL</span>
+                  <span class="ai-action"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg> {t('homeHero.aiMock.actionExcel')}</span>
+                  <span class="ai-action"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/><path d="M3 15h18"/><path d="M9 3v18"/><path d="M15 3v18"/></svg> {t('homeHero.aiMock.actionViewSql')}</span>
                 </div>
               </div>
             </div>
             <!-- Input area -->
             <div class="ai-input-area">
               <div class="ai-input">
-                <span class="ai-input-placeholder">Pregunta sobre tus datos...</span>
-                <button class="ai-send">Enviar</button>
+                <span class="ai-input-placeholder">{t('homeHero.aiMock.placeholder')}</span>
+                <button class="ai-send">{t('homeHero.aiMock.send')}</button>
               </div>
             </div>
           </div>
@@ -1529,30 +1528,28 @@ ORDER BY TotalSales DESC`
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8B5CF6" stroke-width="2">
             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
           </svg>
-          <span>Exporta a Excel</span>
+          <span>{t('homeHero.badge.exportExcel')}</span>
         </div>
         <div class="demo-badge" style="left: -15px; bottom: 25%;">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8B5CF6" stroke-width="2">
             <rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/><path d="M3 15h18"/><path d="M9 3v18"/><path d="M15 3v18"/>
           </svg>
-          <span>Ver SQL generado</span>
+          <span>{t('homeHero.badge.viewSql')}</span>
         </div>
       </div>
       <!-- Left: Content -->
       <div class="product-content order-1 lg:order-1">
-        <div class="product-label" style="color: #8B5CF6;">Inteligencia Artificial · Asistente de datos</div>
+        <div class="product-label" style="color: #8B5CF6;">{t('homeHero.ai.label')}</div>
         <h2 class="product-title">Crono AI</h2>
         <p class="product-desc">
-          Tu asistente inteligente para analizar datos. Haz preguntas en lenguaje natural,
-          obtén respuestas con tablas, gráficos y análisis al instante. Conecta con tu catálogo
-          Crono Metadata para respuestas contextualizadas.
+          {t('homeHero.ai.desc')}
         </p>
         <ul class="product-features">
-          <li><span style="color: #8B5CF6;">✓</span> Múltiples asistentes especializados por área</li>
-          <li><span style="color: #8B5CF6;">✓</span> Respuestas con tablas y análisis automáticos</li>
-          <li><span style="color: #8B5CF6;">✓</span> Exporta resultados directamente a Excel</li>
-          <li><span style="color: #8B5CF6;">✓</span> Revisa el SQL generado para transparencia total</li>
-          <li><span style="color: #8B5CF6;">✓</span> Conectado con OpenAI, Claude y otros proveedores</li>
+          <li><span style="color: #8B5CF6;">✓</span> {t('homeHero.ai.feature1')}</li>
+          <li><span style="color: #8B5CF6;">✓</span> {t('homeHero.ai.feature2')}</li>
+          <li><span style="color: #8B5CF6;">✓</span> {t('homeHero.ai.feature3')}</li>
+          <li><span style="color: #8B5CF6;">✓</span> {t('homeHero.ai.feature4')}</li>
+          <li><span style="color: #8B5CF6;">✓</span> {t('homeHero.ai.feature5')}</li>
         </ul>
       </div>
     </div>
@@ -1573,7 +1570,7 @@ ORDER BY TotalSales DESC`
             <div class="excel-logo">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1E7B47" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/></svg>
             </div>
-            <span class="excel-filename">Informe_Ventas_2025.xlsx</span>
+            <span class="excel-filename">{t('homeHero.excel.filename')}</span>
             <div class="excel-win-controls">
               <span class="excel-btn">─</span>
               <span class="excel-btn">□</span>
@@ -1581,9 +1578,9 @@ ORDER BY TotalSales DESC`
             </div>
           </div>
           <div class="excel-ribbon">
-            <span class="excel-tab active">Inicio</span>
-            <span class="excel-tab">Insertar</span>
-            <span class="excel-tab">Datos</span>
+            <span class="excel-tab active">{t('homeHero.excel.ribbonHome')}</span>
+            <span class="excel-tab">{t('homeHero.excel.ribbonInsert')}</span>
+            <span class="excel-tab">{t('homeHero.excel.ribbonData')}</span>
             <span class="excel-tab crono-tab">
               <svg width="11" height="11" viewBox="0 0 128 128" fill="#1E7B47"><path d="M84.25,15.44c-4.92,6.75-9.52,13.33-14.51,19.61-.83,1.04-3.41,1.24-5.06,1-16.4-2.37-31.31,6.13-36.18,20.8-4.27,12.85-.25,26.4,10.29,34.69,10.63,8.36,25.66,9.31,37.03,2.03,9.44-6.04,14.46-14.74,14.86-26.08.05-1.45,1-3.66,2.14-4.16,7.16-3.2,14.5-6.02,21.79-8.97,6.26,19.88-2.73,46.97-24.58,60.68-23.82,14.94-55.76,10.61-74.29-10.06C-3,84.09-4.05,53.49,13.22,31.56,29.41,11.01,62.27,3.39,84.25,15.44z"/><path d="M61.05,63.5c2.8-3.84,5.58-7.68,8.4-11.5,10.6-14.36,21.2-28.72,31.83-43.06,4.34-5.86,5.59-5.83,9.72.3,5.23,7.78,10.3,15.68,15.61,23.4,2.15,3.13,2,4.97-1.76,6.52-19.85,8.15-39.64,16.45-59.48,24.64-1.12.46-2.43.49-3.65.72-.22-.34-.45-.68-.67-1.01z"/></svg>
               Crono
@@ -1604,10 +1601,10 @@ ORDER BY TotalSales DESC`
             </div>
             <div class="excel-row excel-row-header">
               <div class="excel-row-num">1</div>
-              <div class="excel-cell bold">Región</div>
-              <div class="excel-cell bold">Ventas 2025</div>
-              <div class="excel-cell bold">Variación</div>
-              <div class="excel-cell bold">Objetivo</div>
+              <div class="excel-cell bold">{t('homeHero.excel.colRegion')}</div>
+              <div class="excel-cell bold">{t('homeHero.excel.colSales2025')}</div>
+              <div class="excel-cell bold">{t('homeHero.excel.colChange')}</div>
+              <div class="excel-cell bold">{t('homeHero.excel.colTarget')}</div>
             </div>
             <div class="excel-row">
               <div class="excel-row-num">2</div>
@@ -1639,35 +1636,35 @@ ORDER BY TotalSales DESC`
             </div>
           </div>
           <div class="excel-sheet-tabs">
-            <span class="excel-sheet active">Ventas Regiones</span>
-            <span class="excel-sheet">Productos</span>
+            <span class="excel-sheet active">{t('homeHero.excel.tabSales')}</span>
+            <span class="excel-sheet">{t('homeHero.excel.tabProducts')}</span>
             <span class="excel-sheet">⊕</span>
           </div>
         </div>
         <div class="demo-badge" style="right: -15px; top: 20%;">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1E7B47" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          <span>Actualización automática</span>
+          <span>{t('homeHero.badge.autoUpdate')}</span>
         </div>
         <div class="demo-badge" style="left: -15px; bottom: 25%;">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1E7B47" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          <span>Datos verificados del DWH</span>
+          <span>{t('homeHero.badge.verifiedDwh')}</span>
         </div>
       </div>
       <!-- Right: Content -->
       <div class="product-content order-1 lg:order-2">
-        <div class="product-label" style="color: #1E7B47;">Reporting · Excel nativo</div>
+        <div class="product-label" style="color: #1E7B47;">{t('homeHero.excel.label')}</div>
         <h2 class="product-title">Crono Excel</h2>
         <p class="product-desc">
-          Crono Excel permite generar informes Excel a partir de los datos del DWH aprovechando la capa semántica de Crono.
+          {t('homeHero.excel.desc')}
         </p>
         <blockquote class="excel-quote">
-          ¿Quién quiere renunciar al Excel?
+          {t('homeHero.excel.quote')}
         </blockquote>
         <ul class="product-features">
-          <li><span style="color: #1E7B47;">✓</span> Informes Excel conectados a datos reales del DWH</li>
-          <li><span style="color: #1E7B47;">✓</span> Usa la capa semántica de Crono Metadata</li>
-          <li><span style="color: #1E7B47;">✓</span> Actualización automática sin macros ni VBA</li>
-          <li><span style="color: #1E7B47;">✓</span> Formato y estructura Excel 100% personalizable</li>
+          <li><span style="color: #1E7B47;">✓</span> {t('homeHero.excel.feature1')}</li>
+          <li><span style="color: #1E7B47;">✓</span> {t('homeHero.excel.feature2')}</li>
+          <li><span style="color: #1E7B47;">✓</span> {t('homeHero.excel.feature3')}</li>
+          <li><span style="color: #1E7B47;">✓</span> {t('homeHero.excel.feature4')}</li>
         </ul>
       </div>
     </div>
@@ -1682,13 +1679,13 @@ ORDER BY TotalSales DESC`
     <!-- Section Label with Divider -->
     <div class="hero-section-label mb-8">
       <div class="label-line"></div>
-      <span class="label-text">Manuales de Crono</span>
+      <span class="label-text">{t('homeHero.section.manuals')}</span>
       <div class="label-line"></div>
     </div>
     
     <!-- Tagline -->
     <p class="text-center text-[var(--sl-color-gray-3)] mb-20">
-      Documentación técnica oficial · 400+ páginas · En español
+      {t('homeHero.tagline.docs')}
     </p>
     
     <!-- Product Cards Grid -->
@@ -1702,13 +1699,13 @@ ORDER BY TotalSales DESC`
                 <rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/><path d="M3 15h18"/><path d="M9 3v18"/><path d="M15 3v18"/>
               </svg>
             </div>
-            <span class="hero-card-badge" style="background: #10B981; color: white;">376 docs</span>
+            <span class="hero-card-badge" style="background: #10B981; color: white;">376 {t('homeHero.badge.docs')}</span>
           </div>
           <h3 class="hero-card-title">Crono SQL</h3>
-          <p class="hero-card-tagline">Lenguaje SQL extendido</p>
-          <p class="hero-card-desc">Reduce el tiempo de desarrollo un 40%. Escribe 5 líneas de Crono SQL, genera 200 de SQL estándar automáticamente.</p>
+          <p class="hero-card-tagline">{t('homeHero.card.sql.tagline2')}</p>
+          <p class="hero-card-desc">{t('homeHero.card.sql.desc2')}</p>
           <div class="hero-card-footer">
-            <span class="hero-card-link">Ver documentación</span>
+            <span class="hero-card-link">{t('homeHero.card.viewDocs')}</span>
             <div class="hero-card-arrow">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M5 12h14"></path>
@@ -1731,13 +1728,13 @@ ORDER BY TotalSales DESC`
                 <path d="M3 12A9 3 0 0 0 21 12"></path>
               </svg>
             </div>
-            <span class="hero-card-badge" style="background: #1B8AC7; color: white;">En desarrollo</span>
+            <span class="hero-card-badge" style="background: #1B8AC7; color: white;">{t('homeHero.badge.inDevelopment')}</span>
           </div>
           <h3 class="hero-card-title">Crono ETL</h3>
-          <p class="hero-card-tagline">Data Warehouse</p>
-          <p class="hero-card-desc">Cargas diarias automatizadas que nunca fallan. Ahorra 10 horas semanales de trabajo manual repetitivo.</p>
+          <p class="hero-card-tagline">{t('homeHero.card.etl.tagline2')}</p>
+          <p class="hero-card-desc">{t('homeHero.card.etl.desc2')}</p>
           <div class="hero-card-footer">
-            <span class="hero-card-link">Ver documentación</span>
+            <span class="hero-card-link">{t('homeHero.card.viewDocs')}</span>
             <div class="hero-card-arrow">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M5 12h14"></path>
@@ -1759,13 +1756,13 @@ ORDER BY TotalSales DESC`
                 <path d="M9 21h6"></path>
               </svg>
             </div>
-            <span class="hero-card-badge" style="background: #5B2C7D; color: white;">20 artículos</span>
+            <span class="hero-card-badge" style="background: #5B2C7D; color: white;">20 {t('homeHero.badge.articles')}</span>
           </div>
           <h3 class="hero-card-title">Crono Metadata</h3>
-          <p class="hero-card-tagline">Capa Semántica</p>
-          <p class="hero-card-desc">Los usuarios de negocio crean sus propios informes sin depender del equipo IT. Auto-servicio de verdad.</p>
+          <p class="hero-card-tagline">{t('homeHero.card.metadata.tagline2')}</p>
+          <p class="hero-card-desc">{t('homeHero.card.metadata.desc2')}</p>
           <div class="hero-card-footer">
-            <span class="hero-card-link">Ver documentación</span>
+            <span class="hero-card-link">{t('homeHero.card.viewDocs')}</span>
             <div class="hero-card-arrow">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M5 12h14"></path>
@@ -1788,13 +1785,13 @@ ORDER BY TotalSales DESC`
                 <path d="M6 20v-6"></path>
               </svg>
             </div>
-            <span class="hero-card-badge" style="background: #C85A47; color: white;">17 artículos</span>
+            <span class="hero-card-badge" style="background: #C85A47; color: white;">17 {t('homeHero.badge.articles')}</span>
           </div>
           <h3 class="hero-card-title">Crono Analysis</h3>
-          <p class="hero-card-tagline">Business Intelligence</p>
-          <p class="hero-card-desc">Toma decisiones basadas en datos en minutos, no en días. Dashboards que se actualizan solos.</p>
+          <p class="hero-card-tagline">{t('homeHero.card.analysis.tagline2')}</p>
+          <p class="hero-card-desc">{t('homeHero.card.analysis.desc2')}</p>
           <div class="hero-card-footer">
-            <span class="hero-card-link">Ver documentación</span>
+            <span class="hero-card-link">{t('homeHero.card.viewDocs')}</span>
             <div class="hero-card-arrow">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M5 12h14"></path>
@@ -1814,8 +1811,8 @@ ORDER BY TotalSales DESC`
 <!-- ═══════════════════════════════════════════════════════════════ -->
 <section id="clientes" class="not-content clientes-section">
   <div class="clientes-container">
-    <p class="clientes-eyebrow">Confían en Crono</p>
-    <h2 class="clientes-title">Nuestros clientes</h2>
+    <p class="clientes-eyebrow">{t('homeHero.clients.eyebrow')}</p>
+    <h2 class="clientes-title">{t('homeHero.clients.title')}</h2>
     
     <div class="clientes-grid">
       <div class="cliente-logo"><img src="/images/clients/cliente-01.jpeg" alt="Grupo Concesur" /></div>
@@ -6226,14 +6223,16 @@ ORDER BY TotalSales DESC`
   const toggleBtn  = document.getElementById('toggleAnimation');
 
   // Show play icon immediately — loops start paused
-  if (toggleBtn) { toggleBtn.innerHTML = ICON_PLAY; toggleBtn.title = 'Reproducir animación'; }
+  const pauseText = toggleBtn?.dataset.pause || 'Pausar animación';
+  const playText = toggleBtn?.dataset.play || 'Reproducir animación';
+  if (toggleBtn) { toggleBtn.innerHTML = ICON_PLAY; toggleBtn.title = playText; }
 
   function setLoopPaused(paused: boolean) {
     loopPaused = paused;
     loopTweens.forEach(t => paused ? t.pause() : t.resume());
     if (toggleBtn) {
       toggleBtn.innerHTML = paused ? ICON_PLAY  : ICON_PAUSE;
-      toggleBtn.title     = paused ? 'Reproducir animación' : 'Pausar animación';
+      toggleBtn.title     = paused ? playText : pauseText;
     }
   }
 

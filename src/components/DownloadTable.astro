@@ -2,20 +2,22 @@
 // DownloadTable.astro - Componente para mostrar tabla de versiones
 // Reemplazo de DownloadByProduct.js (Docusaurus/React) a Astro
 
+import { useT, getLangFromLocale } from '../i18n/ui'
+
 export interface Props {
 	product: string;
 	title?: string;
 }
 
 const { product, title } = Astro.props;
+const t = useT(getLangFromLocale(Astro.currentLocale))
 
-// Formato de fecha en español
+// Formato de fecha localizado
+const months = t('download.months').split('|');
 const formatDate = (dateStr: string): string => {
 	if (!dateStr) return '';
 	const date = new Date(dateStr);
 	if (date.getFullYear() === 1) return '';
-	
-	const months = ['ene.', 'feb.', 'mar.', 'abr.', 'may.', 'jun.', 'jul.', 'ago.', 'sep.', 'oct.', 'nov.', 'dic.'];
 	return `${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`;
 };
 
@@ -59,10 +61,10 @@ try {
 		// Ordenar por fecha descendente
 		items.sort((a, b) => new Date(b.Date).getTime() - new Date(a.Date).getTime());
 	} else {
-		error = 'No se pudo cargar la información';
+		error = t('download.error.load');
 	}
 } catch (e) {
-	error = 'Error al conectar con el servidor de actualizaciones';
+	error = t('download.error.connect');
 }
 
 // Determinar columnas visibles
@@ -79,7 +81,7 @@ const hasSetupUri = items.some(d => d.SetupUri);
 		</div>
 	) : items.length === 0 ? (
 		<div class="loading-message">
-			<p>Cargando...</p>
+			<p>{t('download.loading')}</p>
 		</div>
 	) : (
 		<div class="table-wrapper">
@@ -93,10 +95,10 @@ const hasSetupUri = items.some(d => d.SetupUri);
 				</colgroup>
 				<thead style={`background-color: ${getProductColor(product)}`}>
 					<tr>
-						<th>Producto</th>
-						<th>Versión</th>
-						<th>Fecha publicación</th>
-						{hasExpiration && <th>Expiración</th>}
+						<th>{t('download.table.product')}</th>
+						<th>{t('download.table.version')}</th>
+						<th>{t('download.table.date')}</th>
+						{hasExpiration && <th>{t('download.table.expiration')}</th>}
 						{hasSetupUri && <th></th>}
 					</tr>
 				</thead>
@@ -117,7 +119,7 @@ const hasSetupUri = items.some(d => d.SetupUri);
 											rel="noopener noreferrer"
 										>
 											<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-										Descargar
+										{t('download.btn')}
 										</a>
 									)}
 								</td>

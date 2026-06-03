@@ -6,14 +6,14 @@
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/><path d="M3 15h18"/><path d="M9 3v18"/><path d="M15 3v18"/>
         </svg>
-        <span>Manual Crono SQL</span>
+        <span>{{ t('pg.sidebar.back') }}</span>
       </a>
     </div>
 
     <!-- Loading state -->
     <div v-if="isLoading" class="pg-sl-loading">
       <span class="pg-sl-spinner"></span>
-      <span>Cargando ejemplos...</span>
+      <span>{{ t('pg.sidebar.loading') }}</span>
     </div>
 
     <div v-for="group in examples" :key="group.group" class="pg-sl-group">
@@ -50,6 +50,9 @@ import { ExampleGroupId } from '../types/enums'
 import type { ExampleGroupData, ExampleItem } from '../types'
 import { useExamples } from '../composables/useExamples'
 import { playgroundBus } from '../event-bus'
+import { useT, getLangFromPath } from '../../i18n/ui'
+
+const t = useT(getLangFromPath(typeof window !== 'undefined' ? window.location.pathname : '/'))
 
 const { examples, activeExample, loadExamples } = useExamples()
 

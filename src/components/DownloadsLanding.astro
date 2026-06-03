@@ -1,28 +1,31 @@
 ---
 // Descargas - Landing épica con grid de 3 productos
 import { PRODUCTS } from '../config/products'
+import { useT, getLangFromLocale } from '../i18n/ui'
+
+const t = useT(getLangFromLocale(Astro.currentLocale))
 
 const productDefs = [
   {
     ...PRODUCTS.analysis,
-    tagline: 'Análisis y reporting',
-    description: 'Autoservicio de datos. Análisis libre con informes interactivos y cuadros de mando.',
+    tagline: t('downloadsLanding.product.analysis.tagline'),
+    description: t('downloadsLanding.product.analysis.desc'),
     path: '/downloads/crono-analysis/',
     apiKey: 'CronoAnalysis',
     features: []
   },
   {
     ...PRODUCTS.metadata,
-    tagline: 'Capa semántica',
-    description: 'Modelado de datos, diccionario semántico y gobierno de metadatos.',
+    tagline: t('downloadsLanding.product.metadata.tagline'),
+    description: t('downloadsLanding.product.metadata.desc'),
     path: '/downloads/crono-metadata/',
     apiKey: 'CronoMetadata',
     features: []
   },
   {
     ...PRODUCTS.etl,
-    tagline: 'Integración de datos',
-    description: 'Extracción, transformación y carga entre sistemas heterogéneos.',
+    tagline: t('downloadsLanding.product.etl.tagline'),
+    description: t('downloadsLanding.product.etl.desc'),
     path: '/downloads/crono-etl/',
     apiKey: 'CronoETL',
     features: []
@@ -34,12 +37,12 @@ const mainProducts = await Promise.all(productDefs.map(async (p) => {
   let downloadUrl: string | null = null;
   let version: string | null = null;
   let date: string | null = null;
-  
+
+  const months = t('download.months').split('|');
   const formatDate = (dateStr: string): string => {
     if (!dateStr) return '';
     const d = new Date(dateStr);
     if (d.getFullYear() === 1) return '';
-    const months = ['ene.', 'feb.', 'mar.', 'abr.', 'may.', 'jun.', 'jul.', 'ago.', 'sep.', 'oct.', 'nov.', 'dic.'];
     return `${d.getDate()} ${months[d.getMonth()]} ${d.getFullYear()}`;
   };
   
@@ -92,14 +95,14 @@ const mainProducts = await Promise.all(productDefs.map(async (p) => {
                 <polyline points="7 10 12 15 17 10"/>
                 <line x1="12" y1="15" x2="12" y2="3"/>
               </svg>
-              Descargar
+              {t('downloadsLanding.btn.download')}
             </a>
           ) : (
             <a href={product.path} class="dl-card-btn dl-card-btn--nav">
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
               </svg>
-              Ver versiones
+              {t('downloadsLanding.btn.versions')}
             </a>
           )}
         </div>
@@ -117,12 +120,12 @@ const mainProducts = await Promise.all(productDefs.map(async (p) => {
         </svg>
       </div>
       <div>
-        <p class="dl-banner-title">Todos los productos</p>
-        <p class="dl-banner-sub">Server, x86, MSI, Classic y herramientas adicionales</p>
+        <p class="dl-banner-title">{t('downloadsLanding.banner.title')}</p>
+        <p class="dl-banner-sub">{t('downloadsLanding.banner.sub')}</p>
       </div>
     </div>
     <span class="dl-banner-cta">
-      Ver catálogo completo
+      {t('downloadsLanding.banner.cta')}
       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
         <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
       </svg>

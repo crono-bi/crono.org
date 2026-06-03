@@ -1,6 +1,9 @@
 ---
 // Página de Precios - mismo estilo visual que DownloadsLanding
 import { PRODUCTS } from '../config/products'
+import { useT, getLangFromLocale } from '../i18n/ui'
+
+const t = useT(getLangFromLocale(Astro.currentLocale))
 
 interface Tier {
   name: string
@@ -23,96 +26,96 @@ interface Section {
 
 const sections: Section[] = [
   {
-    title: 'Crono ETL',
+    title: t('pricingLanding.section.etl.title'),
     color: PRODUCTS.etl.color,
     rgb: PRODUCTS.etl.rgb,
     icon: PRODUCTS.etl.icon,
     tiers: [
       {
-        name: 'Crono ETL CLI',
-        tagline: 'Línea de comando',
-        price: 'Gratis',
-        description: 'Versión línea de comando de Crono ETL. Ideal para automatizaciones y entornos headless.',
-        cta: 'Descargar',
+        name: t('pricingLanding.tier.etlCli.name'),
+        tagline: t('pricingLanding.tier.etlCli.tagline'),
+        price: t('pricingLanding.tier.etlCli.price'),
+        description: t('pricingLanding.tier.etlCli.desc'),
+        cta: t('pricingLanding.tier.etlCli.cta'),
         ctaHref: '/downloads/crono-etl/',
       },
       {
-        name: 'Crono ETL Windows',
-        tagline: 'Free Trial',
-        price: 'Free Trial',
-        description: 'Versión reducida para pruebas, fines académicos.',
-        cta: 'Descargar',
+        name: t('pricingLanding.tier.etlTrial.name'),
+        tagline: t('pricingLanding.tier.etlTrial.tagline'),
+        price: t('pricingLanding.tier.etlTrial.price'),
+        description: t('pricingLanding.tier.etlTrial.desc'),
+        cta: t('pricingLanding.tier.etlTrial.cta'),
         ctaHref: '/downloads/crono-etl/',
       },
       {
-        name: 'Crono ETL Windows',
-        tagline: 'Licencia completa',
-        price: '100 €',
-        priceDetail: '/usuario mes',
-        description: 'Versión completa con todas las funcionalidades de integración de datos.',
-        cta: 'Contactar',
+        name: t('pricingLanding.tier.etlFull.name'),
+        tagline: t('pricingLanding.tier.etlFull.tagline'),
+        price: t('pricingLanding.tier.etlFull.price'),
+        priceDetail: t('pricingLanding.tier.etlFull.priceDetail'),
+        description: t('pricingLanding.tier.etlFull.desc'),
+        cta: t('pricingLanding.tier.etlFull.cta'),
         ctaHref: 'mailto:business@businessintelligence.es',
         highlight: true,
       },
     ]
   },
   {
-    title: 'Crono Analysis',
+    title: t('pricingLanding.section.analysis.title'),
     color: PRODUCTS.analysis.color,
     rgb: PRODUCTS.analysis.rgb,
     icon: PRODUCTS.analysis.icon,
     tiers: [
       {
-        name: 'Crono Analysis Windows',
-        tagline: 'Free Trial',
-        price: 'Free Trial',
-        description: 'Versión reducida para pruebas, fines académicos.',
-        cta: 'Descargar',
+        name: t('pricingLanding.tier.analysisTrial.name'),
+        tagline: t('pricingLanding.tier.analysisTrial.tagline'),
+        price: t('pricingLanding.tier.analysisTrial.price'),
+        description: t('pricingLanding.tier.analysisTrial.desc'),
+        cta: t('pricingLanding.tier.analysisTrial.cta'),
         ctaHref: '/downloads/crono-analysis/',
       },
       {
-        name: 'Crono Analysis Windows',
-        tagline: 'Licencia completa',
-        price: '10 €',
-        priceDetail: '/usuario mes',
-        description: 'Versión completa de Business Intelligence y análisis de datos.',
-        cta: 'Contactar',
+        name: t('pricingLanding.tier.analysisFull.name'),
+        tagline: t('pricingLanding.tier.analysisFull.tagline'),
+        price: t('pricingLanding.tier.analysisFull.price'),
+        priceDetail: t('pricingLanding.tier.analysisFull.priceDetail'),
+        description: t('pricingLanding.tier.analysisFull.desc'),
+        cta: t('pricingLanding.tier.analysisFull.cta'),
         ctaHref: 'mailto:business@businessintelligence.es',
         highlight: true,
       },
     ]
   },
   {
-    title: 'Crono Enterprise',
+    title: t('pricingLanding.section.enterprise.title'),
     color: '#5B2C7D',
     rgb: '91, 44, 125',
     icon: PRODUCTS.metadata.icon,
     tiers: [
       {
-        name: 'Crono API',
-        tagline: 'API y dashboards web',
-        price: '1.000 €',
-        priceDetail: '/año org',
-        description: 'API REST para integrar dashboards y reportes en tus aplicaciones web.',
-        cta: 'Contactar',
+        name: t('pricingLanding.tier.api.name'),
+        tagline: t('pricingLanding.tier.api.tagline'),
+        price: t('pricingLanding.tier.api.price'),
+        priceDetail: t('pricingLanding.tier.api.priceDetail'),
+        description: t('pricingLanding.tier.api.desc'),
+        cta: t('pricingLanding.tier.api.cta'),
         ctaHref: 'mailto:business@businessintelligence.es',
       },
       {
-        name: 'Crono Server',
-        tagline: 'Servidor empresarial',
-        price: '1.000 €',
-        priceDetail: '/año org',
-        description: 'Servidor de aplicaciones para despliegues empresariales con alta disponibilidad.',
-        cta: 'Contactar',
+        name: t('pricingLanding.tier.server.name'),
+        tagline: t('pricingLanding.tier.server.tagline'),
+        price: t('pricingLanding.tier.server.price'),
+        priceDetail: t('pricingLanding.tier.server.priceDetail'),
+        description: t('pricingLanding.tier.server.desc'),
+        cta: t('pricingLanding.tier.server.cta'),
         ctaHref: 'mailto:business@businessintelligence.es',
       },
       {
-        name: 'Crono Enterprise',
-        tagline: 'Plataforma completa',
-        price: 'Pide',
-        priceDetail: 'presupuesto',
-        description: 'La plataforma completa para usuarios ilimitados. Solución personalizada para grandes organizaciones.',
-        cta: 'Contactar',
+        name: t('pricingLanding.tier.enterprise.name'),
+        tagline: t('pricingLanding.tier.enterprise.tagline'),
+        price: t('pricingLanding.tier.enterprise.price'),
+        priceDetail: t('pricingLanding.tier.enterprise.priceDetail'),
+        description: t('pricingLanding.tier.enterprise.desc'),
+        cta: t('pricingLanding.tier.enterprise.cta'),
         ctaHref: 'mailto:business@businessintelligence.es',
         highlight: true,
       },
@@ -138,7 +141,7 @@ const sections: Section[] = [
             <!-- Top: tagline -->
             <div class="pr-card-top">
               <span class="pr-card-tagline">{tier.tagline}</span>
-              {tier.highlight && <span class="pr-badge">Recomendado</span>}
+              {tier.highlight && <span class="pr-badge">{t('pricingLanding.badge.recommended')}</span>}
             </div>
             <!-- Body -->
             <div class="pr-card-body">
@@ -163,7 +166,7 @@ const sections: Section[] = [
 
   <!-- Nota al pie -->
   <p class="pr-note">
-    ¿Necesitas ayuda para elegir? <a href="mailto:business@businessintelligence.es">Contáctanos</a> y te asesoramos sin compromiso.
+    {t('pricingLanding.footer.note')} <a href="mailto:business@businessintelligence.es">{t('pricingLanding.footer.link')}</a> {t('pricingLanding.footer.suffix')}
   </p>
 
 </div>

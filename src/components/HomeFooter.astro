@@ -1,12 +1,15 @@
 ---
 import { PRODUCTS } from '../config/products'
 import { ENGINES } from '../config/engines'
+import { useT, getLangFromPath } from '../i18n/ui'
+
+const t = useT(getLangFromPath(Astro.url.pathname))
 
 const products = [
-  { ...PRODUCTS.sql, href: '/sql/', tags: ['SQL', 'Multimotor', 'DWH'] },
-  { ...PRODUCTS.etl, href: '/etl/', tags: ['Extracción', 'Carga', 'Transformación'] },
-  { ...PRODUCTS.metadata, href: '/metadata/', tags: ['Capa semántica', 'Lenguaje negocio'] },
-  { ...PRODUCTS.analysis, href: '/analysis/', tags: ['BI', 'Análisis libre', 'Autoservicio'] },
+  { ...PRODUCTS.sql, href: '/sql/', tags: t('homeFooter.sql.tags').split(',') },
+  { ...PRODUCTS.etl, href: '/etl/', tags: t('homeFooter.etl.tags').split(',') },
+  { ...PRODUCTS.metadata, href: '/metadata/', tags: t('homeFooter.metadata.tags').split(',') },
+  { ...PRODUCTS.analysis, href: '/analysis/', tags: t('homeFooter.analysis.tags').split(',') },
 ]
 
 const socials = [
@@ -42,19 +45,19 @@ const socials = [
       <div class="hf-band-left">
         <span class="hf-eyebrow">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-          Plataforma Crono BI
+          {t('homeFooter.cta.eyebrow')}
         </span>
         <h2 class="hf-band-title">
-          Del dato crudo al <span class="hf-grad">dashboard.</span>
+          {t('homeFooter.cta.title')} <span class="hf-grad">{t('homeFooter.cta.titleGradient')}</span>
         </h2>
-        <p class="hf-band-sub">ETL · Modelo semántico · Análisis · Reporting · IA. Una sola plataforma.</p>
+        <p class="hf-band-sub">{t('homeFooter.cta.subtitle')}</p>
       </div>
       <div class="hf-band-actions">
         <a href="/downloads/" class="hf-btn-primary">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-          Descargar gratis
+          {t('homeFooter.cta.downloadBtn')}
         </a>
-        <a href="https://www.youtube.com/watch?v=F6fTBQUyIh8" target="_blank" rel="noopener" class="hf-btn-ghost">Ver demo →</a>
+        <a href="https://www.youtube.com/watch?v=F6fTBQUyIh8" target="_blank" rel="noopener" class="hf-btn-ghost">{t('homeFooter.cta.demoBtn')}</a>
       </div>
 
       <!-- Motores compatibles -->
@@ -78,7 +81,7 @@ const socials = [
         <a href="/" class="hf-logo">
           <img src="/logos/crono.webp" alt="Crono" class="hf-logo-img" />
         </a>
-        <p class="hf-bio">Documentación técnica oficial de la plataforma Crono Business Intelligence.</p>
+        <p class="hf-bio">{t('homeFooter.bio')}</p>
         <div class="hf-socials">
           {socials.map(s => (
             <a href={s.href} target="_blank" rel="noopener" aria-label={s.label} class="hf-social-btn">
@@ -91,20 +94,20 @@ const socials = [
             <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
             <path d="M8 7h8"/><path d="M8 11h8"/><path d="M8 15h5"/>
           </svg>
-          Blog Business Intelligence
+          {t('homeFooter.blogBtn')}
           <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M17 7H7M17 7v10"/></svg>
         </a>
         <a href="https://www.businessintelligence.info/subscribe.html" target="_blank" rel="noopener" class="hf-newsletter-btn">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
           </svg>
-          Newsletter Business Intelligence fácil
+          {t('homeFooter.newsletterBtn')}
         </a>
       </div>
 
       <!-- Productos -->
       <div class="hf-col">
-        <p class="hf-col-label">Productos</p>
+        <p class="hf-col-label">{t('homeFooter.productsLabel')}</p>
         <div class="hf-products">
           {products.map(p => (
             <a href={p.href} class="hf-product" style={`--c:${p.color};--rgb:${p.rgb}`}>
@@ -122,23 +125,23 @@ const socials = [
 
       <!-- Recursos -->
       <div class="hf-col">
-        <p class="hf-col-label">Recursos</p>
+        <p class="hf-col-label">{t('homeFooter.resourcesLabel')}</p>
         <nav class="hf-nav">
           <a href="/downloads/" class="hf-nav-link">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-            Descargas
+            {t('homeFooter.downloads')}
           </a>
           <a href="/playground/" class="hf-nav-link">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-            Playground
+            {t('homeFooter.playground')}
           </a>
           <a href="/downloads/all/" class="hf-nav-link">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8v4l3 3"/><circle cx="12" cy="12" r="10"/></svg>
-            Novedades
+            {t('homeFooter.news')}
           </a>
           <a href="/sql/intro/" class="hf-nav-link">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
-            Empezar a leer
+            {t('homeFooter.startReading')}
           </a>
         </nav>
       </div>
@@ -147,7 +150,7 @@ const socials = [
 
     <!-- Bottom bar -->
     <div class="hf-bar">
-      <span class="hf-copy">Made by Crono with ❤️</span>
+      <span class="hf-copy">{t('homeFooter.madeWith')} ❤️</span>
     </div>
   </div>
 

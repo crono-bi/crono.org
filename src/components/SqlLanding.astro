@@ -4,54 +4,57 @@ import ManualLanding from './ManualLanding.astro'
 import type { Feature, Category, Statement, FuncExample } from './ManualLanding.astro'
 import mergeCloneExample from '../playground/examples/merge-clone.sql?raw'
 import { ENGINE_NAMES } from '../config/engines'
+import { useT, getLangFromLocale } from '../i18n/ui'
+
+const t = useT(getLangFromLocale(Astro.currentLocale))
 
 const features: Feature[] = [
   {
     icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3"/><path d="M21 8V5a2 2 0 0 0-2-2h-3"/><path d="M3 16v3a2 2 0 0 0 2 2h3"/><path d="M16 21h3a2 2 0 0 0 2-2v-3"/><path d="M12 8v8"/><path d="M8 12h8"/></svg>',
-    title: 'SELECT extendido',
-    description: 'JOINs simplificados, columnas calculadas reutilizables, apilamiento de consultas, SEMI JOIN, ANTI JOIN y MATERIALIZE. Todo el SQL estándar sigue funcionando sin cambios.'
+    title: t('sqlLanding.feature1.title'),
+    description: t('sqlLanding.feature1.desc')
   },
   {
     icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9h16"/><path d="M4 15h16"/><path d="M10 3 8 21"/><path d="M14 3l-2 18"/></svg>',
-    title: 'Nueve patrones de carga',
-    description: 'MERGE CLONE, MERGE UPSERT, MERGE HISTORY y más. Cada sentencia crea la tabla, la evoluciona cuando añades campos y gestiona las columnas de auditoría automáticamente.'
+    title: t('sqlLanding.feature2.title'),
+    description: t('sqlLanding.feature2.desc')
   },
   {
     icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2H2v10l9.29 9.29c.94.94 2.48.94 3.42 0l6.58-6.58c.94-.94.94-2.48 0-3.42L12 2Z"/><path d="M7 7h.01"/></svg>',
-    title: 'Funciones portables',
-    description: 'Más de 80 funciones de texto, numéricas, de fecha y de agregación que compilan correctamente en los ocho motores soportados, sin incompatibilidades entre dialectos.'
+    title: t('sqlLanding.feature3.title'),
+    description: t('sqlLanding.feature3.desc')
   }
 ]
 
 const categories: Category[] = [
   {
     id: 'language',
-    title: 'Lenguaje Crono SQL',
-    description: 'Guía completa de la sintaxis con ejemplos prácticos de cada sentencia.',
+    title: t('sqlLanding.category.language.title'),
+    description: t('sqlLanding.category.language.desc'),
     icon: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/><path d="M3 15h18"/><path d="M9 3v18"/><path d="M15 3v18"/></svg>',
     count: 24,
     path: '/sql/language/'
   },
   {
     id: 'reference',
-    title: 'Referencia del lenguaje',
-    description: 'Documentación técnica detallada de sintaxis y funcionalidades avanzadas.',
+    title: t('sqlLanding.category.reference.title'),
+    description: t('sqlLanding.category.reference.desc'),
     icon: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/><path d="M12 11h5"/><path d="M12 7h5"/></svg>',
     count: 15,
     path: '/sql/reference/'
   },
   {
     id: 'functions',
-    title: 'Funciones',
-    description: 'Listado completo de funciones integradas agrupadas por categoría.',
+    title: t('sqlLanding.category.functions.title'),
+    description: t('sqlLanding.category.functions.desc'),
     icon: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5h-2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="2"/><path d="m9 14 2 2 4-4"/></svg>',
     count: 40,
     path: '/sql/functions/'
   },
   {
     id: 'views',
-    title: 'Vistas',
-    description: 'Vistas predefinidas del sistema para consultar metadatos.',
+    title: t('sqlLanding.category.views.title'),
+    description: t('sqlLanding.category.views.desc'),
     icon: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/><path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>',
     count: 12,
     path: '/sql/views/'
@@ -61,22 +64,22 @@ const categories: Category[] = [
 const engines = ENGINE_NAMES
 
 const statements: Statement[] = [
-  { name: 'SELECT', description: 'JOINs simplificados, columnas reutilizables y apilamiento de consultas' },
-  { name: 'MERGE CLONE', description: 'Sincronización completa: crea la tabla, la mantiene y gestiona la auditoría' },
-  { name: 'MERGE UPSERT', description: 'Inserta los registros nuevos y actualiza los existentes (SCD Tipo 1)' },
-  { name: 'MERGE HISTORY', description: 'Mantiene historial completo de cambios (SCD Tipo 2)' },
-  { name: 'MERGE SOFT DELETE', description: 'Marca como eliminados los registros que ya no existen en origen' },
-  { name: 'INSERT OVERWRITE', description: 'Recarga completa: elimina y vuelve a insertar todos los registros' },
-  { name: 'INSERT IF NEW', description: 'Inserta solo los registros nuevos, sin modificar los existentes' },
-  { name: 'CHECK SNOWFLAKE', description: 'Verifica que los JOINs no pierdan ni dupliquen registros' },
-  { name: 'MATERIALIZE', description: 'Define tablas temporales para simplificar consultas complejas' }
+  { name: 'SELECT', description: t('sqlLanding.stmt.select') },
+  { name: 'MERGE CLONE', description: t('sqlLanding.stmt.mergeClone') },
+  { name: 'MERGE UPSERT', description: t('sqlLanding.stmt.mergeUpsert') },
+  { name: 'MERGE HISTORY', description: t('sqlLanding.stmt.mergeHistory') },
+  { name: 'MERGE SOFT DELETE', description: t('sqlLanding.stmt.mergeSoftDelete') },
+  { name: 'INSERT OVERWRITE', description: t('sqlLanding.stmt.insertOverwrite') },
+  { name: 'INSERT IF NEW', description: t('sqlLanding.stmt.insertIfNew') },
+  { name: 'CHECK SNOWFLAKE', description: t('sqlLanding.stmt.checkSnowflake') },
+  { name: 'MATERIALIZE', description: t('sqlLanding.stmt.materialize') }
 ]
 
 const functions: FuncExample[] = [
-  { code: 'margin(a, b)', description: 'Margen de ventas seguro' },
-  { code: 'markup(a, b)', description: 'Márkup seguro' },
-  { code: 'divide(a, b)', description: 'División segura (sin error /0)' },
-  { code: 'substraction(a, b)', description: 'Resta segura' }
+  { code: 'margin(a, b)', description: t('sqlLanding.fn.margin') },
+  { code: 'markup(a, b)', description: t('sqlLanding.fn.markup') },
+  { code: 'divide(a, b)', description: t('sqlLanding.fn.divide') },
+  { code: 'substraction(a, b)', description: t('sqlLanding.fn.substraction') }
 ]
 
 // Use the example from playground (single source of truth)
@@ -115,13 +118,13 @@ const playgroundUrl = `/playground/?code=${btoa(encodeURIComponent(codeExample))
 <ManualLanding
   logo="/logos/crono-sql.webp"
   logoAlt="Crono SQL"
-  subtitle="Escríbelo una vez. Cárgalo en cualquier motor."
-  ctaText="Acceder al manual"
+  subtitle={t('sqlLanding.subtitle')}
+  ctaText={t('sqlLanding.cta.manual')}
   ctaHref="/sql/intro/"
-  secondaryCta={{ text: 'Playground', href: playgroundUrl }}
+  secondaryCta={{ text: t('sqlLanding.cta.playground'), href: playgroundUrl }}
   brandColor="#10B981"
   features={features}
-  featuresTitle="¿Qué es Crono SQL?"
+  featuresTitle={t('sqlLanding.featuresTitle')}
   engines={engines}
   codeExample={{
     label: 'Crono SQL',
@@ -129,18 +132,18 @@ const playgroundUrl = `/playground/?code=${btoa(encodeURIComponent(codeExample))
     language: 'html-pre'
   }}
   statements={statements}
-  statementsTitle="Sentencias principales"
+  statementsTitle={t('sqlLanding.statementsTitle')}
   functions={functions}
-  functionsTitle="Funciones integradas"
-  functionsDesc="Crono SQL soporta todas las funciones nativas de cada motor y añade sus propias funciones como:"
+  functionsTitle={t('sqlLanding.functionsTitle')}
+  functionsDesc={t('sqlLanding.functionsDesc')}
   playgroundCta={{
-    title: 'Playground interactivo',
-    description: 'Escribe Crono SQL y mira en tiempo real el SQL generado para cada motor de base de datos.',
-    buttonText: 'Probar este ejemplo',
+    title: t('sqlLanding.playground.title'),
+    description: t('sqlLanding.playground.desc'),
+    buttonText: t('sqlLanding.playground.cta'),
     href: playgroundUrl
   }}
-  footerTitle="¿Listo para probar Crono SQL?"
-  footerDesc="Explora la documentación completa y empieza a construir tu Data Warehouse."
-  footerCta="Acceder al manual"
-  footerSecondaryCta={{ text: 'Playground', href: playgroundUrl }}
+  footerTitle={t('sqlLanding.footer.title')}
+  footerDesc={t('sqlLanding.footer.desc')}
+  footerCta={t('sqlLanding.footer.cta')}
+  footerSecondaryCta={{ text: t('sqlLanding.cta.playground'), href: playgroundUrl }}
 />

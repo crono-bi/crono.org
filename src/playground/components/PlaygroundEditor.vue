@@ -21,7 +21,7 @@
         <CodeEditor v-model="cronoCode" :theme="theme" />
         <button class="pg-run-fab" @click="handleRun" title="Run (Ctrl+Enter)">
           <Play :size="16" />
-          <span class="pg-run-label">Run</span>
+          <span class="pg-run-label">{{ t('pg.run') }}</span>
         </button>
       </div>
     </div>
@@ -35,8 +35,8 @@
       <div class="pg-panel-header">
         <div class="pg-panel-header-actions">
           <EngineSelector v-model="selectedEngine" :theme="theme" />
-          <span v-if="isCompiling" class="pg-status pg-compiling">Compiling...</span>
-          <span v-else-if="compilationError" class="pg-status pg-error">Error</span>
+          <span v-if="isCompiling" class="pg-status pg-compiling">{{ t('pg.compiling') }}</span>
+          <span v-else-if="compilationError" class="pg-status pg-error">{{ t('pg.error') }}</span>
         </div>
       </div>
       <!-- Panel Body -->
@@ -59,10 +59,13 @@ import EngineSelector from './EngineSelector.vue'
 import Toast from './Toast.vue'
 import EtlOptionsPanel from './EtlOptionsPanel.vue'
 import cronoIcon from '../assets/datawarehouse-logos/crono.svg?url'
+import { useT, getLangFromPath } from '../../i18n/ui'
 import { useSplitter } from '../composables/useSplitter'
 import { useCompilation } from '../composables/useCompilation'
 import { useClipboard } from '../composables/useClipboard'
 import { playgroundBus } from '../event-bus'
+
+const t = useT(getLangFromPath(typeof window !== 'undefined' ? window.location.pathname : '/'))
 
 // Theme - sync with Starlight
 const theme = ref<Theme>(Theme.Dark)
