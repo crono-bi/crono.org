@@ -186,11 +186,10 @@ html {
 }
 
 /* Categorias de SQL > Vistas en negrita */
-#starlight__sidebar details ul li details:has(> ul a[href*='/sql/views/active-directory/']) > summary span.large,
-#starlight__sidebar details ul li details:has(> ul a[href*='/sql/views/base-datos/']) > summary span.large,
+#starlight__sidebar details ul li details:has(> ul a[href*='/sql/views/metadata-database/']) > summary span.large,
+#starlight__sidebar details ul li details:has(> ul a[href*='/sql/views/etl/']) > summary span.large,
 #starlight__sidebar details ul li details:has(> ul a[href*='/sql/views/metadata-crono/']) > summary span.large,
-#starlight__sidebar details ul li details:has(> ul a[href*='/sql/views/tiempo/']) > summary span.large,
-#starlight__sidebar details ul li details:has(> ul a[href*='/sql/views/misc/']) > summary span.large {
+#starlight__sidebar details ul li details:has(> ul a[href*='/sql/views/tiempo/']) > summary span.large {
   font-weight: 700;
   opacity: 1;
 }

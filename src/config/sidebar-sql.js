@@ -59,29 +59,24 @@ export const sqlTopics = {
 							items: [
 								{ label: 'Introducción', link: 'sql/views/' },
 								{
-									label: 'Vistas de Active Directory',
-									collapsed: true,
-									autogenerate: { directory: 'sql/views/active-directory' }
-								},
-								{
-									label: 'Vistas de base de datos',
-									collapsed: true,
-									autogenerate: { directory: 'sql/views/base-datos' }
-								},
-								{
-									label: 'Vistas de metadata Crono',
-									collapsed: true,
-									autogenerate: { directory: 'sql/views/metadata-crono' }
-								},
-								{
 									label: 'Vistas de tiempo',
 									collapsed: true,
 									autogenerate: { directory: 'sql/views/tiempo' }
 								},
 								{
-									label: 'Vistas misceláneas',
+									label: 'Vistas de metadatos Crono',
 									collapsed: true,
-									autogenerate: { directory: 'sql/views/misc' }
+									autogenerate: { directory: 'sql/views/metadata-crono' }
+								},
+								{
+									label: 'Vistas de metadatos DB',
+									collapsed: true,
+									autogenerate: { directory: 'sql/views/metadata-database' }
+								},
+								{
+									label: 'Vistas ETL',
+									collapsed: true,
+									autogenerate: { directory: 'sql/views/etl' }
 								},
 							]
 						},

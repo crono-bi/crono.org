@@ -331,6 +331,6 @@ DuckDB sigue el mismo criterio de nomenclatura de fechas que PostgreSQL y Redshi
 
 Toda la información de equivalencias está disponible en tiempo de ejecución a través de la pseudovista `crono.data_types`:
 
-```cronosql
+```crono-sql
 SELECT * FROM crono.data_types
 ```
