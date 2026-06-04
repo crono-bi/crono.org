@@ -248,7 +248,8 @@ const lightTheme = EditorView.theme({
   '&.cm-focused .cm-selectionBackground, .cm-selectionBackground, .cm-content ::selection': {
     backgroundColor: '#d7d4f0'
   },
-  '.cm-activeLine': { backgroundColor: '#f6f8fa' },
+  // Transparent so it never covers the selection background on the cursor line
+  '.cm-activeLine': { backgroundColor: 'transparent' },
   '.cm-selectionMatch': { backgroundColor: '#e8f2ff' },
   '.cm-gutters': {
     backgroundColor: '#f6f8fa',
