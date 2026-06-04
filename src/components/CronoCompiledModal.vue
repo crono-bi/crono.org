@@ -25,11 +25,24 @@
         </div>
 
         <!-- Output -->
-        <div class="ccm-col">
+        <div ref="outputPanelRef" class="ccm-col" style="position:relative">
           <div class="ccm-col-header">
             <EngineSelector v-model="selectedEngine" :theme="theme" />
             <span v-if="isCompiling" class="ccm-status ccm-compiling">{{ t('modal.compiling') }}</span>
             <span v-else-if="compilationError" class="ccm-status ccm-error">{{ t('modal.error') }}</span>
+            <div class="ccm-fs-wrapper">
+              <button
+                ref="fsBtnRef"
+                class="ccm-fs-btn"
+                @click="toggleFullscreen"
+                @mouseenter="showTooltip"
+                @mouseleave="hideTooltip"
+                :aria-label="isFullscreen ? t('modal.exitFullscreen') : t('modal.fullscreen')"
+              >
+                <Minimize v-if="isFullscreen" :size="16" />
+                <Maximize v-else :size="16" />
+              </button>
+            </div>
           </div>
           <div class="ccm-col-body">
             <CodeEditor :modelValue="sqlOutput" :readonly="true" :theme="theme" />
@@ -50,7 +63,7 @@
 
 <script setup lang="ts">
 import { ref, computed, watch, onMounted, onUnmounted } from 'vue'
-import { X, ExternalLink } from 'lucide-vue-next'
+import { X, ExternalLink, Maximize, Minimize } from 'lucide-vue-next'
 import { Theme, EngineId } from '../playground/types/enums'
 import CodeEditor from '../playground/components/CodeEditor.vue'
 import EngineSelector from '../playground/components/EngineSelector.vue'
@@ -64,10 +77,14 @@ const t = useT(getLangFromPath(typeof window !== 'undefined' ? window.location.p
 const ENGINE_STORAGE_KEY = 'crono-sql-engine'
 
 const dialogRef = ref<HTMLDialogElement | null>(null)
+const outputPanelRef = ref<HTMLElement | null>(null)
+const fsBtnRef = ref<HTMLButtonElement | null>(null)
+let tooltipEl: HTMLDivElement | null = null
 const sourceCode = ref('')
 const sqlOutput = ref('')
 const isCompiling = ref(false)
 const compilationError = ref('')
+const isFullscreen = ref(false)
 
 // Engine: persisted across blocks via localStorage
 function loadEngine(): EngineId {
@@ -134,12 +151,17 @@ async function compile() {
   }
 }
 
+let originalBodyOverflow = ''
+
 function open(code: string) {
   sourceCode.value = code
   // Refresh engine from storage in case it changed elsewhere (other tab / playground)
   selectedEngine.value = loadEngine()
   syncTheme()
   if (dialogRef.value && !dialogRef.value.open) {
+    // Lock body scroll to prevent background scrolling
+    originalBodyOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
     dialogRef.value.showModal()
   }
   compile()
@@ -150,6 +172,8 @@ function close() {
 }
 
 function onClose() {
+  // Restore body scroll
+  document.body.style.overflow = originalBodyOverflow
   sqlOutput.value = ''
   compilationError.value = ''
 }
@@ -157,6 +181,78 @@ function onClose() {
 function onBackdropClick(e: MouseEvent) {
   // Click on the dialog element itself (backdrop) closes it
   if (e.target === dialogRef.value) close()
+}
+
+function showTooltip() {
+  if (!fsBtnRef.value) return
+  hideTooltip()
+
+  const btnRect = fsBtnRef.value.getBoundingClientRect()
+  // Mount point: fullscreen element owns the top layer; dialog otherwise
+  const mountEl = (document.fullscreenElement as HTMLElement) ?? dialogRef.value
+  if (!mountEl) return
+  const mountRect = mountEl.getBoundingClientRect()
+
+  // Position to the LEFT of the button, vertically centered (same level)
+  const top = btnRect.top - mountRect.top + btnRect.height / 2
+  const left = btnRect.left - mountRect.left - 8
+
+  tooltipEl = document.createElement('div')
+  tooltipEl.className = `ccm-tooltip-imp ${themeClass.value}`
+  tooltipEl.textContent = isFullscreen.value ? t('modal.exitFullscreen') : t('modal.fullscreen')
+  tooltipEl.style.cssText = [
+    'position:absolute',
+    `top:${top}px`,
+    `left:${left}px`,
+    'transform:translate(-100%, -50%)',
+    'z-index:999999',
+    'pointer-events:none',
+    'padding:6px 10px',
+    'border-radius:6px',
+    'font-size:12px',
+    'font-weight:500',
+    'white-space:nowrap',
+    'animation:ccm-tip-in 0.12s ease forwards',
+  ].join(';')
+
+  // Theme styles
+  if (theme.value === 'dark') {
+    tooltipEl.style.background = '#1e293b'
+    tooltipEl.style.color = '#f1f5f9'
+    tooltipEl.style.border = '1px solid #334155'
+    tooltipEl.style.boxShadow = '0 4px 12px rgba(0,0,0,0.4)'
+  } else {
+    tooltipEl.style.background = '#ffffff'
+    tooltipEl.style.color = '#0f172a'
+    tooltipEl.style.border = '1px solid #e2e8f0'
+    tooltipEl.style.boxShadow = '0 4px 12px rgba(0,0,0,0.1)'
+  }
+
+  mountEl.appendChild(tooltipEl)
+}
+
+function hideTooltip() {
+  tooltipEl?.remove()
+  tooltipEl = null
+}
+
+// Fullscreen toggle for output panel only
+async function toggleFullscreen() {
+  if (!outputPanelRef.value) return
+  try {
+    if (document.fullscreenElement === outputPanelRef.value) {
+      await document.exitFullscreen()
+    } else {
+      await outputPanelRef.value.requestFullscreen()
+    }
+  } catch (err) {
+    console.error('Fullscreen error:', err)
+  }
+}
+
+// Sync fullscreen state when user presses Esc or uses browser controls
+function onFullscreenChange() {
+  isFullscreen.value = document.fullscreenElement === outputPanelRef.value
 }
 
 // Recompile + persist when engine changes
@@ -178,11 +274,13 @@ onMounted(() => {
   themeObserver = new MutationObserver(syncTheme)
   themeObserver.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] })
   window.addEventListener('crono:compile', handleCompileEvent as EventListener)
+  document.addEventListener('fullscreenchange', onFullscreenChange)
 })
 
 onUnmounted(() => {
   themeObserver?.disconnect()
   window.removeEventListener('crono:compile', handleCompileEvent as EventListener)
+  document.removeEventListener('fullscreenchange', onFullscreenChange)
 })
 
 watch(selectedEngine, onEngineChange)
@@ -264,6 +362,31 @@ defineExpose({ open, close })
 .ccm-theme-dark .ccm-close:hover { background: #1e293b; color: #f1f5f9; }
 .ccm-theme-light .ccm-close { color: #64748b; }
 .ccm-theme-light .ccm-close:hover { background: #f1f5f9; color: #0f172a; }
+
+/* Fullscreen button */
+.ccm-fs-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.ccm-theme-dark .ccm-fs-btn { color: #94a3b8; }
+.ccm-theme-dark .ccm-fs-btn:hover { background: #1e293b; color: #f1f5f9; }
+.ccm-theme-light .ccm-fs-btn { color: #64748b; }
+.ccm-theme-light .ccm-fs-btn:hover { background: #f1f5f9; color: #0f172a; }
+
+/* Fullscreen button wrapper */
+.ccm-fs-wrapper {
+  margin-left: auto;
+  display: inline-flex;
+}
+
 
 /* Body */
 .ccm-body {
@@ -350,4 +473,13 @@ defineExpose({ open, close })
 .ccm-theme-dark .ccm-pg-link:hover { background: #1e293b; }
 .ccm-theme-light .ccm-pg-link { color: #2563EB; }
 .ccm-theme-light .ccm-pg-link:hover { background: #eff6ff; }
+</style>
+
+<style>
+/* Imperative tooltip — appended directly to fullscreen element or dialog via JS.
+   Must be global (not scoped) since the element is created outside Vue's tree. */
+@keyframes ccm-tip-in {
+  from { opacity: 0; transform: translate(-100%, -50%) translateX(4px); }
+  to   { opacity: 1; transform: translate(-100%, -50%) translateX(0); }
+}
 </style>

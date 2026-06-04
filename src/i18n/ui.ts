@@ -43,6 +43,8 @@ const es = {
   'modal.unknownError': 'Error desconocido',
   'modal.syntaxError': '-- Error de sintaxis en tu Crono SQL:',
   'modal.compileError': '-- Error de compilación:',
+  'modal.fullscreen': 'Pantalla completa',
+  'modal.exitFullscreen': 'Salir de pantalla completa',
 
   // ── Botón inyectado en bloques de código ──
   'compileBtn.label': 'Ver compilado',
@@ -240,7 +242,7 @@ const es = {
   'homeHero.product.analysis.stats': '17 artículos',
   'homeHero.playground.label': 'Playground',
   'homeHero.playground.title': 'SQL simplificado',
-  'homeHero.playground.desc': 'Un lenguaje, ocho motores. Crono SQL compila a PostgreSQL, Snowflake, BigQuery, SQL Server, MySQL, SQLite, DuckDB y MS Fabric.',
+  'homeHero.playground.desc': 'Un solo lenguaje, todos los motores',
   'homeHero.playground.cta': 'Probar en playground',
   'homeHero.sqlSection.title': 'Crono SQL',
   'homeHero.sqlSection.subtitle': 'Un dialecto, todos los motores',
@@ -518,6 +520,8 @@ const en: Record<keyof typeof es, string> = {
   'modal.unknownError': 'Unknown error',
   'modal.syntaxError': '-- Syntax error in your Crono SQL:',
   'modal.compileError': '-- Compilation error:',
+  'modal.fullscreen': 'Fullscreen',
+  'modal.exitFullscreen': 'Exit fullscreen',
 
   // ── Injected button on code blocks ──
   'compileBtn.label': 'View compiled',
@@ -715,7 +719,7 @@ const en: Record<keyof typeof es, string> = {
   'homeHero.product.analysis.stats': '17 articles',
   'homeHero.playground.label': 'Playground',
   'homeHero.playground.title': 'Simplified SQL',
-  'homeHero.playground.desc': 'One language, eight engines. Crono SQL compiles to PostgreSQL, Snowflake, BigQuery, SQL Server, MySQL, SQLite, DuckDB and MS Fabric.',
+  'homeHero.playground.desc': 'One language, all engines',
   'homeHero.playground.cta': 'Try in playground',
   'homeHero.sqlSection.title': 'Crono SQL',
   'homeHero.sqlSection.subtitle': 'One dialect, all engines',
