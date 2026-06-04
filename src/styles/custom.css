@@ -1,14 +1,25 @@
 @import "tailwindcss";
 @import "./brand-themes.css";
 
-/* Hide right sidebar (table of contents) when it has 0 or 1 items */
-.right-sidebar-container:has(.right-sidebar nav ul li:only-child),
-.right-sidebar-container:has(.right-sidebar nav ul:empty) {
-  display: none;
+/* ===== FIX MARKDOWN LINKS — Restore Starlight native styling =====
+   Tailwind v4 Preflight resets links to color:inherit and no underline.
+   Re-declare with @layer starlight.base to ensure specificity wins. */
+@layer starlight.base {
+  .sl-markdown-content a {
+    color: var(--sl-color-text-accent);
+    text-decoration: underline;
+  }
+
+  .sl-markdown-content a:hover {
+    color: var(--sl-color-white);
+  }
 }
 
-/* Alternative: hide when there's only one section link */
-.right-sidebar:has(.toc-items li:first-child:last-child) {
+/* Hide right sidebar (table of contents) when it has 0 or 1 top-level items.
+   Use child combinators (>) so only the root <ul> items are counted: a lone
+   nested H3 under an H2 must NOT trigger hiding the whole TOC. */
+.right-sidebar-container:has(.right-sidebar nav > ul > li:only-child),
+.right-sidebar-container:has(.right-sidebar nav > ul:empty) {
   display: none;
 }
 
