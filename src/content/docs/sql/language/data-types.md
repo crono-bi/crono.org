@@ -130,13 +130,13 @@ CREATE TABLE dwh.dim_products (
 )
 ```
 
-Las columnas booleanas se pueden filtrar directamente con `YES` o `NO`, sin necesidad de comparar con un literal numérico:
+Las columnas booleanas se pueden filtrar con `TRUE` o `FALSE`:
 
 ```crono-sql
 SELECT *
 FROM dwh.dim_products
-WHERE discontinued = YES
-  AND requires_cold = NO
+WHERE discontinued = TRUE
+  AND requires_cold = FALSE
 ```
 
 
@@ -331,6 +331,6 @@ DuckDB sigue el mismo criterio de nomenclatura de fechas que PostgreSQL y Redshi
 
 Toda la información de equivalencias está disponible en tiempo de ejecución a través de la pseudovista `crono.data_types`:
 
-```cronosql
+```crono-sql
 SELECT * FROM crono.data_types
 ```
