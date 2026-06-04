@@ -4,9 +4,13 @@ sidebar:
   order: 55
 ---
 
+import EngineChips from '@components/EngineChips.astro'
+
 **Crono SQL** define un conjunto de tipos de datos estándar que funcionan en cualquier motor soportado. Al compilar, Crono traduce automáticamente cada tipo al equivalente correcto del motor de destino. Si se usa un nombre de tipo fuera de esta lista, Crono lo respeta y lo compila tal cual — pero el código deja de ser portable.
 
-La recomendación es usar siempre los tipos estándar de Crono. De este modo, una misma definición de tabla o consulta funciona sin cambios en SQL Server, Snowflake, PostgreSQL, Redshift, BigQuery o Databricks.
+La recomendación es usar siempre los tipos estándar de Crono. De este modo, una misma definición de tabla o consulta funciona sin cambios en Snowflake, PostgreSQL, Redshift, BigQuery, SQL Server, MySQL, SQLite, DuckDB y MS Fabric.
+
+<EngineChips />
 
 Cada tipo acepta además los sinónimos más habituales de los distintos motores, de forma que el código SQL existente funciona sin necesidad de adaptarlo.
 

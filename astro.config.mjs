@@ -11,7 +11,6 @@ import { sqlTopics } from './src/config/sidebar-sql.js';
 import { examplesTopics } from './src/config/sidebar-examples.js';
 import { playgroundTopics } from './src/config/sidebar-playground.js';
 import { downloadsTopics } from './src/config/sidebar-downloads.js';
-
 import cronoSqlLang from './src/config/crono-sql-grammar.mjs';
 
 // https://astro.build/config
@@ -19,6 +18,11 @@ export default defineConfig({
 	site: 'https://crono.org',
 	vite: {
 		plugins: [tailwindcss()],
+		resolve: {
+			alias: {
+				'@components': '/src/components',
+			},
+		},
 		optimizeDeps: {
 			include: [
 				'codemirror',
@@ -31,7 +35,7 @@ export default defineConfig({
 				'@codemirror/search',
 				'@codemirror/autocomplete',
 				'@lezer/highlight',
-			],
+				],
 		},
 	},
 	integrations: [
