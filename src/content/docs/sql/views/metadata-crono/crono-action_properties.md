@@ -3,19 +3,20 @@ title: "crono.action_properties"
 ---
 
 
-La función `Crono$ActionProperties` devuelve las propiedades que admiten las acciones propias de Crono.
+La función `crono.action_properties` devuelve las propiedades que admiten las acciones propias de Crono.
 
 
 ```crono-sql
 select *
-from Crono$ActionProperties
+from crono.action_properties
 ```
 
-La respuesta incluye estas columnas:
+## Columnas
 
-
-- **Name**: Nombre de la accion
-- **TypeName**: Nombre interno identificativo de la acción
-- **PropertyName**: Nombre de la propiedad
-- **PropertyType**: Tipo de dato de la propiedad (numérico, texto, booleanos, etc.)
-- **AlternativeName**: Nombre altternativo que puede usarse para referirse a la propiedad
+| Columna | Descripción |
+|---|---|
+| Name | Nombre de la acción |
+| TypeName | Nombre interno identificativo de la acción |
+| PropertyName | Nombre de la propiedad |
+| PropertyType | Tipo de dato de la propiedad (numérico, texto, booleano, etc.) |
+| AlternativeName | Nombre alternativo que puede usarse para referirse a la propiedad |

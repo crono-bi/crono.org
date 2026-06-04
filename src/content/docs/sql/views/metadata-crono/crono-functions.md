@@ -11,5 +11,5 @@ Este listado es meramente informativo, pues Crono permite usar cualquier funció
 
 ```crono-sql
 select *
-from Crono$Functions
+from crono.functions
 ```

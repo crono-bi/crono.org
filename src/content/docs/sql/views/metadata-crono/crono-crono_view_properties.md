@@ -4,16 +4,18 @@ title: "crono.crono_view_properties"
 
 
 
-La pseudovista `Crono$CronoViewProperties` devuelve las propiedades que admiten las pseudovistas con parámetros.
+La pseudovista `crono.crono_view_properties` devuelve las propiedades que admiten las pseudovistas con parámetros.
 
 ```crono-sql
 SELECT *
-FROM Crono$CronoViewProperties
+FROM crono.crono_view_properties
 ```
 
-Las columnas del resultado son:
+## Columnas
 
-- **Name**: Nombre de la pseudovista
-- **PropertyName**: Nombre de la propiedades
-- **PropertyType**: Tipo de dato de la propiedad (numérico, texto, booleanos, etc.)
+| Columna | Descripción |
+|---|---|
+| Name | Nombre de la pseudovista |
+| PropertyName | Nombre de la propiedad |
+| PropertyType | Tipo de dato de la propiedad (numérico, texto, booleano, etc.) |
 

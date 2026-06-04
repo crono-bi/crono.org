@@ -8,13 +8,15 @@ Devuelve las "sustituciones" definidas en las propiedades del proyecto Crono ETL
 
 ```crono-sql
 SELECT *
-FROM Crono$Replacements
+FROM crono.replacements
 ```
 
-La pseudoconsulta tiene estas columnas:
+## Columnas
 
-- Key
-- Value
+| Columna | Descripción |
+|---|---|
+| Key | Clave de la sustitución |
+| Value | Valor por el que se sustituye la clave |
 
 
 Las sustituciones son pares clave-valor que se aplican antes de ejecutar el código Crono SQL. Son utiles para no incluir constantes o variables que pueden cambiar o dependen del entorno. 

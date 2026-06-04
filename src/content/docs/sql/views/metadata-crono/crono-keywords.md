@@ -8,5 +8,5 @@ Devuelve el listado de palabras reservadas del lenguaje Crono SQL. Estas palabra
 
 ```crono-sql
 select *
-from Crono$Keywords
+from crono.keywords
 ```
