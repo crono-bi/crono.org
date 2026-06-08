@@ -1,10 +1,13 @@
 ---
+import { useT, getLangFromLocale } from '../i18n/ui'
+
 interface Props {
   src: string
   groupBySubfolder?: boolean
 }
 
 const { src, groupBySubfolder = false } = Astro.props
+const t = useT(getLangFromLocale(Astro.currentLocale))
 
 const allFiles = import.meta.glob('../content/docs/**/*.{md,mdx}', { eager: true })
 
@@ -66,17 +69,19 @@ const sortedGroups = Object.entries(groupedPages).sort((a, b) => {
 
 // Función para formatear nombre de categoría
 function formatCategoryName(name: string): string {
-  const names: Record<string, string> = {
-    'agregacion': 'Agregación',
-    'conversion': 'Conversión de tipos',
-    'numericas': 'Numéricas',
-    'fecha': 'Fecha',
-    'nulos': 'Nulos y condiciones',
-    'texto': 'Texto',
-    'metadata': 'Metadata',
-    'others': 'Otras',
+  // Map category names to translation keys
+  const categoryKeys: Record<string, string> = {
+    'agregacion': 'category.agregacion',
+    'conversion': 'category.conversion',
+    'numericas': 'category.numericas',
+    'fecha': 'category.fecha',
+    'nulos': 'category.nulos',
+    'texto': 'category.texto',
+    'metadata': 'category.metadata',
+    'others': 'category.others',
   }
-  return names[name] || name.charAt(0).toUpperCase() + name.slice(1)
+  const key = categoryKeys[name]
+  return key ? t(key as any) : name.charAt(0).toUpperCase() + name.slice(1)
 }
 ---
 

@@ -53,6 +53,30 @@ const es = {
   'compileBtn.label': 'Ver compilado',
   'compileBtn.aria': 'Ver SQL compilado',
 
+  // ── SectionIndex (categorías de funciones SQL) ──
+  'category.agregacion': 'Agregación',
+  'category.conversion': 'Conversión de tipos',
+  'category.numericas': 'Numéricas',
+  'category.fecha': 'Fecha',
+  'category.nulos': 'Nulos y condiciones',
+  'category.texto': 'Texto',
+  'category.metadata': 'Metadata',
+  'category.others': 'Otras',
+  'category.general': 'General',
+
+  // ── ManualLanding (títulos de secciones) ──
+  'manualLanding.featuresTitle': '¿Qué es?',
+  'manualLanding.statementsTitle': 'Sentencias principales',
+  'manualLanding.functionsTitle': 'Funciones integradas',
+  'manualLanding.categoriesTitle': 'Explorar por categoría',
+  'manualLanding.categoriesDesc': 'Selecciona una categoría para ver todos los artículos disponibles.',
+  'manualLanding.basePathTitle': 'Documentación',
+  'manualLanding.footerTitle': '¿Listo para empezar?',
+  'manualLanding.footerDesc': 'Explora la documentación completa.',
+  'manualLanding.footerCta': 'Empezar ahora',
+  'manualLanding.enginesTitle': 'Motores compatibles',
+  'manualLanding.syntaxTitle': 'Sintaxis simplificada',
+
   // ── DownloadTable ──
   'download.error.load': 'No se pudo cargar la información',
   'download.error.connect': 'Error al conectar con el servidor de actualizaciones',
@@ -532,6 +556,30 @@ const en: Record<keyof typeof es, string> = {
   // ── Injected button on code blocks ──
   'compileBtn.label': 'View compiled',
   'compileBtn.aria': 'View compiled SQL',
+
+  // ── SectionIndex (SQL function categories) ──
+  'category.agregacion': 'Aggregation',
+  'category.conversion': 'Type conversion',
+  'category.numericas': 'Numeric',
+  'category.fecha': 'Date',
+  'category.nulos': 'Nulls and conditions',
+  'category.texto': 'Text',
+  'category.metadata': 'Metadata',
+  'category.others': 'Others',
+  'category.general': 'General',
+
+  // ── ManualLanding (section titles) ──
+  'manualLanding.featuresTitle': 'What is it?',
+  'manualLanding.statementsTitle': 'Main statements',
+  'manualLanding.functionsTitle': 'Built-in functions',
+  'manualLanding.categoriesTitle': 'Browse by category',
+  'manualLanding.categoriesDesc': 'Select a category to view all available articles.',
+  'manualLanding.basePathTitle': 'Documentation',
+  'manualLanding.footerTitle': 'Ready to get started?',
+  'manualLanding.footerDesc': 'Explore the complete documentation.',
+  'manualLanding.footerCta': 'Get started now',
+  'manualLanding.enginesTitle': 'Supported engines',
+  'manualLanding.syntaxTitle': 'Simplified syntax',
 
   // ── DownloadTable ──
   'download.error.load': 'Could not load information',
