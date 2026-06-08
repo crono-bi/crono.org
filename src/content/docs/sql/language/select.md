@@ -236,7 +236,7 @@ El siguiente ejemplo define `total_amount` directamente sobre `order_details`. A
 ```crono-sql
 SELECT
   company_name,
-  sum(total_amount) total_amount,
+  sum(order_details.total_amount) total_amount,
   sum(order_details.total_amount * order_details.discount) total_discount,
   divide(total_discount, total_amount) discount_pct
 FROM staging.order_details ADD COLUMNS (unit_price * quantity total_amount)

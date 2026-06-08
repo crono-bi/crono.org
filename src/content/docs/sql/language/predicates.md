@@ -134,8 +134,8 @@ Con `EXCLUSIVE`, el límite superior queda excluido (`<` en lugar de `<=`). Es l
 
 ```crono-sql
 SELECT *
-FROM ventas
-WHERE fecha BETWEEN date('2026-01-01') AND current_date EXCLUSIVE
+FROM staging.orders
+WHERE order_date BETWEEN date('2026-01-01') AND current_date EXCLUSIVE
 ```
 
 

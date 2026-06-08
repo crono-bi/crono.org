@@ -32,7 +32,7 @@ INNER JOIN staging.products USING product_id
 
 Al compilar, **Crono SQL** envuelve la consulta inferior en una subconsulta y ejecuta la superior sobre su resultado. Como la capa exterior contiene `avg(annual_revenue)`, el compilador infiere automáticamente el GROUP BY. El SQL generado es equivalente a:
 
-```crono-sql
+```sql
 SELECT
   product_name,
   product_id,
