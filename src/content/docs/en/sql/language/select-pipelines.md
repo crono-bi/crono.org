@@ -1,0 +1,101 @@
+---
+title: "SQL Pipelines"
+sidebar:
+  order: 11
+---
+
+SQL estándar no incluye ningún mecanismo para encadenar transformaciones de forma directa. Cuando una consulta necesita operar sobre el resultado de otra —filtrar sobre un agregado, calcular un porcentaje sobre un total, aplicar un ranking y luego filtrar por él— la única opción en SQL es anidar subconsultas: la consulta interior se envuelve entre paréntesis y se le da un alias para que la exterior pueda referenciarla. Con una capa de anidamiento el código ya es más difícil de leer; con dos o tres, prácticamente imposible de mantener. La lógica se fragmenta entre niveles de paréntesis, los alias son artificiales (`subquery`, `a`, `inner_query`) y cualquier cambio obliga a buscar dentro de la estructura anidada para entender qué hace cada parte.
+
+**Crono SQL** resuelve esto con los **SQL Pipelines**: en lugar de anidar subconsultas, los SELECTs se apilan como capas independientes. Cada capa opera sobre el resultado de la anterior, de abajo a arriba, sin paréntesis ni aliases artificiales. El SQL generado es el mismo, pero el código se lee de forma natural y cada transformación ocupa exactamente su lugar.
+
+
+## SELECTs apilados
+
+Un **SQL Pipeline** es una secuencia de transformaciones donde cada SELECT opera sobre el resultado del SELECT anterior. Igual que en un pipeline ETL los datos fluyen por distintas etapas, en un SQL Pipeline los resultados fluyen de una consulta a la siguiente. Esta idea no es nueva — es la misma filosofía de composición de los pipes de Unix (`|`), los DataFrames de Pandas o dplyr en R. La diferencia es que aquí no se abandona SQL: se siguen usando SELECT, WHERE, GROUP BY, ORDER BY, con la misma sintaxis y el mismo compilador. No hay un nuevo paradigma que aprender.
+
+**Crono SQL** implementa esta idea apilando las consultas. Este ejemplo calcula la media de las ventas anuales por producto. En SQL estándar requiere una subconsulta en el FROM; con SQL Pipelines se apilan dos SELECT:
+
+```crono-sql
+SELECT
+  product_name,
+  product_id,
+  avg(annual_revenue) AS avg_annual_revenue
+SELECT
+  products.product_name,
+  products.product_id,
+  year(orders.order_date) AS order_year,
+  sum(order_details.unit_price * order_details.quantity) AS annual_revenue
+FROM staging.order_details
+INNER JOIN staging.orders USING order_id
+INNER JOIN staging.products USING product_id
+```
+
+Al compilar, **Crono SQL** envuelve la consulta inferior en una subconsulta y ejecuta la superior sobre su resultado. Como la capa exterior contiene `avg(annual_revenue)`, el compilador infiere automáticamente el GROUP BY. El SQL generado es equivalente a:
+
+```crono-sql
+SELECT
+  product_name,
+  product_id,
+  avg(annual_revenue) AS avg_annual_revenue
+FROM (...) subquery
+GROUP BY product_name, product_id
+```
+
+Los SQL Pipelines eliminan así gran parte de las subconsultas y CTEs cuyo único propósito es encadenar transformaciones.
+
+La sintaxis apilada puede resultar extraña al principio, pero una vez que se interioriza la idea —cada SELECT opera sobre el resultado del que tiene debajo— se vuelve completamente natural. Es de esas construcciones que, cuando se entienden, hacen que la alternativa parezca innecesariamente complicada.
+
+Y la misma lógica se puede extender indefinidamente: cada nueva capa es simplemente una nueva subconsulta. Se pueden añadir tantas como sean necesarias para aplicar más cálculos, filtrar resultados o establecer un orden — sin que el código gane en complejidad ni en profundidad de anidamiento.
+
+
+## WHERE y ORDER BY apilados
+
+Las capas apiladas no se limitan a la cláusula **SELECT**. También se pueden apilar **WHERE** y **ORDER BY** como capas independientes que operan sobre el resultado de las capas inferiores. Esto permite filtrar u ordenar sobre valores agregados sin necesidad de subconsultas ni CTEs.
+
+La siguiente consulta devuelve los clientes con más de 10.000 en ventas, ordenados de mayor a menor:
+
+```crono-sql
+SELECT ORDER BY total_sales DESC
+SELECT WHERE total_sales > 10000
+SELECT
+  customers.company_name,
+  sum(order_details.unit_price * order_details.quantity) AS total_sales
+FROM staging.order_details
+INNER JOIN staging.orders USING order_id
+INNER JOIN staging.customers USING orders(customer_id)
+```
+
+## Durante el desarrollo
+
+Esta capacidad es especialmente valiosa durante el desarrollo. Cuando se está construyendo o depurando una consulta compleja, es habitual querer inspeccionarla: contar cuántos registros devuelve, agrupar los resultados de una forma distinta, filtrar por un valor concreto para verificar que el dato es correcto. Con los SQL Pipelines, esa inspección se añade encima de la consulta original sin tocarla. Cuando ya no se necesita, se elimina la capa superior y la consulta queda exactamente como estaba.
+
+Por ejemplo, para contar cuántos registros devuelve una consulta basta con añadir un `SELECT count(*)` encima, sin modificar nada de la consulta original:
+
+```crono-sql
+SELECT count(*)
+SELECT
+  products.product_name,
+  products.product_id,
+  sum(order_details.unit_price * order_details.quantity) AS revenue
+FROM staging.order_details
+INNER JOIN staging.products USING product_id
+```
+
+
+## Combinado con funciones de ventana
+
+Los SQL Pipelines y las [funciones de ventana](/sql/language/window-functions/) se combinan de forma natural. El resultado de un SELECT que calcula un acumulado o un porcentaje puede filtrarse en la capa siguiente sin necesidad de CTEs.
+
+Este ejemplo devuelve los productos que representan el primer 20% de la venta total, usando `running_pct` en la capa inferior y filtrando en la superior:
+
+```crono-sql
+SELECT WHERE running_pct < 0.20
+SELECT
+  products.product_name,
+  sum(od.quantity * od.unit_price)              amount,
+  pct(amount)                                   percentage,
+  running_pct(amount ORDER BY amount DESC)       running_pct
+FROM staging.order_details od
+INNER JOIN staging.orders USING order_id
+INNER JOIN staging.products USING product_id
+```

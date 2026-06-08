@@ -21,6 +21,7 @@ export default defineConfig({
 		resolve: {
 			alias: {
 				'@components': '/src/components',
+				'@playground': '/src/playground/components',
 			},
 		},
 		optimizeDeps: {

@@ -1,72 +1,24 @@
 export const analysisTopics = {
-						label: 'Crono Analysis',
-						link: '/analysis/intro/',
-						icon: 'chart',
-						items: [
-			{ label: "Crono Analysis", link: "analysis/" },
-			{
-				label: "Introducción",
-				link: "analysis/intro",
-			},
-			{
-				label: "El catálogo",
-				link: "analysis/catalog",
-			},
-			{
-				label: "Estructura de un documento",
-				link: "analysis/analysis-document",
-			},
-			{
-				label: "Crear una consulta",
-				link: "analysis/create-query",
-			},
-			{
-				label: "Filtros",
-				link: "analysis/filters",
-			},
-			{
-				label: "Columnas calculadas",
-				link: "analysis/analysis-calculated-columns",
-			},
-			{
-				label: "Bloquear el documento",
-				link: "analysis/block-report",
-			},
-			{
-				label: "Exportación",
-				link: "analysis/export-report",
-			},
-			{
-				label: "Modo de propagación",
-				link: "analysis/propagation",
-			},
-			{
-				label: "Tipos de visualización",
-				link: "analysis/visualizations",
-			},
-			{
-				label: "Editor de consultas",
-				link: "analysis/query-editor",
-			},
-			{
-				label: "Propiedades de documento",
-				link: "analysis/document-properties",
-			},
-			{
-				label: "Propiedades de informe",
-				link: "analysis/report-properties",
-			},
-			{
-				label: "Propiedades de hoja",
-				link: "analysis/sheet-properties",
-			},
-			{
-				label: "Propiedades de panel",
-				link: "analysis/panel-properties",
-			},
-			{
-				label: "Propiedades de columna",
-				link: "analysis/analysis-column-properties",
-			},
-		],
-					};
+	label: 'Crono Analysis',
+	link: '/analysis/intro/',
+	icon: 'chart',
+	items: [
+		{ slug: 'analysis', label: 'Crono Analysis', translations: { en: 'Crono Analysis' } },
+		{ slug: 'analysis/intro', label: 'Introducción', translations: { en: 'Introduction' } },
+		{ slug: 'analysis/catalog', label: 'El catálogo', translations: { en: 'The catalog' } },
+		{ slug: 'analysis/analysis-document', label: 'Estructura de un documento', translations: { en: 'Document structure' } },
+		{ slug: 'analysis/create-query', label: 'Crear una consulta', translations: { en: 'Create a query' } },
+		{ slug: 'analysis/filters', label: 'Filtros', translations: { en: 'Filters' } },
+		{ slug: 'analysis/analysis-calculated-columns', label: 'Columnas calculadas', translations: { en: 'Calculated columns' } },
+		{ slug: 'analysis/block-report', label: 'Bloquear el documento', translations: { en: 'Lock the document' } },
+		{ slug: 'analysis/export-report', label: 'Exportación', translations: { en: 'Export' } },
+		{ slug: 'analysis/propagation', label: 'Modo de propagación', translations: { en: 'Propagation mode' } },
+		{ slug: 'analysis/visualizations', label: 'Tipos de visualización', translations: { en: 'Visualization types' } },
+		{ slug: 'analysis/query-editor', label: 'Editor de consultas', translations: { en: 'Query editor' } },
+		{ slug: 'analysis/document-properties', label: 'Propiedades de documento', translations: { en: 'Document properties' } },
+		{ slug: 'analysis/report-properties', label: 'Propiedades de informe', translations: { en: 'Report properties' } },
+		{ slug: 'analysis/sheet-properties', label: 'Propiedades de hoja', translations: { en: 'Sheet properties' } },
+		{ slug: 'analysis/panel-properties', label: 'Propiedades de panel', translations: { en: 'Panel properties' } },
+		{ slug: 'analysis/analysis-column-properties', label: 'Propiedades de columna', translations: { en: 'Column properties' } },
+	],
+};

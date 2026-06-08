@@ -18,6 +18,9 @@ export type Lang = 'es' | 'en'
 export const DEFAULT_LANG: Lang = 'es'
 
 const es = {
+  // ── Sidebar ──
+  'sidebar.home': 'Inicio',
+
   // ── Playground editor ──
   'pg.cronoSql': 'Crono SQL',
   'pg.compiling': 'Compilando...',
@@ -495,6 +498,9 @@ const es = {
 
 // `en` debe tener EXACTAMENTE las mismas claves que `es` (lo exige el tipo).
 const en: Record<keyof typeof es, string> = {
+  // ── Sidebar ──
+  'sidebar.home': 'Home',
+
   // ── Playground editor ──
   'pg.cronoSql': 'Crono SQL',
   'pg.compiling': 'Compiling...',

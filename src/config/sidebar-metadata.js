@@ -1,84 +1,27 @@
 export const metadataTopics = {
-						label: 'Crono Metadata',
-						link: '/metadata/intro/',
-						icon: 'list-format',
-						items: [
-			{ label: "Crono Metadata", link: "metadata/" },
-			{
-				label: "Introducción",
-				link: "metadata/intro",
-			},
-			{
-				label: "Cómo crear tu primer catálogo",
-				link: "metadata/first-catalog",
-			},
-			{
-				label: "Cómo crear un diagrama",
-				link: "metadata/diagram-creation",
-			},
-			{
-				label: "Crear elementos de negocio",
-				link: "metadata/business-items-creation",
-			},
-			{
-				label: "Listas de valores",
-				link: "metadata/list-of-values",
-			},
-			{
-				label: "Campos calculados",
-				link: "metadata/calculated-columns",
-			},
-			{
-				label: "Filtros predefinidos",
-				link: "metadata/predefined-filters",
-			},
-			{
-				label: "Tablas agregadas",
-				link: "metadata/aggregated-tables",
-			},
-			{
-				label: "Parámetros definidos en el catálogo",
-				link: "metadata/parameters",
-			},
-			{
-				label: "Catálogos multi-idioma",
-				link: "metadata/multilanguage-catalogs",
-			},
-			{
-				label: "Dimensiones geográficas",
-				link: "metadata/geographic-dimensions",
-			},
-			{
-				label: "Validar catálogo",
-				link: "metadata/catalog-validation",
-			},
-			{
-				label: "Seguridad y permisos de acceso",
-				link: "metadata/security-catalog",
-			},
-			{
-				label: "Propiedades de catálogo",
-				link: "metadata/catalog-properties",
-			},
-			{
-				label: "Propiedades de conexión",
-				link: "metadata/connection-properties",
-			},
-			{
-				label: "Propiedades de elementos de negocio",
-				link: "metadata/business-item-properties",
-			},
-			{
-				label: "Propiedades de tabla",
-				link: "metadata/table-properties",
-			},
-			{
-				label: "Propiedades de columna",
-				link: "metadata/column-properties",
-			},
-			{
-				label: "Propiedades de relación",
-				link: "metadata/join-properties",
-			},
-		],
-					};
+	label: 'Crono Metadata',
+	link: '/metadata/intro/',
+	icon: 'list-format',
+	items: [
+		{ slug: 'metadata', label: 'Crono Metadata', translations: { en: 'Crono Metadata' } },
+		{ slug: 'metadata/intro', label: 'Introducción', translations: { en: 'Introduction' } },
+		{ slug: 'metadata/first-catalog', label: 'Cómo crear tu primer catálogo', translations: { en: 'How to create your first catalog' } },
+		{ slug: 'metadata/diagram-creation', label: 'Cómo crear un diagrama', translations: { en: 'How to create a diagram' } },
+		{ slug: 'metadata/business-items-creation', label: 'Crear elementos de negocio', translations: { en: 'Create business items' } },
+		{ slug: 'metadata/list-of-values', label: 'Listas de valores', translations: { en: 'Lists of values' } },
+		{ slug: 'metadata/calculated-columns', label: 'Campos calculados', translations: { en: 'Calculated fields' } },
+		{ slug: 'metadata/predefined-filters', label: 'Filtros predefinidos', translations: { en: 'Predefined filters' } },
+		{ slug: 'metadata/aggregated-tables', label: 'Tablas agregadas', translations: { en: 'Aggregated tables' } },
+		{ slug: 'metadata/parameters', label: 'Parámetros definidos en el catálogo', translations: { en: 'Catalog-defined parameters' } },
+		{ slug: 'metadata/multilanguage-catalogs', label: 'Catálogos multi-idioma', translations: { en: 'Multilanguage catalogs' } },
+		{ slug: 'metadata/geographic-dimensions', label: 'Dimensiones geográficas', translations: { en: 'Geographic dimensions' } },
+		{ slug: 'metadata/catalog-validation', label: 'Validar catálogo', translations: { en: 'Validate catalog' } },
+		{ slug: 'metadata/security-catalog', label: 'Seguridad y permisos de acceso', translations: { en: 'Security and access permissions' } },
+		{ slug: 'metadata/catalog-properties', label: 'Propiedades de catálogo', translations: { en: 'Catalog properties' } },
+		{ slug: 'metadata/connection-properties', label: 'Propiedades de conexión', translations: { en: 'Connection properties' } },
+		{ slug: 'metadata/business-item-properties', label: 'Propiedades de elementos de negocio', translations: { en: 'Business item properties' } },
+		{ slug: 'metadata/table-properties', label: 'Propiedades de tabla', translations: { en: 'Table properties' } },
+		{ slug: 'metadata/column-properties', label: 'Propiedades de columna', translations: { en: 'Column properties' } },
+		{ slug: 'metadata/join-properties', label: 'Propiedades de relación', translations: { en: 'Join properties' } },
+	],
+};

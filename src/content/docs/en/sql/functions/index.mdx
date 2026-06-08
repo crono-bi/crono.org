@@ -1,0 +1,105 @@
+---
+title: "Introducción"
+sidebar:
+  order: 0
+---
+
+import CategorySelector from '@components/CategorySelector.astro'
+
+**Crono SQL** soporta todas las funciones nativas del motor de base de datos con el que se esté trabajando. Se pueden usar con normalidad funciones como `length`, `sum`, `substring`, `upper` o cualquier otra que admita el motor, aunque su disponibilidad depende de cada plataforma.
+
+Además, **Crono SQL** incluye un conjunto de funciones propias que funcionan en todos los motores soportados: SQL Server, Snowflake, PostgreSQL, BigQuery, Redshift, Databricks, Microsoft Fabric y DuckDB. Crono SQL compila cada función al equivalente nativo de cada motor de forma transparente. Por ejemplo, `divide` realiza una división que devuelve `NULL` en lugar de error si el divisor es cero, y `left` extrae los primeros caracteres de una cadena sin necesidad de usar `substring`.
+
+## Sinónimos
+
+Aunque SQL es un lenguaje estándar, cada motor nombra de forma distinta funciones equivalentes: lo que en un motor se llama `substring` en otro es `substr`; `len` y `length` hacen lo mismo según la plataforma. Los desarrolladores que cambian de motor o trabajan con varios a la vez se encuentran constantemente con esta fricción.
+
+**Crono SQL** la elimina añadiendo sinónimos para las funciones más habituales. Un desarrollador acostumbrado a `split` puede seguir usándolo aunque el nombre oficial de la función en Crono SQL sea `split_part`; quien conoce `ceiling` no tiene que aprender que aquí se llama `ceil`. Todos los sinónimos son equivalentes: Crono SQL los compilará correctamente al dialecto de cada motor, igual que hace con el nombre principal.
+
+Para consultar en tiempo de ejecución la lista completa de funciones disponibles y sus sinónimos se puede usar la pseudovista `crono.functions`:
+
+```crono-sql
+SELECT *
+FROM crono.functions
+```
+
+En esta sección se documentan las funciones propias de **Crono SQL**, agrupadas por categorías.
+
+Las funciones se han agrupado por categorías:
+
+<CategorySelector categories={[
+  {
+    id: 'agregacion',
+    title: 'Agregación',
+    description: 'Funciones de agregación y análisis estadístico.',
+    count: 20,
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg>',
+    path: '/sql/functions/agregacion/'
+  },
+  {
+    id: 'conversion',
+    title: 'Conversión de tipos',
+    description: 'Funciones para conversión de tipos de datos.',
+    count: 12,
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 4 4 4-4 4"/><path d="m8 4-4 4 4 4"/><path d="M13 20h7"/></svg>',
+    path: '/sql/functions/conversion/'
+  },
+  {
+    id: 'numericas',
+    title: 'Numéricas',
+    description: 'Funciones matemáticas y operaciones numéricas.',
+    count: 12,
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/><path d="M8 7h6"/><path d="M8 11h8"/><path d="M8 15h5"/></svg>',
+    path: '/sql/functions/numericas/'
+  },
+  {
+    id: 'fecha',
+    title: 'Fecha',
+    description: 'Funciones para manipulación de fechas y horas.',
+    count: 31,
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>',
+    path: '/sql/functions/fecha/'
+  },
+  {
+    id: 'nulos',
+    title: 'Nulos y condiciones',
+    description: 'Funciones para manejo de valores nulos y condicionales.',
+    count: 9,
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M3 12h18"/><path d="M3 18h18"/></svg>',
+    path: '/sql/functions/nulos/'
+  },
+  {
+    id: 'texto',
+    title: 'Texto',
+    description: 'Funciones para manipulación de texto y cadenas.',
+    count: 11,
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7V4h16v3"/><path d="M9 20h6"/><path d="M12 4v16"/></svg>',
+    path: '/sql/functions/texto/'
+  },
+  {
+    id: 'metadata',
+    title: 'Metadata',
+    description: 'Funciones informativas del sistema y metadatos.',
+    count: 4,
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="16" y2="12"/><line x1="12" x2="12.01" y1="8" y2="8"/></svg>',
+    path: '/sql/functions/metadata/'
+  },
+  {
+    id: 'others',
+    title: 'Otras',
+    description: 'Otras funciones de utilidad.',
+    count: 0,
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>',
+    path: '/sql/functions/others/'
+  }
+]} />
+
+
+---
+
+## Motores compatibles
+
+import EngineChips from '@components/EngineChips.astro'
+
+<EngineChips />
+

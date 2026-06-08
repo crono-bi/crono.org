@@ -1,0 +1,117 @@
+---
+title: "MERGE"
+sidebar:
+  order: 20
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+**Crono SQL** define cuatro patrones de carga basados en MERGE. Son los patrones más utilizados en un proyecto ETL/DWH: sincronizan la tabla destino con los datos de origen gestionando automáticamente las inserciones, actualizaciones y eliminaciones.
+
+- **MERGE CLONE** — sincronización completa: inserta, actualiza y elimina (SCD tipo 1)
+- **MERGE UPSERT** — inserta los nuevos y actualiza los existentes, sin eliminar
+- **MERGE SOFT DELETE** — como MERGE UPSERT, pero marca los eliminados con `delete_date`
+- **MERGE HISTORY** — mantiene el historial completo de cambios (SCD tipo 2)
+
+Todos admiten toda la potencia del **SELECT** y mantienen la auditoría automáticamente. La clave de carga se declara con `KEY (col1, col2)` en la cabecera y es obligatoria en los cuatro patrones.
+
+
+## MERGE CLONE
+
+**MERGE CLONE** sincroniza completamente la tabla destino con los datos de la consulta: inserta los registros nuevos, actualiza los que han cambiado y elimina los que ya no aparecen en el origen. Es el patrón más habitual en un proyecto DWH — en muchas tablas es el único que se necesita.
+
+<Aside type="tip">**MERGE CLONE** es el equivalente al patrón **SCD tipo 1**: sobreescribe los cambios sin conservar histórico.</Aside>
+
+La sintaxis es idéntica a la del resto de patrones de carga: tabla destino, clave, y SELECT con los datos de origen.
+
+```crono-sql
+MERGE CLONE dwh.dim_products KEY (product_id)
+SELECT
+  products.product_id,
+  products.product_name,
+  categories.category_name,
+  suppliers.company_name AS supplier
+FROM staging.products
+INNER JOIN staging.categories USING category_id
+INNER JOIN staging.suppliers USING supplier_id
+CHECK SNOWFLAKE
+```
+
+**CHECK SNOWFLAKE** verifica que los JOINs no pierden ni duplican ningún producto antes de ejecutar la carga. Si los datos de origen no son correctos, la operación falla antes de modificar ningún dato en destino.
+
+
+## MERGE UPSERT
+
+**MERGE UPSERT** inserta los registros nuevos y actualiza los que han cambiado, pero nunca elimina los registros existentes en la tabla destino. Es útil cuando se necesita conservar registros históricos que ya no están en el origen —por ejemplo, clientes o productos dados de baja que todavía tienen transacciones asociadas.
+
+```crono-sql
+MERGE UPSERT dwh.dim_products KEY (product_id)
+SELECT
+  products.product_id,
+  products.product_name,
+  categories.category_name,
+  suppliers.company_name AS supplier
+FROM staging.products
+INNER JOIN staging.categories USING category_id
+INNER JOIN staging.suppliers USING supplier_id
+CHECK SNOWFLAKE
+```
+
+
+## MERGE SOFT DELETE
+
+**MERGE SOFT DELETE** se comporta igual que **MERGE UPSERT**, pero en lugar de ignorar los registros ausentes en el origen, les asigna la fecha actual en el campo `delete_date`. Los registros no se eliminan físicamente, sino que quedan marcados como inactivos. Esto permite mantener la integridad referencial y consultar el estado histórico de la tabla.
+
+```crono-sql
+MERGE SOFT DELETE dwh.dim_customers KEY (customer_id)
+SELECT
+  customers.customer_id,
+  customers.company_name,
+  customers.contact_name,
+  customers.country,
+  customers.city
+FROM staging.customers
+```
+
+Un cliente que desaparezca del origen no se borrará de `dwh.dim_customers`: su `delete_date` quedará informada, y el resto de campos permanecerán con los últimos valores conocidos.
+
+
+## MERGE HISTORY
+
+**MERGE HISTORY** mantiene el historial completo de cambios en la tabla destino. Cuando un registro cambia, la versión anterior se cierra asignando la fecha actual a `end_date`, y se inserta una nueva versión con `start_date` igual a la fecha actual. Los registros nunca se eliminan ni se sobreescriben.
+
+<Aside type="tip">**MERGE HISTORY** es el equivalente al patrón **SCD tipo 2**: conserva el historial completo de cambios mediante filas versionadas.</Aside>
+
+La sintaxis es idéntica a la del resto de patrones. Solo cambia el verbo de la primera línea.
+
+```crono-sql
+MERGE HISTORY dwh.dim_products KEY (product_id)
+SELECT
+  products.product_id,
+  products.product_name,
+  categories.category_name,
+  suppliers.company_name AS supplier,
+  products.unit_price
+FROM staging.products
+INNER JOIN staging.categories USING category_id
+INNER JOIN staging.suppliers USING supplier_id
+CHECK SNOWFLAKE
+```
+
+Si el precio de un producto cambia, la versión anterior queda cerrada con su `end_date` y se crea una nueva fila con el nuevo precio y una `start_date` actualizada. Esto permite conocer el precio que tenía cualquier producto en cualquier fecha pasada.
+
+
+## Compatibilidad ANSI
+
+Por compatibilidad, **Crono SQL** también soporta la sintaxis estándar de la sentencia **MERGE**:
+
+```crono-sql
+MERGE dwh.dim_products AS dest
+USING staging.products AS src ON dest.product_id = src.product_id
+WHEN MATCHED THEN
+  UPDATE SET dest.product_name = src.product_name
+WHEN NOT MATCHED THEN
+  INSERT (product_id, product_name) VALUES (src.product_id, src.product_name)
+```
+
+Esta forma ANSI es verbosa, propensa a errores y no mantiene auditoría. En un proyecto **Crono SQL** desaconsejamos su uso: los cuatro patrones anteriores cubren todos los escenarios habituales con una sintaxis mucho más clara y segura.

@@ -1,0 +1,23 @@
+---
+title: "coalesce"
+---
+
+La función `coalesce` evalúa sus argumentos en orden y devuelve el primer valor que no sea `NULL`.
+
+## Ejemplo
+
+```crono-sql
+select coalesce(null, null, 'tercero', 'cuarto') resultado;
+```
+
+El resultado es:
+
+> tercero
+
+También es habitual usarla con columnas que pueden contener valores nulos:
+
+```crono-sql
+select customers.customer_id,
+  coalesce(customers.region, 'Sin región') region
+from staging.customers;
+```

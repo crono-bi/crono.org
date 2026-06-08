@@ -3,14 +3,16 @@
 import { PRODUCTS } from '../config/products'
 import { useT, getLangFromLocale } from '../i18n/ui'
 
-const t = useT(getLangFromLocale(Astro.currentLocale))
+const lang = getLangFromLocale(Astro.currentLocale)
+const t = useT(lang)
+const prefix = lang === 'en' ? '/en' : ''
 
 const productDefs = [
   {
     ...PRODUCTS.analysis,
     tagline: t('downloadsLanding.product.analysis.tagline'),
     description: t('downloadsLanding.product.analysis.desc'),
-    path: '/downloads/crono-analysis/',
+    path: `${prefix}/downloads/crono-analysis/`,
     apiKey: 'CronoAnalysis',
     features: []
   },
@@ -18,7 +20,7 @@ const productDefs = [
     ...PRODUCTS.metadata,
     tagline: t('downloadsLanding.product.metadata.tagline'),
     description: t('downloadsLanding.product.metadata.desc'),
-    path: '/downloads/crono-metadata/',
+    path: `${prefix}/downloads/crono-metadata/`,
     apiKey: 'CronoMetadata',
     features: []
   },
@@ -26,7 +28,7 @@ const productDefs = [
     ...PRODUCTS.etl,
     tagline: t('downloadsLanding.product.etl.tagline'),
     description: t('downloadsLanding.product.etl.desc'),
-    path: '/downloads/crono-etl/',
+    path: `${prefix}/downloads/crono-etl/`,
     apiKey: 'CronoETL',
     features: []
   }
@@ -111,7 +113,7 @@ const mainProducts = await Promise.all(productDefs.map(async (p) => {
   </div>
 
   <!-- ═══ BANNER TODOS LOS PRODUCTOS ═══ -->
-  <a href="/downloads/all/" class="dl-banner">
+  <a href={`${prefix}/downloads/all/`} class="dl-banner">
     <div class="dl-banner-left">
       <div class="dl-banner-icon">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
