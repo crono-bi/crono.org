@@ -11,6 +11,10 @@ select *
 from crono.actions
 ```
 
+:::caution[En construcción]
+Esta documentación está en proceso de construcción. Los nombres de las columnas finalmente respetarán la convención snake_case.
+:::
+
 ## Columnas
 
 | Columna | Descripción |
