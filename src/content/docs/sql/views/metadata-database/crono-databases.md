@@ -2,11 +2,9 @@
 title: "crono.databases"
 ---
 
-Devuelve información sobre todas las bases de datos de la instancia, incluyendo su estado, el modo de acceso configurado y si se trata de una base de datos del sistema.
+La vista `crono.databases` devuelve información sobre todas las bases de datos de la instancia, incluyendo su estado, el modo de acceso configurado y si se trata de una base de datos del sistema.
 
-Toma información de la vista de sistema `sys.databases` de **SQL Server**.
-
-La vista `crono.databases` devuelve las siguientes columnas:
+Sus columnas son las siguientes:
 
 | Columna | Descripción |
 |---|---|
@@ -15,6 +13,8 @@ La vista `crono.databases` devuelve las siguientes columnas:
 | `user_access` | Modo de acceso de usuario configurado en la base de datos |
 | `state` | Estado de la base de datos |
 | `is_system_database` | `true` si es una base de datos del sistema; `false` en caso contrario |
+
+## Ejemplos
 
 El siguiente ejemplo devuelve todas las bases de datos de la instancia:
 
@@ -30,3 +30,8 @@ select *
 from crono.databases
 where is_system_database = FALSE
 ```
+
+## Vistas relacionadas
+
+- [`crono.schemas`](/sql/views/metadata-database/crono-schemas/) permite consultar los esquemas de cada base de datos.
+- [`crono.tables`](/sql/views/metadata-database/crono-tables/) permite consultar las tablas y vistas de cada base de datos.

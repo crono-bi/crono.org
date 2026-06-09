@@ -2,9 +2,9 @@
 title: "crono.foreign_key_columns"
 ---
 
-Devuelve información sobre las columnas que participan en las claves externas de la base de datos. Cuando una clave externa está compuesta por varias columnas, aparece una fila por cada columna que la integra.
+La vista `crono.foreign_key_columns` devuelve información sobre las columnas que participan en las claves externas de la base de datos. Cuando una clave externa está compuesta por varias columnas, aparece una fila por cada columna que la integra.
 
-La vista `crono.foreign_key_columns` devuelve las siguientes columnas:
+Sus columnas son las siguientes:
 
 | Columna | Descripción |
 |---|---|
@@ -19,6 +19,8 @@ La vista `crono.foreign_key_columns` devuelve las siguientes columnas:
 | `referenced_schema_name` | Nombre del esquema de la tabla referenciada |
 | `referenced_table_name` | Nombre de la tabla referenciada |
 | `referenced_column_name` | Nombre de la columna referenciada |
+
+## Ejemplos
 
 El siguiente ejemplo devuelve todas las columnas de todas las claves externas de la base de datos:
 

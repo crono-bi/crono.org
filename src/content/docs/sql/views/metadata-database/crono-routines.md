@@ -2,11 +2,11 @@
 title: "crono.routines"
 ---
 
-Devuelve información sobre los procedimientos almacenados y las funciones de la base de datos, incluyendo su tipo, definición y fechas de creación y modificación.
+La vista `crono.routines` devuelve información sobre los procedimientos almacenados y las funciones de la base de datos, incluyendo su tipo, definición y fechas de creación y modificación.
 
 Es similar a la vista ANSI `INFORMATION_SCHEMA.ROUTINES`
 
-La vista `crono.routines` devuelve las siguientes columnas:
+Sus columnas son las siguientes:
 
 | Columna | Descripción |
 |---|---|
@@ -20,6 +20,8 @@ La vista `crono.routines` devuelve las siguientes columnas:
 | `external_language` | Lenguaje externo de implementación |
 | `created` | Fecha de creación de la rutina |
 | `last_altered` | Fecha de la última modificación |
+
+## Ejemplos
 
 El siguiente ejemplo devuelve todos los procedimientos y funciones de la base de datos:
 
@@ -42,18 +44,13 @@ El siguiente ejemplo muestra las rutinas modificadas en los últimos 30 días:
 ```crono-sql
 select schema_name, routine_name, routine_type, last_altered
 from crono.routines
-where last_altered >= dateadd(day, -30, getdate())
+where daysago(last_altered)<=30
 order by last_altered desc
 ```
 
+## Vistas relacionadas
 
-
-
-Si el motor de base de datos no soporta esta funcionalidad, la vista devuelve un conjunto de resultados vacío sin producir ningún error.
-
-## Comentario
-
-Esta pseudovista es muy similar a `crono.procedures`. La diferencia es que `crono.routines` solo llama a vistas de `INFORMATION_SCHEMA` que forman parte del estándar ANSI, por lo que puede usarse en cualquier base de datos que cumpla el estándar. En cambio `crono.procedures` utiliza vistas o funciones de sistema que son propias de **SQL Server**.
+[`crono.routine_parameters`](/sql/views/metadata-database/crono-routine_parameters/) permite consultar los parámetros de cada procedimiento o función.
 
 ## Compatibilidad
 

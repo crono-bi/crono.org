@@ -2,11 +2,11 @@
 title: "crono.constraints"
 ---
 
-Devuelve información sobre las restricciones definidas en todas las tablas de la base de datos. Incluye claves primarias (`PRIMARY KEY`), claves externas (`FOREIGN KEY`), restricciones de unicidad (`UNIQUE`) y restricciones de comprobación (`CHECK`).
+La vista `crono.constraints` devuelve información sobre las restricciones definidas en todas las tablas de la base de datos. Incluye claves primarias (`PRIMARY KEY`), claves externas (`FOREIGN KEY`), restricciones de unicidad (`UNIQUE`) y restricciones de comprobación (`CHECK`).
 
 Es similar a la vista ANSI `INFORMATION_SCHEMA.TABLE_CONSTRAINTS`
 
-La vista `crono.constraints` devuelve las siguientes columnas:
+Sus columnas son las siguientes:
 
 | Columna | Descripción |
 |---|---|
@@ -24,6 +24,8 @@ La vista `crono.constraints` devuelve las siguientes columnas:
 | `pk_schema_name` | Esquema de la clave primaria referenciada |
 | `pk_table_name` | Tabla de la clave primaria referenciada |
 
+## Ejemplos
+
 El siguiente ejemplo devuelve todas las restricciones de la base de datos:
 
 ```crono-sql
@@ -34,24 +36,13 @@ from crono.constraints
 El siguiente ejemplo identifica las tablas que no tienen ninguna clave primaria definida:
 
 ```crono-sql
-select t.schema_name, t.table_name
-from crono.tables t
-where t.is_table = TRUE
-  and not exists (
-    select 1
-    from crono.constraints c
-    where c.schema_name = t.schema_name
-      and c.table_name = t.table_name
-      and c.is_primary_key = TRUE
-  )
-order by t.schema_name, t.table_name
+select 
+  t.schema_name, 
+  t.table_name
+from crono.tables filter (is_table = TRUE) t
+anti join crono.constraints filter (is_primary_key = TRUE) c using (schema_name, table_name)
 ```
 
-El siguiente ejemplo lista todas las claves externas de la base de datos junto con la tabla que referencian:
+## Vistas relacionadas
 
-```crono-sql
-select schema_name, table_name, constraint_name, pk_table_name
-from crono.constraints
-where is_foreign_key = TRUE
-order by schema_name, table_name
-```
+[`crono.constraint_columns`](/sql/views/metadata-database/crono-constraint_columns/) permite identificar las columnas que participan en cada restricción.

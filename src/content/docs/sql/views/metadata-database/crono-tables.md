@@ -2,11 +2,11 @@
 title: "crono.tables"
 ---
 
-Devuelve información sobre todas las tablas y vistas de la base de datos.
+La vista `crono.tables` devuelve información sobre todas las tablas y vistas de la base de datos.
 
 Es similar a la vista ANSI `INFORMATION_SCHEMA.TABLES`
 
-La vista `crono.tables` devuelve las siguientes columnas:
+Sus columnas son las siguientes:
 
 | Columna | Descripción |
 |---|---|
@@ -16,6 +16,8 @@ La vista `crono.tables` devuelve las siguientes columnas:
 | `table_type` | Tipo de objeto; el valor concreto puede variar según el motor de base de datos |
 | `is_table` | `true` si el objeto es una tabla; `false` en caso contrario |
 | `is_view` | `true` si el objeto es una vista; `false` en caso contrario |
+
+## Ejemplos
 
 El siguiente ejemplo devuelve todas las tablas y vistas de la base de datos:
 
@@ -47,11 +49,11 @@ where t.is_table = TRUE
   )
 ```
 
-## Tablas relacionadas
+## Vistas relacionadas
 
 Las siguientes vistas permiten consultar los elementos asociados a las tablas:
 
 - [`crono.columns`](/sql/views/metadata-database/crono-columns/) devuelve las columnas de cada tabla.
 - [`crono.indexes`](/sql/views/metadata-database/crono-indexes/) devuelve los índices definidos sobre las tablas.
 - [`crono.foreign_keys`](/sql/views/metadata-database/crono-foreign_keys/) devuelve las claves externas de las tablas.
-- [`crono.constraints`](/sql/views/metadata-database/crono-constraints/) devuelve 
+- [`crono.constraints`](/sql/views/metadata-database/crono-constraints/) devuelve las restricciones definidas sobre las tablas.

@@ -2,11 +2,11 @@
 title: "crono.indexes"
 ---
 
-Devuelve información sobre todos los índices definidos en la base de datos, incluyendo si son únicos, agrupados o si corresponden a una clave primaria.
+La vista `crono.indexes` devuelve información sobre todos los índices definidos en la base de datos, incluyendo si son únicos, agrupados o si corresponden a una clave primaria.
 
 Toma información de la vista de sistema `sys.indexes` de **SQL Server**.
 
-La vista `crono.indexes` devuelve las siguientes columnas:
+Sus columnas son las siguientes:
 
 | Columna | Descripción |
 |---|---|
@@ -18,6 +18,8 @@ La vista `crono.indexes` devuelve las siguientes columnas:
 | `is_primary_key` | `true` si el índice corresponde a la clave primaria; `false` en caso contrario |
 | `is_disabled` | `true` si el índice está deshabilitado; `false` en caso contrario |
 | `is_clustered` | `true` si el índice es agrupado (*clustered*); `false` en caso contrario |
+
+## Ejemplos
 
 El siguiente ejemplo devuelve todos los índices de la base de datos:
 
@@ -51,6 +53,10 @@ where is_unique = TRUE
 order by schema_name, table_name
 ```
 
+## Vistas relacionadas
+
+[`crono.index_columns`](/sql/views/metadata-database/crono-index_columns/) permite consultar las columnas que forman parte de cada índice.
+
 ## Compatibilidad
 
-**Snowflake**, **BigQuery**, **Databricks** y **DuckDB** no admiten índices definidos por el usuario. En estos motores la vista devuelve un conjunto de resultados vacío sin producir ningún error.
+**Snowflake**, **BigQue

@@ -2,11 +2,11 @@
 title: "crono.routine_parameters"
 ---
 
-Devuelve información sobre los parámetros de los procedimientos almacenados y las funciones de la base de datos, incluyendo el tipo de datos y el modo de cada parámetro.
+La vista `crono.routine_parameters` devuelve información sobre los parámetros de los procedimientos almacenados y las funciones de la base de datos, incluyendo el tipo de datos y el modo de cada parámetro.
 
 Es similar a la vista ANSI `INFORMATION_SCHEMA.PARAMETERS`
 
-La vista `crono.routine_parameters` devuelve las siguientes columnas:
+Sus columnas son las siguientes:
 
 | Columna | Descripción |
 |---|---|
@@ -20,6 +20,8 @@ La vista `crono.routine_parameters` devuelve las siguientes columnas:
 | `max_length` | Longitud máxima en bytes para tipos de cadena |
 | `numeric_precision` | Precisión numérica para tipos numéricos |
 | `numeric_scale` | Escala numérica para tipos numéricos |
+
+## Ejemplos
 
 El siguiente ejemplo devuelve todos los parámetros de todos los procedimientos y funciones de la base de datos:
 
@@ -50,10 +52,6 @@ where not exists (
   )
 order by r.schema_name, r.routine_name
 ```
-
-
-
-Si el motor de base de datos no soporta esta funcionalidad, la vista devuelve un conjunto de resultados vacío sin producir ningún error.
 
 ## Compatibilidad
 

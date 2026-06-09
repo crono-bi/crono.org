@@ -2,11 +2,11 @@
 title: "crono.foreign_keys"
 ---
 
-Devuelve información sobre todas las claves externas de la base de datos, incluyendo la tabla y la clave primaria referenciada, así como las reglas de actualización y eliminación definidas.
+La vista `crono.foreign_keys` devuelve información sobre todas las claves externas de la base de datos, incluyendo la tabla y la clave primaria referenciada, así como las reglas de actualización y eliminación definidas.
 
 Es similar a la vista `INFORMATION_SCHEMA.REFERENTIAL_CONSTRAINTS`
 
-La vista `crono.foreign_keys` devuelve las siguientes columnas:
+Sus columnas son las siguientes:
 
 | Columna | Descripción |
 |---|---|
@@ -21,6 +21,8 @@ La vista `crono.foreign_keys` devuelve las siguientes columnas:
 | `match_option` | Opción de coincidencia de la clave externa |
 | `update_rule` | Acción al actualizar la clave referenciada |
 | `delete_rule` | Acción al eliminar la clave referenciada |
+
+## Ejemplos
 
 El siguiente ejemplo devuelve todas las claves externas de la base de datos:
 
@@ -47,6 +49,6 @@ where delete_rule = 'CASCADE'
 order by schema_name, table_name
 ```
 
-## Comentario
+## Vistas relacionadas
 
-Esta pseudovista es muy similar a `crono.AnsiForeignKeys`. La diferencia es que `crono.AnsiForeignKeys` solo llama a vistas de `INFORMATION_SCHEMA` que forman parte del estándar ANSI, por lo que puede usarse en cualquier base de datos que cumpla el estándar. En cambio `crono.foreign_keys` utiliza vistas o funciones de sistema que son propias de **SQL Server**.
+[`crono.foreign_key_columns`](/sql/views/metadata-database/crono-foreign_key_columns/) permite identificar las columnas que participan en cada clave externa.
