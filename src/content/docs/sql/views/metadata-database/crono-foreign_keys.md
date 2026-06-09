@@ -1,0 +1,52 @@
+---
+title: "crono.foreign_keys"
+---
+
+Devuelve información sobre todas las claves externas de la base de datos, incluyendo la tabla y la clave primaria referenciada, así como las reglas de actualización y eliminación definidas.
+
+Es similar a la vista `INFORMATION_SCHEMA.REFERENTIAL_CONSTRAINTS`
+
+La vista `crono.foreign_keys` devuelve las siguientes columnas:
+
+| Columna | Descripción |
+|---|---|
+| `database_name` | Nombre de la base de datos |
+| `schema_name` | Nombre del esquema al que pertenece la tabla |
+| `table_name` | Nombre de la tabla que define la clave externa |
+| `constraint_name` | Nombre de la clave externa |
+| `primary_key_name` | Nombre de la clave primaria referenciada |
+| `referenced_database_name` | Nombre de la base de datos referenciada |
+| `referenced_schema_name` | Nombre del esquema de la tabla referenciada |
+| `referenced_table_name` | Nombre de la tabla referenciada |
+| `match_option` | Opción de coincidencia de la clave externa |
+| `update_rule` | Acción al actualizar la clave referenciada |
+| `delete_rule` | Acción al eliminar la clave referenciada |
+
+El siguiente ejemplo devuelve todas las claves externas de la base de datos:
+
+```crono-sql
+select *
+from crono.foreign_keys
+```
+
+El siguiente ejemplo lista todas las claves externas que referencian a una tabla concreta:
+
+```crono-sql
+select schema_name, table_name, constraint_name
+from crono.foreign_keys
+where referenced_table_name = 'Customers'
+order by schema_name, table_name
+```
+
+El siguiente ejemplo muestra las claves externas que tienen una regla de eliminación en cascada:
+
+```crono-sql
+select schema_name, table_name, constraint_name, referenced_table_name
+from crono.foreign_keys
+where delete_rule = 'CASCADE'
+order by schema_name, table_name
+```
+
+## Comentario
+
+Esta pseudovista es muy similar a `crono.AnsiForeignKeys`. La diferencia es que `crono.AnsiForeignKeys` solo llama a vistas de `INFORMATION_SCHEMA` que forman parte del estándar ANSI, por lo que puede usarse en cualquier base de datos que cumpla el estándar. En cambio `crono.foreign_keys` utiliza vistas o funciones de sistema que son propias de **SQL Server**.
