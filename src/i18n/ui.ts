@@ -342,6 +342,10 @@ const es = {
   'homeHero.ecosystem.subtitle': 'ETL, modelo semántico, análisis, reporting, dashboards e IA.',
   // SVG diagram
   'homeHero.svg.dataSources': 'FUENTES DE DATOS',
+  'homeHero.svg.dataWarehouse': 'ALMACÉN DE DATOS',
+  'homeHero.svg.extract': 'EXTRACCIÓN',
+  'homeHero.svg.load': 'CARGA',
+  'homeHero.svg.transform': 'TRANSFORMACIÓN',
   'homeHero.svg.analysisLine1': 'Autoservicio BI con análisis',
   'homeHero.svg.analysisLine2': 'libre y OLAP multidimensional',
   'homeHero.svg.apiDesc': 'Servicios API REST y dashboards web integrables',
@@ -843,6 +847,10 @@ const en: Record<keyof typeof es, string> = {
   'homeHero.ecosystem.title2': 'All BI.',
   'homeHero.ecosystem.subtitle': 'ETL, semantic model, analysis, reporting, dashboards and AI.',
   'homeHero.svg.dataSources': 'DATA SOURCES',
+  'homeHero.svg.dataWarehouse': 'DATA WAREHOUSE',
+  'homeHero.svg.extract': 'EXTRACT',
+  'homeHero.svg.load': 'LOAD',
+  'homeHero.svg.transform': 'TRANSFORM',
   'homeHero.svg.analysisLine1': 'Self-service BI with free',
   'homeHero.svg.analysisLine2': 'analysis and multidimensional OLAP',
   'homeHero.svg.apiDesc': 'REST API services and embeddable web dashboards',
@@ -1001,6 +1009,23 @@ export function getLangFromPath(pathname: string): Lang {
 /** Deriva el idioma desde Astro.currentLocale (undefined = root = es). */
 export function getLangFromLocale(locale: string | undefined): Lang {
   return locale === 'en' ? 'en' : 'es'
+}
+
+/**
+ * Indica si un locale de Starlight corresponde al idioma raíz (ES).
+ * Starlight usa `undefined` o `'root'` para el locale por defecto.
+ */
+export function isRootLocale(locale: string | undefined): boolean {
+  return !locale || locale === 'root'
+}
+
+/**
+ * Prefijo de ruta para el idioma actual.
+ * ES (raíz) → ''   ·   EN → '/en'
+ * Fuente única para construir enlaces localizados en componentes .astro.
+ */
+export function getLocalePrefix(lang: Lang): string {
+  return lang === 'en' ? '/en' : ''
 }
 
 /**

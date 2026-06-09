@@ -1,5 +1,6 @@
 ---
 import config from 'virtual:starlight/user-config';
+import { isRootLocale } from '../i18n/ui';
 
 const currentLocale = Astro.locals.starlightRoute.locale;
 const pathname = Astro.url.pathname;
@@ -18,7 +19,7 @@ const locales = Object.entries(config.locales).map(([code, locale]) => ({
 	label: locale!.label,
 	short: locale!.label === 'Español' ? 'ES' : 'EN',
 	href: hrefForLocale(code),
-	active: code === currentLocale || (code === 'root' && !currentLocale),
+	active: code === 'root' ? isRootLocale(currentLocale) : code === currentLocale,
 }));
 
 const activeIndex = locales.findIndex(l => l.active);

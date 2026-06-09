@@ -1,11 +1,11 @@
 ---
 // Descargas - Landing épica con grid de 3 productos
 import { PRODUCTS } from '../config/products'
-import { useT, getLangFromLocale } from '../i18n/ui'
+import { useT, getLangFromLocale, getLocalePrefix } from '../i18n/ui'
 
 const lang = getLangFromLocale(Astro.currentLocale)
 const t = useT(lang)
-const prefix = lang === 'en' ? '/en' : ''
+const prefix = getLocalePrefix(lang)
 
 const productDefs = [
   {

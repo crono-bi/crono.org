@@ -1,10 +1,10 @@
 ---
 import SectionIndex from './SectionIndex.astro'
 import { PRODUCTS } from '../config/products'
-import { getLangFromLocale } from '../i18n/ui'
+import { getLangFromLocale, getLocalePrefix } from '../i18n/ui'
 
 const lang = getLangFromLocale(Astro.currentLocale)
-const prefix = lang === 'en' ? '/en' : ''
+const prefix = getLocalePrefix(lang)
 
 interface Category {
   id: string

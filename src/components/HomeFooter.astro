@@ -1,11 +1,11 @@
 ---
 import { PRODUCTS } from '../config/products'
 import { ENGINES } from '../config/engines'
-import { useT, getLangFromPath } from '../i18n/ui'
+import { useT, getLangFromLocale, getLocalePrefix } from '../i18n/ui'
 
-const lang = getLangFromPath(Astro.url.pathname)
+const lang = getLangFromLocale(Astro.currentLocale)
 const t = useT(lang)
-const prefix = lang === 'en' ? '/en' : ''
+const prefix = getLocalePrefix(lang)
 
 const products = [
   { ...PRODUCTS.sql, href: `${prefix}/sql/`, tags: t('homeFooter.sql.tags').split(',') },

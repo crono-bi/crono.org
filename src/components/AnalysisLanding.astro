@@ -2,11 +2,11 @@
 // Analysis Landing Page - With SectionIndex for all pages
 import ManualLanding from './ManualLanding.astro'
 import type { Feature } from './ManualLanding.astro'
-import { useT, getLangFromLocale } from '../i18n/ui'
+import { useT, getLangFromLocale, getLocalePrefix } from '../i18n/ui'
 
 const lang = getLangFromLocale(Astro.currentLocale)
 const t = useT(lang)
-const prefix = lang === 'en' ? '/en' : ''
+const prefix = getLocalePrefix(lang)
 
 const features: Feature[] = [
   {

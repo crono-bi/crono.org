@@ -1,7 +1,7 @@
 ---
 import Default from '@astrojs/starlight/components/PageTitle.astro';
 
-const path = Astro.url.pathname;
+const path = Astro.url.pathname.replace(/^\/en(?=\/|$)/, '');
 const hiddenPaths = ['/playground', '/sql', '/etl', '/metadata', '/analysis'];
 const isHidden = hiddenPaths.some(p => path === p || path === p + '/');
 ---

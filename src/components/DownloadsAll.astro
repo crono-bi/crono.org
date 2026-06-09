@@ -1,10 +1,10 @@
 ---
 // DownloadsAll - Vista completa con todos los productos y sidebar
 import DownloadSummaryTable from './DownloadSummaryTable.astro'
-import { getLangFromLocale } from '../i18n/ui'
+import { getLangFromLocale, getLocalePrefix } from '../i18n/ui'
 
 const lang = getLangFromLocale(Astro.currentLocale)
-const prefix = lang === 'en' ? '/en' : ''
+const prefix = getLocalePrefix(lang)
 
 // Colores oficiales por producto
 const COLORS = {

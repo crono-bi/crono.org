@@ -4,11 +4,11 @@ import ManualLanding from './ManualLanding.astro'
 import type { Feature, Category, Statement, FuncExample } from './ManualLanding.astro'
 import mergeCloneExample from '../playground/examples/merge-clone.sql?raw'
 import { ENGINE_NAMES } from '../config/engines'
-import { useT, getLangFromLocale } from '../i18n/ui'
+import { useT, getLangFromLocale, getLocalePrefix } from '../i18n/ui'
 
 const lang = getLangFromLocale(Astro.currentLocale)
 const t = useT(lang)
-const prefix = lang === 'en' ? '/en' : ''
+const prefix = getLocalePrefix(lang)
 
 const features: Feature[] = [
   {
