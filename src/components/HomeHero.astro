@@ -1701,7 +1701,6 @@ ORDER BY TotalSales DESC`
                 <rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/><path d="M3 15h18"/><path d="M9 3v18"/><path d="M15 3v18"/>
               </svg>
             </div>
-            <span class="hero-card-badge" style="background: #10B981; color: white;">376 {t('homeHero.badge.docs')}</span>
           </div>
           <h3 class="hero-card-title">Crono SQL</h3>
           <p class="hero-card-tagline">{t('homeHero.card.sql.tagline2')}</p>
@@ -1730,7 +1729,6 @@ ORDER BY TotalSales DESC`
                 <path d="M3 12A9 3 0 0 0 21 12"></path>
               </svg>
             </div>
-            <span class="hero-card-badge" style="background: #1B8AC7; color: white;">{t('homeHero.badge.inDevelopment')}</span>
           </div>
           <h3 class="hero-card-title">Crono ETL</h3>
           <p class="hero-card-tagline">{t('homeHero.card.etl.tagline2')}</p>
@@ -1758,7 +1756,6 @@ ORDER BY TotalSales DESC`
                 <path d="M9 21h6"></path>
               </svg>
             </div>
-            <span class="hero-card-badge" style="background: #5B2C7D; color: white;">20 {t('homeHero.badge.articles')}</span>
           </div>
           <h3 class="hero-card-title">Crono Metadata</h3>
           <p class="hero-card-tagline">{t('homeHero.card.metadata.tagline2')}</p>
@@ -1787,7 +1784,6 @@ ORDER BY TotalSales DESC`
                 <path d="M6 20v-6"></path>
               </svg>
             </div>
-            <span class="hero-card-badge" style="background: #C85A47; color: white;">17 {t('homeHero.badge.articles')}</span>
           </div>
           <h3 class="hero-card-title">Crono Analysis</h3>
           <p class="hero-card-tagline">{t('homeHero.card.analysis.tagline2')}</p>
@@ -2751,7 +2747,7 @@ ORDER BY TotalSales DESC`
   .hero-card-top {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
     margin-bottom: 1.5rem;
   }
 
@@ -2775,6 +2771,7 @@ ORDER BY TotalSales DESC`
     font-size: 0.75rem;
     font-weight: 600;
     letter-spacing: 0.02em;
+    white-space: nowrap;
   }
 
   .hero-card-title {
