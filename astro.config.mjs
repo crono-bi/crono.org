@@ -21,6 +21,7 @@ export default defineConfig({
 		resolve: {
 			alias: {
 				'@components': '/src/components',
+				'@playground': '/src/playground/components',
 			},
 		},
 		optimizeDeps: {
@@ -56,6 +57,7 @@ export default defineConfig({
 				Header: './src/components/Header.astro',
 				SiteTitle: './src/components/SiteTitle.astro',
 				ThemeSelect: './src/components/ThemeToggle.astro',
+				LanguageSelect: './src/components/LanguageSelect.astro',
 				Sidebar: './src/components/Sidebar.astro',
 				PageTitle: './src/components/PageTitle.astro',
 				MarkdownContent: './src/components/MarkdownContent.astro',

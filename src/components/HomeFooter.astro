@@ -1,15 +1,17 @@
 ---
 import { PRODUCTS } from '../config/products'
 import { ENGINES } from '../config/engines'
-import { useT, getLangFromPath } from '../i18n/ui'
+import { useT, getLangFromLocale, getLocalePrefix } from '../i18n/ui'
 
-const t = useT(getLangFromPath(Astro.url.pathname))
+const lang = getLangFromLocale(Astro.currentLocale)
+const t = useT(lang)
+const prefix = getLocalePrefix(lang)
 
 const products = [
-  { ...PRODUCTS.sql, href: '/sql/', tags: t('homeFooter.sql.tags').split(',') },
-  { ...PRODUCTS.etl, href: '/etl/', tags: t('homeFooter.etl.tags').split(',') },
-  { ...PRODUCTS.metadata, href: '/metadata/', tags: t('homeFooter.metadata.tags').split(',') },
-  { ...PRODUCTS.analysis, href: '/analysis/', tags: t('homeFooter.analysis.tags').split(',') },
+  { ...PRODUCTS.sql, href: `${prefix}/sql/`, tags: t('homeFooter.sql.tags').split(',') },
+  { ...PRODUCTS.etl, href: `${prefix}/etl/`, tags: t('homeFooter.etl.tags').split(',') },
+  { ...PRODUCTS.metadata, href: `${prefix}/metadata/`, tags: t('homeFooter.metadata.tags').split(',') },
+  { ...PRODUCTS.analysis, href: `${prefix}/analysis/`, tags: t('homeFooter.analysis.tags').split(',') },
 ]
 
 const socials = [
@@ -53,7 +55,7 @@ const socials = [
         <p class="hf-band-sub">{t('homeFooter.cta.subtitle')}</p>
       </div>
       <div class="hf-band-actions">
-        <a href="/downloads/" class="hf-btn-primary">
+        <a href={`${prefix}/downloads/`} class="hf-btn-primary">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
           {t('homeFooter.cta.downloadBtn')}
         </a>
@@ -78,7 +80,7 @@ const socials = [
 
       <!-- Brand + Social -->
       <div class="hf-brand">
-        <a href="/" class="hf-logo">
+        <a href={prefix || '/'} class="hf-logo">
           <img src="/logos/crono.webp" alt="Crono" class="hf-logo-img" />
         </a>
         <p class="hf-bio">{t('homeFooter.bio')}</p>
@@ -127,19 +129,19 @@ const socials = [
       <div class="hf-col">
         <p class="hf-col-label">{t('homeFooter.resourcesLabel')}</p>
         <nav class="hf-nav">
-          <a href="/downloads/" class="hf-nav-link">
+          <a href={`${prefix}/downloads/`} class="hf-nav-link">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
             {t('homeFooter.downloads')}
           </a>
-          <a href="/playground/" class="hf-nav-link">
+          <a href={`${prefix}/playground/`} class="hf-nav-link">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
             {t('homeFooter.playground')}
           </a>
-          <a href="/downloads/all/" class="hf-nav-link">
+          <a href={`${prefix}/downloads/all/`} class="hf-nav-link">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8v4l3 3"/><circle cx="12" cy="12" r="10"/></svg>
             {t('homeFooter.news')}
           </a>
-          <a href="/sql/intro/" class="hf-nav-link">
+          <a href={`${prefix}/sql/intro/`} class="hf-nav-link">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
             {t('homeFooter.startReading')}
           </a>

@@ -2,9 +2,11 @@
 // Analysis Landing Page - With SectionIndex for all pages
 import ManualLanding from './ManualLanding.astro'
 import type { Feature } from './ManualLanding.astro'
-import { useT, getLangFromLocale } from '../i18n/ui'
+import { useT, getLangFromLocale, getLocalePrefix } from '../i18n/ui'
 
-const t = useT(getLangFromLocale(Astro.currentLocale))
+const lang = getLangFromLocale(Astro.currentLocale)
+const t = useT(lang)
+const prefix = getLocalePrefix(lang)
 
 const features: Feature[] = [
   {
@@ -30,11 +32,11 @@ const features: Feature[] = [
   logoAlt="Crono Analysis"
   subtitle={t('analysisLanding.subtitle')}
   ctaText={t('analysisLanding.cta.manual')}
-  ctaHref="/analysis/intro/"
+  ctaHref={`${prefix}/analysis/intro/`}
   brandColor="#C85A47"
   features={features}
   featuresTitle={t('analysisLanding.featuresTitle')}
-  basePath="/analysis/"
+  basePath={`${prefix}/analysis/`}
   basePathTitle={t('analysisLanding.basePathTitle')}
   footerTitle={t('analysisLanding.footer.title')}
   footerDesc={t('analysisLanding.footer.desc')}

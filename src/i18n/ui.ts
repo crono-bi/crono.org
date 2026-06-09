@@ -18,6 +18,9 @@ export type Lang = 'es' | 'en'
 export const DEFAULT_LANG: Lang = 'es'
 
 const es = {
+  // ── Sidebar ──
+  'sidebar.home': 'Inicio',
+
   // ── Playground editor ──
   'pg.cronoSql': 'Crono SQL',
   'pg.compiling': 'Compilando...',
@@ -50,6 +53,30 @@ const es = {
   'compileBtn.label': 'Ver compilado',
   'compileBtn.aria': 'Ver SQL compilado',
 
+  // ── SectionIndex (categorías de funciones SQL) ──
+  'category.agregacion': 'Agregación',
+  'category.conversion': 'Conversión de tipos',
+  'category.numericas': 'Numéricas',
+  'category.fecha': 'Fecha',
+  'category.nulos': 'Nulos y condiciones',
+  'category.texto': 'Texto',
+  'category.metadata': 'Metadata',
+  'category.others': 'Otras',
+  'category.general': 'General',
+
+  // ── ManualLanding (títulos de secciones) ──
+  'manualLanding.featuresTitle': '¿Qué es?',
+  'manualLanding.statementsTitle': 'Sentencias principales',
+  'manualLanding.functionsTitle': 'Funciones integradas',
+  'manualLanding.categoriesTitle': 'Explorar por categoría',
+  'manualLanding.categoriesDesc': 'Selecciona una categoría para ver todos los artículos disponibles.',
+  'manualLanding.basePathTitle': 'Documentación',
+  'manualLanding.footerTitle': '¿Listo para empezar?',
+  'manualLanding.footerDesc': 'Explora la documentación completa.',
+  'manualLanding.footerCta': 'Empezar ahora',
+  'manualLanding.enginesTitle': 'Motores compatibles',
+  'manualLanding.syntaxTitle': 'Sintaxis simplificada',
+
   // ── DownloadTable ──
   'download.error.load': 'No se pudo cargar la información',
   'download.error.connect': 'Error al conectar con el servidor de actualizaciones',
@@ -68,10 +95,10 @@ const es = {
   'sqlLanding.featuresTitle': '¿Qué es Crono SQL?',
   'sqlLanding.feature1.title': 'SELECT extendido',
   'sqlLanding.feature1.desc': 'JOINs simplificados, columnas calculadas reutilizables, apilamiento de consultas, SEMI JOIN, ANTI JOIN y MATERIALIZE. Todo el SQL estándar sigue funcionando sin cambios.',
-  'sqlLanding.feature2.title': 'Nueve patrones de carga',
+  'sqlLanding.feature2.title': 'Patrones de carga',
   'sqlLanding.feature2.desc': 'MERGE CLONE, MERGE UPSERT, MERGE HISTORY y más. Cada sentencia crea la tabla, la evoluciona cuando añades campos y gestiona las columnas de auditoría automáticamente.',
   'sqlLanding.feature3.title': 'Funciones portables',
-  'sqlLanding.feature3.desc': 'Más de 80 funciones de texto, numéricas, de fecha y de agregación que compilan correctamente en los ocho motores soportados, sin incompatibilidades entre dialectos.',
+  'sqlLanding.feature3.desc': 'Funciones de texto, numéricas, de fecha y de agregación que compilan correctamente en todos los motores soportados, sin incompatibilidades entre dialectos.',
   'sqlLanding.category.language.title': 'Lenguaje Crono SQL',
   'sqlLanding.category.language.desc': 'Guía completa de la sintaxis con ejemplos prácticos de cada sentencia.',
   'sqlLanding.category.reference.title': 'Referencia del lenguaje',
@@ -230,23 +257,23 @@ const es = {
   'homeHero.btn.pricing': 'Precios',
   'homeHero.product.sql.tagline': 'Lenguaje SQL extendido',
   'homeHero.product.sql.desc': 'Reduce el tiempo de desarrollo un 40%. Escribe 5 líneas de Crono SQL, genera 200 de SQL estándar automáticamente.',
-  'homeHero.product.sql.stats': '376 docs',
+  'homeHero.product.sql.stats': '',
   'homeHero.product.etl.tagline': 'Data Warehouse',
   'homeHero.product.etl.desc': 'Cargas diarias automatizadas que nunca fallan. Ahorra 10 horas semanales de trabajo manual repetitivo.',
-  'homeHero.product.etl.stats': 'En desarrollo',
+  'homeHero.product.etl.stats': '',
   'homeHero.product.metadata.tagline': 'Capa Semántica',
   'homeHero.product.metadata.desc': 'Los usuarios de negocio crean sus propios informes sin depender del equipo IT. Auto-servicio de verdad.',
-  'homeHero.product.metadata.stats': '20 artículos',
+  'homeHero.product.metadata.stats': '',
   'homeHero.product.analysis.tagline': 'Business Intelligence',
   'homeHero.product.analysis.desc': 'Toma decisiones basadas en datos en minutos, no en días. Dashboards que se actualizan solos.',
-  'homeHero.product.analysis.stats': '17 artículos',
+  'homeHero.product.analysis.stats': '',
   'homeHero.playground.label': 'Playground',
   'homeHero.playground.title': 'SQL simplificado',
   'homeHero.playground.desc': 'Un solo lenguaje, todos los motores',
   'homeHero.playground.cta': 'Probar en playground',
   'homeHero.sqlSection.title': 'Crono SQL',
   'homeHero.sqlSection.subtitle': 'Un dialecto, todos los motores',
-  'homeHero.sqlSection.label': 'Manual Principal · 376 artículos',
+  'homeHero.sqlSection.label': 'Manual Principal',
   'homeHero.sqlSection.desc': 'Crono SQL es un lenguaje para Data Warehouse que compila a código nativo. Escribe solo la lógica de transformación y Crono generará el SQL complejo — MERGEs, tablas temporales, CTEs — para tu motor de base de datos.',
   'homeHero.sqlSection.feature1': 'Reduce el código manual un 70%',
   'homeHero.sqlSection.feature2': 'Auditoría automática en cada operación',
@@ -259,13 +286,13 @@ const es = {
   'homeHero.etlSection.feature2': 'Detecta errores antes de que lleguen a producción',
   'homeHero.etlSection.feature3': 'Datos actualizados, fiables y trazables',
   'homeHero.etlSection.feature4': 'Incluye Calendas, nuestro dashboard de monitorización: calendario visual de cargas, gestión de proyectos, logs detallados y reportes de dedicación — todo en una sola herramienta',
-  'homeHero.metadataSection.label': 'Capa Semántica · 20 artículos',
+  'homeHero.metadataSection.label': 'Capa Semántica',
   'homeHero.metadataSection.desc': 'Libera a tu equipo de las peticiones de informes repetitivas. Los usuarios de negocio crean sus propios análisis sin tocar código.',
   'homeHero.metadataSection.feature1': 'Reduce las peticiones de IT un 60%',
   'homeHero.metadataSection.feature2': 'Crea informes con arrastrar y soltar',
   'homeHero.metadataSection.feature3': 'Control de acceso por usuario y rol',
   'homeHero.metadataSection.feature4': 'Lenguaje de negocio',
-  'homeHero.analysisSection.label': 'Business Intelligence · 17 artículos',
+  'homeHero.analysisSection.label': 'Business Intelligence',
   'homeHero.analysisSection.desc': 'Toma decisiones de negocio en minutos, no en días. Plataforma de autoservicio con dashboards que se actualizan automáticamente con los últimos datos disponibles.',
   'homeHero.analysisSection.feature1': 'Respuestas en minutos sin esperar a IT',
   'homeHero.analysisSection.feature2': 'Datos actualizados y fiables',
@@ -315,6 +342,10 @@ const es = {
   'homeHero.ecosystem.subtitle': 'ETL, modelo semántico, análisis, reporting, dashboards e IA.',
   // SVG diagram
   'homeHero.svg.dataSources': 'FUENTES DE DATOS',
+  'homeHero.svg.dataWarehouse': 'ALMACÉN DE DATOS',
+  'homeHero.svg.extract': 'EXTRACCIÓN',
+  'homeHero.svg.load': 'CARGA',
+  'homeHero.svg.transform': 'TRANSFORMACIÓN',
   'homeHero.svg.analysisLine1': 'Autoservicio BI con análisis',
   'homeHero.svg.analysisLine2': 'libre y OLAP multidimensional',
   'homeHero.svg.apiDesc': 'Servicios API REST y dashboards web integrables',
@@ -460,7 +491,7 @@ const es = {
   'homeHero.region.center': 'Centro',
   // Section labels
   'homeHero.section.manuals': 'Manuales de Crono',
-  'homeHero.tagline.docs': 'Documentación técnica oficial · 400+ páginas · En español',
+  'homeHero.tagline.docs': 'Documentación técnica oficial',
   // Diagram tooltips
   'homeHero.diagram.pauseAnimation': 'Pausar animación',
   'homeHero.diagram.playAnimation': 'Reproducir animación',
@@ -495,6 +526,9 @@ const es = {
 
 // `en` debe tener EXACTAMENTE las mismas claves que `es` (lo exige el tipo).
 const en: Record<keyof typeof es, string> = {
+  // ── Sidebar ──
+  'sidebar.home': 'Home',
+
   // ── Playground editor ──
   'pg.cronoSql': 'Crono SQL',
   'pg.compiling': 'Compiling...',
@@ -527,6 +561,30 @@ const en: Record<keyof typeof es, string> = {
   'compileBtn.label': 'View compiled',
   'compileBtn.aria': 'View compiled SQL',
 
+  // ── SectionIndex (SQL function categories) ──
+  'category.agregacion': 'Aggregation',
+  'category.conversion': 'Type conversion',
+  'category.numericas': 'Numeric',
+  'category.fecha': 'Date',
+  'category.nulos': 'Nulls and conditions',
+  'category.texto': 'Text',
+  'category.metadata': 'Metadata',
+  'category.others': 'Others',
+  'category.general': 'General',
+
+  // ── ManualLanding (section titles) ──
+  'manualLanding.featuresTitle': 'What is it?',
+  'manualLanding.statementsTitle': 'Main statements',
+  'manualLanding.functionsTitle': 'Built-in functions',
+  'manualLanding.categoriesTitle': 'Browse by category',
+  'manualLanding.categoriesDesc': 'Select a category to view all available articles.',
+  'manualLanding.basePathTitle': 'Documentation',
+  'manualLanding.footerTitle': 'Ready to get started?',
+  'manualLanding.footerDesc': 'Explore the complete documentation.',
+  'manualLanding.footerCta': 'Get started now',
+  'manualLanding.enginesTitle': 'Supported engines',
+  'manualLanding.syntaxTitle': 'Simplified syntax',
+
   // ── DownloadTable ──
   'download.error.load': 'Could not load information',
   'download.error.connect': 'Error connecting to the update server',
@@ -545,10 +603,10 @@ const en: Record<keyof typeof es, string> = {
   'sqlLanding.featuresTitle': 'What is Crono SQL?',
   'sqlLanding.feature1.title': 'Extended SELECT',
   'sqlLanding.feature1.desc': 'Simplified JOINs, reusable calculated columns, query stacking, SEMI JOIN, ANTI JOIN and MATERIALIZE. All standard SQL keeps working without changes.',
-  'sqlLanding.feature2.title': 'Nine load patterns',
+  'sqlLanding.feature2.title': 'Load patterns',
   'sqlLanding.feature2.desc': 'MERGE CLONE, MERGE UPSERT, MERGE HISTORY and more. Each statement creates the table, evolves it when you add fields and manages audit columns automatically.',
   'sqlLanding.feature3.title': 'Portable functions',
-  'sqlLanding.feature3.desc': 'More than 80 text, numeric, date and aggregation functions that compile correctly on all eight supported engines, without dialect incompatibilities.',
+  'sqlLanding.feature3.desc': 'Text, numeric, date and aggregation functions that compile correctly on all supported engines, without dialect incompatibilities.',
   'sqlLanding.category.language.title': 'Crono SQL Language',
   'sqlLanding.category.language.desc': 'Complete syntax guide with practical examples of each statement.',
   'sqlLanding.category.reference.title': 'Language Reference',
@@ -707,23 +765,23 @@ const en: Record<keyof typeof es, string> = {
   'homeHero.btn.pricing': 'Pricing',
   'homeHero.product.sql.tagline': 'Extended SQL language',
   'homeHero.product.sql.desc': 'Reduce development time by 40%. Write 5 lines of Crono SQL, generate 200 lines of standard SQL automatically.',
-  'homeHero.product.sql.stats': '376 docs',
+  'homeHero.product.sql.stats': '',
   'homeHero.product.etl.tagline': 'Data Warehouse',
   'homeHero.product.etl.desc': 'Daily automated loads that never fail. Save 10 hours per week of repetitive manual work.',
-  'homeHero.product.etl.stats': 'In development',
+  'homeHero.product.etl.stats': '',
   'homeHero.product.metadata.tagline': 'Semantic Layer',
   'homeHero.product.metadata.desc': 'Business users create their own reports without depending on the IT team. True self-service.',
-  'homeHero.product.metadata.stats': '20 articles',
+  'homeHero.product.metadata.stats': '',
   'homeHero.product.analysis.tagline': 'Business Intelligence',
   'homeHero.product.analysis.desc': 'Make data-driven decisions in minutes, not days. Dashboards that update themselves.',
-  'homeHero.product.analysis.stats': '17 articles',
+  'homeHero.product.analysis.stats': '',
   'homeHero.playground.label': 'Playground',
   'homeHero.playground.title': 'Simplified SQL',
   'homeHero.playground.desc': 'One language, all engines',
   'homeHero.playground.cta': 'Try in playground',
   'homeHero.sqlSection.title': 'Crono SQL',
   'homeHero.sqlSection.subtitle': 'One dialect, all engines',
-  'homeHero.sqlSection.label': 'Main Manual · 376 articles',
+  'homeHero.sqlSection.label': 'Main Manual',
   'homeHero.sqlSection.desc': 'Crono SQL is a Data Warehouse language that compiles to native code. Write only the transformation logic and Crono will generate the complex SQL — MERGEs, temporary tables, CTEs — for your database engine.',
   'homeHero.sqlSection.feature1': 'Reduce manual code by 70%',
   'homeHero.sqlSection.feature2': 'Automatic audit in every operation',
@@ -736,13 +794,13 @@ const en: Record<keyof typeof es, string> = {
   'homeHero.etlSection.feature2': 'Detect errors before they reach production',
   'homeHero.etlSection.feature3': 'Updated, reliable and traceable data',
   'homeHero.etlSection.feature4': 'Includes Calendas, our monitoring dashboard: visual load calendar, project management, detailed logs and dedication reports — all in one tool',
-  'homeHero.metadataSection.label': 'Semantic Layer · 20 articles',
+  'homeHero.metadataSection.label': 'Semantic Layer',
   'homeHero.metadataSection.desc': 'Free your team from repetitive report requests. Business users create their own analysis without touching code.',
   'homeHero.metadataSection.feature1': 'Reduce IT requests by 60%',
   'homeHero.metadataSection.feature2': 'Create reports with drag and drop',
   'homeHero.metadataSection.feature3': 'Access control by user and role',
   'homeHero.metadataSection.feature4': 'Business language',
-  'homeHero.analysisSection.label': 'Business Intelligence · 17 articles',
+  'homeHero.analysisSection.label': 'Business Intelligence',
   'homeHero.analysisSection.desc': 'Make business decisions in minutes, not days. Self-service platform with dashboards that update automatically with the latest available data.',
   'homeHero.analysisSection.feature1': 'Answers in minutes without waiting for IT',
   'homeHero.analysisSection.feature2': 'Updated and reliable data',
@@ -789,6 +847,10 @@ const en: Record<keyof typeof es, string> = {
   'homeHero.ecosystem.title2': 'All BI.',
   'homeHero.ecosystem.subtitle': 'ETL, semantic model, analysis, reporting, dashboards and AI.',
   'homeHero.svg.dataSources': 'DATA SOURCES',
+  'homeHero.svg.dataWarehouse': 'DATA WAREHOUSE',
+  'homeHero.svg.extract': 'EXTRACT',
+  'homeHero.svg.load': 'LOAD',
+  'homeHero.svg.transform': 'TRANSFORM',
   'homeHero.svg.analysisLine1': 'Self-service BI with free',
   'homeHero.svg.analysisLine2': 'analysis and multidimensional OLAP',
   'homeHero.svg.apiDesc': 'REST API services and embeddable web dashboards',
@@ -903,7 +965,7 @@ const en: Record<keyof typeof es, string> = {
   'homeHero.region.west': 'West',
   'homeHero.region.center': 'Center',
   'homeHero.section.manuals': 'Crono Manuals',
-  'homeHero.tagline.docs': 'Official technical documentation · 400+ pages · In Spanish',
+  'homeHero.tagline.docs': 'Official technical documentation',
   'homeHero.diagram.pauseAnimation': 'Pause animation',
   'homeHero.diagram.playAnimation': 'Play animation',
   'homeHero.diagram.fullscreen': 'Fullscreen',
@@ -947,6 +1009,23 @@ export function getLangFromPath(pathname: string): Lang {
 /** Deriva el idioma desde Astro.currentLocale (undefined = root = es). */
 export function getLangFromLocale(locale: string | undefined): Lang {
   return locale === 'en' ? 'en' : 'es'
+}
+
+/**
+ * Indica si un locale de Starlight corresponde al idioma raíz (ES).
+ * Starlight usa `undefined` o `'root'` para el locale por defecto.
+ */
+export function isRootLocale(locale: string | undefined): boolean {
+  return !locale || locale === 'root'
+}
+
+/**
+ * Prefijo de ruta para el idioma actual.
+ * ES (raíz) → ''   ·   EN → '/en'
+ * Fuente única para construir enlaces localizados en componentes .astro.
+ */
+export function getLocalePrefix(lang: Lang): string {
+  return lang === 'en' ? '/en' : ''
 }
 
 /**

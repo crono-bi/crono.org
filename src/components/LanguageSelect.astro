@@ -1,0 +1,128 @@
+---
+import config from 'virtual:starlight/user-config';
+import { isRootLocale } from '../i18n/ui';
+
+const currentLocale = Astro.locals.starlightRoute.locale;
+const pathname = Astro.url.pathname;
+
+function hrefForLocale(code: string): string {
+	if (code === 'root') {
+		return pathname.replace(/^\/en(\/|$)/, '/') || '/';
+	} else {
+		const stripped = pathname.replace(/^\/en(\/|$)/, '/');
+		return `/en${stripped === '/' ? '/' : stripped}`;
+	}
+}
+
+const locales = Object.entries(config.locales).map(([code, locale]) => ({
+	code,
+	label: locale!.label,
+	short: locale!.label === 'Español' ? 'ES' : 'EN',
+	href: hrefForLocale(code),
+	active: code === 'root' ? isRootLocale(currentLocale) : code === currentLocale,
+}));
+
+const activeIndex = locales.findIndex(l => l.active);
+---
+
+{config.isMultilingual && (
+	<div class="ls-wrap" role="navigation" aria-label="Select language">
+		<svg class="ls-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+			<circle cx="12" cy="12" r="9"/>
+			<path d="M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18M3 12h18"/>
+		</svg>
+		<div class="ls-track" data-active={activeIndex}>
+			<span class="ls-indicator" aria-hidden="true"></span>
+			{locales.map((locale, i) => (
+				<a
+					href={locale.href}
+					class:list={['ls-opt', { active: locale.active }]}
+					aria-current={locale.active ? 'page' : undefined}
+					data-idx={i}
+				>
+					<span class="ls-text">{locale.short}</span>
+				</a>
+			))}
+		</div>
+	</div>
+)}
+
+<style>
+	.ls-wrap {
+		display: flex;
+		align-items: center;
+		gap: 5px;
+	}
+
+	.ls-globe {
+		width: 13px;
+		height: 13px;
+		color: var(--sl-color-gray-3);
+		flex-shrink: 0;
+		transition: color 0.2s, transform 0.6s ease;
+	}
+
+	.ls-wrap:hover .ls-globe {
+		color: var(--sl-color-accent);
+		transform: rotate(30deg);
+	}
+
+	.ls-track {
+		position: relative;
+		display: flex;
+		align-items: center;
+		gap: 0;
+		background: color-mix(in srgb, var(--sl-color-gray-6) 60%, transparent);
+		border: 1px solid var(--sl-color-hairline-light);
+		border-radius: 99px;
+		padding: 2px;
+	}
+
+	.ls-indicator {
+		position: absolute;
+		top: 2px;
+		left: 2px;
+		width: calc(50% - 2px);
+		height: calc(100% - 4px);
+		background: var(--sl-color-accent);
+		border-radius: 99px;
+		box-shadow: 0 0 8px color-mix(in srgb, var(--sl-color-accent) 50%, transparent);
+		transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+		pointer-events: none;
+	}
+
+	.ls-track[data-active="1"] .ls-indicator {
+		transform: translateX(100%);
+	}
+
+	.ls-opt {
+		position: relative;
+		z-index: 1;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 2.2rem;
+		height: 1.5rem;
+		font-size: 0.7rem;
+		font-weight: 700;
+		letter-spacing: 0.04em;
+		text-decoration: none;
+		color: var(--sl-color-gray-2);
+		border-radius: 99px;
+		transition: color 0.2s ease;
+		user-select: none;
+	}
+
+	.ls-text {
+		position: relative;
+		z-index: 2;
+	}
+
+	.ls-opt.active .ls-text {
+		color: #fff;
+	}
+
+	.ls-opt:not(.active):hover .ls-text {
+		color: var(--sl-color-white);
+	}
+</style>

@@ -4,12 +4,14 @@ import HomeFooter from './HomeFooter.astro'
 import { PRODUCTS } from '../config/products'
 import { ENGINES } from '../config/engines'
 import mergeCloneExample from '../playground/examples/merge-clone.sql?raw'
-import { useT, getLangFromLocale } from '../i18n/ui'
+import { useT, getLangFromLocale, getLocalePrefix } from '../i18n/ui'
 
-const t = useT(getLangFromLocale(Astro.currentLocale))
+const lang = getLangFromLocale(Astro.currentLocale)
+const t = useT(lang)
+const prefix = getLocalePrefix(lang)
 
 // Generate playground URL from the example
-const playgroundUrl = `/playground/?code=${btoa(encodeURIComponent(mergeCloneExample))}`
+const playgroundUrl = `${prefix}/playground/?code=${btoa(encodeURIComponent(mergeCloneExample))}`
 
 // Process mergeCloneExample dynamically: remove comment, escape HTML, add color spans
 function highlightMergeClone(code: string): string {
@@ -42,21 +44,21 @@ const products = [
     ...PRODUCTS.sql,
     tagline: t('homeHero.product.sql.tagline'),
     desc: t('homeHero.product.sql.desc'),
-    href: '/sql/',
+    href: `${prefix}/sql/`,
     stats: t('homeHero.product.sql.stats'),
   },
   {
     ...PRODUCTS.etl,
     tagline: t('homeHero.product.etl.tagline'),
     desc: t('homeHero.product.etl.desc'),
-    href: '/etl/',
+    href: `${prefix}/etl/`,
     stats: t('homeHero.product.etl.stats'),
   },
   {
     ...PRODUCTS.metadata,
     tagline: t('homeHero.product.metadata.tagline'),
     desc: t('homeHero.product.metadata.desc'),
-    href: '/metadata/',
+    href: `${prefix}/metadata/`,
     color: '#8B5CF6',
     stats: t('homeHero.product.metadata.stats'),
     icon: '<path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/>',
@@ -65,7 +67,7 @@ const products = [
     ...PRODUCTS.analysis,
     tagline: t('homeHero.product.analysis.tagline'),
     desc: t('homeHero.product.analysis.desc'),
-    href: '/analysis/',
+    href: `${prefix}/analysis/`,
     stats: t('homeHero.product.analysis.stats'),
   },
 ]
@@ -146,11 +148,11 @@ ORDER BY TotalSales DESC`
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><path d="M12 11h6"/><path d="M12 7h4"/></svg>
             {t('homeHero.btn.docs')}
           </a>
-          <a href="/downloads/" class="hero-btn-primary hero-btn-downloads">
+          <a href={`${prefix}/downloads/`} class="hero-btn-primary hero-btn-downloads">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
             {t('homeHero.btn.downloads')}
           </a>
-          <a href="/precios/" class="hero-btn-primary hero-btn-pricing">
+          <a href={`${prefix}/precios/`} class="hero-btn-primary hero-btn-pricing">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12.83 2.18 7.64 7.64A4 4 0 0 1 21 12.83v4.34A2.83 2.83 0 0 1 18.17 20H5.83A2.83 2.83 0 0 1 3 17.17V4.83A2.83 2.83 0 0 1 5.83 2h7Z"/><circle cx="10" cy="10" r="2"/></svg>
             {t('homeHero.btn.pricing')}
           </a>
@@ -183,7 +185,7 @@ ORDER BY TotalSales DESC`
                 <span class="mock-name">Crono ETL</span>
                 <span class="mock-sub">{t('homeHero.mock.etlSub')}</span>
               </div>
-              <span class="mock-doc-btn" title={t('homeHero.mock.viewDocs')} onclick="event.preventDefault(); event.stopPropagation(); window.location.href='/etl/';" role="button" tabindex="0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></span>
+              <span class="mock-doc-btn" title={t('homeHero.mock.viewDocs')} onclick={`event.preventDefault(); event.stopPropagation(); window.location.href='${prefix}/etl/';`} role="button" tabindex="0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></span>
               <svg class="mock-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
             </a>
             <a href="#crono-sql" class="mock-row" style="--row-color: #10B981;">
@@ -194,7 +196,7 @@ ORDER BY TotalSales DESC`
                 <span class="mock-name">Crono SQL</span>
                 <span class="mock-sub">{t('homeHero.mock.sqlSub')}</span>
               </div>
-              <span class="mock-doc-btn" title={t('homeHero.mock.viewDocs')} onclick="event.preventDefault(); event.stopPropagation(); window.location.href='/sql/';" role="button" tabindex="0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></span>
+              <span class="mock-doc-btn" title={t('homeHero.mock.viewDocs')} onclick={`event.preventDefault(); event.stopPropagation(); window.location.href='${prefix}/sql/';`} role="button" tabindex="0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></span>
               <svg class="mock-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
             </a>
             <a href="#crono-metadata" class="mock-row" style="--row-color: #5B2C7D;">
@@ -205,7 +207,7 @@ ORDER BY TotalSales DESC`
                 <span class="mock-name">Crono Metadata</span>
                 <span class="mock-sub">{t('homeHero.mock.metadataSub')}</span>
               </div>
-              <span class="mock-doc-btn" title={t('homeHero.mock.viewDocs')} onclick="event.preventDefault(); event.stopPropagation(); window.location.href='/metadata/';" role="button" tabindex="0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></span>
+              <span class="mock-doc-btn" title={t('homeHero.mock.viewDocs')} onclick={`event.preventDefault(); event.stopPropagation(); window.location.href='${prefix}/metadata/';`} role="button" tabindex="0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></span>
               <svg class="mock-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
             </a>
             <a href="#crono-analysis" class="mock-row" style="--row-color: #C85A47;">
@@ -216,7 +218,7 @@ ORDER BY TotalSales DESC`
                 <span class="mock-name">Crono Analysis</span>
                 <span class="mock-sub">{t('homeHero.mock.analysisSub')}</span>
               </div>
-              <span class="mock-doc-btn" title={t('homeHero.mock.viewDocs')} onclick="event.preventDefault(); event.stopPropagation(); window.location.href='/analysis/';" role="button" tabindex="0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></span>
+              <span class="mock-doc-btn" title={t('homeHero.mock.viewDocs')} onclick={`event.preventDefault(); event.stopPropagation(); window.location.href='${prefix}/analysis/';`} role="button" tabindex="0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></span>
               <svg class="mock-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
             </a>
             <a href="#crono-api" class="mock-row" style="--row-color: #38BDF8;">
@@ -466,7 +468,7 @@ ORDER BY TotalSales DESC`
             <circle r="17" fill="#fff" stroke="#3672C9" stroke-width="1.5"/>
             <line x1="0" y1="-7" x2="0" y2="3" stroke="#3672C9" stroke-width="1.8" stroke-linecap="round"/>
             <polyline points="-4,-1 0,5 4,-1" fill="none" stroke="#3672C9" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-            <text x="0" y="-26" text-anchor="middle" fill="#3672C9" font-size="10" font-weight="700" letter-spacing="0.05em">EXTRACT</text>
+            <text x="0" y="-26" text-anchor="middle" fill="#3672C9" font-size="10" font-weight="700" letter-spacing="0.05em">{t('homeHero.svg.extract')}</text>
           </g>
           <!-- flow arrow -->
           <path d="M317,356 L324,360 L317,364" fill="none" stroke="#c4c9d4" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -476,7 +478,7 @@ ORDER BY TotalSales DESC`
             <circle r="17" fill="#fff" stroke="#3672C9" stroke-width="1.5"/>
             <line x1="0" y1="7" x2="0" y2="-3" stroke="#3672C9" stroke-width="1.8" stroke-linecap="round"/>
             <polyline points="-4,1 0,-5 4,1" fill="none" stroke="#3672C9" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-            <text x="0" y="-26" text-anchor="middle" fill="#3672C9" font-size="10" font-weight="700" letter-spacing="0.05em">LOAD</text>
+            <text x="0" y="-26" text-anchor="middle" fill="#3672C9" font-size="10" font-weight="700" letter-spacing="0.05em">{t('homeHero.svg.load')}</text>
           </g>
           <!-- flow arrow -->
           <path d="M397,356 L404,360 L397,364" fill="none" stroke="#c4c9d4" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -490,7 +492,7 @@ ORDER BY TotalSales DESC`
             <line x1="0" y1="5" x2="0" y2="8.5" stroke="#3672C9" stroke-width="2.2" stroke-linecap="round"/>
             <line x1="-8.5" y1="0" x2="-5" y2="0" stroke="#3672C9" stroke-width="2.2" stroke-linecap="round"/>
             <line x1="5" y1="0" x2="8.5" y2="0" stroke="#3672C9" stroke-width="2.2" stroke-linecap="round"/>
-            <text x="0" y="-26" text-anchor="middle" fill="#3672C9" font-size="10" font-weight="700" letter-spacing="0.05em">TRANSFORM</text>
+            <text x="0" y="-26" text-anchor="middle" fill="#3672C9" font-size="10" font-weight="700" letter-spacing="0.05em">{t('homeHero.svg.transform')}</text>
           </g>
         </g>
 
@@ -507,7 +509,7 @@ ORDER BY TotalSales DESC`
           <circle class="bg" cx="590" cy="360" r="85"/>
           <use id="dwh-default-icon" href="#i-cube" x="558" y="312" width="64" height="64"/>
           <image id="dwh-engine-img" x="558" y="312" width="64" height="64" href="" style="display:none"/>
-          <text id="dwh-title" class="title" x="590" y="395">DATA WAREHOUSE</text>
+          <text id="dwh-title" class="title" x="590" y="395">{t('homeHero.svg.dataWarehouse')}</text>
           <line x1="550" y1="408" x2="630" y2="408" stroke="#e5e7eb" stroke-width="1"/>
           <!-- Connector from inner arc to METADATA label -->
           <path class="metadata-connector" d="M603.7,465.1 L530,516" stroke="var(--c-purple)" stroke-width="1.5" stroke-dasharray="4,2" fill="none" opacity="0.6"/>
@@ -957,7 +959,7 @@ ORDER BY TotalSales DESC`
             <div class="eco-products-line"></div>
           </div>
           <div class="eco-products-grid">
-            <a href="/analysis/" class="eco-prod" style="--pc:#F97316;--pca:rgba(249,115,22,0.12)">
+            <a href={`${prefix}/analysis/`} class="eco-prod" style="--pc:#F97316;--pca:rgba(249,115,22,0.12)">
               <div class="eco-prod-icon">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="1.8" stroke-linecap="round"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
               </div>
@@ -965,7 +967,7 @@ ORDER BY TotalSales DESC`
               <span class="eco-prod-tag">Business Intelligence</span>
               <span class="eco-prod-desc">{t('homeHero.ecoProd.analysis.desc')}</span>
             </a>
-            <a href="/excel/" class="eco-prod" style="--pc:#1E7B47;--pca:rgba(30,123,71,0.12)">
+            <a href={`${prefix}/excel/`} class="eco-prod" style="--pc:#1E7B47;--pca:rgba(30,123,71,0.12)">
               <div class="eco-prod-icon">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1E7B47" stroke-width="1.8" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/></svg>
               </div>
@@ -973,7 +975,7 @@ ORDER BY TotalSales DESC`
               <span class="eco-prod-tag">{t('homeHero.tag.excel')}</span>
               <span class="eco-prod-desc">{t('homeHero.desc.excel')}</span>
             </a>
-            <a href="/ai/" class="eco-prod" style="--pc:#7C3AED;--pca:rgba(124,58,237,0.12)">
+            <a href={`${prefix}/ai/`} class="eco-prod" style="--pc:#7C3AED;--pca:rgba(124,58,237,0.12)">
               <div class="eco-prod-icon">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7C3AED" stroke-width="1.8" stroke-linecap="round"><path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.38-1 1.72V8h1a7 7 0 0 1 7 7h1a1 1 0 0 1 0 2h-1v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1H2a1 1 0 0 1 0-2h1a7 7 0 0 1 7-7h1V5.72A2 2 0 0 1 10 4a2 2 0 0 1 2-2z"/></svg>
               </div>
@@ -981,7 +983,7 @@ ORDER BY TotalSales DESC`
               <span class="eco-prod-tag">{t('homeHero.tag.ai')}</span>
               <span class="eco-prod-desc">{t('homeHero.desc.ai')}</span>
             </a>
-            <a href="/api/" class="eco-prod" style="--pc:#10B981;--pca:rgba(16,185,129,0.12)">
+            <a href={`${prefix}/api/`} class="eco-prod" style="--pc:#10B981;--pca:rgba(16,185,129,0.12)">
               <div class="eco-prod-icon">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/><path d="M3 15h18"/><path d="M9 3v18"/><path d="M15 3v18"/></svg>
               </div>
@@ -1109,7 +1111,7 @@ ORDER BY TotalSales DESC`
           <li><span style="color: #10B981;">✓</span> {t('homeHero.sqlSection.feature4')}</li>
         </ul>
         <div class="product-actions">
-          <a href="/sql/" class="btn-product" style="background: #10B981; box-shadow: 0 4px 20px -4px #10B981;">
+          <a href={`${prefix}/sql/`} class="btn-product" style="background: #10B981; box-shadow: 0 4px 20px -4px #10B981;">
             {t('homeHero.btn.exploreDocs')}
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
           </a>
@@ -1141,7 +1143,7 @@ ORDER BY TotalSales DESC`
           <li><span style="color: #1B8AC7;">✓</span> {t('homeHero.etlSection.feature3')}</li>
           <li><span style="color: #1B8AC7;">✓</span> {t('homeHero.etlSection.feature4')}</li>
         </ul>
-        <a href="/etl/" class="btn-product" style="background: #1B8AC7; box-shadow: 0 4px 20px -4px #1B8AC7;">
+        <a href={`${prefix}/etl/`} class="btn-product" style="background: #1B8AC7; box-shadow: 0 4px 20px -4px #1B8AC7;">
           {t('homeHero.btn.exploreDocs')}
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
         </a>
@@ -1281,7 +1283,7 @@ ORDER BY TotalSales DESC`
           <li><span style="color: #5B2C7D;">✓</span> {t('homeHero.metadataSection.feature3')}</li>
           <li><span style="color: #5B2C7D;">✓</span> {t('homeHero.metadataSection.feature4')}</li>
         </ul>
-        <a href="/metadata/" class="btn-product" style="background: #5B2C7D; box-shadow: 0 4px 20px -4px #5B2C7D;">
+        <a href={`${prefix}/metadata/`} class="btn-product" style="background: #5B2C7D; box-shadow: 0 4px 20px -4px #5B2C7D;">
           {t('homeHero.btn.exploreDocs')}
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
         </a>
@@ -1308,7 +1310,7 @@ ORDER BY TotalSales DESC`
           <li><span style="color: #C85A47;">✓</span> {t('homeHero.analysisSection.feature3')}</li>
           <li><span style="color: #C85A47;">✓</span> {t('homeHero.analysisSection.feature4')}</li>
         </ul>
-        <a href="/analysis/" class="btn-product" style="background: #C85A47; box-shadow: 0 4px 20px -4px #C85A47;">
+        <a href={`${prefix}/analysis/`} class="btn-product" style="background: #C85A47; box-shadow: 0 4px 20px -4px #C85A47;">
           {t('homeHero.btn.exploreDocs')}
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
         </a>
@@ -1690,7 +1692,7 @@ ORDER BY TotalSales DESC`
     
     <!-- Product Cards Grid -->
     <div class="hero-products-grid" style="padding-top: 3rem;">
-      <a href="/sql/" class="hero-product-card" style="--product-color: #10B981; --index: 0">
+      <a href={`${prefix}/sql/`} class="hero-product-card" style="--product-color: #10B981; --index: 0">
         <div class="hero-card-glow"></div>
         <div class="hero-card-content">
           <div class="hero-card-top">
@@ -1699,7 +1701,6 @@ ORDER BY TotalSales DESC`
                 <rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/><path d="M3 15h18"/><path d="M9 3v18"/><path d="M15 3v18"/>
               </svg>
             </div>
-            <span class="hero-card-badge" style="background: #10B981; color: white;">376 {t('homeHero.badge.docs')}</span>
           </div>
           <h3 class="hero-card-title">Crono SQL</h3>
           <p class="hero-card-tagline">{t('homeHero.card.sql.tagline2')}</p>
@@ -1717,7 +1718,7 @@ ORDER BY TotalSales DESC`
         <div class="hero-card-border" style="background: #10B981;"></div>
       </a>
       
-      <a href="/etl/" class="hero-product-card" style="--product-color: #1B8AC7; --index: 1">
+      <a href={`${prefix}/etl/`} class="hero-product-card" style="--product-color: #1B8AC7; --index: 1">
         <div class="hero-card-glow"></div>
         <div class="hero-card-content">
           <div class="hero-card-top">
@@ -1728,7 +1729,6 @@ ORDER BY TotalSales DESC`
                 <path d="M3 12A9 3 0 0 0 21 12"></path>
               </svg>
             </div>
-            <span class="hero-card-badge" style="background: #1B8AC7; color: white;">{t('homeHero.badge.inDevelopment')}</span>
           </div>
           <h3 class="hero-card-title">Crono ETL</h3>
           <p class="hero-card-tagline">{t('homeHero.card.etl.tagline2')}</p>
@@ -1746,7 +1746,7 @@ ORDER BY TotalSales DESC`
         <div class="hero-card-border" style="background: #1B8AC7;"></div>
       </a>
       
-      <a href="/metadata/" class="hero-product-card" style="--product-color: #5B2C7D; --index: 2">
+      <a href={`${prefix}/metadata/`} class="hero-product-card" style="--product-color: #5B2C7D; --index: 2">
         <div class="hero-card-glow"></div>
         <div class="hero-card-content">
           <div class="hero-card-top">
@@ -1756,7 +1756,6 @@ ORDER BY TotalSales DESC`
                 <path d="M9 21h6"></path>
               </svg>
             </div>
-            <span class="hero-card-badge" style="background: #5B2C7D; color: white;">20 {t('homeHero.badge.articles')}</span>
           </div>
           <h3 class="hero-card-title">Crono Metadata</h3>
           <p class="hero-card-tagline">{t('homeHero.card.metadata.tagline2')}</p>
@@ -1774,7 +1773,7 @@ ORDER BY TotalSales DESC`
         <div class="hero-card-border" style="background: #5B2C7D;"></div>
       </a>
       
-      <a href="/analysis/" class="hero-product-card" style="--product-color: #C85A47; --index: 3">
+      <a href={`${prefix}/analysis/`} class="hero-product-card" style="--product-color: #C85A47; --index: 3">
         <div class="hero-card-glow"></div>
         <div class="hero-card-content">
           <div class="hero-card-top">
@@ -1785,7 +1784,6 @@ ORDER BY TotalSales DESC`
                 <path d="M6 20v-6"></path>
               </svg>
             </div>
-            <span class="hero-card-badge" style="background: #C85A47; color: white;">17 {t('homeHero.badge.articles')}</span>
           </div>
           <h3 class="hero-card-title">Crono Analysis</h3>
           <p class="hero-card-tagline">{t('homeHero.card.analysis.tagline2')}</p>
@@ -2749,7 +2747,7 @@ ORDER BY TotalSales DESC`
   .hero-card-top {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
     margin-bottom: 1.5rem;
   }
 
@@ -2773,6 +2771,7 @@ ORDER BY TotalSales DESC`
     font-size: 0.75rem;
     font-weight: 600;
     letter-spacing: 0.02em;
+    white-space: nowrap;
   }
 
   .hero-card-title {

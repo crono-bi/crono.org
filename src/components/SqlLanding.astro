@@ -4,9 +4,11 @@ import ManualLanding from './ManualLanding.astro'
 import type { Feature, Category, Statement, FuncExample } from './ManualLanding.astro'
 import mergeCloneExample from '../playground/examples/merge-clone.sql?raw'
 import { ENGINE_NAMES } from '../config/engines'
-import { useT, getLangFromLocale } from '../i18n/ui'
+import { useT, getLangFromLocale, getLocalePrefix } from '../i18n/ui'
 
-const t = useT(getLangFromLocale(Astro.currentLocale))
+const lang = getLangFromLocale(Astro.currentLocale)
+const t = useT(lang)
+const prefix = getLocalePrefix(lang)
 
 const features: Feature[] = [
   {
@@ -32,32 +34,28 @@ const categories: Category[] = [
     title: t('sqlLanding.category.language.title'),
     description: t('sqlLanding.category.language.desc'),
     icon: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/><path d="M3 15h18"/><path d="M9 3v18"/><path d="M15 3v18"/></svg>',
-    count: 24,
-    path: '/sql/language/'
+    path: `${prefix}/sql/language/`
   },
   {
     id: 'reference',
     title: t('sqlLanding.category.reference.title'),
     description: t('sqlLanding.category.reference.desc'),
     icon: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/><path d="M12 11h5"/><path d="M12 7h5"/></svg>',
-    count: 15,
-    path: '/sql/reference/'
+    path: `${prefix}/sql/reference/`
   },
   {
     id: 'functions',
     title: t('sqlLanding.category.functions.title'),
     description: t('sqlLanding.category.functions.desc'),
     icon: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5h-2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="2"/><path d="m9 14 2 2 4-4"/></svg>',
-    count: 40,
-    path: '/sql/functions/'
+    path: `${prefix}/sql/functions/`
   },
   {
     id: 'views',
     title: t('sqlLanding.category.views.title'),
     description: t('sqlLanding.category.views.desc'),
     icon: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/><path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>',
-    count: 12,
-    path: '/sql/views/'
+    path: `${prefix}/sql/views/`
   }
 ]
 
@@ -112,7 +110,7 @@ function highlightForLanding(code: string): string {
 const codeExampleDisplay = highlightForLanding(mergeCloneExample)
 
 // Encode example code for playground URL
-const playgroundUrl = `/playground/?code=${btoa(encodeURIComponent(codeExample))}`
+const playgroundUrl = `${prefix}/playground/?code=${btoa(encodeURIComponent(codeExample))}`
 ---
 
 <ManualLanding
@@ -120,7 +118,7 @@ const playgroundUrl = `/playground/?code=${btoa(encodeURIComponent(codeExample))
   logoAlt="Crono SQL"
   subtitle={t('sqlLanding.subtitle')}
   ctaText={t('sqlLanding.cta.manual')}
-  ctaHref="/sql/intro/"
+  ctaHref={`${prefix}/sql/intro/`}
   secondaryCta={{ text: t('sqlLanding.cta.playground'), href: playgroundUrl }}
   brandColor="#10B981"
   features={features}

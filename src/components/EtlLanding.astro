@@ -2,9 +2,11 @@
 // ETL Landing Page - Minimal (content under construction)
 import ManualLanding from './ManualLanding.astro'
 import type { Feature } from './ManualLanding.astro'
-import { useT, getLangFromLocale } from '../i18n/ui'
+import { useT, getLangFromLocale, getLocalePrefix } from '../i18n/ui'
 
-const t = useT(getLangFromLocale(Astro.currentLocale))
+const lang = getLangFromLocale(Astro.currentLocale)
+const t = useT(lang)
+const prefix = getLocalePrefix(lang)
 
 const features: Feature[] = [
   {
@@ -30,7 +32,7 @@ const features: Feature[] = [
   logoAlt="Crono ETL"
   subtitle={t('etlLanding.subtitle')}
   ctaText={t('etlLanding.cta.manual')}
-  ctaHref="/etl/intro/"
+  ctaHref={`${prefix}/etl/intro/`}
   brandColor="#1B8AC7"
   features={features}
   featuresTitle={t('etlLanding.featuresTitle')}

@@ -1,0 +1,100 @@
+---
+title: "Introducción"
+---
+
+import { Aside } from '@astrojs/starlight/components';
+import CategorySelector from '@components/CategorySelector.astro'
+import EngineChips from '@components/EngineChips.astro'
+
+**Crono SQL** es un superconjunto de SQL diseñado para proyectos ETL/DWH. Todo el conocimiento SQL existente es válido y aprovechable. Crono añade exactamente tres cosas al estándar:
+
+1. **Sintaxis SELECT extendida** — apilamiento de SELECTs para transformaciones encadenadas, reutilización de columnas calculadas, SEMI JOIN, ANTI JOIN, MATERIALIZE y otros atajos para patrones analíticos habituales.
+
+2. **Nueve patrones de carga** — sentencias declarativas (`MERGE CLONE`, `MERGE UPSERT`, `MERGE HISTORY`...) que resuelven todos los escenarios habituales de carga de datos: sincronización completa, carga incremental, SCD1, SCD2, borrado lógico y más. Cada patrón mantiene automáticamente las columnas de auditoría y compila a SQL nativo para los ocho motores soportados.
+
+<EngineChips />
+
+3. **Biblioteca de funciones portables** — un conjunto de funciones comunes (de texto, numéricas, de fecha, de agregación...) que compilan correctamente en cualquier motor, eliminando las incompatibilidades habituales entre dialectos SQL.
+
+## ¿Qué es Crono SQL?
+
+**Crono SQL** es un lenguaje de programación diseñado para el desarrollo de proyectos ETL/DWH. Compila en SQL. La relación entre Crono SQL y SQL es similar a la que existe entre [TypeScript](https://es.wikipedia.org/wiki/TypeScript) y JavaScript, o entre [Markdown](https://daringfireball.net/projects/markdown/syntax) y HTML: el desarrollador escribe en el lenguaje de alto nivel y el compilador genera el código equivalente para el entorno de destino. En el caso de Crono SQL, ese entorno puede ser cualquiera de los ocho motores soportados.
+
+**Crono SQL** extiende la sintaxis de SQL, por tanto cualquier sentencia **SELECT** existente funciona sin cambios.
+
+El lenguaje **Crono SQL** pretende simplificar la sintaxis del SQL evitando las repeticiones de código y automatizando la generación del código más farragoso y repetitivo.
+
+**Crono SQL** es un lenguaje más conciso, más expresivo y más fácil de escribir, de leer y de mantener que el SQL ISO.
+
+
+## Principios
+
+El diseño de **Crono SQL** responde a cinco principios que explican la mayoría de las decisiones del lenguaje.
+
+**1. SQL como base.** Cualquier analista o desarrollador de datos conoce SQL. No debería ser necesario aprender Spark, Python o Java para transformar datos. Crono SQL extiende SQL, no lo reemplaza: cualquier consulta SQL válida es también código Crono SQL válido, y todo lo que ya sabes sigue siendo útil. No hay un nuevo paradigma que aprender. SQL es la herramienta principal; Crono SQL la hace más potente.
+
+**2. Los proyectos ETL son proyectos de ingeniería de software.** Cuando los dashboards fallan o muestran datos incorrectos, la causa casi siempre está en el proceso analítico: scripts artesanales sin pruebas, lógica que solo entiende quien la escribió, cambios que nadie revisó. Un proyecto ETL serio requiere las mismas prácticas que cualquier proyecto de software: código legible, revisiones, tests y CI/CD. Crono SQL está diseñado para hacer posible esa disciplina: el código reside en ficheros de texto versionables, las validaciones son parte del lenguaje —`CHECK SNOWFLAKE` y `ASSERT`— y los errores se detectan antes de que ningún dato incorrecto llegue al DWH.
+
+**3. Todo en ficheros de texto.** La lógica de negocio, la estructura del modelo de datos y las reglas de carga residen en ficheros de texto plano. Nada se esconde en interfaces gráficas, configuraciones binarias o metadatos de herramientas propietarias. El código es la verdad única del proyecto, y puede —y debe— versionarse en Git como cualquier otro software. Al residir en ficheros locales, el proyecto funciona completamente en tu equipo: sin depender de notebooks en el navegador, sin que ningún proveedor controle tu entorno de trabajo, sin necesitar conexión a una plataforma cloud para desarrollar, revisar o depurar.
+
+**4. Una única definición.** En un proyecto ETL tradicional, la misma realidad se escribe varias veces: la tabla en el DDL, la lógica de carga en el procedimiento, las validaciones en un script aparte, la auditoría en otro. Cada pieza puede desincronizarse de las demás, y cada desincronización es un bug potencial. Crono SQL parte de un principio distinto: una única sentencia declarativa es la fuente de verdad. De ella se deriva automáticamente la estructura de la tabla, los índices, las claves foráneas, los campos de auditoría y la lógica de carga. Cambiar el modelo es cambiar una línea; el resto se actualiza solo. El resultado es un proyecto más fácil de mantener, con menos posibilidades de error y donde los cambios son rápidos y seguros.
+
+**5. Un lenguaje de dominio, no plantillas.** Toda disciplina de ingeniería madura tiene un lenguaje específico para su dominio. Crono SQL es ese lenguaje para ETL/DWH: tiene gramática formal, compilador y detección de errores en tiempo de compilación, antes de que nada se ejecute en base de datos. No es un sistema de macros ni una capa de plantillas sobre SQL. El código que ves es exactamente lo que se ejecuta, y si hay un error, lo sabes antes de tocar producción.
+
+
+## Ejemplo
+
+En **Crono SQL**, una única sentencia define simultáneamente la estructura de la tabla y la lógica que la carga y mantiene actualizada. El mismo código compila a SQL nativo para cualquiera de los motores soportados, genera un procedimiento optimizado y aplica automáticamente las columnas de auditoría del proyecto.
+
+El siguiente ejemplo es representativo de un caso de uso habitual: la carga de una dimensión de productos a partir de tres tablas de staging. Este manual asume conocimientos básicos de SQL.
+
+```crono-sql
+CREATE OR REPLACE PROCEDURE
+MERGE CLONE dwh.dim_products KEY (product_id)
+SELECT
+  products.product_id,
+  products.product_name,
+  categories.category_name,
+  suppliers.company_name supplier
+FROM staging.products
+INNER JOIN staging.categories USING category_id
+INNER JOIN staging.suppliers USING supplier_id
+```
+
+Estas 10 líneas de Crono SQL hacen todo lo siguiente:
+
+- Crean la tabla `dwh.dim_products` si no existe, con los campos y tipos inferidos de la SELECT.
+- Si la tabla ya existe, añade los campos nuevos que le falten, sin destruir ni recrear nada.
+- Crea una restricción de unicidad sobre `product_id` que actúa como *business key*.
+- Crea el procedimiento de carga con estrategia **MERGE CLONE**: sincronización completa con la fuente. Elimina los productos que ya no existen en origen, actualiza los que han cambiado y registra automáticamente la fecha de modificación en `UPDATE_DATE`, e inserta los nuevos con su fecha de alta en `INSERT_DATE`.
+
+En cierto modo, este código **Crono SQL** es una fusión inteligente entre un `CREATE TABLE` y un `CREATE PROCEDURE` que ejecuta un `MERGE`. El código generado es óptimo: es imposible cargar esta tabla de una manera más rápida o eficiente.
+
+
+## Estructura del manual
+
+Este manual documenta el funcionamiento de la sentencia **SELECT** del lenguaje y el resto de instrucciones. La sintaxis **SELECT** de **Crono SQL** aporta algunas ventajas (algunas importantes) frente al SQL ISO. Sin embargo, el mayor beneficio del lenguaje se manifiesta en el resto de instrucciones DML (**INSERT**, **UPDATE**, **MERGE**, …), donde Crono SQL automatiza toda la lógica de carga.
+
+<CategorySelector categories={[
+  {
+    id: 'language',
+    title: 'Lenguaje Crono SQL',
+    description: 'Guía completa de la sintaxis con ejemplos prácticos de cada sentencia.',
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/><path d="M3 15h18"/><path d="M9 3v18"/><path d="M15 3v18"/></svg>',
+    path: '/sql/language/'
+  },
+  {
+    id: 'functions',
+    title: 'Funciones',
+    description: 'Listado completo de funciones integradas agrupadas por categoría.',
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5h-2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="2"/><path d="m9 14 2 2 4-4"/></svg>',
+    path: '/sql/functions/'
+  },
+  {
+    id: 'views',
+    title: 'Vistas',
+    description: 'Vistas predefinidas del sistema para consultar metadatos.',
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/><path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>',
+    path: '/sql/views/'
+  }
+]} />

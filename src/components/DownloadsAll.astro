@@ -1,6 +1,10 @@
 ---
 // DownloadsAll - Vista completa con todos los productos y sidebar
 import DownloadSummaryTable from './DownloadSummaryTable.astro'
+import { getLangFromLocale, getLocalePrefix } from '../i18n/ui'
+
+const lang = getLangFromLocale(Astro.currentLocale)
+const prefix = getLocalePrefix(lang)
 
 // Colores oficiales por producto
 const COLORS = {
@@ -16,22 +20,22 @@ const productGroups = [
     title: 'Productos principales',
     description: 'Los instaladores recomendados para la mayoría de entornos',
     items: [
-      { name: 'Crono Analysis', desc: 'Herramienta de análisis y reporting', path: '/downloads/crono-analysis/', color: COLORS.analysis },
-      { name: 'Crono Metadata', desc: 'Capa semántica y modelado', path: '/downloads/crono-metadata/', color: COLORS.metadata },
-      { name: 'Crono ETL', desc: 'Extracción, transformación y carga', path: '/downloads/crono-etl/', color: COLORS.etl },
-      { name: 'Crono Excel', desc: 'Informes en Excel', path: '/downloads/crono-excel/', color: COLORS.excel },
-      { name: 'Crono Viewer', desc: 'Visualizador de informes', path: '/downloads/crono-viewer/', color: COLORS.analysis },
-      { name: 'Crono Reporting', desc: 'Generación de informes', path: '/downloads/crono-reporting/', color: COLORS.analysis },
+      { name: 'Crono Analysis', desc: 'Herramienta de análisis y reporting', path: `${prefix}/downloads/crono-analysis/`, color: COLORS.analysis },
+      { name: 'Crono Metadata', desc: 'Capa semántica y modelado', path: `${prefix}/downloads/crono-metadata/`, color: COLORS.metadata },
+      { name: 'Crono ETL', desc: 'Extracción, transformación y carga', path: `${prefix}/downloads/crono-etl/`, color: COLORS.etl },
+      { name: 'Crono Excel', desc: 'Informes en Excel', path: `${prefix}/downloads/crono-excel/`, color: COLORS.excel },
+      { name: 'Crono Viewer', desc: 'Visualizador de informes', path: `${prefix}/downloads/crono-viewer/`, color: COLORS.analysis },
+      { name: 'Crono Reporting', desc: 'Generación de informes', path: `${prefix}/downloads/crono-reporting/`, color: COLORS.analysis },
     ]
   },
   {
     title: 'Aplicaciones de servidor',
     description: 'Crono Administrator instala y administra Crono Server',
     items: [
-      { name: 'Crono', desc: 'Producto base', path: '/downloads/crono/', color: COLORS.etl },
-      { name: 'Crono Administrator', desc: 'Gestión de Crono Server', path: '/downloads/crono-administrator/', color: COLORS.etl },
-      { name: 'Crono Jobs', desc: 'Servicio de tareas programadas', path: '/downloads/crono-jobs/', color: COLORS.etl },
-      { name: 'Crono Server', desc: 'Infraestructura servidor', path: '/downloads/crono-server/', color: COLORS.etl },
+      { name: 'Crono', desc: 'Producto base', path: `${prefix}/downloads/crono/`, color: COLORS.etl },
+      { name: 'Crono Administrator', desc: 'Gestión de Crono Server', path: `${prefix}/downloads/crono-administrator/`, color: COLORS.etl },
+      { name: 'Crono Jobs', desc: 'Servicio de tareas programadas', path: `${prefix}/downloads/crono-jobs/`, color: COLORS.etl },
+      { name: 'Crono Server', desc: 'Infraestructura servidor', path: `${prefix}/downloads/crono-server/`, color: COLORS.etl },
     ]
   }
 ]
@@ -42,10 +46,10 @@ const specialGroups = [
     description: 'Las aplicaciones de 32 bits son necesarias si no dispone de drivers de 64 bits para conectarse a sus orígenes de datos.',
     section: 'StandardReleaseX86' as const,
     items: [
-      { name: 'Crono Analysis 32', path: '/downloads/crono-analysis-32/', color: COLORS.analysis },
-      { name: 'Crono Metadata 32', path: '/downloads/crono-metadata-32/', color: COLORS.metadata },
-      { name: 'Crono ETL 32', path: '/downloads/crono-etl-32/', color: COLORS.etl },
-      { name: 'Crono Jobs 32', path: '/downloads/crono-jobs-32/', color: COLORS.etl },
+      { name: 'Crono Analysis 32', path: `${prefix}/downloads/crono-analysis-32/`, color: COLORS.analysis },
+      { name: 'Crono Metadata 32', path: `${prefix}/downloads/crono-metadata-32/`, color: COLORS.metadata },
+      { name: 'Crono ETL 32', path: `${prefix}/downloads/crono-etl-32/`, color: COLORS.etl },
+      { name: 'Crono Jobs 32', path: `${prefix}/downloads/crono-jobs-32/`, color: COLORS.etl },
     ]
   },
   {
@@ -53,9 +57,9 @@ const specialGroups = [
     description: 'No se recomienda el uso de estos instaladores MSI. Antes de utilizar estos paquetes consulte con su distribuidor.',
     section: 'MSIRelease' as const,
     items: [
-      { name: 'Crono Analysis MSI', path: '/downloads/crono-analysis-msi/', color: COLORS.analysis },
-      { name: 'Crono Metadata MSI', path: '/downloads/crono-metadata-msi/', color: COLORS.metadata },
-      { name: 'Crono Administrator MSI', path: '/downloads/crono-administrator-msi/', color: COLORS.etl },
+      { name: 'Crono Analysis MSI', path: `${prefix}/downloads/crono-analysis-msi/`, color: COLORS.analysis },
+      { name: 'Crono Metadata MSI', path: `${prefix}/downloads/crono-metadata-msi/`, color: COLORS.metadata },
+      { name: 'Crono Administrator MSI', path: `${prefix}/downloads/crono-administrator-msi/`, color: COLORS.etl },
     ]
   },
   {
@@ -63,8 +67,8 @@ const specialGroups = [
     description: 'Esta es la última versión de la plataforma Crono vigente entre 2010 y 2015. Esta versión no tiene soporte y NO SE RECOMIENDA para proyectos nuevos.',
     section: 'CronoClassic' as const,
     items: [
-      { name: 'Crono Classic', path: '/downloads/crono-classic/', color: '#6B7280' },
-      { name: 'Crono Excel Classic', path: '/downloads/crono-excel-classic/', color: COLORS.excel },
+      { name: 'Crono Classic', path: `${prefix}/downloads/crono-classic/`, color: '#6B7280' },
+      { name: 'Crono Excel Classic', path: `${prefix}/downloads/crono-excel-classic/`, color: COLORS.excel },
     ]
   }
 ]
@@ -78,7 +82,7 @@ const downloadsRgb = '37, 99, 235'
   <!-- ═══ HEADER ═══ -->
   <div class="dl-all-header">
     <p>Lista completa de descargas disponibles de la plataforma Crono.</p>
-    <a href="/downloads/" class="dl-back-link">
+    <a href={`${prefix}/downloads/`} class="dl-back-link">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
       Volver a Suite Crono
     </a>

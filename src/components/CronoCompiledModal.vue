@@ -39,8 +39,10 @@
                 @mouseleave="hideTooltip"
                 :aria-label="isFullscreen ? t('modal.exitFullscreen') : t('modal.fullscreen')"
               >
-                <Minimize v-if="isFullscreen" :size="16" />
-                <Maximize v-else :size="16" />
+                <!-- Exit fullscreen icon (X) -->
+                <svg v-if="isFullscreen" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
+                <!-- Enter fullscreen icon (expand arrows) -->
+                <svg v-else width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2h4v4M6 14H2v-4M14 2l-5 5M2 14l5-5"/></svg>
               </button>
             </div>
           </div>
@@ -63,7 +65,7 @@
 
 <script setup lang="ts">
 import { ref, computed, watch, onMounted, onUnmounted } from 'vue'
-import { X, ExternalLink, Maximize, Minimize } from 'lucide-vue-next'
+import { X, ExternalLink } from 'lucide-vue-next'
 import { Theme, EngineId } from '../playground/types/enums'
 import CodeEditor from '../playground/components/CodeEditor.vue'
 import EngineSelector from '../playground/components/EngineSelector.vue'
