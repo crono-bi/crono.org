@@ -39,14 +39,7 @@ El siguiente ejemplo identifica las tablas que no tienen ninguna clave primaria 
 ```crono-sql
 select t.schema_name, t.table_name
 from crono.tables t
-where t.is_table = TRUE
-  and not exists (
-    select 1
-    from crono.constraints c
-    where c.schema_name = t.schema_name
-      and c.table_name = t.table_name
-      and c.is_primary_key = TRUE
-  )
+anti join crono.constraints filter (is_primary_key = TRUE) c using (database_name, schema_name, table_name)
 ```
 
 ## Vistas relacionadas

@@ -4,7 +4,7 @@ title: "crono.constraints"
 
 La vista `crono.constraints` devuelve información sobre las restricciones definidas en todas las tablas de la base de datos. Incluye claves primarias (`PRIMARY KEY`), claves externas (`FOREIGN KEY`), restricciones de unicidad (`UNIQUE`) y restricciones de comprobación (`CHECK`).
 
-Es similar a la vista ANSI `INFORMATION_SCHEMA.TABLE_CONSTRAINTS`
+Es similar a la vista ANSI `INFORMATION_SCHEMA.TABLE_CONSTRAINTS`, pero la vista de Crono está enriquecida con información adicional: añade indicadores booleanos por tipo de restricción y, en el caso de las claves externas, incluye información sobre la clave primaria referenciada (`pk_database_name`, `pk_schema_name`, `pk_table_name`, `primary_key_name`).
 
 Sus columnas son las siguientes:
 

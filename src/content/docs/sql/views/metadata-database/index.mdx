@@ -6,13 +6,12 @@ sidebar:
 
 import SectionIndex from '../../../../../components/SectionIndex.astro'
 
+**Crono SQL** ofrece 12 vistas para consultar la estructura de la base de datos: tablas, columnas, restricciones, rutinas, etc.
 
-
-El estándar ANSI define un esquema especial llamado `INFORMATION_SCHEMA` que permite consultar los metadatos de la base de datos: tablas, columnas, restricciones, rutinas, etc. Sin embargo, en la práctica cada motor lo implementa de forma diferente: no todos exponen las mismas vistas, ni los mismos campos, ni respetan los mismos nombres. Algunos motores omiten partes del estándar; otros añaden información propia que no forma parte de él.
+Aunque el estándar ANSI define un esquema especial llamado `INFORMATION_SCHEMA` que permite consultar los metadatos de la base de datos, en la práctica cada motor lo implementa de forma diferente: no todos exponen las mismas vistas, ni los mismos campos, ni respetan los mismos nombres. Algunos motores omiten partes del estándar; otros añaden información propia que no forma parte de él.
 
 **Crono SQL** resuelve esta limitación añadiendo una capa de abstracción con doce vistas que permiten consultar esta misma información de forma uniforme en todos los motores soportados. Además, Crono enriquece estas vistas con campos adicionales de especial utilidad en proyectos de DWH y ETL, como indicadores booleanos que facilitan el filtrado sin necesidad de conocer los valores concretos que devuelve cada motor.
 
-Aunque se denominan "vistas" y se usan como vistas empleando la sintaxis de vistas, en realidad **Crono SQL** las resuelve generando subconsultas al transformar el código en **SQL**. Es decir, no son verdaderas vistas en la base de datos, aunque podamos invocarlas como si lo fueran.
 
 ## Compatibilidad
 
@@ -34,3 +33,8 @@ Las doce vistas disponibles son:
 - [`crono.constraint_columns`](/sql/views/metadata-database/crono-constraint_columns/) — columnas que participan en cada restricción.
 - [`crono.routines`](/sql/views/metadata-database/crono-routines/) — procedimientos almacenados y funciones.
 - [`crono.routine_parameters`](/sql/views/metadata-database/crono-routine_parameters/) — parámetros de cada procedimiento o función.
+
+## Comentarios
+
+
+Aunque se denominan "vistas" y se usan como vistas empleando la sintaxis de vistas, en realidad **Crono SQL** las resuelve generando subconsultas al transformar el código en **SQL**. Es decir, no son verdaderas vistas en la base de datos, aunque podamos invocarlas como si lo fueran.

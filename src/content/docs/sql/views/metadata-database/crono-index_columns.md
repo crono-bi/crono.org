@@ -2,9 +2,8 @@
 title: "crono.index_columns"
 ---
 
-La vista `crono.index_columns` devuelve  información sobre las columnas que forman parte de cada índice de la base de datos. Cuando un índice está compuesto por varias columnas, aparece una fila por cada columna que lo integra.
+La vista `crono.index_columns` devuelve información sobre las columnas que forman parte de cada índice de la base de datos. Cuando un índice está compuesto por varias columnas, aparece una fila por cada columna que lo integra.
 
-Toma información de la vista de sistema `sys.index_columns` de **SQL Server**.
 
 Sus columnas son las siguientes:
 
@@ -49,4 +48,4 @@ order by index_name
 
 ## Compatibilidad
 
-**Snowflake**, **BigQuery**, **Databricks** y **DuckDB** no admiten índices definidos por el usuario. En estos motores la vista devuelve un conjunto de resultados vacío sin producir nin
+**Snowflake**, **BigQuery**, **Databricks** y **DuckDB** no admiten índices definidos por el usuario. En estos motores la vista devuelve un conjunto de resultados vacío sin producir ningún error.

@@ -2,9 +2,9 @@
 title: "crono.constraint_columns"
 ---
 
-La vista `crono.constraint_columns` devuelve  información sobre las columnas que participan en las restricciones de todas las tablas de la base de datos. Cuando una restricción está compuesta por varias columnas, aparece una fila por cada columna que la integra.
+La vista `crono.constraint_columns` devuelve información sobre las columnas que participan en las restricciones de todas las tablas de la base de datos. Cuando una restricción está compuesta por varias columnas, aparece una fila por cada columna que la integra.
 
-Es similar a la vista ANSI `INFORMATION_SCHEMA.CONSTRAINT_COLUMN_USAGE`
+Es similar a la vista ANSI `INFORMATION_SCHEMA.KEY_COLUMN_USAGE`
 
 Sus columnas son las siguientes:
 
@@ -34,8 +34,7 @@ select
   cc.table_name,
   cc.column_name
 from crono.constraint_columns cc
-  inner join crono.constraints c
-    using (schema_name, table_name, constraint_name)
+inner join crono.constraints c using (schema_name, table_name, constraint_name)
 where c.is_primary_key = TRUE
 ```
 

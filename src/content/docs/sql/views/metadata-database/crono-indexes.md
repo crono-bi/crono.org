@@ -4,8 +4,6 @@ title: "crono.indexes"
 
 La vista `crono.indexes` devuelve información sobre todos los índices definidos en la base de datos, incluyendo si son únicos, agrupados o si corresponden a una clave primaria.
 
-Toma información de la vista de sistema `sys.indexes` de **SQL Server**.
-
 Sus columnas son las siguientes:
 
 | Columna | Descripción |
@@ -32,14 +30,8 @@ El siguiente ejemplo lista las tablas que no tienen ningún índice definido:
 
 ```crono-sql
 select t.schema_name, t.table_name
-from crono.tables t
-where t.is_table = TRUE
-  and not exists (
-    select 1
-    from crono.indexes i
-    where i.schema_name = t.schema_name
-      and i.table_name = t.table_name
-  )
+from crono.tables filter (is_table = TRUE)
+anti join crono.indexes using (schema_name, table_name)
 ```
 
 El siguiente ejemplo muestra los índices únicos no agrupados de la base de datos:
@@ -47,9 +39,10 @@ El siguiente ejemplo muestra los índices únicos no agrupados de la base de dat
 ```crono-sql
 select schema_name, table_name, index_name
 from crono.indexes
-where is_unique = TRUE
-    and is_clustered = FALSE
-    and is_primary_key = FALSE
+where 
+  is_unique = TRUE
+  and is_clustered = FALSE
+  and is_primary_key = FALSE
 order by schema_name, table_name
 ```
 
@@ -59,4 +52,4 @@ order by schema_name, table_name
 
 ## Compatibilidad
 
-**Snowflake**, **BigQue
+**Snowflake**, **BigQuery**, **Databricks** y **DuckDB** no admiten índices definidos por el usuario. En estos motores la vista devuelve un conjunto de resultados vacío sin producir ningún error.

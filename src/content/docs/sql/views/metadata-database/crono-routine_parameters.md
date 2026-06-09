@@ -44,12 +44,7 @@ El siguiente ejemplo identifica las rutinas que no tienen ningún parámetro def
 ```crono-sql
 select r.schema_name, r.routine_name, r.routine_type
 from crono.routines r
-where not exists (
-    select 1
-    from crono.routine_parameters p
-    where p.schema_name = r.schema_name
-      and p.routine_name = r.routine_name
-  )
+anti join crono.routine_parameters p using (schema_name, routine_name)
 order by r.schema_name, r.routine_name
 ```
 
