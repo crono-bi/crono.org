@@ -1,5 +1,5 @@
 ---
-title: "Tablas agregadas"
+title: "Aggregated tables"
 ---
 
 

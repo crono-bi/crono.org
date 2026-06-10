@@ -1,5 +1,5 @@
 ---
-title: "Validar catálogo"
+title: "Validate catalog"
 ---
 
 

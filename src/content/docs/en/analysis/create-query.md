@@ -1,5 +1,5 @@
 ---
-title: "Crear una consulta"
+title: "Create a query"
 ---
 
 

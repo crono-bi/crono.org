@@ -1,5 +1,5 @@
 ---
-title: "Parámetros definidos en el catálogo"
+title: "Catalog-defined parameters"
 ---
 
 

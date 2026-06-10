@@ -1,5 +1,5 @@
 ---
-title: "Cómo crear un diagrama"
+title: "How to create a diagram"
 ---
 
 

@@ -1,5 +1,5 @@
 ---
-title: "Propiedades de tabla"
+title: "Table properties"
 ---
 
 

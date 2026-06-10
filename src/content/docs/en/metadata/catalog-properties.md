@@ -1,5 +1,5 @@
 ---
-title: "Propiedades de catálogo"
+title: "Catalog properties"
 ---
 
 

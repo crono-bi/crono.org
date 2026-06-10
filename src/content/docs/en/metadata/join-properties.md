@@ -1,5 +1,5 @@
 ---
-title: "Propiedades de relación"
+title: "Join properties"
 ---
 
 

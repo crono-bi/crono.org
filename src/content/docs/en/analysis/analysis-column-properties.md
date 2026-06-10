@@ -1,5 +1,5 @@
 ---
-title: "Propiedades de columna"
+title: "Column properties"
 ---
 
 

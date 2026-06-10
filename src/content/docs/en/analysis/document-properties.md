@@ -1,5 +1,5 @@
 ---
-title: "Propiedades de documento"
+title: "Document properties"
 ---
 
 

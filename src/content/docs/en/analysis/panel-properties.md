@@ -1,5 +1,5 @@
 ---
-title: "Propiedades de panel"
+title: "Panel properties"
 ---
 
 

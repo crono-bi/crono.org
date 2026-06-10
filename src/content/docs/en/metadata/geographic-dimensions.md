@@ -1,5 +1,5 @@
 ---
-title: "Dimensiones geográficas"
+title: "Geographic dimensions"
 ---
 
 

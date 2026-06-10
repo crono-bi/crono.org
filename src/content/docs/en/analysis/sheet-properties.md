@@ -1,5 +1,5 @@
 ---
-title: "Propiedades de hoja"
+title: "Sheet properties"
 ---
 
 

@@ -1,5 +1,5 @@
 ---
-title: "Propiedades de elemento de negocio"
+title: "Business item properties"
 ---
 
 

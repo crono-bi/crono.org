@@ -1,5 +1,5 @@
 ---
-title: "Tipos de visualización"
+title: "Visualization types"
 ---
 
 

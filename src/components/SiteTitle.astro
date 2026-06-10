@@ -5,35 +5,36 @@ import config from 'virtual:starlight/user-config';
 const { siteTitleHref } = Astro.locals.starlightRoute;
 
 const pathname = Astro.url.pathname;
+const normalizedPath = pathname.replace(/^\/en(?=\/|$)/, '');
 
 let siteTitle = 'Manual de usuario';
 let productLogoSrc: string | null = null;
 let productName = '';
 
-if (pathname.startsWith('/analysis/')) {
+if (normalizedPath.startsWith('/analysis/')) {
 	siteTitle = 'Manual Crono Analysis';
 	productLogoSrc = '/logos/crono-analysis.webp';
 	productName = 'Crono Analysis';
-} else if (pathname.startsWith('/metadata/')) {
+} else if (normalizedPath.startsWith('/metadata/')) {
 	siteTitle = 'Manual Crono Metadata';
 	productLogoSrc = '/logos/crono-metadata.webp';
 	productName = 'Crono Metadata';
-} else if (pathname.startsWith('/etl/')) {
+} else if (normalizedPath.startsWith('/etl/')) {
 	siteTitle = 'Manual Crono ETL';
 	productLogoSrc = '/logos/crono-etl.webp';
 	productName = 'Crono ETL';
-} else if (pathname.startsWith('/sql/')) {
+} else if (normalizedPath.startsWith('/sql/')) {
 	siteTitle = 'Manual Crono SQL';
 	productLogoSrc = '/logos/crono-sql.webp';
 	productName = 'Crono SQL';
-} else if (pathname.startsWith('/playground')) {
+} else if (normalizedPath.startsWith('/playground')) {
 	siteTitle = 'Crono Playground';
 	productLogoSrc = '/logos/crono-playground.webp';
 	productName = 'Crono Playground';
 }
 ---
 
-<script is:inline define:vars={{ section: pathname.split('/')[1] }}>
+<script is:inline define:vars={{ section: normalizedPath.split('/')[1] }}>
   (function() {
     const brandClasses = ['brand-analysis', 'brand-metadata', 'brand-etl', 'brand-sql'];
     const html = document.documentElement;

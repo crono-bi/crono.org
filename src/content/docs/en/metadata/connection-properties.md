@@ -1,5 +1,5 @@
 ---
-title: "Propiedades de conexión"
+title: "Connection properties"
 ---
 
 

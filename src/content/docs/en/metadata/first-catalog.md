@@ -1,5 +1,5 @@
 ---
-title: "Cómo crear tu primer catálogo"
+title: "How to create your first catalog"
 ---
 
 

@@ -1,5 +1,5 @@
 ---
-title: "Seguridad y permisos de acceso"
+title: "Security and access permissions"
 ---
 
 
