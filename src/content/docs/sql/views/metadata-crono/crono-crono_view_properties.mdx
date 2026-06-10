@@ -2,6 +2,9 @@
 title: "crono.crono_view_properties"
 ---
 
+import { Aside } from '@astrojs/starlight/components';
+
+
 
 
 La pseudovista `crono.crono_view_properties` devuelve las propiedades que admiten las pseudovistas con parámetros.
@@ -10,6 +13,10 @@ La pseudovista `crono.crono_view_properties` devuelve las propiedades que admite
 SELECT *
 FROM crono.crono_view_properties
 ```
+
+<Aside type="caution" title="En construcción">
+Los nombres de las columnas finalmente respetarán la convención snake_case.
+</Aside>
 
 ## Columnas
 

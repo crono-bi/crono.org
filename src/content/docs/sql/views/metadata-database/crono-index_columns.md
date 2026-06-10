@@ -1,8 +1,9 @@
 ---
-title: "crono.indexes"
+title: "crono.index_columns"
 ---
 
-La vista `crono.indexes` devuelve información sobre todos los índices definidos en la base de datos, incluyendo si son únicos, agrupados o si corresponden a una clave primaria.
+La vista `crono.index_columns` devuelve información sobre las columnas que forman parte de cada índice de la base de datos. Cuando un índice está compuesto por varias columnas, aparece una fila por cada columna que lo integra.
+
 
 Sus columnas son las siguientes:
 
@@ -16,39 +17,34 @@ Sus columnas son las siguientes:
 | `is_primary_key` | `true` si el índice corresponde a la clave primaria; `false` en caso contrario |
 | `is_disabled` | `true` si el índice está deshabilitado; `false` en caso contrario |
 | `is_clustered` | `true` si el índice es agrupado (*clustered*); `false` en caso contrario |
+| `column_name` | Nombre de la columna que forma parte del índice |
 
 ## Ejemplos
 
-El siguiente ejemplo devuelve todos los índices de la base de datos:
+El siguiente ejemplo devuelve todas las columnas de todos los índices de la base de datos:
 
 ```crono-sql
 select *
-from crono.indexes
+from crono.index_columns
 ```
 
-El siguiente ejemplo lista las tablas que no tienen ningún índice definido:
+El siguiente ejemplo lista las columnas que forman parte de las claves primarias:
 
 ```crono-sql
-select t.schema_name, t.table_name
-from crono.tables filter (is_table = TRUE)
-anti join crono.indexes using (schema_name, table_name)
-```
-
-El siguiente ejemplo muestra los índices únicos no agrupados de la base de datos:
-
-```crono-sql
-select schema_name, table_name, index_name
-from crono.indexes
-where 
-  is_unique = TRUE
-  and is_clustered = FALSE
-  and is_primary_key = FALSE
+select schema_name, table_name, index_name, column_name
+from crono.index_columns
+where is_primary_key = TRUE
 order by schema_name, table_name
 ```
 
-## Vistas relacionadas
+El siguiente ejemplo muestra todas las columnas indexadas de una tabla concreta:
 
-[`crono.index_columns`](/sql/views/metadata-database/crono-index_columns/) permite consultar las columnas que forman parte de cada índice.
+```crono-sql
+select index_name, column_name, is_unique, is_clustered
+from crono.index_columns
+where table_name = 'Orders'
+order by index_name
+```
 
 ## Compatibilidad
 

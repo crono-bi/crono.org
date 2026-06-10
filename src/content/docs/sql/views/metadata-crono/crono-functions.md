@@ -13,3 +13,11 @@ Este listado es meramente informativo, pues Crono permite usar cualquier funció
 select *
 from crono.functions
 ```
+
+## Columnas
+
+| Columna | Descripción |
+|---|---|
+| `function_category` | Categoría de la función |
+| `function_name` | Nombre de la función |
+| `synonyms` | Sinónimos o nombres alternativos de la función |

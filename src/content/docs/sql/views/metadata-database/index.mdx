@@ -6,12 +6,35 @@ sidebar:
 
 import SectionIndex from '../../../../../components/SectionIndex.astro'
 
+**Crono SQL** ofrece 12 vistas para consultar la estructura de la base de datos: tablas, columnas, restricciones, rutinas, etc.
+
+Aunque el estándar ANSI define un esquema especial llamado `INFORMATION_SCHEMA` que permite consultar los metadatos de la base de datos, en la práctica cada motor lo implementa de forma diferente: no todos exponen las mismas vistas, ni los mismos campos, ni respetan los mismos nombres. Algunos motores omiten partes del estándar; otros añaden información propia que no forma parte de él.
+
+**Crono SQL** resuelve esta limitación añadiendo una capa de abstracción con doce vistas que permiten consultar esta misma información de forma uniforme en todos los motores soportados. Además, Crono enriquece estas vistas con campos adicionales de especial utilidad en proyectos de DWH y ETL, como indicadores booleanos que facilitan el filtrado sin necesidad de conocer los valores concretos que devuelve cada motor.
 
 
-**Crono SQL** incluye algunas vistas predefinidas que muestran metadatos de la base de datos.
+## Compatibilidad
 
-Aunque se denominan "vistas", y se usan como vistas, y emplean la sintaxis de vistas, en realidad **Crono SQL** genera subconsultas al transformar el código en **SQL**. Es decir, no son verdaderas vistas en la base de datos, aunque podamos invocarlas como si lo fueran.
+El grado de información disponible depende del motor de base de datos. Cuando un motor no soporta una funcionalidad —por ejemplo, DuckDB no admite procedimientos almacenados, o Snowflake no expone índices— la vista correspondiente devuelve un conjunto de resultados vacío sin producir ningún error. Del mismo modo, cuando un motor sí soporta la funcionalidad pero no proporciona un dato concreto, la columna correspondiente devuelve `NULL`. Es el caso, por ejemplo, de la intercalación (`collation`): muchas bases de datos modernas no exponen este concepto o simplemente no lo aplican, por lo que campos como `collation_name` o `default_character_set_name` pueden devolver `NULL`. En ningún caso se produce un error de ejecución: las vistas están diseñadas para adaptarse silenciosamente a las capacidades de cada motor.
 
-Son las siguientes:
+## Vistas disponibles
 
-<SectionIndex src="/sql/views/metadata-database/" />
+Las doce vistas disponibles son:
+
+- [`crono.databases`](/sql/views/metadata-database/crono-databases/) — bases de datos de la instancia.
+- [`crono.schemas`](/sql/views/metadata-database/crono-schemas/) — esquemas de cada base de datos.
+- [`crono.tables`](/sql/views/metadata-database/crono-tables/) — tablas y vistas de cada esquema.
+- [`crono.columns`](/sql/views/metadata-database/crono-columns/) — columnas de cada tabla o vista.
+- [`crono.indexes`](/sql/views/metadata-database/crono-indexes/) — índices definidos sobre las tablas.
+- [`crono.index_columns`](/sql/views/metadata-database/crono-index_columns/) — columnas que forman parte de cada índice.
+- [`crono.foreign_keys`](/sql/views/metadata-database/crono-foreign_keys/) — claves externas de cada tabla.
+- [`crono.foreign_key_columns`](/sql/views/metadata-database/crono-foreign_key_columns/) — columnas que participan en cada clave externa.
+- [`crono.constraints`](/sql/views/metadata-database/crono-constraints/) — restricciones de cada tabla (claves primarias, externas, únicas y de comprobación).
+- [`crono.constraint_columns`](/sql/views/metadata-database/crono-constraint_columns/) — columnas que participan en cada restricción.
+- [`crono.routines`](/sql/views/metadata-database/crono-routines/) — procedimientos almacenados y funciones.
+- [`crono.routine_parameters`](/sql/views/metadata-database/crono-routine_parameters/) — parámetros de cada procedimiento o función.
+
+## Comentarios
+
+
+Aunque se denominan "vistas" y se usan como vistas empleando la sintaxis de vistas, en realidad **Crono SQL** las resuelve generando subconsultas al transformar el código en **SQL**. Es decir, no son verdaderas vistas en la base de datos, aunque podamos invocarlas como si lo fueran.
