@@ -2,6 +2,9 @@
 title: "crono.replacements"
 ---
 
+import { Aside } from '@astrojs/starlight/components';
+
+
 
 
 Devuelve las "sustituciones" definidas en las propiedades del proyecto Crono ETL.
@@ -11,9 +14,9 @@ SELECT *
 FROM crono.replacements
 ```
 
-:::caution[En construcción]
-Esta documentación está en proceso de construcción. Los nombres de las columnas finalmente respetarán la convención snake_case.
-:::
+<Aside type="caution" title="En construcción">
+Los nombres de las columnas finalmente respetarán la convención snake_case.
+</Aside>
 
 ## Columnas
 

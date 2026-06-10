@@ -2,6 +2,9 @@
 title: "crono.virtual_views"
 ---
 
+import { Aside } from '@astrojs/starlight/components';
+
+
 La vista `crono.virtual_views` devuelve las vistas virtuales definidas en el proyecto Crono ETL.
 
 ```crono-sql
@@ -9,9 +12,9 @@ select *
 from crono.virtual_views
 ```
 
-:::caution[En construcción]
-Esta documentación está en proceso de construcción. Los nombres de las columnas finalmente respetarán la convención snake_case.
-:::
+<Aside type="caution" title="En construcción">
+Los nombres de las columnas finalmente respetarán la convención snake_case.
+</Aside>
 
 ## Columnas
 
