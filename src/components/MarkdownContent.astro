@@ -1,9 +1,14 @@
 ---
 import GiscusComments from './GiscusComments.astro';
+import SupportBanner from './SupportBanner.astro';
 
 const { starlightRoute } = Astro.locals;
 const entryId: string = starlightRoute.entry.id;
 const showGiscus = entryId.startsWith('sql/functions/');
+
+const pathname = Astro.url.pathname.replace(/\/$/, '').replace(/^\/en/, '') || '/';
+const SUPPORT_PATHS = ['/sql', '/sql/intro', '/etl', '/metadata', '/metadata/intro', '/analysis', '/analysis/intro'];
+const showSupport = SUPPORT_PATHS.includes(pathname);
 ---
 
 <div class="sl-markdown-content">
@@ -11,6 +16,8 @@ const showGiscus = entryId.startsWith('sql/functions/');
 </div>
 
 {showGiscus && <GiscusComments />}
+
+{showSupport && <SupportBanner />}
 
 <script>
   // Global "Ver compilado" button injector for all crono-sql code blocks.

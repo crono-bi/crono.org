@@ -2,6 +2,7 @@
 // Descargas - Landing épica con grid de 3 productos
 import { PRODUCTS } from '../config/products'
 import { useT, getLangFromLocale, getLocalePrefix } from '../i18n/ui'
+import SupportBanner from './SupportBanner.astro'
 
 const lang = getLangFromLocale(Astro.currentLocale)
 const t = useT(lang)
@@ -135,6 +136,8 @@ const mainProducts = await Promise.all(productDefs.map(async (p) => {
   </a>
 
 </div>
+
+<SupportBanner />
 
 <style>
   .dl-landing {

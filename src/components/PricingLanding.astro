@@ -2,6 +2,7 @@
 // Página de Precios - mismo estilo visual que DownloadsLanding
 import { PRODUCTS } from '../config/products'
 import { useT, getLangFromLocale } from '../i18n/ui'
+import SupportBanner from './SupportBanner.astro'
 
 const t = useT(getLangFromLocale(Astro.currentLocale))
 
@@ -14,6 +15,8 @@ interface Tier {
   cta: string
   ctaHref: string
   highlight?: boolean
+  freeForever?: boolean
+  contact?: boolean
 }
 
 interface Section {
@@ -38,6 +41,7 @@ const sections: Section[] = [
         description: t('pricingLanding.tier.etlCli.desc'),
         cta: t('pricingLanding.tier.etlCli.cta'),
         ctaHref: '/downloads/crono-etl/',
+        freeForever: true,
       },
       {
         name: t('pricingLanding.tier.etlTrial.name'),
@@ -54,8 +58,9 @@ const sections: Section[] = [
         priceDetail: t('pricingLanding.tier.etlFull.priceDetail'),
         description: t('pricingLanding.tier.etlFull.desc'),
         cta: t('pricingLanding.tier.etlFull.cta'),
-        ctaHref: 'mailto:business@businessintelligence.es',
+        ctaHref: '#',
         highlight: true,
+        contact: true,
       },
     ]
   },
@@ -80,8 +85,9 @@ const sections: Section[] = [
         priceDetail: t('pricingLanding.tier.analysisFull.priceDetail'),
         description: t('pricingLanding.tier.analysisFull.desc'),
         cta: t('pricingLanding.tier.analysisFull.cta'),
-        ctaHref: 'mailto:business@businessintelligence.es',
+        ctaHref: '#',
         highlight: true,
+        contact: true,
       },
     ]
   },
@@ -98,7 +104,8 @@ const sections: Section[] = [
         priceDetail: t('pricingLanding.tier.api.priceDetail'),
         description: t('pricingLanding.tier.api.desc'),
         cta: t('pricingLanding.tier.api.cta'),
-        ctaHref: 'mailto:business@businessintelligence.es',
+        ctaHref: '#',
+        contact: true,
       },
       {
         name: t('pricingLanding.tier.server.name'),
@@ -107,7 +114,8 @@ const sections: Section[] = [
         priceDetail: t('pricingLanding.tier.server.priceDetail'),
         description: t('pricingLanding.tier.server.desc'),
         cta: t('pricingLanding.tier.server.cta'),
-        ctaHref: 'mailto:business@businessintelligence.es',
+        ctaHref: '#',
+        contact: true,
       },
       {
         name: t('pricingLanding.tier.enterprise.name'),
@@ -116,8 +124,9 @@ const sections: Section[] = [
         priceDetail: t('pricingLanding.tier.enterprise.priceDetail'),
         description: t('pricingLanding.tier.enterprise.desc'),
         cta: t('pricingLanding.tier.enterprise.cta'),
-        ctaHref: 'mailto:business@businessintelligence.es',
+        ctaHref: '#',
         highlight: true,
+        contact: true,
       },
     ]
   },
@@ -147,29 +156,37 @@ const sections: Section[] = [
             <div class="pr-card-body">
               <h3 class="pr-card-name">{tier.name}</h3>
               <div class="pr-card-price">
-                <span class="pr-price-value">{tier.price}</span>
-                {tier.priceDetail && <span class="pr-price-detail">{tier.priceDetail}</span>}
+                <span class="pr-price-value">{tier.freeForever ? t('pricingLanding.tier.etlTrial.freeForever') : tier.price}</span>
+                {!tier.freeForever && tier.priceDetail && <span class="pr-price-detail">{tier.priceDetail}</span>}
               </div>
               <p class="pr-card-desc">{tier.description}</p>
             </div>
             <!-- Foot: CTA -->
-            <div class="pr-card-foot">
-              <a href={tier.ctaHref} class={`pr-btn${tier.highlight ? ' pr-btn--primary' : ' pr-btn--secondary'}`}>
-                {tier.cta}
-              </a>
-            </div>
+            {!tier.contact && (
+              <div class="pr-card-foot">
+                <a href={tier.ctaHref} class={`pr-btn${tier.highlight ? ' pr-btn--primary' : ' pr-btn--secondary'}`}>
+                  {tier.cta}
+                </a>
+              </div>
+            )}
           </div>
         ))}
       </div>
     </div>
   ))}
 
-  <!-- Nota al pie -->
-  <p class="pr-note">
-    {t('pricingLanding.footer.note')} <a href="mailto:business@businessintelligence.es">{t('pricingLanding.footer.link')}</a> {t('pricingLanding.footer.suffix')}
-  </p>
+  <!-- Contacto único -->
+  <div class="pr-contact">
+    <h3 class="pr-contact-title">{t('pricingLanding.contact.title')}</h3>
+    <p class="pr-contact-desc">{t('pricingLanding.contact.desc')}</p>
+    <a href={`mailto:${t('pricingLanding.contact.email')}`} class="pr-contact-btn">
+      {t('pricingLanding.contact.email')}
+    </a>
+  </div>
 
 </div>
+
+<SupportBanner />
 
 <style>
   .pr-landing {
@@ -288,6 +305,10 @@ const sections: Section[] = [
     flex-shrink: 0;
   }
 
+  .pr-badge--free {
+    background: #1B8AC7;
+  }
+
   /* Body */
   .pr-card-body { flex: 1; }
 
@@ -368,19 +389,45 @@ const sections: Section[] = [
     color: var(--c);
   }
 
-  /* Nota */
-  .pr-note {
-    font-size: 0.8125rem;
-    color: var(--sl-color-gray-3);
+  /* Contacto único */
+  .pr-contact {
     text-align: center;
-    border-top: 1px solid var(--sl-color-hairline);
-    padding-top: 1.5rem;
-    margin: 0;
+    padding: 2rem;
+    background: var(--sl-color-bg-nav);
+    border: 1px solid var(--sl-color-hairline);
+    border-radius: 14px;
+    margin-top: 1rem;
   }
 
-  .pr-note a {
-    color: var(--sl-color-accent);
-    text-decoration: underline;
+  .pr-contact-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--sl-color-white);
+    margin: 0 0 0.5rem;
+  }
+
+  .pr-contact-desc {
+    font-size: 0.9rem;
+    color: var(--sl-color-gray-3);
+    margin: 0 0 1.25rem;
+  }
+
+  .pr-contact-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: #1B8AC7;
+    color: white;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all 0.2s;
+  }
+
+  .pr-contact-btn:hover {
+    filter: brightness(1.1);
+    box-shadow: 0 4px 12px rgba(27, 138, 199, 0.35);
   }
 
   @media (max-width: 640px) {

@@ -1,0 +1,245 @@
+---
+/**
+ * CrossTable — tabla cruzada reusable para documentación.
+ *
+ * Props:
+ *   columns     — cabeceras de columna: string[] o { label, group? }[]
+ *   rows        — { label, cells: string[] }[]
+ *   groups      — (opcional) array de { label, span } para cabeceras de grupo
+ *   caption     — (opcional) texto de leyenda
+ *   showLegend  — (default true) muestra la leyenda de colores
+ *
+ * Valores de celda:
+ *   'yes'   → verde   (Sí / Yes)
+ *   'no'    → naranja (NO)
+ *   'nokey' → amarillo (SIN KEY / NO KEY)
+ *   'x'     → azul    (campo presente)
+ *   'dash'  → gris    (sin campo de auditoría)
+ *   ''      → vacío
+ */
+import { getLangFromLocale } from '../i18n/ui.ts'
+
+interface Column {
+  label: string
+}
+
+interface Row {
+  label: string
+  cells: string[]
+}
+
+interface Group {
+  label: string
+  span: number
+}
+
+interface Props {
+  columns: string[] | Column[]
+  rows: Row[]
+  groups?: Group[]
+  caption?: string
+  showLegend?: boolean
+}
+
+const { columns, rows, groups, caption, showLegend = false } = Astro.props
+const lang = getLangFromLocale(Astro.currentLocale)
+
+const allLabels = columns.map(c => (typeof c === 'string' ? c : c.label))
+const rowHeaderLabel = allLabels[0] ?? ''
+const colLabels = allLabels.slice(1)
+
+const CELL: Record<string, string> = {
+  yes:   lang === 'en' ? 'YES' : 'SÍ',
+  no:    'NO',
+  nokey: '–',
+  x:     'X',
+  dash:  '–',
+}
+
+function cl(v: string): string {
+  return CELL[v] ?? v
+}
+---
+
+<div class="ct-wrap">
+  <div class="ct-scroll">
+    <table class="ct-table" role="grid">
+      <thead>
+        {groups && (
+          <tr class="ct-group-row">
+            <th class="ct-th ct-th--row-header ct-th--ghost" rowspan={2}></th>
+            {groups.map(g => (
+              <th class="ct-th ct-th--group" colspan={g.span}>{g.label}</th>
+            ))}
+          </tr>
+        )}
+        <tr>
+          <th class="ct-th ct-th--row-header" set:html={rowHeaderLabel}></th>
+          {colLabels.map((col) => (
+            <th class="ct-th" set:html={col}></th>
+          ))}
+        </tr>
+      </thead>
+      <tbody>
+        {rows.map((row) => (
+          <tr class="ct-row">
+            <td class="ct-td ct-td--row-header">
+              <code class="ct-label">{row.label}</code>
+            </td>
+            {row.cells.map((cell) => (
+              <td class={`ct-td ct-cell--${cell || 'empty'}`}>
+                {cell && <span class="ct-val">{cl(cell)}</span>}
+              </td>
+            ))}
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  {caption && <p class="ct-caption">{caption}</p>}
+</div>
+
+<style>
+  /* ── Wrapper ── */
+  .ct-wrap {
+    margin: 1.75rem 0;
+  }
+
+  .ct-scroll {
+    overflow-x: auto;
+    border-radius: 10px;
+    border: 1px solid var(--sl-color-hairline-light);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  }
+
+  /* ── Table ── */
+  .ct-table {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 560px;
+    font-size: 0.83rem;
+    table-layout: auto;
+  }
+
+  /* ── Header ── */
+  .ct-th {
+    background: rgb(27, 95, 140);
+    color: rgba(255,255,255,0.90);
+    font-weight: 700;
+    font-size: 0.64rem;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    padding: 0.7rem 0.8rem;
+    text-align: center;
+    line-height: 1.4;
+    border-right: 1px solid rgba(255,255,255,0.10);
+    border-bottom: 2px solid rgba(0,0,0,0.12);
+  }
+
+  .ct-th:last-child { border-right: none; }
+
+  .ct-th--row-header {
+    background: rgba(27, 95, 140, 0.85);
+    text-align: left;
+    min-width: 180px;
+    padding-left: 1.1rem;
+    letter-spacing: 0.04em;
+    color: rgba(255,255,255,0.65);
+    font-size: 0.62rem;
+  }
+
+  .ct-th--ghost { background: rgba(27, 95, 140, 0.65); }
+
+  .ct-th--group {
+    background: rgba(27, 95, 140, 0.65);
+    font-size: 0.62rem;
+    letter-spacing: 0.07em;
+  }
+
+  /* ── Rows ── */
+  .ct-row { transition: background 0.12s ease; }
+  .ct-row:last-child .ct-td { border-bottom: none; }
+
+  .ct-row:hover .ct-td {
+    background: rgba(27, 95, 140, 0.07) !important;
+    transition: background 0.12s ease;
+  }
+
+  .ct-row:nth-child(even) .ct-td {
+    background: rgba(27, 95, 140, 0.03);
+  }
+
+  /* ── Cells ── */
+  .ct-td {
+    padding: 0.52rem 0.9rem;
+    text-align: center;
+    border-bottom: 1px solid var(--sl-color-hairline);
+    border-right: 1px solid var(--sl-color-hairline);
+    vertical-align: middle;
+    height: 2.5rem;
+    background: var(--sl-color-bg);
+  }
+
+  .ct-td:last-child { border-right: none; }
+
+  .ct-td--row-header {
+    text-align: left;
+    padding-left: 1.1rem;
+    white-space: nowrap;
+    background: rgba(27, 95, 140, 0.05) !important;
+    border-right: 2px solid rgba(27, 95, 140, 0.20);
+  }
+
+  .ct-row:hover .ct-td--row-header {
+    background: rgba(27, 95, 140, 0.10) !important;
+  }
+
+  .ct-label {
+    font-family: var(--sl-font-mono, monospace);
+    font-size: 0.76rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    color: var(--sl-color-white);
+    background: none;
+    border: none;
+    padding: 0;
+  }
+
+  .ct-val {
+    display: inline-block;
+    font-size: 0.73rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+  }
+
+  /* ── Filled cells (light mode) ── */
+  .ct-cell--yes   { background: #d1fae5; }
+  .ct-cell--yes   .ct-val { color: #065f46; }
+  .ct-cell--no    { background: #dbeafe; }
+  .ct-cell--no    .ct-val { color: #1e4f8c; }
+  .ct-cell--nokey .ct-val { color: var(--sl-color-gray-4); font-weight: 400; }
+  .ct-cell--x     { background: rgba(27, 95, 140, 0.12); }
+  .ct-cell--x     .ct-val { color: rgb(27, 95, 140); font-size: 0.85rem; }
+  .ct-cell--dash  { background: rgba(27, 95, 140, 0.06); }
+  .ct-cell--dash  .ct-val { color: var(--sl-color-gray-3); font-weight: 400; font-size: 0.9rem; }
+
+  /* Filled cell backgrounds (dark mode) */
+  :global([data-theme='dark']) .ct-cell--yes   { background: #1b3d2a; }
+  :global([data-theme='dark']) .ct-cell--yes   .ct-val { color: #86efac; }
+  :global([data-theme='dark']) .ct-cell--no    { background: #1c3a5e; }
+  :global([data-theme='dark']) .ct-cell--no    .ct-val { color: #90caf9; }
+  :global([data-theme='dark']) .ct-cell--nokey .ct-val { color: var(--sl-color-gray-4); font-weight: 400; }
+  :global([data-theme='dark']) .ct-cell--x     { background: rgba(27, 95, 140, 0.25); }
+  :global([data-theme='dark']) .ct-cell--x     .ct-val { color: #93c5fd; }
+  :global([data-theme='dark']) .ct-cell--dash  { background: rgba(27, 95, 140, 0.12); }
+  :global([data-theme='dark']) .ct-cell--dash  .ct-val { color: var(--sl-color-gray-3); }
+
+  /* ── Caption ── */
+  .ct-caption {
+    font-size: 0.73rem;
+    color: var(--sl-color-gray-3);
+    margin: 0.4rem 0 0;
+    line-height: 1.5;
+  }
+</style>

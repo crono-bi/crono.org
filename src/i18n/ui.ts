@@ -204,6 +204,8 @@ const es = {
   'pricingLanding.tier.etlTrial.tagline': 'Free Trial',
   'pricingLanding.tier.etlTrial.price': 'Free Trial',
   'pricingLanding.tier.etlTrial.desc': 'Versión reducida para pruebas, fines académicos.',
+  'pricingLanding.tier.etlTrial.cta': 'Descargar',
+  'pricingLanding.tier.etlTrial.freeForever': 'Gratis para siempre',
   'pricingLanding.tier.etlFull.name': 'Crono ETL Windows',
   'pricingLanding.tier.etlFull.tagline': 'Licencia completa',
   'pricingLanding.tier.etlFull.price': '100 €',
@@ -223,26 +225,30 @@ const es = {
   'pricingLanding.tier.analysisFull.cta': 'Contactar',
   'pricingLanding.tier.api.name': 'Crono API',
   'pricingLanding.tier.api.tagline': 'API y dashboards web',
-  'pricingLanding.tier.api.price': '1.000 €',
+  'pricingLanding.tier.api.price': '5.000 €',
   'pricingLanding.tier.api.priceDetail': '/año org',
   'pricingLanding.tier.api.desc': 'API REST para integrar dashboards y reportes en tus aplicaciones web.',
   'pricingLanding.tier.api.cta': 'Contactar',
   'pricingLanding.tier.server.name': 'Crono Server',
   'pricingLanding.tier.server.tagline': 'Servidor empresarial',
-  'pricingLanding.tier.server.price': '1.000 €',
+  'pricingLanding.tier.server.price': '5.000 €',
   'pricingLanding.tier.server.priceDetail': '/año org',
   'pricingLanding.tier.server.desc': 'Servidor de aplicaciones para despliegues empresariales con alta disponibilidad.',
   'pricingLanding.tier.server.cta': 'Contactar',
   'pricingLanding.tier.enterprise.name': 'Crono Enterprise',
   'pricingLanding.tier.enterprise.tagline': 'Plataforma completa',
-  'pricingLanding.tier.enterprise.price': 'Pide',
-  'pricingLanding.tier.enterprise.priceDetail': 'presupuesto',
-  'pricingLanding.tier.enterprise.desc': 'La plataforma completa para usuarios ilimitados. Solución personalizada para grandes organizaciones.',
+  'pricingLanding.tier.enterprise.price': '40.000 €',
+  'pricingLanding.tier.enterprise.priceDetail': '/año org',
+  'pricingLanding.tier.enterprise.desc': 'Pide un presupuesto personalizado a tu situación.',
   'pricingLanding.tier.enterprise.cta': 'Contactar',
   'pricingLanding.badge.recommended': 'Recomendado',
   'pricingLanding.footer.note': '¿Necesitas ayuda para elegir?',
   'pricingLanding.footer.link': 'Contáctanos',
   'pricingLanding.footer.suffix': 'y te asesoramos sin compromiso.',
+  'pricingLanding.contact.title': '¿Interesado en una licencia?',
+  'pricingLanding.contact.desc': 'Escríbenos y te ayudamos a elegir la mejor opción para tu organización.',
+  'pricingLanding.contact.email': 'info@crono.net',
+  'pricingLanding.contact.cta': 'Contactar por correo',
 
   // ── HomeHero ──
   'homeHero.label': 'Documentación técnica',
@@ -522,6 +528,11 @@ const es = {
   'homeFooter.startReading': 'Empezar a leer',
   // HomeFooter - Bottom
   'homeFooter.madeWith': 'Made by Crono with',
+
+  // ── SupportBanner ──
+  'support.title': '¿Fue útil esta página?',
+  'support.desc': 'Estamos para ayudar. Si tienes cualquier problema o duda, abre un issue en GitHub y te respondemos lo antes posible.',
+  'support.linkLabel': 'Abrir un issue en GitHub',
 } as const
 
 // `en` debe tener EXACTAMENTE las mismas claves que `es` (lo exige el tipo).
@@ -712,6 +723,8 @@ const en: Record<keyof typeof es, string> = {
   'pricingLanding.tier.etlTrial.tagline': 'Free Trial',
   'pricingLanding.tier.etlTrial.price': 'Free Trial',
   'pricingLanding.tier.etlTrial.desc': 'Reduced version for testing, academic purposes.',
+  'pricingLanding.tier.etlTrial.cta': 'Download',
+  'pricingLanding.tier.etlTrial.freeForever': 'Free forever',
   'pricingLanding.tier.etlFull.name': 'Crono ETL Windows',
   'pricingLanding.tier.etlFull.tagline': 'Full license',
   'pricingLanding.tier.etlFull.price': '100 €',
@@ -731,26 +744,30 @@ const en: Record<keyof typeof es, string> = {
   'pricingLanding.tier.analysisFull.cta': 'Contact us',
   'pricingLanding.tier.api.name': 'Crono API',
   'pricingLanding.tier.api.tagline': 'API and web dashboards',
-  'pricingLanding.tier.api.price': '1,000 €',
+  'pricingLanding.tier.api.price': '5,000 €',
   'pricingLanding.tier.api.priceDetail': '/year org',
   'pricingLanding.tier.api.desc': 'REST API to integrate dashboards and reports into your web applications.',
   'pricingLanding.tier.api.cta': 'Contact us',
   'pricingLanding.tier.server.name': 'Crono Server',
   'pricingLanding.tier.server.tagline': 'Enterprise server',
-  'pricingLanding.tier.server.price': '1,000 €',
+  'pricingLanding.tier.server.price': '5,000 €',
   'pricingLanding.tier.server.priceDetail': '/year org',
   'pricingLanding.tier.server.desc': 'Application server for enterprise deployments with high availability.',
   'pricingLanding.tier.server.cta': 'Contact us',
   'pricingLanding.tier.enterprise.name': 'Crono Enterprise',
   'pricingLanding.tier.enterprise.tagline': 'Complete platform',
-  'pricingLanding.tier.enterprise.price': 'Request',
-  'pricingLanding.tier.enterprise.priceDetail': 'quote',
-  'pricingLanding.tier.enterprise.desc': 'The complete platform for unlimited users. Customized solution for large organizations.',
+  'pricingLanding.tier.enterprise.price': '40,000 €',
+  'pricingLanding.tier.enterprise.priceDetail': '/year org',
+  'pricingLanding.tier.enterprise.desc': 'Request a customized quote for your situation.',
   'pricingLanding.tier.enterprise.cta': 'Contact us',
   'pricingLanding.badge.recommended': 'Recommended',
   'pricingLanding.footer.note': 'Need help choosing?',
   'pricingLanding.footer.link': 'Contact us',
   'pricingLanding.footer.suffix': 'and we will advise you without obligation.',
+  'pricingLanding.contact.title': '¿Interesado en una licencia?',
+  'pricingLanding.contact.desc': 'Escríbenos y te ayudamos a elegir la mejor opción para tu organización.',
+  'pricingLanding.contact.email': 'info@crono.net',
+  'pricingLanding.contact.cta': 'Contactar por correo',
 
   // ── HomeHero ──
   'homeHero.label': 'Technical documentation',
@@ -995,6 +1012,11 @@ const en: Record<keyof typeof es, string> = {
   'homeFooter.startReading': 'Start reading',
   // HomeFooter - Bottom
   'homeFooter.madeWith': 'Made by Crono with',
+
+  // ── SupportBanner ──
+  'support.title': 'Was this page helpful?',
+  'support.desc': 'We are here to help. If you have any problem or question, open a GitHub issue and we will get back to you as soon as possible.',
+  'support.linkLabel': 'Create a GitHub issue',
 }
 
 export type UIKey = keyof typeof es

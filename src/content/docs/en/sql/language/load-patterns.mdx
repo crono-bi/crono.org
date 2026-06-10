@@ -4,21 +4,26 @@ sidebar:
   order: 15
 ---
 
+import CrossTable from '../../../../../components/CrossTable.astro'
+
 **Crono SQL** define nueve patrones de carga que cubren todos los escenarios habituales en un proyecto ETL/DWH. Cada patrón se declara en una sola línea; el compilador genera todo el código necesario para cada motor de base de datos, gestiona automáticamente la estructura de la tabla destino y mantiene los campos de auditoría.
 
 La mayoría de patrones requieren una **clave de carga** declarada con `KEY (col1, col2)` en la cabecera de la sentencia. La clave identifica el registro y determina qué filas se insertan, actualizan o eliminan según el patrón elegido.
 
-| Sentencia | KEY | Auditoría |
-|---|---|---|
-| MERGE CLONE | obligatoria | `insert_date`, `update_date` |
-| MERGE HISTORY | obligatoria | `start_date`, `end_date` |
-| MERGE SOFT DELETE | obligatoria | `insert_date`, `update_date`, `delete_date` |
-| MERGE UPSERT | obligatoria | `insert_date`, `update_date` |
-| INSERT OVERWRITE | opcional | `insert_date` |
-| INSERT IF NEW | obligatoria | `insert_date` |
-| INSERT RAW | — | `insert_date` |
-| UPDATE | obligatoria | `update_date` |
-| DELETE | obligatoria | — |
+<CrossTable
+  columns={['Statement', 'KEY<br/>Required', 'INSERT<br/>DATE', 'UPDATE<br/>DATE', 'DELETE<br/>DATE', 'START<br/>DATE', 'END<br/>DATE']}
+  rows={[
+    { label: 'MERGE CLONE',       cells: ['yes', 'x',  'x',  'dash', '',   ''  ] },
+    { label: 'MERGE HISTORY',     cells: ['yes', '',   '',   '',     'x',  'x' ] },
+    { label: 'MERGE SOFT DELETE', cells: ['yes', 'x',  'x',  'x',   '',   ''  ] },
+    { label: 'MERGE UPSERT',      cells: ['yes', 'x',  'x',  '',    '',   ''  ] },
+    { label: 'INSERT OVERWRITE',  cells: ['no',  'x',  '',   '',    '',   ''  ] },
+    { label: 'INSERT IF NEW',     cells: ['yes', 'x',  '',   '',    '',   ''  ] },
+    { label: 'INSERT RAW',        cells: ['nokey','x', '',   '',    '',   ''  ] },
+    { label: 'UPDATE',            cells: ['yes', '',   'x',  '',    '',   ''  ] },
+    { label: 'DELETE',            cells: ['yes', '',   '',   'dash','',   ''  ] },
+  ]}
+/>
 
 El nombre de estos campos es configurable a nivel de proyecto ETL. **MERGE CLONE** es el equivalente al patrón **SCD tipo 1** (sobreescribe los cambios sin conservar histórico); **MERGE HISTORY** es el equivalente al **SCD tipo 2** (conserva el histórico completo de cambios mediante filas versionadas).
 
@@ -169,8 +174,6 @@ En caso de duda, añade la clave subrogada.
 ## Auditoría
 
 Todos los patrones de carga añaden automáticamente campos de auditoría a la tabla destino. Estos campos los gestiona **Crono SQL** sin que el desarrollador tenga que incluirlos en el SELECT ni preocuparse por su mantenimiento. Proporcionan un registro fiable de cuándo se insertó o modificó cada registro.
-
-Los campos varían según el patrón:
 
 | Sentencia | Campos de auditoría |
 |---|---|
