@@ -6,9 +6,24 @@ const { starlightRoute } = Astro.locals;
 const entryId: string = starlightRoute.entry.id;
 const showGiscus = entryId.startsWith('sql/functions/');
 
-const pathname = Astro.url.pathname.replace(/\/$/, '').replace(/^\/en/, '') || '/';
-const SUPPORT_PATHS = ['/sql', '/sql/intro', '/etl', '/metadata', '/metadata/intro', '/analysis', '/analysis/intro'];
-const showSupport = SUPPORT_PATHS.includes(pathname);
+// Detect doc sections in both languages (ES = root, EN = /en/)
+const isDocsSection = entryId.startsWith('sql/') ||
+                      entryId.startsWith('etl/') ||
+                      entryId.startsWith('analysis/') ||
+                      entryId.startsWith('metadata/') ||
+                      entryId.startsWith('en/sql/') ||
+                      entryId.startsWith('en/etl/') ||
+                      entryId.startsWith('en/analysis/') ||
+                      entryId.startsWith('en/metadata/');
+
+// Exclude index/intro/landing pages within doc sections
+const isIndexPage = entryId.endsWith('/intro') ||
+                    entryId.endsWith('/index') ||
+                    ['sql', 'etl', 'analysis', 'metadata', 'en/sql', 'en/etl', 'en/analysis', 'en/metadata'].includes(entryId) ||
+                    // Catch folder index pages (1 or 2 path segments)
+                    entryId.split('/').filter(Boolean).length <= 2;
+
+const isDocsPage = isDocsSection && !isIndexPage;
 ---
 
 <div class="sl-markdown-content">
@@ -17,7 +32,7 @@ const showSupport = SUPPORT_PATHS.includes(pathname);
 
 {showGiscus && <GiscusComments />}
 
-{showSupport && <SupportBanner />}
+{isDocsPage && <SupportBanner />}
 
 <script>
   // Global "Ver compilado" button injector for all crono-sql code blocks.

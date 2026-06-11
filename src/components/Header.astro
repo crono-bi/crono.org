@@ -7,14 +7,98 @@ import SiteTitle from 'virtual:starlight/components/SiteTitle';
 import SocialIcons from 'virtual:starlight/components/SocialIcons';
 import ThemeSelect from 'virtual:starlight/components/ThemeSelect';
 
+import { getProductIcon } from '../config/products.ts';
+
 const shouldRenderSearch =
 	config.pagefind || config.components.Search !== '@astrojs/starlight/components/Search.astro';
+
+const pathname = Astro.url.pathname;
+const isEN = pathname.startsWith('/en');
+
+// Ocultar nav principal en secciones de documentación (Starlight ya tiene sidebar)
+const docSections = isEN
+	? ['/en/sql/', '/en/etl/', '/en/analysis/', '/en/metadata/']
+	: ['/sql/', '/etl/', '/analysis/', '/metadata/'];
+const isDocsSection = docSections.some((section) => pathname.startsWith(section));
+
+const navLinks = isEN
+	? [
+		{ label: 'Downloads', href: '/en/downloads/' },
+		{ label: 'Pricing',   href: '/en/precios/'  },
+		{ label: 'Playground', href: '/en/playground/', highlight: true },
+	  ]
+	: [
+		{ label: 'Descargas', href: '/downloads/' },
+		{ label: 'Precios',   href: '/precios/'   },
+		{ label: 'Playground', href: '/playground/', highlight: true },
+	  ];
+
+const docLinks = isEN
+	? [
+		{ label: 'Crono SQL',      desc: 'SQL language',   href: '/en/sql/',      icon: getProductIcon('sql') },
+		{ label: 'Crono ETL',      desc: 'Data pipelines', href: '/en/etl/',      icon: getProductIcon('etl') },
+		{ label: 'Crono Analysis', desc: 'BI & reporting',  href: '/en/analysis/', icon: getProductIcon('analysis') },
+		{ label: 'Crono Metadata', desc: 'Data catalog',   href: '/en/metadata/', icon: getProductIcon('metadata') },
+	  ]
+	: [
+		{ label: 'Crono SQL',      desc: 'Lenguaje SQL',    href: '/sql/',      icon: getProductIcon('sql') },
+		{ label: 'Crono ETL',      desc: 'Pipelines',       href: '/etl/',      icon: getProductIcon('etl') },
+		{ label: 'Crono Analysis', desc: 'BI y reportes',   href: '/analysis/', icon: getProductIcon('analysis') },
+		{ label: 'Crono Metadata', desc: 'Catálogo',        href: '/metadata/', icon: getProductIcon('metadata') },
+	  ];
+
+const isDocsActive = docLinks.some(({ href }) => pathname.startsWith(href));
+const docsLabel = isEN ? 'Docs' : 'Documentación';
 ---
 
 <div class="header">
+	<!-- Mobile menu toggle (checkbox hack) -->
+	<input type="checkbox" id="mobile-menu-toggle" class="mobile-toggle" />
+	<label for="mobile-menu-toggle" class="mobile-menu-btn" aria-label="Menu">
+		<svg class="icon-menu" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+			<line x1="3" y1="6" x2="21" y2="6"/>
+			<line x1="3" y1="12" x2="21" y2="12"/>
+			<line x1="3" y1="18" x2="21" y2="18"/>
+		</svg>
+		<svg class="icon-close" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+			<path d="M18 6 6 18M6 6l12 12"/>
+		</svg>
+	</label>
+
 	<div class="title-wrapper sl-flex">
 		<SiteTitle />
 	</div>
+	{!isDocsSection && (
+		<nav class="header-nav" aria-label="Main">
+			{navLinks.map(({ label, href, highlight }) => (
+				<a href={href} class:list={['nav-link', { 'nav-link--active': pathname === href || pathname.startsWith(href), 'nav-link--highlight': highlight }]}>
+					{label}
+				</a>
+			))}
+			<div class:list={['nav-dropdown', { 'nav-link--active': isDocsActive }]}>
+				<button class="nav-link nav-dropdown__trigger" aria-haspopup="true">
+					{docsLabel}
+					<svg width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true" class="nav-dropdown__chevron">
+						<path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+					</svg>
+				</button>
+				<ul class="nav-dropdown__menu" role="menu">
+					{docLinks.map(({ label, desc, href, icon }) => (
+						<li role="none">
+							<a href={href} role="menuitem" class:list={['nav-dropdown__item', { 'nav-dropdown__item--active': pathname.startsWith(href) }]}>
+								<span class="nav-dropdown__icon" set:html={icon}></span>
+								<span class="nav-dropdown__text">
+									<span class="nav-dropdown__name">{label}</span>
+									<span class="nav-dropdown__desc">{desc}</span>
+								</span>
+							</a>
+						</li>
+					))}
+				</ul>
+			</div>
+		</nav>
+	)}
+
 	<div class="sl-hidden md:sl-flex print:hidden right-group">
 		<div class="sl-flex social-icons">
 			<SocialIcons />
@@ -23,16 +107,38 @@ const shouldRenderSearch =
 		<ThemeSelect />
 		<LanguageSelect />
 	</div>
+
+	<!-- Mobile menu -->
+	<div class="mobile-menu" role="dialog" aria-label="Navigation">
+		{!isDocsSection && (
+			<div class="mobile-nav">
+				{navLinks.map(({ label, href, highlight }) => (
+					<a href={href} class:list={['mobile-nav-link', { 'mobile-nav-link--highlight': highlight }]}>
+						{label}
+					</a>
+				))}
+				<div class="mobile-nav-dropdown">
+					<span class="mobile-nav-label">{docsLabel}</span>
+					{docLinks.map(({ label, href, icon }) => (
+						<a href={href} class="mobile-nav-sublink">
+							<span class="mobile-nav-icon" set:html={icon}></span>
+							{label}
+						</a>
+					))}
+				</div>
+			</div>
+		)}
+	</div>
 </div>
 
 <style>
+	/* ── Starlight layer: solo layout base del header ── */
 	@layer starlight.core {
 		.header {
 			display: flex;
-			gap: var(--sl-nav-gap);
-			justify-content: space-between;
 			align-items: center;
 			height: 100%;
+			gap: var(--sl-nav-gap);
 		}
 
 		.title-wrapper {
@@ -40,6 +146,12 @@ const shouldRenderSearch =
 			padding: 0.25rem;
 			margin: -0.25rem;
 			min-width: 0;
+			flex: 1;
+		}
+
+		.right-group {
+			flex: 1;
+			justify-content: flex-end;
 		}
 
 		.right-group,
@@ -49,6 +161,290 @@ const shouldRenderSearch =
 		}
 		.social-icons::after {
 			display: none;
+		}
+	}
+
+	/* ── Nav: FUERA del layer — gana siempre en la cascada ── */
+	.header-nav {
+		display: none;
+		align-items: center;
+		justify-content: center;
+		gap: 0.1rem;
+		flex: 1;
+	}
+
+	@media (min-width: 50rem) {
+		.header-nav { display: flex; }
+	}
+
+
+	.nav-link {
+		padding: 0.4rem 0.8rem;
+		border-radius: 6px;
+		font-size: 0.82rem;
+		font-weight: 500;
+		letter-spacing: 0.01em;
+		color: var(--sl-color-gray-2);
+		text-decoration: none;
+		transition: color 0.15s, background 0.15s;
+		white-space: nowrap;
+	}
+
+	.nav-link:hover {
+		color: var(--sl-color-white);
+		background: rgba(128,128,128,0.12);
+	}
+
+	.nav-link--active {
+		color: var(--sl-color-white);
+		background: rgba(128,128,128,0.15);
+	}
+
+	.nav-link--highlight {
+		background: var(--sl-color-accent);
+		color: var(--sl-color-black);
+		font-weight: 600;
+	}
+
+	.nav-link--highlight:hover {
+		background: var(--sl-color-accent-high);
+		color: var(--sl-color-black);
+	}
+
+	/* ── Dropdown ── */
+	.nav-dropdown {
+		position: relative;
+	}
+
+	.nav-dropdown__trigger {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.35rem;
+		background: none;
+		border: none;
+		cursor: pointer;
+	}
+
+	.nav-dropdown__chevron {
+		transition: transform 0.2s ease;
+		opacity: 0.6;
+		flex-shrink: 0;
+	}
+
+	.nav-dropdown__menu {
+		visibility: hidden;
+		opacity: 0;
+		transform: translateX(-50%) translateY(-4px);
+		transition: opacity 0.15s ease, transform 0.15s ease, visibility 0s linear 0.15s;
+		position: absolute;
+		top: calc(100% + 0.6rem);
+		left: 50%;
+		min-width: 210px;
+		background: var(--sl-color-bg-nav);
+		border: 1px solid var(--sl-color-hairline);
+		border-radius: 10px;
+		padding: 0.4rem;
+		list-style: none;
+		margin: 0;
+		box-shadow: 0 12px 32px rgba(0,0,0,0.25), 0 2px 8px rgba(0,0,0,0.12);
+		z-index: 9999;
+	}
+
+	.nav-dropdown:hover .nav-dropdown__menu,
+	.nav-dropdown:focus-within .nav-dropdown__menu {
+		visibility: visible;
+		opacity: 1;
+		transform: translateX(-50%) translateY(0);
+		transition: opacity 0.15s ease, transform 0.15s ease;
+	}
+
+	.nav-dropdown:hover .nav-dropdown__chevron,
+	.nav-dropdown:focus-within .nav-dropdown__chevron {
+		transform: rotate(180deg);
+		opacity: 0.9;
+	}
+
+	.nav-dropdown__item {
+		display: flex;
+		align-items: center;
+		gap: 0.65rem;
+		padding: 0.55rem 0.75rem;
+		border-radius: 7px;
+		text-decoration: none;
+		transition: background 0.12s;
+	}
+
+	.nav-dropdown__item:hover,
+	.nav-dropdown__item--active {
+		background: rgba(128,128,128,0.1);
+	}
+
+	.nav-dropdown__icon {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		opacity: 0.7;
+		flex-shrink: 0;
+		width: 1.5rem;
+		height: 1.5rem;
+	}
+
+	.nav-dropdown__icon :global(svg) {
+		width: 20px;
+		height: 20px;
+	}
+
+	.nav-dropdown__text {
+		display: flex;
+		flex-direction: column;
+		gap: 0.1rem;
+	}
+
+	.nav-dropdown__name {
+		font-size: 0.82rem;
+		font-weight: 500;
+		color: var(--sl-color-text);
+		line-height: 1.2;
+	}
+
+	.nav-dropdown__desc {
+		font-size: 0.72rem;
+		color: var(--sl-color-gray-3);
+		line-height: 1.2;
+	}
+
+	/* ── Mobile menu ── */
+	.mobile-toggle {
+		display: none;
+	}
+
+	.mobile-menu-btn {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 0.5rem;
+		margin: -0.25rem;
+		border-radius: 6px;
+		color: var(--sl-color-gray-2);
+		cursor: pointer;
+		transition: color 0.15s, background 0.15s;
+	}
+
+	.mobile-menu-btn:hover {
+		color: var(--sl-color-white);
+		background: rgba(128,128,128,0.12);
+	}
+
+	.mobile-menu-btn .icon-close {
+		display: none;
+	}
+
+	.mobile-toggle:checked ~ .mobile-menu-btn .icon-menu {
+		display: none;
+	}
+
+	.mobile-toggle:checked ~ .mobile-menu-btn .icon-close {
+		display: block;
+	}
+
+	.mobile-menu {
+		display: none;
+		position: fixed;
+		top: var(--sl-nav-height);
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background: var(--sl-color-bg);
+		padding: 1rem;
+		z-index: 9998;
+		overflow-y: auto;
+	}
+
+	.mobile-toggle:checked ~ .mobile-menu {
+		display: block;
+	}
+
+	.mobile-nav {
+		display: flex;
+		flex-direction: column;
+		gap: 0.25rem;
+	}
+
+	.mobile-nav-link {
+		display: block;
+		padding: 0.75rem 1rem;
+		border-radius: 8px;
+		font-size: 1rem;
+		font-weight: 500;
+		color: var(--sl-color-text);
+		text-decoration: none;
+		transition: background 0.15s;
+	}
+
+	.mobile-nav-link:hover {
+		background: rgba(128,128,128,0.1);
+	}
+
+	.mobile-nav-link--highlight {
+		background: var(--sl-color-accent);
+		color: var(--sl-color-black);
+	}
+
+	.mobile-nav-link--highlight:hover {
+		background: var(--sl-color-accent-high);
+	}
+
+	.mobile-nav-dropdown {
+		margin-top: 0.5rem;
+		padding-top: 0.5rem;
+		border-top: 1px solid var(--sl-color-hairline);
+	}
+
+	.mobile-nav-label {
+		display: block;
+		padding: 0.5rem 1rem;
+		font-size: 0.75rem;
+		font-weight: 500;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+		color: var(--sl-color-gray-3);
+	}
+
+	.mobile-nav-sublink {
+		display: flex;
+		align-items: center;
+		gap: 0.75rem;
+		padding: 0.6rem 1rem;
+		border-radius: 8px;
+		font-size: 0.9rem;
+		color: var(--sl-color-text);
+		text-decoration: none;
+		transition: background 0.15s;
+	}
+
+	.mobile-nav-sublink:hover {
+		background: rgba(128,128,128,0.1);
+	}
+
+	.mobile-nav-icon {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 1.5rem;
+		height: 1.5rem;
+		opacity: 0.7;
+	}
+
+	.mobile-nav-icon :global(svg) {
+		width: 18px;
+		height: 18px;
+	}
+
+	/* Show mobile menu button only on small screens */
+	@media (min-width: 50rem) {
+		.mobile-menu-btn,
+		.mobile-menu {
+			display: none !important;
 		}
 	}
 </style>

@@ -53,6 +53,11 @@ const es = {
   'compileBtn.label': 'Ver compilado',
   'compileBtn.aria': 'Ver SQL compilado',
 
+  // ── CrossTable ──
+  'crossTable.required': 'Obligatoria',
+  'crossTable.noKey': 'Sin Key',
+  'crossTable.optional': 'Opcional',
+
   // ── SectionIndex (categorías de funciones SQL) ──
   'category.agregacion': 'Agregación',
   'category.conversion': 'Conversión de tipos',
@@ -575,6 +580,11 @@ const en: Record<keyof typeof es, string> = {
   // ── Injected button on code blocks ──
   'compileBtn.label': 'View compiled',
   'compileBtn.aria': 'View compiled SQL',
+
+  // ── CrossTable ──
+  'crossTable.required': 'Required',
+  'crossTable.noKey': 'No Key',
+  'crossTable.optional': 'Optional',
 
   // ── SectionIndex (SQL function categories) ──
   'category.agregacion': 'Aggregation',

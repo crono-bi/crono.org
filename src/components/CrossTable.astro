@@ -10,11 +10,11 @@
  *   showLegend  — (default true) muestra la leyenda de colores
  *
  * Valores de celda:
- *   'yes'   → verde   (Sí / Yes)
- *   'no'    → naranja (NO)
- *   'nokey' → amarillo (SIN KEY / NO KEY)
- *   'x'     → azul    (campo presente)
- *   'dash'  → gris    (sin campo de auditoría)
+ *   'yes'   → verde   (Obligatoria / Required)
+ *   'no'    → texto "Opcional" (Optional)
+ *   'nokey' → X roja  (Sin Key / No Key)
+ *   'x'     → verde   (igual que 'yes')
+ *   'dash'  → vacío
  *   ''      → vacío
  */
 import { getLangFromLocale } from '../i18n/ui.ts'
@@ -49,18 +49,29 @@ const rowHeaderLabel = allLabels[0] ?? ''
 const colLabels = allLabels.slice(1)
 
 const CHECK  = `<svg class="ct-icon ct-icon--check" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>`
-const NO_ICO = `<svg class="ct-icon ct-icon--no" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>`
-const LOCK   = `<svg class="ct-icon ct-icon--lock" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6b7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V6a5 5 0 0 1 10 0v1"/></svg>`
+const X_ICO = `<svg class="ct-icon ct-icon--x" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>`
 
 const CELL_ICON: Record<string, string> = {
   yes:   CHECK,
   x:     CHECK,
-  no:    NO_ICO,
-  nokey: LOCK,
+  nokey: X_ICO,
 }
 
-function ci(v: string): string {
-  if (v === 'dash') return ''
+const CELL_TEXT: Record<string, Record<string, string>> = {
+  es: { no: 'Opcional' },
+  en: { no: 'Optional' },
+}
+
+// Check if column is part of DATE group (for background highlighting)
+// Supports both English (DATE) and Spanish (FECHA)
+const isDateColumn = (colLabel: string): boolean => {
+  const lower = colLabel.toLowerCase()
+  return lower.includes('date') || lower.includes('fecha')
+}
+
+function ci(v: string, colLabel?: string): string {
+  if (v === 'dash' || v === '') return ''
+  if (v === 'no') return `<span class="ct-text-optional">${CELL_TEXT[lang]?.[v] || 'Opcional'}</span>`
   return CELL_ICON[v] ?? v
 }
 ---
@@ -90,11 +101,15 @@ function ci(v: string): string {
             <td class="ct-td ct-td--row-header">
               <code class="ct-label">{row.label}</code>
             </td>
-            {row.cells.map((cell) => (
-              <td class={`ct-td ct-cell--${cell || 'empty'}`}>
-                {cell && <span class="ct-val" set:html={ci(cell)}></span>}
-              </td>
-            ))}
+            {row.cells.map((cell, idx) => {
+              const colLabel = colLabels[idx] || ''
+              const hasBg = (cell === 'yes' || cell === 'x') && isDateColumn(colLabel)
+              return (
+                <td class={`ct-td ct-cell--${cell || 'empty'}${hasBg ? ' ct-cell--highlight' : ''}`}>
+                  {cell && <span class="ct-val" set:html={ci(cell, colLabel)}></span>}
+                </td>
+              )
+            })}
           </tr>
         ))}
       </tbody>
@@ -107,15 +122,11 @@ function ci(v: string): string {
   <div class="ct-legend">
     <span class="ct-legend-item">
       <span class="ct-legend-icon" set:html={CHECK}></span>
-      <span class="ct-legend-label">{lang === 'en' ? 'Yes / Present' : 'Sí / Presente'}</span>
+      <span class="ct-legend-label">{lang === 'en' ? 'Required' : 'Obligatoria'}</span>
     </span>
     <span class="ct-legend-item">
-      <span class="ct-legend-icon" set:html={NO_ICO}></span>
-      <span class="ct-legend-label">{lang === 'en' ? 'No' : 'No'}</span>
-    </span>
-    <span class="ct-legend-item">
-      <span class="ct-legend-icon" set:html={LOCK}></span>
-      <span class="ct-legend-label">{lang === 'en' ? 'No key required' : 'Sin key'}</span>
+      <span class="ct-legend-icon" set:html={X_ICO}></span>
+      <span class="ct-legend-label">{lang === 'en' ? 'No Key' : 'Sin Key'}</span>
     </span>
   </div>
 </div>
@@ -235,6 +246,18 @@ function ci(v: string): string {
     height: 1.05rem;
     display: block;
     flex-shrink: 0;
+  }
+
+  .ct-text-optional {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--sl-color-gray-2);
+    letter-spacing: 0.01em;
+  }
+
+  /* ── Highlight for DATE group columns with checkmark ── */
+  .ct-cell--highlight {
+    background: rgba(59, 130, 246, 0.20) !important;
   }
 
   /* ── Caption ── */
