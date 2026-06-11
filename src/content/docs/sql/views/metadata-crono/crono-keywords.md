@@ -10,3 +10,9 @@ Devuelve el listado de palabras reservadas del lenguaje Crono SQL. Estas palabra
 select *
 from crono.keywords
 ```
+
+## Columnas
+
+| Columna | Descripción |
+|---|---|
+| `keyword` | Palabra reservada del lenguaje Crono SQL |

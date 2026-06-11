@@ -18,8 +18,8 @@ Sus columnas son las siguientes:
 | `routine_definition` | Definición del cuerpo de la rutina |
 | `routine_body` | Indica si la rutina está escrita en SQL o en un lenguaje externo |
 | `external_language` | Lenguaje externo de implementación |
-| `created` | Fecha de creación de la rutina |
-| `last_altered` | Fecha de la última modificación |
+| `created_date` | Fecha de creación de la rutina |
+| `last_altered_date` | Fecha de la última modificación |
 
 ## Ejemplos
 
@@ -44,8 +44,8 @@ El siguiente ejemplo muestra las rutinas modificadas en los últimos 30 días:
 ```crono-sql
 select schema_name, routine_name, routine_type, last_altered
 from crono.routines
-where daysago(last_altered)<=30
-order by last_altered desc
+where daysago(last_altered_date)<=30
+order by last_altered_date desc
 ```
 
 ## Vistas relacionadas

@@ -15,7 +15,7 @@ Sus columnas son las siguientes:
 | `position` | Posición ordinal de la columna en la tabla |
 | `column_default` | Valor predeterminado de la columna |
 | `data_type` | Tipo de datos de la columna |
-| `max_length` | Longitud máxima en bytes para tipos de cadena |
+| `maximum_length` | Longitud máxima en bytes para tipos de cadena |
 | `numeric_precision` | Precisión numérica para tipos numéricos |
 | `numeric_scale` | Escala numérica para tipos numéricos |
 | `collation_name` | Nombre de la intercalación de la columna |
@@ -26,7 +26,7 @@ Sus columnas son las siguientes:
 | `is_non_unique_index` | `true` si la columna forma parte de un índice no único; `false` en caso contrario |
 | `is_foreign_key` | `true` si la columna forma parte de una clave externa; `false` en caso contrario |
 | `default_constraint_name` | Nombre de la restricción de valor predeterminado asociada a la columna |
-| `nonunique_index_name` | Nombre del índice no único al que pertenece la columna |
+| `non_unique_index_name` | Nombre del índice no único al que pertenece la columna |
 
 ## Ejemplos
 

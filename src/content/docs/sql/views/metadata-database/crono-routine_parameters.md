@@ -17,7 +17,7 @@ Sus columnas son las siguientes:
 | `parameter_mode` | Modo del parámetro (`IN`, `OUT`, `INOUT`) |
 | `parameter_name` | Nombre del parámetro |
 | `data_type` | Tipo de datos del parámetro |
-| `max_length` | Longitud máxima en bytes para tipos de cadena |
+| `maximum_length` | Longitud máxima en bytes para tipos de cadena |
 | `numeric_precision` | Precisión numérica para tipos numéricos |
 | `numeric_scale` | Escala numérica para tipos numéricos |
 

@@ -2,8 +2,6 @@
 title: "crono.replacements"
 ---
 
-import { Aside } from '@astrojs/starlight/components';
-
 
 
 
@@ -14,16 +12,13 @@ SELECT *
 FROM crono.replacements
 ```
 
-<Aside type="caution" title="En construcción">
-Los nombres de las columnas finalmente respetarán la convención snake_case.
-</Aside>
-
 ## Columnas
 
 | Columna | Descripción |
 |---|---|
-| Key | Clave de la sustitución |
-| Value | Valor por el que se sustituye la clave |
+| `replacement_key` | Clave de la sustitución |
+| `replacement_value` | Valor por el que se sustituye la clave |
+
 
 
 Las sustituciones son pares clave-valor que se aplican antes de ejecutar el código Crono SQL. Son utiles para no incluir constantes o variables que pueden cambiar o dependen del entorno. 

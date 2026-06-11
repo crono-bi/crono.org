@@ -18,6 +18,7 @@ from crono.functions
 
 | Columna | Descripción |
 |---|---|
-| `function_category` | Categoría de la función |
 | `function_name` | Nombre de la función |
+| `category` | Categoría de la función |
 | `synonyms` | Sinónimos o nombres alternativos de la función |
+

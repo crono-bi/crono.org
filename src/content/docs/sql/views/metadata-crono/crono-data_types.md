@@ -13,8 +13,8 @@ from crono.data_types
 
 | Columna | Descripción |
 |---|---|
-| `category` | Categoría del tipo de dato |
 | `data_type_name` | Nombre del tipo de dato en Crono SQL |
+| `category` | Categoría del tipo de dato |
 | `synonyms` | Sinónimos aceptados para el tipo de dato |
 | `sqlserver_equivalent` | Equivalente en SQL Server |
 | `sqlserver_synonyms` | Sinónimos en SQL Server |
@@ -40,3 +40,4 @@ from crono.data_types
 | `duckdb_equivalent` | Equivalente en DuckDB |
 | `duckdb_synonyms` | Sinónimos en DuckDB |
 | `duckdb_fallback` | Tipo alternativo en DuckDB |
+
