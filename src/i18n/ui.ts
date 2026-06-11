@@ -249,6 +249,10 @@ const es = {
   'pricingLanding.contact.desc': 'Escríbenos y te ayudamos a elegir la mejor opción para tu organización.',
   'pricingLanding.contact.email': 'info@crono.net',
   'pricingLanding.contact.cta': 'Contactar por correo',
+  'crossTable.legend.yes': 'Key obligatoria',
+  'crossTable.legend.x': 'Campo presente',
+  'crossTable.legend.no': 'Key no obligatoria',
+  'crossTable.legend.nokey': 'Sin key',
 
   // ── HomeHero ──
   'homeHero.label': 'Documentación técnica',
@@ -768,6 +772,10 @@ const en: Record<keyof typeof es, string> = {
   'pricingLanding.contact.desc': 'Escríbenos y te ayudamos a elegir la mejor opción para tu organización.',
   'pricingLanding.contact.email': 'info@crono.net',
   'pricingLanding.contact.cta': 'Contactar por correo',
+  'crossTable.legend.yes': 'Key required',
+  'crossTable.legend.x': 'Field present',
+  'crossTable.legend.no': 'Key not required',
+  'crossTable.legend.nokey': 'No key',
 
   // ── HomeHero ──
   'homeHero.label': 'Technical documentation',

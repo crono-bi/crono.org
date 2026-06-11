@@ -48,16 +48,20 @@ const allLabels = columns.map(c => (typeof c === 'string' ? c : c.label))
 const rowHeaderLabel = allLabels[0] ?? ''
 const colLabels = allLabels.slice(1)
 
-const CELL: Record<string, string> = {
-  yes:   lang === 'en' ? 'YES' : 'SÍ',
-  no:    'NO',
-  nokey: '–',
-  x:     'X',
-  dash:  '–',
+const CHECK  = `<svg class="ct-icon ct-icon--check" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>`
+const NO_ICO = `<svg class="ct-icon ct-icon--no" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>`
+const LOCK   = `<svg class="ct-icon ct-icon--lock" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6b7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V6a5 5 0 0 1 10 0v1"/></svg>`
+
+const CELL_ICON: Record<string, string> = {
+  yes:   CHECK,
+  x:     CHECK,
+  no:    NO_ICO,
+  nokey: LOCK,
 }
 
-function cl(v: string): string {
-  return CELL[v] ?? v
+function ci(v: string): string {
+  if (v === 'dash') return ''
+  return CELL_ICON[v] ?? v
 }
 ---
 
@@ -88,7 +92,7 @@ function cl(v: string): string {
             </td>
             {row.cells.map((cell) => (
               <td class={`ct-td ct-cell--${cell || 'empty'}`}>
-                {cell && <span class="ct-val">{cl(cell)}</span>}
+                {cell && <span class="ct-val" set:html={ci(cell)}></span>}
               </td>
             ))}
           </tr>
@@ -98,6 +102,22 @@ function cl(v: string): string {
   </div>
 
   {caption && <p class="ct-caption">{caption}</p>}
+
+  <!-- Leyenda -->
+  <div class="ct-legend">
+    <span class="ct-legend-item">
+      <span class="ct-legend-icon" set:html={CHECK}></span>
+      <span class="ct-legend-label">{lang === 'en' ? 'Yes / Present' : 'Sí / Presente'}</span>
+    </span>
+    <span class="ct-legend-item">
+      <span class="ct-legend-icon" set:html={NO_ICO}></span>
+      <span class="ct-legend-label">{lang === 'en' ? 'No' : 'No'}</span>
+    </span>
+    <span class="ct-legend-item">
+      <span class="ct-legend-icon" set:html={LOCK}></span>
+      <span class="ct-legend-label">{lang === 'en' ? 'No key required' : 'Sin key'}</span>
+    </span>
+  </div>
 </div>
 
 <style>
@@ -140,13 +160,12 @@ function cl(v: string): string {
   .ct-th:last-child { border-right: none; }
 
   .ct-th--row-header {
-    background: rgba(27, 95, 140, 0.85);
     text-align: left;
     min-width: 180px;
     padding-left: 1.1rem;
     letter-spacing: 0.04em;
-    color: rgba(255,255,255,0.65);
-    font-size: 0.62rem;
+    font-size: 0.72rem;
+    text-transform: none;
   }
 
   .ct-th--ghost { background: rgba(27, 95, 140, 0.65); }
@@ -164,10 +183,6 @@ function cl(v: string): string {
   .ct-row:hover .ct-td {
     background: rgba(27, 95, 140, 0.07) !important;
     transition: background 0.12s ease;
-  }
-
-  .ct-row:nth-child(even) .ct-td {
-    background: rgba(27, 95, 140, 0.03);
   }
 
   /* ── Cells ── */
@@ -207,33 +222,20 @@ function cl(v: string): string {
   }
 
   .ct-val {
-    display: inline-block;
-    font-size: 0.73rem;
-    font-weight: 700;
-    letter-spacing: 0.04em;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
   }
 
-  /* ── Filled cells (light mode) ── */
-  .ct-cell--yes   { background: #d1fae5; }
-  .ct-cell--yes   .ct-val { color: #065f46; }
-  .ct-cell--no    { background: #dbeafe; }
-  .ct-cell--no    .ct-val { color: #1e4f8c; }
-  .ct-cell--nokey .ct-val { color: var(--sl-color-gray-4); font-weight: 400; }
-  .ct-cell--x     { background: rgba(27, 95, 140, 0.12); }
-  .ct-cell--x     .ct-val { color: rgb(27, 95, 140); font-size: 0.85rem; }
-  .ct-cell--dash  { background: rgba(27, 95, 140, 0.06); }
-  .ct-cell--dash  .ct-val { color: var(--sl-color-gray-3); font-weight: 400; font-size: 0.9rem; }
-
-  /* Filled cell backgrounds (dark mode) */
-  :global([data-theme='dark']) .ct-cell--yes   { background: #1b3d2a; }
-  :global([data-theme='dark']) .ct-cell--yes   .ct-val { color: #86efac; }
-  :global([data-theme='dark']) .ct-cell--no    { background: #1c3a5e; }
-  :global([data-theme='dark']) .ct-cell--no    .ct-val { color: #90caf9; }
-  :global([data-theme='dark']) .ct-cell--nokey .ct-val { color: var(--sl-color-gray-4); font-weight: 400; }
-  :global([data-theme='dark']) .ct-cell--x     { background: rgba(27, 95, 140, 0.25); }
-  :global([data-theme='dark']) .ct-cell--x     .ct-val { color: #93c5fd; }
-  :global([data-theme='dark']) .ct-cell--dash  { background: rgba(27, 95, 140, 0.12); }
-  :global([data-theme='dark']) .ct-cell--dash  .ct-val { color: var(--sl-color-gray-3); }
+  .ct-icon {
+    width: 1.05rem;
+    height: 1.05rem;
+    display: block;
+    flex-shrink: 0;
+  }
 
   /* ── Caption ── */
   .ct-caption {
@@ -241,5 +243,58 @@ function cl(v: string): string {
     color: var(--sl-color-gray-3);
     margin: 0.4rem 0 0;
     line-height: 1.5;
+  }
+
+  /* ── Legend (Minimal style) ── */
+  .ct-legend {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 0;
+    margin-top: 0.75rem;
+    padding: 0;
+    background: transparent;
+    border: none;
+    font-size: 0.78rem;
+  }
+
+  .ct-legend-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    color: var(--sl-color-gray-3);
+    padding: 0.2rem 0;
+  }
+
+  .ct-legend-item:not(:last-child)::after {
+    content: '·';
+    margin: 0 0.6rem;
+    color: var(--sl-color-gray-5);
+    font-weight: 700;
+  }
+
+  .ct-legend-icon {
+    display: inline-flex;
+    width: 15px;
+    height: 15px;
+    flex-shrink: 0;
+  }
+
+  .ct-legend-icon :global(svg) {
+    width: 15px;
+    height: 15px;
+  }
+
+  .ct-legend-label {
+    white-space: nowrap;
+  }
+
+  @media (max-width: 480px) {
+    .ct-legend {
+      gap: 0.4rem 0;
+    }
+    .ct-legend-item:not(:last-child)::after {
+      margin: 0 0.4rem;
+    }
   }
 </style>
