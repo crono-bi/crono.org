@@ -298,7 +298,7 @@ defineExpose({ open, close })
   max-width: min(1100px, 94vw);
   width: 94vw;
   max-height: 88vh;
-  border-radius: 14px;
+  border-radius: 8px;
   overflow: visible;
   /* Center in viewport — required for <dialog> element */
   position: fixed;
@@ -318,7 +318,7 @@ defineExpose({ open, close })
   width: 100%;
   height: 88vh;
   max-height: 88vh;
-  border-radius: 14px;
+  border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
 }

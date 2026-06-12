@@ -135,6 +135,12 @@ const sections: Section[] = [
 
 <div class="pr-landing not-content">
 
+  <!-- Hero Global: Acceso de Por Vida -->
+  <div class="pr-page-hero">
+    <h1 class="pr-page-hero-title">{t('pricingLanding.lifetimeHero.title')}</h1>
+    <p class="pr-page-hero-desc">{t('pricingLanding.lifetimeHero.desc')}</p>
+  </div>
+
   {sections.map(section => (
     <div class="pr-section">
       <!-- Cabecera de sección -->
@@ -175,6 +181,31 @@ const sections: Section[] = [
     </div>
   ))}
 
+  <!-- Garantía de Devolución -->
+  <div class="pr-guarantee">
+    <div class="pr-guarantee-header">
+      <svg class="pr-guarantee-shield" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        <path d="m9 12 2 2 4-4"/>
+      </svg>
+      <h3 class="pr-guarantee-title">{t('pricingLanding.guarantee.title')}</h3>
+    </div>
+    <div class="pr-guarantee-divider"></div>
+    <p class="pr-guarantee-highlight">{t('pricingLanding.guarantee.highlight')}</p>
+    <div class="pr-guarantee-body">
+      <p>{t('pricingLanding.guarantee.p1')}</p>
+      <p>{t('pricingLanding.guarantee.p2')}</p>
+      <p class="pr-guarantee-cta">{t('pricingLanding.guarantee.cta')}</p>
+    </div>
+    <div class="pr-guarantee-footer">
+      <img src="/images/team/ceo-avatar.jpg" alt="CEO" class="pr-guarantee-avatar" width="48" height="48" />
+      <div class="pr-guarantee-author">
+        <span class="pr-guarantee-name">{t('pricingLanding.guarantee.author.name')}</span>
+        <span class="pr-guarantee-role">{t('pricingLanding.guarantee.author.role')}</span>
+      </div>
+    </div>
+  </div>
+
   <!-- Contacto único -->
   <div class="pr-contact">
     <h3 class="pr-contact-title">{t('pricingLanding.contact.title')}</h3>
@@ -208,7 +239,7 @@ const sections: Section[] = [
   .pr-section-icon {
     width: 40px;
     height: 40px;
-    border-radius: 10px;
+    border-radius: 8px;
     background: var(--c);
     display: inline-flex;
     align-items: center;
@@ -235,7 +266,7 @@ const sections: Section[] = [
   /* ── GRID ── */
   .pr-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 1rem;
   }
 
@@ -245,7 +276,7 @@ const sections: Section[] = [
     flex-direction: column;
     background: var(--sl-color-bg-nav);
     border: 1px solid var(--sl-color-hairline);
-    border-radius: 14px;
+    border-radius: 8px;
     padding: 1.25rem;
     position: relative;
     overflow: hidden;
@@ -395,7 +426,7 @@ const sections: Section[] = [
     padding: 2rem;
     background: var(--sl-color-bg-nav);
     border: 1px solid var(--sl-color-hairline);
-    border-radius: 14px;
+    border-radius: 8px;
     margin-top: 1rem;
   }
 
@@ -428,6 +459,122 @@ const sections: Section[] = [
   .pr-contact-btn:hover {
     filter: brightness(1.1);
     box-shadow: 0 4px 12px rgba(27, 138, 199, 0.35);
+  }
+
+  /* Hero Global: Acceso de Por Vida */
+  .pr-page-hero {
+    padding: 2.5rem 2.5rem;
+    margin-bottom: 2rem;
+    background: var(--sl-color-bg-nav);
+    border: 1px solid var(--sl-color-hairline);
+    border-radius: 8px;
+    border-left: 3px solid #3B82F6;
+    position: relative;
+  }
+  .pr-page-hero-title {
+    font-size: 1.875rem;
+    font-weight: 800;
+    color: var(--sl-color-white);
+    margin: 0 0 0.75rem;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+  .pr-page-hero-desc {
+    font-size: 0.9375rem;
+    color: var(--sl-color-gray-3);
+    line-height: 1.7;
+    max-width: 740px;
+    margin: 0;
+  }
+
+  /* Garantía de Devolución */
+  .pr-guarantee {
+    background: var(--sl-color-bg-nav);
+    border: 1px solid var(--sl-color-hairline);
+    border-top: 3px solid #F59E0B;
+    border-radius: 8px;
+    padding: 0;
+    margin-top: 2rem;
+    overflow: hidden;
+  }
+  .pr-guarantee-header {
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
+    padding: 1.5rem 2rem;
+    background: rgba(245, 158, 11, 0.06);
+    border-bottom: 1px solid rgba(245, 158, 11, 0.15);
+  }
+  .pr-guarantee-shield {
+    color: #F59E0B;
+    flex-shrink: 0;
+    display: block;
+  }
+  .pr-guarantee-title {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--sl-color-white);
+    margin: 0;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+  }
+  .pr-guarantee-divider {
+    display: none;
+  }
+  .pr-guarantee-highlight {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--sl-color-white);
+    margin: 0 0 1.25rem;
+    line-height: 1.65;
+    padding: 1.5rem 2rem 0;
+  }
+  .pr-guarantee-body {
+    font-size: 0.9rem;
+    color: var(--sl-color-gray-3);
+    line-height: 1.75;
+    padding: 0 2rem;
+    margin-bottom: 0;
+  }
+  .pr-guarantee-body p {
+    margin: 0 0 0.75rem;
+  }
+  .pr-guarantee-body p:last-child {
+    margin-bottom: 0;
+  }
+  .pr-guarantee-cta {
+    font-style: italic;
+    color: var(--sl-color-gray-2);
+  }
+  .pr-guarantee-footer {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem 2rem;
+    margin-top: 1.5rem;
+    border-top: 1px solid var(--sl-color-hairline);
+  }
+  .pr-guarantee-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+  .pr-guarantee-author {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+  .pr-guarantee-name {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--sl-color-white);
+  }
+  .pr-guarantee-role {
+    font-size: 0.8125rem;
+    color: var(--sl-color-gray-3);
   }
 
   @media (max-width: 640px) {

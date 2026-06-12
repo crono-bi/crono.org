@@ -83,7 +83,7 @@ html {
   align-items: center;
   gap: 12px;
   padding: 12px 14px;
-  border-radius: 10px;
+  border-radius: 8px;
   min-width: 0;
   border: 1px solid var(--sl-color-hairline-light);
   background: var(--sl-color-bg-nav);
@@ -229,7 +229,7 @@ html {
   border-collapse: separate;
   border-spacing: 0;
   border: 1px solid var(--sl-color-hairline-light);
-  border-radius: 10px;
+  border-radius: 8px;
   overflow: hidden;
   font-size: 13px;
   margin: 1.5rem 0;
@@ -295,7 +295,7 @@ html {
 
 .pagination-links a {
   border: 1px solid var(--sl-color-hairline-light) !important;
-  border-radius: 10px !important;
+  border-radius: 8px !important;
   padding: 12px 16px !important;
   box-shadow: none !important;
   background: var(--sl-color-bg-nav);

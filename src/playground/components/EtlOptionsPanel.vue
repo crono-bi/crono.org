@@ -252,7 +252,7 @@ function applyAndClose(): void {
 .etl-floating-panel {
   width: 420px;
   max-width: calc(100vw - 24px);
-  border-radius: 16px;
+  border-radius: 8px;
   z-index: 9999;
   overflow: hidden;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;

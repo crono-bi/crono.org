@@ -217,6 +217,10 @@ const es = {
   'pricingLanding.tier.etlFull.priceDetail': '/usuario mes',
   'pricingLanding.tier.etlFull.desc': 'Versión completa con todas las funcionalidades de integración de datos.',
   'pricingLanding.tier.etlFull.cta': 'Contactar',
+  // Hero Acceso de Por Vida
+  'pricingLanding.lifetimeHero.badge': 'Oferta Exclusiva',
+  'pricingLanding.lifetimeHero.title': 'Acceso de Por Vida',
+  'pricingLanding.lifetimeHero.desc': 'Paga por 12 meses y podrás usar las funciones de pago para siempre, incluso si cancelas tu suscripción. ¿No estás seguro? Descarga la app para una prueba gratuita, sin necesidad de cuenta ni tarjeta de crédito. Todos los precios están en USD.',
   'pricingLanding.tier.analysisTrial.name': 'Crono Analysis Windows',
   'pricingLanding.tier.analysisTrial.tagline': 'Free Trial',
   'pricingLanding.tier.analysisTrial.price': 'Free Trial',
@@ -254,6 +258,21 @@ const es = {
   'pricingLanding.contact.desc': 'Escríbenos y te ayudamos a elegir la mejor opción para tu organización.',
   'pricingLanding.contact.email': 'info@crono.net',
   'pricingLanding.contact.cta': 'Contactar por correo',
+  // Licencia Perpetua
+  'pricingLanding.tier.etlLifetime.name': 'Crono ETL Lifetime',
+  'pricingLanding.tier.etlLifetime.tagline': 'LICENCIA PERPETUA',
+  'pricingLanding.tier.etlLifetime.price': '1.200 €',
+  'pricingLanding.tier.etlLifetime.priceDetail': '/pago único',
+  'pricingLanding.tier.etlLifetime.desc': 'Paga una vez y usa para siempre. Incluye todas las funcionalidades de pago sin renovación anual. Soporte por 2 años incluido.',
+  'pricingLanding.tier.etlLifetime.cta': 'Contactar para Lifetime',
+  // Garantía de Devolución
+  'pricingLanding.guarantee.title': 'Mi Garantía 100% Sin Riesgo de Devolución de Dinero',
+  'pricingLanding.guarantee.highlight': 'Si Crono no hace tu trabajo más rápido y fácil en 30 días, te reembolsaré el 100% de tu compra, sin preguntas.',
+  'pricingLanding.guarantee.p1': 'Déjame contarte por qué te ofrezco esta garantía. Primero, Crono funciona. Está construido para optimizar tu flujo de trabajo, reducir el cambio de contexto y ahorrarte tiempo. Por eso estás aquí y lo usas todos los días.',
+  'pricingLanding.guarantee.p2': 'Segundo, Crono no es una empresa sin rostro. Valoramos la confianza y la transparencia. Por eso gran parte de nuestro código es de código abierto, y por qué nos importa ofrecer soporte de primera clase.',
+  'pricingLanding.guarantee.cta': 'Es simple: Compra una licencia, agrega Crono a tu flujo de trabajo y ve la diferencia. Si no mejora tu productividad, solo pide un reembolso completo en cualquier momento durante los primeros 30 días.',
+  'pricingLanding.guarantee.author.name': 'Pau Urquizu',
+  'pricingLanding.guarantee.author.role': 'CEO & Fundador, Crono BI',
   'crossTable.legend.yes': 'Key obligatoria',
   'crossTable.legend.x': 'Campo presente',
   'crossTable.legend.no': 'Key no obligatoria',
@@ -521,8 +540,8 @@ const es = {
   'homeFooter.cta.demoBtn': 'Ver demo →',
   // HomeFooter - Brand
   'homeFooter.bio': 'Documentación técnica oficial de la plataforma Crono Business Intelligence.',
-  'homeFooter.blogBtn': 'Blog Business Intelligence',
-  'homeFooter.newsletterBtn': 'Newsletter Business Intelligence fácil',
+  'homeFooter.blogBtn': 'Blog Business Intelligence fácil',
+  'homeFooter.newsletterBtn': 'La newsletter de nuestro CEO',
   // HomeFooter - Products
   'homeFooter.productsLabel': 'Productos',
   'homeFooter.sql.tags': 'SQL,Multimotor,DWH',
@@ -1014,8 +1033,8 @@ const en: Record<keyof typeof es, string> = {
   'homeFooter.cta.demoBtn': 'Watch demo →',
   // HomeFooter - Brand
   'homeFooter.bio': 'Official technical documentation of the Crono Business Intelligence platform.',
-  'homeFooter.blogBtn': 'Business Intelligence Blog',
-  'homeFooter.newsletterBtn': 'Business Intelligence made easy Newsletter',
+  'homeFooter.blogBtn': 'Business Intelligence made easy Blog',
+  'homeFooter.newsletterBtn': "Our CEO's newsletter",
   // HomeFooter - Products
   'homeFooter.productsLabel': 'Products',
   'homeFooter.sql.tags': 'SQL,Multi-engine,DWH',
@@ -1035,6 +1054,25 @@ const en: Record<keyof typeof es, string> = {
   'support.title': 'Was this page helpful?',
   'support.desc': 'We are here to help. If you have any problem or question, open a GitHub issue and we will get back to you as soon as possible.',
   'support.linkLabel': 'Create a GitHub issue',
+  // Lifetime License
+  'pricingLanding.tier.etlLifetime.name': 'Crono ETL Lifetime',
+  'pricingLanding.tier.etlLifetime.tagline': 'PERPETUAL LICENSE',
+  'pricingLanding.tier.etlLifetime.price': '€1,200',
+  'pricingLanding.tier.etlLifetime.priceDetail': '/one-time payment',
+  'pricingLanding.tier.etlLifetime.desc': 'Pay once and use forever. Includes all paid features without annual renewal. 2 years of support included.',
+  'pricingLanding.tier.etlLifetime.cta': 'Contact for Lifetime',
+  // Money-Back Guarantee
+  'pricingLanding.guarantee.title': 'My 100% Risk-Free Money-Back Guarantee',
+  'pricingLanding.guarantee.highlight': "If Crono doesn't make your work faster and easier in 30 days, I'll refund 100% of your purchase, no questions asked.",
+  'pricingLanding.guarantee.p1': "Let me tell you why I offer this guarantee. First, Crono works. It's built to optimize your workflow, reduce context switching, and save you time. That's why you're here and use it every day.",
+  'pricingLanding.guarantee.p2': "Second, Crono is not a faceless corporation. We value trust and transparency. That's why much of our code is open source, and why we care about offering first-class support.",
+  'pricingLanding.guarantee.cta': "It's simple: Buy a license, add Crono to your workflow, and see the difference. If it doesn't improve your productivity, just ask for a full refund anytime during the first 30 days.",
+  'pricingLanding.guarantee.author.name': 'Pau Urquizu',
+  'pricingLanding.guarantee.author.role': 'CEO & Founder, Crono BI',
+  // Hero Lifetime Access
+  'pricingLanding.lifetimeHero.badge': 'Exclusive Offer',
+  'pricingLanding.lifetimeHero.title': 'Lifetime Access',
+  'pricingLanding.lifetimeHero.desc': 'Pay for 12 months and you can use the paid features forever, even if you cancel your subscription. Not sure? Download the app for a free trial, no account or credit card needed. All prices are in USD.',
 }
 
 export type UIKey = keyof typeof es

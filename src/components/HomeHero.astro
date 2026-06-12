@@ -1817,6 +1817,8 @@ ORDER BY TotalSales DESC`
       <div class="cliente-logo"><img src="/images/clients/cliente-14.jpeg" alt="Pepe" /></div>
       <div class="cliente-logo"><img src="/images/clients/cliente-15.jpeg" alt="BFA" /></div>
       <div class="cliente-logo"><img src="/images/clients/cliente-16.jpeg" alt="Bodegas Terras Gauda" /></div>
+      <div class="cliente-logo"><img src="/images/clients/cliente-07.jpeg" alt="Bassols Curtidos" /></div>
+      <div class="cliente-logo"><img src="/images/clients/cliente-19.jpeg" alt="Mil Millas" /></div>
     </div>
   </div>
 </section>
@@ -2025,9 +2027,9 @@ ORDER BY TotalSales DESC`
     .hero-btn-group { flex-wrap: wrap; }
   }
 
-  .hero-btn-primary { position: relative; display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.25rem; background: linear-gradient(135deg, #9ca3af 0%, #6b7280 100%); color: white; border: 1px solid rgba(255,255,255,0.15); border-radius: 0.625rem; font-size: 0.875rem; font-weight: 600; text-decoration: none; transition: all 0.2s ease; box-shadow: 0 2px 8px -2px rgba(0,0,0,0.15); overflow: hidden; white-space: nowrap; }
+  .hero-btn-primary { position: relative; display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.25rem; background: linear-gradient(135deg, #9ca3af 0%, #6b7280 100%); color: white; border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; font-size: 0.875rem; font-weight: 600; text-decoration: none; transition: all 0.2s ease; box-shadow: 0 2px 8px -2px rgba(0,0,0,0.15); overflow: hidden; white-space: nowrap; }
   .hero-btn-primary::before { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent); transform: translateX(-100%); transition: transform 0.6s ease; }
-  .hero-btn-primary::after { content: ''; position: absolute; inset: -1px; border-radius: 0.75rem; padding: 1px; background: linear-gradient(135deg, rgba(255,255,255,0.3), transparent 50%); -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask-composite: exclude; opacity: 0.6; }
+  .hero-btn-primary::after { content: ''; position: absolute; inset: -1px; border-radius: 8px; padding: 1px; background: linear-gradient(135deg, rgba(255,255,255,0.3), transparent 50%); -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask-composite: exclude; opacity: 0.6; }
   .hero-btn-primary:hover { transform: translateY(-2px) scale(1.02); box-shadow: none; }
   .hero-btn-primary:hover::before { transform: translateX(100%); }
   .hero-btn-primary:active { transform: translateY(0) scale(0.98); }
@@ -2067,7 +2069,7 @@ ORDER BY TotalSales DESC`
   }
   .downloads-cta {
     display: inline-flex; align-items: center; gap: 0.625rem;
-    padding: 0.875rem 1.75rem; border-radius: 0.75rem; font-size: 0.9375rem; font-weight: 600;
+    padding: 0.875rem 1.75rem; border-radius: 8px; font-size: 0.9375rem; font-weight: 600;
     background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%);
     color: white; text-decoration: none;
     transition: all 0.2s ease; box-shadow: 0 4px 20px -4px rgba(37,99,235,0.5);
@@ -2077,7 +2079,7 @@ ORDER BY TotalSales DESC`
   /* Mockup */
   .downloads-mockup { position: relative; }
   .dl-mock-glow {
-    position: absolute; inset: -20px; border-radius: 20px; z-index: 0;
+    position: absolute; inset: -20px; border-radius: 8px; z-index: 0;
     background: radial-gradient(ellipse at 50% 50%, rgba(37,99,235,0.15) 0%, transparent 70%);
     pointer-events: none;
   }
@@ -2085,7 +2087,7 @@ ORDER BY TotalSales DESC`
     position: relative; z-index: 1;
     background: var(--sl-color-bg-nav);
     border: 1px solid var(--sl-color-hairline-light);
-    border-radius: 14px; overflow: hidden;
+    border-radius: 8px; overflow: hidden;
     box-shadow: 0 20px 60px -10px rgba(0,0,0,0.3);
   }
   .dl-mock-bar {
@@ -2284,7 +2286,7 @@ ORDER BY TotalSales DESC`
   .ecosystem-map {
     position: relative;
     min-height: 430px;
-    border-radius: 1rem;
+    border-radius: 8px;
     border: 0;
     background: transparent;
     box-shadow: none;
@@ -2347,7 +2349,7 @@ ORDER BY TotalSales DESC`
     position: absolute;
     width: 96px;
     height: 96px;
-    border-radius: 14px;
+    border-radius: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -2418,7 +2420,7 @@ ORDER BY TotalSales DESC`
       transform: none;
       width: 100%;
       height: auto;
-      border-radius: 0.85rem;
+      border-radius: 8px;
       padding: 0.85rem;
     }
     .ecosystem-map a.eco-mobile-link {
@@ -2479,7 +2481,7 @@ ORDER BY TotalSales DESC`
   .mock-window {
     background: var(--sl-color-bg);
     border: 1px solid var(--sl-color-hairline-light);
-    border-radius: 1rem;
+    border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 20px 50px -15px rgba(0,0,0,0.35), 0 0 0 1px rgba(255,255,255,0.04);
   }
@@ -2683,7 +2685,7 @@ ORDER BY TotalSales DESC`
     flex-direction: column;
     background: var(--sl-color-bg);
     border: 1px solid var(--sl-color-hairline-light);
-    border-radius: 1.25rem;
+    border-radius: 8px;
     overflow: hidden;
     text-decoration: none;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -2745,7 +2747,7 @@ ORDER BY TotalSales DESC`
     justify-content: center;
     width: 3.5rem;
     height: 3.5rem;
-    border-radius: 1rem;
+    border-radius: 8px;
     transition: transform 0.3s ease;
   }
 
@@ -2847,7 +2849,7 @@ ORDER BY TotalSales DESC`
   
   .code-window {
     background: #0d1117;
-    border-radius: 1rem;
+    border-radius: 8px;
     overflow: hidden;
     border: 1px solid #30363d;
     box-shadow: 
@@ -2951,7 +2953,7 @@ ORDER BY TotalSales DESC`
     flex-direction: column;
     background: var(--sl-color-bg-nav);
     border: 1px solid var(--sl-color-hairline-light);
-    border-radius: 1.25rem;
+    border-radius: 8px;
     overflow: hidden;
     text-decoration: none;
     transition: all 0.3s ease;
@@ -2999,7 +3001,7 @@ ORDER BY TotalSales DESC`
     justify-content: center;
     width: 2.75rem;
     height: 2.75rem;
-    border-radius: 0.875rem;
+    border-radius: 8px;
   }
   
   .card-badge {
@@ -3191,7 +3193,7 @@ ORDER BY TotalSales DESC`
     color: white;
     font-weight: 600;
     font-size: 0.9375rem;
-    border-radius: 0.75rem;
+    border-radius: 8px;
     text-decoration: none;
     margin-top: 0.5rem;
     transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
@@ -3228,7 +3230,7 @@ ORDER BY TotalSales DESC`
     padding: 1rem 1.75rem;
     font-weight: 600;
     font-size: 0.9375rem;
-    border-radius: 0.75rem;
+    border-radius: 8px;
     text-decoration: none;
     margin-top: 0.5rem;
     transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
@@ -3277,7 +3279,7 @@ ORDER BY TotalSales DESC`
     color: #3B82F6;
     font-weight: 600;
     font-size: 0.9375rem;
-    border-radius: 0.625rem;
+    border-radius: 8px;
     text-decoration: none;
     border: 2px solid #3B82F6;
     background: rgba(59, 130, 246, 0.08);
@@ -3496,7 +3498,7 @@ ORDER BY TotalSales DESC`
   .catalog-window {
     background: var(--sl-color-bg-nav);
     border: 1px solid var(--sl-color-hairline-light);
-    border-radius: 1rem;
+    border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 20px 50px -20px rgba(0, 0, 0, 0.4);
   }
@@ -3580,7 +3582,7 @@ ORDER BY TotalSales DESC`
   .swagger-window {
     background: var(--sl-color-bg-nav);
     border: 1px solid color-mix(in srgb, #0EA5E9 25%, var(--sl-color-hairline-light));
-    border-radius: 1rem;
+    border-radius: 8px;
     overflow: hidden;
     box-shadow:
       0 0 0 1px color-mix(in srgb, #0EA5E9 8%, transparent),
@@ -3706,7 +3708,7 @@ ORDER BY TotalSales DESC`
     width: 230px;
     background: var(--sl-color-bg);
     border: 1px solid color-mix(in srgb, #22c55e 30%, var(--sl-color-hairline-light));
-    border-radius: 0.625rem;
+    border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 8px 24px -6px rgba(0,0,0,0.45);
     z-index: 2;
@@ -3762,7 +3764,7 @@ ORDER BY TotalSales DESC`
     right: -1rem;
     background: var(--sl-color-bg-nav);
     border: 1px solid color-mix(in srgb, #0EA5E9 25%, var(--sl-color-hairline-light));
-    border-radius: 0.625rem;
+    border-radius: 8px;
     padding: 0.5rem 0.75rem;
     box-shadow: 0 4px 16px -4px rgba(0,0,0,0.4);
     z-index: 3;
@@ -3837,7 +3839,7 @@ ORDER BY TotalSales DESC`
   .dashboard-window {
     background: var(--sl-color-bg-nav);
     border: 1px solid var(--sl-color-hairline-light);
-    border-radius: 1rem;
+    border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 20px 50px -20px rgba(0, 0, 0, 0.4);
   }
@@ -3958,7 +3960,7 @@ ORDER BY TotalSales DESC`
   .pipeline-window {
     background: var(--sl-color-bg-nav);
     border: 1px solid var(--sl-color-hairline-light);
-    border-radius: 1rem;
+    border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 20px 50px -20px rgba(0, 0, 0, 0.4);
   }
@@ -4005,7 +4007,7 @@ ORDER BY TotalSales DESC`
     align-items: center;
     gap: 1rem;
     padding: 0.875rem;
-    border-radius: 0.625rem;
+    border-radius: 8px;
     background: var(--sl-color-bg);
   }
   
@@ -4094,7 +4096,7 @@ ORDER BY TotalSales DESC`
   .heatmap-mini {
     background: var(--sl-color-bg-nav);
     border: 1px solid var(--sl-color-hairline-light);
-    border-radius: 0.75rem;
+    border-radius: 8px;
     padding: 0.75rem;
     box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
     width: 140px;
@@ -4222,7 +4224,7 @@ ORDER BY TotalSales DESC`
     padding: 1rem 1.25rem;
     background: color-mix(in srgb, #3B82F6 6%, var(--sl-color-bg-nav));
     border: 1px solid color-mix(in srgb, #3B82F6 20%, var(--sl-color-hairline));
-    border-radius: 0.75rem;
+    border-radius: 8px;
     width: fit-content;
   }
 
@@ -4356,7 +4358,7 @@ ORDER BY TotalSales DESC`
     color: white;
     font-weight: 600;
     font-size: 0.9375rem;
-    border-radius: 0.625rem;
+    border-radius: 8px;
     text-decoration: none;
     margin-top: 0.5rem;
     transition: all 0.2s ease;
@@ -4387,7 +4389,7 @@ ORDER BY TotalSales DESC`
   .playground-window {
     background: var(--sl-color-bg-nav);
     border: 1px solid color-mix(in srgb, #3B82F6 20%, var(--sl-color-hairline-light));
-    border-radius: 1rem;
+    border-radius: 8px;
     overflow: hidden;
     box-shadow:
       0 0 0 1px color-mix(in srgb, #3B82F6 8%, transparent),
@@ -4584,7 +4586,7 @@ ORDER BY TotalSales DESC`
   .ai-window {
     background: var(--sl-color-bg-nav);
     border: 1px solid var(--sl-color-hairline-light);
-    border-radius: 1rem;
+    border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 20px 50px -20px rgba(0, 0, 0, 0.4);
     max-width: 420px;
@@ -4647,7 +4649,7 @@ ORDER BY TotalSales DESC`
 
   .ai-message.user .ai-message-content {
     background: color-mix(in srgb, #8B5CF6 15%, transparent);
-    border-radius: 0.75rem 0.75rem 0.75rem 0.25rem;
+    border-radius: 8px 8px 8px 2px;
     padding: 0.625rem 0.875rem;
     font-size: 0.8125rem;
     color: var(--sl-color-white);
@@ -4675,7 +4677,7 @@ ORDER BY TotalSales DESC`
     flex: 1;
     background: var(--sl-color-bg);
     border: 1px solid var(--sl-color-hairline-light);
-    border-radius: 0.75rem;
+    border-radius: 8px;
     padding: 0.75rem;
     font-size: 0.8125rem;
   }
@@ -4783,7 +4785,7 @@ ORDER BY TotalSales DESC`
   .excel-window {
     background: var(--sl-color-bg);
     border: 1px solid var(--sl-color-hairline-light);
-    border-radius: 0.75rem;
+    border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 20px 50px -15px rgba(0,0,0,0.35), 0 0 0 1px rgba(255,255,255,0.04);
     font-size: 0.78rem;
@@ -5290,7 +5292,7 @@ ORDER BY TotalSales DESC`
 
     /* ── ECO CARD (new design) ── */
     .eco-card {
-      border-radius: 1.5rem;
+      border-radius: 8px;
       background: #0A0F1E;
       border: 1px solid rgba(255,255,255,0.07);
       box-shadow: 0 32px 64px -16px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,255,255,0.04);
@@ -5374,7 +5376,7 @@ ORDER BY TotalSales DESC`
       gap: 0.875rem;
       align-items: flex-start;
       padding: 0.875rem 0.875rem;
-      border-radius: 1rem;
+      border-radius: 8px;
       border: 1px solid rgba(255,255,255,0.07);
       background: rgba(255,255,255,0.03);
     }
@@ -5598,7 +5600,7 @@ ORDER BY TotalSales DESC`
       align-items: center;
       gap: 0.5rem;
       padding: 1rem 0.5rem 0.875rem;
-      border-radius: 1rem;
+      border-radius: 8px;
       background: color-mix(in srgb, var(--pc) 8%, rgba(255,255,255,0.02));
       border: 1px solid color-mix(in srgb, var(--pc) 20%, rgba(255,255,255,0.06));
       text-decoration: none;
@@ -5607,7 +5609,7 @@ ORDER BY TotalSales DESC`
     .eco-prod:active { transform: scale(0.96); }
     .eco-prod-icon {
       width: 42px; height: 42px;
-      border-radius: 12px;
+      border-radius: 8px;
       background: var(--pca);
       border: 1px solid color-mix(in srgb, var(--pc) 30%, transparent);
       display: flex; align-items: center; justify-content: center;
@@ -5639,7 +5641,7 @@ ORDER BY TotalSales DESC`
       align-items: center;
       gap: 0.75rem;
       padding: 0.75rem 1rem;
-      border-radius: 1rem;
+      border-radius: 8px;
       background: rgba(255,255,255,0.03);
       border: 1px solid rgba(255,255,255,0.08);
       text-decoration: none;
@@ -5648,7 +5650,7 @@ ORDER BY TotalSales DESC`
     .eco-other:active { background: rgba(255,255,255,0.05); }
     .eco-other-icon {
       width: 36px; height: 36px;
-      border-radius: 10px;
+      border-radius: 8px;
       background: rgba(107,114,128,0.12);
       border: 1px solid rgba(107,114,128,0.2);
       display: flex; align-items: center; justify-content: center;
@@ -6101,31 +6103,33 @@ ORDER BY TotalSales DESC`
   }
 
   .clientes-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem 1.75rem;
+    justify-items: center;
     align-items: center;
-    gap: 1rem 1.5rem;
   }
 
   .cliente-logo {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: calc((100% - 4rem) / 3);
+    width: 100%;
   }
 
   @media (min-width: 576px) {
-    .cliente-logo { width: calc((100% - 6rem) / 4); }
+    .clientes-grid { grid-template-columns: repeat(3, 1fr); }
   }
   @media (min-width: 768px) {
-    .cliente-logo { width: calc((100% - 10rem) / 6); }
-    .clientes-grid { gap: 1.25rem 1.75rem; }
+    .clientes-grid {
+      grid-template-columns: repeat(5, 1fr);
+      gap: 2rem 3rem;
+    }
   }
 
   .cliente-logo img {
     max-width: 100%;
-    max-height: 55px;
+    max-height: 68px;
     height: auto;
     object-fit: contain;
     filter: grayscale(100%);
@@ -6142,7 +6146,8 @@ ORDER BY TotalSales DESC`
   @media (max-width: 480px) {
     .clientes-section { padding: 1.5rem 0.75rem 1.5rem; }
     .clientes-title { margin-bottom: 1.25rem; font-size: 1.25rem; }
-    .cliente-logo img { max-height: 36px; }
+    .cliente-logo img { max-height: 44px; }
+    .clientes-grid { gap: 1.25rem 1.5rem; }
   }
 </style>
 
