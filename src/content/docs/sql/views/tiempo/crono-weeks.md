@@ -2,30 +2,29 @@
 title: "crono.weeks"
 ---
 
-
 Devuelve el listado de semanas ISO, incluyendo su código y las fechas de cada día de la semana.
 
 ## Columnas
 
 | Columna | Descripción |
 |---|---|
-| IsoWeek | Semana ISO |
-| YYYYWW | Año y semana en formato YYYYWW |
-| IsoWeekYear | Año de la semana ISO |
-| IsoWeekNumber | Número de semana ISO |
-| IsoWeekNumberCode | Código de semana ISO |
-| Monday | Fecha del lunes |
-| Tuesday | Fecha del martes |
-| Wednesday | Fecha del miércoles |
-| Thursday | Fecha del jueves |
-| Friday | Fecha del viernes |
-| Saturday | Fecha del sábado |
-| Sunday | Fecha del domingo |
+| `iso_week` | Semana ISO |
+| `yyyyww` | Año y semana en formato YYYYWW |
+| `iso_week_year` | Año de la semana ISO |
+| `iso_week_number` | Número de semana ISO |
+| `iso_week_number_code` | Código de semana ISO |
+| `monday` | Fecha del lunes |
+| `tuesday` | Fecha del martes |
+| `wednesday` | Fecha del miércoles |
+| `thursday` | Fecha del jueves |
+| `friday` | Fecha del viernes |
+| `saturday` | Fecha del sábado |
+| `sunday` | Fecha del domingo |
 
 ## Ejemplo
 
 ```crono-sql
-SELECT *
-FROM crono.weeks
-WHERE IsoWeekYear = current_year()
+select *
+from crono.weeks
+where iso_week_year = current_year()
 ```

@@ -14,7 +14,8 @@ Sus columnas son las siguientes:
 | `schema_name` | Nombre del esquema al que pertenece la tabla |
 | `table_name` | Nombre de la tabla que define la clave externa |
 | `constraint_name` | Nombre de la clave externa |
-| `primary_key_name` | Nombre de la clave primaria referenciada |
+| `unique_constraint_name` | Nombre de la restricción única referenciada |
+| `unique_constraint_type` | Tipo de la restricción única referenciada |
 | `referenced_database_name` | Nombre de la base de datos referenciada |
 | `referenced_schema_name` | Nombre del esquema de la tabla referenciada |
 | `referenced_table_name` | Nombre de la tabla referenciada |

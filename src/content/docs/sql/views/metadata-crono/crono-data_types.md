@@ -2,7 +2,9 @@
 title: "crono.data_types"
 ---
 
-La vista `crono.data_types` devuelve los tipos de datos del lenguaje Crono SQL y su equivalencia en cada motor de base de datos soportado.
+La vista `crono.data_types` devuelve los tipos de datos propios de Crono SQL y su equivalencia en cada uno de los motores soportados. Crono SQL define un conjunto de tipos estándar — `varchar`, `integer`, `date`, `datetime`, `boolean`, etc. — que se compilan automáticamente al tipo nativo correspondiente de cada motor. Esta vista expone esa tabla de equivalencias en tiempo de ejecución.
+
+Para entender el sistema de tipos de Crono SQL, los criterios de diseño y las particularidades de cada motor, consulta el apartado [Tipos de datos](/sql/language/data-types/).
 
 ```crono-sql
 select *

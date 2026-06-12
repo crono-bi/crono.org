@@ -4,7 +4,7 @@ title: "crono.constraints"
 
 La vista `crono.constraints` devuelve información sobre las restricciones definidas en todas las tablas de la base de datos. Incluye claves primarias (`PRIMARY KEY`), claves externas (`FOREIGN KEY`), restricciones de unicidad (`UNIQUE`) y restricciones de comprobación (`CHECK`).
 
-Es similar a la vista ANSI `INFORMATION_SCHEMA.TABLE_CONSTRAINTS`, pero la vista de Crono está enriquecida con información adicional: añade indicadores booleanos por tipo de restricción y, en el caso de las claves externas, incluye información sobre la clave primaria referenciada (`pk_database_name`, `pk_schema_name`, `pk_table_name`, `primary_key_name`).
+Es similar a la vista ANSI `INFORMATION_SCHEMA.TABLE_CONSTRAINTS`, pero la vista de Crono está enriquecida con información adicional: añade indicadores booleanos por tipo de restricción y, en el caso de las claves externas, incluye información sobre la restricción única referenciada (`unique_constraint_name`, `unique_constraint_type`, `referenced_database_name`, `referenced_schema_name`, `referenced_table_name`).
 
 Sus columnas son las siguientes:
 
@@ -19,10 +19,11 @@ Sus columnas son las siguientes:
 | `is_foreign_key` | `true` si la restricción es una clave externa; `false` en caso contrario |
 | `is_unique` | `true` si la restricción es un índice único; `false` en caso contrario |
 | `is_check` | `true` si la restricción es una restricción `CHECK`; `false` en caso contrario |
-| `primary_key_name` | Nombre de la clave primaria referenciada (solo para claves externas) |
-| `pk_database_name` | Base de datos de la clave primaria referenciada |
-| `pk_schema_name` | Esquema de la clave primaria referenciada |
-| `pk_table_name` | Tabla de la clave primaria referenciada |
+| `unique_constraint_name` | Nombre de la restricción única referenciada (solo para claves externas) |
+| `unique_constraint_type` | Tipo de la restricción única referenciada |
+| `referenced_database_name` | Base de datos de la tabla referenciada |
+| `referenced_schema_name` | Esquema de la tabla referenciada |
+| `referenced_table_name` | Tabla referenciada |
 
 ## Ejemplos
 

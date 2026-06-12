@@ -5,7 +5,7 @@ title: "crono.crono_view_properties"
 
 
 
-La pseudovista `crono.crono_view_properties` devuelve las propiedades que admiten las pseudovistas con parámetros.
+La vista `crono.crono_view_properties` devuelve las propiedades que admiten las pseudovistas con parámetros.
 
 ```crono-sql
 SELECT *
