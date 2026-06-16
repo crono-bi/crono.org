@@ -1,0 +1,273 @@
+---
+/**
+ * Screenshot - Componente para imágenes con anotaciones traducibles
+ * 
+ * Props:
+ *   src: string          - Ruta de la imagen
+ *   alt: string          - Texto alternativo accesible
+ *   annotations: Array    - Anotaciones con posición y texto
+ *     - x: string        - Posición horizontal en % (ej: "18%")
+ *     - y: string        - Posición vertical en % (ej: "30%")
+ *     - text: string     - Texto de la anotación (traducible)
+ *     - position: 'top' | 'bottom' | 'left' | 'right' - Posición del label
+ *   caption: string      - Leyenda opcional debajo de la imagen
+ */
+
+interface Annotation {
+  x: string
+  y: string
+  text: string
+  position?: 'top' | 'bottom' | 'left' | 'right'
+}
+
+interface Props {
+  src: string
+  alt: string
+  annotations: Annotation[]
+  caption?: string
+}
+
+const { src, alt, annotations, caption } = Astro.props
+---
+
+<figure class="screenshot-figure">
+  <div class="screenshot-container">
+    <img 
+      src={src} 
+      alt={alt}
+      class="screenshot-img"
+      loading="lazy"
+      decoding="async"
+    />
+    
+    {annotations.map((anno, index) => (
+      <div 
+        class="annotation"
+        style={`left: ${anno.x}; top: ${anno.y};`}
+        aria-label={anno.text}
+        role="img"
+      >
+        <div class={`annotation-label annotation-label--${anno.position || 'top'}`}>
+          <span class="annotation-text">{anno.text}</span>
+        </div>
+        <span class="annotation-dot">{index + 1}</span>
+      </div>
+    ))}
+  </div>
+  
+  {caption && <figcaption class="screenshot-caption">{caption}</figcaption>}
+</figure>
+
+<style>
+  .screenshot-figure {
+    margin: 1.5rem 0;
+  }
+
+  .screenshot-container {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--sl-color-hairline);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  .screenshot-img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .annotation {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    z-index: 100;
+  }
+
+  .annotation-dot {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.75rem;
+    height: 1.75rem;
+    background: rgba(15, 118, 110, 0.95);
+    color: #f1f5f9;
+    font-size: 0.8rem;
+    font-weight: 800;
+    border-radius: 50%;
+    box-shadow: 
+      0 4px 14px rgba(15, 118, 110, 0.5),
+      0 0 0 3px rgba(255, 255, 255, 0.2);
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+    border: 2px solid rgba(255, 255, 255, 0.8);
+  }
+
+  .annotation:hover .annotation-dot {
+    transform: scale(1.15);
+    box-shadow: 
+      0 6px 20px rgba(15, 118, 110, 0.6),
+      0 0 0 4px rgba(255, 255, 255, 0.25);
+  }
+
+  .annotation-label {
+    position: absolute;
+    background: rgba(15, 118, 110, 0.95);
+    color: #f1f5f9;
+    padding: 0.65rem 0.9rem;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    line-height: 1.45;
+    letter-spacing: 0em;
+    white-space: nowrap;
+    opacity: 1;
+    visibility: visible;
+    transition: box-shadow 0.2s ease;
+    pointer-events: none;
+    z-index: 200;
+    max-width: 220px;
+    white-space: normal;
+    border: 1px solid rgba(27, 95, 140, 0.5);
+    border-top: 2px solid var(--sl-color-accent);
+    box-shadow:
+      0 8px 24px rgba(0, 0, 0, 0.35),
+      0 2px 6px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(12px);
+  }
+
+  /* Pico tipo burbuja de diálogo */
+  .annotation-label::before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border: 8px solid transparent;
+  }
+
+  .annotation:hover .annotation-label {
+    box-shadow:
+      0 16px 40px rgba(0, 0, 0, 0.2),
+      0 4px 8px rgba(0, 0, 0, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  }
+
+  .annotation-label--top {
+    bottom: 100%;
+    left: 50%;
+    margin-bottom: 14px;
+    transform: translateX(-50%);
+  }
+  .annotation-label--top::before {
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-top-color: rgba(15, 118, 110, 0.95);
+  }
+
+  .annotation-label--bottom {
+    top: 100%;
+    left: 50%;
+    margin-top: 14px;
+    transform: translateX(-50%);
+  }
+  .annotation-label--bottom::before {
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-bottom-color: rgba(15, 118, 110, 0.95);
+  }
+
+  .annotation-label--left {
+    right: 100%;
+    top: 50%;
+    margin-right: 14px;
+    transform: translateY(-50%);
+  }
+  .annotation-label--left::before {
+    left: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    border-left-color: rgba(15, 118, 110, 0.95);
+  }
+
+  .annotation-label--right {
+    left: 100%;
+    top: 50%;
+    margin-left: 14px;
+    transform: translateY(-50%);
+  }
+  .annotation-label--right::before {
+    right: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    border-right-color: rgba(15, 118, 110, 0.95);
+  }
+
+
+  .screenshot-caption {
+    margin-top: 0.75rem;
+    font-size: 0.85rem;
+    color: var(--sl-color-gray-3);
+    font-style: italic;
+    text-align: center;
+  }
+
+  /* Mobile: labels compactos siempre visibles */
+  @media (max-width: 768px) {
+    .annotation-dot {
+      width: 1.5rem;
+      height: 1.5rem;
+      font-size: 0.75rem;
+      animation: none;
+    }
+
+    .annotation-label {
+      opacity: 1;
+      visibility: visible;
+      transform: scale(1);
+      font-size: 0.75rem;
+      padding: 0.5rem 0.75rem;
+      backdrop-filter: none;
+      background: var(--sl-color-bg-nav);
+    }
+
+    .annotation-label--top,
+    .annotation-label--bottom {
+      transform: translateX(-50%) scale(1);
+      margin-bottom: 12px;
+      margin-top: 12px;
+    }
+
+    .annotation-label--left,
+    .annotation-label--right {
+      transform: translateY(-50%) scale(1);
+      margin-right: 12px;
+      margin-left: 12px;
+    }
+
+    .annotation-label::after {
+      display: none;
+    }
+  }
+
+  /* Dark mode */
+  :root[data-theme='dark'] .annotation-label {
+    background: rgba(10, 90, 84, 0.98);
+    border-color: rgba(15, 118, 110, 0.6);
+    box-shadow:
+      0 8px 32px rgba(0, 0, 0, 0.6),
+      0 2px 8px rgba(15, 118, 110, 0.3);
+  }
+
+  :root[data-theme='dark'] .annotation-label--top::before { border-top-color: rgba(10, 90, 84, 0.98); }
+  :root[data-theme='dark'] .annotation-label--bottom::before { border-bottom-color: rgba(10, 90, 84, 0.98); }
+  :root[data-theme='dark'] .annotation-label--left::before { border-left-color: rgba(10, 90, 84, 0.98); }
+  :root[data-theme='dark'] .annotation-label--right::before { border-right-color: rgba(10, 90, 84, 0.98); }
+
+  :root[data-theme='dark'] .annotation-dot {
+    background: rgba(10, 90, 84, 0.98);
+    border-color: rgba(255, 255, 255, 0.15);
+  }
+</style>
