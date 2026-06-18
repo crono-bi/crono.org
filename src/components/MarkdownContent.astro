@@ -16,14 +16,10 @@ const isDocsSection = entryId.startsWith('sql/') ||
                       entryId.startsWith('en/analysis/') ||
                       entryId.startsWith('en/metadata/');
 
-// Exclude index/intro/landing pages within doc sections
-const isIndexPage = entryId.endsWith('/intro') ||
-                    entryId.endsWith('/index') ||
-                    ['sql', 'etl', 'analysis', 'metadata', 'en/sql', 'en/etl', 'en/analysis', 'en/metadata'].includes(entryId) ||
-                    // Catch folder index pages (1 or 2 path segments)
-                    entryId.split('/').filter(Boolean).length <= 2;
+// Exclude only splash landing pages (template: splash)
+const isSplashPage = (starlightRoute.entry.data as any).template === 'splash';
 
-const isDocsPage = isDocsSection && !isIndexPage;
+const isDocsPage = isDocsSection && !isSplashPage;
 ---
 
 <div class="sl-markdown-content">
