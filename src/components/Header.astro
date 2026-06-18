@@ -52,18 +52,22 @@ const docsLabel = isEN ? 'Docs' : 'Documentación';
 ---
 
 <div class="header">
-	<!-- Mobile menu toggle (checkbox hack) -->
-	<input type="checkbox" id="mobile-menu-toggle" class="mobile-toggle" />
-	<label for="mobile-menu-toggle" class="mobile-menu-btn" aria-label="Menu">
-		<svg class="icon-menu" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-			<line x1="3" y1="6" x2="21" y2="6"/>
-			<line x1="3" y1="12" x2="21" y2="12"/>
-			<line x1="3" y1="18" x2="21" y2="18"/>
-		</svg>
-		<svg class="icon-close" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-			<path d="M18 6 6 18M6 6l12 12"/>
-		</svg>
-	</label>
+	<!-- Mobile menu toggle (checkbox hack) — solo en no-docs -->
+	{!isDocsSection && (
+		<>
+			<input type="checkbox" id="mobile-menu-toggle" class="mobile-toggle" />
+			<label for="mobile-menu-toggle" class="mobile-menu-btn" aria-label="Menu">
+				<svg class="icon-menu" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+					<line x1="3" y1="6" x2="21" y2="6"/>
+					<line x1="3" y1="12" x2="21" y2="12"/>
+					<line x1="3" y1="18" x2="21" y2="18"/>
+				</svg>
+				<svg class="icon-close" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+					<path d="M18 6 6 18M6 6l12 12"/>
+				</svg>
+			</label>
+		</>
+	)}
 
 	<div class="title-wrapper sl-flex">
 		<SiteTitle />
@@ -99,18 +103,20 @@ const docsLabel = isEN ? 'Docs' : 'Documentación';
 		</nav>
 	)}
 
-	<div class="sl-hidden md:sl-flex print:hidden right-group">
-		<div class="sl-flex social-icons">
+	<div class="print:hidden right-group">
+		<div class="sl-hidden md:sl-flex social-icons">
 			<SocialIcons />
 		</div>
 		{shouldRenderSearch && <Search />}
-		<ThemeSelect />
-		<LanguageSelect />
+		<div class="sl-hidden md:sl-flex theme-lang-group">
+			<ThemeSelect />
+			<LanguageSelect />
+		</div>
 	</div>
 
-	<!-- Mobile menu -->
-	<div class="mobile-menu" role="dialog" aria-label="Navigation">
-		{!isDocsSection && (
+	<!-- Mobile menu — solo en no-docs -->
+	{!isDocsSection && (
+		<div class="mobile-menu" role="dialog" aria-label="Navigation">
 			<div class="mobile-nav">
 				{navLinks.map(({ label, href, highlight }) => (
 					<a href={href} class:list={['mobile-nav-link', { 'mobile-nav-link--highlight': highlight }]}>
@@ -127,8 +133,8 @@ const docsLabel = isEN ? 'Docs' : 'Documentación';
 					))}
 				</div>
 			</div>
-		)}
-	</div>
+		</div>
+	)}
 </div>
 
 <style>
@@ -150,12 +156,15 @@ const docsLabel = isEN ? 'Docs' : 'Documentación';
 		}
 
 		.right-group {
+			display: flex;
 			flex: 1;
 			justify-content: flex-end;
+			align-items: center;
 		}
 
 		.right-group,
-		.social-icons {
+		.social-icons,
+		.theme-lang-group {
 			gap: 1rem;
 			align-items: center;
 		}

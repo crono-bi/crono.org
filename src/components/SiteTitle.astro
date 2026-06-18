@@ -97,6 +97,13 @@ if (normalizedPath.startsWith('/analysis/')) {
 			transition: filter 0.2s;
 		}
 
+		@media (max-width: 50rem) {
+			.product-logo,
+			.main-logo {
+				max-width: 160px;
+			}
+		}
+
 		:root[data-theme='dark'] .product-logo,
 		:root:not([data-theme='light']) .product-logo,
 		:root[data-theme='dark'] .main-logo,

@@ -153,22 +153,30 @@ function sr(v: string): string {
   /* ── Wrapper ── */
   .ct-wrap {
     margin: 1.75rem 0;
+    min-width: 0;
+    contain: layout inline-size;
   }
 
   .ct-scroll {
     overflow-x: auto;
+    max-width: 100%;
     border-radius: 8px;
     border: 1px solid var(--sl-color-hairline-light);
     box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    /* Crear scroll container aislado para Chrome */
+    -webkit-overflow-scrolling: touch;
+    contain: layout;
   }
 
   /* ── Table ── */
   .ct-table {
-    border-collapse: collapse;
+    border-collapse: separate;
+    border-spacing: 0;
     width: 100%;
     min-width: 560px;
     font-size: 0.83rem;
     table-layout: auto;
+    isolation: isolate;
   }
 
   /* ── Header ── */
@@ -195,6 +203,10 @@ function sr(v: string): string {
     letter-spacing: 0.04em;
     font-size: 0.72rem;
     text-transform: none;
+    position: sticky;
+    left: 0;
+    z-index: 10;
+    background: rgb(27, 95, 140);
   }
 
   .ct-th--ghost { background: rgba(27, 95, 140, 0.65); }
@@ -231,12 +243,15 @@ function sr(v: string): string {
     text-align: left;
     padding-left: 1.1rem;
     white-space: nowrap;
-    background: rgba(27, 95, 140, 0.05) !important;
+    background: var(--sl-color-bg) !important;
     border-right: 2px solid rgba(27, 95, 140, 0.20);
+    position: sticky;
+    left: 0;
+    z-index: 5;
   }
 
   .ct-row:hover .ct-td--row-header {
-    background: rgba(27, 95, 140, 0.10) !important;
+    background: var(--sl-color-bg) !important;
   }
 
   .ct-label {
