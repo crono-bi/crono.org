@@ -54,12 +54,11 @@ const X_ICO = `<svg class="ct-icon ct-icon--x" xmlns="http://www.w3.org/2000/svg
 const CELL_ICON: Record<string, string> = {
   yes:   CHECK,
   x:     CHECK,
-  nokey: X_ICO,
 }
 
 const CELL_TEXT: Record<string, Record<string, string>> = {
-  es: { no: 'Opcional' },
-  en: { no: 'Optional' },
+  es: { no: 'Opcional', nokey: 'No admite clave' },
+  en: { no: 'Optional', nokey: 'Does not support key' },
 }
 
 // Screen-reader / LLM accessible labels for cell values
@@ -92,6 +91,7 @@ const isDateColumn = (colLabel: string): boolean => {
 function ci(v: string, colLabel?: string): string {
   if (v === 'dash' || v === '') return ''
   if (v === 'no') return `<span class="ct-text-optional">${CELL_TEXT[lang]?.[v] || 'Opcional'}</span>`
+  if (v === 'nokey') return `<span class="ct-text-nokey">${CELL_TEXT[lang]?.[v] || 'No admite clave'}</span>`
   return CELL_ICON[v] ?? v
 }
 
@@ -147,17 +147,6 @@ function sr(v: string): string {
 
   {caption && <p class="ct-caption">{caption}</p>}
 
-  <!-- Leyenda -->
-  <div class="ct-legend">
-    <span class="ct-legend-item">
-      <span class="ct-legend-icon" set:html={CHECK}></span>
-      <span class="ct-legend-label">{lang === 'en' ? 'Required' : 'Obligatoria'}</span>
-    </span>
-    <span class="ct-legend-item">
-      <span class="ct-legend-icon" set:html={X_ICO}></span>
-      <span class="ct-legend-label">{lang === 'en' ? 'No Key' : 'Sin Key'}</span>
-    </span>
-  </div>
 </div>
 
 <style>
@@ -277,10 +266,17 @@ function sr(v: string): string {
     flex-shrink: 0;
   }
 
-  .ct-text-optional {
+  :global(.ct-text-optional) {
     font-size: 0.75rem;
     font-weight: 500;
     color: var(--sl-color-gray-2);
+    letter-spacing: 0.01em;
+  }
+
+  :global(.ct-text-nokey) {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: #dc2626 !important;
     letter-spacing: 0.01em;
   }
 

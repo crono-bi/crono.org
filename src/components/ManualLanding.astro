@@ -463,6 +463,20 @@ const brandRgb = brandColor.startsWith('#') ? hexToRgb(brandColor) : '27, 95, 14
   }
 
   @media (max-width: 640px) {
+    .hero-cta {
+      flex-direction: column;
+      align-items: stretch;
+      width: 100%;
+      max-width: 320px;
+      margin: 0 auto;
+    }
+
+    .hero-cta .btn-primary,
+    .hero-cta .btn-secondary {
+      width: 100%;
+      justify-content: center;
+    }
+
     .playground-cta-card {
       flex-direction: column;
       align-items: flex-start;

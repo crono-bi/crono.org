@@ -139,6 +139,11 @@ const sections: Section[] = [
   <div class="pr-page-hero">
     <h1 class="pr-page-hero-title">{t('pricingLanding.lifetimeHero.title')}</h1>
     <p class="pr-page-hero-desc">{t('pricingLanding.lifetimeHero.desc')}</p>
+    <p class="pr-page-hero-tagline">
+      {t('pricingLanding.lifetimeHero.tagline')}
+      {' '}<span class="pr-page-hero-tagline-hl">{t('pricingLanding.lifetimeHero.taglineHighlight')}</span>.
+    </p>
+    <p class="pr-page-hero-body">{t('pricingLanding.lifetimeHero.body')}</p>
   </div>
 
   {sections.map(section => (
@@ -278,34 +283,11 @@ const sections: Section[] = [
     border: 1px solid var(--sl-color-hairline);
     border-radius: 8px;
     padding: 1.25rem;
-    position: relative;
-    overflow: hidden;
-    transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
   }
-
-  .pr-card::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(160deg, rgba(var(--rgb), 0.06) 0%, transparent 55%);
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity 0.25s;
-  }
-
-  .pr-card:hover {
-    border-color: var(--c);
-    transform: translateY(-1px);
-    box-shadow: 0 6px 16px -6px rgba(var(--rgb), 0.2);
-  }
-
-  .pr-card:hover::before { opacity: 1; }
 
   .pr-card--hl {
     border-color: var(--c);
   }
-
-  .pr-card--hl::before { opacity: 1; }
 
   /* Top */
   .pr-card-top {
@@ -484,6 +466,27 @@ const sections: Section[] = [
     color: var(--sl-color-gray-3);
     line-height: 1.7;
     max-width: 740px;
+    margin: 0 0 1rem;
+  }
+
+  .pr-page-hero-tagline {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--sl-color-white);
+    margin: 0 0 0.625rem;
+    line-height: 1.5;
+  }
+
+  .pr-page-hero-tagline-hl {
+    color: #3B82F6;
+    font-weight: 700;
+  }
+
+  .pr-page-hero-body {
+    font-size: 0.875rem;
+    color: var(--sl-color-gray-3);
+    line-height: 1.65;
+    max-width: 680px;
     margin: 0;
   }
 

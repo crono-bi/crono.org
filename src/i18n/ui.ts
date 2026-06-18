@@ -219,8 +219,11 @@ const es = {
   'pricingLanding.tier.etlFull.cta': 'Contactar',
   // Hero Acceso de Por Vida
   'pricingLanding.lifetimeHero.badge': 'Oferta Exclusiva',
-  'pricingLanding.lifetimeHero.title': 'Acceso de Por Vida',
-  'pricingLanding.lifetimeHero.desc': 'Paga por 12 meses y podrás usar las funciones de pago para siempre, incluso si cancelas tu suscripción. ¿No estás seguro? Descarga la app para una prueba gratuita, sin necesidad de cuenta ni tarjeta de crédito. Todos los precios están en USD.',
+  'pricingLanding.lifetimeHero.title': 'Acceso de por vida',
+  'pricingLanding.lifetimeHero.desc': 'Paga por 12 meses y podrás usar las funciones de pago para siempre, incluso si cancelas tu suscripción. ¿No estás seguro? Descarga la app para una prueba gratuita, sin necesidad de cuenta ni tarjeta de crédito. Todos los precios están en Euros.',
+  'pricingLanding.lifetimeHero.tagline': 'Actualizaciones durante 12 meses.',
+  'pricingLanding.lifetimeHero.taglineHighlight': 'Uso para siempre',
+  'pricingLanding.lifetimeHero.body': 'Tu suscripción incluye todas las actualizaciones y nuevas funciones durante 12 meses. Cuando finalice el periodo, podrás seguir utilizando el producto indefinidamente, aunque no renueves. La renovación únicamente te dará acceso a futuras actualizaciones.',
   'pricingLanding.tier.analysisTrial.name': 'Crono Analysis Windows',
   'pricingLanding.tier.analysisTrial.tagline': 'Free Trial',
   'pricingLanding.tier.analysisTrial.price': 'Free Trial',
@@ -266,7 +269,7 @@ const es = {
   'pricingLanding.tier.etlLifetime.desc': 'Paga una vez y usa para siempre. Incluye todas las funcionalidades de pago sin renovación anual. Soporte por 2 años incluido.',
   'pricingLanding.tier.etlLifetime.cta': 'Contactar para Lifetime',
   // Garantía de Devolución
-  'pricingLanding.guarantee.title': 'Mi Garantía 100% Sin Riesgo de Devolución de Dinero',
+  'pricingLanding.guarantee.title': 'Mi Garantía 100% sin riesgo de devolución de dinero',
   'pricingLanding.guarantee.highlight': 'Si Crono no hace tu trabajo más rápido y fácil en 30 días, te reembolsaré el 100% de tu compra, sin preguntas.',
   'pricingLanding.guarantee.p1': 'Déjame contarte por qué te ofrezco esta garantía. Primero, Crono funciona. Está construido para optimizar tu flujo de trabajo, reducir el cambio de contexto y ahorrarte tiempo. Por eso estás aquí y lo usas todos los días.',
   'pricingLanding.guarantee.p2': 'Segundo, Crono no es una empresa sin rostro. Valoramos la confianza y la transparencia. Por eso gran parte de nuestro código es de código abierto, y por qué nos importa ofrecer soporte de primera clase.',
@@ -1072,7 +1075,10 @@ const en: Record<keyof typeof es, string> = {
   // Hero Lifetime Access
   'pricingLanding.lifetimeHero.badge': 'Exclusive Offer',
   'pricingLanding.lifetimeHero.title': 'Lifetime Access',
-  'pricingLanding.lifetimeHero.desc': 'Pay for 12 months and you can use the paid features forever, even if you cancel your subscription. Not sure? Download the app for a free trial, no account or credit card needed. All prices are in USD.',
+  'pricingLanding.lifetimeHero.desc': 'Pay for 12 months and you can use the paid features forever, even if you cancel your subscription. Not sure? Download the app for a free trial, no account or credit card needed. All prices are in Euros.',
+  'pricingLanding.lifetimeHero.tagline': 'Updates for 12 months.',
+  'pricingLanding.lifetimeHero.taglineHighlight': 'Use forever',
+  'pricingLanding.lifetimeHero.body': 'Your subscription includes all updates and new features for 12 months. When the period ends, you can continue using the product indefinitely, even if you don\'t renew. Renewal only gives you access to future updates.',
 }
 
 export type UIKey = keyof typeof es
