@@ -23,53 +23,9 @@
   display: none;
 }
 
-/* ===== BREAKPOINT TABLET: mostrar dropdown 'En esta página' =====
-   Starlight oculta el sidebar derecho a <72rem pero el dropdown 'En esta página'
-   solo aparece en móvil <50rem. Mostramos el dropdown desde 72rem hacia abajo
-   para cubrir tablet y móvil. */
-@media (max-width: 72rem) {
-  /* Ocultar sidebar derecho explícitamente en este rango */
-  .right-sidebar-container {
-    display: none !important;
-  }
-  
-  /* Mostrar el dropdown 'En esta página' (PageMenu de Starlight) */
-  .sl-page-menu,
-  [data-page-menu],
-  starlight-page-menu {
-    display: flex !important;
-  }
-}
-
 html {
   scroll-behavior: smooth;
-}
-
-/* scrollbar-gutter solo en desktop; en móvil causa scroll horizontal en Chrome */
-@media (min-width: 50rem) {
-  html {
-    scrollbar-gutter: stable;
-  }
-}
-
-/* ===== FIX OVERFLOW HORIZONTAL EN DOCS =====
-   En DESKTOP (≥72rem) Starlight usa .lg:sl-flex como layout flex de 2 columnas.
-   min-width:0 evita que el item flex se expanda por su hijo más ancho. */
-.main-frame,
-.main-pane,
-main,
-.content-panel,
-.sl-container,
-.sl-markdown-content {
-  min-width: 0;
-  max-width: 100%;
-}
-
-/* En MÓVIL (<50rem): respaldo para cortar desbordamiento */
-@media (max-width: 50rem) {
-  .main-frame {
-    overflow-x: hidden;
-  }
+  scrollbar-gutter: stable;
 }
 
 .starlight-sidebar-topics {
@@ -424,41 +380,18 @@ main,
   margin: 0.5rem 0;
 }
 
-
-/* ===== MOBILE MENU — bloquear scroll de fondo al abrir ===== */
-body:has(#mobile-menu-toggle:checked) {
-  overflow: hidden;
-}
-
-/* ===== MOBILE MENU FOOTER: alinear tema + idioma ===== */
-/* El drawer de Starlight coloca controles en el footer; asegurar alineación */
-.mobile-preferences,
-#starlight__sidebar .sidebar-footer,
-#starlight__sidebar [data-sidebar-footer],
-.sidebar-pane .sidebar-footer {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 0.75rem;
-  padding: 0.75rem 1rem;
-}
-
-/* Igualar altura del botón de tema con el selector de idioma */
-.mobile-preferences starlight-theme-toggle button,
-.mobile-preferences .theme-toggle button {
-  height: 32px;
-  width: 32px;
-  padding: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Asegurar que el selector de idioma tenga la misma altura */
-.mobile-preferences .ls-wrap {
-  height: 32px;
-  display: flex;
-  align-items: center;
+/* ===== LANDING PAGE MOBILE HEADER — theme toggle ===== */
+/* data-page-id is NOT a real Starlight attribute.
+   Starlight sets data-has-sidebar on <html> for docs pages.
+   The landing page has no sidebar, so we target html:not([data-has-sidebar]).
+   The theme toggle lives inside .right-group which Starlight hides on mobile
+   (class sl-hidden) because it expects the sidebar to carry it instead. */
+@media (max-width: 50rem) {
+  html:not([data-has-sidebar]) .right-group {
+    display: flex !important;
+    align-items: center;
+    gap: 0.5rem;
+  }
 }
 
 /* ===== PLAYGROUND SIDEBAR LINK COLOR OVERRIDE ===== */
