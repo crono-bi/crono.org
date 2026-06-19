@@ -7,13 +7,18 @@ import SiteTitle from 'virtual:starlight/components/SiteTitle';
 import SocialIcons from 'virtual:starlight/components/SocialIcons';
 import ThemeSelect from 'virtual:starlight/components/ThemeSelect';
 
-import { getProductIcon } from '../config/products.ts';
+import { getProductIcon, ICONS } from '../config/products.ts';
+import mergeCloneExample from '../playground/examples/merge-clone.sql?raw';
 
 const shouldRenderSearch =
 	config.pagefind || config.components.Search !== '@astrojs/starlight/components/Search.astro';
 
 const pathname = Astro.url.pathname;
 const isEN = pathname.startsWith('/en');
+
+// Generar URL del playground con el ejemplo merge-clone por defecto
+const prefix = isEN ? '/en' : '';
+const playgroundUrl = `${prefix}/playground/?code=${btoa(encodeURIComponent(mergeCloneExample))}`;
 
 // Ocultar nav principal en secciones de documentación (Starlight ya tiene sidebar)
 const docSections = isEN
@@ -25,26 +30,26 @@ const navLinks = isEN
 	? [
 		{ label: 'Downloads', href: '/en/downloads/' },
 		{ label: 'Pricing',   href: '/en/precios/'  },
-		{ label: 'Playground', href: '/en/playground/', highlight: true },
 	  ]
 	: [
 		{ label: 'Descargas', href: '/downloads/' },
 		{ label: 'Precios',   href: '/precios/'   },
-		{ label: 'Playground', href: '/playground/', highlight: true },
 	  ];
 
 const docLinks = isEN
 	? [
-		{ label: 'Crono SQL',      desc: 'SQL language',   href: '/en/sql/',      icon: getProductIcon('sql') },
-		{ label: 'Crono ETL',      desc: 'Data pipelines', href: '/en/etl/',      icon: getProductIcon('etl') },
-		{ label: 'Crono Analysis', desc: 'BI & reporting',  href: '/en/analysis/', icon: getProductIcon('analysis') },
-		{ label: 'Crono Metadata', desc: 'Data catalog',   href: '/en/metadata/', icon: getProductIcon('metadata') },
+		{ label: 'Crono SQL',           desc: 'SQL language',       href: '/en/sql/',           icon: getProductIcon('sql') },
+		{ label: 'Playground Crono SQL', desc: 'Interactive editor', href: playgroundUrl,     icon: ICONS.playground },
+		{ label: 'Crono ETL',           desc: 'Data pipelines',     href: '/en/etl/',           icon: getProductIcon('etl') },
+		{ label: 'Crono Analysis',      desc: 'BI & reporting',     href: '/en/analysis/',      icon: getProductIcon('analysis') },
+		{ label: 'Crono Metadata',      desc: 'Data catalog',       href: '/en/metadata/',      icon: getProductIcon('metadata') },
 	  ]
 	: [
-		{ label: 'Crono SQL',      desc: 'Lenguaje SQL',    href: '/sql/',      icon: getProductIcon('sql') },
-		{ label: 'Crono ETL',      desc: 'Pipelines',       href: '/etl/',      icon: getProductIcon('etl') },
-		{ label: 'Crono Analysis', desc: 'BI y reportes',   href: '/analysis/', icon: getProductIcon('analysis') },
-		{ label: 'Crono Metadata', desc: 'Catálogo',        href: '/metadata/', icon: getProductIcon('metadata') },
+		{ label: 'Crono SQL',           desc: 'Lenguaje SQL',       href: '/sql/',              icon: getProductIcon('sql') },
+		{ label: 'Playground Crono SQL', desc: 'Editor interactivo', href: playgroundUrl,       icon: ICONS.playground },
+		{ label: 'Crono ETL',           desc: 'Pipelines',          href: '/etl/',              icon: getProductIcon('etl') },
+		{ label: 'Crono Analysis',      desc: 'BI y reportes',      href: '/analysis/',         icon: getProductIcon('analysis') },
+		{ label: 'Crono Metadata',      desc: 'Catálogo',           href: '/metadata/',         icon: getProductIcon('metadata') },
 	  ];
 
 const isDocsActive = docLinks.some(({ href }) => pathname.startsWith(href));
@@ -239,7 +244,7 @@ const docsLabel = isEN ? 'Docs' : 'Documentación';
 		position: absolute;
 		top: calc(100% + 0.6rem);
 		left: 50%;
-		min-width: 210px;
+		min-width: 260px;
 		background: var(--sl-color-bg-nav);
 		border: 1px solid var(--sl-color-hairline);
 		border-radius: 8px;
