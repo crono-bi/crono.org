@@ -1,28 +1,87 @@
 /**
- * Custom Styles here.
- *
- * ref：https://v1.vuepress.vuejs.org/config/#index-styl
+ * EPIC MAINTENANCE PAGE - Crono v2
+ * Estilos base para ocultar navegación
  */
 
+// ===== RESET Y BASE =====
+body,
+html
+  overflow: hidden !important
+  height: 100%
+  margin: 0
+  padding: 0
+  background: #0a1628 !important
 
+// Forzar fondo oscuro en todo el app de VuePress
+#app,
+.app
+  background: #0a1628 !important
+  min-height: 100vh
 
-.home h1
-  display: none
+// Ocultar cualquier hero/home background residual
+.home,
+.home-wrapper,
+.hero,
+.page-hero
+  background: transparent !important
 
-.home .hero .description
-  color: #007bcc !important
+// Ocultar navegación completa
+.navbar,
+.nav-links,
+.can-hide,
+.sidebar,
+.sidebar-button,
+.page-edit,
+.page-nav,
+.footer,
+.home .hero,
+.home .features
+  display: none !important
 
-.sidebar-group.is-sub-group.depth-1 > .sidebar-heading
-  opacity: 1 !important
-  font-weight: bold;
-  font-size: 1.0em
+// Layout principal full-screen sin padding superior
+.theme-default-content:not(.custom)
+  max-width: none !important
+  padding: 0 !important
+  margin: 0 !important
 
+.page
+  padding: 0 !important
+  margin-top: 0 !important
 
-.sidebar-group.depth-0 a.sidebar-link
-  font-weight: bold !important;
+.content__default
+  padding: 0 !important
+  margin: 0 !important
 
-.sidebar-group.depth-0 ul.sidebar-sub-headers  a.sidebar-link
-  font-weight: 400 !important;
+// Eliminar cualquier espacio reservado para navbar
+.header-anchor,
+#app .navbar,
+#app .nav
+  display: none !important
 
-.sidebar-group.depth-1 a.sidebar-link
-  font-weight: 400 !important;
+// Ocultar barra de progreso nprogress y elementos residuales
+.nprogress,
+#nprogress,
+.nprogress-bar,
+.nprogress-spinner,
+.nprogress-custom-parent,
+.reading-progress,
+.reading-progress-indicator
+  display: none !important
+  opacity: 0 !important
+  visibility: hidden !important
+
+// Forzar fondo oscuro en todo el documento y eliminar padding-top
+#app,
+.app,
+.theme-container,
+.page,
+.content,
+#app .theme-container,
+.page-wrapper,
+.content-wrapper,
+.main-content
+  background: #0a1628 !important
+  margin: 0 !important
+  padding: 0 !important
+  padding-top: 0 !important
+  margin-top: 0 !important
