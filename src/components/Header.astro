@@ -20,18 +20,23 @@ const isEN = pathname.startsWith('/en');
 const prefix = isEN ? '/en' : '';
 const playgroundUrl = `${prefix}/playground/?code=${btoa(encodeURIComponent(mergeCloneExample))}`;
 
-// Ocultar nav principal en secciones de documentación (Starlight ya tiene sidebar)
-const docSections = isEN
+// Ocultar nav principal solo en páginas internas de doc (no en las landing de sección)
+const docSectionRoots = isEN
 	? ['/en/sql/', '/en/etl/', '/en/analysis/', '/en/metadata/']
 	: ['/sql/', '/etl/', '/analysis/', '/metadata/'];
-const isDocsSection = docSections.some((section) => pathname.startsWith(section));
+const isDocsSection = docSectionRoots.some((root) => {
+	const rest = pathname.slice(root.length);
+	return pathname.startsWith(root) && rest.length > 0;
+});
 
 const navLinks = isEN
 	? [
+		{ label: 'Home',      href: '/en/'          },
 		{ label: 'Downloads', href: '/en/downloads/' },
 		{ label: 'Pricing',   href: '/en/precios/'  },
 	  ]
 	: [
+		{ label: 'Inicio',    href: '/'             },
 		{ label: 'Descargas', href: '/downloads/' },
 		{ label: 'Precios',   href: '/precios/'   },
 	  ];
@@ -76,7 +81,7 @@ const docsLabel = isEN ? 'Docs' : 'Documentación';
 	{!isDocsSection && (
 		<nav class="header-nav" aria-label="Main">
 			{navLinks.map(({ label, href, highlight }) => (
-				<a href={href} class:list={['nav-link', { 'nav-link--active': pathname === href || pathname.startsWith(href), 'nav-link--highlight': highlight }]}>
+				<a href={href} class:list={['nav-link', { 'nav-link--active': pathname === href || (href.length > 1 && pathname.startsWith(href)), 'nav-link--highlight': highlight }]}>
 					{label}
 				</a>
 			))}
