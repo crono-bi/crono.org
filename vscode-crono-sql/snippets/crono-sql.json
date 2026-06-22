@@ -1,0 +1,92 @@
+{
+  "Merge Clone (full sync)": {
+    "prefix": "merge-clone",
+    "description": "Patrón de carga: sincronización completa (full sync).",
+    "body": [
+      "CREATE OR REPLACE PROCEDURE",
+      "MERGE CLONE ${1:dwh.dim_table} KEY (${2:id})",
+      "SELECT",
+      "\t$0",
+      "FROM ${3:staging.source};"
+    ]
+  },
+  "Merge Upsert (incremental)": {
+    "prefix": "merge-upsert",
+    "description": "Patrón de carga incremental: inserta nuevas y actualiza existentes.",
+    "body": [
+      "CREATE OR REPLACE PROCEDURE",
+      "MERGE UPSERT ${1:dwh.fact_table} KEY (${2:id})",
+      "SELECT",
+      "\t$0",
+      "FROM ${3:staging.source};"
+    ]
+  },
+  "Merge History (SCD2)": {
+    "prefix": "merge-history",
+    "description": "Patrón de carga SCD2: histórico versionado de cambios.",
+    "body": [
+      "CREATE OR REPLACE PROCEDURE",
+      "MERGE HISTORY ${1:dwh.dim_table} KEY (${2:id})",
+      "SELECT",
+      "\t$0",
+      "FROM ${3:staging.source};"
+    ]
+  },
+  "Delete and Insert (full reload)": {
+    "prefix": "delete-and-insert",
+    "description": "Patrón de carga: borrado total y recarga.",
+    "body": [
+      "CREATE OR REPLACE PROCEDURE",
+      "DELETE AND INSERT ${1:dwh.table}",
+      "SELECT",
+      "\t$0",
+      "FROM ${2:staging.source};"
+    ]
+  },
+  "Select pipeline (stacked)": {
+    "prefix": "select-pipeline",
+    "description": "SELECT apilado con FILTER y CALCULATE.",
+    "body": [
+      "SELECT",
+      "\t${1:columns}",
+      "FROM ${2:source}",
+      "FILTER ${3:condition}",
+      "CALCULATE ${4:new_col} = ${5:expression};"
+    ]
+  },
+  "Semi Join": {
+    "prefix": "semi-join",
+    "description": "SEMI JOIN: filas con correspondencia, sin añadir columnas.",
+    "body": ["${1:left} SEMI JOIN ${2:right} ON ${3:condition}"]
+  },
+  "Anti Join": {
+    "prefix": "anti-join",
+    "description": "ANTI JOIN: filas sin correspondencia en la tabla derecha.",
+    "body": ["${1:left} ANTI JOIN ${2:right} ON ${3:condition}"]
+  },
+  "Check Snowflake": {
+    "prefix": "check-snowflake",
+    "description": "Validación del modelo en estrella/copo de nieve en compilación.",
+    "body": ["CHECK SNOWFLAKE ${1:dwh.fact_table};"]
+  },
+  "Assert": {
+    "prefix": "assert",
+    "description": "Invariante validada en tiempo de carga.",
+    "body": ["ASSERT ${1:condition};"]
+  },
+  "Create Virtual View": {
+    "prefix": "create-virtual-view",
+    "description": "Vista virtual reutilizable (se expande en compilación).",
+    "body": [
+      "CREATE OR REPLACE VIRTUAL VIEW ${1:schema.view_name} AS",
+      "SELECT",
+      "\t$0",
+      "FROM ${2:source};"
+    ]
+  },
+  "Running Sum": {
+    "prefix": "running-sum",
+    "description": "Suma acumulada (función de ventana).",
+    "body": ["running_sum(${1:expr} ${2:partition by ${3:group}} order by ${4:sort})"]
+  }
+}

@@ -1,0 +1,93 @@
+{
+  "name": "crono-sql",
+  "displayName": "Crono SQL",
+  "description": "Soporte de lenguaje para Crono SQL: resaltado de sintaxis, autocompletado, snippets y documentación al pasar el cursor. 100% offline.",
+  "version": "0.1.0",
+  "publisher": "crono",
+  "engines": {
+    "vscode": "^1.84.0"
+  },
+  "license": "MIT",
+  "categories": [
+    "Programming Languages",
+    "Snippets"
+  ],
+  "keywords": [
+    "crono",
+    "crono sql",
+    "sql",
+    "etl",
+    "dwh",
+    "data warehouse"
+  ],
+  "galleryBanner": {
+    "color": "#f97316",
+    "theme": "dark"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/crono-bi/crono.org"
+  },
+  "icon": "./icons/crono-logo.png",
+  "main": "./dist/extension.js",
+  "activationEvents": [],
+  "contributes": {
+    "languages": [
+      {
+        "id": "crono-sql",
+        "aliases": [
+          "Crono SQL",
+          "cronosql"
+        ],
+        "extensions": [
+          ".sql"
+        ],
+        "configuration": "./language-configuration.json",
+        "icon": {
+          "light": "./icons/crono-sql-light.png",
+          "dark": "./icons/crono-sql-dark.png"
+        }
+      }
+    ],
+    "grammars": [
+      {
+        "language": "crono-sql",
+        "scopeName": "source.crono-sql",
+        "path": "./syntaxes/crono-sql.tmLanguage.json"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "crono-sql",
+        "path": "./snippets/crono-sql.json"
+      }
+    ],
+    "configuration": {
+      "title": "Crono SQL",
+      "properties": {
+        "cronoSql.completion.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Activa el autocompletado de keywords y funciones de Crono SQL."
+        },
+        "cronoSql.hover.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Activa la documentación al pasar el cursor sobre funciones y keywords."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run build",
+    "build": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "sync": "node ./scripts/sync-function-docs.mjs",
+    "package": "npx @vscode/vsce package --no-dependencies"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@types/vscode": "^1.84.0",
+    "typescript": "^5.4.0"
+  }
+}

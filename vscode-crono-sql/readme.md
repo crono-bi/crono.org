@@ -1,0 +1,70 @@
+# Crono SQL for VS Code
+
+Soporte de lenguaje **100% offline** para [Crono SQL](https://crono.org/sql/), el superconjunto de SQL para proyectos ETL/DWH.
+
+No requiere conexión a internet, cuenta ni servidor: toda la inteligencia se ejecuta localmente.
+
+## Características
+
+- **Resaltado de sintaxis** — keywords y funciones específicas de Crono (`MATERIALIZE`, `MERGE CLONE`, `runningsum`, ...) sobre la base de SQL estándar.
+- **Autocompletado** — todas las keywords y funciones, con firma y categoría.
+- **Documentación al pasar el cursor** — descripción y sintaxis de funciones y keywords, con enlace a la documentación oficial.
+- **Snippets** — los patrones de carga (`MERGE CLONE`, `MERGE UPSERT`, `MERGE HISTORY`, `DELETE AND INSERT`...) y plantillas habituales.
+- **Configuración de lenguaje** — comentarios (`--`, `/* */`), cierre de brackets, plegado e indentación.
+
+## Extensiones de archivo
+
+`.csql` · `.crono` · `.crono-sql`
+
+## Desarrollo
+
+```bash
+npm install      # instala dependencias
+npm run build    # compila TypeScript a dist/
+npm run watch    # compila en modo watch
+F5               # lanza una ventana de Extension Host para probar
+```
+
+### Empaquetado
+
+```bash
+npm run package  # genera el .vsix con vsce
+```
+
+### Fuente única de verdad
+
+Las listas de keywords y funciones provienen de
+`crono.org/src/config/crono-language-data.mjs`. Las descripciones de hover de
+las funciones se extraen de los docs oficiales en
+`crono.org/src/content/docs/sql/functions/**`. Tras modificarlos, ejecuta:
+
+```bash
+npm run sync        # regenera la gramática (funciones) desde la fuente canónica
+npm run sync:docs   # regenera src/generated/function-docs.ts desde los docs
+```
+
+El hover de funciones resuelve la descripción con esta prioridad:
+**doc oficial generado → texto manual (`src/hover-docs.ts`) → genérico por categoría**.
+
+> Nota: 94/99 funciones tienen doc oficial. Las funciones `bit`, `datetimeoffset`,
+> `current_time`, `maximum` y `minimum` no tienen página de documentación y usan
+> el fallback. Además, 7 funciones tienen nombre distinto entre el lenguaje y los
+> docs (p. ej. `daysdiff` ↔ `days_between`); el mapeo está en `ALIASES` dentro de
+> `scripts/sync-function-docs.mjs`.
+
+## Configuración
+
+| Ajuste | Defecto | Descripción |
+|--------|---------|-------------|
+| `cronoSql.completion.enabled` | `true` | Activa el autocompletado. |
+| `cronoSql.hover.enabled` | `true` | Activa la documentación al pasar el cursor. |
+
+## Roadmap
+
+- **Fase 1 (actual)** — resaltado, autocompletado, snippets y hover (offline).
+- **Fase 2** — diagnósticos y compilación a SQL nativo (opt-in).
+- **Fase 3** — Language Server con compilador local (offline completo).
+
+## Licencia
+
+MIT

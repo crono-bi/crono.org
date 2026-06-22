@@ -1,0 +1,81 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "Crono SQL",
+  "scopeName": "source.crono-sql",
+  "patterns": [
+    {
+      "include": "#crono-comments"
+    },
+    {
+      "include": "#crono-load-patterns"
+    },
+    {
+      "include": "#crono-keywords"
+    },
+    {
+      "include": "#crono-functions"
+    },
+    {
+      "include": "source.sql"
+    }
+  ],
+  "repository": {
+    "crono-comments": {
+      "patterns": [
+        {
+          "name": "comment.line.double-dash.crono-sql",
+          "begin": "--",
+          "end": "$",
+          "captures": {
+            "0": {
+              "name": "punctuation.definition.comment.crono-sql"
+            }
+          }
+        },
+        {
+          "name": "comment.block.crono-sql",
+          "begin": "/\\*",
+          "end": "\\*/",
+          "captures": {
+            "0": {
+              "name": "punctuation.definition.comment.crono-sql"
+            }
+          }
+        }
+      ]
+    },
+    "crono-load-patterns": {
+      "patterns": [
+        {
+          "name": "keyword.other.crono-sql",
+          "match": "(?i)\\b(MERGE\\s+CLONE|MERGE\\s+UPSERT|MERGE\\s+HISTORY|DELETE\\s+AND\\s+INSERT|CHECK\\s+SNOWFLAKE)\\b"
+        }
+      ]
+    },
+    "crono-keywords": {
+      "patterns": [
+        {
+          "name": "keyword.other.crono-sql",
+          "match": "(?i)\\b(SEMI\\s+JOIN|ANTI\\s+JOIN)\\b"
+        },
+        {
+          "name": "keyword.other.crono-sql",
+          "match": "(?i)\\b(MATERIALIZE|CALCULATE|ASSERT|FILTER|SNOWFLAKE|UPSERT|CLONE|HISTORY|VIRTUAL|NONUNIQUE)\\b"
+        }
+      ]
+    },
+    "crono-functions": {
+      "patterns": [
+        {
+          "name": "meta.function-call.crono-sql",
+          "match": "(?i)\\b(abc|add_days|add_months|addition|average|avg|avgif|bigint|bit|boolean|ceil|char|coalesce|concat|count|count_distinct|count_values|countif|current_catalog|current_date|current_datetime|current_time|current_timestamp|current_user|current_year|date|datetime|datetimeoffset|day|day_name|day_of_week|days_ago|days_between|daysdiff|decile|dense_rank|divide|element_at|empty_if_null|end_date|end_datetime|first_value|float|floor|from_julian_date|from_unixtime|fromunixdate|greatest|hash|hex|hour|if|index_of|int|is_first|is_last|iso_date|iso_month|iso_week|iso_week_year|julian_date|lag|last_value|lead|least|left|length|lpad|margin|markup|max|maxif|maximum|min|minif|minimum|mmmm|mmmmyyyy|mmmyyyy|mod|month|month_name|month_year_name|next_value|null_if_empty|null_if_zero|pct|pct_rank|pct_variance|percentile|previous_day|previous_value|quantile|quarter|quartile|rank|real|right|round|row_number|rpad|running_pct|running_sum|session_user|slice|slugify|smallint|split|split_part|substraction|substring|sum|sumif|switch|system_user|time|timestamp|tinyint|today|tomorrow|trim|varchar|weekday|weekdaynumber|year|yesterday|yyyy|yyyymm|yyyymmdd|zero_if_null)\\b\\s*(?=\\()",
+          "captures": {
+            "1": {
+              "name": "support.function.crono-sql"
+            }
+          }
+        }
+      ]
+    }
+  }
+}
