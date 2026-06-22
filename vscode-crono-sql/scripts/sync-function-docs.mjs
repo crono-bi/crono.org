@@ -8,11 +8,12 @@
 // Este script es la ÚNICA fuente que debe escribir function-docs.ts.
 // No edites el archivo generado a mano.
 //
-// NOTA (reconstrucción): este generador fue reconstruido a partir del .vsix
-// publicado. El function-docs.ts versionado proviene del paquete original
-// (130 nombres / 125 docs / 130 categorías). Al regenerar contra los docs
-// ACTUALES se obtienen ~118 funciones, porque la documentación ha cambiado
-// desde aquel snapshot. Revisa el diff antes de commitear tras un `npm run sync`.
+// Algoritmo:
+//   1. Lee cada doc de función (.md/.mdx) y extrae title, descripción y ejemplo.
+//   2. CRONO_FUNCTION_NAMES = nombres de función documentados (ordenados).
+//   3. CRONO_FUNCTION_CATEGORIES mapea cada nombre a su categoría (carpeta).
+//
+// Revisa siempre el diff tras un `npm run sync`: la documentación evoluciona.
 
 import { readFileSync, writeFileSync, readdirSync, statSync, mkdirSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
@@ -20,8 +21,9 @@ import { fileURLToPath } from 'node:url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const EXT_ROOT = resolve(__dirname, '..');
+const REPO_ROOT = resolve(EXT_ROOT, '..');
 // La extensión vive dentro del repo crono.org, los docs están en ../src/content/docs.
-const DOCS_ROOT = resolve(EXT_ROOT, '..', 'src', 'content', 'docs', 'sql', 'functions');
+const DOCS_ROOT = resolve(REPO_ROOT, 'src', 'content', 'docs', 'sql', 'functions');
 const OUT_FILE = join(EXT_ROOT, 'src', 'generated', 'function-docs.ts');
 
 // Mapa carpeta (es) -> categoría (clave interna en inglés).
@@ -35,14 +37,14 @@ const FOLDER_TO_CATEGORY = {
   texto: 'text',
 };
 
-/** Devuelve todos los archivos .md dentro de un directorio (recursivo). */
+/** Devuelve todos los docs (.md/.mdx) dentro de un directorio (recursivo), sin index. */
 function walk(dir) {
   const out = [];
   for (const entry of readdirSync(dir)) {
     const full = join(dir, entry);
     if (statSync(full).isDirectory()) {
       out.push(...walk(full));
-    } else if (entry.endsWith('.md')) {
+    } else if ((entry.endsWith('.md') || entry.endsWith('.mdx')) && !entry.startsWith('index.')) {
       out.push(full);
     }
   }
@@ -73,7 +75,7 @@ function parseExample(body) {
   return m ? m[1].replace(/\n+$/, '') : null;
 }
 
-function main() {
+async function main() {
   const files = walk(DOCS_ROOT).sort();
 
   const docs = {};
@@ -88,7 +90,7 @@ function main() {
     const body = raw.replace(/^---\n[\s\S]*?\n---/, '');
 
     // slug = functions/<carpeta>/<archivo-sin-ext>, relativo a DOCS_ROOT.
-    const rel = file.slice(DOCS_ROOT.length + 1).replace(/\.md$/, '');
+    const rel = file.slice(DOCS_ROOT.length + 1).replace(/\.mdx?$/, '');
     const folder = rel.split('/')[0];
     const category = FOLDER_TO_CATEGORY[folder] ?? null;
 
@@ -104,6 +106,11 @@ function main() {
     if (category) categories[name] = category;
   }
 
+  // La documentación (src/content/docs/sql/functions) es la ÚNICA fuente
+  // autoritativa. NOTA: src/config/crono-language-data.mjs está desactualizado
+  // (usa nombres concatenados antiguos: adddays, split, weekday…) frente a los
+  // nombres snake_case de los docs (add_days, split_part, day_name…), por lo que
+  // NO se fusiona aquí para evitar inyectar duplicados obsoletos.
   const names = Object.keys(docs).sort();
 
   const header =
@@ -135,7 +142,7 @@ function main() {
 
   mkdirSync(dirname(OUT_FILE), { recursive: true });
   writeFileSync(OUT_FILE, out);
-  console.log(`Generado ${OUT_FILE} con ${names.length} funciones.`);
+  console.log(`Generado ${OUT_FILE}: ${names.length} nombres, ${Object.keys(docs).length} con doc, ${Object.keys(categories).length} categorías.`);
 }
 
-main();
+await main();
