@@ -101,16 +101,16 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.12);
   backdrop-filter: blur(10px);
   border-radius: 12px;
-  padding: 1rem 1.5rem;
-  min-width: 80px;
+  padding: clamp(0.6rem, 2.5vw, 1rem) clamp(0.75rem, 3vw, 1.5rem);
+  min-width: clamp(56px, 14vw, 80px);
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .countdown-number {
-  font-size: 3rem;
+  font-size: clamp(1.75rem, 7vw, 3rem);
   font-weight: 700;
   color: #fff;
   line-height: 1;
@@ -118,18 +118,20 @@ export default {
 }
 
 .countdown-label {
-  font-size: 0.75rem;
-  color: rgba(255, 255, 255, 0.8);
-  margin-top: 0.5rem;
-  letter-spacing: 0.1em;
+  font-size: clamp(0.6rem, 1.8vw, 0.75rem);
+  color: rgba(255, 255, 255, 0.7);
+  margin-top: 0.35rem;
+  letter-spacing: 0.08em;
   font-weight: 600;
 }
 
 .countdown-separator {
-  font-size: 2.5rem;
+  font-size: clamp(1.5rem, 5vw, 2.5rem);
   font-weight: 300;
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.5);
   animation: pulse 1s ease-in-out infinite;
+  align-self: flex-start;
+  padding-top: clamp(0.5rem, 2vw, 0.8rem);
 }
 
 @keyframes pulse {
@@ -160,20 +162,5 @@ export default {
   50% { transform: scale(1.05); box-shadow: 0 0 40px rgba(16, 185, 129, 0.6); }
 }
 
-@media (max-width: 768px) {
-  .countdown-item {
-    padding: 0.75rem 1rem;
-    min-width: 60px;
-  }
-  .countdown-number {
-    font-size: 2rem;
-  }
-  .countdown-label {
-    font-size: 0.6rem;
-  }
-  .countdown-separator {
-    font-size: 1.5rem;
-  }
-}
 </style>
 </file>

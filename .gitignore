@@ -9,3 +9,4 @@ run
 .basement
 config.local.js
 src/.vuepress/dist
+vscode-crono-sql
