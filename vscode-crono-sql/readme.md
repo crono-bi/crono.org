@@ -6,7 +6,7 @@ No requiere conexión a internet, cuenta ni servidor: toda la inteligencia se ej
 
 ## Características
 
-- **Resaltado de sintaxis** — keywords y funciones específicas de Crono (`MATERIALIZE`, `MERGE CLONE`, `runningsum`, ...) sobre la base de SQL estándar.
+- **Resaltado de sintaxis** — keywords y funciones específicas de Crono (`MATERIALIZE`, `MERGE CLONE`, `running_sum`, ...) sobre la base de SQL estándar.
 - **Autocompletado** — todas las keywords y funciones, con firma y categoría.
 - **Documentación al pasar el cursor** — descripción y sintaxis de funciones y keywords, con enlace a la documentación oficial.
 - **Snippets** — los patrones de carga (`MERGE CLONE`, `MERGE UPSERT`, `MERGE HISTORY`, `DELETE AND INSERT`...) y plantillas habituales.
@@ -14,7 +14,7 @@ No requiere conexión a internet, cuenta ni servidor: toda la inteligencia se ej
 
 ## Extensiones de archivo
 
-`.csql` · `.crono` · `.crono-sql`
+`.sql`
 
 ## Desarrollo
 
@@ -31,26 +31,24 @@ F5               # lanza una ventana de Extension Host para probar
 npm run package  # genera el .vsix con vsce
 ```
 
-### Fuente única de verdad
+### Fuentes de verdad
 
-Las listas de keywords y funciones provienen de
-`crono.org/src/config/crono-language-data.mjs`. Las descripciones de hover de
-las funciones se extraen de los docs oficiales en
-`crono.org/src/content/docs/sql/functions/**`. Tras modificarlos, ejecuta:
+- **Keywords**: `src/language-data.ts` refleja la lista de
+  `crono.org/src/config/crono-language-data.mjs` (sincronización manual).
+- **Funciones**: los nombres, descripciones y ejemplos se derivan de los docs
+  oficiales en `crono.org/src/content/docs/sql/functions/**` y se generan en
+  `src/generated/function-docs.ts`. Tras modificar los docs, ejecuta:
 
 ```bash
-npm run sync        # regenera la gramática (funciones) desde la fuente canónica
-npm run sync:docs   # regenera src/generated/function-docs.ts desde los docs
+npm run sync   # regenera src/generated/function-docs.ts desde los docs oficiales
 ```
+
+> No edites `src/generated/function-docs.ts` a mano: lo sobrescribe el script.
+> La gramática TextMate (`syntaxes/crono-sql.tmLanguage.json`) se mantiene
+> manualmente.
 
 El hover de funciones resuelve la descripción con esta prioridad:
 **doc oficial generado → texto manual (`src/hover-docs.ts`) → genérico por categoría**.
-
-> Nota: 94/99 funciones tienen doc oficial. Las funciones `bit`, `datetimeoffset`,
-> `current_time`, `maximum` y `minimum` no tienen página de documentación y usan
-> el fallback. Además, 7 funciones tienen nombre distinto entre el lenguaje y los
-> docs (p. ej. `daysdiff` ↔ `days_between`); el mapeo está en `ALIASES` dentro de
-> `scripts/sync-function-docs.mjs`.
 
 ## Configuración
 
