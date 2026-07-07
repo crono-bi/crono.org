@@ -27,6 +27,10 @@ const es = {
   'pg.error': 'Error',
   'pg.run': 'Run',
 
+  // ── Engine selector ──
+  'engineSelector.label': 'Seleccionar motor SQL',
+  'engineSelector.soon': 'Pronto',
+
   // ── Playground sidebar ──
   'pg.sidebar.back': 'Manual Crono SQL',
   'pg.sidebar.loading': 'Cargando ejemplos...',
@@ -576,6 +580,10 @@ const en: Record<keyof typeof es, string> = {
   'pg.compiling': 'Compiling...',
   'pg.error': 'Error',
   'pg.run': 'Run',
+
+  // ── Engine selector ──
+  'engineSelector.label': 'Select SQL engine',
+  'engineSelector.soon': 'Soon',
 
   // ── Playground sidebar ──
   'pg.sidebar.back': 'Crono SQL Manual',
