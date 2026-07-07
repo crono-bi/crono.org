@@ -530,3 +530,24 @@ main:has(.manual-landing) > .content-panel:first-child {
 .crono-compile-btn svg {
   flex-shrink: 0;
 }
+
+/* ===== FIX COPY BUTTON OVERLAP ON MOBILE =====
+   Expressive Code renders the copy button absolutely positioned at the
+   top-right corner of the code block. On narrow viewports the first line of
+   code slides underneath the button, making it unreadable. Reserve top
+   padding inside the pre so the button sits in its own header-like area, and
+   keep the button visible on mobile (where hover is not available). */
+@media (max-width: 640px) {
+  .expressive-code .frame pre {
+    padding-top: 2.75rem;
+  }
+
+  .expressive-code .frame .copy {
+    opacity: 1;
+    top: 0.5rem;
+  }
+
+  .expressive-code .frame .copy button {
+    opacity: 1;
+  }
+}

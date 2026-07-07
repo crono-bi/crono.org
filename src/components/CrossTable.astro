@@ -358,4 +358,43 @@ function sr(v: string): string {
       margin: 0 0.4rem;
     }
   }
+
+  /* ──────────────────────────────────────────────────────────────
+     Móvil: la tabla se ajusta al viewport en lugar de desbordar.
+     En Blink, el `min-width: 560px` de `.ct-table` filtra su min-content
+     al cálculo del layout viewport y lo expande (~627px), provocando
+     252px de desbordamiento horizontal de TODA la página (no solo la
+     tabla). Ni `overflow`/`contain` en los wrappers lo evitan porque la
+     expansión ocurre a nivel de viewport. Como 6 de las 7 columnas son
+     solo checkmarks, la tabla cabe holgada en 375px sin scroll — mejor
+     UX que el scroll horizontal. Comprobado con Playwright: overflow = 0.
+     ────────────────────────────────────────────────────────────── */
+  @media (max-width: 640px) {
+    .ct-scroll {
+      overflow-x: visible;
+    }
+    .ct-table {
+      min-width: 0;
+      width: 100%;
+    }
+    .ct-th {
+      font-size: 0.54rem;
+      padding: 0.3rem 0.1rem;
+      letter-spacing: 0;
+    }
+    .ct-th--row-header {
+      min-width: 0;
+    }
+    .ct-td {
+      padding: 0.35rem 0.1rem;
+    }
+    .ct-td--row-header {
+      white-space: normal;
+    }
+    .ct-label {
+      white-space: normal;
+      font-size: 0.66rem;
+      word-break: break-word;
+    }
+  }
 </style>

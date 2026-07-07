@@ -53,6 +53,36 @@ export default defineConfig({
 			},
 			social: [],
 			customCss: ['./src/styles/custom.css'],
+			head: [
+				{
+					tag: 'meta',
+					attrs: { property: 'og:image', content: 'https://crono.org/og-image.png' },
+				},
+				{
+					tag: 'meta',
+					attrs: { property: 'og:image:width', content: '1200' },
+				},
+				{
+					tag: 'meta',
+					attrs: { property: 'og:image:height', content: '630' },
+				},
+				{
+					tag: 'meta',
+					attrs: { property: 'og:image:type', content: 'image/png' },
+				},
+				{
+					tag: 'meta',
+					attrs: { property: 'og:image:alt', content: 'Crono — Documentación oficial' },
+				},
+				{
+					tag: 'meta',
+					attrs: { name: 'twitter:card', content: 'summary_large_image' },
+				},
+				{
+					tag: 'meta',
+					attrs: { name: 'twitter:image', content: 'https://crono.org/og-image.png' },
+				},
+			],
 			components: {
 				Header: './src/components/Header.astro',
 				SiteTitle: './src/components/SiteTitle.astro',
