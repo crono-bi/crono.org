@@ -62,18 +62,24 @@ const docsLabel = isEN ? 'Docs' : 'Documentación';
 ---
 
 <div class="header">
-	<!-- Mobile menu toggle (checkbox hack) -->
-	<input type="checkbox" id="mobile-menu-toggle" class="mobile-toggle" />
-	<label for="mobile-menu-toggle" class="mobile-menu-btn" aria-label="Menu">
-		<svg class="icon-menu" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-			<line x1="3" y1="6" x2="21" y2="6"/>
-			<line x1="3" y1="12" x2="21" y2="12"/>
-			<line x1="3" y1="18" x2="21" y2="18"/>
-		</svg>
-		<svg class="icon-close" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-			<path d="M18 6 6 18M6 6l12 12"/>
-		</svg>
-	</label>
+	<!-- Mobile menu toggle (checkbox hack).
+	     Solo en páginas NO-docs: en docs, Starlight ya renderiza su propio
+	     toggle de sidebar, evitando así una doble hamburguesa / overlay vacío. -->
+	{!isDocsSection && (
+		<>
+			<input type="checkbox" id="mobile-menu-toggle" class="mobile-toggle" />
+			<label for="mobile-menu-toggle" class="mobile-menu-btn" aria-label="Menu">
+				<svg class="icon-menu" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+					<line x1="3" y1="6" x2="21" y2="6"/>
+					<line x1="3" y1="12" x2="21" y2="12"/>
+					<line x1="3" y1="18" x2="21" y2="18"/>
+				</svg>
+				<svg class="icon-close" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+					<path d="M18 6 6 18M6 6l12 12"/>
+				</svg>
+			</label>
+		</>
+	)}
 
 	<div class="title-wrapper sl-flex">
 		<SiteTitle />
@@ -118,9 +124,9 @@ const docsLabel = isEN ? 'Docs' : 'Documentación';
 		<LanguageSelect />
 	</div>
 
-	<!-- Mobile menu -->
-	<div class="mobile-menu" role="dialog" aria-label="Navigation">
-		{!isDocsSection && (
+	<!-- Mobile menu (solo en páginas NO-docs) -->
+	{!isDocsSection && (
+		<div class="mobile-menu" role="dialog" aria-label="Navigation">
 			<div class="mobile-nav">
 				{navLinks.map(({ label, href, highlight }) => (
 					<a href={href} class:list={['mobile-nav-link', { 'mobile-nav-link--highlight': highlight }]}>
@@ -137,8 +143,8 @@ const docsLabel = isEN ? 'Docs' : 'Documentación';
 					))}
 				</div>
 			</div>
-		)}
-	</div>
+		</div>
+	)}
 </div>
 
 <style>

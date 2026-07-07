@@ -285,6 +285,26 @@ html {
   background: rgba(var(--brand-rgb-value, 27, 95, 140), 0.08);
 }
 
+/* MOBILE: en pantallas estrechas, las tablas anchas (referencia de funciones,
+   parámetros, etc.) se comprimían de forma ilegible por `table-layout: fixed`.
+   Las convertimos en un bloque con scroll horizontal (patrón responsive
+   estándar) para preservar la legibilidad de cada celda. */
+@media (max-width: 640px) {
+  .sl-markdown-content table:not(.ct-table) {
+    display: block !important;
+    width: 100%;
+    table-layout: auto;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+  }
+
+  .sl-markdown-content table:not(.ct-table) th,
+  .sl-markdown-content table:not(.ct-table) td {
+    white-space: nowrap;
+  }
+}
+
 /* ===== PAGINATION PREV/NEXT REDESIGN ===== */
 .pagination-links {
   gap: 12px !important;

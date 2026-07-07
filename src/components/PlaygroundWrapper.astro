@@ -4,6 +4,13 @@
 ---
 
 <div class="pg-content">
+  <p class="pg-mobile-hint" role="note">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <rect x="5" y="2" width="14" height="20" rx="2"/>
+      <line x1="12" y1="18" x2="12" y2="18"/>
+    </svg>
+    <span>El editor funciona mejor en pantallas grandes. Para una experiencia completa, ábrelo en escritorio.</span>
+  </p>
   <slot />
 </div>
 
@@ -69,6 +76,32 @@
     width: 100% !important;
     max-width: 100% !important;
     min-width: 0 !important;
+  }
+
+  /* ── Aviso solo-mobile: el editor rinde mejor en desktop ── */
+  .pg-mobile-hint {
+    display: none;
+  }
+
+  @media (max-width: 640px) {
+    .pg-mobile-hint {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin: 0 0 0.5rem;
+      padding: 0.6rem 0.85rem;
+      font-size: 0.8125rem;
+      line-height: 1.4;
+      color: var(--sl-color-gray-2);
+      background: rgba(59, 130, 246, 0.1);
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      border-radius: 8px;
+      flex-shrink: 0;
+    }
+    .pg-mobile-hint svg {
+      flex-shrink: 0;
+      color: #3B82F6;
+    }
   }
 
   /* ── pg-content fills available height ── */

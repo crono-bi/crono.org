@@ -584,5 +584,31 @@ const sections: Section[] = [
     .pr-grid {
       grid-template-columns: 1fr;
     }
+
+    /* Reducir paddings fijos que desperdiciaban ancho en móvil */
+    .pr-page-hero {
+      padding: 1.5rem 1.25rem;
+    }
+    .pr-page-hero-title {
+      font-size: 1.5rem;
+    }
+    .pr-guarantee-header,
+    .pr-guarantee-footer {
+      padding: 1.25rem;
+    }
+    .pr-guarantee-highlight {
+      padding: 1.25rem 1.25rem 0;
+    }
+    .pr-guarantee-body {
+      padding: 0 1.25rem;
+    }
+    .pr-contact {
+      padding: 1.5rem 1.25rem;
+    }
+
+    /* Badge legible en móvil (antes ~9px) */
+    .pr-badge {
+      font-size: 0.625rem;
+    }
   }
 </style>
