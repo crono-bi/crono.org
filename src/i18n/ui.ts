@@ -96,6 +96,9 @@ const es = {
   'download.table.expiration': 'Expiración',
   'download.btn': 'Descargar',
   'download.months': 'ene.|feb.|mar.|abr.|may.|jun.|jul.|ago.|sep.|oct.|nov.|dic.',
+  'download.summary.downloadTitle': 'Descargar instalador',
+  'download.summary.historyTitle': 'Ver historial completo de versiones',
+  'download.summary.historyLabel': 'Historial',
 
   // ── SqlLanding / ManualLanding ──
   'sqlLanding.subtitle': 'Escríbelo una vez. Cárgalo en cualquier motor.',
@@ -650,6 +653,9 @@ const en: Record<keyof typeof es, string> = {
   'download.table.expiration': 'Expiration',
   'download.btn': 'Download',
   'download.months': 'Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec',
+  'download.summary.downloadTitle': 'Download installer',
+  'download.summary.historyTitle': 'View full version history',
+  'download.summary.historyLabel': 'History',
 
   // ── SqlLanding / ManualLanding ──
   'sqlLanding.subtitle': 'Write it once. Load it into any engine.',
