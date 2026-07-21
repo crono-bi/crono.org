@@ -59,6 +59,11 @@ const docLinks = isEN
 
 const isDocsActive = docLinks.some(({ href }) => pathname.startsWith(href));
 const docsLabel = isEN ? 'Docs' : 'Documentación';
+
+// Los links de Home (/ y /en/) solo deben estar activos en su path exacto,
+// no en subpáginas del mismo locale.
+const isHomeHref = (href: string) => href === '/' || href === '/en/' || href === '/en';
+const isNavActive = (href: string) => pathname === href || (!isHomeHref(href) && pathname.startsWith(href));
 ---
 
 <div class="header">
@@ -87,7 +92,7 @@ const docsLabel = isEN ? 'Docs' : 'Documentación';
 	{!isDocsSection && (
 		<nav class="header-nav" aria-label="Main">
 			{navLinks.map(({ label, href, highlight }) => (
-				<a href={href} class:list={['nav-link', { 'nav-link--active': pathname === href || (href.length > 1 && pathname.startsWith(href)), 'nav-link--highlight': highlight }]}>
+				<a href={href} class:list={['nav-link', { 'nav-link--active': isNavActive(href), 'nav-link--highlight': highlight }]}>
 					{label}
 				</a>
 			))}
