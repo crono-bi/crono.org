@@ -2,3 +2,81 @@
 title: "Introducción"
 ---
 
+import { Aside } from '@astrojs/starlight/components';
+
+**Crono ETL** es un IDE para el desarrollo y la ejecución de proyectos ETL/DWH. Como cualquier IDE, incluye un editor de código —con soporte nativo para Crono SQL— y añade las herramientas específicas del dominio: compilación y ejecución de sentencias Crono SQL, gestión visual del entorno de trabajo, y utilidades para monitorizar el estado del sistema (historial de cargas, duración, errores, notificaciones).
+
+Crono ETL ocupa el primer eslabón del ecosistema Crono. Las fuentes de datos —bases de datos operacionales, ficheros Excel, APIs REST, CSVs— se extraen y transforman con Crono ETL y se depositan en el data warehouse. Desde ahí, Crono Metadata construye la capa semántica y Crono Analysis permite el análisis y el reporting.
+
+*[Pantallazo: diagrama del ecosistema Crono — fuentes → ETL → DWH → Metadata → Analysis]*
+
+## Crono ETL y Crono CLI
+
+Crono ETL no es la única forma de trabajar con proyectos Crono SQL. Existe también **Crono CLI**, una herramienta de línea de comandos gratuita que ofrece las mismas capacidades de compilación y ejecución, y que puede integrarse con cualquier editor, incluido VS Code.
+
+| | Crono CLI | Crono ETL |
+|---|---|---|
+| Precio | Gratuito | De pago |
+| Compilación y ejecución de Crono SQL | ✓ | ✓ |
+| Editor de código | El del usuario (VS Code, etc.) | IDE integrado |
+| Configuración visual del entorno | — | ✓ |
+| Monitorización y health del sistema | — | ✓ |
+
+Crono CLI es la opción natural para equipos que ya tienen su propio entorno de desarrollo y quieren integrar Crono SQL en su flujo de trabajo habitual. Crono ETL aporta valor cuando el equipo quiere un entorno unificado con todas las herramientas del proyecto en un solo lugar.
+
+Este manual documenta **Crono ETL**. La documentación de Crono CLI se encuentra en su propia sección.
+
+<Aside type="caution">
+Crono CLI está actualmente en desarrollo. La primera versión estará disponible muy pronto.
+</Aside>
+
+## El entorno de trabajo
+
+Una de las ventajas del IDE es la gestión visual del entorno. Antes de escribir una sola línea de código, el desarrollador define dónde están los datos: qué bases de datos son el origen, cuál es el destino, dónde se almacenan los ficheros intermedios.
+
+Crono ETL facilita esta configuración mediante formularios específicos para cada tipo de recurso:
+
+- **Conexiones** — bases de datos de origen y destino, con soporte para los principales motores (SQL Server, PostgreSQL, Snowflake, BigQuery...).
+- **Almacenamiento** — ubicaciones de ficheros: rutas locales, de red o buckets en la nube (S3, Azure Blob...).
+- **Credenciales** — gestión centralizada de usuarios y contraseñas, separada del código para que los repositorios no contengan secretos.
+
+Esta configuración se guarda en el proyecto y puede variar por entorno: el mismo proyecto apunta a la base de datos de desarrollo en el portátil del desarrollador y al servidor de producción en el servidor de cargas, sin tocar el código.
+
+<Aside type="caution">
+La gestión de múltiples entornos está actualmente en desarrollo. La versión actual de Crono ETL permite configurar un único entorno por proyecto. Esta documentación se actualizará cuando la funcionalidad esté disponible.
+</Aside>
+
+## Dos tipos de fichero
+
+Una vez configurado el entorno, toda la lógica del proyecto reside en dos tipos de fichero de texto:
+
+**Ficheros `.sql`** — scripts Crono SQL que definen la lógica de carga de cada tabla. Cada fichero contiene una sentencia de carga (`MERGE CLONE`, `MERGE UPSERT`, `INSERT OVERWRITE`...) que especifica de dónde vienen los datos, cómo se transforman y cómo se cargan en el destino. La sintaxis de estos ficheros está documentada en el [manual de Crono SQL](/sql/intro/).
+
+**Ficheros `.job`** — ficheros de orquestación que agrupan y secuencian las acciones de carga. Un job define qué se ejecuta, en qué orden, si hay pasos que pueden correr en paralelo y qué ocurre cuando algo falla. Los jobs son el objeto central de Crono ETL: se planifican, se monitorizan y se reportan como unidades de trabajo completas.
+
+Ambos tipos de fichero son texto plano. Viven en el repositorio Git del proyecto junto al resto del código, se revisan con las mismas herramientas y siguen el mismo ciclo de vida que cualquier otro fichero de software.
+
+## Principios
+
+El diseño de Crono ETL responde a los mismos principios que guían el resto de la plataforma.
+
+**Todo en ficheros de texto.** La lógica de carga, la estructura del modelo de datos y la configuración del entorno residen en ficheros de texto plano versionables. Nada queda oculto en interfaces gráficas ni en configuraciones binarias. El repositorio Git es la fuente de verdad del proyecto.
+
+**Los proyectos ETL son proyectos de software.** Un proyecto ETL serio requiere las mismas prácticas que cualquier proyecto de ingeniería: código legible, revisiones, tests, CI/CD y un histórico de cambios. Crono ETL está diseñado para hacer posible esa disciplina sin fricciones.
+
+**Código como definición única.** Cada tabla tiene un único fichero `.sql` que es a la vez su DDL y su lógica de carga. No hay definiciones duplicadas que puedan desincronizarse. Cambiar el modelo es cambiar ese fichero; Crono ETL se encarga del resto.
+
+**Detección de errores antes de ejecutar.** El compilador de Crono SQL detecta errores de sintaxis, referencias a columnas inexistentes y tipos incompatibles antes de que ninguna sentencia llegue a la base de datos. Los problemas se descubren en el editor, no en producción a las 3 de la madrugada.
+
+## Estructura del manual
+
+Este manual documenta Crono ETL en cuatro bloques:
+
+- **Primeros pasos** — instalación, creación del primer proyecto y primera ejecución.
+- **El IDE** — descripción del entorno de desarrollo integrado.
+- **Configuración del entorno** — conexiones, almacenamiento y credenciales.
+- **Acciones ETL** — referencia completa de todos los tipos de acción disponibles en un fichero `.job`.
+
+<Aside type="tip">
+Este manual asume conocimientos básicos de SQL y familiaridad con proyectos de datos. Para la sintaxis de las sentencias de carga (`MERGE`, `INSERT`, `UPDATE`...) consulta el [manual de Crono SQL](/sql/intro/).
+</Aside>
