@@ -85,6 +85,14 @@ El panel lateral izquierdo, exclusivo de esta vista, tiene tres modos selecciona
 
 *[Pantallazo: panel lateral con los tres modos señalados]*
 
+### Acciones
+
+El grupo **Acciones** de la cinta contiene dos botones:
+
+**Ver SQL** — compila el código Crono SQL del fichero activo y muestra el SQL nativo resultante para la conexión activa. Es la forma más directa de verificar qué código se enviará a la base de datos antes de ejecutarlo.
+
+**Ejecutar** (o `F5`) — compila y ejecuta el código. Si hay texto seleccionado, ejecuta únicamente la selección; si no hay nada seleccionado, ejecuta el fichero completo.
+
 ### Menú contextual
 
 En línea con el resto de la plataforma Crono, el IDE hace un uso extensivo del menú contextual. Prácticamente cualquier elemento es accionable con el botón derecho: los ítems del panel lateral, las pestañas de ficheros abiertos, las funciones y palabras reservadas del editor, las columnas de las vistas de datos...
@@ -92,3 +100,34 @@ En línea con el resto de la plataforma Crono, el IDE hace un uso extensivo del 
 El contenido del menú varía según el contexto. Algunas opciones habituales son ejecutar la carga de una tabla, ver su historial, navegar a la definición de un símbolo, consultar los valores de una columna o acceder a la documentación de una función concreta —tanto del manual de Crono SQL como de la documentación nativa del motor de base de datos.
 
 *[Pantallazo: ejemplos de menú contextual en el editor y en el panel ETL]*
+
+## Menú Ayuda
+
+El menú **Ayuda** agrupa utilidades de soporte y administración del sistema:
+
+- **Acerca de** / **Buscar actualizaciones** — información de versión y acceso a actualizaciones.
+- **Soporte** — acceso al canal de soporte.
+- **Opciones generales** — configuración general de la aplicación, incluyendo el idioma de la interfaz (español, inglés, catalán, portugués, alemán y francés).
+- **Registrar servidor** — activación de la licencia.
+- **Cuenta GitHub** — vinculación de la cuenta GitHub para operaciones con repositorios.
+- **Modo oscuro** — alterna entre tema claro y oscuro.
+- **Administrador de trabajos** / **Administrador de recursos** — utilidades de administración del sistema.
+- **Calculadora** — calculadora integrada.
+- **Información del sistema** — detalles del entorno de ejecución.
+- **Programador de tareas** / **Administrador de tareas** — planificación y supervisión de tareas del sistema.
+
+*[Pantallazo: menú Ayuda desplegado]*
+
+## La barra de estado
+
+La barra de estado, en la parte inferior de la ventana, muestra en todo momento información clave del proyecto:
+
+- **Versión** del producto instalado.
+- **Proyecto y rama Git** activos, con indicador de cambios pendientes de confirmar.
+- **Límite de filas** para las consultas de previsualización de datos (configurable).
+- **Posición del cursor** en el editor (línea y columna).
+- **Estado de la conexión** activa.
+
+Haciendo clic en la barra de estado se accede a opciones adicionales: historial de consultas ejecutadas, información del entorno y uso de memoria.
+
+*[Pantallazo: barra de estado con el menú desplegado]*

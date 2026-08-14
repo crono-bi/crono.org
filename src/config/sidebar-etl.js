@@ -5,8 +5,8 @@ export const etlTopics = {
 	items: [
 		{ slug: 'etl', label: 'Crono ETL', translations: { en: 'Crono ETL' } },
 		{ slug: 'etl/intro', label: 'Introducción', translations: { en: 'Introduction' } },
+		{ slug: 'etl/ide', label: 'El IDE', translations: { en: 'The IDE' } },
 		{ slug: 'etl/getting-started', label: 'Primeros pasos', translations: { en: 'Getting started' } },
-		{ slug: 'etl/development-environment', label: 'Entorno de desarrollo', translations: { en: 'Development environment' } },
 		{ slug: 'etl/project-structure', label: 'Estructura del proyecto', translations: { en: 'Project structure' } },
 		{
 			label: 'Configuración del entorno',
