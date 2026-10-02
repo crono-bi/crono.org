@@ -18,7 +18,18 @@ export const etlTopics = {
 				{ slug: 'etl/configuration/credentials', label: 'Credenciales', translations: { en: 'Credentials' } },
 			]
 		},
-		{ slug: 'etl/etl-actions', label: 'Acciones ETL', translations: { en: 'ETL actions' } },
+		{
+			label: 'Acciones ETL',
+			translations: { en: 'ETL actions' },
+			collapsed: true,
+			items: [
+				{ slug: 'etl/actions', label: 'Introducción', translations: { en: 'Introduction' } },
+				{ slug: 'etl/actions/data-property', label: 'La propiedad Data', translations: { en: 'The Data property' } },
+				{ label: 'Exportación e importación', translations: { en: 'Export and import' }, collapsed: true, autogenerate: { directory: 'etl/actions/import-export' } },
+				{ label: 'Ejecución', translations: { en: 'Execution' }, collapsed: true, autogenerate: { directory: 'etl/actions/execution' } },
+				{ label: 'Utilidades', translations: { en: 'Utilities' }, collapsed: true, autogenerate: { directory: 'etl/actions/utilities' } },
+			]
+		},
 		{ slug: 'etl/dwh-example', label: 'Ejemplo DWH', translations: { en: 'DWH example' } },
 	],
 };

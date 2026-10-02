@@ -1,0 +1,83 @@
+---
+title: "Introducción"
+sidebar:
+  order: 0
+---
+
+import CategorySelector from '../../../../components/CategorySelector.astro'
+
+Las **acciones ETL** son el contenido de los ficheros `.job`. Cada acción realiza una tarea concreta: copiar tablas entre bases de datos, exportar o importar ficheros, ejecutar otros jobs o un procedimiento, enviar un correo...
+
+Cada fichero `.job` contiene una única acción. La orquestación —qué se ejecuta, en qué orden y qué puede ejecutarse en paralelo— se define habitualmente en una acción [JOB](/etl/actions/execution/job/), que agrupa la ejecución de otros jobs mediante workflows.
+
+## Sintaxis
+
+Todas las acciones siguen la misma sintaxis: el nombre de la acción seguido, entre paréntesis, de una lista de propiedades separadas por comas.
+
+```
+accion(Propiedad1=valor1, Propiedad2=valor2, ...)
+```
+
+Los nombres de acciones y de propiedades deben escribirse entre corchetes cuando contienen espacios o coinciden con una palabra reservada. Por eso se escribe `[bulk table]` o `[Data]`, mientras que `SchemaName` o `TableName` no los necesitan:
+
+```
+[bulk table](
+	SourceConnectionName='ERP_SOURCE',
+	SchemaName='imp',
+	TableName='customers_data',
+	TargetSchemaName='staging'
+)
+```
+
+## Principios
+
+Las acciones responden a la misma filosofía que el resto de Crono: el código debe expresar la intención del desarrollador con el mínimo ruido posible.
+
+**Una responsabilidad por fichero.** Cada fichero `.job` contiene una sola acción, siguiendo el principio de responsabilidad única. Cada job es así una pieza pequeña, fácil de entender, de probar por separado y de reutilizar desde distintas orquestaciones.
+
+**Declarativas.** Una acción describe qué se quiere hacer, no cómo hacerlo. No hay que abrir conexiones, recorrer cursores ni gestionar ficheros temporales: la acción se encarga de ello. El resultado es un código breve, legible y fácil de revisar.
+
+**Desacopladas del entorno.** Las acciones no contienen rutas absolutas, cadenas de conexión ni secretos. Las [conexiones](/etl/configuration/connections/), las ubicaciones de [almacenamiento](/etl/configuration/storage/) y las [credenciales](/etl/configuration/credentials/) se definen en el entorno, y las acciones solo las referencian por su nombre (`SourceConnectionName='ERP_SOURCE'`). Así, el código puede versionarse y compartirse sin exponer información sensible, y el mismo job funciona en cualquier entorno que defina esos nombres.
+
+**Agnósticas al dialecto.** Las acciones no dependen del motor de base de datos. El mismo código extrae datos de SQL Server o de PostgreSQL, o genera un fichero Parquet desde Snowflake o Databricks: Crono ETL se encarga de las particularidades de cada plataforma. Cambiar de motor de origen o de destino es cambiar la conexión, no el código.
+
+**Convenciones razonables.** Las propiedades tienen valores por defecto pensados para el caso habitual, de modo que solo es necesario informar lo que se aparta de él. La convención más importante es la de la conexión activa: todas las acciones y consultas se ejecutan sobre ella salvo que se indique otra conexión de forma explícita. Del mismo modo, en `BULK TABLE`, si no se indica el nombre de la tabla de destino se mantiene el de origen, y si la tabla de destino no existe se crea.
+
+**Sin instrucciones procedurales.** Crono ETL no tiene bucles o condicionales. Esa lógica se expresa en SQL, el lenguaje que cualquier equipo de datos ya domina: una consulta decide sobre qué elementos se actúa (`WHERE`), en qué orden (`ORDER BY`) y con qué valores. La [propiedad `Data`](/etl/actions/data-property/) es el mecanismo que conecta ambos mundos: la acción se ejecuta una vez por cada fila de la consulta. Así, cargar cien tablas con `BULK TABLE`, exportar un fichero Parquet por cliente o copiar un lote de ficheros no requiere repetir la acción ni escribir un bucle. Y si la consulta no devuelve filas, la acción no se ejecuta, lo que cubre también el caso de un condicional.
+
+**Dirigidas por metadatos.** Las listas de tablas o ficheros no se escriben en el código, sino que se mantienen en tablas de la base de datos y se consultan con `Data`. Añadir un elemento nuevo es añadir una fila, no modificar el job.
+
+**Paralelismo integrado.** Las acciones que procesan varios elementos pueden ejecutarlos en paralelo con una sola propiedad (`ParallelExecution`), sin necesidad de programar hilos ni coordinar tareas.
+
+Juntas, estas ideas permiten que tareas que en una herramienta ETL tradicional requieren flujos gráficos complejos o programación imperativa se resuelvan con unas pocas líneas de código semántico.
+
+## Categorías
+
+Las acciones se han agrupado por categorías:
+
+<CategorySelector categories={[
+  {
+    id: 'import-export',
+    title: 'Exportación e importación',
+    description: 'Acciones para mover datos entre bases de datos y ficheros.',
+    count: 3,
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 3 4 4-4 4"/><path d="M20 7H4"/><path d="m8 21-4-4 4-4"/><path d="M4 17h16"/></svg>',
+    path: '/etl/actions/import-export/'
+  },
+  {
+    id: 'execution',
+    title: 'Ejecución',
+    description: 'Acciones para ejecutar otros jobs y procedimientos.',
+    count: 2,
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="6 3 20 12 6 21 6 3"/></svg>',
+    path: '/etl/actions/execution/'
+  },
+  {
+    id: 'utilities',
+    title: 'Utilidades',
+    description: 'Acciones auxiliares: copia de ficheros y envío de correos.',
+    count: 2,
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>',
+    path: '/etl/actions/utilities/'
+  }
+]} />

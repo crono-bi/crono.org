@@ -205,6 +205,14 @@ html {
   opacity: 1;
 }
 
+/* Categorias de ETL > Acciones en negrita */
+#starlight__sidebar details ul li details:has(> ul a[href*='/etl/actions/import-export/']) > summary span.large,
+#starlight__sidebar details ul li details:has(> ul a[href*='/etl/actions/execution/']) > summary span.large,
+#starlight__sidebar details ul li details:has(> ul a[href*='/etl/actions/utilities/']) > summary span.large {
+  font-weight: 700;
+  opacity: 1;
+}
+
 
 /* ===== SIDEBAR ACTIVE ITEM FIX ===== */
 /* Ensure text is always readable on active sidebar items */
