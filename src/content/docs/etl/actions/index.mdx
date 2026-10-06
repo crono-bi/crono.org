@@ -15,17 +15,19 @@ Cada fichero `.job` contiene una única acción. La orquestación —qué se eje
 Todas las acciones siguen la misma sintaxis: el nombre de la acción seguido, entre paréntesis, de una lista de propiedades separadas por comas.
 
 ```
-accion(Propiedad1=valor1, Propiedad2=valor2, ...)
+accion(propiedad_1=valor_1, propiedad_2=valor_2, ...)
 ```
 
-Los nombres de acciones y de propiedades deben escribirse entre corchetes cuando contienen espacios o coinciden con una palabra reservada. Por eso se escribe `[bulk table]` o `[Data]`, mientras que `SchemaName` o `TableName` no los necesitan:
+Los nombres de las propiedades se escriben en minúsculas, con las palabras separadas por guiones bajos (*snake_case*): `source_connection_name`, `target_table_name`, `parallel_execution`... Por compatibilidad con versiones anteriores, también se admite la notación *PascalCase* (`SourceConnectionName`), aunque se recomienda no utilizarla en código nuevo.
+
+Los nombres de acciones y de propiedades deben escribirse entre corchetes cuando contienen espacios o coinciden con una palabra reservada. Por eso se escribe `[bulk table]` o `[data]`, mientras que `schema_name` o `table_name` no los necesitan:
 
 ```
 [bulk table](
-	SourceConnectionName='ERP_SOURCE',
-	SchemaName='imp',
-	TableName='customers_data',
-	TargetSchemaName='staging'
+	source_connection_name='ERP_SOURCE',
+	schema_name='imp',
+	table_name='customers_data',
+	target_schema_name='staging'
 )
 ```
 
@@ -37,17 +39,17 @@ Las acciones responden a la misma filosofía que el resto de Crono: el código d
 
 **Declarativas.** Una acción describe qué se quiere hacer, no cómo hacerlo. No hay que abrir conexiones, recorrer cursores ni gestionar ficheros temporales: la acción se encarga de ello. El resultado es un código breve, legible y fácil de revisar.
 
-**Desacopladas del entorno.** Las acciones no contienen rutas absolutas, cadenas de conexión ni secretos. Las [conexiones](/etl/configuration/connections/), las ubicaciones de [almacenamiento](/etl/configuration/storage/) y las [credenciales](/etl/configuration/credentials/) se definen en el entorno, y las acciones solo las referencian por su nombre (`SourceConnectionName='ERP_SOURCE'`). Así, el código puede versionarse y compartirse sin exponer información sensible, y el mismo job funciona en cualquier entorno que defina esos nombres.
+**Desacopladas del entorno.** Las acciones no contienen rutas absolutas, cadenas de conexión ni secretos. Las [conexiones](/etl/configuration/connections/), las ubicaciones de [almacenamiento](/etl/configuration/storage/) y las [credenciales](/etl/configuration/credentials/) se definen en el entorno, y las acciones solo las referencian por su nombre (`source_connection_name='ERP_SOURCE'`). Así, el código puede versionarse y compartirse sin exponer información sensible, y el mismo job funciona en cualquier entorno que defina esos nombres.
 
 **Agnósticas al dialecto.** Las acciones no dependen del motor de base de datos. El mismo código extrae datos de SQL Server o de PostgreSQL, o genera un fichero Parquet desde Snowflake o Databricks: Crono ETL se encarga de las particularidades de cada plataforma. Cambiar de motor de origen o de destino es cambiar la conexión, no el código.
 
 **Convenciones razonables.** Las propiedades tienen valores por defecto pensados para el caso habitual, de modo que solo es necesario informar lo que se aparta de él. La convención más importante es la de la conexión activa: todas las acciones y consultas se ejecutan sobre ella salvo que se indique otra conexión de forma explícita. Del mismo modo, en `BULK TABLE`, si no se indica el nombre de la tabla de destino se mantiene el de origen, y si la tabla de destino no existe se crea.
 
-**Sin instrucciones procedurales.** Crono ETL no tiene bucles o condicionales. Esa lógica se expresa en SQL, el lenguaje que cualquier equipo de datos ya domina: una consulta decide sobre qué elementos se actúa (`WHERE`), en qué orden (`ORDER BY`) y con qué valores. La [propiedad `Data`](/etl/actions/data-property/) es el mecanismo que conecta ambos mundos: la acción se ejecuta una vez por cada fila de la consulta. Así, cargar cien tablas con `BULK TABLE`, exportar un fichero Parquet por cliente o copiar un lote de ficheros no requiere repetir la acción ni escribir un bucle. Y si la consulta no devuelve filas, la acción no se ejecuta, lo que cubre también el caso de un condicional.
+**Sin instrucciones procedurales.** Crono ETL no tiene bucles o condicionales. Esa lógica se expresa en SQL, el lenguaje que cualquier equipo de datos ya domina: una consulta decide sobre qué elementos se actúa (`WHERE`), en qué orden (`ORDER BY`) y con qué valores. La [propiedad `data`](/etl/actions/data-property/) es el mecanismo que conecta ambos mundos: la acción se ejecuta una vez por cada fila de la consulta. Así, cargar cien tablas con `BULK TABLE`, exportar un fichero Parquet por cliente o copiar un lote de ficheros no requiere repetir la acción ni escribir un bucle. Y si la consulta no devuelve filas, la acción no se ejecuta, lo que cubre también el caso de un condicional.
 
-**Dirigidas por metadatos.** Las listas de tablas o ficheros no se escriben en el código, sino que se mantienen en tablas de la base de datos y se consultan con `Data`. Añadir un elemento nuevo es añadir una fila, no modificar el job.
+**Dirigidas por metadatos.** Las listas de tablas o ficheros no se escriben en el código, sino que se mantienen en tablas de la base de datos y se consultan con `data`. Añadir un elemento nuevo es añadir una fila, no modificar el job.
 
-**Paralelismo integrado.** Las acciones que procesan varios elementos pueden ejecutarlos en paralelo con una sola propiedad (`ParallelExecution`), sin necesidad de programar hilos ni coordinar tareas.
+**Paralelismo integrado.** Las acciones que procesan varios elementos pueden ejecutarlos en paralelo con una sola propiedad (`parallel_execution`), sin necesidad de programar hilos ni coordinar tareas.
 
 Juntas, estas ideas permiten que tareas que en una herramienta ETL tradicional requieren flujos gráficos complejos o programación imperativa se resuelvan con unas pocas líneas de código semántico.
 

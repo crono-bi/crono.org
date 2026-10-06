@@ -1,34 +1,34 @@
 ---
-title: "La propiedad Data"
+title: "La propiedad data"
 sidebar:
   order: 1
 ---
 
-Muchas acciones de Crono ETL admiten la propiedad `Data`. Esta propiedad permite ejecutar la misma acción varias veces, con valores distintos, sin necesidad de escribir un bucle ni repetir la acción.
+Muchas acciones de Crono ETL admiten la propiedad `data`. Esta propiedad permite ejecutar la misma acción varias veces, con valores distintos, sin necesidad de escribir un bucle ni repetir la acción.
 
-Crono ETL no tiene instrucciones procedurales como bucles o condicionales. Esa lógica se expresa en SQL: la consulta de `Data` filtra, ordena y calcula los valores con los que se ejecuta la acción.
+Crono ETL no tiene instrucciones procedurales como bucles o condicionales. Esa lógica se expresa en SQL: la consulta de `data` filtra, ordena y calcula los valores con los que se ejecuta la acción.
 
 ## Funcionamiento
 
-`Data` contiene una consulta `SELECT`, que se ejecuta sobre la conexión activa. La acción se ejecuta una vez por cada fila que devuelve la consulta:
+`data` contiene una consulta `SELECT`, que se ejecuta sobre la conexión activa. La acción se ejecuta una vez por cada fila que devuelve la consulta:
 
 - Las propiedades informadas directamente en la acción son comunes a todas las ejecuciones.
 - Cada columna de la consulta cuyo nombre coincide con una propiedad de la acción sustituye a esa propiedad en la ejecución correspondiente a su fila.
 
-Por tanto, basta con renombrar las columnas de la consulta con el nombre de las propiedades que deben variar.
+Por tanto, basta con que las columnas de la consulta tengan el nombre de las propiedades que deben variar. Si las columnas de la tabla consultada ya se llaman así, ni siquiera es necesario renombrarlas.
 
-Como `data` es una palabra reservada, la propiedad se escribe siempre entre corchetes: `[Data]`.
+Como `data` es una palabra reservada, la propiedad se escribe siempre entre corchetes: `[data]`.
 
 ## Ejemplo
 
-La siguiente acción [BULK TABLE](/etl/actions/import-export/bulk-table/) carga en el esquema `staging` todas las tablas registradas en `audit.source_tables`. `SourceConnectionName` y `TargetSchemaName` son comunes, mientras que `SchemaName` y `TableName` cambian en cada fila:
+La siguiente acción [BULK TABLE](/etl/actions/import-export/bulk-table/) carga en el esquema `staging` todas las tablas registradas en `audit.source_tables`. `source_connection_name` y `target_schema_name` son comunes, mientras que `schema_name` y `table_name` cambian en cada fila:
 
 ```
 [bulk table](
-	SourceConnectionName='ERP_SOURCE',
-	TargetSchemaName='staging',
-	[Data]=(
-		select schema as SchemaName, sourceTable as TableName
+	source_connection_name='ERP_SOURCE',
+	target_schema_name='staging',
+	[data]=(
+		select schema_name, table_name
 		from audit.source_tables
 	)
 )
@@ -42,15 +42,15 @@ Basta con añadir una tabla `audit.companies` con las empresas y combinarla con 
 
 ```
 [bulk table](
-	SourceConnectionName='ERP_SOURCE',
-	TargetSchemaName='staging',
-	ParallelExecution=YES,
-	[Data]=(
+	source_connection_name='ERP_SOURCE',
+	target_schema_name='staging',
+	parallel_execution=YES,
+	[data]=(
 		select
-			c.database_name as DatabaseName,
-			t.schema as SchemaName,
-			t.sourceTable as TableName,
-			concat(c.code, '_', t.sourceTable) as TargetTableName
+			c.database_name,
+			t.schema_name,
+			t.table_name,
+			concat(c.code, '_', t.table_name) as target_table_name
 		from audit.companies c
 		cross join audit.source_tables t
 		where c.active = 1
@@ -58,15 +58,15 @@ Basta con añadir una tabla `audit.companies` con las empresas y combinarla con 
 )
 ```
 
-En cada ejecución, `DatabaseName` sustituye a la base de datos definida en la conexión `ERP_SOURCE`, de modo que una sola conexión sirve para todas las empresas. El código de empresa se antepone al nombre de la tabla de destino para que las cargas no se sobrescriban entre sí, y la cláusula `WHERE` limita la carga a las empresas activas.
+En cada ejecución, `database_name` sustituye a la base de datos definida en la conexión `ERP_SOURCE`, de modo que una sola conexión sirve para todas las empresas. El código de empresa se antepone al nombre de la tabla de destino para que las cargas no se sobrescriban entre sí, y la cláusula `WHERE` limita la carga a las empresas activas.
 
 Dar de alta una empresa nueva, o incorporar una tabla más a la carga, consiste en añadir una fila a la tabla correspondiente. El job no cambia.
 
 ## Ejecución en paralelo
 
-Por defecto, las ejecuciones se realizan de una en una. En las acciones que admiten las propiedades `ParallelExecution` y `MaxDegreeOfParallelism`, pueden ejecutarse en paralelo:
+Por defecto, las ejecuciones se realizan de una en una. En las acciones que admiten las propiedades `parallel_execution` y `max_degree_of_parallelism`, pueden ejecutarse en paralelo:
 
 | Propiedad | Descripción |
 | --- | --- |
-| `ParallelExecution` | `YES`/`NO`. Ejecuta en paralelo las filas de `Data`. Por defecto, `NO`. |
-| `MaxDegreeOfParallelism` | Número máximo de ejecuciones simultáneas. Por defecto, `10`. |
+| `parallel_execution` | `YES`/`NO`. Ejecuta en paralelo las filas de `data`. Por defecto, `NO`. |
+| `max_degree_of_parallelism` | Número máximo de ejecuciones simultáneas. Por defecto, `10`. |
