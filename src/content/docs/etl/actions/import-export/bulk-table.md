@@ -82,31 +82,9 @@ En este ejemplo, todas las tablas registradas en `audit.source_tables` se copian
 
 La lista de tablas no está en el código: se mantiene como metadatos en una tabla (`audit.source_tables`). Para incorporar una tabla nueva a la carga basta con añadir una fila, sin modificar el job.
 
+Las columnas de `data` pueden informar cualquier propiedad de la acción, no solo la tabla de origen: también la conexión de destino o la intercalación.
+
 <!-- PENDIENTE: Indicar qué ocurre si una de las cargas falla: si las demás continúan o se interrumpe la acción, y si el comportamiento cambia con parallel_execution. -->
-
-## Carga en varios destinos
-
-Las columnas de `data` no se limitan a las propiedades del origen: también pueden informar la conexión de destino o cualquier otra propiedad que deba variar de una carga a otra. En el siguiente ejemplo, la consulta recorre las conexiones del proyecto mediante la vista `crono.connections` y copia la misma tabla a cada una de ellas:
-
-```
-[bulk table](
-	source_connection_name='ERP_SOURCE',
-	schema_name='imp',
-	table_name='customers_data',
-	target_schema_name='staging',
-	[data]=(
-		select connection_name as target_connection_name,
-			if(connection_name='FABRIC', 'Latin1_General_CI_AS') as collation
-		from crono.connections
-		where connection_name<>'ERP_SOURCE'
-		order by target_connection_name
-	)
-)
-```
-
-La consulta devuelve una fila por conexión, de modo que la acción se ejecuta una vez por cada destino, en el orden indicado. La función `if` solo devuelve una intercalación para la conexión `FABRIC`; en el resto de filas la columna `collation` queda a nulo, lo que equivale a no informar la propiedad.
-
-Para incorporar un destino nuevo basta con definir su conexión, sin modificar el job.
 
 ## Tabla de destino
 

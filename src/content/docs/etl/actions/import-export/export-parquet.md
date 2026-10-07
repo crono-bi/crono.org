@@ -108,46 +108,7 @@ Con la propiedad `data`, una sola acción puede exportar varias tablas. La consu
 
 En este ejemplo se exportan todas las tablas y vistas del esquema `dwh`, sin mantener ninguna lista: la vista [crono.tables](/sql/views/metadata-database/crono-tables/) las obtiene de la propia base de datos. Como cada exportación genera un fichero, `filename` debe ser distinto en cada fila; aquí se construye a partir del nombre de la tabla. Si dos filas devolvieran el mismo nombre, la segunda exportación sobrescribiría el fichero de la primera.
 
-Las exportaciones se ejecutan de una en una: esta acción no admite la propiedad `parallel_execution`.
-
-## Varios orígenes y varios destinos
-
-Las columnas de `data` también pueden informar la conexión de origen y la ubicación de destino. En el siguiente ejemplo, la consulta recorre los almacenamientos del proyecto mediante la vista [crono.file_stores](/sql/views/metadata-crono/crono-file_stores/) y escribe el mismo fichero en la carpeta `backup` de cada uno de ellos:
-
-```
-[export parquet](
-	schema_name='staging',
-	table_name='customers_data',
-	filename='customers_data.parquet',
-	[data]=(
-		select $'filestore://{file_store_name}/backup' as target_location
-		from crono.file_stores
-	)
-)
-```
-
-La cadena `$'...'` sustituye `{file_store_name}` por el valor de esa columna en cada fila, de modo que la acción se ejecuta una vez por almacenamiento.
-
-Combinando esa vista con [crono.connections](/sql/views/metadata-crono/crono-connections/) mediante un `CROSS JOIN`, la misma acción exporta la tabla desde todas las conexiones del proyecto a todos los almacenamientos:
-
-```
-[export parquet](
-	schema_name='staging',
-	table_name='customers_data',
-	[data]=(
-		select
-			connection_name as source_connection_name,
-			$'filestore://{file_store_name}/backup' as target_location,
-			$'customers_data_{connection_name}.parquet' as filename
-		from crono.file_stores
-		cross join crono.connections
-	)
-)
-```
-
-La consulta devuelve una fila por cada combinación de conexión y almacenamiento. El nombre de la conexión se incluye en `filename` para que las exportaciones de distintos orígenes no se sobrescriban entre sí en un mismo almacenamiento.
-
-Para incorporar un origen o un destino nuevo basta con definir la conexión o el almacenamiento, sin modificar el job.
+Las columnas de `data` pueden informar cualquier propiedad de la acción, no solo la tabla: también la conexión de origen o la ubicación de destino. Las exportaciones se ejecutan de una en una, ya que esta acción no admite la propiedad `parallel_execution`.
 
 ## Funcionamiento
 
