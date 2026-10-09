@@ -62,7 +62,7 @@ Si la tabla de destino no existe, Crono ETL la crea a partir de las columnas del
 La acción no vacía la tabla antes de la carga. Si se importa dos veces el mismo fichero en la misma tabla, sus filas quedan duplicadas.
 :::
 
-<!-- PENDIENTE: Está previsto añadir clean_mode para vaciar o recrear la tabla antes de la carga, como en BULK TABLE. Cuando exista, documentarlo aquí y revisar el aviso anterior. -->
+<!-- PENDIENTE: Está previsto añadir clean_mode para vaciar o recrear la tabla antes de la carga, como en BULK TABLE. Cuando exista, documentarlo aquí y revisar el aviso anterior. Ojo: en BigQuery, la carga desde Google Cloud Storage usa LOAD DATA OVERWRITE y hoy reemplaza el contenido de la tabla, a diferencia del resto de casos. -->
 
 ## Importación de varios ficheros
 
@@ -82,8 +82,29 @@ En este ejemplo, cada fichero registrado en `audit.parquet_files` se carga en su
 
 Las columnas de `data` pueden informar cualquier propiedad de la acción, no solo el fichero y la tabla: también la conexión de destino. Las importaciones se ejecutan de una en una, ya que esta acción no admite la propiedad `parallel_execution`.
 
+## Cómo se realiza la carga
+
+Crono ETL no carga los datos mediante sentencias `INSERT` individuales: en cada motor utiliza su mecanismo de carga masiva, para obtener el máximo rendimiento. Cuando ese mecanismo necesita el fichero en un lugar concreto, Crono ETL lo deja allí antes de cargar. Por ejemplo, si el fichero está en un almacenamiento en la nube y el motor solo puede leerlo en local, primero lo descarga a una carpeta temporal del equipo que ejecuta el job.
+
+| Motor de destino | Mecanismo de carga | Lectura del fichero |
+| --- | --- | --- |
+| SQL Server | `SqlBulkCopy`, la API de carga masiva del cliente de SQL Server | Crono ETL lee el fichero en local y envía las filas al servidor |
+| Fabric | `SqlBulkCopy`, igual que en SQL Server | Crono ETL lee el fichero en local y envía las filas al servidor |
+| PostgreSQL | `COPY ... FROM STDIN` en formato binario | Crono ETL lee el fichero en local y envía las filas al servidor |
+| DuckDB | `COPY ... FROM` en formato Parquet | DuckDB lee directamente el fichero en local |
+| BigQuery | `LOAD DATA` si el fichero está en Google Cloud Storage; trabajo de carga de la API de BigQuery en el resto de casos | BigQuery lee el fichero directamente del bucket; en el resto de casos, Crono ETL lo sube con el trabajo de carga |
+
+### BigQuery
+
+Cuando el fichero está en un almacenamiento de Google Cloud Storage, BigQuery lo lee directamente del bucket, sin que los datos pasen por el equipo que ejecuta el job. Para que funcione:
+
+- La cuenta de servicio de la conexión de BigQuery necesita permiso de lectura sobre el bucket, por ejemplo el rol "Visualizador de objetos de Storage".
+- El bucket debe estar en una ubicación compatible con la del dataset de destino; por ejemplo, ambos en la Unión Europea.
+
+<!-- PENDIENTE (corregir en Crono ETL): Redshift. Hoy descarga el fichero a local y lo carga con INSERT sucesivos, lo que contradice el párrafo general de esta sección. Por eso no figura en la tabla. Solución prevista: COPY ... FROM 's3://...' FORMAT AS PARQUET con el rol IAM del almacenamiento; si el fichero no está en S3, subirlo antes a un almacenamiento S3 de trabajo. Al corregirlo, añadir la fila y una nota con los requisitos (rol IAM asociado al namespace, permisos de lectura sobre el bucket). -->
+
+<!-- PENDIENTE: Completar la tabla con Databricks y Snowflake, y añadir notas por motor cuando haya requisitos de configuración o limitaciones. A 8/10/2026: SQL Server, Fabric, PostgreSQL, DuckDB y BigQuery validados desde todos los tipos de ubicación; el resto de motores, solo con fichero en ruta absoluta. -->
+
 ## Uso junto con EXPORT PARQUET
 
 Combinada con la acción [EXPORT PARQUET](/etl/actions/import-export/export-parquet/), `IMPORT PARQUET` permite mover tablas de gran volumen entre motores distintos: la tabla se exporta a un fichero Parquet desde la conexión de origen y ese fichero se importa en la conexión de destino. Es la alternativa recomendada a [BULK TABLE](/etl/actions/import-export/bulk-table/#compatibilidad-con-los-motores-de-destino) cuando el motor de destino no dispone de carga masiva nativa.
-
-<!-- PENDIENTE: Funcionamiento y compatibilidad. Explicar cómo se realiza la carga. Validado el 8/10/2026 en los ocho motores de destino con un fichero en ruta absoluta; falta probar la lectura desde almacenamientos (filestore) y desde rutas relativas. -->
