@@ -93,6 +93,8 @@ Crono ETL no carga los datos mediante sentencias `INSERT` individuales: en cada 
 | PostgreSQL | `COPY ... FROM STDIN` en formato binario | Crono ETL lee el fichero en local y envía las filas al servidor |
 | DuckDB | `COPY ... FROM` en formato Parquet | DuckDB lee directamente el fichero en local |
 | BigQuery | `LOAD DATA` si el fichero está en Google Cloud Storage; trabajo de carga de la API de BigQuery en el resto de casos | BigQuery lee el fichero directamente del bucket; en el resto de casos, Crono ETL lo sube con el trabajo de carga |
+| Redshift | `COPY ... FROM 's3://...' FORMAT AS PARQUET` | Redshift lee el fichero directamente del bucket de S3; si el fichero está en otra ubicación, Crono ETL lo sube antes al almacenamiento intermedio de la conexión |
+| Snowflake | `PUT` al stage interno del usuario y `COPY INTO` en formato Parquet | Crono ETL lee el fichero en local y lo sube al almacenamiento interno de Snowflake |
 
 ### BigQuery
 
@@ -101,9 +103,34 @@ Cuando el fichero está en un almacenamiento de Google Cloud Storage, BigQuery l
 - La cuenta de servicio de la conexión de BigQuery necesita permiso de lectura sobre el bucket, por ejemplo el rol "Visualizador de objetos de Storage".
 - El bucket debe estar en una ubicación compatible con la del dataset de destino; por ejemplo, ambos en la Unión Europea.
 
-<!-- PENDIENTE (corregir en Crono ETL): Redshift. Hoy descarga el fichero a local y lo carga con INSERT sucesivos, lo que contradice el párrafo general de esta sección. Por eso no figura en la tabla. Solución prevista: COPY ... FROM 's3://...' FORMAT AS PARQUET con el rol IAM del almacenamiento; si el fichero no está en S3, subirlo antes a un almacenamiento S3 de trabajo. Al corregirlo, añadir la fila y una nota con los requisitos (rol IAM asociado al namespace, permisos de lectura sobre el bucket). -->
+### Redshift
 
-<!-- PENDIENTE: Completar la tabla con Databricks y Snowflake, y añadir notas por motor cuando haya requisitos de configuración o limitaciones. A 8/10/2026: SQL Server, Fabric, PostgreSQL, DuckDB y BigQuery validados desde todos los tipos de ubicación; el resto de motores, solo con fichero en ruta absoluta. -->
+Redshift solo carga ficheros Parquet desde Amazon S3, así que la carga se resuelve siempre con una sentencia `COPY` que lee el fichero de un bucket:
+
+- Si el fichero está en un almacenamiento de S3, Redshift lo lee directamente de ese bucket, sin que los datos pasen por el equipo que ejecuta el job.
+- Si el fichero está en cualquier otra ubicación (una carpeta local, Google Cloud Storage...), Crono ETL lo copia primero a la carpeta `tmp` del **almacenamiento intermedio** configurado en la conexión de Redshift, que debe ser un almacenamiento de S3. Si la conexión no tiene almacenamiento intermedio, la acción termina con error.
+
+Redshift accede al bucket con un rol IAM, no con las credenciales de la conexión ni con las del almacenamiento. El rol se indica en la conexión de Redshift; si no se informa, se utiliza el rol por defecto del clúster o del namespace (`IAM_ROLE default`). Para que la carga funcione:
+
+- El rol debe estar asociado al clúster o al namespace de Redshift Serverless.
+- El rol necesita los permisos `s3:ListBucket` y `s3:GetObject` sobre el bucket del fichero o, en su caso, sobre el del almacenamiento intermedio.
+- El bucket debe estar en la misma región de AWS que Redshift.
+
+Redshift asigna las columnas del fichero a las de la tabla por posición, no por nombre: la tabla debe tener las mismas columnas que el fichero, en el mismo orden y con tipos compatibles.
+
+<!-- PENDIENTE (corregir en Crono ETL): Redshift no crea la tabla de destino si no existe; COPY requiere que exista y Redshift no deduce el esquema del Parquet, por lo que hoy la carga falla. Solución prevista: comprobar si la tabla existe y, solo si no, leer el esquema del fichero (descargándolo o leyendo el pie con peticiones por rango) y llamar a CreateTableIfNotExists antes del COPY. Hasta entonces, lo dicho en "Tabla de destino" no se cumple en Redshift. Revisar también: el fichero copiado al almacenamiento intermedio no se borra (deleteOnFinish nunca se pone a True), y si StagingFileStoreName no coincide se usa el primer almacenamiento S3 (provisional). -->
+
+### Snowflake
+
+Snowflake no necesita ninguna configuración adicional: no hace falta un bucket propio, ni un rol IAM, ni una integración de almacenamiento. Crono ETL sube el fichero con `PUT` al stage interno del usuario de la conexión, un espacio de almacenamiento que Snowflake incluye para cada usuario, y lo carga desde allí con `COPY INTO`. Al terminar, el fichero se elimina del stage.
+
+Si el fichero está en un almacenamiento en la nube, Crono ETL lo descarga primero a una carpeta temporal y lo sube desde allí, de modo que los datos pasan por el equipo que ejecuta el job.
+
+Las columnas del fichero se asignan a las de la tabla por nombre, sin distinguir mayúsculas de minúsculas, así que el orden de las columnas en la tabla no importa.
+
+<!-- PENDIENTE (revisar en Crono ETL): el REMOVE del stage y el borrado del temporal local se ejecutan solo si la carga termina bien (decisión consciente: si falla, los ficheros quedan para revisarlos o reintentar a mano). Los restos de cargas fallidas se acumulan en @~/crono/ y en la carpeta temporal; se pueden limpiar con REMOVE @~/crono/. Optimización futura, si hay casos reales: con una storage integration en la conexión y el fichero en S3, COPY directo desde el bucket sin pasar por el equipo del job. El campo "Integración Snowflake" del almacenamiento queda sin uso. -->
+
+<!-- PENDIENTE: Completar la tabla con Databricks y añadir su nota si tiene requisitos de configuración o limitaciones. A 10/10/2026: SQL Server, Fabric, PostgreSQL, DuckDB, BigQuery, Redshift y Snowflake validados desde todos los tipos de ubicación; Databricks, solo con fichero en ruta absoluta. -->
 
 ## Uso junto con EXPORT PARQUET
 
