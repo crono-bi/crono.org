@@ -52,7 +52,7 @@ La propiedad `source_location` admite los mismos tipos de valor que la ubicació
 | Ruta relativa | `exports/parquet/customers_data.parquet` |
 | Ruta absoluta | `C:\exports\customers_data.parquet` |
 
-Se recomienda utilizar siempre un almacenamiento, de modo que el job no contenga rutas ni credenciales.
+Se recomienda utilizar siempre un almacenamiento, de modo que la acción no contenga rutas ni credenciales.
 
 ## Tabla de destino
 
@@ -83,13 +83,13 @@ Con la propiedad `data`, una sola acción puede importar varios ficheros. La con
 )
 ```
 
-En este ejemplo, cada fichero registrado en `audit.parquet_files` se carga en su tabla del esquema `staging`. Para incorporar un fichero nuevo a la carga basta con añadir una fila, sin modificar el job. Cada fila debe apuntar a una tabla distinta, ya que cada importación vacía la tabla de destino antes de cargarla.
+En este ejemplo, cada fichero registrado en `audit.parquet_files` se carga en su tabla del esquema `staging`. Para incorporar un fichero nuevo a la carga basta con añadir una fila, sin modificar la acción. Cada fila debe apuntar a una tabla distinta, ya que cada importación vacía la tabla de destino antes de cargarla.
 
 Las columnas de `data` pueden informar cualquier propiedad de la acción, no solo el fichero y la tabla: también la conexión de destino. Las importaciones se ejecutan de una en una, ya que esta acción no admite la propiedad `parallel_execution`.
 
 ## Cómo se realiza la carga
 
-Crono ETL no carga los datos mediante sentencias `INSERT` individuales: en cada motor utiliza su mecanismo de carga masiva, para obtener el máximo rendimiento. Cuando ese mecanismo necesita el fichero en un lugar concreto, Crono ETL lo deja allí antes de cargar. Por ejemplo, si el fichero está en un almacenamiento en la nube y el motor solo puede leerlo en local, primero lo descarga a una carpeta temporal del equipo que ejecuta el job.
+Crono ETL no carga los datos mediante sentencias `INSERT` individuales: en cada motor utiliza su mecanismo de carga masiva, para obtener el máximo rendimiento. Cuando ese mecanismo necesita el fichero en un lugar concreto, Crono ETL lo deja allí antes de cargar. Por ejemplo, si el fichero está en un almacenamiento en la nube y el motor solo puede leerlo en local, primero lo descarga a una carpeta temporal del equipo que ejecuta Crono ETL.
 
 | Motor de destino | Mecanismo de carga | Lectura del fichero |
 | --- | --- | --- |
@@ -104,7 +104,7 @@ Crono ETL no carga los datos mediante sentencias `INSERT` individuales: en cada 
 
 ### BigQuery
 
-Cuando el fichero está en un almacenamiento de Google Cloud Storage, BigQuery lo lee directamente del bucket, sin que los datos pasen por el equipo que ejecuta el job. Para que funcione:
+Cuando el fichero está en un almacenamiento de Google Cloud Storage, BigQuery lo lee directamente del bucket, sin que los datos pasen por el equipo que ejecuta Crono ETL. Para que funcione:
 
 - La cuenta de servicio de la conexión de BigQuery necesita permiso de lectura sobre el bucket, por ejemplo el rol "Visualizador de objetos de Storage".
 - El bucket debe estar en una ubicación compatible con la del dataset de destino; por ejemplo, ambos en la Unión Europea.
@@ -113,7 +113,7 @@ Cuando el fichero está en un almacenamiento de Google Cloud Storage, BigQuery l
 
 Redshift solo carga ficheros Parquet desde Amazon S3, así que la carga se resuelve siempre con una sentencia `COPY` que lee el fichero de un bucket:
 
-- Si el fichero está en un almacenamiento de S3, Redshift lo lee directamente de ese bucket, sin que los datos pasen por el equipo que ejecuta el job.
+- Si el fichero está en un almacenamiento de S3, Redshift lo lee directamente de ese bucket, sin que los datos pasen por el equipo que ejecuta Crono ETL.
 - Si el fichero está en cualquier otra ubicación (una carpeta local, Google Cloud Storage...), Crono ETL lo copia primero a una carpeta temporal del **almacenamiento intermedio** (`crono/aaaamm/aaaammdd-xxxxxxxx/`) configurado en la conexión de Redshift, que debe ser un almacenamiento de S3. Si la conexión no tiene almacenamiento intermedio, la acción termina con error.
 
 Redshift accede al bucket con un rol IAM, no con las credenciales de la conexión ni con las del almacenamiento. El rol se indica en la conexión de Redshift; si no se informa, se utiliza el rol por defecto del clúster o del namespace (`IAM_ROLE default`). Para que la carga funcione:
@@ -128,11 +128,11 @@ Redshift asigna las columnas del fichero a las de la tabla por posición, no por
 
 Snowflake no necesita ninguna configuración adicional: no hace falta un bucket propio, ni un rol IAM, ni una integración de almacenamiento. Crono ETL sube el fichero con `PUT` al stage interno del usuario de la conexión, un espacio de almacenamiento que Snowflake incluye para cada usuario, y lo carga desde allí con `COPY INTO`. Al terminar, el fichero se elimina del stage.
 
-Si el fichero está en un almacenamiento en la nube, Crono ETL lo descarga primero a una carpeta temporal y lo sube desde allí, de modo que los datos pasan por el equipo que ejecuta el job.
+Si el fichero está en un almacenamiento en la nube, Crono ETL lo descarga primero a una carpeta temporal y lo sube desde allí, de modo que los datos pasan por el equipo que ejecuta Crono ETL.
 
 Las columnas del fichero se asignan a las de la tabla por nombre, sin distinguir mayúsculas de minúsculas, así que el orden de las columnas en la tabla no importa.
 
-<!-- PENDIENTE (revisar en Crono ETL): el REMOVE del stage solo se ejecuta si la carga termina bien (decisión consciente: si falla, el fichero queda para revisarlo o reintentar a mano); el temporal local se borra siempre. Los restos de cargas fallidas se acumulan en @~/crono/; se pueden limpiar con REMOVE @~/crono/. Optimización futura, si hay casos reales: con una storage integration en la conexión y el fichero en S3, COPY directo desde el bucket sin pasar por el equipo del job. El campo "Integración Snowflake" del almacenamiento queda sin uso. -->
+<!-- PENDIENTE (revisar en Crono ETL): el REMOVE del stage solo se ejecuta si la carga termina bien (decisión consciente: si falla, el fichero queda para revisarlo o reintentar a mano); el temporal local se borra siempre. Los restos de cargas fallidas se acumulan en @~/crono/; se pueden limpiar con REMOVE @~/crono/. Optimización futura, si hay casos reales: con una storage integration en la conexión y el fichero en S3, COPY directo desde el bucket sin pasar por el equipo que ejecuta Crono ETL. El campo "Integración Snowflake" del almacenamiento queda sin uso. -->
 
 ### Databricks
 

@@ -55,12 +55,12 @@ La propiedad `target_location` admite tres tipos de valor:
 | Ruta relativa | `exports/parquet` | Una carpeta relativa a la carpeta del proyecto. |
 | Ruta absoluta | `C:\exports` | Una carpeta indicada por su ruta completa. |
 
-Un almacenamiento es una referencia con nombre a una carpeta, a un bucket de Amazon S3 o de Google Cloud Storage, o a un repositorio de GitHub, junto con las credenciales necesarias para acceder a él. Al referenciarlo por su nombre, el job no contiene rutas ni credenciales, y el código es el mismo sea cual sea el tipo de almacenamiento que haya detrás.
+Un almacenamiento es una referencia con nombre a una carpeta, a un bucket de Amazon S3 o de Google Cloud Storage, o a un repositorio de GitHub, junto con las credenciales necesarias para acceder a él. Al referenciarlo por su nombre, la acción no contiene rutas ni credenciales, y el código es el mismo sea cual sea el tipo de almacenamiento que haya detrás.
 
 Tras el nombre del almacenamiento puede indicarse una subcarpeta: `filestore://datalake/exports/2026`. El nombre del almacenamiento no debe contener espacios. Si la carpeta de destino no existe, se crea automáticamente.
 
 :::tip
-Se recomienda utilizar siempre un almacenamiento. Una ruta absoluta liga el job al equipo en el que se escribió, mientras que un almacenamiento se define una vez en el entorno y puede cambiar de ubicación sin modificar el código.
+Se recomienda utilizar siempre un almacenamiento. Una ruta absoluta liga la acción al equipo en el que se escribió, mientras que un almacenamiento se define una vez en el entorno y puede cambiar de ubicación sin modificar el código.
 :::
 
 ## Qué se exporta
@@ -117,7 +117,7 @@ Crono ETL lee los datos a través de la conexión de origen y escribe el fichero
 Las columnas cuyo tipo no puede representarse en Parquet se omiten, y el registro de ejecución lo indica con un aviso.
 
 :::note
-Los datos pasan por el equipo que ejecuta el job. Al exportar desde una base de datos en la nube a un bucket, los datos se descargan y se vuelven a subir, por lo que el tiempo de exportación depende también de la conexión de red de ese equipo.
+Los datos pasan por el equipo que ejecuta Crono ETL. Al exportar desde una base de datos en la nube a un bucket, los datos se descargan y se vuelven a subir, por lo que el tiempo de exportación depende también de la conexión de red de ese equipo.
 :::
 
 ## Uso junto con IMPORT PARQUET

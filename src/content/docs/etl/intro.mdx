@@ -48,6 +48,8 @@ Una vez configurado el entorno, toda la lógica del proyecto reside en dos tipos
 
 **Ficheros `.job`** — ficheros de orquestación que agrupan y secuencian las acciones de carga. Un job define qué se ejecuta, en qué orden, si hay pasos que pueden correr en paralelo y qué ocurre cuando algo falla. Los jobs son el objeto central de Crono ETL: se planifican, se monitorizan y se reportan como unidades de trabajo completas.
 
+{/* PENDIENTE: revisar al documentar jobs y workflows. Este párrafo describe todos los .job como orquestadores, mientras que actions/index.mdx dice que cada .job contiene una única acción y que la orquestación se hace con la acción JOB. Reservar "job"/"trabajo" para la acción JOB. */}
+
 Ambos tipos de fichero son texto plano. Viven en el repositorio Git del proyecto junto al resto del código, se revisan con las mismas herramientas y siguen el mismo ciclo de vida que cualquier otro fichero de software.
 
 ## Principios

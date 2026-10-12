@@ -60,7 +60,7 @@ Basta con añadir una tabla `audit.companies` con las empresas y combinarla con 
 
 En cada ejecución, `database_name` sustituye a la base de datos definida en la conexión `ERP_SOURCE`, de modo que una sola conexión sirve para todas las empresas. El código de empresa se antepone al nombre de la tabla de destino para que las cargas no se sobrescriban entre sí, y la cláusula `WHERE` limita la carga a las empresas activas.
 
-Dar de alta una empresa nueva, o incorporar una tabla más a la carga, consiste en añadir una fila a la tabla correspondiente. El job no cambia.
+Dar de alta una empresa nueva, o incorporar una tabla más a la carga, consiste en añadir una fila a la tabla correspondiente. El código de la acción no cambia.
 
 ## Ejecución en paralelo
 

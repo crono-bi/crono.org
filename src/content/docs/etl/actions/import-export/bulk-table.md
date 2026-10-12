@@ -80,7 +80,7 @@ Uno de los usos más habituales de `BULK TABLE` es replicar en el DWH un conjunt
 
 En este ejemplo, todas las tablas registradas en `audit.source_tables` se copian al esquema `staging`. Al estar activada `parallel_execution`, las cargas se ejecutan en paralelo, con un máximo de 10 simultáneas (el valor por defecto de `max_degree_of_parallelism`).
 
-La lista de tablas no está en el código: se mantiene como metadatos en una tabla (`audit.source_tables`). Para incorporar una tabla nueva a la carga basta con añadir una fila, sin modificar el job.
+La lista de tablas no está en el código: se mantiene como metadatos en una tabla (`audit.source_tables`). Para incorporar una tabla nueva a la carga basta con añadir una fila, sin modificar la acción.
 
 Las columnas de `data` pueden informar cualquier propiedad de la acción, no solo la tabla de origen: también la conexión de destino o la intercalación.
 

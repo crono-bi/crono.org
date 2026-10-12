@@ -1,9 +1,9 @@
 ---
 title: "Conexiones"
-description: "Bases de datos de origen y destino que utilizan los jobs."
+description: "Bases de datos de origen y destino con las que trabaja Crono ETL."
 ---
 
-Una conexión define cómo acceder a una base de datos: el motor, el servidor, la base de datos y las credenciales. Se identifica por un nombre, y los jobs y las acciones utilizan ese nombre para referirse a ella, sin contener cadenas de conexión ni contraseñas.
+Una conexión define cómo acceder a una base de datos: el motor, el servidor, la base de datos y las credenciales. Se identifica por un nombre, y las acciones y las sentencias Crono SQL se refieren a ella solo por ese nombre, de modo que el código del proyecto no contiene cadenas de conexión ni contraseñas.
 
 Las conexiones forman parte del entorno, junto con los [almacenamientos](/etl/configuration/storage/) y las [credenciales](/etl/configuration/credentials/). El mismo proyecto puede ejecutarse contra bases de datos distintas, por ejemplo en desarrollo y en producción, si cada entorno define las conexiones con los mismos nombres.
 
@@ -61,7 +61,7 @@ Las conexiones pueden crearse y modificarse de tres formas, que modifican el mis
 
 ## Uso de las conexiones
 
-Los jobs y las sentencias Crono SQL se refieren a las conexiones solo por su nombre. Cada entorno tiene además una **conexión predeterminada** (`default-connection` en el fichero), sobre la que se ejecuta todo lo que no indica una conexión. En Crono ETL, la conexión en uso se muestra en la barra de herramientas y puede cambiarse desde allí; en Crono CLI, `crono connection current` la muestra.
+Las acciones y las sentencias Crono SQL se refieren a las conexiones solo por su nombre. Cada entorno tiene además una **conexión predeterminada** (`default-connection` en el fichero), sobre la que se ejecuta todo lo que no indica una conexión. En Crono ETL, la conexión en uso se muestra en la barra de herramientas y puede cambiarse desde allí; en Crono CLI, `crono connection current` la muestra.
 
 Las acciones que trabajan con más de una base de datos indican las conexiones con las propiedades `source_connection_name` (origen) y `target_connection_name` (destino). Si no se informan, se utiliza la conexión predeterminada. Por ejemplo, esta acción copia una tabla de la conexión `ERP_SOURCE` a la conexión `DWH`:
 
@@ -96,6 +96,8 @@ El formulario de cada conexión incluye el botón **Verificar conexión**, que i
 
 ## Motores admitidos
 
+<!-- PENDIENTE: las capturas de los formularios se toman con la interfaz en inglés (criterio general). Rehacer las de esta página en inglés. La columna "Nombre" de las tablas usa nombres en español, independientes del idioma de la interfaz. -->
+
 En el entorno se define como conexión tanto la base de datos del DWH como cada una de las bases de datos de origen. Unas y otras tienen requisitos distintos:
 
 - **La base de datos del DWH**, donde Crono SQL crea y carga las tablas, debe usar uno de los dialectos para los que Crono SQL genera código: SQL Server, PostgreSQL, Redshift, BigQuery, Snowflake, Databricks, Fabric o DuckDB.
@@ -123,16 +125,16 @@ La conexión de SQL Server sirve tanto para un servidor local como para uno en r
 
 ![Formulario de una conexión de SQL Server](/images/etl/configuration/connections/sqlserver.png)
 
-Estas son las propiedades de la conexión, con su etiqueta en el formulario y su nombre en el fichero del entorno y en Crono CLI:
+Estas son las propiedades de la conexión, con su nombre en el fichero del entorno y en Crono CLI:
 
-| Formulario | Propiedad | Descripción |
+| Nombre | Propiedad | Descripción |
 | --- | --- | --- |
 | Servidor | `server` | Nombre o dirección del servidor, con la instancia si es necesario: `localhost`, `.` o `SRV01\INSTANCIA`. |
 | Base de datos | `database-name` | Base de datos a la que se conecta. El botón junto al campo permite elegirla entre las del servidor. |
-| Autentificación Windows | — | Conecta con la seguridad integrada de Windows, con el usuario que ejecuta Crono ETL. Es la opción por defecto. |
-| Autentificación SQL | — | Conecta con un usuario de SQL Server. |
-| Usuario | `username` | Usuario de SQL Server, con la autentificación SQL. En el fichero, si `username` no tiene valor (`null`), se usa la autentificación Windows. |
-| Password | `password` | Contraseña del usuario de SQL Server. Se guarda cifrada. |
+| Autenticación Windows | — | Conecta con la seguridad integrada de Windows, con el usuario que ejecuta Crono ETL. Es la opción por defecto. |
+| Autenticación SQL | — | Conecta con un usuario de SQL Server. |
+| Usuario | `username` | Usuario de SQL Server, con la autenticación SQL. En el fichero, si `username` no tiene valor (`null`), se usa la autenticación Windows. |
+| Contraseña | `password` | Contraseña del usuario de SQL Server. Se guarda cifrada. |
 
 Con Crono CLI:
 
@@ -152,15 +154,15 @@ La conexión de PostgreSQL se identifica por el servidor, el puerto y la base de
 
 ![Formulario de una conexión de PostgreSQL](/images/etl/configuration/connections/postgresql.png)
 
-Estas son las propiedades de la conexión, con su etiqueta en el formulario y su nombre en el fichero del entorno y en Crono CLI:
+Estas son las propiedades de la conexión, con su nombre en el fichero del entorno y en Crono CLI:
 
-| Formulario | Propiedad | Descripción |
+| Nombre | Propiedad | Descripción |
 | --- | --- | --- |
 | Host | `host` | Nombre o dirección del servidor. |
 | Base de datos | `database` | Base de datos a la que se conecta. El botón junto al campo permite elegirla entre las del servidor. |
 | Puerto | `port` | Puerto del servidor. Por defecto, `5432`. |
 | Usuario | `username` | Usuario de PostgreSQL. |
-| Password | `password` | Contraseña del usuario. Se guarda cifrada. |
+| Contraseña | `password` | Contraseña del usuario. Se guarda cifrada. |
 | Modo SSL | `ssl-mode` | Uso de SSL en la conexión: `Disable`, `Allow`, `Prefer`, `Require`, `VerifyCA` o `VerifyFull`. Por defecto, `Prefer`: usa SSL si el servidor lo admite. |
 
 Con Crono CLI:
@@ -175,9 +177,9 @@ La conexión de Redshift sirve tanto para un clúster aprovisionado como para un
 
 ![Formulario de una conexión de Redshift](/images/etl/configuration/connections/redshift.png)
 
-Estas son las propiedades de la conexión, con su etiqueta en el formulario y su nombre en el fichero del entorno y en Crono CLI:
+Estas son las propiedades de la conexión, con su nombre en el fichero del entorno y en Crono CLI:
 
-| Formulario | Propiedad | Descripción |
+| Nombre | Propiedad | Descripción |
 | --- | --- | --- |
 | Host | `host` | Nombre del servidor (endpoint) del clúster o del workgroup de Redshift, sin el puerto ni la base de datos. |
 | Base de datos | `database` | Base de datos a la que se conecta. El botón junto al campo permite elegirla entre las del servidor. |
@@ -203,11 +205,11 @@ La conexión de BigQuery apunta a un proyecto de Google Cloud y se autentica con
 
 ![Formulario de una conexión de BigQuery](/images/etl/configuration/connections/bigquery.png)
 
-Estas son las propiedades de la conexión, con su etiqueta en el formulario y su nombre en el fichero del entorno y en Crono CLI:
+Estas son las propiedades de la conexión, con su nombre en el fichero del entorno y en Crono CLI:
 
-| Formulario | Propiedad | Descripción |
+| Nombre | Propiedad | Descripción |
 | --- | --- | --- |
-| Id de proyecto | `project-id` | Identificador del proyecto de Google Cloud, tal como aparece en la consola (no el nombre visible del proyecto). |
+| ID de proyecto | `project-id` | Identificador del proyecto de Google Cloud, tal como aparece en la consola (no el nombre visible del proyecto). |
 | Región | `region` | Ubicación predeterminada de BigQuery para los trabajos y los datasets que crea Crono ETL. El desplegable ofrece las multirregiones `EU` y `US`, pero admite cualquier ubicación de BigQuery, por ejemplo `europe-southwest1`. Debe coincidir con la ubicación de los datasets. |
 | Credenciales | `credentials-name` | Nombre de unas credenciales de tipo Google del entorno, con la cuenta de servicio con la que Crono ETL accede al proyecto. |
 
@@ -225,16 +227,16 @@ La conexión de Snowflake apunta a una cuenta de Snowflake y ejecuta las consult
 
 ![Formulario de una conexión de Snowflake](/images/etl/configuration/connections/snowflake.png)
 
-Estas son las propiedades de la conexión, con su etiqueta en el formulario y su nombre en el fichero del entorno y en Crono CLI:
+Estas son las propiedades de la conexión, con su nombre en el fichero del entorno y en Crono CLI:
 
-| Formulario | Propiedad | Descripción |
+| Nombre | Propiedad | Descripción |
 | --- | --- | --- |
-| Cuenta Snowflake | `account` | Identificador de la cuenta, en el formato `organizacion-cuenta` (por ejemplo, `myorg-myaccount`). Es la primera parte de la URL de la cuenta, antes de `.snowflakecomputing.com`. |
+| Cuenta | `account` | Identificador de la cuenta, en el formato `organizacion-cuenta` (por ejemplo, `myorg-myaccount`). Es la primera parte de la URL de la cuenta, antes de `.snowflakecomputing.com`. |
 | Warehouse | `warehouse` | Warehouse en el que se ejecutan las consultas. El usuario necesita permiso de uso sobre él. |
 | Base de datos | `database` | Base de datos a la que se conecta. El botón junto al campo permite elegirla entre las de la cuenta. |
 | Esquema | `schema` | Esquema predeterminado de la sesión. Es opcional. |
 | Usuario | `username` | Usuario de Snowflake. |
-| Password | `password` | Contraseña del usuario o, preferiblemente, un token de acceso programático (PAT) generado para él. Se guarda cifrado. |
+| Contraseña | `password` | Contraseña del usuario o, preferiblemente, un token de acceso programático (PAT) generado para él. Se guarda cifrado. |
 
 Snowflake está restringiendo el acceso con solo usuario y contraseña, sobre todo para los usuarios con autenticación multifactor. Para una conexión que se ejecuta de forma desatendida, como la de Crono ETL, se recomienda usar un token de acceso programático.
 
@@ -252,9 +254,9 @@ La conexión de Databricks se conecta a un SQL warehouse o a un clúster de un w
 
 ![Formulario de una conexión de Databricks](/images/etl/configuration/connections/databricks.png)
 
-Estas son las propiedades de la conexión, con su etiqueta en el formulario y su nombre en el fichero del entorno y en Crono CLI:
+Estas son las propiedades de la conexión, con su nombre en el fichero del entorno y en Crono CLI:
 
-| Formulario | Propiedad | Descripción |
+| Nombre | Propiedad | Descripción |
 | --- | --- | --- |
 | Host | `host` | Nombre del servidor del workspace, por ejemplo `dbc-a1b2c3d4-e5f6.cloud.databricks.com`. |
 | HTTP Path | `http-path` | Ruta HTTP del SQL warehouse o del clúster, por ejemplo `/sql/1.0/warehouses/a1b2c3d4e5f6a7b8`. Aparece en los detalles de conexión del warehouse. |
@@ -274,19 +276,19 @@ crono connection add databricks --name DWH --host dbc-a1b2c3d4-e5f6.cloud.databr
 
 ### Fabric
 
-La conexión de Fabric se conecta al punto de conexión SQL de un warehouse o de un lakehouse de Microsoft Fabric. Se autentica con una entidad de servicio (service principal) de Microsoft Entra ID, que es el único modo de autentificación admitido. En Crono ETL se configura con el formulario de Fabric:
+La conexión de Fabric se conecta al punto de conexión SQL de un warehouse o de un lakehouse de Microsoft Fabric. Se autentica con una entidad de servicio (service principal) de Microsoft Entra ID, que es el único modo de autenticación admitido. En Crono ETL se configura con el formulario de Fabric:
 
 ![Formulario de una conexión de Fabric](/images/etl/configuration/connections/fabric.png)
 
-Estas son las propiedades de la conexión, con su etiqueta en el formulario y su nombre en el fichero del entorno y en Crono CLI:
+Estas son las propiedades de la conexión, con su nombre en el fichero del entorno y en Crono CLI:
 
-| Formulario | Propiedad | Descripción |
+| Nombre | Propiedad | Descripción |
 | --- | --- | --- |
 | Servidor | `server` | Punto de conexión SQL del warehouse o del lakehouse, por ejemplo `xxxxxxxx.datawarehouse.fabric.microsoft.com`. Aparece en la configuración del warehouse, como cadena de conexión SQL. |
 | Base de datos | `database` | Nombre del warehouse o del lakehouse. Es opcional. El botón junto al campo permite elegirlo entre los disponibles. |
-| Modo de autentificación | — | Siempre `Active Directory Service Principal`. No se puede modificar. |
+| Modo de autenticación | — | Siempre `Active Directory Service Principal`. No se puede modificar. |
 | ID de usuario | `user-id` | Identificador de aplicación (cliente) de la entidad de servicio en Microsoft Entra ID. |
-| Password | `password` | Secreto de cliente de la entidad de servicio. Se guarda cifrado. |
+| Secreto de cliente | `password` | Secreto de cliente de la entidad de servicio. Se guarda cifrado. |
 
 Para que la conexión funcione:
 
@@ -307,9 +309,9 @@ La conexión de DuckDB abre un fichero de base de datos de DuckDB en el equipo q
 
 ![Formulario de una conexión de DuckDB](/images/etl/configuration/connections/duckdb.png)
 
-Estas son las propiedades de la conexión, con su etiqueta en el formulario y su nombre en el fichero del entorno y en Crono CLI:
+Estas son las propiedades de la conexión, con su nombre en el fichero del entorno y en Crono CLI:
 
-| Formulario | Propiedad | Descripción |
+| Nombre | Propiedad | Descripción |
 | --- | --- | --- |
 | Archivo | `file` | Ruta del fichero de base de datos de DuckDB, por ejemplo `C:\dwh\dwh.duckdb`. El botón **+** crea una base de datos nueva y el botón del lápiz permite elegir un fichero existente. |
 
@@ -329,9 +331,9 @@ La conexión genérica se conecta a cualquier base de datos mediante una cadena 
 
 ![Formulario de una conexión genérica](/images/etl/configuration/connections/generic.png)
 
-Estas son las propiedades de la conexión, con su etiqueta en el formulario y su nombre en el fichero del entorno y en Crono CLI:
+Estas son las propiedades de la conexión, con su nombre en el fichero del entorno y en Crono CLI:
 
-| Formulario | Propiedad | Descripción |
+| Nombre | Propiedad | Descripción |
 | --- | --- | --- |
 | DSN o cadena de conexión | `connection-string` | Nombre de un origen de datos ODBC (`DSN=MiOrigen`) o cadena de conexión completa. Crono ETL elige el proveedor según su contenido: OLE DB si incluye `Provider` y `OLEDB`, el cliente de SQL Server si incluye `Data Source` sin `DSN`, y ODBC en el resto de casos. |
 | Dialecto SQL | `dialect` | Dialecto SQL de la base de datos: `SQLServer` (por defecto), `Postgres`, `Oracle`, `MySql`, `Access`, `Excel`, `Ansi92`, `Snowflake`, `Redshift`, `BigQuery`, `Databricks`, `Fabric`, `DuckDb` u `Other`. En el formulario aparecen con nombres descriptivos, como "ANSI (Postgres)" o "ANSI (Otro)". Determina si la conexión puede usarse como DWH (ver [Motores admitidos](#motores-admitidos)). |
