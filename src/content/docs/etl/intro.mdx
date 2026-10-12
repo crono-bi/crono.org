@@ -26,10 +26,6 @@ Crono CLI es la opción natural para equipos que ya tienen su propio entorno de 
 
 Este manual documenta **Crono ETL**. La documentación de Crono CLI se encuentra en su propia sección.
 
-<Aside type="caution">
-Crono CLI está actualmente en desarrollo. La primera versión estará disponible muy pronto.
-</Aside>
-
 ## El entorno de trabajo
 
 Una de las ventajas del IDE es la gestión visual del entorno. Antes de escribir una sola línea de código, el desarrollador define dónde están los datos: qué bases de datos son el origen, cuál es el destino, dónde se almacenan los ficheros intermedios.
@@ -37,14 +33,12 @@ Una de las ventajas del IDE es la gestión visual del entorno. Antes de escribir
 Crono ETL facilita esta configuración mediante formularios específicos para cada tipo de recurso:
 
 - **Conexiones** — bases de datos de origen y destino, con soporte para los principales motores (SQL Server, PostgreSQL, Snowflake, BigQuery...).
-- **Almacenamiento** — ubicaciones de ficheros: rutas locales, de red o buckets en la nube (S3, Azure Blob...).
+- **Almacenamiento** — ubicaciones de ficheros: rutas locales, de red o en la nube (Amazon S3, Google Cloud Storage, GitHub...).
 - **Credenciales** — gestión centralizada de usuarios y contraseñas, separada del código para que los repositorios no contengan secretos.
 
-Esta configuración se guarda en el proyecto y puede variar por entorno: el mismo proyecto apunta a la base de datos de desarrollo en el portátil del desarrollador y al servidor de producción en el servidor de cargas, sin tocar el código.
+Esta configuración se guarda en el proyecto, en un fichero por entorno (`.crono/environments/<entorno>.jsonc`). Un proyecto puede tener varios entornos, por ejemplo desarrollo y producción, y uno de ellos es el entorno activo. Si todos definen las conexiones, almacenamientos y credenciales con los mismos nombres, el mismo proyecto apunta a la base de datos de desarrollo en el portátil del desarrollador y al servidor de producción en el servidor de cargas, sin tocar el código.
 
-<Aside type="caution">
-La gestión de múltiples entornos está actualmente en desarrollo. La versión actual de Crono ETL permite configurar un único entorno por proyecto. Esta documentación se actualizará cuando la funcionalidad esté disponible.
-</Aside>
+Los entornos pueden gestionarse desde Crono ETL, desde Crono CLI (`crono environment list`, `set-current`, `duplicate`...) o editando directamente sus ficheros.
 
 ## Dos tipos de fichero
 

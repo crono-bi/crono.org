@@ -56,13 +56,18 @@ Se recomienda utilizar siempre un almacenamiento, de modo que el job no contenga
 
 ## Tabla de destino
 
-Si la tabla de destino no existe, Crono ETL la crea a partir de las columnas y los tipos del fichero. Si ya existe, las filas del fichero se añaden a las que contiene.
+Antes de cargar el fichero, Crono ETL prepara la tabla de destino:
+
+- Si la tabla ya existe, se vacía. El contenido de la tabla tras la carga es, por tanto, exactamente el del fichero, y la importación puede repetirse sin duplicar filas.
+- Si la tabla no existe, se crea a partir de las columnas y los tipos del fichero.
+
+En BigQuery, la tabla no se crea previamente: la crea el propio motor durante la carga, a partir del fichero. Así se evita descargar el fichero solo para leer su estructura. Los tipos de las columnas los decide BigQuery, por lo que pueden diferir ligeramente de los que asignaría Crono ETL; por ejemplo, una fecha y hora en UTC puede llegar como `TIMESTAMP` en lugar de `DATETIME`.
 
 :::caution
-La acción no vacía la tabla antes de la carga. Si se importa dos veces el mismo fichero en la misma tabla, sus filas quedan duplicadas.
+Como la tabla se vacía en cada importación, no es posible acumular varios ficheros en una misma tabla: si varias importaciones apuntan a la misma tabla, solo se conservan las filas del último fichero.
 :::
 
-<!-- PENDIENTE: Está previsto añadir clean_mode para vaciar o recrear la tabla antes de la carga, como en BULK TABLE. Cuando exista, documentarlo aquí y revisar el aviso anterior. Ojo: en BigQuery, la carga desde Google Cloud Storage usa LOAD DATA OVERWRITE y hoy reemplaza el contenido de la tabla, a diferencia del resto de casos. -->
+<!-- PENDIENTE: Está previsto añadir clean_mode (Drop/Delete/Truncate, y probablemente un modo que no vacíe la tabla), como en BULK TABLE. Cuando exista, documentarlo aquí y revisar el aviso anterior. Hoy se ejecuta siempre TRUNCATE TABLE. -->
 
 ## Importación de varios ficheros
 
@@ -78,7 +83,7 @@ Con la propiedad `data`, una sola acción puede importar varios ficheros. La con
 )
 ```
 
-En este ejemplo, cada fichero registrado en `audit.parquet_files` se carga en su tabla del esquema `staging`. Para incorporar un fichero nuevo a la carga basta con añadir una fila, sin modificar el job.
+En este ejemplo, cada fichero registrado en `audit.parquet_files` se carga en su tabla del esquema `staging`. Para incorporar un fichero nuevo a la carga basta con añadir una fila, sin modificar el job. Cada fila debe apuntar a una tabla distinta, ya que cada importación vacía la tabla de destino antes de cargarla.
 
 Las columnas de `data` pueden informar cualquier propiedad de la acción, no solo el fichero y la tabla: también la conexión de destino. Las importaciones se ejecutan de una en una, ya que esta acción no admite la propiedad `parallel_execution`.
 
@@ -109,7 +114,7 @@ Cuando el fichero está en un almacenamiento de Google Cloud Storage, BigQuery l
 Redshift solo carga ficheros Parquet desde Amazon S3, así que la carga se resuelve siempre con una sentencia `COPY` que lee el fichero de un bucket:
 
 - Si el fichero está en un almacenamiento de S3, Redshift lo lee directamente de ese bucket, sin que los datos pasen por el equipo que ejecuta el job.
-- Si el fichero está en cualquier otra ubicación (una carpeta local, Google Cloud Storage...), Crono ETL lo copia primero a la carpeta `tmp` del **almacenamiento intermedio** configurado en la conexión de Redshift, que debe ser un almacenamiento de S3. Si la conexión no tiene almacenamiento intermedio, la acción termina con error.
+- Si el fichero está en cualquier otra ubicación (una carpeta local, Google Cloud Storage...), Crono ETL lo copia primero a una carpeta temporal del **almacenamiento intermedio** (`crono/aaaamm/aaaammdd-xxxxxxxx/`) configurado en la conexión de Redshift, que debe ser un almacenamiento de S3. Si la conexión no tiene almacenamiento intermedio, la acción termina con error.
 
 Redshift accede al bucket con un rol IAM, no con las credenciales de la conexión ni con las del almacenamiento. El rol se indica en la conexión de Redshift; si no se informa, se utiliza el rol por defecto del clúster o del namespace (`IAM_ROLE default`). Para que la carga funcione:
 
@@ -119,8 +124,6 @@ Redshift accede al bucket con un rol IAM, no con las credenciales de la conexió
 
 Redshift asigna las columnas del fichero a las de la tabla por posición, no por nombre: la tabla debe tener las mismas columnas que el fichero, en el mismo orden y con tipos compatibles.
 
-<!-- PENDIENTE (corregir en Crono ETL): Redshift no crea la tabla de destino si no existe; COPY requiere que exista y Redshift no deduce el esquema del Parquet, por lo que hoy la carga falla. Solución prevista: comprobar si la tabla existe y, solo si no, leer el esquema del fichero (descargándolo o leyendo el pie con peticiones por rango) y llamar a CreateTableIfNotExists antes del COPY. Hasta entonces, lo dicho en "Tabla de destino" no se cumple en Redshift. -->
-
 ### Snowflake
 
 Snowflake no necesita ninguna configuración adicional: no hace falta un bucket propio, ni un rol IAM, ni una integración de almacenamiento. Crono ETL sube el fichero con `PUT` al stage interno del usuario de la conexión, un espacio de almacenamiento que Snowflake incluye para cada usuario, y lo carga desde allí con `COPY INTO`. Al terminar, el fichero se elimina del stage.
@@ -129,19 +132,19 @@ Si el fichero está en un almacenamiento en la nube, Crono ETL lo descarga prime
 
 Las columnas del fichero se asignan a las de la tabla por nombre, sin distinguir mayúsculas de minúsculas, así que el orden de las columnas en la tabla no importa.
 
-<!-- PENDIENTE (revisar en Crono ETL): el REMOVE del stage y el borrado del temporal local se ejecutan solo si la carga termina bien (decisión consciente: si falla, los ficheros quedan para revisarlos o reintentar a mano). Los restos de cargas fallidas se acumulan en @~/crono/ y en la carpeta temporal; se pueden limpiar con REMOVE @~/crono/. Optimización futura, si hay casos reales: con una storage integration en la conexión y el fichero en S3, COPY directo desde el bucket sin pasar por el equipo del job. El campo "Integración Snowflake" del almacenamiento queda sin uso. -->
+<!-- PENDIENTE (revisar en Crono ETL): el REMOVE del stage solo se ejecuta si la carga termina bien (decisión consciente: si falla, el fichero queda para revisarlo o reintentar a mano); el temporal local se borra siempre. Los restos de cargas fallidas se acumulan en @~/crono/; se pueden limpiar con REMOVE @~/crono/. Optimización futura, si hay casos reales: con una storage integration en la conexión y el fichero en S3, COPY directo desde el bucket sin pasar por el equipo del job. El campo "Integración Snowflake" del almacenamiento queda sin uso. -->
 
 ### Databricks
 
 Databricks carga los ficheros desde un volumen de Unity Catalog. Crono ETL sube el fichero a una carpeta temporal del **volumen intermedio** de la conexión, lo carga con `COPY INTO` y lo elimina al terminar. Si el fichero está en un almacenamiento en la nube, Crono ETL lo descarga primero a una carpeta temporal y lo sube desde allí.
 
-El volumen intermedio es obligatorio y se indica en la conexión de Databricks como la ruta de un volumen existente, por ejemplo `/Volumes/crono/staging/crono_staging`. Para que la carga funcione:
+El volumen intermedio es necesario para esta acción y se indica en la conexión de Databricks como la ruta de un volumen existente, por ejemplo `/Volumes/crono/staging/crono_staging`. Para que la carga funcione:
 
 - El workspace debe usar Unity Catalog.
 - El usuario de la conexión necesita los permisos `READ VOLUME` y `WRITE VOLUME` sobre el volumen.
 - Cada fichero puede ocupar como máximo 5 GB.
 
-Para crear el volumen, basta con una sentencia como esta, ejecutada por un usuario con permiso `CREATE VOLUME` sobre el esquema:
+Para crear el volumen se puede usar el enlace **Crear volumen intermedio (si no existe)** del formulario de la [conexión](/etl/configuration/connections/#databricks) o una sentencia como esta, ejecutada en ambos casos por un usuario con permiso `CREATE VOLUME` sobre el esquema:
 
 ```sql
 CREATE VOLUME IF NOT EXISTS crono.staging.crono_staging;
@@ -149,7 +152,7 @@ CREATE VOLUME IF NOT EXISTS crono.staging.crono_staging;
 
 Las columnas del fichero se asignan a las de la tabla por nombre, así que el orden de las columnas en la tabla no importa.
 
-<!-- PENDIENTE (revisar en Crono ETL): el REMOVE del fichero del volumen y el borrado del temporal local se ejecutan solo si la carga termina bien (como en Snowflake); el REMOVE borra el fichero pero deja la carpeta fecha/guid vacía. La conexión de Databricks no usa la entidad Credentials para el token. Optimización futura: COPY directo desde S3/ADLS con una external location. Ficheros de más de 5 GB: subida por partes. -->
+<!-- PENDIENTE (revisar en Crono ETL): el REMOVE del fichero del volumen solo se ejecuta si la carga termina bien (como en Snowflake); el temporal local se borra siempre. El REMOVE borra el fichero pero deja vacía la carpeta aaaamm/fecha-hex. La conexión de Databricks no usa la entidad Credentials para el token. Optimización futura: COPY directo desde S3/ADLS con una external location. Ficheros de más de 5 GB: subida por partes. -->
 
 <!-- PENDIENTE: A 11/10/2026 todos los motores validados desde todos los tipos de ubicación, sin INSERT individuales. -->
 
