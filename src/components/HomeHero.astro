@@ -1529,82 +1529,110 @@ ORDER BY TotalSales DESC`
   <div class="section-bg" style="background: radial-gradient(ellipse 80% 60% at 30% 50%, color-mix(in srgb, #8B5CF6 8%, transparent), transparent);"></div>
   <div class="mx-auto max-w-6xl px-6 py-16 lg:py-20">
     <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-      <!-- Right: AI Demo -->
+      <!-- Right: AI interconnection diagram -->
       <div class="product-demo order-2 lg:order-2">
-        <div class="ai-window">
-          <div class="ai-header">
-            <div class="ai-avatar">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.38-1 1.72v2.03c1.44.44 2.64 1.47 3.24 2.76h.06a2 2 0 1 1 0 4h-.06a4.002 4.002 0 0 1-3.24 2.76v1.72h1.5a2.5 2.5 0 0 1 0 5h-5a2.5 2.5 0 0 1 0-5H11v-1.72A4.002 4.002 0 0 1 7.76 13.5h-.06a2 2 0 1 1 0-4h.06c.6-1.29 1.8-2.32 3.24-2.76V5.72A2 2 0 1 1 12 2Z"/>
-              </svg>
-            </div>
-            <span class="ai-title">{t('homeHero.aiMock.title')}</span>
-            <span class="ai-provider">OpenAI</span>
-          </div>
-          <div class="ai-body">
-            <!-- User message -->
-            <div class="ai-message user">
-              <div class="ai-message-content">{t('homeHero.aiMock.question')}</div>
-            </div>
-            <!-- AI response -->
-            <div class="ai-message assistant">
-              <div class="ai-avatar-small">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.38-1 1.72v2.03c1.44.44 2.64 1.47 3.24 2.76h.06a2 2 0 1 1 0 4h-.06a4.002 4.002 0 0 1-3.24 2.76v1.72h1.5a2.5 2.5 0 0 1 0 5h-5a2.5 2.5 0 0 1 0-5H11v-1.72A4.002 4.002 0 0 1 7.76 13.5h-.06a2 2 0 1 1 0-4h.06c.6-1.29 1.8-2.32 3.24-2.76V5.72A2 2 0 1 1 12 2Z"/>
-                </svg>
-              </div>
-              <div class="ai-message-card">
-                <div class="ai-message-header">{t('homeHero.aiMock.analysisTitle')}</div>
-                <div class="ai-table">
-                  <div class="ai-table-header">
-                    <span>{t('homeHero.aiMock.tableHeaderRegion')}</span>
-                    <span>{t('homeHero.aiMock.tableHeaderSales')}</span>
-                    <span>{t('homeHero.aiMock.tableHeaderChange')}</span>
-                  </div>
-                  <div class="ai-table-row">
-                    <span>{t('homeHero.region.north')}</span>
-                    <span class="ai-num">€1.2M</span>
-                    <span class="ai-up">+15%</span>
-                  </div>
-                  <div class="ai-table-row">
-                    <span>{t('homeHero.region.south')}</span>
-                    <span class="ai-num">€980K</span>
-                    <span class="ai-up">+8%</span>
-                  </div>
-                  <div class="ai-table-row">
-                    <span>{t('homeHero.region.east')}</span>
-                    <span class="ai-num">€1.5M</span>
-                    <span class="ai-up">+22%</span>
-                  </div>
-                </div>
-                <div class="ai-actions">
-                  <span class="ai-action"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg> {t('homeHero.aiMock.actionExcel')}</span>
-                  <span class="ai-action"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/><path d="M3 15h18"/><path d="M9 3v18"/><path d="M15 3v18"/></svg> {t('homeHero.aiMock.actionViewSql')}</span>
-                </div>
-              </div>
-            </div>
-            <!-- Input area -->
-            <div class="ai-input-area">
-              <div class="ai-input">
-                <span class="ai-input-placeholder">{t('homeHero.aiMock.placeholder')}</span>
-                <button class="ai-send">{t('homeHero.aiMock.send')}</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Feature badges -->
-        <div class="demo-badge" style="right: -20px; top: 10%;">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8B5CF6" stroke-width="2">
-            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+        <div class="ai-map-wrap">
+          <svg class="ai-map" viewBox="0 0 520 380" role="img" aria-label="Crono AI">
+            <defs>
+              <marker id="ai-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M0,0 L8,4 L0,8 Z" fill="#8B5CF6" opacity="0.6"/>
+              </marker>
+            </defs>
+
+            <!-- column labels -->
+            <text class="ai-map-col-label" x="70" y="22" text-anchor="middle">{t('homeHero.ai.diagramClients')}</text>
+            <text class="ai-map-col-label" x="450" y="22" text-anchor="middle">{t('homeHero.ai.diagramServices')}</text>
+
+            <!-- ── connectors: clients → hub (disc left edge x=204) ── -->
+            <g class="ai-map-links" fill="none">
+              <!-- Claude → hub -->
+              <path class="ai-map-link" d="M130,70 C172,70 186,130 204,164"/>
+              <!-- ChatGPT → hub -->
+              <path class="ai-map-link" d="M130,190 L204,190"/>
+              <!-- Otros → hub -->
+              <path class="ai-map-link" d="M130,310 C172,310 186,250 204,216"/>
+            </g>
+
+            <!-- ── connectors: hub → services (disc right edge x=316) ── -->
+            <g class="ai-map-links-right" fill="none">
+              <!-- hub → Metadata (catálogo) -->
+              <path class="ai-map-link ai-map-link--right" d="M316,164 C334,130 356,70 390,70"/>
+              <!-- hub → DWH (SQL) -->
+              <path class="ai-map-link ai-map-link--right" d="M316,190 L390,190"/>
+              <!-- hub → Excel (export) -->
+              <path class="ai-map-link ai-map-link--right" d="M316,216 C334,250 356,310 390,310"/>
+            </g>
+
+            <!-- ── MCP chips on client connectors ── -->
+            <g class="ai-map-chip" transform="translate(155,60)">
+              <rect x="-22" y="-9" width="44" height="18" rx="9"/>
+              <text x="0" y="3.5" text-anchor="middle">MCP</text>
+            </g>
+            <g class="ai-map-chip" transform="translate(162,180)">
+              <rect x="-22" y="-9" width="44" height="18" rx="9"/>
+              <text x="0" y="3.5" text-anchor="middle">MCP</text>
+            </g>
+            <g class="ai-map-chip" transform="translate(155,300)">
+              <rect x="-22" y="-9" width="44" height="18" rx="9"/>
+              <text x="0" y="3.5" text-anchor="middle">MCP</text>
+            </g>
+
+            <!-- ── flow labels on service connectors ── -->
+            <g class="ai-map-flow-label">
+              <text x="354" y="106" text-anchor="middle">{t('homeHero.ai.flowCatalog')}</text>
+            </g>
+            <g class="ai-map-flow-label">
+              <text x="354" y="182" text-anchor="middle">SQL</text>
+            </g>
+            <g class="ai-map-flow-label">
+              <text x="354" y="276" text-anchor="middle">Export</text>
+            </g>
+
+            <!-- ── left nodes: MCP clients ── -->
+            <g class="ai-map-node">
+              <rect x="10" y="40" width="120" height="60" rx="12"/>
+              <image href="/ai-logos/claude.svg" x="57" y="46" width="26" height="26"/>
+              <text x="70" y="88" text-anchor="middle">Claude</text>
+            </g>
+            <g class="ai-map-node">
+              <rect x="10" y="160" width="120" height="60" rx="12"/>
+              <image href="/ai-logos/chatgpt.svg" x="57" y="166" width="26" height="26"/>
+              <text x="70" y="208" text-anchor="middle">ChatGPT</text>
+            </g>
+            <g class="ai-map-node ai-map-node--generic">
+              <rect x="10" y="280" width="120" height="60" rx="12"/>
+              <image href="/ai-logos/mcp.svg" x="57" y="286" width="26" height="26"/>
+              <text x="70" y="328" text-anchor="middle">{t('homeHero.ai.diagramOthers')}</text>
+            </g>
+
+            <!-- ── right nodes: Crono services ── -->
+            <g class="ai-map-node">
+              <rect x="390" y="40" width="120" height="60" rx="12"/>
+              <image href="/icons/ecosistema/crono-metadata.png" x="437" y="46" width="26" height="26"/>
+              <text x="450" y="88" text-anchor="middle">{t('homeHero.ai.diagramMetadata')}</text>
+            </g>
+            <g class="ai-map-node">
+              <rect x="390" y="160" width="120" height="60" rx="12"/>
+              <image href="/icons/ecosistema/dwh-cube.png" x="437" y="166" width="26" height="26"/>
+              <text x="450" y="208" text-anchor="middle">Data Warehouse</text>
+            </g>
+            <g class="ai-map-node">
+              <rect x="390" y="280" width="120" height="60" rx="12"/>
+              <image href="/icons/ecosistema/crono-excel.png" x="437" y="286" width="26" height="26"/>
+              <text x="450" y="328" text-anchor="middle">Crono Excel</text>
+            </g>
+
+            <!-- ── central hub: Crono AI ── -->
+            <g class="ai-map-hub">
+              <circle class="glow" cx="260" cy="190" r="72"/>
+              <circle class="disc" cx="260" cy="190" r="56"/>
+              <image href="/icons/ecosistema/crono-ai.png" x="228" y="162" width="64" height="64"/>
+              <text class="ai-map-hub-label" x="260" y="262" text-anchor="middle">{t('homeHero.ai.diagramHub')}</text>
+              <text class="ai-map-hub-sub" x="260" y="278" text-anchor="middle">{t('homeHero.ai.diagramHubSub')}</text>
+            </g>
           </svg>
-          <span>{t('homeHero.badge.exportExcel')}</span>
         </div>
-        <div class="demo-badge" style="left: -15px; bottom: 25%;">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8B5CF6" stroke-width="2">
-            <rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/><path d="M3 15h18"/><path d="M9 3v18"/><path d="M15 3v18"/>
-          </svg>
-          <span>{t('homeHero.badge.viewSql')}</span>
-        </div>
+
       </div>
       <!-- Left: Content -->
       <div class="product-content order-1 lg:order-1">
@@ -1614,12 +1642,23 @@ ORDER BY TotalSales DESC`
           {t('homeHero.ai.desc')}
         </p>
         <ul class="product-features">
+          <li><span style="color: #8B5CF6;">✓</span> {t('homeHero.ai.feature5')}</li>
           <li><span style="color: #8B5CF6;">✓</span> {t('homeHero.ai.feature1')}</li>
           <li><span style="color: #8B5CF6;">✓</span> {t('homeHero.ai.feature2')}</li>
           <li><span style="color: #8B5CF6;">✓</span> {t('homeHero.ai.feature3')}</li>
           <li><span style="color: #8B5CF6;">✓</span> {t('homeHero.ai.feature4')}</li>
-          <li><span style="color: #8B5CF6;">✓</span> {t('homeHero.ai.feature5')}</li>
         </ul>
+        <div class="ai-mcp-strip">
+          <img class="ai-mcp-icon" src="/ai-logos/mcp.svg" alt="" />
+          <div class="ai-mcp-copy">
+            <strong>{t('homeHero.ai.mcpTitle')}</strong>
+            <span>{t('homeHero.ai.mcpDesc')}</span>
+          </div>
+          <div class="ai-mcp-logos">
+            <span class="ai-mcp-logo"><img src="/ai-logos/claude.svg" alt="Claude" title="Claude" /></span>
+            <span class="ai-mcp-logo"><img src="/ai-logos/chatgpt.svg" alt="ChatGPT" title="ChatGPT" /></span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -3531,7 +3570,6 @@ ORDER BY TotalSales DESC`
     .catalog-window,
     .dashboard-window,
     .swagger-window,
-    .ai-window,
     .excel-window {
       max-width: 100%;
       overflow-x: auto;
@@ -4661,204 +4699,182 @@ ORDER BY TotalSales DESC`
   }
 
   /* ═══════════════════════════════════════════════════════════════
-     AI WINDOW (Crono AI)
+     AI MAP (Crono AI) — diagrama de interconexión
      ═══════════════════════════════════════════════════════════════ */
 
-  .ai-window {
-    background: var(--sl-color-bg-nav);
-    border: 1px solid var(--sl-color-hairline-light);
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 20px 50px -20px rgba(0, 0, 0, 0.4);
-    max-width: 420px;
-    margin: 0 auto;
-  }
-
-  .ai-header {
+  .ai-map-wrap {
     display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    padding: 0.75rem 1rem;
-    background: color-mix(in srgb, #8B5CF6 12%, var(--sl-color-bg-nav));
-    border-bottom: 1px solid var(--sl-color-hairline-light);
-  }
-
-  .ai-avatar {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    background: #8B5CF6;
-    display: flex;
-    align-items: center;
     justify-content: center;
-    color: white;
+    width: 100%;
+  }
+
+  .ai-map {
+    width: 100%;
+    max-width: 520px;
+    height: auto;
+  }
+
+  .ai-map text {
+    font-family: system-ui, -apple-system, sans-serif;
+  }
+
+  .ai-map-col-label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    fill: var(--sl-color-gray-3);
+  }
+
+  .ai-map-link {
+    stroke: #8B5CF6;
+    stroke-width: 1.6;
+    stroke-linecap: round;
+    stroke-dasharray: 5 5;
+    opacity: 0.7;
+    animation: aiMapFlow 1.4s linear infinite;
+  }
+
+  @keyframes aiMapFlow {
+    to { stroke-dashoffset: -20; }
+  }
+
+  .ai-map-node rect {
+    fill: var(--sl-color-bg-nav);
+    stroke: var(--sl-color-hairline-light);
+    stroke-width: 1;
+    filter: drop-shadow(0 4px 10px rgba(15, 23, 42, 0.08));
+  }
+
+  .ai-map-node text {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    fill: var(--sl-color-white);
+  }
+
+  .ai-map-chip rect {
+    fill: color-mix(in srgb, #8B5CF6 14%, var(--sl-color-bg-nav));
+    stroke: color-mix(in srgb, #8B5CF6 50%, transparent);
+    stroke-width: 1;
+  }
+
+  .ai-map-chip text {
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    fill: #8B5CF6;
+  }
+
+  .ai-map-link--right {
+    animation-direction: reverse;
+  }
+
+  .ai-map-flow-label text {
+    font-size: 8px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    fill: var(--sl-color-gray-3);
+    font-family: system-ui, -apple-system, sans-serif;
+  }
+
+  .ai-map-hub-sub {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    fill: var(--sl-color-gray-3);
+    font-family: system-ui, -apple-system, sans-serif;
+  }
+
+  .ai-map-node--generic rect {
+    stroke-dasharray: 4 3;
+  }
+
+  .ai-map-hub .glow {
+    fill: #8B5CF6;
+    opacity: 0.1;
+  }
+
+  .ai-map-hub .disc {
+    fill: var(--sl-color-bg-nav);
+    stroke: #8B5CF6;
+    stroke-width: 2.5;
+    filter: drop-shadow(0 10px 28px rgba(139, 92, 246, 0.3));
+  }
+
+  .ai-map-hub-label {
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    fill: #8B5CF6;
+  }
+
+  .ai-mcp-strip {
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
+    margin-top: 1.25rem;
+    padding: 0.75rem 1rem;
+    max-width: 480px;
+    border: 1px solid color-mix(in srgb, #8B5CF6 30%, transparent);
+    border-radius: 10px;
+    background: color-mix(in srgb, #8B5CF6 7%, transparent);
+  }
+
+  .ai-mcp-icon {
+    width: 22px;
+    height: 22px;
     flex-shrink: 0;
   }
 
-  .ai-title {
-    font-size: 0.875rem;
-    font-weight: 600;
-    color: var(--sl-color-white);
-    flex: 1;
-  }
-
-  .ai-provider {
-    font-size: 0.6875rem;
-    font-weight: 500;
-    color: var(--sl-color-gray-3);
-    padding: 0.25rem 0.5rem;
-    background: color-mix(in srgb, #8B5CF6 15%, transparent);
-    border-radius: 999px;
-  }
-
-  .ai-body {
-    padding: 1rem;
+  .ai-mcp-copy {
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
-    min-height: 280px;
+    gap: 1px;
+    flex: 1;
+    min-width: 0;
   }
 
-  .ai-message {
-    display: flex;
-    gap: 0.625rem;
-  }
-
-  .ai-message.user {
-    justify-content: flex-start;
-  }
-
-  .ai-message.user .ai-message-content {
-    background: color-mix(in srgb, #8B5CF6 15%, transparent);
-    border-radius: 8px 8px 8px 2px;
-    padding: 0.625rem 0.875rem;
+  .ai-mcp-copy strong {
     font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
     color: var(--sl-color-white);
-    max-width: 85%;
   }
 
-  .ai-message.assistant {
-    align-items: flex-start;
+  .ai-mcp-copy span {
+    font-size: 0.75rem;
+    line-height: 1.35;
+    color: var(--sl-color-gray-2);
   }
 
-  .ai-avatar-small {
+  .ai-mcp-logos {
+    display: flex;
+    gap: 0.375rem;
+    flex-shrink: 0;
+  }
+
+  .ai-mcp-logo {
     width: 28px;
     height: 28px;
-    border-radius: 50%;
-    background: #8B5CF6;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
-    flex-shrink: 0;
-    margin-top: 2px;
-  }
-
-  .ai-message-card {
-    flex: 1;
-    background: var(--sl-color-bg);
+    background: rgba(255, 255, 255, 0.9);
     border: 1px solid var(--sl-color-hairline-light);
-    border-radius: 8px;
-    padding: 0.75rem;
-    font-size: 0.8125rem;
+    border-radius: 7px;
   }
 
-  .ai-message-header {
-    font-weight: 600;
-    color: var(--sl-color-white);
-    margin-bottom: 0.5rem;
-    font-size: 0.8125rem;
+  .ai-mcp-logo img {
+    width: 20px;
+    height: 20px;
+    display: block;
   }
 
-  .ai-table {
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
-    margin-bottom: 0.625rem;
+  :root[data-theme='dark'] .ai-mcp-logo {
+    background: rgba(30, 32, 48, 0.9);
+    border-color: rgba(255, 255, 255, 0.12);
   }
 
-  .ai-table-header,
-  .ai-table-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr 0.7fr;
-    gap: 0.5rem;
-    font-size: 0.75rem;
-    padding: 0.375rem 0.5rem;
-    border-radius: 0.375rem;
-  }
-
-  .ai-table-header {
-    font-weight: 600;
-    color: var(--sl-color-gray-2);
-    background: color-mix(in srgb, var(--sl-color-hairline-light) 50%, transparent);
-  }
-
-  .ai-table-row {
-    color: var(--sl-color-gray-1);
-    background: color-mix(in srgb, var(--sl-color-bg-nav) 50%, transparent);
-  }
-
-  .ai-num {
-    font-family: ui-monospace, monospace;
-    color: var(--sl-color-white);
-  }
-
-  .ai-up {
-    color: #22c55e;
-    font-weight: 500;
-  }
-
-  .ai-actions {
-    display: flex;
-    gap: 0.75rem;
-    padding-top: 0.5rem;
-    border-top: 1px solid var(--sl-color-hairline-light);
-  }
-
-  .ai-action {
-    display: flex;
-    align-items: center;
-    gap: 0.375rem;
-    font-size: 0.6875rem;
-    color: var(--sl-color-gray-3);
-    cursor: pointer;
-    transition: color 0.2s;
-  }
-
-  .ai-action:hover {
-    color: #8B5CF6;
-  }
-
-  .ai-input-area {
-    margin-top: auto;
-    padding-top: 0.5rem;
-  }
-
-  .ai-input {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0.625rem 0.75rem;
-    background: var(--sl-color-bg);
-    border: 1px solid var(--sl-color-hairline-light);
-    border-radius: 999px;
-  }
-
-  .ai-input-placeholder {
-    font-size: 0.8125rem;
-    color: var(--sl-color-gray-4);
-  }
-
-  .ai-send {
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: white;
-    background: #8B5CF6;
-    border: none;
-    border-radius: 0.5rem;
-    padding: 0.375rem 0.75rem;
-    cursor: pointer;
-  }
 
   /* ═══════════════════════════════════════════════════════════════
      CRONO EXCEL MOCKUP
