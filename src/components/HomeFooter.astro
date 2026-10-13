@@ -8,10 +8,10 @@ const t = useT(lang)
 const prefix = getLocalePrefix(lang)
 
 const products = [
-  { ...PRODUCTS.sql, href: `${prefix}/sql/`, tags: t('homeFooter.sql.tags').split(',') },
-  { ...PRODUCTS.etl, href: `${prefix}/etl/`, tags: t('homeFooter.etl.tags').split(',') },
-  { ...PRODUCTS.metadata, href: `${prefix}/metadata/`, tags: t('homeFooter.metadata.tags').split(',') },
-  { ...PRODUCTS.analysis, href: `${prefix}/analysis/`, tags: t('homeFooter.analysis.tags').split(',') },
+  { ...PRODUCTS.sql, href: `${prefix}/sql/intro/`, tags: t('homeFooter.sql.tags').split(',') },
+  { ...PRODUCTS.etl, href: `${prefix}/etl/intro/`, tags: t('homeFooter.etl.tags').split(',') },
+  { ...PRODUCTS.metadata, href: `${prefix}/metadata/intro/`, tags: t('homeFooter.metadata.tags').split(',') },
+  { ...PRODUCTS.analysis, href: `${prefix}/analysis/intro/`, tags: t('homeFooter.analysis.tags').split(',') },
 ]
 
 const socials = [

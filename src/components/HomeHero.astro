@@ -44,21 +44,21 @@ const products = [
     ...PRODUCTS.sql,
     tagline: t('homeHero.product.sql.tagline'),
     desc: t('homeHero.product.sql.desc'),
-    href: `${prefix}/sql/`,
+    href: `${prefix}/sql/intro/`,
     stats: t('homeHero.product.sql.stats'),
   },
   {
     ...PRODUCTS.etl,
     tagline: t('homeHero.product.etl.tagline'),
     desc: t('homeHero.product.etl.desc'),
-    href: `${prefix}/etl/`,
+    href: `${prefix}/etl/intro/`,
     stats: t('homeHero.product.etl.stats'),
   },
   {
     ...PRODUCTS.metadata,
     tagline: t('homeHero.product.metadata.tagline'),
     desc: t('homeHero.product.metadata.desc'),
-    href: `${prefix}/metadata/`,
+    href: `${prefix}/metadata/intro/`,
     color: '#8B5CF6',
     stats: t('homeHero.product.metadata.stats'),
     icon: '<path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/>',
@@ -67,7 +67,7 @@ const products = [
     ...PRODUCTS.analysis,
     tagline: t('homeHero.product.analysis.tagline'),
     desc: t('homeHero.product.analysis.desc'),
-    href: `${prefix}/analysis/`,
+    href: `${prefix}/analysis/intro/`,
     stats: t('homeHero.product.analysis.stats'),
   },
 ]
@@ -171,7 +171,7 @@ ORDER BY TotalSales DESC`
                 <span class="mock-name">Crono ETL</span>
                 <span class="mock-sub">{t('homeHero.mock.etlSub')}</span>
               </div>
-              <span class="mock-doc-btn" title={t('homeHero.mock.viewDocs')} onclick={`event.preventDefault(); event.stopPropagation(); window.location.href='${prefix}/etl/';`} role="button" tabindex="0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>Docs</span>
+              <span class="mock-doc-btn" title={t('homeHero.mock.viewDocs')} onclick={`event.preventDefault(); event.stopPropagation(); window.location.href='${prefix}/etl/intro/';`} role="button" tabindex="0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>Docs</span>
               <svg class="mock-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
             </a>
             <a href="#crono-sql" class="mock-row" style="--row-color: #10B981;">
@@ -182,7 +182,7 @@ ORDER BY TotalSales DESC`
                 <span class="mock-name">Crono SQL</span>
                 <span class="mock-sub">{t('homeHero.mock.sqlSub')}</span>
               </div>
-              <span class="mock-doc-btn" title={t('homeHero.mock.viewDocs')} onclick={`event.preventDefault(); event.stopPropagation(); window.location.href='${prefix}/sql/';`} role="button" tabindex="0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>Docs</span>
+              <span class="mock-doc-btn" title={t('homeHero.mock.viewDocs')} onclick={`event.preventDefault(); event.stopPropagation(); window.location.href='${prefix}/sql/intro/';`} role="button" tabindex="0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>Docs</span>
               <svg class="mock-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
             </a>
             <a href="#crono-metadata" class="mock-row" style="--row-color: #5B2C7D;">
@@ -193,7 +193,7 @@ ORDER BY TotalSales DESC`
                 <span class="mock-name">Crono Metadata</span>
                 <span class="mock-sub">{t('homeHero.mock.metadataSub')}</span>
               </div>
-              <span class="mock-doc-btn" title={t('homeHero.mock.viewDocs')} onclick={`event.preventDefault(); event.stopPropagation(); window.location.href='${prefix}/metadata/';`} role="button" tabindex="0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>Docs</span>
+              <span class="mock-doc-btn" title={t('homeHero.mock.viewDocs')} onclick={`event.preventDefault(); event.stopPropagation(); window.location.href='${prefix}/metadata/intro/';`} role="button" tabindex="0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>Docs</span>
               <svg class="mock-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
             </a>
             <a href="#crono-analysis" class="mock-row" style="--row-color: #C85A47;">
@@ -204,7 +204,7 @@ ORDER BY TotalSales DESC`
                 <span class="mock-name">Crono Analysis</span>
                 <span class="mock-sub">{t('homeHero.mock.analysisSub')}</span>
               </div>
-              <span class="mock-doc-btn" title={t('homeHero.mock.viewDocs')} onclick={`event.preventDefault(); event.stopPropagation(); window.location.href='${prefix}/analysis/';`} role="button" tabindex="0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>Docs</span>
+              <span class="mock-doc-btn" title={t('homeHero.mock.viewDocs')} onclick={`event.preventDefault(); event.stopPropagation(); window.location.href='${prefix}/analysis/intro/';`} role="button" tabindex="0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>Docs</span>
               <svg class="mock-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
             </a>
             <a href="#crono-api" class="mock-row" style="--row-color: #38BDF8;">
@@ -1026,7 +1026,7 @@ ORDER BY TotalSales DESC`
             <div class="eco-products-line"></div>
           </div>
           <div class="eco-products-grid">
-            <a href={`${prefix}/analysis/`} class="eco-prod" style="--pc:#F97316;--pca:rgba(249,115,22,0.12)">
+            <a href={`${prefix}/analysis/intro/`} class="eco-prod" style="--pc:#F97316;--pca:rgba(249,115,22,0.12)">
               <div class="eco-prod-icon">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="1.8" stroke-linecap="round"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
               </div>
@@ -1178,7 +1178,7 @@ ORDER BY TotalSales DESC`
           <li><span style="color: #10B981;">✓</span> {t('homeHero.sqlSection.feature4')}</li>
         </ul>
         <div class="product-actions">
-          <a href={`${prefix}/sql/`} class="btn-product" style="background: #10B981; box-shadow: 0 4px 20px -4px #10B981;">
+          <a href={`${prefix}/sql/intro/`} class="btn-product" style="background: #10B981; box-shadow: 0 4px 20px -4px #10B981;">
             {t('homeHero.btn.exploreDocs')}
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
           </a>
@@ -1210,7 +1210,7 @@ ORDER BY TotalSales DESC`
           <li><span style="color: #1B8AC7;">✓</span> {t('homeHero.etlSection.feature3')}</li>
           <li><span style="color: #1B8AC7;">✓</span> {t('homeHero.etlSection.feature4')}</li>
         </ul>
-        <a href={`${prefix}/etl/`} class="btn-product" style="background: #1B8AC7; box-shadow: 0 4px 20px -4px #1B8AC7;">
+        <a href={`${prefix}/etl/intro/`} class="btn-product" style="background: #1B8AC7; box-shadow: 0 4px 20px -4px #1B8AC7;">
           {t('homeHero.btn.exploreDocs')}
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
         </a>
@@ -1350,7 +1350,7 @@ ORDER BY TotalSales DESC`
           <li><span style="color: #5B2C7D;">✓</span> {t('homeHero.metadataSection.feature3')}</li>
           <li><span style="color: #5B2C7D;">✓</span> {t('homeHero.metadataSection.feature4')}</li>
         </ul>
-        <a href={`${prefix}/metadata/`} class="btn-product" style="background: #5B2C7D; box-shadow: 0 4px 20px -4px #5B2C7D;">
+        <a href={`${prefix}/metadata/intro/`} class="btn-product" style="background: #5B2C7D; box-shadow: 0 4px 20px -4px #5B2C7D;">
           {t('homeHero.btn.exploreDocs')}
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
         </a>
@@ -1377,7 +1377,7 @@ ORDER BY TotalSales DESC`
           <li><span style="color: #C85A47;">✓</span> {t('homeHero.analysisSection.feature3')}</li>
           <li><span style="color: #C85A47;">✓</span> {t('homeHero.analysisSection.feature4')}</li>
         </ul>
-        <a href={`${prefix}/analysis/`} class="btn-product" style="background: #C85A47; box-shadow: 0 4px 20px -4px #C85A47;">
+        <a href={`${prefix}/analysis/intro/`} class="btn-product" style="background: #C85A47; box-shadow: 0 4px 20px -4px #C85A47;">
           {t('homeHero.btn.exploreDocs')}
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
         </a>
@@ -1533,12 +1533,6 @@ ORDER BY TotalSales DESC`
       <div class="product-demo order-2 lg:order-2">
         <div class="ai-map-wrap">
           <svg class="ai-map" viewBox="0 0 520 380" role="img" aria-label="Crono AI">
-            <defs>
-              <marker id="ai-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-                <path d="M0,0 L8,4 L0,8 Z" fill="#8B5CF6" opacity="0.6"/>
-              </marker>
-            </defs>
-
             <!-- column labels -->
             <text class="ai-map-col-label" x="70" y="22" text-anchor="middle">{t('homeHero.ai.diagramClients')}</text>
             <text class="ai-map-col-label" x="450" y="22" text-anchor="middle">{t('homeHero.ai.diagramServices')}</text>
@@ -1798,7 +1792,7 @@ ORDER BY TotalSales DESC`
     
     <!-- Product Cards Grid -->
     <div class="hero-products-grid" style="padding-top: 3rem;">
-      <a href={`${prefix}/sql/`} class="hero-product-card" style="--product-color: #10B981; --index: 0">
+      <a href={`${prefix}/sql/intro/`} class="hero-product-card" style="--product-color: #10B981; --index: 0">
         <div class="hero-card-glow"></div>
         <div class="hero-card-content">
           <div class="hero-card-top">
@@ -1824,7 +1818,7 @@ ORDER BY TotalSales DESC`
         <div class="hero-card-border" style="background: #10B981;"></div>
       </a>
       
-      <a href={`${prefix}/etl/`} class="hero-product-card" style="--product-color: #1B8AC7; --index: 1">
+      <a href={`${prefix}/etl/intro/`} class="hero-product-card" style="--product-color: #1B8AC7; --index: 1">
         <div class="hero-card-glow"></div>
         <div class="hero-card-content">
           <div class="hero-card-top">
@@ -1852,7 +1846,7 @@ ORDER BY TotalSales DESC`
         <div class="hero-card-border" style="background: #1B8AC7;"></div>
       </a>
       
-      <a href={`${prefix}/metadata/`} class="hero-product-card" style="--product-color: #5B2C7D; --index: 2">
+      <a href={`${prefix}/metadata/intro/`} class="hero-product-card" style="--product-color: #5B2C7D; --index: 2">
         <div class="hero-card-glow"></div>
         <div class="hero-card-content">
           <div class="hero-card-top">
@@ -1879,7 +1873,7 @@ ORDER BY TotalSales DESC`
         <div class="hero-card-border" style="background: #5B2C7D;"></div>
       </a>
       
-      <a href={`${prefix}/analysis/`} class="hero-product-card" style="--product-color: #C85A47; --index: 3">
+      <a href={`${prefix}/analysis/intro/`} class="hero-product-card" style="--product-color: #C85A47; --index: 3">
         <div class="hero-card-glow"></div>
         <div class="hero-card-content">
           <div class="hero-card-top">
