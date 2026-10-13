@@ -20,14 +20,10 @@ const isEN = pathname.startsWith('/en');
 const prefix = isEN ? '/en' : '';
 const playgroundUrl = `${prefix}/playground/?code=${btoa(encodeURIComponent(mergeCloneExample))}`;
 
-// Ocultar nav principal solo en páginas internas de doc (no en las landing de sección)
-const docSectionRoots = isEN
-	? ['/en/sql/', '/en/etl/', '/en/analysis/', '/en/metadata/']
-	: ['/sql/', '/etl/', '/analysis/', '/metadata/'];
-const isDocsSection = docSectionRoots.some((root) => {
-	const rest = pathname.slice(root.length);
-	return pathname.startsWith(root) && rest.length > 0;
-});
+// En páginas con sidebar, Starlight renderiza su propio toggle de menú móvil
+// (el drawer incluye la nav principal vía Sidebar.astro), así que el menú
+// móvil propio solo se renderiza cuando no hay sidebar.
+const { hasSidebar } = Astro.locals.starlightRoute;
 
 const navLinks = isEN
 	? [
@@ -67,10 +63,10 @@ const isNavActive = (href: string) => pathname === href || (!isHomeHref(href) &&
 ---
 
 <div class="header">
-	<!-- Mobile menu toggle (checkbox hack).
-	     Solo en páginas NO-docs: en docs, Starlight ya renderiza su propio
-	     toggle de sidebar, evitando así una doble hamburguesa / overlay vacío. -->
-	{!isDocsSection && (
+	<!-- Mobile menu toggle (checkbox hack). Solo en páginas sin sidebar:
+	     con sidebar, Starlight ya renderiza su propio toggle y una doble
+	     hamburguesa sería confusa. -->
+	{!hasSidebar && (
 		<>
 			<input type="checkbox" id="mobile-menu-toggle" class="mobile-toggle" />
 			<label for="mobile-menu-toggle" class="mobile-menu-btn" aria-label="Menu">
@@ -89,36 +85,34 @@ const isNavActive = (href: string) => pathname === href || (!isHomeHref(href) &&
 	<div class="title-wrapper sl-flex">
 		<SiteTitle />
 	</div>
-	{!isDocsSection && (
-		<nav class="header-nav" aria-label="Main">
-			{navLinks.map(({ label, href, highlight }) => (
-				<a href={href} class:list={['nav-link', { 'nav-link--active': isNavActive(href), 'nav-link--highlight': highlight }]}>
-					{label}
-				</a>
-			))}
-			<div class:list={['nav-dropdown', { 'nav-link--active': isDocsActive }]}>
-				<button class="nav-link nav-dropdown__trigger" aria-haspopup="true">
-					{docsLabel}
-					<svg width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true" class="nav-dropdown__chevron">
-						<path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-					</svg>
-				</button>
-				<ul class="nav-dropdown__menu" role="menu">
-					{docLinks.map(({ label, desc, href, icon }) => (
-						<li role="none">
-							<a href={href} role="menuitem" class:list={['nav-dropdown__item', { 'nav-dropdown__item--active': pathname.startsWith(href) }]}>
-								<span class="nav-dropdown__icon" set:html={icon}></span>
-								<span class="nav-dropdown__text">
-									<span class="nav-dropdown__name">{label}</span>
-									<span class="nav-dropdown__desc">{desc}</span>
-								</span>
-							</a>
-						</li>
-					))}
-				</ul>
-			</div>
-		</nav>
-	)}
+	<nav class="header-nav" aria-label="Main">
+		{navLinks.map(({ label, href, highlight }) => (
+			<a href={href} class:list={['nav-link', { 'nav-link--active': isNavActive(href), 'nav-link--highlight': highlight }]}>
+				{label}
+			</a>
+		))}
+		<div class:list={['nav-dropdown', { 'nav-link--active': isDocsActive }]}>
+			<button class="nav-link nav-dropdown__trigger" aria-haspopup="true">
+				{docsLabel}
+				<svg width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true" class="nav-dropdown__chevron">
+					<path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+				</svg>
+			</button>
+			<ul class="nav-dropdown__menu" role="menu">
+				{docLinks.map(({ label, desc, href, icon }) => (
+					<li role="none">
+						<a href={href} role="menuitem" class:list={['nav-dropdown__item', { 'nav-dropdown__item--active': pathname.startsWith(href) }]}>
+							<span class="nav-dropdown__icon" set:html={icon}></span>
+							<span class="nav-dropdown__text">
+								<span class="nav-dropdown__name">{label}</span>
+								<span class="nav-dropdown__desc">{desc}</span>
+							</span>
+						</a>
+					</li>
+				))}
+			</ul>
+		</div>
+	</nav>
 
 	<div class="sl-hidden md:sl-flex print:hidden right-group">
 		<div class="sl-flex social-icons">
@@ -129,8 +123,8 @@ const isNavActive = (href: string) => pathname === href || (!isHomeHref(href) &&
 		<LanguageSelect />
 	</div>
 
-	<!-- Mobile menu (solo en páginas NO-docs) -->
-	{!isDocsSection && (
+	<!-- Mobile menu (solo en páginas sin sidebar) -->
+	{!hasSidebar && (
 		<div class="mobile-menu" role="dialog" aria-label="Navigation">
 			<div class="mobile-nav">
 				{navLinks.map(({ label, href, highlight }) => (

@@ -9,10 +9,15 @@ const topics = Astro.locals.starlightSidebarTopics?.topics ?? []
 
 const lang = getLangFromLocale(Astro.currentLocale);
 const t = useT(lang);
-const homeHref = lang === 'en' ? '/en/' : '/';
+const prefix = lang === 'en' ? '/en' : '';
+const homeHref = `${prefix}/`;
+const downloadsHref = `${prefix}/downloads/`;
+const pricingHref = `${prefix}/precios/`;
+const downloadsLabel = lang === 'en' ? 'Downloads' : 'Descargas';
+const pricingLabel = lang === 'en' ? 'Pricing' : 'Precios';
 ---
 
-<!-- CTA al Inicio -->
+<!-- CTA al Inicio + nav principal (los links extra solo en móvil, donde el drawer sustituye al menú del header) -->
 <div class="sidebar-cta-container">
 	<a href={homeHref} class="sidebar-home-cta">
 		<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -20,6 +25,21 @@ const homeHref = lang === 'en' ? '/en/' : '/';
 			<polyline points="9 22 9 12 15 12 15 22"/>
 		</svg>
 		<span>{t('sidebar.home')}</span>
+	</a>
+	<a href={downloadsHref} class="sidebar-home-cta sidebar-nav-extra">
+		<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+			<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+			<polyline points="7 10 12 15 17 10"/>
+			<line x1="12" y1="15" x2="12" y2="3"/>
+		</svg>
+		<span>{downloadsLabel}</span>
+	</a>
+	<a href={pricingHref} class="sidebar-home-cta sidebar-nav-extra">
+		<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+			<path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/>
+			<line x1="7" y1="7" x2="7.01" y2="7"/>
+		</svg>
+		<span>{pricingLabel}</span>
 	</a>
 </div>
 
@@ -63,5 +83,13 @@ const homeHref = lang === 'en' ? '/en/' : '/';
 		opacity: 0.8;
 		width: 16px;
 		height: 16px;
+	}
+
+	/* Links de la nav principal: solo en el drawer móvil,
+	   en desktop ya están visibles en el header. */
+	@media (min-width: 50rem) {
+		.sidebar-nav-extra {
+			display: none;
+		}
 	}
 </style>
