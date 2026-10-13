@@ -6,7 +6,6 @@ export const analysisTopics = {
 	// del frontmatter de cada archivo: title (o sidebar.label) en docs/ (ES) y docs/en/ (EN).
 	// Al añadir una página solo hay que crear los 2 .md y agregar su slug aquí.
 	items: [
-		{ slug: 'analysis', label: 'Crono Analysis', translations: { en: 'Crono Analysis' } },
 		{ slug: 'analysis/intro' },
 		{ slug: 'analysis/catalog' },
 		{ slug: 'analysis/analysis-document' },

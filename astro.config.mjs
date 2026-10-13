@@ -16,6 +16,17 @@ import cronoSqlLang from './src/config/crono-sql-grammar.mjs';
 // https://astro.build/config
 export default defineConfig({
 	site: 'https://crono.org',
+	redirects: {
+		// Las landings de sección se fusionaron en sus páginas de introducción
+		'/sql': '/sql/intro',
+		'/etl': '/etl/intro',
+		'/analysis': '/analysis/intro',
+		'/metadata': '/metadata/intro',
+		'/en/sql': '/en/sql/intro',
+		'/en/etl': '/en/etl/intro',
+		'/en/analysis': '/en/analysis/intro',
+		'/en/metadata': '/en/metadata/intro',
+	},
 	vite: {
 		plugins: [tailwindcss()],
 		resolve: {

@@ -1,9 +1,8 @@
 export const etlTopics = {
 	label: 'Crono ETL',
-	link: '/etl/',
+	link: '/etl/intro/',
 	icon: 'random',
 	items: [
-		{ slug: 'etl', label: 'Crono ETL', translations: { en: 'Crono ETL' } },
 		{ slug: 'etl/intro', label: 'Introducción', translations: { en: 'Introduction' } },
 		{ slug: 'etl/ide', label: 'El IDE', translations: { en: 'The IDE' } },
 		{ slug: 'etl/getting-started', label: 'Primeros pasos', translations: { en: 'Getting started' } },

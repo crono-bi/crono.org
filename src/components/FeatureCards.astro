@@ -1,5 +1,9 @@
 ---
-import type { Feature } from './ManualLanding.astro'
+export interface Feature {
+  icon: string
+  title: string
+  description: string
+}
 
 interface Props {
   features: Feature[]

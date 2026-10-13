@@ -6,7 +6,6 @@ export const metadataTopics = {
 	// del frontmatter: title en docs/ (ES) y docs/en/ (EN).
 	// Al añadir una página solo hay que crear los 2 .md y agregar su slug aquí.
 	items: [
-		{ slug: 'metadata', label: 'Crono Metadata', translations: { en: 'Crono Metadata' } },
 		{ slug: 'metadata/intro' },
 		{ slug: 'metadata/first-catalog' },
 		{ slug: 'metadata/diagram-creation' },

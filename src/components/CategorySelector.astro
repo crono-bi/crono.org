@@ -1,5 +1,11 @@
 ---
-import type { Category } from './ManualLanding.astro'
+export interface Category {
+  id: string
+  title: string
+  description: string
+  icon: string
+  path: string
+}
 
 interface Props {
   categories: Category[]

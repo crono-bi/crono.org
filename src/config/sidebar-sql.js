@@ -3,7 +3,6 @@ export const sqlTopics = {
 	link: '/sql/intro/',
 	icon: 'code',
 	items: [
-		{ slug: 'sql', label: 'Crono SQL', translations: { en: 'Crono SQL' } },
 		{ slug: 'sql/intro', label: 'Introducción', translations: { en: 'Introduction' } },
 		{ label: 'Lenguaje Crono SQL', translations: { en: 'Crono SQL Language' }, collapsed: true, autogenerate: { directory: 'sql/language' } },
 		{

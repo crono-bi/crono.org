@@ -3,12 +3,15 @@ title: "Introducción"
 ---
 
 import { Aside } from '@astrojs/starlight/components';
+import SectionFeatures from '../../../components/SectionFeatures.astro';
 
 **Crono ETL** es un IDE para el desarrollo y la ejecución de proyectos ETL/DWH. Como cualquier IDE, incluye un editor de código —con soporte nativo para Crono SQL— y añade las herramientas específicas del dominio: compilación y ejecución de sentencias Crono SQL, gestión visual del entorno de trabajo, y utilidades para monitorizar el estado del sistema (historial de cargas, duración, errores, notificaciones).
 
 Crono ETL ocupa el primer eslabón del ecosistema Crono. Las fuentes de datos —bases de datos operacionales, ficheros Excel, APIs REST, CSVs— se extraen y transforman con Crono ETL y se depositan en el data warehouse. Desde ahí, Crono Metadata construye la capa semántica y Crono Analysis permite el análisis y el reporting.
 
 *[Pantallazo: diagrama del ecosistema Crono — fuentes → ETL → DWH → Metadata → Analysis]*
+
+<SectionFeatures section="etl" />
 
 ## Crono ETL y Crono CLI
 
