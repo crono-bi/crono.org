@@ -73,19 +73,6 @@ const es = {
   'category.others': 'Otras',
   'category.general': 'General',
 
-  // ── ManualLanding (títulos de secciones) ──
-  'manualLanding.featuresTitle': '¿Qué es?',
-  'manualLanding.statementsTitle': 'Sentencias principales',
-  'manualLanding.functionsTitle': 'Funciones integradas',
-  'manualLanding.categoriesTitle': 'Explorar por categoría',
-  'manualLanding.categoriesDesc': 'Selecciona una categoría para ver todos los artículos disponibles.',
-  'manualLanding.basePathTitle': 'Documentación',
-  'manualLanding.footerTitle': '¿Listo para empezar?',
-  'manualLanding.footerDesc': 'Explora la documentación completa.',
-  'manualLanding.footerCta': 'Empezar ahora',
-  'manualLanding.enginesTitle': 'Motores compatibles',
-  'manualLanding.syntaxTitle': 'Sintaxis simplificada',
-
   // ── DownloadTable ──
   'download.error.load': 'No se pudo cargar la información',
   'download.error.connect': 'Error al conectar con el servidor de actualizaciones',
@@ -100,95 +87,37 @@ const es = {
   'download.summary.historyTitle': 'Ver historial completo de versiones',
   'download.summary.historyLabel': 'Historial',
 
-  // ── SqlLanding / ManualLanding ──
-  'sqlLanding.subtitle': 'Escríbelo una vez. Cárgalo en cualquier motor.',
-  'sqlLanding.cta.manual': 'Acceder al manual',
-  'sqlLanding.cta.playground': 'Playground',
-  'sqlLanding.featuresTitle': '¿Qué es Crono SQL?',
+  // ── SectionFeatures: Crono SQL (intro) ──
   'sqlLanding.feature1.title': 'SELECT extendido',
   'sqlLanding.feature1.desc': 'JOINs simplificados, columnas calculadas reutilizables, apilamiento de consultas, SEMI JOIN, ANTI JOIN y MATERIALIZE. Todo el SQL estándar sigue funcionando sin cambios.',
   'sqlLanding.feature2.title': 'Patrones de carga',
   'sqlLanding.feature2.desc': 'MERGE CLONE, MERGE UPSERT, MERGE HISTORY y más. Cada sentencia crea la tabla, la evoluciona cuando añades campos y gestiona las columnas de auditoría automáticamente.',
   'sqlLanding.feature3.title': 'Funciones portables',
   'sqlLanding.feature3.desc': 'Funciones de texto, numéricas, de fecha y de agregación que compilan correctamente en todos los motores soportados, sin incompatibilidades entre dialectos.',
-  'sqlLanding.category.language.title': 'Lenguaje Crono SQL',
-  'sqlLanding.category.language.desc': 'Guía completa de la sintaxis con ejemplos prácticos de cada sentencia.',
-  'sqlLanding.category.reference.title': 'Referencia del lenguaje',
-  'sqlLanding.category.reference.desc': 'Documentación técnica detallada de sintaxis y funcionalidades avanzadas.',
-  'sqlLanding.category.functions.title': 'Funciones',
-  'sqlLanding.category.functions.desc': 'Listado completo de funciones integradas agrupadas por categoría.',
-  'sqlLanding.category.views.title': 'Vistas',
-  'sqlLanding.category.views.desc': 'Vistas predefinidas del sistema para consultar metadatos.',
-  'sqlLanding.statementsTitle': 'Sentencias principales',
-  'sqlLanding.functionsTitle': 'Funciones integradas',
-  'sqlLanding.functionsDesc': 'Crono SQL soporta todas las funciones nativas de cada motor y añade sus propias funciones como:',
-  'sqlLanding.playground.title': 'Playground interactivo',
-  'sqlLanding.playground.desc': 'Escribe Crono SQL y mira en tiempo real el SQL generado para cada motor de base de datos.',
-  'sqlLanding.playground.cta': 'Probar este ejemplo',
-  'sqlLanding.footer.title': '¿Listo para probar Crono SQL?',
-  'sqlLanding.footer.desc': 'Explora la documentación completa y empieza a construir tu Data Warehouse.',
-  'sqlLanding.footer.cta': 'Acceder al manual',
 
-  // ── SqlLanding statements ──
-  'sqlLanding.stmt.select': 'JOINs simplificados, columnas reutilizables y apilamiento de consultas',
-  'sqlLanding.stmt.mergeClone': 'Sincronización completa: crea la tabla, la mantiene y gestiona la auditoría',
-  'sqlLanding.stmt.mergeUpsert': 'Inserta los registros nuevos y actualiza los existentes (SCD Tipo 1)',
-  'sqlLanding.stmt.mergeHistory': 'Mantiene historial completo de cambios (SCD Tipo 2)',
-  'sqlLanding.stmt.mergeSoftDelete': 'Marca como eliminados los registros que ya no existen en origen',
-  'sqlLanding.stmt.insertOverwrite': 'Recarga completa: elimina y vuelve a insertar todos los registros',
-  'sqlLanding.stmt.insertIfNew': 'Inserta solo los registros nuevos, sin modificar los existentes',
-  'sqlLanding.stmt.checkSnowflake': 'Verifica que los JOINs no pierdan ni dupliquen registros',
-  'sqlLanding.stmt.materialize': 'Define tablas temporales para simplificar consultas complejas',
-
-  // ── SqlLanding functions ──
-  'sqlLanding.fn.margin': 'Margen de ventas seguro',
-  'sqlLanding.fn.markup': 'Márkup seguro',
-  'sqlLanding.fn.divide': 'División segura (sin error /0)',
-  'sqlLanding.fn.substraction': 'Resta segura',
-
-  // ── AnalysisLanding ──
-  'analysisLanding.subtitle': 'Aplicación de Business Intelligence fácil de usar',
-  'analysisLanding.cta.manual': 'Acceder al manual',
+  // ── SectionFeatures: Crono Analysis (intro) ──
   'analysisLanding.feature1.title': 'Business Intelligence fácil',
   'analysisLanding.feature1.desc': 'La característica principal de Crono es la facilidad de uso. Diseñado para usuarios de negocio.',
   'analysisLanding.feature2.title': 'Análisis libre',
   'analysisLanding.feature2.desc': 'El usuario puede explorar datos de manera autónoma, sin depender de informes predefinidos.',
   'analysisLanding.feature3.title': 'Dashboards y reporting',
   'analysisLanding.feature3.desc': 'Construye dashboards interactivos e informes tradicionales con la misma herramienta.',
-  'analysisLanding.featuresTitle': '¿Qué es Crono Analysis?',
-  'analysisLanding.basePathTitle': 'Artículos del manual',
-  'analysisLanding.footer.title': '¿Listo para analizar tus datos?',
-  'analysisLanding.footer.desc': 'Explora la documentación completa y empieza a crear informes y dashboards.',
-  'analysisLanding.footer.cta': 'Empezar ahora',
 
-  // ── EtlLanding ──
-  'etlLanding.subtitle': 'Una herramienta ETL especializada en proyectos DWH/ETL',
-  'etlLanding.cta.manual': 'Acceder al manual',
+  // ── SectionFeatures: Crono ETL (intro) ──
   'etlLanding.feature1.title': 'ETL especializado',
   'etlLanding.feature1.desc': 'Diseñado específicamente para proyectos de data warehouse y carga de datos.',
   'etlLanding.feature2.title': 'Integración nativa',
   'etlLanding.feature2.desc': 'Integración nativa con Crono Metadata y Crono SQL para flujos de trabajo completos.',
   'etlLanding.feature3.title': 'Carga eficiente',
   'etlLanding.feature3.desc': 'Procesos optimizados para cargar grandes volúmenes de datos de forma incremental.',
-  'etlLanding.featuresTitle': '¿Qué es Crono ETL?',
-  'etlLanding.footer.title': 'Documentación en construcción',
-  'etlLanding.footer.desc': 'Estamos trabajando en la documentación completa de Crono ETL. ¡Muy pronto disponible!',
-  'etlLanding.footer.cta': 'Ver introducción',
 
-  // ── MetadataLanding ──
-  'metadataLanding.subtitle': 'Aplicación para construir la capa semántica de Crono',
-  'metadataLanding.cta.manual': 'Acceder al manual',
+  // ── SectionFeatures: Crono Metadata (intro) ──
   'metadataLanding.feature1.title': 'Capa semántica',
   'metadataLanding.feature1.desc': 'Define el catálogo que traduce tablas y campos de la base de datos en lenguaje de negocio.',
   'metadataLanding.feature2.title': 'Drag & drop',
   'metadataLanding.feature2.desc': 'Crea dimensiones e indicadores fácilmente mediante arrastrar y soltar, sin código complejo.',
   'metadataLanding.feature3.title': 'Catálogos multi-idioma',
   'metadataLanding.feature3.desc': 'Soporta múltiples idiomas para catálogos globales y equipos internacionales.',
-  'metadataLanding.featuresTitle': '¿Qué es Crono Metadata?',
-  'metadataLanding.basePathTitle': 'Artículos del manual',
-  'metadataLanding.footer.title': '¿Listo para definir tu catálogo?',
-  'metadataLanding.footer.desc': 'Explora la documentación completa y empieza a construir tu capa semántica.',
-  'metadataLanding.footer.cta': 'Empezar ahora',
 
   // ── DownloadsLanding ──
   'downloadsLanding.product.analysis.tagline': 'Análisis y reporting',
@@ -440,9 +369,6 @@ const es = {
   'homeHero.ai.diagramHub': 'CRONO AI',
   'homeHero.ai.diagramHubSub': 'Servidor MCP',
   'homeHero.ai.flowCatalog': 'Catálogo',
-  'homeHero.badge.viewSql': 'Ver SQL generado',
-  'homeHero.badge.exportExcel': 'Exporta a Excel',
-  'homeHero.badge.mcp': 'Conector MCP',
   // Otras Soluciones
   'homeHero.otherSolutions.svgLabel': 'OTRAS SOLUCIONES',
   'homeHero.otherSolutions.line1': 'Compatibilidad nativa con Power BI,',
@@ -452,10 +378,6 @@ const es = {
   'homeHero.eco.otherTag': 'Power BI · Tableau · cualquier herramienta BI',
   'homeHero.eco.stepDesc': 'Capa semántica · Autoservicio BI · Sin SQL',
   // AI mock
-  'homeHero.aiMock.placeholder': 'Pregunta sobre tus datos...',
-  'homeHero.aiMock.send': 'Enviar',
-  'homeHero.aiMock.actionExcel': 'Excel',
-  'homeHero.aiMock.actionViewSql': 'Ver SQL',
   // API mock
   'homeHero.apiMock.endpointSales': 'Ventas por período',
   // Crono Excel section
@@ -520,12 +442,6 @@ const es = {
   // API mock
   'homeHero.apiMock.clearCache': 'Limpiar caché',
   // AI mock
-  'homeHero.aiMock.title': 'Análisis de Ventas AI',
-  'homeHero.aiMock.question': '¿Cuáles fueron las ventas del último trimestre por región?',
-  'homeHero.aiMock.analysisTitle': 'Análisis de ventas Q4 2025',
-  'homeHero.aiMock.tableHeaderRegion': 'Región',
-  'homeHero.aiMock.tableHeaderSales': 'Ventas',
-  'homeHero.aiMock.tableHeaderChange': 'Variación',
   // Excel mock
   'homeHero.excel.filename': 'Informe_Ventas_2025.xlsx',
   'homeHero.excel.colRegion': 'Región',
@@ -643,19 +559,6 @@ const en: Record<keyof typeof es, string> = {
   'category.others': 'Others',
   'category.general': 'General',
 
-  // ── ManualLanding (section titles) ──
-  'manualLanding.featuresTitle': 'What is it?',
-  'manualLanding.statementsTitle': 'Main statements',
-  'manualLanding.functionsTitle': 'Built-in functions',
-  'manualLanding.categoriesTitle': 'Browse by category',
-  'manualLanding.categoriesDesc': 'Select a category to view all available articles.',
-  'manualLanding.basePathTitle': 'Documentation',
-  'manualLanding.footerTitle': 'Ready to get started?',
-  'manualLanding.footerDesc': 'Explore the complete documentation.',
-  'manualLanding.footerCta': 'Get started now',
-  'manualLanding.enginesTitle': 'Supported engines',
-  'manualLanding.syntaxTitle': 'Simplified syntax',
-
   // ── DownloadTable ──
   'download.error.load': 'Could not load information',
   'download.error.connect': 'Error connecting to the update server',
@@ -670,95 +573,41 @@ const en: Record<keyof typeof es, string> = {
   'download.summary.historyTitle': 'View full version history',
   'download.summary.historyLabel': 'History',
 
-  // ── SqlLanding / ManualLanding ──
-  'sqlLanding.subtitle': 'Write it once. Load it into any engine.',
-  'sqlLanding.cta.manual': 'Access the manual',
-  'sqlLanding.cta.playground': 'Playground',
-  'sqlLanding.featuresTitle': 'What is Crono SQL?',
+  // ── SectionFeatures: Crono SQL (intro) ──
   'sqlLanding.feature1.title': 'Extended SELECT',
   'sqlLanding.feature1.desc': 'Simplified JOINs, reusable calculated columns, query stacking, SEMI JOIN, ANTI JOIN and MATERIALIZE. All standard SQL keeps working without changes.',
   'sqlLanding.feature2.title': 'Load patterns',
   'sqlLanding.feature2.desc': 'MERGE CLONE, MERGE UPSERT, MERGE HISTORY and more. Each statement creates the table, evolves it when you add fields and manages audit columns automatically.',
   'sqlLanding.feature3.title': 'Portable functions',
   'sqlLanding.feature3.desc': 'Text, numeric, date and aggregation functions that compile correctly on all supported engines, without dialect incompatibilities.',
-  'sqlLanding.category.language.title': 'Crono SQL Language',
-  'sqlLanding.category.language.desc': 'Complete syntax guide with practical examples of each statement.',
-  'sqlLanding.category.reference.title': 'Language Reference',
-  'sqlLanding.category.reference.desc': 'Detailed technical documentation of syntax and advanced features.',
-  'sqlLanding.category.functions.title': 'Functions',
-  'sqlLanding.category.functions.desc': 'Complete list of built-in functions grouped by category.',
-  'sqlLanding.category.views.title': 'Views',
-  'sqlLanding.category.views.desc': 'Predefined system views for querying metadata.',
-  'sqlLanding.statementsTitle': 'Main statements',
-  'sqlLanding.functionsTitle': 'Built-in functions',
-  'sqlLanding.functionsDesc': 'Crono SQL supports all native functions of each engine and adds its own functions like:',
-  'sqlLanding.playground.title': 'Interactive Playground',
-  'sqlLanding.playground.desc': 'Write Crono SQL and see in real time the SQL generated for each database engine.',
-  'sqlLanding.playground.cta': 'Try this example',
-  'sqlLanding.footer.title': 'Ready to try Crono SQL?',
-  'sqlLanding.footer.desc': 'Explore the full documentation and start building your Data Warehouse.',
-  'sqlLanding.footer.cta': 'Access the manual',
 
   // ── SqlLanding statements ──
-  'sqlLanding.stmt.select': 'Simplified JOINs, reusable columns and query stacking',
-  'sqlLanding.stmt.mergeClone': 'Full sync: creates the table, maintains it and manages audit',
-  'sqlLanding.stmt.mergeUpsert': 'Inserts new records and updates existing ones (SCD Type 1)',
-  'sqlLanding.stmt.mergeHistory': 'Maintains complete history of changes (SCD Type 2)',
-  'sqlLanding.stmt.mergeSoftDelete': 'Marks as deleted records that no longer exist in source',
-  'sqlLanding.stmt.insertOverwrite': 'Full reload: deletes and reinserts all records',
-  'sqlLanding.stmt.insertIfNew': 'Inserts only new records, without modifying existing ones',
-  'sqlLanding.stmt.checkSnowflake': 'Verifies that JOINs do not lose or duplicate records',
-  'sqlLanding.stmt.materialize': 'Defines temporary tables to simplify complex queries',
 
   // ── SqlLanding functions ──
-  'sqlLanding.fn.margin': 'Safe sales margin',
-  'sqlLanding.fn.markup': 'Safe markup',
-  'sqlLanding.fn.divide': 'Safe division (no /0 error)',
-  'sqlLanding.fn.substraction': 'Safe subtraction',
 
-  // ── AnalysisLanding ──
-  'analysisLanding.subtitle': 'Easy-to-use Business Intelligence application',
-  'analysisLanding.cta.manual': 'Access the manual',
+  // ── SectionFeatures: Crono Analysis (intro) ──
   'analysisLanding.feature1.title': 'Easy Business Intelligence',
   'analysisLanding.feature1.desc': 'The main feature of Crono is ease of use. Designed for business users.',
   'analysisLanding.feature2.title': 'Free analysis',
   'analysisLanding.feature2.desc': 'Users can explore data autonomously, without relying on predefi ned reports.',
   'analysisLanding.feature3.title': 'Dashboards and reporting',
   'analysisLanding.feature3.desc': 'Build interactive dashboards and traditional reports with the same tool.',
-  'analysisLanding.featuresTitle': 'What is Crono Analysis?',
-  'analysisLanding.basePathTitle': 'Manual articles',
-  'analysisLanding.footer.title': 'Ready to analyze your data?',
-  'analysisLanding.footer.desc': 'Explore the full documentation and start creating reports and dashboards.',
-  'analysisLanding.footer.cta': 'Get started now',
 
-  // ── EtlLanding ──
-  'etlLanding.subtitle': 'An ETL tool specialized in DWH/ETL projects',
-  'etlLanding.cta.manual': 'Access the manual',
+  // ── SectionFeatures: Crono ETL (intro) ──
   'etlLanding.feature1.title': 'Specialized ETL',
   'etlLanding.feature1.desc': 'Designed specifically for data warehouse projects and data loading.',
   'etlLanding.feature2.title': 'Native integration',
   'etlLanding.feature2.desc': 'Native integration with Crono Metadata and Crono SQL for complete workflows.',
   'etlLanding.feature3.title': 'Efficient loading',
   'etlLanding.feature3.desc': 'Optimized processes to load large volumes of data incrementally.',
-  'etlLanding.featuresTitle': 'What is Crono ETL?',
-  'etlLanding.footer.title': 'Documentation under construction',
-  'etlLanding.footer.desc': 'We are working on the complete Crono ETL documentation. Coming very soon!',
-  'etlLanding.footer.cta': 'View introduction',
 
-  // ── MetadataLanding ──
-  'metadataLanding.subtitle': 'Application to build the semantic layer of Crono',
-  'metadataLanding.cta.manual': 'Access the manual',
+  // ── SectionFeatures: Crono Metadata (intro) ──
   'metadataLanding.feature1.title': 'Semantic layer',
   'metadataLanding.feature1.desc': 'Define the catalog that translates database tables and fields into business language.',
   'metadataLanding.feature2.title': 'Drag & drop',
   'metadataLanding.feature2.desc': 'Create dimensions and indicators easily by drag and drop, without complex code.',
   'metadataLanding.feature3.title': 'Multi-language catalogs',
   'metadataLanding.feature3.desc': 'Supports multiple languages for global catalogs and international teams.',
-  'metadataLanding.featuresTitle': 'What is Crono Metadata?',
-  'metadataLanding.basePathTitle': 'Manual articles',
-  'metadataLanding.footer.title': 'Ready to define your catalog?',
-  'metadataLanding.footer.desc': 'Explore the full documentation and start building your semantic layer.',
-  'metadataLanding.footer.cta': 'Get started now',
 
   // ── DownloadsLanding ──
   'downloadsLanding.product.analysis.tagline': 'Analysis and reporting',
@@ -979,9 +828,6 @@ const en: Record<keyof typeof es, string> = {
   'homeHero.ai.diagramHub': 'CRONO AI',
   'homeHero.ai.diagramHubSub': 'MCP Server',
   'homeHero.ai.flowCatalog': 'Catalog',
-  'homeHero.badge.viewSql': 'View generated SQL',
-  'homeHero.badge.exportExcel': 'Export to Excel',
-  'homeHero.badge.mcp': 'MCP connector',
   'homeHero.otherSolutions.svgLabel': 'OTHER SOLUTIONS',
   'homeHero.otherSolutions.line1': 'Native compatibility with Power BI,',
   'homeHero.otherSolutions.line2': 'Tableau and any',
@@ -989,10 +835,6 @@ const en: Record<keyof typeof es, string> = {
   'homeHero.eco.otherName': 'Other Solutions',
   'homeHero.eco.otherTag': 'Power BI · Tableau · any BI tool',
   'homeHero.eco.stepDesc': 'Semantic layer · Self-service BI · No SQL',
-  'homeHero.aiMock.placeholder': 'Ask about your data...',
-  'homeHero.aiMock.send': 'Send',
-  'homeHero.aiMock.actionExcel': 'Excel',
-  'homeHero.aiMock.actionViewSql': 'View SQL',
   'homeHero.apiMock.endpointSales': 'Sales by period',
   'homeHero.excel.label': 'Reporting · Native Excel',
   'homeHero.excel.desc': 'Crono Excel generates Excel reports from DWH data, leveraging Crono\'s semantic layer.',
@@ -1040,12 +882,6 @@ const en: Record<keyof typeof es, string> = {
   'homeHero.chart.totalSales': 'Total Sales',
   'homeHero.badge.realtimeUpdate': 'Real-time updates',
   'homeHero.apiMock.clearCache': 'Clear cache',
-  'homeHero.aiMock.title': 'Sales Analysis AI',
-  'homeHero.aiMock.question': 'What were sales by region in the last quarter?',
-  'homeHero.aiMock.analysisTitle': 'Q4 2025 Sales Analysis',
-  'homeHero.aiMock.tableHeaderRegion': 'Region',
-  'homeHero.aiMock.tableHeaderSales': 'Sales',
-  'homeHero.aiMock.tableHeaderChange': 'Change',
   'homeHero.excel.filename': 'Sales_Report_2025.xlsx',
   'homeHero.excel.colRegion': 'Region',
   'homeHero.excel.colSales2025': 'Sales 2025',
