@@ -48,7 +48,6 @@ export const etlTopics = {
 			items: [
 				{ slug: 'etl/orchestration/workflow', label: 'WORKFLOW' },
 				{ slug: 'etl/orchestration/audited-execution', label: 'Ejecución auditada', translations: { en: 'Audited execution' } },
-				{ slug: 'etl/orchestration/send-mail', label: 'SEND MAIL' },
 				{ slug: 'etl/orchestration/audit', label: 'Auditoría', translations: { en: 'Auditing' } },
 				{ slug: 'etl/orchestration/scheduling', label: 'Ejecución programada', translations: { en: 'Scheduled execution' } },
 			]
