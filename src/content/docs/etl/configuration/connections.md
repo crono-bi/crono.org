@@ -189,7 +189,7 @@ Estas son las propiedades de la conexión, con su nombre en el fichero del entor
 | Rol IAM | `iam-role` | ARN del rol IAM con el que Redshift lee los ficheros de S3 en la carga masiva, por ejemplo `arn:aws:iam::123456789012:role/NombreDelRol`. Si se deja vacío, se usa el rol por defecto del clúster o del namespace. |
 | Almacenamiento | `staging-file-store-name` | Almacenamiento intermedio: nombre de un [almacenamiento](/etl/configuration/storage/) de Amazon S3 del entorno, donde Crono ETL deja los ficheros Parquet antes de cargarlos si no están ya en S3. |
 
-El rol IAM y el almacenamiento solo intervienen en la carga masiva desde ficheros Parquet. Sus requisitos (asociar el rol al clúster, permisos sobre el bucket, misma región) se explican en [IMPORT PARQUET](/etl/actions/import-export/import-parquet/#redshift).
+El rol IAM y el almacenamiento solo intervienen en la carga masiva desde ficheros Parquet. Sus requisitos (asociar el rol al clúster, permisos sobre el bucket, misma región) se explican en [IMPORT PARQUET](/etl/data-movement/import-parquet/#redshift).
 
 Con Crono CLI:
 
@@ -264,7 +264,7 @@ Estas son las propiedades de la conexión, con su nombre en el fichero del entor
 | Token | `token` | Token de acceso personal de Databricks. Se guarda cifrado. En Crono CLI se lee de la entrada estándar con `--password-stdin`. |
 | Volumen intermedio | `staging-volume` | Ruta de un volumen de Unity Catalog, con la forma `/Volumes/catálogo/esquema/volumen` y, opcionalmente, una carpeta dentro del volumen. Crono ETL deja en él los ficheros Parquet de la carga masiva. Es opcional, pero sin él la conexión no admite IMPORT PARQUET. |
 
-El volumen intermedio solo interviene en la carga masiva desde ficheros Parquet; sus requisitos se explican en [IMPORT PARQUET](/etl/actions/import-export/import-parquet/#databricks). El enlace **Crear volumen intermedio (si no existe)** del formulario crea el volumen indicado con `CREATE VOLUME IF NOT EXISTS`, si el usuario tiene permiso para ello. El enlace **Descargar ODBC Driver** lleva a la página de descarga del driver.
+El volumen intermedio solo interviene en la carga masiva desde ficheros Parquet; sus requisitos se explican en [IMPORT PARQUET](/etl/data-movement/import-parquet/#databricks). El enlace **Crear volumen intermedio (si no existe)** del formulario crea el volumen indicado con `CREATE VOLUME IF NOT EXISTS`, si el usuario tiene permiso para ello. El enlace **Descargar ODBC Driver** lleva a la página de descarga del driver.
 
 Con Crono CLI:
 
@@ -345,6 +345,6 @@ Los enlaces **Ver información ODBC de tablas** y **Ver información ODBC de col
 El driver ODBC debe tener la misma arquitectura (32 o 64 bits) que Crono ETL. El formulario indica la arquitectura con la que se está ejecutando.
 :::
 
-Una conexión genérica puede usarse en cualquier acción. Lo habitual es usarla como origen de [BULK TABLE](/etl/actions/import-export/bulk-table/) o [EXPORT PARQUET](/etl/actions/import-export/export-parquet/) para llevar los datos de bases de datos como dBase o Firebird al área de staging del DWH. Las sentencias Crono SQL que se ejecutan sobre una conexión con un dialecto no admitido por Crono SQL (Oracle, MySQL, `Ansi92`, `Other`...) se traducen a SQL estándar, por lo que su funcionamiento depende de lo fiel que sea la base de datos al estándar ANSI.
+Una conexión genérica puede usarse en cualquier acción. Lo habitual es usarla como origen de [BULK TABLE](/etl/data-movement/bulk-table/) o [EXPORT PARQUET](/etl/data-movement/export-parquet/) para llevar los datos de bases de datos como dBase o Firebird al área de staging del DWH. Las sentencias Crono SQL que se ejecutan sobre una conexión con un dialecto no admitido por Crono SQL (Oracle, MySQL, `Ansi92`, `Other`...) se traducen a SQL estándar, por lo que su funcionamiento depende de lo fiel que sea la base de datos al estándar ANSI.
 
 <!-- PENDIENTE: ejemplo con Crono CLI. La sinopsis de crono connection add generic no incluye --connection-string: ¿la cadena de conexión se lee con --password-stdin, como secreto? La cadena de conexión no se guarda cifrada en el .jsonc (ConnectionString no tiene JsonEncrypted) aunque puede contener contraseñas. Confirmar la descripción de use-information-schema-metadata (alternativa a las funciones de catálogo ODBC). La transpilación de Crono SQL a dialectos no admitidos no está probada. -->

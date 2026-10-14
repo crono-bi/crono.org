@@ -1,14 +1,10 @@
 ---
-title: "Introducción"
-sidebar:
-  order: 0
+title: "Acciones ETL"
 ---
-
-import CategorySelector from '../../../../components/CategorySelector.astro'
 
 Las **acciones ETL** son el contenido de los ficheros `.job`. Cada acción realiza una tarea concreta: copiar tablas entre bases de datos, exportar o importar ficheros, ejecutar otros ficheros `.job` o un procedimiento, enviar un correo...
 
-Cada fichero `.job` contiene una única acción. La orquestación —qué se ejecuta, en qué orden y qué puede ejecutarse en paralelo— se define habitualmente en una acción [JOB](/etl/actions/execution/job/), que agrupa la ejecución de otros ficheros `.job` mediante workflows.
+Cada fichero `.job` contiene una única acción. La orquestación —qué se ejecuta, en qué orden y qué puede ejecutarse en paralelo— se define en una acción [WORKFLOW](/etl/orchestration/workflow/), que encadena la carga de tablas, la ejecución de procedimientos y la de otros ficheros `.job`.
 
 ## Sintaxis
 
@@ -45,7 +41,7 @@ Las acciones responden a la misma filosofía que el resto de Crono: el código d
 
 **Convenciones razonables.** Las propiedades tienen valores por defecto pensados para el caso habitual, de modo que solo es necesario informar lo que se aparta de él. La convención más importante es la de la conexión activa: todas las acciones y consultas se ejecutan sobre ella salvo que se indique otra conexión de forma explícita. Del mismo modo, en `BULK TABLE`, si no se indica el nombre de la tabla de destino se mantiene el de origen, y si la tabla de destino no existe se crea.
 
-**Sin instrucciones procedurales.** Crono ETL no tiene bucles o condicionales. Esa lógica se expresa en SQL, el lenguaje que cualquier equipo de datos ya domina: una consulta decide sobre qué elementos se actúa (`WHERE`), en qué orden (`ORDER BY`) y con qué valores. La [propiedad `data`](/etl/actions/data-property/) es el mecanismo que conecta ambos mundos: la acción se ejecuta una vez por cada fila de la consulta. Así, cargar cien tablas con `BULK TABLE`, exportar un fichero Parquet por cliente o copiar un lote de ficheros no requiere repetir la acción ni escribir un bucle. Y si la consulta no devuelve filas, la acción no se ejecuta, lo que cubre también el caso de un condicional.
+**Sin instrucciones procedurales.** Crono ETL no tiene bucles o condicionales. Esa lógica se expresa en SQL, el lenguaje que cualquier equipo de datos ya domina: una consulta decide sobre qué elementos se actúa (`WHERE`), en qué orden (`ORDER BY`) y con qué valores. La [propiedad `data`](#la-propiedad-data) es el mecanismo que conecta ambos mundos: la acción se ejecuta una vez por cada fila de la consulta. Así, cargar cien tablas con `BULK TABLE`, exportar un fichero Parquet por cliente o copiar un lote de ficheros no requiere repetir la acción ni escribir un bucle. Y si la consulta no devuelve filas, la acción no se ejecuta, lo que cubre también el caso de un condicional.
 
 **Dirigidas por metadatos.** Las listas de tablas o ficheros no se escriben en el código, sino que se mantienen en tablas de la base de datos y se consultan con `data`. Añadir un elemento nuevo es añadir una fila, no modificar la acción.
 
@@ -53,33 +49,78 @@ Las acciones responden a la misma filosofía que el resto de Crono: el código d
 
 Juntas, estas ideas permiten que tareas que en una herramienta ETL tradicional requieren flujos gráficos complejos o programación imperativa se resuelvan con unas pocas líneas de código semántico.
 
-## Categorías
+## La propiedad data
 
-Las acciones se han agrupado por categorías:
+Muchas acciones admiten la propiedad `data`, que permite ejecutar la misma acción varias veces, con valores distintos, sin escribir un bucle ni repetir la acción.
 
-<CategorySelector categories={[
-  {
-    id: 'import-export',
-    title: 'Exportación e importación',
-    description: 'Acciones para mover datos entre bases de datos y ficheros.',
-    count: 3,
-    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 3 4 4-4 4"/><path d="M20 7H4"/><path d="m8 21-4-4 4-4"/><path d="M4 17h16"/></svg>',
-    path: '/etl/actions/import-export/'
-  },
-  {
-    id: 'execution',
-    title: 'Ejecución',
-    description: 'Acciones para ejecutar otros jobs y procedimientos.',
-    count: 2,
-    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="6 3 20 12 6 21 6 3"/></svg>',
-    path: '/etl/actions/execution/'
-  },
-  {
-    id: 'utilities',
-    title: 'Utilidades',
-    description: 'Acciones auxiliares: copia de ficheros y envío de correos.',
-    count: 2,
-    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>',
-    path: '/etl/actions/utilities/'
-  }
-]} />
+
+`data` contiene una consulta `SELECT`, que se ejecuta sobre la conexión activa. La acción se ejecuta una vez por cada fila que devuelve la consulta:
+
+- Las propiedades informadas directamente en la acción son comunes a todas las ejecuciones.
+- Cada columna de la consulta cuyo nombre coincide con una propiedad de la acción sustituye a esa propiedad en la ejecución correspondiente a su fila.
+
+Por tanto, basta con que las columnas de la consulta tengan el nombre de las propiedades que deben variar. Si las columnas de la tabla consultada ya se llaman así, ni siquiera es necesario renombrarlas.
+
+Como `data` es una palabra reservada, la propiedad se escribe siempre entre corchetes: `[data]`.
+
+### Ejemplo
+
+La siguiente acción [BULK TABLE](/etl/data-movement/bulk-table/) carga en el esquema `staging` todas las tablas registradas en `audit.source_tables`. `source_connection_name` y `target_schema_name` son comunes, mientras que `schema_name` y `table_name` cambian en cada fila:
+
+```
+[bulk table](
+	source_connection_name='ERP_SOURCE',
+	target_schema_name='staging',
+	[data]=(
+		select schema_name, table_name
+		from audit.source_tables
+	)
+)
+```
+
+#### Escenario multiempresa
+
+La ventaja de expresar la lógica en SQL se aprecia mejor en un caso más complejo. Supongamos una aplicación multiempresa en la que cada empresa tiene su propia base de datos, con la misma estructura de tablas. Hay que volcar las N tablas de cada una de las X empresas al área de staging.
+
+Basta con añadir una tabla `audit.companies` con las empresas y combinarla con `audit.source_tables` mediante un `CROSS JOIN`. La consulta devuelve una fila por cada combinación de empresa y tabla, y una única acción realiza las N × X cargas:
+
+```
+[bulk table](
+	source_connection_name='ERP_SOURCE',
+	target_schema_name='staging',
+	parallel_execution=YES,
+	[data]=(
+		select
+			c.database_name,
+			t.schema_name,
+			t.table_name,
+			concat(c.code, '_', t.table_name) as target_table_name
+		from audit.companies c
+		cross join audit.source_tables t
+		where c.active = 1
+	)
+)
+```
+
+En cada ejecución, `database_name` sustituye a la base de datos definida en la conexión `ERP_SOURCE`, de modo que una sola conexión sirve para todas las empresas. El código de empresa se antepone al nombre de la tabla de destino para que las cargas no se sobrescriban entre sí, y la cláusula `WHERE` limita la carga a las empresas activas.
+
+Dar de alta una empresa nueva, o incorporar una tabla más a la carga, consiste en añadir una fila a la tabla correspondiente. El código de la acción no cambia.
+
+### Ejecución en paralelo
+
+Por defecto, las ejecuciones se realizan de una en una. En las acciones que admiten las propiedades `parallel_execution` y `max_degree_of_parallelism`, pueden ejecutarse en paralelo:
+
+| Propiedad | Descripción |
+| --- | --- |
+| `parallel_execution` | `YES`/`NO`. Ejecuta en paralelo las filas de `data`. Por defecto, `NO`. |
+| `max_degree_of_parallelism` | Número máximo de ejecuciones simultáneas. Por defecto, `10`. |
+
+## Acciones por fase
+
+Las acciones se agrupan según la fase del proceso a la que sirven:
+
+| Fase | Acciones |
+| --- | --- |
+| [Movimiento de datos](/etl/data-movement/bulk-table/) | [BULK TABLE](/etl/data-movement/bulk-table/), [EXPORT PARQUET](/etl/data-movement/export-parquet/), [IMPORT PARQUET](/etl/data-movement/import-parquet/) y [COPY FILE](/etl/data-movement/copy-file/) traen los datos al área de staging y los mueven entre bases de datos, ficheros y almacenamientos. |
+| [Transformación](/etl/transformation/load-pattern/) | La transformación no se hace con acciones, sino con procedimientos escritos en [Crono SQL](/sql/intro/) que se ejecutan íntegramente en la base de datos. |
+| [Orquestación](/etl/orchestration/workflow/) | [WORKFLOW](/etl/orchestration/workflow/) encadena las cargas y los procedimientos, la [ejecución auditada](/etl/orchestration/audited-execution/) registra y notifica el resultado y [SEND MAIL](/etl/orchestration/send-mail/) envía correos. |

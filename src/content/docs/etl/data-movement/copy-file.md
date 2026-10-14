@@ -24,7 +24,7 @@ En este ejemplo, el fichero `customers_data.parquet` de la carpeta `exports` del
 | --- | --- |
 | `source_location` | Ubicación del fichero que se copia, incluido el nombre del fichero. |
 | `target_location` | Ubicación de destino, incluido el nombre del fichero. |
-| `data` | Consulta que devuelve una fila por cada copia a realizar. Consulta [La propiedad data](/etl/actions/data-property/). |
+| `data` | Consulta que devuelve una fila por cada copia a realizar. Consulta [La propiedad data](/etl/actions/#la-propiedad-data). |
 
 Las propiedades `source_location` y `target_location` son obligatorias. Pueden informarse en la acción o, si se utiliza `data`, en las columnas de la consulta.
 

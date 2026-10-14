@@ -54,7 +54,7 @@ Así, si la conexión activa es la del DWH, la siguiente acción es equivalente 
 | `skip_empty_tables` | `YES`/`NO`. Omite las tablas de origen vacías. Por defecto, `NO`. |
 | `parallel_execution` | `YES`/`NO`. Ejecuta en paralelo las cargas definidas mediante `data`. Por defecto, `NO`. |
 | `max_degree_of_parallelism` | Número máximo de cargas simultáneas cuando `parallel_execution` está activo. Por defecto, `10`. |
-| `data` | Consulta que devuelve una fila por cada carga a realizar. Consulta [La propiedad data](/etl/actions/data-property/). |
+| `data` | Consulta que devuelve una fila por cada carga a realizar. Consulta [La propiedad data](/etl/actions/#la-propiedad-data). |
 
 <!-- PENDIENTE: target_schema_name. Indicar si el esquema de destino debe existir antes de la carga o si Crono ETL lo crea. -->
 
@@ -152,7 +152,7 @@ Si el motor de destino no admite carga masiva nativa, se recomienda utilizar `BU
 
 Para tablas de mayor volumen, la alternativa recomendada es realizar la carga en dos pasos a través de un fichero Parquet intermedio:
 
-1. Exportar la tabla de origen a un fichero Parquet en una ubicación de [almacenamiento](/etl/configuration/storage/), mediante la acción [EXPORT PARQUET](/etl/actions/import-export/export-parquet/).
-2. Cargar ese fichero en la tabla de destino mediante la acción [IMPORT PARQUET](/etl/actions/import-export/import-parquet/).
+1. Exportar la tabla de origen a un fichero Parquet en una ubicación de [almacenamiento](/etl/configuration/storage/), mediante la acción [EXPORT PARQUET](/etl/data-movement/export-parquet/).
+2. Cargar ese fichero en la tabla de destino mediante la acción [IMPORT PARQUET](/etl/data-movement/import-parquet/).
 
 Estos motores están optimizados para la lectura de ficheros Parquet, por lo que este procedimiento resulta mucho más eficiente que la inserción fila a fila.

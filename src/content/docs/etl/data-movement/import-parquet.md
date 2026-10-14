@@ -38,13 +38,13 @@ Para cargar el fichero en una conexión distinta de la activa, se informa `targe
 | `source_location` | Ubicación del fichero Parquet que se importa, incluido el nombre del fichero. Consulta [Ubicación del fichero](#ubicación-del-fichero). |
 | `schema_name` | Esquema de la tabla de destino. |
 | `table_name` | Tabla de destino. |
-| `data` | Consulta que devuelve una fila por cada importación a realizar. Consulta [La propiedad data](/etl/actions/data-property/). |
+| `data` | Consulta que devuelve una fila por cada importación a realizar. Consulta [La propiedad data](/etl/actions/#la-propiedad-data). |
 
 Las propiedades `source_location`, `schema_name` y `table_name` son obligatorias y no tienen valor por defecto. Pueden informarse en la acción o, si se utiliza `data`, en las columnas de la consulta.
 
 ## Ubicación del fichero
 
-La propiedad `source_location` admite los mismos tipos de valor que la ubicación de destino de [EXPORT PARQUET](/etl/actions/import-export/export-parquet/#ubicación-de-destino), seguidos del nombre del fichero:
+La propiedad `source_location` admite los mismos tipos de valor que la ubicación de destino de [EXPORT PARQUET](/etl/data-movement/export-parquet/#ubicación-de-destino), seguidos del nombre del fichero:
 
 | Tipo | Ejemplo |
 | --- | --- |
@@ -158,4 +158,4 @@ Las columnas del fichero se asignan a las de la tabla por nombre, así que el or
 
 ## Uso junto con EXPORT PARQUET
 
-Combinada con la acción [EXPORT PARQUET](/etl/actions/import-export/export-parquet/), `IMPORT PARQUET` permite mover tablas de gran volumen entre motores distintos: la tabla se exporta a un fichero Parquet desde la conexión de origen y ese fichero se importa en la conexión de destino. Es la alternativa recomendada a [BULK TABLE](/etl/actions/import-export/bulk-table/#compatibilidad-con-los-motores-de-destino) cuando el motor de destino no dispone de carga masiva nativa.
+Combinada con la acción [EXPORT PARQUET](/etl/data-movement/export-parquet/), `IMPORT PARQUET` permite mover tablas de gran volumen entre motores distintos: la tabla se exporta a un fichero Parquet desde la conexión de origen y ese fichero se importa en la conexión de destino. Es la alternativa recomendada a [BULK TABLE](/etl/data-movement/bulk-table/#compatibilidad-con-los-motores-de-destino) cuando el motor de destino no dispone de carga masiva nativa.

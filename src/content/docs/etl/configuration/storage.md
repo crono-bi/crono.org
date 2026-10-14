@@ -60,7 +60,7 @@ Algunas recomendaciones:
 - Usa nombres que describan el contenido, no la tecnología: `datalake` o `exports` en lugar de `s3-prod`.
 - Usa los mismos nombres en todos los entornos del proyecto.
 
-Las acciones que admiten almacenamientos son, entre otras, [EXPORT PARQUET](/etl/actions/import-export/export-parquet/), [IMPORT PARQUET](/etl/actions/import-export/import-parquet/) y [COPY FILE](/etl/actions/utilities/copy-file/). Además, algunas conexiones usan un almacenamiento como almacenamiento intermedio para la carga masiva, como la de [Redshift](/etl/configuration/connections/#redshift).
+Las acciones que admiten almacenamientos son, entre otras, [EXPORT PARQUET](/etl/data-movement/export-parquet/), [IMPORT PARQUET](/etl/data-movement/import-parquet/) y [COPY FILE](/etl/data-movement/copy-file/). Además, algunas conexiones usan un almacenamiento como almacenamiento intermedio para la carga masiva, como la de [Redshift](/etl/configuration/connections/#redshift).
 
 ## Tipos de almacenamiento
 

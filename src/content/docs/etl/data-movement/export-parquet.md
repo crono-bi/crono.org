@@ -41,7 +41,7 @@ Para exportar desde una conexión distinta de la activa, se informa `source_conn
 | `table_name` | Tabla o vista que se exporta. |
 | `target_location` | Ubicación en la que se escribe el fichero. Consulta [Ubicación de destino](#ubicación-de-destino). |
 | `filename` | Nombre del fichero Parquet, sin ruta y con su extensión. |
-| `data` | Consulta que devuelve una fila por cada exportación a realizar. Consulta [La propiedad data](/etl/actions/data-property/). |
+| `data` | Consulta que devuelve una fila por cada exportación a realizar. Consulta [La propiedad data](/etl/actions/#la-propiedad-data). |
 
 Todas las propiedades son obligatorias, salvo `source_connection_name` y `data`. Pueden informarse en la acción o, si se utiliza `data`, en las columnas de la consulta.
 
@@ -122,4 +122,4 @@ Los datos pasan por el equipo que ejecuta Crono ETL. Al exportar desde una base 
 
 ## Uso junto con IMPORT PARQUET
 
-Combinada con la acción [IMPORT PARQUET](/etl/actions/import-export/import-parquet/), `EXPORT PARQUET` permite mover tablas de gran volumen entre motores distintos. Es la alternativa recomendada a [BULK TABLE](/etl/actions/import-export/bulk-table/#compatibilidad-con-los-motores-de-destino) cuando el motor de destino no dispone de carga masiva nativa.
+Combinada con la acción [IMPORT PARQUET](/etl/data-movement/import-parquet/), `EXPORT PARQUET` permite mover tablas de gran volumen entre motores distintos. Es la alternativa recomendada a [BULK TABLE](/etl/data-movement/bulk-table/#compatibilidad-con-los-motores-de-destino) cuando el motor de destino no dispone de carga masiva nativa.
