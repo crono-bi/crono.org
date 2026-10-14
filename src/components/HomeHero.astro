@@ -1533,87 +1533,88 @@ ORDER BY TotalSales DESC`
       <div class="product-demo order-2 lg:order-2">
         <div class="ai-map-wrap">
           <svg class="ai-map" viewBox="0 0 520 380" role="img" aria-label="Crono AI">
-            <!-- column labels -->
-            <text class="ai-map-col-label" x="70" y="22" text-anchor="middle">{t('homeHero.ai.diagramClients')}</text>
-            <text class="ai-map-col-label" x="450" y="22" text-anchor="middle">{t('homeHero.ai.diagramServices')}</text>
+            <!-- column labels (flujo izquierda → derecha, como el diagrama del ecosistema) -->
+            <text class="ai-map-col-label" x="70" y="22" text-anchor="middle">{t('homeHero.ai.diagramServices')}</text>
+            <text class="ai-map-col-label" x="450" y="22" text-anchor="middle">{t('homeHero.ai.diagramClients')}</text>
 
-            <!-- ── connectors: clients → hub (disc left edge x=204) ── -->
+            <!-- ── connectors: services → hub (disc left edge x=204) ── -->
             <g class="ai-map-links" fill="none">
-              <!-- Claude → hub -->
+              <!-- Catálogo → hub -->
               <path class="ai-map-link" d="M130,70 C172,70 186,130 204,164"/>
-              <!-- ChatGPT → hub -->
+              <!-- DWH → hub (SQL) -->
               <path class="ai-map-link" d="M130,190 L204,190"/>
-              <!-- Otros → hub -->
+              <!-- Excel → hub (export) -->
               <path class="ai-map-link" d="M130,310 C172,310 186,250 204,216"/>
             </g>
 
-            <!-- ── connectors: hub → services (disc right edge x=316) ── -->
+            <!-- ── connectors: hub → MCP clients (disc right edge x=316) ── -->
             <g class="ai-map-links-right" fill="none">
-              <!-- hub → Metadata (catálogo) -->
+              <!-- hub → Claude -->
               <path class="ai-map-link ai-map-link--right" d="M316,164 C334,130 356,70 390,70"/>
-              <!-- hub → DWH (SQL) -->
+              <!-- hub → ChatGPT -->
               <path class="ai-map-link ai-map-link--right" d="M316,190 L390,190"/>
-              <!-- hub → Excel (export) -->
+              <!-- hub → Otros -->
               <path class="ai-map-link ai-map-link--right" d="M316,216 C334,250 356,310 390,310"/>
-            </g>
-
-            <!-- ── MCP chips on client connectors ── -->
-            <g class="ai-map-chip" transform="translate(155,60)">
-              <rect x="-22" y="-9" width="44" height="18" rx="9"/>
-              <text x="0" y="3.5" text-anchor="middle">MCP</text>
-            </g>
-            <g class="ai-map-chip" transform="translate(162,180)">
-              <rect x="-22" y="-9" width="44" height="18" rx="9"/>
-              <text x="0" y="3.5" text-anchor="middle">MCP</text>
-            </g>
-            <g class="ai-map-chip" transform="translate(155,300)">
-              <rect x="-22" y="-9" width="44" height="18" rx="9"/>
-              <text x="0" y="3.5" text-anchor="middle">MCP</text>
             </g>
 
             <!-- ── flow labels on service connectors ── -->
             <g class="ai-map-flow-label">
-              <text x="354" y="106" text-anchor="middle">{t('homeHero.ai.flowCatalog')}</text>
+              <text x="166" y="106" text-anchor="middle">{t('homeHero.ai.flowCatalog')}</text>
             </g>
             <g class="ai-map-flow-label">
-              <text x="354" y="182" text-anchor="middle">SQL</text>
+              <text x="166" y="182" text-anchor="middle">SQL</text>
             </g>
             <g class="ai-map-flow-label">
-              <text x="354" y="276" text-anchor="middle">Export</text>
+              <text x="166" y="276" text-anchor="middle">Export</text>
             </g>
 
-            <!-- ── left nodes: MCP clients ── -->
+            <!-- ── MCP chips on client connectors ── -->
+            <g class="ai-map-chip" transform="translate(365,60)">
+              <rect x="-22" y="-9" width="44" height="18" rx="9"/>
+              <text x="0" y="3.5" text-anchor="middle">MCP</text>
+            </g>
+            <g class="ai-map-chip" transform="translate(358,180)">
+              <rect x="-22" y="-9" width="44" height="18" rx="9"/>
+              <text x="0" y="3.5" text-anchor="middle">MCP</text>
+            </g>
+            <g class="ai-map-chip" transform="translate(365,300)">
+              <rect x="-22" y="-9" width="44" height="18" rx="9"/>
+              <text x="0" y="3.5" text-anchor="middle">MCP</text>
+            </g>
+
+            <!-- ── left nodes: Crono services ── -->
             <g class="ai-map-node">
               <rect x="10" y="40" width="120" height="60" rx="12"/>
-              <image href="/ai-logos/claude.svg" x="57" y="46" width="26" height="26"/>
-              <text x="70" y="88" text-anchor="middle">Claude</text>
+              <image href="/icons/ecosistema/crono-metadata.png" x="57" y="44" width="26" height="26"/>
+              <text x="70" y="80" text-anchor="middle">{t('homeHero.ai.diagramMetadata')}</text>
+              <text class="ai-map-node-sub" x="70" y="92" text-anchor="middle">{t('homeHero.ai.diagramSemantic')}</text>
             </g>
             <g class="ai-map-node">
               <rect x="10" y="160" width="120" height="60" rx="12"/>
-              <image href="/ai-logos/chatgpt.svg" x="57" y="166" width="26" height="26"/>
-              <text x="70" y="208" text-anchor="middle">ChatGPT</text>
+              <image href="/icons/ecosistema/dwh-cube.png" x="57" y="166" width="26" height="26"/>
+              <text x="70" y="208" text-anchor="middle">Data Warehouse</text>
             </g>
-            <g class="ai-map-node ai-map-node--generic">
+            <g class="ai-map-node">
               <rect x="10" y="280" width="120" height="60" rx="12"/>
-              <image href="/ai-logos/mcp.svg" x="57" y="286" width="26" height="26"/>
-              <text x="70" y="328" text-anchor="middle">{t('homeHero.ai.diagramOthers')}</text>
+              <image href="/icons/ecosistema/crono-excel.png" x="57" y="286" width="26" height="26"/>
+              <text x="70" y="328" text-anchor="middle">Crono Excel</text>
             </g>
 
-            <!-- ── right nodes: Crono services ── -->
+            <!-- ── right nodes: MCP clients ── -->
             <g class="ai-map-node">
               <rect x="390" y="40" width="120" height="60" rx="12"/>
-              <image href="/icons/ecosistema/crono-metadata.png" x="437" y="46" width="26" height="26"/>
-              <text x="450" y="88" text-anchor="middle">{t('homeHero.ai.diagramMetadata')}</text>
+              <image href="/ai-logos/claude.svg" x="437" y="46" width="26" height="26"/>
+              <text x="450" y="88" text-anchor="middle">Claude</text>
             </g>
             <g class="ai-map-node">
               <rect x="390" y="160" width="120" height="60" rx="12"/>
-              <image href="/icons/ecosistema/dwh-cube.png" x="437" y="166" width="26" height="26"/>
-              <text x="450" y="208" text-anchor="middle">Data Warehouse</text>
+              <image href="/ai-logos/chatgpt.svg" x="437" y="166" width="26" height="26"/>
+              <text x="450" y="208" text-anchor="middle">ChatGPT</text>
             </g>
-            <g class="ai-map-node">
+            <g class="ai-map-node ai-map-node--generic">
               <rect x="390" y="280" width="120" height="60" rx="12"/>
-              <image href="/icons/ecosistema/crono-excel.png" x="437" y="286" width="26" height="26"/>
-              <text x="450" y="328" text-anchor="middle">Crono Excel</text>
+              <image href="/ai-logos/mcp.svg" x="437" y="286" width="26" height="26"/>
+              <text x="450" y="328" text-anchor="middle">{t('homeHero.ai.diagramOthers')}</text>
             </g>
 
             <!-- ── central hub: Crono AI ── -->
@@ -4744,6 +4745,13 @@ ORDER BY TotalSales DESC`
     font-weight: 700;
     letter-spacing: 0.04em;
     fill: var(--sl-color-white);
+  }
+
+  .ai-map-node-sub {
+    font-size: 8.5px !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.03em !important;
+    fill: var(--sl-color-gray-3) !important;
   }
 
   .ai-map-chip rect {
