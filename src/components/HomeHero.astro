@@ -1534,17 +1534,15 @@ ORDER BY TotalSales DESC`
         <div class="ai-map-wrap">
           <svg class="ai-map" viewBox="0 0 520 380" role="img" aria-label="Crono AI">
             <!-- column labels (flujo izquierda → derecha, como el diagrama del ecosistema) -->
-            <text class="ai-map-col-label" x="70" y="22" text-anchor="middle">{t('homeHero.ai.diagramServices')}</text>
+            <text class="ai-map-col-label" x="85" y="22" text-anchor="middle">{t('homeHero.ai.diagramServices')}</text>
             <text class="ai-map-col-label" x="450" y="22" text-anchor="middle">{t('homeHero.ai.diagramClients')}</text>
 
             <!-- ── connectors: services → hub (disc left edge x=204) ── -->
             <g class="ai-map-links" fill="none">
               <!-- Catálogo → hub -->
-              <path class="ai-map-link" d="M130,70 C172,70 186,130 204,164"/>
+              <path class="ai-map-link" d="M160,130 C185,130 194,150 204,166"/>
               <!-- DWH → hub (SQL) -->
-              <path class="ai-map-link" d="M130,190 L204,190"/>
-              <!-- Excel → hub (export) -->
-              <path class="ai-map-link" d="M130,310 C172,310 186,250 204,216"/>
+              <path class="ai-map-link" d="M160,250 C185,250 194,230 204,214"/>
             </g>
 
             <!-- ── connectors: hub → MCP clients (disc right edge x=316) ── -->
@@ -1559,13 +1557,10 @@ ORDER BY TotalSales DESC`
 
             <!-- ── flow labels on service connectors ── -->
             <g class="ai-map-flow-label">
-              <text x="166" y="106" text-anchor="middle">{t('homeHero.ai.flowCatalog')}</text>
+              <text x="180" y="152" text-anchor="middle">{t('homeHero.ai.flowCatalog')}</text>
             </g>
             <g class="ai-map-flow-label">
-              <text x="166" y="182" text-anchor="middle">SQL</text>
-            </g>
-            <g class="ai-map-flow-label">
-              <text x="166" y="276" text-anchor="middle">Export</text>
+              <text x="180" y="228" text-anchor="middle">SQL</text>
             </g>
 
             <!-- ── MCP chips on client connectors ── -->
@@ -1583,21 +1578,17 @@ ORDER BY TotalSales DESC`
             </g>
 
             <!-- ── left nodes: Crono services ── -->
-            <g class="ai-map-node">
-              <rect x="10" y="40" width="120" height="60" rx="12"/>
-              <image href="/icons/ecosistema/crono-metadata.png" x="57" y="44" width="26" height="26"/>
-              <text x="70" y="80" text-anchor="middle">{t('homeHero.ai.diagramMetadata')}</text>
-              <text class="ai-map-node-sub" x="70" y="92" text-anchor="middle">{t('homeHero.ai.diagramSemantic')}</text>
+            <g class="ai-map-node ai-map-node--service">
+              <rect x="10" y="90" width="150" height="80" rx="14"/>
+              <image href="/icons/ecosistema/crono-metadata.png" x="68" y="98" width="34" height="34"/>
+              <text x="85" y="150" text-anchor="middle">{t('homeHero.ai.diagramMetadata')}</text>
+              <text class="ai-map-node-sub" x="85" y="163" text-anchor="middle">{t('homeHero.ai.diagramSemantic')}</text>
             </g>
-            <g class="ai-map-node">
-              <rect x="10" y="160" width="120" height="60" rx="12"/>
-              <image href="/icons/ecosistema/dwh-cube.png" x="57" y="166" width="26" height="26"/>
-              <text x="70" y="208" text-anchor="middle">Data Warehouse</text>
-            </g>
-            <g class="ai-map-node">
-              <rect x="10" y="280" width="120" height="60" rx="12"/>
-              <image href="/icons/ecosistema/crono-excel.png" x="57" y="286" width="26" height="26"/>
-              <text x="70" y="328" text-anchor="middle">Crono Excel</text>
+            <g class="ai-map-node ai-map-node--service">
+              <rect x="10" y="210" width="150" height="80" rx="14"/>
+              <image href="/icons/ecosistema/dwh-cube.svg" x="68" y="218" width="34" height="34"/>
+              <text x="85" y="270" text-anchor="middle">Data Warehouse</text>
+              <text class="ai-map-node-sub" x="85" y="283" text-anchor="middle">{t('homeHero.ai.diagramCentralized')}</text>
             </g>
 
             <!-- ── right nodes: MCP clients ── -->
@@ -1621,7 +1612,7 @@ ORDER BY TotalSales DESC`
             <g class="ai-map-hub">
               <circle class="glow" cx="260" cy="190" r="72"/>
               <circle class="disc" cx="260" cy="190" r="56"/>
-              <image href="/icons/ecosistema/crono-ai.png" x="228" y="162" width="64" height="64"/>
+              <image href="/icons/ecosistema/crono-ai.png" x="228" y="158" width="64" height="64"/>
               <text class="ai-map-hub-label" x="260" y="262" text-anchor="middle">{t('homeHero.ai.diagramHub')}</text>
               <text class="ai-map-hub-sub" x="260" y="278" text-anchor="middle">{t('homeHero.ai.diagramHubSub')}</text>
             </g>
@@ -4752,6 +4743,14 @@ ORDER BY TotalSales DESC`
     font-weight: 500 !important;
     letter-spacing: 0.03em !important;
     fill: var(--sl-color-gray-3) !important;
+  }
+
+  .ai-map-node--service text {
+    font-size: 12px;
+  }
+
+  .ai-map-node--service .ai-map-node-sub {
+    font-size: 10px !important;
   }
 
   .ai-map-chip rect {
