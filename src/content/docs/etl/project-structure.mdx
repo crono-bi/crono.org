@@ -1,0 +1,91 @@
+---
+title: "Estructura del proyecto"
+description: "Ficheros y carpetas de un proyecto de Crono ETL y cómo organizarlos."
+---
+
+import { FileTree } from '@astrojs/starlight/components';
+
+Un proyecto de Crono ETL es una carpeta con ficheros de texto: el código Crono SQL de cada tabla, las acciones que mueven y orquestan los datos y la configuración del proyecto. Al ser texto, el proyecto entero puede versionarse en Git y revisarse como cualquier otro código.
+
+Salvo la carpeta `.crono`, en la que Crono busca la configuración, la organización de las carpetas es una convención: el código no depende de ella. Aun así, recomendamos seguir esta estructura, que hemos aplicado en todos nuestros proyectos y que resultará familiar a quien haya trabajado con otras herramientas de transformación de datos.
+
+## Estructura recomendada
+
+<FileTree>
+
+- .crono/
+  - config.jsonc propiedades del proyecto
+  - environments/ un fichero por entorno
+    - dev.jsonc
+    - prod.jsonc
+- jobs/ acciones: workflows, cargas, exportaciones…
+  - dwh_load.job
+  - bulk_ERP.job
+  - …
+- models/ un fichero por tabla o vista
+  - stg_erp.orders_all_companies.sql
+  - dwh.customers.sql
+  - dwh.products.sql
+  - dwh.invoices.sql
+  - …
+- procedures/ procedimientos que no cargan una tabla concreta
+  - dwh.final_checks.sql
+- seeds/ ficheros de entrada mantenidos a mano
+  - account_groups.csv
+  - budget.xlsx
+- catalogs/ catálogos de Crono Metadata
+- docs/ documentación del proyecto
+- scratch/ consultas de prueba, fuera de Git
+- Crono.etlproj preferencias del IDE de Crono ETL para Windows
+
+</FileTree>
+
+## Carpetas y ficheros
+
+| Elemento | Contenido |
+| --- | --- |
+| `.crono/config.jsonc` | Las [propiedades del proyecto](/etl/configuration/project/): campos de auditoría, cuenta de Calendas, ficheros de declaraciones… |
+| `.crono/environments/` | Un fichero por entorno, con el nombre del entorno (`dev.jsonc`, `prod.jsonc`…). Cada uno define las [conexiones](/etl/configuration/connections/), los [almacenamientos](/etl/configuration/storage/) y las [credenciales](/etl/configuration/credentials/) de ese entorno. Los secretos se guardan encriptados. |
+| `jobs/` | Los ficheros `.job`: [workflows](/etl/orchestration/workflow/), cargas con [BULK TABLE](/etl/data-movement/bulk-table/), exportaciones… El IDE muestra en el panel lateral los trabajos de esta carpeta. |
+| `models/` | El código Crono SQL que crea y carga cada tabla o vista del DWH. Consulta [Nombres de los modelos](#nombres-de-los-modelos). |
+| `procedures/` | Procedimientos que no cargan una tabla concreta, como comprobaciones o tareas de mantenimiento. Suelen ser pocos, y se ejecutan desde un workflow con `PROCEDURE`. |
+| `seeds/` | Ficheros de entrada que se mantienen a mano, como jerarquías, tablas de correspondencia o presupuestos. Admite tanto CSV como Excel, y los ficheros los leen los propios modelos (consulta [Datos externos](/etl/transformation/external-data/)). |
+| `catalogs/` | Los catálogos creados con Crono Metadata, que consumen Crono Analysis o el MCP de Crono. Todos los catálogos deben estar en la misma carpeta, porque Crono Server los busca en ella. |
+| `docs/` | Documentación del proyecto, tanto la propia como la que proporciona el cliente. |
+| `scratch/` | Consultas de prueba o de exploración, que no forman parte del proyecto. Así no quedan ficheros como `test.sql` o `delete_me.sql` en la raíz. |
+| `Crono.etlproj` | Preferencias del IDE de Crono ETL para Windows, como la carpeta de trabajos o los paneles visibles. Crono CLI no lo utiliza. |
+
+Los nombres de las carpetas se escriben en minúsculas. Windows no distingue mayúsculas de minúsculas, pero Git y Linux sí, y un proyecto puede acabar ejecutándose con Crono CLI desde un repositorio.
+
+{/* PENDIENTE: Ficheros de declaraciones (vistas virtuales del proyecto, estrategias de auditoría): ubicación y explicación, cuando se simplifiquen. */}
+{/* PENDIENTE: Cambiar el valor por defecto de JobsFolderPath ('Jobs') a 'jobs' y comprobar que el IDE crea las carpetas en minúsculas. */}
+
+## Nombres de los modelos
+
+Cada fichero de `models/` crea o carga un único objeto, y se llama igual que él: `esquema.tabla.sql`. El IDE guarda los ficheros con ese nombre sin preguntar. Aunque el nombre no afecta al código, conviene respetarlo siempre: basta con saber qué tabla se busca para saber en qué fichero está.
+
+El esquema indica la capa del DWH a la que pertenece el objeto:
+
+| Esquema | Contenido |
+| --- | --- |
+| `stg_<origen>` | Staging: los datos tal como llegan de cada origen, por ejemplo `stg_erp` o `stg_crm`. |
+| `dwh` | El modelo final, que consultan las herramientas de análisis. |
+
+Las tablas de staging que carga una acción [BULK TABLE](/etl/data-movement/bulk-table/) no necesitan un fichero, porque las crea la propia acción. En `models/` solo aparecen los objetos de staging que se construyen a partir de esas tablas; por ejemplo, la tabla que reúne en una sola las tablas de pedidos de varias empresas.
+
+### Sin subcarpetas
+
+Es habitual organizar los modelos en subcarpetas por capa (`staging/`, `intermediate/`, `marts/`). En Crono no hace falta, porque la capa ya forma parte del nombre del fichero a través del esquema. Ordenados alfabéticamente, los ficheros quedan agrupados por capa y por origen, y la organización del proyecto coincide siempre con la de la base de datos.
+
+La carpeta `jobs/` tampoco necesita subcarpetas al principio. Si el número de trabajos crece, pueden agruparse en subcarpetas como `bulk/` o `export/`.
+
+## Control de versiones
+
+Se versiona todo el proyecto, salvo la carpeta `scratch/`. Se recomienda excluir también el fichero del entorno de producción, de modo que sus secretos no lleguen al repositorio. Un `.gitignore` como este en la raíz del proyecto cubre ambos casos:
+
+```
+scratch/
+.crono/environments/prod.jsonc
+```
+
+{/* PENDIENTE: Revisar la recomendación de excluir el entorno de producción cuando la encriptación de los secretos dependa de una clave propia de cada proyecto (guardada en la configuración de la máquina). */}

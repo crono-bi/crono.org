@@ -31,7 +31,7 @@ Las credenciales se guardan en la lista `credentials` del fichero de cada entorn
     {
       "type": "google",
       "name": "google-dwh",
-      "client-email": "crono@mi-proyecto.iam.gserviceaccount.com",
+      "client-email": "crono@my-project.iam.gserviceaccount.com",
       "private-key": "[ENCRYPTED TEXT]"
     }
   ]
@@ -52,7 +52,7 @@ Las conexiones y los almacenamientos indican las credenciales que usan con la pr
 
 Las demás conexiones guardan el usuario y la contraseña, o el token, en la propia conexión.
 
-Si un almacenamiento de Amazon S3 o de GitHub no indica credenciales, Crono ETL usa las predeterminadas, definidas en **Ayuda > Opciones generales > Propiedades comunes**. Estas credenciales no forman parte del entorno, sino de la configuración de Crono ETL en cada equipo.
+Si un almacenamiento de Amazon S3 o de GitHub no indica credenciales, Crono ETL usa las predeterminadas, definidas en **Ayuda > Opciones generales > Propiedades comunes**. La cuenta de GitHub predeterminada también puede configurarse en **Ayuda > Cuenta GitHub**. Estas credenciales no forman parte del entorno, sino de la configuración de Crono ETL en cada equipo.
 
 Algunas recomendaciones:
 
@@ -112,7 +112,7 @@ Los permisos se conceden a la cuenta de servicio en Google Cloud: en BigQuery, s
 Con Crono CLI:
 
 ```
-crono credential add google --name google-dwh --client-email crono@mi-proyecto.iam.gserviceaccount.com
+crono credential add google --name google-dwh --client-email crono@my-project.iam.gserviceaccount.com
 crono credential edit google --name google-dwh --secret-stdin private-key < private-key.pem
 ```
 
@@ -127,7 +127,7 @@ Un token de acceso de GitHub, para los almacenamientos de GitHub. En Crono ETL s
 El token puede obtenerse de dos formas:
 
 - **OAuth** (`OAuth`): el botón del lápiz abre GitHub para autorizar a Crono ETL y obtener el token. Después, el formulario muestra el usuario de GitHub y los repositorios a los que da acceso.
-- **Token de acceso personal** (`AccessToken`): el token se crea en GitHub, desde la página que abre el enlace **Generate new token**, y se pega en el formulario. Recomendamos un token *fine-grained* que dé acceso solo a los repositorios necesarios, con permiso de lectura sobre el contenido y, si se escriben ficheros, también de escritura.
+- **Token de acceso personal (PAT)** (`AccessToken`): el token se crea en GitHub, desde la página que abre el enlace **Generate new token**, y se pega en el formulario. Recomendamos un token *fine-grained* que dé acceso solo a los repositorios necesarios, con permiso de lectura sobre el contenido y, si se escriben ficheros, también de escritura.
 
 Estas son las propiedades de las credenciales, con su nombre en el fichero del entorno y en Crono CLI:
 

@@ -24,13 +24,13 @@ Los almacenamientos se guardan en el fichero de cada entorno, `.crono/environmen
     {
       "type": "google",
       "name": "backups",
-      "bucket-name": "mi-bucket-backups",
+      "bucket-name": "my-backups-bucket",
       "credentials-name": "google-dwh"
     },
     {
       "type": "amazon",
       "name": "datalake",
-      "location": "s3://mi-bucket/datalake",
+      "location": "s3://my-bucket/datalake",
       "credentials-name": "aws-datalake"
     }
   ]
@@ -83,7 +83,7 @@ Estas son las propiedades del almacenamiento, con su nombre en el fichero del en
 
 | Nombre | Propiedad | Descripción |
 | --- | --- | --- |
-| Ubicación | `location` | Ruta de la carpeta: absoluta, local (`C:\datos\exports`) o de red (`\\servidor\ficheros`), o relativa a la carpeta del proyecto (`parquets/`). El botón junto al campo permite elegirla. |
+| Ubicación | `location` | Ruta de la carpeta: absoluta, local (`C:\data\exports`) o de red (`\\server\files`), o relativa a la carpeta del proyecto (`parquets/`). El botón junto al campo permite elegirla. |
 | Descripción | `description` | Descripción del almacenamiento. Opcional. |
 
 Una ruta relativa permite incluir la carpeta en el propio proyecto, por ejemplo con ficheros de prueba o de configuración, y que funcione en cualquier equipo donde se abra el proyecto, sin depender de una ruta absoluta.
@@ -91,7 +91,7 @@ Una ruta relativa permite incluir la carpeta en el propio proyecto, por ejemplo 
 Con Crono CLI:
 
 ```
-crono file-store add generic --name exports --location D:\datos\exports
+crono file-store add generic --name exports --location D:\data\exports
 ```
 
 <!-- PENDIENTE: el usuario que ejecuta Crono ETL necesita permisos sobre la carpeta de red. -->
@@ -117,7 +117,7 @@ El usuario o el rol de las credenciales necesita los permisos de S3 que correspo
 Con Crono CLI:
 
 ```
-crono file-store add amazon --name datalake --location s3://mi-bucket/datalake --credentials-name aws-datalake
+crono file-store add amazon --name datalake --location s3://my-bucket/datalake --credentials-name aws-datalake
 ```
 
 <!-- PENDIENTE: La CLI admite también s3://bucket.región/ruta: ¿para qué sirve la región en la ubicación si las credenciales ya tienen región? -->
@@ -144,7 +144,7 @@ Para que funcione:
 Con Crono CLI:
 
 ```
-crono file-store add google --name datalake --bucket-name mi-bucket --credentials-name google-dwh
+crono file-store add google --name datalake --bucket-name my-bucket --credentials-name google-dwh
 ```
 
 <!-- PENDIENTE: ¿Se admite una carpeta dentro del bucket en la definición del almacenamiento, o solo el bucket? -->
@@ -165,19 +165,19 @@ Estas son las propiedades del almacenamiento, con su nombre en el fichero del en
 
 La ubicación puede indicarse de dos formas equivalentes:
 
-- **La URL de GitHub**, copiada tal como aparece en el navegador al abrir la carpeta o el fichero: `https://github.com/mi-empresa/mi-repo/tree/main/csv` para una carpeta o `https://github.com/mi-empresa/mi-repo/blob/main/csv/clientes.csv` para un fichero.
-- **La forma compacta** `github://propietario.repositorio.rama/ruta`: `github://mi-empresa.mi-repo.main/csv` o `github://mi-empresa.mi-repo.main/csv/clientes.csv`.
+- **La URL de GitHub**, copiada tal como aparece en el navegador al abrir la carpeta o el fichero: `https://github.com/my-company/my-repo/tree/main/csv` para una carpeta o `https://github.com/my-company/my-repo/blob/main/csv/customers.csv` para un fichero.
+- **La forma compacta** `github://propietario.repositorio.rama/ruta`: `github://my-company.my-repo.main/csv` o `github://my-company.my-repo.main/csv/customers.csv`.
 
 En ambos casos, Crono ETL lee el contenido de la carpeta o el fichero indicado.
 
-Si el almacenamiento no indica credenciales, Crono ETL usa las credenciales predeterminadas de GitHub, que se definen en **Ayuda > Opciones generales > Propiedades comunes**. Estas credenciales no forman parte del entorno, sino de la configuración de Crono ETL en cada equipo, así que deben definirse en todos los equipos que ejecuten el proyecto.
+Si el almacenamiento no indica credenciales, Crono ETL usa la cuenta de GitHub del usuario, que se configura en **Ayuda > Cuenta GitHub** (o en **Ayuda > Opciones generales > Propiedades comunes**) o, con Crono CLI, con `crono account github login`. Estas credenciales no forman parte del entorno, sino de la configuración de Crono ETL en cada equipo, así que deben definirse en todos los equipos que ejecuten el proyecto.
 
 El token necesita permiso de lectura sobre el contenido del repositorio y, si se escriben ficheros, también de escritura.
 
 Con Crono CLI:
 
 ```
-crono file-store add github --name config --location github://mi-empresa.mi-repo.main/config --credentials-name github-crono
+crono file-store add github --name config --location github://my-company.my-repo.main/config --credentials-name github-crono
 ```
 
 <!-- PENDIENTE: ¿Para qué casos de uso está pensado (leer ficheros de configuración, publicar exportaciones...)? ¿Se admite escribir? Nombres con puntos en el propietario o el repositorio: con la forma github:// el punto es separador; con la URL de GitHub no hay ambigüedad. -->

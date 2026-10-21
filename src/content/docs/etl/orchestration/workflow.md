@@ -12,7 +12,7 @@ Como el resto de acciones, un workflow se escribe en un fichero `.job`, que cont
 En su forma más sencilla, un workflow es una lista de tablas que se cargan una tras otra:
 
 ```
-WORKFLOW 'Ventas' (
+WORKFLOW 'Sales' (
 	dwh.customers,
 	dwh.products,
 	dwh.invoices,
@@ -26,16 +26,16 @@ Un paso puede ser a su vez otro bloque, de modo que un proceso de carga completo
 
 ```
 WORKFLOW (
-	WORKFLOW 'Maestros' (
+	WORKFLOW 'Master data' (
 		dwh.customers,
 		dwh.products,
 		dwh.dates
 	),
-	WORKFLOW 'Ventas' (
+	WORKFLOW 'Sales' (
 		dwh.invoices,
 		dwh.invoice_lines
 	),
-	WORKFLOW 'Contabilidad' (
+	WORKFLOW 'Accounting' (
 		dwh.accounts,
 		dwh.journal_entries
 	)
@@ -63,12 +63,12 @@ WORKFLOW (
 		dwh.weeks,
 		dwh.dates
 	),
-	PARALLEL 'Maestros' (
+	PARALLEL 'Master data' (
 		dwh.customers,
 		dwh.products,
 		dwh.employees
 	),
-	WORKFLOW 'Ventas' (
+	WORKFLOW 'Sales' (
 		dwh.invoices,
 		dwh.invoice_lines
 	)
@@ -102,7 +102,7 @@ Un bloque puede contener cuatro tipos de paso:
 | Tabla | `dwh.customers` | Ejecuta el procedimiento que carga la tabla. |
 | `PROCEDURE` | `PROCEDURE dwh.final_checks` | Ejecuta un procedimiento concreto, con parámetros si los necesita. |
 | `FILE` | `FILE 'Bulk ERP.job'` | Ejecuta un fichero `.job` o un fichero de código Crono SQL. |
-| Bloque | `PARALLEL 'Maestros' (...)` | Ejecuta un bloque anidado. |
+| Bloque | `PARALLEL 'Master data' (...)` | Ejecuta un bloque anidado. |
 
 Todos los pasos se ejecutan sobre la conexión activa, salvo las acciones que indican otra conexión de forma explícita.
 
@@ -152,7 +152,7 @@ PROCEDURE dwh.close_period('2026-09', 1)
 Los ficheros `.sql` cubren los casos que no encajan en el patrón de un procedimiento por tabla. El caso típico es crear una tabla o una vista a partir de datos que no están en la base de datos, como una API, un fichero CSV o una hoja de Excel:
 
 ```
-WORKFLOW 'Contabilidad' (
+WORKFLOW 'Accounting' (
 	FILE '/Tables/dwh.account_groups.sql',
 	dwh.accounts,
 	dwh.journal_entries
@@ -177,22 +177,22 @@ En las rutas puede utilizarse indistintamente `/` o `\` como separador. El fiche
 El siguiente workflow recoge un proceso de carga nocturna habitual. Primero se copian las tablas de origen al área de staging, después se cargan los maestros en paralelo y, a continuación, las tablas de hechos. Al final se ejecuta un procedimiento de comprobación:
 
 ```
-WORKFLOW 'Carga DWH' (
+WORKFLOW 'DWH Load' (
 	FILE 'Bulk ERP.job',
-	WORKFLOW 'Ficheros externos' (
+	WORKFLOW 'External files' (
 		FILE '/Tables/staging.budget.sql'
 	),
-	PARALLEL 'Maestros' (
+	PARALLEL 'Master data' (
 		dwh.customers,
 		dwh.products,
 		dwh.employees,
 		dwh.cost_centers
 	),
-	WORKFLOW 'Ventas' (
+	WORKFLOW 'Sales' (
 		dwh.invoices,
 		dwh.invoice_lines
 	),
-	WORKFLOW 'Contabilidad' (
+	WORKFLOW 'Accounting' (
 		dwh.accounts,
 		dwh.journal_entries,
 		dwh.budget

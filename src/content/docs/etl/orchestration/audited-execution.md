@@ -13,20 +13,20 @@ La cabecera va al principio del fichero, entre dos líneas `---`, y la acción s
 
 ```
 ---
-JobName: Carga DWH
+JobName: DWH Load
 OkMark: ' (OK)'
 LogContent: 'La carga ha finalizado.'
-SendLogTo: it@example.com, finanzas@example.com
-SendFailureLogTo: soporte@example.com
+SendLogTo: it@example.com, finance@example.com
+SendFailureLogTo: support@example.com
 ---
 
 WORKFLOW (
 	FILE 'Bulk ERP.job',
-	PARALLEL 'Maestros' (
+	PARALLEL 'Master data' (
 		dwh.customers,
 		dwh.products
 	),
-	WORKFLOW 'Ventas' (
+	WORKFLOW 'Sales' (
 		dwh.invoices,
 		dwh.invoice_lines
 	)
@@ -58,7 +58,7 @@ En las propiedades de correo, varias direcciones se separan con comas. Los texto
 
 ## Correo de fin de carga
 
-Al terminar, el job envía un correo cuyo asunto es el nombre del job seguido de la marca del resultado: con la cabecera del ejemplo, `Carga DWH (OK)` o `Carga DWH (ERROR)`. Así, el resultado se conoce sin abrir el mensaje.
+Al terminar, el job envía un correo cuyo asunto es el nombre del job seguido de la marca del resultado: con la cabecera del ejemplo, `DWH Load (OK)` o `DWH Load (ERROR)`. Así, el resultado se conoce sin abrir el mensaje.
 
 El cuerpo empieza con el texto de `LogContent` e incluye los enlaces al log publicado en Calendas.
 
@@ -97,7 +97,7 @@ La propiedad `Condition` contiene una consulta Crono SQL que devuelve un valor l
 
 ```
 ---
-JobName: Carga DWH
+JobName: DWH Load
 Condition:
 	SELECT IF(COUNT(*)<>0)
 	FROM audit.pending_loads

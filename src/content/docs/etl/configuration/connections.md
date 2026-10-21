@@ -186,7 +186,7 @@ Estas son las propiedades de la conexión, con su nombre en el fichero del entor
 | Puerto | `port` | Puerto del servidor. Por defecto, `5439`. |
 | Credenciales | `credentials-name` | Nombre de unas credenciales de tipo Amazon del entorno, con las que Crono ETL se autentica en Redshift. |
 | Modo SSL | `ssl-mode` | Uso de SSL en la conexión: `Disable`, `Allow`, `Prefer`, `Require`, `VerifyCA` o `VerifyFull`. Por defecto, `Prefer`. |
-| Rol IAM | `iam-role` | ARN del rol IAM con el que Redshift lee los ficheros de S3 en la carga masiva, por ejemplo `arn:aws:iam::123456789012:role/NombreDelRol`. Si se deja vacío, se usa el rol por defecto del clúster o del namespace. |
+| Rol IAM | `iam-role` | ARN del rol IAM con el que Redshift lee los ficheros de S3 en la carga masiva, por ejemplo `arn:aws:iam::123456789012:role/MyRole`. Si se deja vacío, se usa el rol por defecto del clúster o del namespace. |
 | Almacenamiento | `staging-file-store-name` | Almacenamiento intermedio: nombre de un [almacenamiento](/etl/configuration/storage/) de Amazon S3 del entorno, donde Crono ETL deja los ficheros Parquet antes de cargarlos si no están ya en S3. |
 
 El rol IAM y el almacenamiento solo intervienen en la carga masiva desde ficheros Parquet. Sus requisitos (asociar el rol al clúster, permisos sobre el bucket, misma región) se explican en [IMPORT PARQUET](/etl/data-movement/import-parquet/#redshift).
@@ -218,7 +218,7 @@ La cuenta de servicio necesita permisos para ejecutar trabajos y para leer y esc
 Con Crono CLI:
 
 ```
-crono connection add bigquery --name DWH --project-id mi-proyecto-dwh --region EU --credentials-name google-dwh
+crono connection add bigquery --name DWH --project-id my-project-dwh --region EU --credentials-name google-dwh
 ```
 
 ### Snowflake
@@ -250,7 +250,7 @@ crono connection add snowflake --name DWH --account myorg-myaccount --warehouse 
 
 ### Databricks
 
-La conexión de Databricks se conecta a un SQL warehouse o a un clúster de un workspace de Databricks, mediante el driver ODBC de Databricks, que debe estar instalado en el equipo que ejecuta Crono ETL. Se autentica con un token de acceso personal. En Crono ETL se configura con el formulario de Databricks:
+La conexión de Databricks se conecta a un SQL warehouse o a un clúster de un workspace de Databricks, mediante el driver ODBC de Databricks, que debe estar instalado en el equipo que ejecuta Crono ETL. Se autentica con un token de acceso personal (PAT). En Crono ETL se configura con el formulario de Databricks:
 
 ![Formulario de una conexión de Databricks](/images/etl/configuration/connections/databricks.png)
 
@@ -335,7 +335,7 @@ Estas son las propiedades de la conexión, con su nombre en el fichero del entor
 
 | Nombre | Propiedad | Descripción |
 | --- | --- | --- |
-| DSN o cadena de conexión | `connection-string` | Nombre de un origen de datos ODBC (`DSN=MiOrigen`) o cadena de conexión completa. Crono ETL elige el proveedor según su contenido: OLE DB si incluye `Provider` y `OLEDB`, el cliente de SQL Server si incluye `Data Source` sin `DSN`, y ODBC en el resto de casos. |
+| DSN o cadena de conexión | `connection-string` | Nombre de un origen de datos ODBC (`DSN=MySource`) o cadena de conexión completa. Crono ETL elige el proveedor según su contenido: OLE DB si incluye `Provider` y `OLEDB`, el cliente de SQL Server si incluye `Data Source` sin `DSN`, y ODBC en el resto de casos. |
 | Dialecto SQL | `dialect` | Dialecto SQL de la base de datos: `SQLServer` (por defecto), `Postgres`, `Oracle`, `MySql`, `Access`, `Excel`, `Ansi92`, `Snowflake`, `Redshift`, `BigQuery`, `Databricks`, `Fabric`, `DuckDb` u `Other`. En el formulario aparecen con nombres descriptivos, como "ANSI (Postgres)" o "ANSI (Otro)". Determina si la conexión puede usarse como DWH (ver [Motores admitidos](#motores-admitidos)). |
 | Usar vistas de INFORMATION_SCHEMA | `use-information-schema-metadata` | Obtiene la lista de tablas y columnas de las vistas `INFORMATION_SCHEMA` de la base de datos en lugar de pedirla al driver. Por defecto, `false`. Útil si el driver no devuelve esa información correctamente. |
 
