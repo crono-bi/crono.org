@@ -7,6 +7,21 @@
       "include": "#crono-comments"
     },
     {
+      "include": "#crono-yaml-header"
+    },
+    {
+      "include": "#crono-workflow"
+    },
+    {
+      "include": "#crono-etl-action"
+    },
+    {
+      "include": "#crono-etl-action-name"
+    },
+    {
+      "include": "#crono-bracketed-ident"
+    },
+    {
       "include": "#crono-load-patterns"
     },
     {
@@ -44,11 +59,164 @@
         }
       ]
     },
+    "crono-yaml-header": {
+      "patterns": [
+        {
+          "name": "meta.yaml-header.crono-sql",
+          "begin": "\\A\\s*---\\s*$",
+          "end": "^---\\s*$",
+          "patterns": [
+            {
+              "name": "entity.other.attribute-name.crono-sql",
+              "match": "^\\s*[A-Za-z_][A-Za-z0-9_]*(?=\\s*:)"
+            },
+            {
+              "include": "#crono-comments"
+            },
+            {
+              "include": "source.sql"
+            }
+          ]
+        }
+      ]
+    },
+    "crono-workflow": {
+      "patterns": [
+        {
+          "name": "meta.workflow.crono-sql",
+          "begin": "(?i)\\b(WORKFLOW|PARALLEL|ASYNC)\\b(\\s*'[^']*')?\\s*\\(",
+          "end": "\\)",
+          "beginCaptures": {
+            "1": {
+              "name": "entity.name.function.crono-sql"
+            },
+            "2": {
+              "name": "string.quoted.single.crono-sql"
+            }
+          },
+          "patterns": [
+            {
+              "include": "#crono-comments"
+            },
+            {
+              "include": "#crono-workflow"
+            },
+            {
+              "name": "keyword.other.crono-sql",
+              "match": "(?i)\\b(?:PROCEDURE|FILE)\\b"
+            },
+            {
+              "include": "#crono-nested-parens"
+            },
+            {
+              "include": "source.sql"
+            }
+          ]
+        }
+      ]
+    },
+    "crono-etl-action": {
+      "patterns": [
+        {
+          "name": "meta.etl-action.crono-sql",
+          "begin": "(?i)\\[\\s*(BULK TABLE|COPY FILE|EXPORT PARQUET|IMPORT PARQUET)\\s*\\]\\s*\\(",
+          "end": "\\)",
+          "beginCaptures": {
+            "1": {
+              "name": "entity.name.function.crono-sql"
+            }
+          },
+          "patterns": [
+            {
+              "include": "#crono-action-inner"
+            }
+          ]
+        }
+      ]
+    },
+    "crono-etl-action-name": {
+      "patterns": [
+        {
+          "match": "(?i)\\[\\s*(BULK TABLE|COPY FILE|EXPORT PARQUET|IMPORT PARQUET)\\s*\\]",
+          "captures": {
+            "1": {
+              "name": "entity.name.function.crono-sql"
+            }
+          }
+        },
+        {
+          "name": "entity.name.function.crono-sql",
+          "match": "(?i)\\b(?:WORKFLOW)\\b"
+        }
+      ]
+    },
+    "crono-action-inner": {
+      "patterns": [
+        {
+          "include": "#crono-comments"
+        },
+        {
+          "include": "#crono-etl-properties"
+        },
+        {
+          "include": "#crono-nested-parens"
+        },
+        {
+          "include": "#crono-bracketed-ident"
+        },
+        {
+          "include": "#crono-load-patterns"
+        },
+        {
+          "include": "#crono-keywords"
+        },
+        {
+          "include": "#crono-functions"
+        },
+        {
+          "include": "source.sql"
+        }
+      ]
+    },
+    "crono-nested-parens": {
+      "patterns": [
+        {
+          "name": "meta.parens.crono-sql",
+          "begin": "\\(",
+          "end": "\\)",
+          "patterns": [
+            {
+              "include": "#crono-action-inner"
+            }
+          ]
+        }
+      ]
+    },
+    "crono-etl-properties": {
+      "patterns": [
+        {
+          "name": "entity.other.attribute-name.crono-sql",
+          "match": "(?i)(?:\\[\\s*)?\\b(?:source_connection_name|database_name|schema_name|table_name|target_connection_name|target_schema_name|target_table_name|clean_mode|create_if_not_exists|command_timeout|skip_empty_tables|parallel_execution|max_degree_of_parallelism|source_location|target_location|SourceConnectionName|DatabaseName|SchemaName|TableName|TargetConnectionName|TargetSchemaName|TargetTableName|CleanMode|CreateIfNotExists|CommandTimeout|SkipEmptyTables|ParallelExecution|MaxDegreeOfParallelism|SourceLocation|TargetLocation|collation|data|filename)\\b(?:\\s*\\]?)(?=\\s*[:=])"
+        }
+      ]
+    },
+    "crono-bracketed-ident": {
+      "patterns": [
+        {
+          "match": "\\[\\s*([A-Za-z_][A-Za-z0-9_]*)\\s*\\]",
+          "captures": {
+            "1": {
+              "name": "variable.other.crono-sql"
+            }
+          }
+        }
+      ]
+    },
     "crono-load-patterns": {
       "patterns": [
         {
           "name": "keyword.other.crono-sql",
-          "match": "(?i)\\b(MERGE\\s+CLONE|MERGE\\s+UPSERT|MERGE\\s+HISTORY|DELETE\\s+AND\\s+INSERT|CHECK\\s+SNOWFLAKE)\\b"
+          "match": "(?i)\\b(?:MERGE\\s+CLONE|MERGE\\s+UPSERT|MERGE\\s+HISTORY|MERGE\\s+SOFT\\s+DELETE|INSERT\\s+IF\\s+NEW|INSERT\\s+RAW|INSERT\\s+OVERWRITE|CHECK\\s+SNOWFLAKE|ASSERT\\s+NOT\\s+EXISTS\\s+OR\\s+RAISE|ASSERT\\s+EXISTS\\s+OR\\s+RAISE|CALCULATE\\s+JOIN|ADD\\s+COLUMNS|NO_ALTER|NO_AUDIT|SEMI\\s+JOIN|ANTI\\s+JOIN|DECLARE\\s+VIRTUAL\\s+VIEW)\\b"
         }
       ]
     },
@@ -56,11 +224,7 @@
       "patterns": [
         {
           "name": "keyword.other.crono-sql",
-          "match": "(?i)\\b(SEMI\\s+JOIN|ANTI\\s+JOIN)\\b"
-        },
-        {
-          "name": "keyword.other.crono-sql",
-          "match": "(?i)\\b(MATERIALIZE|CALCULATE|ASSERT|FILTER|SNOWFLAKE|UPSERT|CLONE|HISTORY|VIRTUAL|NONUNIQUE)\\b"
+          "match": "(?i)\\b(?:SET_PROPERTY_NAME_EQUAL|EXPRESSION_LIST|AUTO_INCREMENT|INITIALIZATION|PARAMETER_LIST|AUTHORIZATION|DEFAULT-VALUE|FILE_CONTENT|FINALIZATION|NONCLUSTERED|DIFFERENCES|INCREMENTAL|INFORMATION|MATERIALIZE|OBJECT_TYPE|TRANSACTION|COLLECTION|CONSTRAINT|DICTIONARY|DUPLICATES|EXPRESSION|REFERENCES|SELECT_ALL|STATEMENTS|STATISTICS|STRING_AGG|CALCULATE|CLUSTERED|DIRECTORY|EXCLUSIVE|FOLLOWING|IMMEDIATE|INCLUSIVE|NONUNIQUE|OVERWRITE|PARTITION|PRECEDING|PROCEDURE|RAISERROR|SEPARATOR|SNOWFLAKE|STATEMENT|UNBOUNDED|UNDEFINED|COMPUTED|CONTAINS|DATABASE|DISTINCT|EVALUATE|EXTENDED|FULLSCAN|FUNCTION|IDENTITY|INTEGERS|NO-MERGE|NO_ALTER|NO_AUDIT|NO_GROUP|NO_MERGE|PARALLEL|PREVIOUS|PROPERTY|ROLLBACK|ROUTINES|TRUNCATE|WORKFLOW|BETWEEN|CASCADE|COLLATE|COLUMNS|COMBINE|COMPARE|CONVERT|COUNTIF|CURRENT|DATASET|DECLARE|DEFAULT|DYNAMIC|EXECUTE|FOREIGN|HISTORY|INCLUDE|MATCHED|NOCHECK|NO_WAIT|PERCENT|PRIMARY|QUALIFY|REPLACE|RETURNS|UNPIVOT|VIRTUAL|WITHOUT|ACTION|ASSERT|BUNDLE|COLUMN|COMMIT|CREATE|DELETE|EXISTS|EXPORT|FILTER|HAVING|INSERT|LINKED|LOGGER|LOOKUP|MEMBER|OBJECT|OPTION|OUTPUT|REMOTE|REMOVE|RETURN|SCHEMA|SELECT|SERVER|SOURCE|STARTS|TABLES|UNIQUE|UPDATE|UPSERT|VALUES|WITHIN|ALTER|APPLY|ARRAY|ASYNC|AVGIF|BEGIN|BREAK|CATCH|CHECK|CLONE|CROSS|EXCEL|GROUP|INDEX|INNER|LIMIT|LOGIN|MAXIF|MERGE|MINIF|MULTI|NAMES|NO_BK|ORDER|OUTER|PRINT|RAISE|RANGE|RIGHT|START|SUMIF|TABLE|THROW|UNION|USING|VALUE|WHERE|WHILE|ANTI|CASE|CAST|DESC|DROP|EACH|ELSE|ENDS|EXCL|EXEC|FACT|FILE|FROM|FULL|INCL|INFO|INTO|JOIN|KILL|LEFT|LIKE|LIST|LOAD|MAIN|NEXT|NONE|NULL|ONLY|OVER|ROLE|ROWS|SEMI|SKIP|SOFT|THAT|THEN|USER|VIEW|WHEN|WITH|ADD|ALL|AND|ASC|CMD|CSV|END|FOR|GET|IIF|KEY|MTD|NOT|OFF|OUT|QTD|ROW|RUN|SET|SQL|TOP|TRY|URI|USE|YES|YTD|AS|BY|IF|IN|IS|NO|ON|OR|TD|TO)\\b"
         }
       ]
     },

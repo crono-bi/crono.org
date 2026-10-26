@@ -1,0 +1,22 @@
+---
+JobName: Carga DWH
+OkMark: ' (OK)'
+LogContent: 'La carga ha finalizado.'
+SendLogTo: it@example.com, finanzas@example.com
+SendFailureLogTo: soporte@example.com
+---
+
+WORKFLOW 'Carga DWH' (
+	FILE 'Bulk ERP.job',
+	PARALLEL 'Maestros' (
+		dwh.customers,
+		dwh.products,
+		dwh.employees,
+		dwh.cost_centers
+	),
+	WORKFLOW 'Ventas' (
+		dwh.invoices,
+		dwh.invoice_lines
+	),
+	PROCEDURE dwh.final_checks
+)

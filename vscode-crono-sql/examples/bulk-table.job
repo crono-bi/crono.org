@@ -1,0 +1,10 @@
+-- Acción ETL: carga masiva de varias tablas mediante la propiedad data.
+[bulk table](
+	source_connection_name='ERP_SOURCE',
+	target_schema_name='staging',
+	parallel_execution=YES,
+	[data]=(
+		select schema_name, table_name
+		from audit.source_tables
+	)
+)

@@ -1,26 +1,25 @@
 # Crono SQL for VS Code
 
-Soporte de lenguaje **100% offline** para [Crono SQL](https://crono.org/sql/), el superconjunto de SQL para proyectos ETL/DWH.
+Soporte de lenguaje **100% offline** para [Crono SQL](https://crono.org/sql/), el superconjunto de SQL para proyectos ETL/DWH, y para los ficheros `.job` de Crono ETL.
 
 No requiere conexión a internet, cuenta ni servidor: toda la inteligencia se ejecuta localmente.
 
 ## Características
 
-- **Resaltado de sintaxis** — keywords y funciones específicas de Crono (`MATERIALIZE`, `MERGE CLONE`, `running_sum`, ...) sobre la base de SQL estándar.
-- **Autocompletado** — todas las keywords y funciones, con firma y categoría.
-- **Documentación al pasar el cursor** — descripción y sintaxis de funciones y keywords, con enlace a la documentación oficial.
-- **Snippets** — los patrones de carga (`MERGE CLONE`, `MERGE UPSERT`, `MERGE HISTORY`, `DELETE AND INSERT`...) y plantillas habituales.
+- **Resaltado de sintaxis** — keywords y funciones específicas de Crono (`MERGE CLONE`, `CALCULATE JOIN`, `running_sum`, ...) sobre la base de SQL estándar, más la sintaxis de acciones ETL (`[bulk table](...)`, `WORKFLOW (...)`), sus propiedades y la cabecera YAML de ejecución auditada.
+- **Autocompletado consciente del contexto** — keywords y funciones en código SQL; propiedades dentro del cuerpo de una acción; bloques y pasos dentro de un workflow; propiedades de auditoría en la cabecera YAML. No se ofrece nada dentro de comentarios ni cadenas.
+- **Documentación al pasar el cursor** — descripción y sintaxis de funciones, keywords, frases compuestas (`MERGE SOFT DELETE`, `INSERT IF NEW`, `ASSERT NOT EXISTS OR RAISE`...), acciones ETL y propiedades, con enlace a la documentación oficial.
+- **Snippets** — los patrones de carga (`MERGE CLONE`, `MERGE UPSERT`, `MERGE SOFT DELETE`, `MERGE HISTORY`, `INSERT RAW`, `INSERT IF NEW`, `INSERT OVERWRITE`, `DELETE`), modificadores de tabla (`FILTER`, `COLUMNS`, `ADD COLUMNS`), `CALCULATE JOIN`, `COMBINE`, `UNPIVOT`, aserciones y las acciones ETL.
 - **Configuración de lenguaje** — comentarios (`--`, `/* */`), cierre de brackets, plegado e indentación.
 
 ## Extensiones de archivo
 
-`.sql`
+`.sql`, `.job`
 
 ## Ejemplo
 
 ```sql
--- Carga de una dimensión de productos.
-CREATE OR REPLACE PROCEDURE
+-- Carga de una dimensión de productos (patrón SCD1).
 MERGE CLONE dwh.dim_products KEY (product_id)
 SELECT
   products.product_id,
@@ -29,22 +28,33 @@ SELECT
   suppliers.company_name supplier
 FROM staging.products
 INNER JOIN staging.categories USING category_id
-INNER JOIN staging.suppliers USING supplier_id;
+INNER JOIN staging.suppliers USING supplier_id
+CHECK SNOWFLAKE;
 
--- Pipeline con funciones de ventana y agregación.
-SELECT
-  year(orders.order_date) anyo,
-  month(orders.order_date) mes,
-  sum(order_details.unit_price * order_details.quantity) ventas,
-  running_sum(ventas order by anyo, mes) ventas_acumuladas,
-  pct(ventas) pct_total
+-- Aserción: la carga falla si aparece algún registro problemático.
+ASSERT NOT EXISTS OR RAISE 'Líneas con producto o cantidad nulos'
+SELECT *
 FROM staging.order_details
-INNER JOIN staging.orders USING order_id
-GROUP BY ALL;
+WHERE quantity IS NULL
+   OR product_id IS NULL;
+```
 
--- Validaciones declarativas.
-CHECK SNOWFLAKE dwh.fact_sales;
-ASSERT sum(ventas) > 0;
+Un `.job` de Crono ETL:
+
+```
+---
+JobName: Carga DWH
+SendFailureLogTo: soporte@example.com
+---
+
+WORKFLOW 'Carga DWH' (
+  FILE 'Bulk ERP.job',
+  PARALLEL 'Maestros' (
+    dwh.customers,
+    dwh.products
+  ),
+  dwh.fact_orders
+)
 ```
 
 ## Desarrollo
@@ -53,33 +63,36 @@ ASSERT sum(ventas) > 0;
 npm install      # instala dependencias
 npm run build    # compila TypeScript a dist/
 npm run watch    # compila en modo watch
+npm test         # compila y ejecuta los tests (node:test)
 F5               # lanza una ventana de Extension Host para probar
 ```
 
 ### Empaquetado
 
 ```bash
-npm run package  # genera el .vsix con vsce
+npm run package  # genera el .vsix con @vscode/vsce
 ```
 
 ### Fuentes de verdad
 
-- **Keywords**: `src/language-data.ts` refleja la lista de
-  `crono.org/src/config/crono-language-data.mjs` (sincronización manual).
-- **Funciones**: los nombres, descripciones y ejemplos se derivan de los docs
-  oficiales en `crono.org/src/content/docs/sql/functions/**` y se generan en
-  `src/generated/function-docs.ts`. Tras modificar los docs, ejecuta:
+Los datos del lenguaje se generan desde la documentación oficial del repo
+`crono.org`. Tras modificar los docs, ejecuta:
 
 ```bash
-npm run sync   # regenera src/generated/function-docs.ts desde los docs oficiales
+npm run sync
 ```
 
-> No edites `src/generated/function-docs.ts` a mano: lo sobrescribe el script.
-> La gramática TextMate (`syntaxes/crono-sql.tmLanguage.json`) se mantiene
-> manualmente.
+que ejecuta dos scripts:
 
-El hover de funciones resuelve la descripción con esta prioridad:
-**doc oficial generado → texto manual (`src/hover-docs.ts`) → genérico por categoría**.
+- `scripts/sync-function-docs.mjs` — genera `src/generated/function-docs.ts`
+  desde `src/content/docs/sql/functions/**`.
+- `scripts/sync-language-data.mjs` — genera `src/generated/keywords.ts`
+  (desde `sql/language/keywords.md`), `src/generated/etl-data.ts`
+  (acciones, propiedades y cabecera auditada desde `src/content/docs/etl/**`)
+  y reescribe la gramática `syntaxes/crono-sql.tmLanguage.json`.
+
+> No edites los archivos de `src/generated/` ni la gramática a mano:
+> los sobrescriben los scripts.
 
 ## Configuración
 

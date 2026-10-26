@@ -1,92 +1,285 @@
 {
   "Merge Clone (full sync)": {
     "prefix": "merge-clone",
-    "description": "Patrón de carga: sincronización completa (full sync).",
+    "description": "Patrón de carga SCD1: inserta nuevos, actualiza cambiados y elimina ausentes.",
     "body": [
-      "CREATE OR REPLACE PROCEDURE",
       "MERGE CLONE ${1:dwh.dim_table} KEY (${2:id})",
       "SELECT",
       "\t$0",
-      "FROM ${3:staging.source};"
+      "FROM ${3:staging.source}"
     ]
   },
   "Merge Upsert (incremental)": {
     "prefix": "merge-upsert",
-    "description": "Patrón de carga incremental: inserta nuevas y actualiza existentes.",
+    "description": "Patrón de carga incremental: inserta nuevos y actualiza existentes, sin eliminar.",
     "body": [
-      "CREATE OR REPLACE PROCEDURE",
       "MERGE UPSERT ${1:dwh.fact_table} KEY (${2:id})",
       "SELECT",
       "\t$0",
-      "FROM ${3:staging.source};"
+      "FROM ${3:staging.source}"
+    ]
+  },
+  "Merge Soft Delete": {
+    "prefix": "merge-soft-delete",
+    "description": "Patrón de carga: como UPSERT pero marca los ausentes con delete_date.",
+    "body": [
+      "MERGE SOFT DELETE ${1:dwh.dim_customers} KEY (${2:customer_id})",
+      "SELECT",
+      "\t$0",
+      "FROM ${3:staging.customers}"
     ]
   },
   "Merge History (SCD2)": {
     "prefix": "merge-history",
-    "description": "Patrón de carga SCD2: histórico versionado de cambios.",
+    "description": "Patrón de carga SCD2: histórico versionado con start_date/end_date.",
     "body": [
-      "CREATE OR REPLACE PROCEDURE",
       "MERGE HISTORY ${1:dwh.dim_table} KEY (${2:id})",
       "SELECT",
       "\t$0",
-      "FROM ${3:staging.source};"
+      "FROM ${3:staging.source}"
     ]
   },
-  "Delete and Insert (full reload)": {
-    "prefix": "delete-and-insert",
-    "description": "Patrón de carga: borrado total y recarga.",
+  "Insert Raw": {
+    "prefix": "insert-raw",
+    "description": "Patrón de carga sin KEY: inserta todos los registros sin deduplicar.",
     "body": [
-      "CREATE OR REPLACE PROCEDURE",
-      "DELETE AND INSERT ${1:dwh.table}",
+      "INSERT RAW INTO ${1:dwh.fact_table}",
       "SELECT",
       "\t$0",
-      "FROM ${2:staging.source};"
+      "FROM ${2:staging.source}"
+    ]
+  },
+  "Insert If New": {
+    "prefix": "insert-if-new",
+    "description": "Patrón de carga: inserta solo los registros que aún no existen en destino.",
+    "body": [
+      "INSERT IF NEW INTO ${1:dwh.dim_table} KEY (${2:id})",
+      "SELECT",
+      "\t$0",
+      "FROM ${3:staging.source}"
+    ]
+  },
+  "Insert Overwrite": {
+    "prefix": "insert-overwrite",
+    "description": "Patrón de recarga: vacía el destino (o las claves devueltas) y recarga.",
+    "body": [
+      "INSERT OVERWRITE ${1:dwh.dim_table}${2: KEY (${3:id})}",
+      "SELECT",
+      "\t$0",
+      "FROM ${4:staging.source}"
+    ]
+  },
+  "Delete by key": {
+    "prefix": "delete-key",
+    "description": "Patrón de carga: elimina los registros cuya clave devuelve la consulta.",
+    "body": [
+      "DELETE ${1:dwh.dim_table} KEY (${2:id})",
+      "SELECT ${2:id}",
+      "FROM ${3:staging.source}"
+    ]
+  },
+  "Assert Not Exists": {
+    "prefix": "assert-not-exists",
+    "description": "Aserción: falla la carga si la consulta devuelve algún registro.",
+    "body": [
+      "ASSERT NOT EXISTS OR RAISE '${1:mensaje de error}'",
+      "SELECT *",
+      "FROM ${2:staging.source}",
+      "WHERE ${3:condición_problemática}"
+    ]
+  },
+  "Assert Exists": {
+    "prefix": "assert-exists",
+    "description": "Aserción: falla la carga si la consulta no devuelve ningún registro.",
+    "body": [
+      "ASSERT EXISTS OR RAISE '${1:mensaje de error}'",
+      "SELECT ${2:count(*)}",
+      "FROM ${3:staging.source}"
+    ]
+  },
+  "Check Snowflake": {
+    "prefix": "check-snowflake",
+    "description": "Valida que los JOINs no pierden ni duplican registros (va tras los JOINs).",
+    "body": [
+      "SELECT",
+      "\t$0",
+      "FROM ${1:staging.fact}",
+      "INNER JOIN ${2:staging.dim} USING ${3:key}",
+      "CHECK SNOWFLAKE"
+    ]
+  },
+  "Filter (table modifier)": {
+    "prefix": "filter",
+    "description": "Modificador de tabla: filtra los registros antes del JOIN.",
+    "body": [
+      "LEFT JOIN ${1:staging.table} FILTER (${2:condición}) ${3:alias} USING ${4:key}"
+    ]
+  },
+  "Columns (table modifier)": {
+    "prefix": "columns",
+    "description": "Modificador de tabla: selecciona/renombra columnas antes del JOIN.",
+    "body": [
+      "INNER JOIN ${1:staging.table} COLUMNS (${2:col, otra alias}) USING ${3:key}"
+    ]
+  },
+  "Add Columns (table modifier)": {
+    "prefix": "add-columns",
+    "description": "Modificador de tabla: añade columnas calculadas junto a su tabla.",
+    "body": [
+      "FROM ${1:staging.table} ADD COLUMNS (${2:expresión alias})"
+    ]
+  },
+  "Calculate Join": {
+    "prefix": "calculate-join",
+    "description": "Columnas calculadas como bloque lateral (JOIN opcional).",
+    "body": [
+      "CALCULATE JOIN (",
+      "\t${1:expresión alias}",
+      ") ${2:calc}"
+    ]
+  },
+  "Combine": {
+    "prefix": "combine",
+    "description": "Combina consultas con FULL JOIN sobre las claves indicadas.",
+    "body": [
+      "COMBINE KEY ${1:(col)}",
+      "  ${2:alias_a} (",
+      "    SELECT $0",
+      "  ),",
+      "  ${3:alias_b} (",
+      "    SELECT",
+      "  )"
+    ]
+  },
+  "Unpivot": {
+    "prefix": "unpivot",
+    "description": "Convierte columnas en filas (sintaxis estándar).",
+    "body": [
+      "UNPIVOT (${1:valor} FOR ${2:nombre} IN (${3:col1, col2})) AS ${4:unpvt}"
     ]
   },
   "Select pipeline (stacked)": {
     "prefix": "select-pipeline",
-    "description": "SELECT apilado con FILTER y CALCULATE.",
+    "description": "SELECT apilado: cada capa opera sobre el resultado de la anterior.",
     "body": [
+      "SELECT ${1:WHERE condición}",
       "SELECT",
-      "\t${1:columns}",
-      "FROM ${2:source}",
-      "FILTER ${3:condition}",
-      "CALCULATE ${4:new_col} = ${5:expression};"
+      "\t$0",
+      "FROM ${2:staging.source}"
     ]
   },
   "Semi Join": {
     "prefix": "semi-join",
     "description": "SEMI JOIN: filas con correspondencia, sin añadir columnas.",
-    "body": ["${1:left} SEMI JOIN ${2:right} ON ${3:condition}"]
+    "body": ["${1:left} SEMI JOIN ${2:right} USING ${3:key}"]
   },
   "Anti Join": {
     "prefix": "anti-join",
     "description": "ANTI JOIN: filas sin correspondencia en la tabla derecha.",
-    "body": ["${1:left} ANTI JOIN ${2:right} ON ${3:condition}"]
+    "body": ["${1:left} ANTI JOIN ${2:right} USING ${3:key}"]
   },
-  "Check Snowflake": {
-    "prefix": "check-snowflake",
-    "description": "Validación del modelo en estrella/copo de nieve en compilación.",
-    "body": ["CHECK SNOWFLAKE ${1:dwh.fact_table};"]
-  },
-  "Assert": {
-    "prefix": "assert",
-    "description": "Invariante validada en tiempo de carga.",
-    "body": ["ASSERT ${1:condition};"]
-  },
-  "Create Virtual View": {
-    "prefix": "create-virtual-view",
-    "description": "Vista virtual reutilizable (se expande en compilación).",
+  "Declare Virtual View": {
+    "prefix": "virtual-view",
+    "description": "Vista virtual: consulta con nombre reutilizable, sin objeto en BBDD.",
     "body": [
-      "CREATE OR REPLACE VIRTUAL VIEW ${1:schema.view_name} AS",
+      "DECLARE VIRTUAL VIEW ${1:schema.view_name}",
       "SELECT",
       "\t$0",
-      "FROM ${2:source};"
+      "FROM ${2:staging.source}"
     ]
   },
-  "Running Sum": {
-    "prefix": "running-sum",
-    "description": "Suma acumulada (función de ventana).",
-    "body": ["running_sum(${1:expr} ${2:partition by ${3:group}} order by ${4:sort})"]
+  "No Alter / No Audit": {
+    "prefix": "no-alter",
+    "description": "Desactiva el mantenimiento de tabla (NO_ALTER) y la auditoría (NO_AUDIT).",
+    "body": ["KEY (${1:id}) NO_ALTER NO_AUDIT"]
+  },
+  "Bulk Table (ETL)": {
+    "prefix": "bulk-table",
+    "description": "Acción ETL: copia masiva de una tabla de origen a destino.",
+    "body": [
+      "[bulk table](",
+      "\tsource_connection_name='${1:CONEXION}',",
+      "\tschema_name='${2:esquema}',",
+      "\ttable_name='${3:tabla}',",
+      "\ttarget_connection_name='${4:DWH}',",
+      "\ttarget_schema_name='${5:staging}',",
+      "\tclean_mode='Drop'",
+      ")"
+    ]
+  },
+  "Bulk Table multi (data)": {
+    "prefix": "bulk-table-data",
+    "description": "Acción ETL: carga masiva de varias tablas mediante la propiedad data.",
+    "body": [
+      "[bulk table](",
+      "\tsource_connection_name='${1:CONEXION}',",
+      "\ttarget_schema_name='${2:staging}',",
+      "\tparallel_execution=YES,",
+      "\t[data]=(",
+      "\t\tselect schema_name, table_name",
+      "\t\tfrom ${3:audit.source_tables}",
+      "\t)",
+      ")"
+    ]
+  },
+  "Export Parquet (ETL)": {
+    "prefix": "export-parquet",
+    "description": "Acción ETL: exporta una tabla o vista a Parquet.",
+    "body": [
+      "[export parquet](",
+      "\tschema_name='${1:esquema}',",
+      "\ttable_name='${2:tabla}',",
+      "\ttarget_location='${3:filestore://destino}',",
+      "\tfilename='${4:fichero.parquet}'",
+      ")"
+    ]
+  },
+  "Import Parquet (ETL)": {
+    "prefix": "import-parquet",
+    "description": "Acción ETL: carga un Parquet en una tabla.",
+    "body": [
+      "[import parquet](",
+      "\ttarget_connection_name='${1:DWH}',",
+      "\tsource_location='${2:filestore://origen/fichero.parquet}',",
+      "\tschema_name='${3:staging}',",
+      "\ttable_name='${4:tabla}'",
+      ")"
+    ]
+  },
+  "Copy File (ETL)": {
+    "prefix": "copy-file",
+    "description": "Acción ETL: copia un fichero entre ubicaciones/almacenamientos.",
+    "body": [
+      "[copy file](",
+      "\tsource_location='${1:filestore://origen/fichero}',",
+      "\ttarget_location='${2:filestore://destino/fichero}'",
+      ")"
+    ]
+  },
+  "Workflow (ETL)": {
+    "prefix": "workflow",
+    "description": "Acción ETL de orquestación: pasos en secuencia o en paralelo.",
+    "body": [
+      "WORKFLOW '${1:Nombre}' (",
+      "\tFILE '${2:Bulk ERP.job}',",
+      "\tPARALLEL '${3:Maestros}' (",
+      "\t\t${4:dwh.customers}",
+      "\t),",
+      "\t${5:dwh.fact_table},",
+      "\tPROCEDURE ${6:dwh.final_checks}",
+      ")"
+    ]
+  },
+  "Audited job header (ETL)": {
+    "prefix": "audit-header",
+    "description": "Cabecera YAML de ejecución auditada para un .job.",
+    "body": [
+      "---",
+      "JobName: ${1:Nombre del job}",
+      "SendLogTo: ${2:it@example.com}",
+      "SendFailureLogTo: ${3:soporte@example.com}",
+      "---",
+      "$0"
+    ]
   }
 }

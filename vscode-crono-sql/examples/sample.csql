@@ -1,0 +1,80 @@
+[bulk table](
+  source_connection_name='FIREBIRD',
+  target_connection_name='DWH',
+  target_schema_name='stg_firebird',
+  clean_mode='Drop',
+  [data]=(
+    select table_name
+    from column(
+      -- Maestros
+      'AGENDA' table_name,
+      'AGENTE',
+      'ARTICU',
+      'BANCOS',
+      'CLIENT',
+      'CNTCLI',
+      'CNTPRO',
+      'ESTDOC',
+      'FAMILI',
+      'FPAGOS',
+      'GRUPOS',
+      'MANDATO',
+      'MODELO',
+      'PAISES',
+      'PROVEE',
+      'RELAPR',
+      'RGTIVA',
+      'TIPBLO',
+      'TIPFAC',
+      'TIPIVA',
+      'USUARIOS',
+      'CUST_PROZON',  -- dBase: prozon01
+      'CUST_TIPVEH',  -- dBase: tipveh01
+      'CUST_VEHICU',  -- dBase: vehicu01
+      'CUST_VEHPRO',  -- dBase: vehpro01
+      'CUST_ZONAST',  -- dBase: zonast01
+      -- Ventas y compras
+      'ALBARA',
+      'LINALB',
+      'FACTUR',
+      'COMPRA',
+      'LINCOM',
+      'PRESUP',
+      'LINPRE',
+      'PIFACO',
+      'PIFAVE',
+      'MSII',
+      'MSIID',
+      'CUST_CAPELG',  -- dBase: capelg01
+      'CUST_CUPELG',  -- dBase: cupelg01
+      -- Cobros y pagos
+      'EFECOB',
+      'EFEPAG',
+      'PAGACO',
+      'PAGAPA',
+      'REMEPG',
+      'REMESA',
+      -- Contabilidad
+      'CUENTA',
+      'CABASI',
+      'CUEASI',
+      'CAPRYE',
+      'CUPRYE',
+      'CABAMO',
+      'LINAMO',
+      -- Varios
+      'CONTROLS',
+      'CONTROL2',
+      'CONTROL3',
+      'CONTROL4',
+      'TAREAS',       -- Tiene VARCHAR(8192): falló en 26.43.2132
+      'TIPSEG',
+      'STPSEG',
+      -- Datos por empresa (se enlazan con t01.OWNER_ID = t.ID_SQL) y relaciones
+      'CLIENT_01',        -- ZONA del cliente
+      'PROVEE_01',        -- ZONA del proveedor
+      'ARTICU_01',        -- ARTTRANS y ARTCOMIS
+      'CTAIVA',           -- % de IVA (PIVA) por TIPOIVA
+      'BANCOSRELACIONES'  -- Banco del proveedor (NOMBRETABLA='PROVEE', STITYPE='BANCO')
+    )
+  ))

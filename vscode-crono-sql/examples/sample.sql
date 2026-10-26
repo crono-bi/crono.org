@@ -21,6 +21,27 @@ FROM staging.order_details
 INNER JOIN staging.orders USING order_id
 GROUP BY ALL;
 
--- Validaciones declarativas.
-CHECK SNOWFLAKE dwh.fact_sales;
-ASSERT sum(ventas) > 0;
+-- CHECK SNOWFLAKE va tras los JOINs y valida en ejecución que no se
+-- pierden ni duplican registros de la tabla del FROM.
+SELECT
+  year(orders.order_date) order_year,
+  customers.company_name customer,
+  sum(orders.freight) total_freight
+FROM staging.orders
+INNER JOIN staging.customers USING customer_id
+INNER JOIN staging.employees USING employee_id
+CHECK SNOWFLAKE
+WHERE year(orders.order_date) = 2023;
+
+-- ASSERT: la carga falla si la consulta devuelve algún registro.
+ASSERT NOT EXISTS OR RAISE 'Líneas de detalle con producto o cantidad nulos'
+SELECT *
+FROM staging.order_details
+WHERE quantity IS NULL
+   OR product_id IS NULL;
+
+-- ASSERT EXISTS: falla si la consulta no devuelve ningún registro.
+ASSERT EXISTS OR RAISE 'Número de clientes fuera del rango esperado'
+SELECT WHERE customer_count BETWEEN 90 AND 200
+SELECT count(*) AS customer_count
+FROM staging.customers;

@@ -40,7 +40,8 @@
           "cronosql"
         ],
         "extensions": [
-          ".sql"
+          ".sql",
+          ".job"
         ],
         "configuration": "./language-configuration.json",
         "icon": {
@@ -82,12 +83,14 @@
     "vscode:prepublish": "npm run build",
     "build": "tsc -p ./",
     "watch": "tsc -watch -p ./",
-    "sync": "node ./scripts/sync-function-docs.mjs",
-    "package": "npx @vscode/vsce package --no-dependencies"
+    "sync": "node ./scripts/sync-function-docs.mjs && node ./scripts/sync-language-data.mjs",
+    "test": "npm run build && node --test",
+    "package": "vsce package --no-dependencies"
   },
   "devDependencies": {
     "@types/node": "^20.11.0",
     "@types/vscode": "^1.84.0",
+    "@vscode/vsce": "4.0.0",
     "typescript": "^5.4.0"
   }
 }
