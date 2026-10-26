@@ -24,7 +24,6 @@ export const downloadsTopics = {
 			items: [
 				{ slug: 'downloads/crono', label: 'Crono' },
 				{ slug: 'downloads/crono-administrator', label: 'Crono Administrator' },
-				{ slug: 'downloads/crono-jobs', label: 'Crono Jobs' },
 				{ slug: 'downloads/crono-server', label: 'Crono Server' },
 			],
 		},
@@ -35,7 +34,6 @@ export const downloadsTopics = {
 				{ slug: 'downloads/crono-analysis-32', label: 'Crono Analysis 32' },
 				{ slug: 'downloads/crono-metadata-32', label: 'Crono Metadata 32' },
 				{ slug: 'downloads/crono-etl-32', label: 'Crono ETL 32' },
-				{ slug: 'downloads/crono-jobs-32', label: 'Crono Jobs 32' },
 			],
 		},
 		{

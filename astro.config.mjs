@@ -26,6 +26,11 @@ export default defineConfig({
 		'/en/etl': '/en/etl/intro',
 		'/en/analysis': '/en/analysis/intro',
 		'/en/metadata': '/en/metadata/intro',
+		// Crono Jobs ya no está disponible
+		'/downloads/crono-jobs': '/downloads/',
+		'/downloads/crono-jobs-32': '/downloads/',
+		'/en/downloads/crono-jobs': '/en/downloads/',
+		'/en/downloads/crono-jobs-32': '/en/downloads/',
 	},
 	vite: {
 		plugins: [tailwindcss()],
