@@ -1,7 +1,7 @@
 import * as vscode from 'vscode';
 
 import { CRONO_KEYWORDS, CRONO_SPECIFIC_KEYWORDS } from './language-data';
-import { KEYWORD_DOCS, PHRASE_DOCS, FUNCTION_DOCS, DocEntry } from './hover-docs';
+import { KEYWORD_DOCS, PHRASE_DOCS, DocEntry } from './hover-docs';
 import {
   CRONO_FUNCTION_NAMES,
   CRONO_FUNCTION_CATEGORIES,
@@ -113,19 +113,12 @@ function renderGeneratedDoc(name: string, entry: GeneratedDoc): vscode.MarkdownS
   return md;
 }
 
-// Resolve a function's hover/completion doc with priority:
-// generated (official docs) → manual → generic fallback.
+// Resolve a function's hover/completion doc from the official docs,
+// falling back to a generic message for unknown names.
 function renderFunctionDoc(name: string): vscode.MarkdownString {
   const lower = name.toLowerCase();
   const gen = GENERATED_FUNCTION_DOCS[lower];
-  if (gen) {
-    return renderGeneratedDoc(lower, gen);
-  }
-  const manual = FUNCTION_DOCS[lower];
-  if (manual) {
-    return renderDoc(manual);
-  }
-  return genericFunctionDoc(lower);
+  return gen ? renderGeneratedDoc(lower, gen) : genericFunctionDoc(lower);
 }
 
 const hoverProvider: vscode.HoverProvider = {

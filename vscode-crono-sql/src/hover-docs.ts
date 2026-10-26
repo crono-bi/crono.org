@@ -82,93 +82,39 @@ export const PHRASE_DOCS: Record<string, DocEntry> = {
   'MERGE HISTORY': KEYWORD_DOCS.HISTORY,
   'SEMI JOIN': KEYWORD_DOCS.SEMI,
   'ANTI JOIN': KEYWORD_DOCS.ANTI,
+  'LEFT JOIN': {
+    signature: 'FROM tabla LEFT JOIN otra ON ...',
+    description: 'Devuelve todas las filas de la tabla izquierda y las coincidentes de la derecha, completando con `NULL` cuando no hay correspondencia.',
+  },
+  'RIGHT JOIN': {
+    signature: 'FROM tabla RIGHT JOIN otra ON ...',
+    description: 'Devuelve todas las filas de la tabla derecha y las coincidentes de la izquierda, completando con `NULL` cuando no hay correspondencia.',
+  },
+  'INNER JOIN': {
+    signature: 'FROM tabla INNER JOIN otra ON ...',
+    description: 'Devuelve solo las filas que tienen correspondencia en ambas tablas.',
+  },
+  'FULL JOIN': {
+    signature: 'FROM tabla FULL JOIN otra ON ...',
+    description: 'Devuelve todas las filas de ambas tablas, completando con `NULL` las no coincidentes.',
+  },
+  'CROSS JOIN': {
+    signature: 'FROM tabla CROSS JOIN otra',
+    description: 'Producto cartesiano: cada fila de la izquierda se combina con cada fila de la derecha.',
+  },
+  'DELETE AND': {
+    signature: 'DELETE AND INSERT destino',
+    description: 'Patrón de carga: elimina el contenido previo del destino y lo recarga con el resultado del SELECT.',
+    docs: 'language/merge',
+  },
+  'AND INSERT': {
+    signature: 'DELETE AND INSERT destino',
+    description: 'Patrón de carga: elimina el contenido previo del destino y lo recarga con el resultado del SELECT.',
+    docs: 'language/merge',
+  },
 };
 
 // ── Functions ─────────────────────────────────────────────────────────
-// Detailed entries for the most relevant functions. Functions without an
-// explicit entry fall back to a generic message built from their category.
-export const FUNCTION_DOCS: Record<string, DocEntry> = {
-  // Aggregation / window
-  sum: { signature: 'sum(expr)', description: 'Suma de los valores del grupo.' },
-  avg: { signature: 'avg(expr)', description: 'Media aritmética de los valores del grupo.' },
-  count: { signature: 'count(expr)', description: 'Número de filas (o de valores no nulos de `expr`).' },
-  countdistinct: { signature: 'countdistinct(expr)', description: 'Número de valores distintos no nulos.' },
-  max: { signature: 'max(expr)', description: 'Valor máximo del grupo.' },
-  min: { signature: 'min(expr)', description: 'Valor mínimo del grupo.' },
-  pct: { signature: 'pct(expr)', description: 'Porcentaje que representa cada valor sobre el total del grupo.' },
-  pctrank: { signature: 'pctrank(expr order by ...)', description: 'Rango percentil de cada fila dentro de la partición.' },
-  percentile: { signature: 'percentile(expr, p)', description: 'Valor en el percentil `p` (0–1) del grupo.' },
-  quantile: { signature: 'quantile(expr, q)', description: 'Cuantil `q` de la distribución del grupo.' },
-  quartile: { signature: 'quartile(expr, n)', description: 'Cuartil `n` (1–4) del grupo.' },
-  decile: { signature: 'decile(expr, n)', description: 'Decil `n` (1–10) del grupo.' },
-  runningsum: {
-    signature: 'runningsum(expr [partition by ...] order by ...)',
-    description: 'Suma acumulada desde el inicio del rango hasta cada fila. Requiere `ORDER BY`.',
-    docs: 'functions/agregacion/running_sum',
-  },
-  runningpct: {
-    signature: 'runningpct(expr [partition by ...] order by ...)',
-    description: 'Porcentaje acumulado sobre el total, fila a fila. Requiere `ORDER BY`.',
-    docs: 'functions/agregacion/running_pct',
-  },
-  next_value: { signature: 'next_value(expr order by ...)', description: 'Valor de la fila siguiente dentro de la partición.' },
-  previous_value: { signature: 'previous_value(expr order by ...)', description: 'Valor de la fila anterior dentro de la partición.' },
-  is_first: { signature: 'is_first(order by ...)', description: 'Indica si la fila es la primera de su partición.' },
-  is_last: { signature: 'is_last(order by ...)', description: 'Indica si la fila es la última de su partición.' },
-  end_date: { signature: 'end_date(order by ...)', description: 'Fecha de fin de vigencia derivada de la fila siguiente (útil en SCD2).' },
-  end_datetime: { signature: 'end_datetime(order by ...)', description: 'Marca de fin de vigencia (datetime) derivada de la fila siguiente.' },
-  // Nulls & conditions
-  coalesce: { signature: 'coalesce(a, b, ...)', description: 'Devuelve el primer argumento no nulo.' },
-  switch: { signature: 'switch(valor, caso1, res1, ..., [default])', description: 'Selecciona un resultado según el valor de entrada. Alternativa concisa a `CASE`.' },
-  if: { signature: 'if(condición, entonces, si_no)', description: 'Expresión condicional en línea.' },
-  emptyifnull: { signature: 'emptyifnull(expr)', description: 'Devuelve cadena vacía si `expr` es NULL.' },
-  nullifempty: { signature: 'nullifempty(expr)', description: 'Devuelve NULL si `expr` es cadena vacía.' },
-  zeroifnull: { signature: 'zeroifnull(expr)', description: 'Devuelve 0 si `expr` es NULL.' },
-  nullifzero: { signature: 'nullifzero(expr)', description: 'Devuelve NULL si `expr` es 0 (evita divisiones por cero).' },
-  indexof: { signature: 'indexof(texto, sub)', description: 'Posición de la primera aparición de `sub` en `texto`.' },
-  elementat: { signature: 'elementat(array, n)', description: 'Elemento en la posición `n` del array.' },
-  // Dates
-  year: { signature: 'year(fecha)', description: 'Año de la fecha.' },
-  month: { signature: 'month(fecha)', description: 'Mes de la fecha (1–12).' },
-  hour: { signature: 'hour(datetime)', description: 'Hora del datetime (0–23).' },
-  adddays: { signature: 'adddays(fecha, n)', description: 'Suma `n` días a la fecha.' },
-  addmonths: { signature: 'addmonths(fecha, n)', description: 'Suma `n` meses a la fecha.' },
-  daysago: { signature: 'daysago(n)', description: 'Fecha de hace `n` días respecto a hoy.' },
-  daysdiff: { signature: 'daysdiff(inicio, fin)', description: 'Número de días entre dos fechas.' },
-  today: { signature: 'today()', description: 'Fecha actual (sin hora).' },
-  yesterday: { signature: 'yesterday()', description: 'Fecha de ayer.' },
-  tomorrow: { signature: 'tomorrow()', description: 'Fecha de mañana.' },
-  weekday: { signature: 'weekday(fecha)', description: 'Nombre del día de la semana.' },
-  weekdaynumber: { signature: 'weekdaynumber(fecha)', description: 'Número del día de la semana.' },
-  yyyy: { signature: 'yyyy(fecha)', description: 'Año como texto `AAAA`.' },
-  yyyymm: { signature: 'yyyymm(fecha)', description: 'Periodo como texto `AAAAMM`.' },
-  yyyymmdd: { signature: 'yyyymmdd(fecha)', description: 'Fecha como texto `AAAAMMDD`.' },
-  isoweek: { signature: 'isoweek(fecha)', description: 'Semana ISO 8601 de la fecha.' },
-  isoweekyear: { signature: 'isoweekyear(fecha)', description: 'Año ISO 8601 asociado a la semana.' },
-  // Text
-  concat: { signature: 'concat(a, b, ...)', description: 'Concatena cadenas.' },
-  trim: { signature: 'trim(texto)', description: 'Elimina espacios al inicio y al final.' },
-  left: { signature: 'left(texto, n)', description: 'Primeros `n` caracteres.' },
-  right: { signature: 'right(texto, n)', description: 'Últimos `n` caracteres.' },
-  slice: { signature: 'slice(texto, inicio, fin)', description: 'Subcadena entre dos posiciones.' },
-  split: { signature: 'split(texto, separador)', description: 'Divide el texto en un array según el separador.' },
-  slugify: { signature: 'slugify(texto)', description: 'Convierte el texto en un slug seguro para URLs/identificadores.' },
-  hash: { signature: 'hash(expr)', description: 'Valor hash de la expresión.' },
-  // Numeric
-  round: { signature: 'round(numero, [decimales])', description: 'Redondea al número de decimales indicado.' },
-  divide: { signature: 'divide(a, b)', description: 'División segura (gestiona divisor cero).' },
-  margin: { signature: 'margin(precio, coste)', description: 'Margen porcentual sobre el precio.' },
-  markup: { signature: 'markup(precio, coste)', description: 'Markup porcentual sobre el coste.' },
-  pctvariance: { signature: 'pctvariance(actual, previo)', description: 'Variación porcentual entre dos valores.' },
-  mod: { signature: 'mod(a, b)', description: 'Resto de la división de `a` entre `b`.' },
-  // Conversion (type casts)
-  int: { signature: 'int(expr)', description: 'Convierte a entero.' },
-  bigint: { signature: 'bigint(expr)', description: 'Convierte a entero de 64 bits.' },
-  float: { signature: 'float(expr)', description: 'Convierte a coma flotante.' },
-  varchar: { signature: 'varchar(expr)', description: 'Convierte a texto.' },
-  date: { signature: 'date(expr)', description: 'Convierte a fecha.' },
-  datetime: { signature: 'datetime(expr)', description: 'Convierte a fecha y hora.' },
-  // Metadata
-  current_user: { signature: 'current_user()', description: 'Usuario actual de la sesión.' },
-  current_catalog: { signature: 'current_catalog()', description: 'Catálogo/base de datos actual.' },
-};
+// Function hover/completion docs are now derived from the official docs via
+// `npm run sync` and stored in `src/generated/function-docs.ts`.
+// This file only provides keyword and multi-word-phrase documentation.
