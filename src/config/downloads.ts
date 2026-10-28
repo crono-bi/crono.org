@@ -46,6 +46,8 @@ export const DOWNLOAD_PRODUCTS: Record<string, DownloadProductDefinition> = {
   CronoMetadataMSI: { releaseName: 'CronoMetadataMSI', slug: 'crono-metadata-msi', color: '#5B2C7D' },
   CronoETL: { releaseName: 'CronoETL', slug: 'crono-etl', color: '#1B8AC7' },
   CronoETL32: { releaseName: 'CronoETL32', slug: 'crono-etl-32', color: '#1B8AC7' },
+  CronoAnalysisCLI: { releaseName: 'crono-analysis', slug: 'crono-analysis-cli', color: '#C85A47' },
+  CronoETLCLI: { releaseName: 'crono-etl', slug: 'crono-etl-cli', color: '#1B8AC7' },
   CronoServer: { releaseName: 'CronoServer', slug: 'crono-server', color: '#1B8AC7' },
   CronoAdministrator: { releaseName: 'CronoAdministrator', slug: 'crono-administrator', color: '#1B8AC7' },
   CronoAdministratorMSI: { releaseName: 'CronoAdministratorMSI', slug: 'crono-administrator-msi', color: '#1B8AC7' },
@@ -65,6 +67,7 @@ export const RELEASE_SECTIONS: Record<string, string[]> = {
   ServerRelease: ['Crono', 'CronoAdministrator', 'CronoServer'],
   StandardReleaseX86: ['CronoAnalysis32', 'CronoMetadata32', 'CronoETL32'],
   MSIRelease: ['CronoAnalysisMSI', 'CronoMetadataMSI', 'CronoAdministratorMSI'],
+  CliRelease: ['crono-analysis', 'crono-etl'],
   CronoClassic: ['CronoClassicMSI', 'CronoExcelClassicMSI'],
 }
 

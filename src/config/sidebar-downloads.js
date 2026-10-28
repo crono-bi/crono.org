@@ -7,8 +7,8 @@ export const downloadsTopics = {
 		{ slug: 'downloads', label: 'Descargas principales', translations: { en: 'Main downloads' } },
 		{ slug: 'downloads/all', label: 'Todos los productos', translations: { en: 'All products' } },
 		{
-			label: 'Aplicaciones cliente',
-			translations: { en: 'Client applications' },
+			label: 'Aplicaciones Windows',
+			translations: { en: 'Windows applications' },
 			items: [
 				{ slug: 'downloads/crono-analysis', label: 'Crono Analysis' },
 				{ slug: 'downloads/crono-metadata', label: 'Crono Metadata' },
@@ -16,6 +16,14 @@ export const downloadsTopics = {
 				{ slug: 'downloads/crono-excel', label: 'Crono Excel' },
 				{ slug: 'downloads/crono-viewer', label: 'Crono Viewer' },
 				{ slug: 'downloads/crono-reporting', label: 'Crono Reporting' },
+			],
+		},
+		{
+			label: 'Aplicaciones CLI',
+			translations: { en: 'CLI applications' },
+			items: [
+				{ slug: 'downloads/crono-analysis-cli', label: 'Crono Analysis CLI' },
+				{ slug: 'downloads/crono-etl-cli', label: 'Crono ETL CLI' },
 			],
 		},
 		{

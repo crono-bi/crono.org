@@ -62,6 +62,7 @@ export default defineConfig({
 				es: 'Manual de usuario',
 				en: 'User Manual',
 			},
+			routeMiddleware: './src/starlightRouteData.ts',
 			defaultLocale: 'root',
 			locales: {
 				root: { label: 'Español', lang: 'es' },

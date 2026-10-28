@@ -37,6 +37,12 @@
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
             {{ t('downloadsLanding.btn.versions') }}
           </a>
+          <div class="dl-card-cli-row">
+            <a v-if="product.cliPath" :href="product.cliPath" class="dl-card-cli">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+              {{ t('downloadsLanding.cliLink') }}
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -80,6 +86,7 @@ interface LandingProduct {
   downloadUrl: string | null
   version: string | null
   date: string | null
+  cliPath?: string
 }
 
 const props = withDefaults(defineProps<{ prefix?: string }>(), { prefix: '' })
@@ -95,6 +102,8 @@ const formatDate = (dateStr: string | null): string => {
   return `${d.getDate()} ${months[d.getMonth()]} ${d.getFullYear()}`
 }
 
+
+
 const downloadsColor = '#2563EB'
 const downloadsRgb = '37, 99, 235'
 
@@ -105,6 +114,7 @@ const productDefs = [
     description: t('downloadsLanding.product.analysis.desc'),
     path: `${props.prefix}/downloads/crono-analysis/`,
     apiKey: 'CronoAnalysis',
+    cliPath: `${props.prefix}/downloads/crono-analysis-cli/`,
   },
   {
     ...PRODUCTS.metadata,
@@ -119,6 +129,7 @@ const productDefs = [
     description: t('downloadsLanding.product.etl.desc'),
     path: `${props.prefix}/downloads/crono-etl/`,
     apiKey: 'CronoETL',
+    cliPath: `${props.prefix}/downloads/crono-etl-cli/`,
   },
 ]
 
@@ -136,6 +147,7 @@ const products = ref<LandingProduct[]>(productDefs.map(p => ({
   downloadUrl: null,
   version: null,
   date: null,
+  cliPath: p.cliPath,
 })))
 
 onMounted(async () => {
@@ -298,7 +310,7 @@ onMounted(async () => {
 }
 
 .dl-card-foot {
-  margin-top: 1.25rem;
+  margin-top: 1.75rem;
   padding-top: 1rem;
   border-top: 1px solid var(--sl-color-hairline);
 }
@@ -329,6 +341,33 @@ onMounted(async () => {
   background: var(--sl-color-bg-nav);
   border-color: var(--sl-color-hairline-light);
   color: var(--sl-color-gray-2);
+}
+
+/* Fila reservada: mismo alto con o sin enlace CLI, para alinear los botones */
+.dl-card-cli-row {
+  display: flex;
+  align-items: center;
+  margin-top: 0.625rem;
+  height: 1.25rem;
+}
+
+.dl-card-cli {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  width: 100%;
+  font-size: 0.8125rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  color: var(--sl-color-gray-3);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.dl-card-cli:hover,
+.dl-card:hover .dl-card-cli {
+  color: var(--c);
 }
 
 .dl-banner {

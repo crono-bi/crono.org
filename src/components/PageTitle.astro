@@ -1,9 +1,14 @@
 ---
 import Default from '@astrojs/starlight/components/PageTitle.astro';
+import { DOWNLOAD_PAGES } from '../config/download-pages';
 
 const path = Astro.url.pathname.replace(/^\/en(?=\/|$)/, '');
 const hiddenPaths = ['/playground', '/sql', '/etl', '/metadata', '/analysis'];
 const isHidden = hiddenPaths.some(p => path === p || path === p + '/');
+
+// Las páginas de producto renderizan su propio h1 en ProductDownloadPage
+const downloadMatch = path.match(/^\/downloads\/([^/]+)\/?$/);
+const isProductPage = !!downloadMatch && downloadMatch[1] in DOWNLOAD_PAGES;
 ---
 
-{!isHidden && <Default {...Astro.props}><slot /></Default>}
+{!isHidden && !isProductPage && <Default {...Astro.props}><slot /></Default>}

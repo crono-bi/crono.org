@@ -128,9 +128,21 @@ const es = {
   'downloadsLanding.product.etl.desc': 'Extracción, transformación y carga entre sistemas heterogéneos.',
   'downloadsLanding.btn.download': 'Descargar',
   'downloadsLanding.btn.versions': 'Ver versiones',
+  'downloadsLanding.cliLink': 'Versión CLI',
   'downloadsLanding.banner.title': 'Todos los productos',
-  'downloadsLanding.banner.sub': 'Server, x86, MSI, Classic y herramientas adicionales',
+  'downloadsLanding.banner.sub': 'CLI, Server, x86, MSI, Classic y herramientas adicionales',
   'downloadsLanding.banner.cta': 'Ver catálogo completo',
+
+  // ── ProductDownloadPage ──
+  'downloadPage.requirements': 'Requisitos del sistema',
+  'downloadPage.history': 'Historial de versiones',
+  'downloadPage.cli.title': 'Versión CLI',
+  'downloadPage.cli.desc': 'Se instala como herramienta global de .NET (requiere el .NET SDK):',
+  'downloadPage.cli.copy': 'Copiar',
+  'downloadPage.cli.copied': 'Copiado',
+  'downloadPage.alert.msi': 'No se recomienda el uso de estos instaladores MSI. Antes de utilizar estos paquetes consulte con su distribuidor.',
+  'downloadPage.alert.x86': 'Esta versión de 32 bits es necesaria si no dispone de drivers de 64 bits para conectarse a sus orígenes de datos.',
+  'downloadPage.alert.classic': 'Esta es la última versión de la plataforma Crono vigente entre 2010 y 2015. Esta versión no tiene soporte y NO SE RECOMIENDA para proyectos nuevos.',
 
   // ── PricingLanding ──
   'pricingLanding.section.etl.title': 'Crono ETL',
@@ -620,9 +632,21 @@ const en: Record<keyof typeof es, string> = {
   'downloadsLanding.product.etl.desc': 'Extract, transform and load between heterogeneous systems.',
   'downloadsLanding.btn.download': 'Download',
   'downloadsLanding.btn.versions': 'View versions',
+  'downloadsLanding.cliLink': 'CLI version',
   'downloadsLanding.banner.title': 'All products',
-  'downloadsLanding.banner.sub': 'Server, x86, MSI, Classic and additional tools',
+  'downloadsLanding.banner.sub': 'CLI, Server, x86, MSI, Classic and additional tools',
   'downloadsLanding.banner.cta': 'View full catalog',
+
+  // ── ProductDownloadPage ──
+  'downloadPage.requirements': 'System requirements',
+  'downloadPage.history': 'Version history',
+  'downloadPage.cli.title': 'CLI version',
+  'downloadPage.cli.desc': 'Install it as a global .NET tool (requires the .NET SDK):',
+  'downloadPage.cli.copy': 'Copy',
+  'downloadPage.cli.copied': 'Copied',
+  'downloadPage.alert.msi': 'These MSI installers are not recommended. Please consult your distributor before using these packages.',
+  'downloadPage.alert.x86': 'This 32-bit version is required if you do not have 64-bit drivers to connect to your data sources.',
+  'downloadPage.alert.classic': 'This is the last version of the Crono platform, current between 2010 and 2015. It has no support and is NOT RECOMMENDED for new projects.',
 
   // ── PricingLanding ──
   'pricingLanding.section.etl.title': 'Crono ETL',

@@ -1,0 +1,230 @@
+---
+// ProductDownloadPage - Vista estándar de página de descarga por producto.
+// Renderiza cabecera, descripción, requisitos, bloque CLI e historial
+// a partir de src/config/download-pages.ts
+import DownloadTable from './DownloadTable.astro'
+import ProductDownloadHeader from './ProductDownloadHeader.vue'
+import CliInstallBlock from './CliInstallBlock.vue'
+import { DOWNLOAD_PAGES, NUGET_SOURCE, type DownloadAlert } from '../config/download-pages'
+import { getColorByReleaseName } from '../config/downloads'
+import { PRODUCTS } from '../config/products'
+import { getLangFromLocale, useT, type Lang, type UIKey } from '../i18n/ui'
+
+interface Props {
+	slug: string
+}
+
+const { slug } = Astro.props
+const page = DOWNLOAD_PAGES[slug]
+if (!page) throw new Error(`ProductDownloadPage: slug desconocido "${slug}"`)
+
+const lang = getLangFromLocale(Astro.currentLocale)
+const t = useT(lang)
+
+const color = getColorByReleaseName(page.releaseName)
+
+// Icono: el del producto en PRODUCTS o un paquete genérico
+const GENERIC_ICON = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg>`
+const icon = page.productId ? PRODUCTS[page.productId].icon : GENERIC_ICON
+
+const ALERT_KEYS: Record<DownloadAlert, UIKey> = {
+	msi: 'downloadPage.alert.msi',
+	x86: 'downloadPage.alert.x86',
+	classic: 'downloadPage.alert.classic',
+}
+const alertText = page.alert ? (page.alertText?.[lang] ?? t(ALERT_KEYS[page.alert])) : null
+
+const requirements = page.requirements?.[lang]
+const cliCommand = page.cliPackage
+	? `dotnet tool install ${page.cliPackage} --source ${NUGET_SOURCE} --global`
+	: null
+
+// RGB del color de marca para fondos suaves
+const hex = color.replace('#', '')
+const rgb = `${parseInt(hex.slice(0, 2), 16)}, ${parseInt(hex.slice(2, 4), 16)}, ${parseInt(hex.slice(4, 6), 16)}`
+---
+
+<div class="pdp not-content" style={`--pdp-color: ${color}; --pdp-soft: rgba(${rgb}, 0.1)`}>
+
+	<header class="pdp-header">
+		<div class="pdp-icon" set:html={icon} />
+		<div class="pdp-title-block">
+			<h1 id="_top" class="pdp-name">{typeof page.name === 'string' ? page.name : page.name[lang]}</h1>
+			{page.tagline && <span class="pdp-tagline">{page.tagline[lang]}</span>}
+		</div>
+	</header>
+
+	<p class="pdp-desc">{page.desc[lang]}</p>
+
+	{alertText && (
+		<div class={`pdp-alert pdp-alert--${page.alert}`} role="note">
+			<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+			<span set:html={alertText} />
+		</div>
+	)}
+
+	<div class="pdp-release">
+		<ProductDownloadHeader product={page.releaseName} client:load />
+	</div>
+
+	{cliCommand && page.cliOnly && (
+		<section id="cli" class="pdp-cli">
+			<CliInstallBlock command={cliCommand} client:load />
+		</section>
+	)}
+
+	{requirements && (
+		<section class="pdp-req" id={lang === 'en' ? 'requirements' : 'requisitos'}>
+			<h2 class="pdp-req-title">{t('downloadPage.requirements')}</h2>
+			<ul class="pdp-req-list">
+				{requirements.map(req => <li set:html={req} />)}
+			</ul>
+		</section>
+	)}
+
+	{cliCommand && !page.cliOnly && (
+		<section id="cli" class="pdp-cli">
+			<CliInstallBlock command={cliCommand} client:load />
+		</section>
+	)}
+
+	<section class="pdp-history" id={lang === 'en' ? 'version-history' : 'historial-de-versiones'}>
+		<DownloadTable product={page.releaseName} title={t('downloadPage.history')} />
+	</section>
+
+</div>
+
+<style>
+	.pdp {
+		max-width: 1100px;
+		margin: 0 auto;
+		padding-bottom: 3rem;
+	}
+
+	/* ── Header ── */
+	.pdp-header {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+		margin-bottom: 1.25rem;
+	}
+
+	.pdp-icon {
+		width: 52px;
+		height: 52px;
+		border-radius: 10px;
+		background: var(--pdp-color);
+		color: white;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-shrink: 0;
+	}
+
+	.pdp-icon svg { width: 26px; height: 26px; }
+
+	.pdp-name {
+		font-size: clamp(1.5rem, 3.5vw, 2rem);
+		font-weight: 700;
+		color: var(--sl-color-white);
+		margin: 0;
+		line-height: 1.2;
+	}
+
+	.pdp-tagline {
+		font-size: 0.6875rem;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.09em;
+		color: var(--pdp-color);
+	}
+
+	.pdp-desc {
+		font-size: 1rem;
+		color: var(--sl-color-gray-2);
+		line-height: 1.6;
+		margin: 0 0 1.5rem;
+		max-width: 70ch;
+	}
+
+	/* ── Alert ── */
+	.pdp-alert {
+		display: flex;
+		align-items: flex-start;
+		gap: 0.625rem;
+		padding: 0.875rem 1.125rem;
+		border-radius: 8px;
+		font-size: 0.875rem;
+		line-height: 1.5;
+		margin-bottom: 1.5rem;
+		background: var(--pdp-soft);
+		border: 1px solid var(--pdp-color);
+		color: var(--sl-color-gray-2);
+	}
+
+	.pdp-alert svg {
+		flex-shrink: 0;
+		margin-top: 0.1rem;
+		color: var(--pdp-color);
+	}
+
+	.pdp-alert--classic,
+	.pdp-alert--msi {
+		background: rgba(217, 119, 6, 0.08);
+		border-color: rgba(217, 119, 6, 0.4);
+	}
+
+	.pdp-alert--classic svg,
+	.pdp-alert--msi svg { color: #d97706; }
+
+	/* ── Release (versión + botón) ── */
+	.pdp-release {
+		border: 1px solid var(--sl-color-hairline-light);
+		border-radius: 8px;
+		padding: 1rem 1.25rem;
+		background: var(--sl-color-bg-nav);
+		margin-bottom: 1.5rem;
+		min-height: 3.75rem;
+		display: flex;
+		align-items: center;
+	}
+
+	/* ── Requisitos ── */
+	.pdp-req {
+		border: 1px solid var(--sl-color-hairline-light);
+		border-radius: 8px;
+		padding: 1.25rem 1.5rem;
+		margin-bottom: 1.5rem;
+		background: var(--sl-color-bg-nav);
+	}
+
+	.pdp-req-title {
+		font-size: 0.8125rem;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		color: var(--pdp-color);
+		margin: 0 0 0.75rem;
+	}
+
+	.pdp-req-list {
+		margin: 0;
+		padding-left: 1.25rem;
+		font-size: 0.875rem;
+		color: var(--sl-color-gray-3);
+		line-height: 1.8;
+	}
+
+	.pdp-req-list a { color: var(--pdp-color); }
+
+	/* ── CLI + historial ── */
+	.pdp-cli { margin-bottom: 2rem; scroll-margin-top: 5rem; }
+	.pdp-req, .pdp-history { scroll-margin-top: 5rem; }
+
+	.pdp-history h2 {
+		font-size: 1.25rem;
+		font-weight: 700;
+		color: var(--sl-color-white);
+		margin: 0 0 1rem;
+	}
+</style>
