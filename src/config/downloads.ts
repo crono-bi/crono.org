@@ -64,7 +64,7 @@ export const DOWNLOAD_PRODUCTS: Record<string, DownloadProductDefinition> = {
   CronoAdministrator: { releaseName: 'CronoAdministrator', slug: 'crono-administrator', color: '#1B8AC7' },
   CronoAdministratorMSI: { releaseName: 'CronoAdministratorMSI', slug: 'crono-administrator-msi', color: '#1B8AC7' },
   CronoViewer: { releaseName: 'CronoViewer', slug: 'crono-viewer', color: '#C85A47' },
-  CronoReporting: { releaseName: 'CronoReporting', slug: 'crono-reporting', color: '#C85A47' },
+  CronoReporting: { releaseName: 'CronoReporting', slug: 'crono-reporting', color: '#10B981' },
   CronoExcel: { releaseName: 'CronoExcel', slug: 'crono-excel', color: '#1E7B47' },
   CronoExcelMSI: { releaseName: 'CronoExcelMSI', slug: 'crono-excel', color: '#1E7B47' },
   CronoClassic: { releaseName: 'CronoClassic', slug: 'crono-classic', color: '#6B7280' },
