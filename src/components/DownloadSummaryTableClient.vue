@@ -81,10 +81,10 @@
 import { ref, onMounted } from 'vue'
 import { useT, getLangFromPath } from '../i18n/ui'
 import { fetchSectionReleases } from '../services/downloads.service'
-import { getColorByReleaseName, getSlugByReleaseName, type DownloadItem } from '../config/downloads'
+import { getColorByReleaseName, getSlugByReleaseName, type DownloadItem, type ReleaseSection } from '../config/downloads'
 
 const props = withDefaults(defineProps<{
-  section?: 'StandardRelease' | 'ServerRelease' | 'StandardReleaseX86' | 'MSIRelease' | 'CronoClassic' | 'CliRelease'
+  section?: ReleaseSection
   title?: string
   prefix?: string
 }>(), { prefix: '' })

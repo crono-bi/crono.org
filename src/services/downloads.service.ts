@@ -4,7 +4,7 @@
  * y deduplica requests en vuelo.
  */
 
-import { API_BASE_URL, RELEASE_SECTIONS, toDownloadUrl, type DownloadItem } from '../config/downloads'
+import { API_BASE_URL, RELEASE_SECTIONS, toDownloadUrl, type DownloadItem, type ReleaseSection } from '../config/downloads'
 
 /** Reescribe SetupUri al dominio público de descargas. */
 function normalizeItem(item: DownloadItem): DownloadItem {
@@ -91,18 +91,17 @@ export function fetchLastReleases(): Promise<DownloadItem[]> {
 /**
  * Devuelve los últimos releases de una sección (StandardRelease, ServerRelease, etc.).
  */
-export async function fetchSectionReleases(section: string): Promise<DownloadItem[]> {
-  const releaseNames = RELEASE_SECTIONS[section] ?? []
-  if (releaseNames.length === 0) return []
-
+export async function fetchSectionReleases(section: ReleaseSection): Promise<DownloadItem[]> {
+  const releaseNames = RELEASE_SECTIONS[section]
   const all = await fetchLastReleases()
   const items = await Promise.all(releaseNames.map(async name => {
     const found = all.find(item => item.ReleaseName === name)
     if (found) return found
+    // Releases que no publica last.json (p.ej. CLIs): se toma el más reciente de su historial
     try {
-      const history = await fetchHistory(name)
-      return history[0]
-    } catch {
+      return (await fetchHistory(name))[0]
+    } catch (e) {
+      console.warn(`fetchSectionReleases: sin historial para ${name}`, e)
       return undefined
     }
   }))

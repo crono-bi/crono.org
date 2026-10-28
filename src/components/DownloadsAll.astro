@@ -6,73 +6,25 @@ import { getLangFromLocale, getLocalePrefix } from '../i18n/ui'
 const lang = getLangFromLocale(Astro.currentLocale)
 const prefix = getLocalePrefix(lang)
 
-// Colores oficiales por producto
-const COLORS = {
-  analysis: '#C85A47',
-  metadata: '#5B2C7D',
-  etl: '#1B8AC7',
-  downloads: '#2563EB',
-  excel: '#1E7B47',
-  reporting: '#10B981',
-}
-
-const productGroups = [
-  {
-    title: 'Productos principales',
-    description: 'Los instaladores recomendados para la mayoría de entornos',
-    items: [
-      { name: 'Crono Analysis', desc: 'Herramienta de análisis y reporting', path: `${prefix}/downloads/crono-analysis/`, color: COLORS.analysis },
-      { name: 'Crono Metadata', desc: 'Capa semántica y modelado', path: `${prefix}/downloads/crono-metadata/`, color: COLORS.metadata },
-      { name: 'Crono ETL', desc: 'Extracción, transformación y carga', path: `${prefix}/downloads/crono-etl/`, color: COLORS.etl },
-      { name: 'Crono Excel', desc: 'Informes en Excel', path: `${prefix}/downloads/crono-excel/`, color: COLORS.excel },
-      { name: 'Crono Viewer', desc: 'Visualizador de informes', path: `${prefix}/downloads/crono-viewer/`, color: COLORS.analysis },
-      { name: 'Crono Reporting', desc: 'Generación de informes', path: `${prefix}/downloads/crono-reporting/`, color: COLORS.reporting },
-    ]
-  },
-  {
-    title: 'Aplicaciones de servidor',
-    description: 'Crono Administrator instala y administra Crono Server',
-    items: [
-      { name: 'Crono Administrator', desc: 'Gestión de Crono Server', path: `${prefix}/downloads/crono-administrator/`, color: COLORS.etl },
-      { name: 'Crono API', desc: 'API REST de la plataforma', path: `${prefix}/downloads/crono-api/`, color: COLORS.etl },
-      { name: 'Crono Server', desc: 'Infraestructura servidor', path: `${prefix}/downloads/crono-server/`, color: COLORS.etl },
-    ]
-  }
-]
-
 const specialGroups = [
   {
     title: 'Arquitectura x86 (32 bits)',
     description: 'Las aplicaciones de 32 bits son necesarias si no dispone de drivers de 64 bits para conectarse a sus orígenes de datos.',
     section: 'StandardReleaseX86' as const,
-    items: [
-      { name: 'Crono Analysis 32', path: `${prefix}/downloads/crono-analysis-32/`, color: COLORS.analysis },
-      { name: 'Crono Metadata 32', path: `${prefix}/downloads/crono-metadata-32/`, color: COLORS.metadata },
-      { name: 'Crono ETL 32', path: `${prefix}/downloads/crono-etl-32/`, color: COLORS.etl },
-    ]
   },
   {
     title: 'Packages MSI',
     description: 'No se recomienda el uso de estos instaladores MSI. Antes de utilizar estos paquetes consulte con su distribuidor.',
     section: 'MSIRelease' as const,
-    items: [
-      { name: 'Crono Analysis MSI', path: `${prefix}/downloads/crono-analysis-msi/`, color: COLORS.analysis },
-      { name: 'Crono Metadata MSI', path: `${prefix}/downloads/crono-metadata-msi/`, color: COLORS.metadata },
-      { name: 'Crono Administrator MSI', path: `${prefix}/downloads/crono-administrator-msi/`, color: COLORS.etl },
-    ]
   },
   {
     title: 'Crono Classic',
     description: 'Esta es la última versión de la plataforma Crono vigente entre 2010 y 2015. Esta versión no tiene soporte y NO SE RECOMIENDA para proyectos nuevos.',
     section: 'CronoClassic' as const,
-    items: [
-      { name: 'Crono Classic', path: `${prefix}/downloads/crono-classic/`, color: '#6B7280' },
-      { name: 'Crono Excel Classic', path: `${prefix}/downloads/crono-excel-classic/`, color: COLORS.excel },
-    ]
   }
 ]
 
-const downloadsColor = COLORS.downloads
+const downloadsColor = '#2563EB'
 const downloadsRgb = '37, 99, 235'
 ---
 

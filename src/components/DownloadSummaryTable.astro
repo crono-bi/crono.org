@@ -2,10 +2,11 @@
 // DownloadSummaryTable.astro - Wrapper Astro que hidrata el resumen client-side.
 
 import { getLangFromLocale, getLocalePrefix } from '../i18n/ui'
+import type { ReleaseSection } from '../config/downloads'
 import DownloadSummaryTableClient from './DownloadSummaryTableClient.vue';
 
 export interface Props {
-	section?: 'StandardRelease' | 'ServerRelease' | 'StandardReleaseX86' | 'MSIRelease' | 'CronoClassic';
+	section?: ReleaseSection;
 	title?: string;
 }
 

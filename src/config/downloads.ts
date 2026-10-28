@@ -5,13 +5,17 @@
 
 export const API_BASE_URL = 'https://updates.crono.net'
 
-export const DOWNLOAD_BASE_URL = 'https://downloads.crono.org'
+const DOWNLOAD_BASE_URL = 'https://downloads.crono.org'
 
 const S3_UPDATES_PREFIX = 'https://s3.eu-west-1.amazonaws.com/downloads.crono.net/updates/'
 
-/** Reescribe una URI del API (S3) a la URL pública de downloads.crono.org. */
+/**
+ * Reescribe una URI del API (S3) a la URL pública de downloads.crono.org.
+ * Descarta cualquier URI que no sea https (evita `javascript:` u otros esquemas en href).
+ */
 export function toDownloadUrl(uri: string | null): string | null {
-  if (uri?.startsWith(S3_UPDATES_PREFIX)) {
+  if (!uri?.startsWith('https://')) return null
+  if (uri.startsWith(S3_UPDATES_PREFIX)) {
     return DOWNLOAD_BASE_URL + uri.slice(S3_UPDATES_PREFIX.length - 1)
   }
   return uri
@@ -74,7 +78,15 @@ export const DOWNLOAD_PRODUCTS: Record<string, DownloadProductDefinition> = {
 }
 
 /** Grupos de releases usados por DownloadSummaryTable. */
-export const RELEASE_SECTIONS: Record<string, string[]> = {
+export type ReleaseSection =
+  | 'StandardRelease'
+  | 'ServerRelease'
+  | 'StandardReleaseX86'
+  | 'MSIRelease'
+  | 'CliRelease'
+  | 'CronoClassic'
+
+export const RELEASE_SECTIONS: Record<ReleaseSection, string[]> = {
   StandardRelease: ['CronoAnalysis', 'CronoMetadata', 'CronoETL', 'CronoViewer', 'CronoExcelMSI', 'CronoReporting'],
   ServerRelease: ['CronoAdministrator', 'CronoAPI', 'CronoServer'],
   StandardReleaseX86: ['CronoAnalysis32', 'CronoMetadata32', 'CronoETL32'],

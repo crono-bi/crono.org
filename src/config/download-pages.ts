@@ -32,11 +32,6 @@ export interface DownloadPageConfig {
 /** Feed NuGet oficial donde se publican las CLIs (dotnet tools). */
 export const NUGET_SOURCE = 'https://nuget.crono.org/v3/index.json'
 
-const X86_DESC = {
-	es: 'Esta versión de 32 bits es necesaria si no dispone de drivers de 64 bits para conectarse a sus orígenes de datos.',
-	en: 'This 32-bit version is required if you do not have 64-bit drivers to connect to your data sources.',
-}
-
 const MSI_DESC = {
 	es: 'Instalador MSI para despliegues corporativos.',
 	en: 'MSI installer for corporate deployments.',
