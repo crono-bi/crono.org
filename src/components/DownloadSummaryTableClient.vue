@@ -19,7 +19,7 @@
     </div>
 
     <div v-else-if="items.length === 0" class="loading-message">
-      <p>{{ t('download.loading') }}</p>
+      <p>{{ t('download.empty') }}</p>
     </div>
 
     <div v-else class="table-wrapper">
@@ -84,7 +84,7 @@ import { fetchSectionReleases } from '../services/downloads.service'
 import { getColorByReleaseName, getSlugByReleaseName, type DownloadItem } from '../config/downloads'
 
 const props = withDefaults(defineProps<{
-  section?: 'StandardRelease' | 'ServerRelease' | 'StandardReleaseX86' | 'MSIRelease' | 'CronoClassic'
+  section?: 'StandardRelease' | 'ServerRelease' | 'StandardReleaseX86' | 'MSIRelease' | 'CronoClassic' | 'CliRelease'
   title?: string
   prefix?: string
 }>(), { prefix: '' })

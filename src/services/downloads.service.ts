@@ -96,7 +96,15 @@ export async function fetchSectionReleases(section: string): Promise<DownloadIte
   if (releaseNames.length === 0) return []
 
   const all = await fetchLastReleases()
-  return releaseNames
-    .map(name => all.find(item => item.ReleaseName === name))
-    .filter((item): item is DownloadItem => item !== undefined)
+  const items = await Promise.all(releaseNames.map(async name => {
+    const found = all.find(item => item.ReleaseName === name)
+    if (found) return found
+    try {
+      const history = await fetchHistory(name)
+      return history[0]
+    } catch {
+      return undefined
+    }
+  }))
+  return items.filter((item): item is DownloadItem => item !== undefined)
 }
