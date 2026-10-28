@@ -4,7 +4,13 @@
  * y deduplica requests en vuelo.
  */
 
-import { API_BASE_URL, RELEASE_SECTIONS, type DownloadItem } from '../config/downloads'
+import { API_BASE_URL, RELEASE_SECTIONS, toDownloadUrl, type DownloadItem } from '../config/downloads'
+
+/** Reescribe SetupUri al dominio público de descargas. */
+function normalizeItem(item: DownloadItem): DownloadItem {
+  item.SetupUri = toDownloadUrl(item.SetupUri)
+  return item
+}
 
 type CacheEntry<T> = {
   data: T
@@ -71,7 +77,7 @@ export function fetchHistory(productReleaseName: string): Promise<DownloadItem[]
   return withCache(cacheKey, async () => {
     const items = await fetchJson<DownloadItem[]>(`${API_BASE_URL}/${productReleaseName}/history.json`)
     items.sort((a, b) => new Date(b.Date).getTime() - new Date(a.Date).getTime())
-    return items
+    return items.map(normalizeItem)
   })
 }
 
@@ -79,7 +85,7 @@ export function fetchHistory(productReleaseName: string): Promise<DownloadItem[]
  * Devuelve el último release de cada producto.
  */
 export function fetchLastReleases(): Promise<DownloadItem[]> {
-  return withCache('last', () => fetchJson<DownloadItem[]>(`${API_BASE_URL}/last.json`))
+  return withCache('last', async () => (await fetchJson<DownloadItem[]>(`${API_BASE_URL}/last.json`)).map(normalizeItem))
 }
 
 /**

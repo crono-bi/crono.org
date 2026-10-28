@@ -5,6 +5,18 @@
 
 export const API_BASE_URL = 'https://updates.crono.net'
 
+export const DOWNLOAD_BASE_URL = 'https://downloads.crono.org'
+
+const S3_UPDATES_PREFIX = 'https://s3.eu-west-1.amazonaws.com/downloads.crono.net/updates/'
+
+/** Reescribe una URI del API (S3) a la URL pública de downloads.crono.org. */
+export function toDownloadUrl(uri: string | null): string | null {
+  if (uri?.startsWith(S3_UPDATES_PREFIX)) {
+    return DOWNLOAD_BASE_URL + uri.slice(S3_UPDATES_PREFIX.length - 1)
+  }
+  return uri
+}
+
 export interface DownloadProductDefinition {
   /** ReleaseName usado en la API (ej: CronoExcelMSI). */
   releaseName: string
