@@ -63,8 +63,8 @@ export const DOWNLOAD_PAGES: Record<string, DownloadPageConfig> = {
 			en: 'Command line',
 		},
 		desc: {
-			es: 'Versión de línea de comandos de Crono Analysis. Ideal para automatizaciones y entornos sin interfaz gráfica.',
-			en: 'Command line version of Crono Analysis. Ideal for automation and headless environments.',
+			es: 'Versión de línea de comandos de Crono Analysis. Ideal para automatizaciones y entornos sin interfaz gráfica. Incluye cliente MCP para integración con agentes conversacionales (IA).',
+			en: 'Command line version of Crono Analysis. Ideal for automation and headless environments. Includes an MCP client for integration with conversational (AI) agents.',
 		},
 		requirements: CLI_REQUIREMENTS,
 		cliPackage: 'crono-analysis',
@@ -79,8 +79,8 @@ export const DOWNLOAD_PAGES: Record<string, DownloadPageConfig> = {
 			en: 'Command line',
 		},
 		desc: {
-			es: 'Versión de línea de comandos de Crono ETL. Ideal para automatizaciones, ejecuciones programadas y entornos sin interfaz gráfica.',
-			en: 'Command line version of Crono ETL. Ideal for automation, scheduled executions and headless environments.',
+			es: 'Versión de línea de comandos de Crono ETL. Ideal para automatizaciones, ejecuciones programadas y entornos sin interfaz gráfica. Incluye cliente MCP para integración con agentes conversacionales (IA).',
+			en: 'Command line version of Crono ETL. Ideal for automation, scheduled executions and headless environments. Includes an MCP client for integration with conversational (AI) agents.',
 		},
 		requirements: CLI_REQUIREMENTS,
 		cliPackage: 'crono-etl',
