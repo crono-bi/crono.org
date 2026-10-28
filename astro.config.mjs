@@ -42,7 +42,6 @@ export default defineConfig({
 		},
 		optimizeDeps: {
 			include: [
-				'codemirror',
 				'@codemirror/state',
 				'@codemirror/view',
 				'@codemirror/language',
