@@ -86,14 +86,6 @@ export const DOWNLOAD_PAGES: Record<string, DownloadPageConfig> = {
 		cliPackage: 'crono-etl',
 		cliOnly: true,
 	},
-	crono: {
-		releaseName: 'Crono',
-		name: 'Crono',
-		desc: {
-			es: 'Crono es el producto base de la plataforma que incluye los componentes fundamentales compartidos por todas las aplicaciones Crono.',
-			en: 'Crono is the platform base product, including the core components shared by all Crono applications.',
-		},
-	},
 	'crono-administrator': {
 		releaseName: 'CronoAdministrator',
 		name: 'Crono Administrator',
@@ -164,6 +156,14 @@ export const DOWNLOAD_PAGES: Record<string, DownloadPageConfig> = {
 		productId: 'analysis',
 		desc: MSI_DESC,
 		alert: 'msi',
+	},
+	'crono-api': {
+		releaseName: 'CronoAPI',
+		name: 'Crono API',
+		desc: {
+			es: 'Crono API es la API REST de la plataforma Crono. Expone los datos y servicios del modelo semántico a aplicaciones web y de terceros.',
+			en: 'Crono API is the REST API of the Crono platform. It exposes the semantic model data and services to web and third-party applications.',
+		},
 	},
 	'crono-classic': {
 		releaseName: 'CronoClassicMSI',

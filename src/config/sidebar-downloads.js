@@ -30,8 +30,8 @@ export const downloadsTopics = {
 			label: 'Aplicaciones de servidor',
 			translations: { en: 'Server applications' },
 			items: [
-				{ slug: 'downloads/crono', label: 'Crono' },
 				{ slug: 'downloads/crono-administrator', label: 'Crono Administrator' },
+				{ slug: 'downloads/crono-api', label: 'Crono API' },
 				{ slug: 'downloads/crono-server', label: 'Crono Server' },
 			],
 		},

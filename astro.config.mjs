@@ -31,6 +31,9 @@ export default defineConfig({
 		'/downloads/crono-jobs-32': '/downloads/',
 		'/en/downloads/crono-jobs': '/en/downloads/',
 		'/en/downloads/crono-jobs-32': '/en/downloads/',
+		// Crono Console ya no está disponible
+		'/downloads/crono': '/downloads/',
+		'/en/downloads/crono': '/en/downloads/',
 	},
 	vite: {
 		plugins: [tailwindcss()],
