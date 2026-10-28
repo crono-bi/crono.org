@@ -28,7 +28,7 @@
       </div>
       
       <p class="hero-subtitle">
-        15 de Septiembre de 2026 a las 10:00h
+        1 de Diciembre de 2026 a las 10:00h
       </p>
       
       <Countdown />

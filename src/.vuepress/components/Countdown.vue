@@ -41,8 +41,8 @@ export default {
     }
   },
   mounted() {
-    // PRODUCCIÓN: 15 de Septiembre de 2026 a las 10:00h
-    this.targetDate = new Date('2026-09-15T10:00:00')
+    // PRODUCCIÓN: 1 de Diciembre de 2026 a las 10:00h
+    this.targetDate = new Date('2026-12-01T10:00:00')
     
     this.updateCountdown()
     this.timer = setInterval(this.updateCountdown, 1000)
