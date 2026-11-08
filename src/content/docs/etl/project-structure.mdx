@@ -15,12 +15,16 @@ Salvo la carpeta `.crono`, en la que Crono busca la configuración, la organizac
 
 - .crono/
   - config.jsonc propiedades del proyecto
+  - declarations/ declaraciones del proyecto
+    - strategies.sql
+    - vv_erp.sql
   - environments/ un fichero por entorno
     - dev.jsonc
     - prod.jsonc
-- jobs/ acciones: workflows, cargas, exportaciones…
+- jobs/ lo que se ejecuta sobre el DWH: workflows, cargas, comprobaciones…
   - dwh_load.job
   - bulk_ERP.job
+  - final_checks.sql
   - …
 - models/ un fichero por tabla o vista
   - stg_erp.orders_all_companies.sql
@@ -28,8 +32,6 @@ Salvo la carpeta `.crono`, en la que Crono busca la configuración, la organizac
   - dwh.products.sql
   - dwh.invoices.sql
   - …
-- procedures/ procedimientos que no cargan una tabla concreta
-  - dwh.final_checks.sql
 - seeds/ ficheros de entrada mantenidos a mano
   - account_groups.csv
   - budget.xlsx
@@ -45,10 +47,10 @@ Salvo la carpeta `.crono`, en la que Crono busca la configuración, la organizac
 | Elemento | Contenido |
 | --- | --- |
 | `.crono/config.jsonc` | Las [propiedades del proyecto](/etl/configuration/project/): campos de auditoría, cuenta de Calendas, ficheros de declaraciones… |
+| `.crono/declarations/` | Las declaraciones del proyecto: estrategias y vistas virtuales. Consulta [Declaraciones](#declaraciones). |
 | `.crono/environments/` | Un fichero por entorno, con el nombre del entorno (`dev.jsonc`, `prod.jsonc`…). Cada uno define las [conexiones](/etl/configuration/connections/), los [almacenamientos](/etl/configuration/storage/) y las [credenciales](/etl/configuration/credentials/) de ese entorno. Los secretos se guardan encriptados. |
-| `jobs/` | Los ficheros `.job`: [workflows](/etl/orchestration/workflow/), cargas con [BULK TABLE](/etl/data-movement/bulk-table/), exportaciones… El IDE muestra en el panel lateral los trabajos de esta carpeta. |
+| `jobs/` | Todo lo que se ejecuta sobre el DWH sin formar parte de él: [workflows](/etl/orchestration/workflow/), cargas con [BULK TABLE](/etl/data-movement/bulk-table/), exportaciones, comprobaciones, tareas de mantenimiento… Consulta [Modelos y trabajos](#modelos-y-trabajos). El IDE muestra en el panel lateral los trabajos de esta carpeta. |
 | `models/` | El código Crono SQL que crea y carga cada tabla o vista del DWH. Consulta [Nombres de los modelos](#nombres-de-los-modelos). |
-| `procedures/` | Procedimientos que no cargan una tabla concreta, como comprobaciones o tareas de mantenimiento. Suelen ser pocos, y se ejecutan desde un workflow con `PROCEDURE`. |
 | `seeds/` | Ficheros de entrada que se mantienen a mano, como jerarquías, tablas de correspondencia o presupuestos. Admite tanto CSV como Excel, y los ficheros los leen los propios modelos (consulta [Datos externos](/etl/transformation/external-data/)). |
 | `catalogs/` | Los catálogos creados con Crono Metadata, que consumen Crono Analysis o el MCP de Crono. Todos los catálogos deben estar en la misma carpeta, porque Crono Server los busca en ella. |
 | `docs/` | Documentación del proyecto, tanto la propia como la que proporciona el cliente. |
@@ -57,8 +59,16 @@ Salvo la carpeta `.crono`, en la que Crono busca la configuración, la organizac
 
 Los nombres de las carpetas se escriben en minúsculas. Windows no distingue mayúsculas de minúsculas, pero Git y Linux sí, y un proyecto puede acabar ejecutándose con Crono CLI desde un repositorio.
 
-{/* PENDIENTE: Ficheros de declaraciones (vistas virtuales del proyecto, estrategias de auditoría): ubicación y explicación, cuando se simplifiquen. */}
 {/* PENDIENTE: Cambiar el valor por defecto de JobsFolderPath ('Jobs') a 'jobs' y comprobar que el IDE crea las carpetas en minúsculas. */}
+
+## Modelos y trabajos
+
+La frontera entre `models/` y `jobs/` es sencilla: en `models/` está el DWH; en `jobs/`, lo que se le hace al DWH.
+
+- **`models/`** contiene los objetos que forman el DWH: cada tabla o vista, con su carga.
+- **`jobs/`** contiene todo lo demás: workflows, cargas con BULK TABLE, comprobaciones, validaciones, tareas de mantenimiento, exportaciones… Da igual que sean ficheros `.job` (acciones que Crono ejecuta fuera de la base de datos) o `.sql` (código que se ejecuta en ella), o que creen un procedimiento o no: la extensión ya indica dónde se ejecuta cada fichero.
+
+Para decidir dónde va un procedimiento, cuenta las tablas que modifica, no las que lee. Si modifica una sola tabla, forma parte de su modelo y va en `models/` (consulta [Procedimientos que actualizan un modelo](#procedimientos-que-actualizan-un-modelo)). Si modifica varias, o ninguna, como las comprobaciones que solo leen, va en `jobs/`.
 
 ## Nombres de los modelos
 
@@ -73,11 +83,43 @@ El esquema indica la capa del DWH a la que pertenece el objeto:
 
 Las tablas de staging que carga una acción [BULK TABLE](/etl/data-movement/bulk-table/) no necesitan un fichero, porque las crea la propia acción. En `models/` solo aparecen los objetos de staging que se construyen a partir de esas tablas; por ejemplo, la tabla que reúne en una sola las tablas de pedidos de varias empresas.
 
-### Sin subcarpetas
+### Procedimientos que actualizan un modelo
 
-Es habitual organizar los modelos en subcarpetas por capa (`staging/`, `intermediate/`, `marts/`). En Crono no hace falta, porque la capa ya forma parte del nombre del fichero a través del esquema. Ordenados alfabéticamente, los ficheros quedan agrupados por capa y por origen, y la organización del proyecto coincide siempre con la de la base de datos.
+Toda la lógica de carga de una tabla debe estar en su fichero de modelo, en una única consulta. Es la regla más importante de la estructura del proyecto: quien abre `dwh.invoices.sql` debe ver todo lo que determina el contenido de esa tabla, sin buscarlo en otros ficheros.
 
-La carpeta `jobs/` tampoco necesita subcarpetas al principio. Si el número de trabajos crece, pueden agruparse en subcarpetas como `bulk/` o `export/`.
+Excepcionalmente, una actualización no puede expresarse dentro de la carga; por ejemplo, un cálculo complejo que depende de los datos ya cargados. En ese caso:
+
+- Se crea un procedimiento aparte, en `models/`, que actualiza **solo** esa tabla. Cada fichero sigue conteniendo una única instrucción: el modelo, el procedimiento que carga la tabla; el nuevo fichero, el procedimiento que la actualiza.
+- El nombre del procedimiento, y por tanto el del fichero, empieza por el nombre del modelo que actualiza: `dwh.invoices_margins.sql` actualiza `dwh.invoices`. Así, ordenados alfabéticamente, aparecen juntos.
+- Un comentario al principio del fichero explica por qué esa lógica no puede formar parte de la carga.
+
+:::caution
+Antes de crear uno de estos procedimientos, intenta incorporar la lógica a la carga. Cada excepción obliga a abrir más de un fichero para entender una tabla.
+:::
+
+### Subcarpetas
+
+Mientras haya pocas tablas, lo más cómodo es dejar todos los modelos en la raíz de `models/`: como el nombre de cada fichero empieza por su esquema, al ordenarlos alfabéticamente quedan agrupados por esquema.
+
+Si el proyecto crece, pueden organizarse en subcarpetas, por ejemplo una por esquema. En ese caso, conviene que el fichero conserve el esquema en su nombre (`models/stg/stg.invoices.sql`, no `models/stg/invoices.sql`): así sigue identificando la tabla por sí solo, en el editor, en una búsqueda o en un cambio de Git, y no depende de la carpeta en la que esté.
+
+El mismo criterio vale para `jobs/`: mientras haya pocos trabajos, en la raíz; si su número crece, pueden agruparse en subcarpetas como `bulk/` o `export/`.
+
+## Declaraciones
+
+Las estrategias y las vistas virtuales son declaraciones: no se ejecutan ni crean nada en la base de datos, sino que Crono las reconoce y las sustituye al transpilar. Se declaran para todo el proyecto, y pueden usarse en cualquier fichero.
+
+Por eso se guardan en `.crono/declarations/`, junto a la configuración que Crono lee antes de empezar, y no entre los modelos:
+
+- Las estrategias, en `strategies.sql`.
+- Las vistas virtuales, en un fichero por esquema, con el nombre del esquema: `vv_erp.sql` declara las vistas `vv_erp.*`. Lo habitual es que sean las consultas que una acción [BULK TABLE](/etl/data-movement/bulk-table/) lanza contra un origen; si el esquema virtual se corresponde con el de destino (`vv_erp` → `stg_erp`), basta con ver el fichero para saber qué staging alimenta.
+
+Cada fichero debe darse de alta en `declaration-locations`, en las [propiedades del proyecto](/etl/configuration/project/).
+
+Excepcionalmente, una carga compleja puede apoyarse en una vista virtual que solo usa ella, para dividir el proceso en pasos. Como en los [procedimientos que actualizan un modelo](#procedimientos-que-actualizan-un-modelo), el nombre del fichero empieza por el del modelo que la usa, y se explica en un comentario por qué la lógica no está en la carga.
+
+{/* PENDIENTE: Que Crono lea automáticamente los ficheros de .crono/declarations/, sin darlos de alta en declaration-locations. */}
+{/* PENDIENTE: Declaraciones locales a una sentencia (una especie de CTE, también en BULK TABLE). Cuando existan, las vistas virtuales de un BULK pasarán a su propio fichero .job, y en .crono/declarations/ quedarán solo las que se comparten en todo el proyecto. */}
 
 ## Control de versiones
 
